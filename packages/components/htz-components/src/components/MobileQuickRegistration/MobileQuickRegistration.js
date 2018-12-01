@@ -104,6 +104,7 @@ class MobileQuickRegistration extends Component {
   state = {
     signedUp: false,
   };
+
   render() {
     const {
       teaserBody,
@@ -157,7 +158,7 @@ class MobileQuickRegistration extends Component {
                               {teaserButton}
                             </Button>
                           </Fragment>
-                          )}
+                        )}
                       </RegistrationWrapper>
                     );
                   }

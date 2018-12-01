@@ -46,19 +46,19 @@ function SubHeader({ isTheMarker, }) {
             paddingTop: isTheMarker ? 0 : '5rem',
             extend: isTheMarker
               ? [
-                  theme.mq({ from: 'xl', }, { paddingInlineStart: '28rem', }),
-                  theme.mq(
-                    { from: 'l', until: 'xl', },
-                    { paddingInlineStart: '20rem', }
-                  ),
-                ]
+                theme.mq({ from: 'xl', }, { paddingInlineStart: '28rem', }),
+                theme.mq(
+                  { from: 'l', until: 'xl', },
+                  { paddingInlineStart: '20rem', }
+                ),
+              ]
               : [
-                  theme.mq({ from: 'xl', }, { paddingInlineStart: '10rem', }),
-                  theme.mq(
-                    { from: 'l', until: 'xl', },
-                    { paddingInlineStart: '1rem', }
-                  ),
-                ],
+                theme.mq({ from: 'xl', }, { paddingInlineStart: '10rem', }),
+                theme.mq(
+                  { from: 'l', until: 'xl', },
+                  { paddingInlineStart: '1rem', }
+                ),
+              ],
           })}
         >
           <FelaComponent
@@ -68,15 +68,15 @@ function SubHeader({ isTheMarker, }) {
               marginInlineEnd: 'auto',
               extend: isTheMarker
                 ? [
-                    theme.mq({ until: 'l', }, { textAlign: 'center', }),
-                    theme.mq({ from: 's', until: 'l', }, { marginTop: '12rem', }),
-                    theme.mq({ until: 's', }, { marginTop: '16rem', }),
-                  ]
+                  theme.mq({ until: 'l', }, { textAlign: 'center', }),
+                  theme.mq({ from: 's', until: 'l', }, { marginTop: '12rem', }),
+                  theme.mq({ until: 's', }, { marginTop: '16rem', }),
+                ]
                 : [
-                    theme.mq({ until: 'l', }, { textAlign: 'center', }),
-                    theme.mq({ from: 's', until: 'l', }, { marginTop: '12rem', }),
-                    theme.mq({ until: 's', }, { marginTop: '17rem', }),
-                  ],
+                  theme.mq({ until: 'l', }, { textAlign: 'center', }),
+                  theme.mq({ from: 's', until: 'l', }, { marginTop: '12rem', }),
+                  theme.mq({ until: 's', }, { marginTop: '17rem', }),
+                ],
             })}
           >
             {isTheMarker ? (

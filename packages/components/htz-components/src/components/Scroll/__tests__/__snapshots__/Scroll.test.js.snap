@@ -3,11 +3,16 @@
 exports[`<Scroll> DOM element correctly renders x y and velocity from store 1`] = `
 <div>
   <div>
-    x: 
+    x:
+     
     0
-     y: 
+     
+    y:
+     
     0
-     velocity: 
+     
+    velocity:
+     
   </div>
 </div>
 `;

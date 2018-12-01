@@ -9,7 +9,7 @@ import BlockLink from '../../../BlockLink/BlockLink';
 import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import Image from '../../../Image/Image';
 import IconComment from '../../../Icon/icons/IconComment';
-import HtzLink from '../../..//HtzLink/HtzLink';
+import HtzLink from '../../../HtzLink/HtzLink';
 import H from '../../../AutoLevels/H';
 import Section from '../../../AutoLevels/Section';
 

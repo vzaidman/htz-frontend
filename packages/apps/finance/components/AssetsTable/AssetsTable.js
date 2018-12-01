@@ -5,7 +5,7 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 import { Query, } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
 
-import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
+import type { ChildrenArray, Node, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 import type { Asset, } from '../../types/asset';
 
@@ -14,8 +14,20 @@ import Tab from '../Tab/Tab';
 import Tabs from '../Tabs/Tabs';
 
 const TableQuery: DocumentNode = gql`
-  query GraphTable($assetsId: [String], $assetId: String, $count: Int, $sortBy: String, $sortOrder: String) {
-    assetsList(assetsId: $assetsId, assetId: $assetId, count: $count, sortBy: $sortBy, sortOrder: $sortOrder) {
+  query GraphTable(
+    $assetsId: [String]
+    $assetId: String
+    $count: Int
+    $sortBy: String
+    $sortOrder: String
+  ) {
+    assetsList(
+      assetsId: $assetsId
+      assetId: $assetId
+      count: $count
+      sortBy: $sortBy
+      sortOrder: $sortOrder
+    ) {
       name
       value
       changePercentage
@@ -27,35 +39,34 @@ const TableQuery: DocumentNode = gql`
 
 type TdComponentProps = {
   children: ChildrenArray<Node> | Node,
-  miscStyles?: Object,
-  isActive?: boolean,
+  miscStyles: ?Object,
 };
 
-const numToString: number => string = num =>
-  num.toLocaleString('he', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+const numToString: number => string = num => num.toLocaleString('he', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
-export const TdComponent: StatelessFunctionalComponent<TdComponentProps> =
-  // eslint-disable-next-line react/prop-types
-  ({ children, miscStyles, }) => (
-    <FelaComponent
-      style={theme => ({
-        paddingTop: '1.5rem',
-        paddingBottom: '1.5rem',
-        verticalAlign: 'top',
-        extend: [
-          ...(miscStyles
-            ? parseStyleProps(miscStyles, theme.mq, theme.type)
-            : []),
-        ],
-      })}
-      render="td"
-    >
-      {children}
-    </FelaComponent>
-  );
+export const TdComponent = ({
+  children,
+  miscStyles,
+}: TdComponentProps): Node => (
+  <FelaComponent
+    style={theme => ({
+      paddingTop: '1.5rem',
+      paddingBottom: '1.5rem',
+      verticalAlign: 'top',
+      extend: [
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+      ],
+    })}
+    render="td"
+  >
+    {children}
+  </FelaComponent>
+);
+
+TdComponent.defaultProps = { miscStyles: null, };
 
 type FeedAsset = {
   name: string,
@@ -135,7 +146,10 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
     this.props.changeAsset(this.state.asset);
   }
 
-  changeSelectedIndexId: (Asset | FeedAsset, number) => void = (asset, index) => {
+  changeSelectedIndexId: (Asset | FeedAsset, number) => void = (
+    asset,
+    index
+  ) => {
     this.setState({
       asset,
       selectedIndex: index,
@@ -171,9 +185,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
                   paddingBottom: '0',
                 }}
               >
-                <FelaComponent
-                  style={header.style}
-                >
+                <FelaComponent style={header.style}>
                   {header.display}
                 </FelaComponent>
               </TdComponent>
@@ -186,8 +198,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
               <TabList render="tbody">
                 {data.map((asset: Asset | FeedAsset, index: number) => {
                   const isActive: boolean = id === asset.id;
-                  const isPrevious: boolean =
-                    data[index + 1] && id === data[index + 1].id;
+                  const isPrevious: boolean = data[index + 1] && id === data[index + 1].id;
                   return (
                     <Tab
                       isPrevious={isPrevious}
@@ -201,7 +212,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
                       // eslint-disable-next-line no-return-assign
                     >
                       {headers.map((header: Header, i: number) => {
-                        const isLast: boolean = i === (headers.length - 1);
+                        const isLast: boolean = i === headers.length - 1;
                         return (
                           <TdComponent
                             key={`${header.value}-${asset.id}`}
@@ -220,13 +231,13 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
                                 : isLast
                                   ? {
                                     color:
-                                      Number(asset[header.value]) < 0
-                                        ? isActive
-                                        ? theme.color('negative', '-2')
-                                        : theme.color('negative')
-                                        : isActive
-                                        ? theme.color('positive', '-2')
-                                        : theme.color('positive'),
+                                        Number(asset[header.value]) < 0
+                                          ? isActive
+                                            ? theme.color('negative', '-2')
+                                            : theme.color('negative')
+                                          : isActive
+                                            ? theme.color('positive', '-2')
+                                            : theme.color('positive'),
                                     direction: 'ltr',
                                     fontWeight: '700',
                                     paddingEnd: '2rem',
@@ -239,7 +250,7 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
                                           content: '""',
                                           /* selected black arrow svg image */
                                           backgroundImage:
-                                            'url("data:image/svg+xml; utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%205%2010%27%3E%3Cpolygon%20fill%3D%27white%27%20points%3D%270%2C0%205%2C0%2C%200%2C5%205%2C10%200%2C10%27%2F%3E%3C%2Fsvg%3E")',
+                                                'url("data:image/svg+xml; utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%205%2010%27%3E%3Cpolygon%20fill%3D%27white%27%20points%3D%270%2C0%205%2C0%2C%200%2C5%205%2C10%200%2C10%27%2F%3E%3C%2Fsvg%3E")',
                                           end: '0',
                                           position: 'absolute',
                                           top: '50%',
@@ -261,32 +272,34 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
                                   : {}
                             }
                           >
-                            {
-                              isLast ?
-                                <FelaComponent
-                                  style={{
-                                      ':before': {
-                                        content:
-                                          Number(asset[header.value]) > 0
-                                            ? '"+"'
-                                            : '"-"',
+                            {isLast ? (
+                              <FelaComponent
+                                style={{
+                                  ':before': {
+                                    content:
+                                      Number(asset[header.value]) > 0
+                                        ? '"+"'
+                                        : '"-"',
+                                  },
+                                  ...(header.percentage
+                                    ? {
+                                      ':after': {
+                                        content: '"%"',
                                       },
-                                      ...(header.percentage ? {
-                                        ':after': {
-                                          content: '"%"',
-                                        },
-                                      }
-                                      : {}),
-                                    }}
-                                  render="span"
-                                >
-                                  {header.percentage
-                                    ? numToString(Math.abs(Number(asset[header.value])))
-                                    : Math.abs(Number(asset[header.value]))
-                                  }
-                                </FelaComponent>
-                                : asset[header.value]
-                            }
+                                    }
+                                    : {}),
+                                }}
+                                render="span"
+                              >
+                                {header.percentage
+                                  ? numToString(
+                                    Math.abs(Number(asset[header.value]))
+                                  )
+                                  : Math.abs(Number(asset[header.value]))}
+                              </FelaComponent>
+                            ) : (
+                              asset[header.value]
+                            )}
                           </TdComponent>
                         );
                       })}
@@ -304,36 +317,33 @@ class AssetsTable extends React.Component<AssetsTableProps, State> {
 
 export default (props: any) => {
   const { assetId, assetsId, sortBy, sortOrder, assets, } = props;
-  return !assets
-    ? (
-      <Query
-        query={TableQuery}
-        variables={{
-          ...(assetId
-            ? {
-                assetId: assetId.toString(),
-                count: 9,
-                ...(sortBy ? {
-                    sortBy,
-                    sortOrder,
-                  } : {}
-                ),
+  return !assets ? (
+    <Query
+      query={TableQuery}
+      variables={{
+        ...(assetId
+          ? {
+            assetId: assetId.toString(),
+            count: 9,
+            ...(sortBy
+              ? {
+                sortBy,
+                sortOrder,
               }
-            : {
-                assetsId,
-              }),
-        }}
-      >
-        {({ loading, error, data: { assetsList, }, }) => {
-          if (error) return null;
-          if (loading) return null;
-          return <AssetsTable data={assetsList} {...props} />;
-        }}
-      </Query>
-    )
-    : assets.length
-      ? (
-        <AssetsTable data={assets} {...props} />
-      )
-      : null;
+              : {}),
+          }
+          : {
+            assetsId,
+          }),
+      }}
+    >
+      {({ loading, error, data: { assetsList, }, }) => {
+        if (error) return null;
+        if (loading) return null;
+        return <AssetsTable data={assetsList} {...props} />;
+      }}
+    </Query>
+  ) : assets.length ? (
+    <AssetsTable data={assets} {...props} />
+  ) : null;
 };

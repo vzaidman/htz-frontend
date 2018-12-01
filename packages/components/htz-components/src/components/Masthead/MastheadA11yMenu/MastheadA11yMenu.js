@@ -6,7 +6,10 @@ import Button from '../../Button/Button';
 import DropdownList from '../../DropdownList/DropdownList';
 import IconAccessibility from '../../Icon/icons/IconAccessibility';
 import Item from '../../DropdownList/DropdownItem';
-import { dropdownItemStyle, dropdownListStyle, } from '../mastheadDropdownListStyle';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../mastheadDropdownListStyle';
 
 const GET_A11Y_STATE = gql`
   query GetA11yStatus {
@@ -101,6 +104,7 @@ class MastheadA11yMenu extends React.Component {
                       isOpen={isOpen}
                       render={({ className, }) => (
                         <button
+                          type="button"
                           className={className}
                           onClick={toggleState}
                           aria-expanded={isOpen}

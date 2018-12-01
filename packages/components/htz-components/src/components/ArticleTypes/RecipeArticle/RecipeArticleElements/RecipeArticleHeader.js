@@ -1,8 +1,7 @@
-/* global fetch, Headers */
+/* global fetch */
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
-import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import HeaderText from '../../../ArticleHeader/HeaderText';
@@ -32,7 +31,9 @@ Header.propTypes = {
   /**
    * An array of Article's authors.
    */
-  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  authors: PropTypes.arrayOf(
+    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
+  ).isRequired,
   articleId: PropTypes.string.isRequired,
   canonicalUrl: PropTypes.string.isRequired,
   hasBreadCrumbs: PropTypes.bool.isRequired,
@@ -90,7 +91,12 @@ function Header({
             <FelaComponent
               style={{
                 marginTop: '3rem',
-                extend: [ theme.mq({ until: 's', }, { marginRight: '2rem', marginLeft: '2rem', }), ],
+                extend: [
+                  theme.mq(
+                    { until: 's', },
+                    { marginRight: '2rem', marginLeft: '2rem', }
+                  ),
+                ],
               }}
               render={({ className, }) => (
                 <HeaderText
@@ -118,7 +124,10 @@ function Header({
               modifiedDate={modDate}
               reportingFrom={reportingFrom}
               miscStyles={{
-                display: [ { until: 'l', value: 'flex', }, { from: 'l', value: 'none', }, ],
+                display: [
+                  { until: 'l', value: 'flex', },
+                  { from: 'l', value: 'none', },
+                ],
                 justifyContent: [ { from: 's', until: 'l', value: 'center', }, ],
                 textAlign: [ { until: 's', value: 'start', }, ],
               }}
@@ -137,7 +146,10 @@ function Header({
           {headlineElement ? (
             <HeadlineElement
               captionMiscStyles={{
-                paddingStart: [ { until: 'l', value: '2rem', }, { from: 'l', value: 0, }, ],
+                paddingStart: [
+                  { until: 'l', value: '2rem', },
+                  { from: 'l', value: 0, },
+                ],
               }}
               elementObj={headlineElement}
               miscStyles={{

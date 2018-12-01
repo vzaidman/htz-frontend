@@ -225,43 +225,41 @@ describe('AdManager', () => {
         );
       });
 
-      Object.keys(UserTypes).map((userType, index) =>
-        describe(`for user of type ${userType} `, () => {
-          let adSlot;
-          const results = {
-            anonymous: [
-              adTargets.all,
-              adTargets.anonymous,
-              adTargets.nonPaying,
-            ],
-            registered: [
-              adTargets.all,
-              adTargets.registered,
-              adTargets.nonPaying,
-            ],
-            paying: [
-              adTargets.all,
-              adTargets.digitalOnly,
-              adTargets.digitalAndPrint,
-              adTargets.paying,
-            ],
-          };
-          beforeAll(() => {
-            adManager.user.type = userType;
-            googletag.destroySlots();
-          });
-          afterEach(() => {
-            googletag.destroySlots();
-          });
-          Object.keys(adTargets).map(adTarget =>
-            it(` should display an adSlot targeted at: '${adTarget}'`, () => {
-              adSlot = definePromotionalMadridSlot(adManager, adTarget);
-              const match = adManager.doesUserTypeMatchBannerTargeting(adSlot);
-              const shouldMatch = results[userType].indexOf(adTarget) > -1;
-              expect(match).toEqual(shouldMatch);
-            })
-          );
+      Object.keys(UserTypes).map((userType, index) => describe(`for user of type ${userType} `, () => {
+        let adSlot;
+        const results = {
+          anonymous: [
+            adTargets.all,
+            adTargets.anonymous,
+            adTargets.nonPaying,
+          ],
+          registered: [
+            adTargets.all,
+            adTargets.registered,
+            adTargets.nonPaying,
+          ],
+          paying: [
+            adTargets.all,
+            adTargets.digitalOnly,
+            adTargets.digitalAndPrint,
+            adTargets.paying,
+          ],
+        };
+        beforeAll(() => {
+          adManager.user.type = userType;
+          googletag.destroySlots();
+        });
+        afterEach(() => {
+          googletag.destroySlots();
+        });
+        Object.keys(adTargets).map(adTarget => it(` should display an adSlot targeted at: '${adTarget}'`, () => {
+          adSlot = definePromotionalMadridSlot(adManager, adTarget);
+          const match = adManager.doesUserTypeMatchBannerTargeting(adSlot);
+          const shouldMatch = results[userType].indexOf(adTarget) > -1;
+          expect(match).toEqual(shouldMatch);
         })
+        );
+      })
       );
     });
 

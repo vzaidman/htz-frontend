@@ -33,10 +33,9 @@ const List = new GraphQLObjectType({
             ClickTrackerWrapperType,
             DfpBanner,
           ],
-          resolveType: value =>
-            (value.inputTemplate
-              ? getSchema(value.inputTemplate) || Content
-              : TeaserInListType),
+          resolveType: value => (value.inputTemplate
+            ? getSchema(value.inputTemplate) || Content
+            : TeaserInListType),
         })
       ),
     },

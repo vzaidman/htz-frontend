@@ -29,8 +29,8 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
     // }
     const displayHighPrioritySlots = () => {
       q.initGoogleTag().then(() => {
-        DEBUG &&
-          logger.info(
+        DEBUG
+          && logger.info(
             `4. Display slots - calling for display for all ${
               adPriorities.high
             } priority slots`
@@ -41,8 +41,8 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
 
     const displayNormalPrioritySlots = () => {
       q.initGoogleTag().then(() => {
-        DEBUG &&
-          logger.info(
+        DEBUG
+          && logger.info(
             `4. Display slots - calling for display for all ${
               adPriorities.normal
             } priority slots`
@@ -139,13 +139,11 @@ class DfpInjector extends Component {
       this.setState({ shouldRender: true, });
       const { dfpConfig, } = this.props;
       try {
-        if (window.tomer)
-         {
-           console.log('Client Navigation BLa Bla BLa');
-
-         }
+        if (window.tomer) {
+          console.log('Client Navigation BLa Bla BLa');
+        }
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
-        window.tomer=true;
+        window.tomer = true;
       }
       catch (e) {
         logger.error(e);
@@ -155,9 +153,11 @@ class DfpInjector extends Component {
 
   componentWillUnmount() {
     console.log('Destroy Slots');
+    // eslint-disable-next-line no-undef
     googletag.destroySlots();
-    //this.setState()
+    // this.setState()
   }
+
   render() {
     if (this.state.shouldRender) {
       const { loading, error, } = this.props;

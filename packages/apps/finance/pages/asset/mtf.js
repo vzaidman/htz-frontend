@@ -330,11 +330,11 @@ function mtf({ url: { query: { section, assetId, }, }, }: Props): Node {
                                   month: '2-digit',
                                   year: 'numeric',
                                 })
-                              }`}
+                            }`}
                           </FelaComponent>
                           <FelaComponent
                             style={{
-                              ...theme.type(-1)
+                              ...theme.type(-1),
                             }}
                             render="p"
                           >

@@ -92,8 +92,8 @@ describe('User', () => {
     });
 
     it(
-      'should have undefined properties for a Paying User' +
-        'when partially invalid paying user userOptions is passed',
+      'should have undefined properties for a Paying User'
+        + 'when partially invalid paying user userOptions is passed',
       () => {
         const payingUser = new User(userOptionsInvalidPayingUser);
         expect(payingUser).toBeDefined();

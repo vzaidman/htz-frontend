@@ -36,16 +36,16 @@ const SectionTitleA = ({ title, isInMargin, id, }) => (
                   { from: 'l', until: 'xl', },
                   {
                     insetInlineStart: `${layoutStyle.startColumnPadding}rem`,
-                    maxWidth: `${layoutStyle.startColumnWidthL -
-                      layoutStyle.startColumnPadding}rem`,
+                    maxWidth: `${layoutStyle.startColumnWidthL
+                      - layoutStyle.startColumnPadding}rem`,
                   }
                 ),
                 theme.mq(
                   { from: 'xl', },
                   {
                     insetInlineStart: `${layoutStyle.startColumnPaddingXL}rem`,
-                    maxWidth: `${layoutStyle.startColumnWidthXL -
-                      layoutStyle.startColumnPaddingXL}rem`,
+                    maxWidth: `${layoutStyle.startColumnWidthXL
+                      - layoutStyle.startColumnPaddingXL}rem`,
                   }
                 ),
               ],

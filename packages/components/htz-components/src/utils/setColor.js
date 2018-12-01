@@ -21,9 +21,9 @@ import type { ColorGetter, ColorPalette, } from '@haaretz/htz-css-tools';
  */
 export default function setColor(
   prop: string,
-  value: string | [string] | [string, string] | [string, string, ColorPalette],
+  value: string | [string, ] | [string, string, ] | [string, string, ColorPalette, ],
   getColor: ColorGetter
-): { [string]: string } {
+): { [string]: string, } {
   const colorArgs = Array.isArray(value) ? value : [ value, ];
   return {
     [prop]: getColor(...colorArgs),

@@ -109,23 +109,20 @@ function GoogleMap({
   let fov;
   let pitch;
 
-  const zoom =
-    type !== 'streetView'
-      ? settings.zoom ? `&zoom=${settings.zoom}` : ''
-      : '';
-  const satellite =
-    type !== 'streetView' && settings.satellite ? '&maptype=satellite' : '';
+  const zoom = type !== 'streetView'
+    ? settings.zoom ? `&zoom=${settings.zoom}` : ''
+    : '';
+  const satellite = type !== 'streetView' && settings.satellite ? '&maptype=satellite' : '';
 
-  const searchString =
-    type === 'static'
-      ? `place?q=${address}`
-      : type === 'search'
-        ? `search?q=${address}`
-        : type === 'directions'
-          ? `directions?origin=${address}&destination=${settings.destination}`
-          : type === 'streetView'
-            ? `streetview?location=${settings.coordinates}`
-            : '';
+  const searchString = type === 'static'
+    ? `place?q=${address}`
+    : type === 'search'
+      ? `search?q=${address}`
+      : type === 'directions'
+        ? `directions?origin=${address}&destination=${settings.destination}`
+        : type === 'streetView'
+          ? `streetview?location=${settings.coordinates}`
+          : '';
 
   if (type === 'directions') {
     waypoints = settings.waypoints
@@ -135,10 +132,9 @@ function GoogleMap({
     units = `&units=${settings.units}`;
   }
   else if (type === 'streetView') {
-    heading =
-      settings.heading && settings.heading !== 'none'
-        ? `&heading=${settings.heading}`
-        : '';
+    heading = settings.heading && settings.heading !== 'none'
+      ? `&heading=${settings.heading}`
+      : '';
     fov = `&fov=${settings.fov}`;
     pitch = `&pitch=${settings.pitch}`;
   }
@@ -154,8 +150,8 @@ function GoogleMap({
         height="450"
         src={`https://www.google.com/maps/embed/v1/${searchString}&key=${key}&language=${
           settings.language
-        }${waypoints || ''}${method || ''}${units || ''}${satellite ||
-          ''}${fov || ''}${heading || ''}${zoom || ''}${pitch || ''}`}
+        }${waypoints || ''}${method || ''}${units || ''}${satellite
+          || ''}${fov || ''}${heading || ''}${zoom || ''}${pitch || ''}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={onLoadCallback}

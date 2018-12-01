@@ -1,4 +1,4 @@
-
+// @flow
 import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { Select, Button, } from '@haaretz/htz-components';
@@ -12,14 +12,14 @@ type State = {
   expirationBenchmarkDate: string,
   expirationDate: string,
   expirationBenchmarkDates: Array<string>,
-}
+};
 
 type Props = {
   assets: Array<Asset>,
   children: ({ id: string, expirationBenchmarkDate: string, }) => Node,
-}
+};
 
-const SelectionLabel = ({ content, }) => (
+const SelectionLabel = ({ content, }: { content: Node, }) => (
   <FelaComponent
     style={{
       fontWeight: '700',
@@ -35,13 +35,14 @@ class AssetsFilter extends React.Component<Props, State> {
   static getDerivedStateFromProps(nextProps: Props, prevState: State): State {
     const { id, expirationBenchmarkDates, } = nextProps.assets[0];
     const expirationBenchmarkDate: string = expirationBenchmarkDates[0];
-    return !prevState ? {
-      id,
-      expirationBenchmarkDate,
-      expirationBenchmarkDates,
-      assetId: id,
-      expirationDate: expirationBenchmarkDate,
-    }
+    return !prevState
+      ? {
+        id,
+        expirationBenchmarkDate,
+        expirationBenchmarkDates,
+        assetId: id,
+        expirationDate: expirationBenchmarkDate,
+      }
       : prevState;
   }
 
@@ -56,16 +57,14 @@ class AssetsFilter extends React.Component<Props, State> {
     const { children, assets, } = this.props;
     const {
       assetId,
-      expirationDate,
       id,
       expirationBenchmarkDate,
       expirationBenchmarkDates,
     } = this.state;
-    const selectedItem: Asset = assets.find(asset => asset.id === id);
-    const selectedDate: string =
-      expirationBenchmarkDates.find(expirationDate =>
-        expirationDate === expirationBenchmarkDate
-      );
+    const selectedItem: Asset = assets.find(asset => asset.id === id) || assets[0];
+    const selectedDate: string = expirationBenchmarkDates.find(
+      expirationDate => expirationDate === expirationBenchmarkDate
+    ) || expirationBenchmarkDates[0];
     return (
       <Fragment>
         <FelaComponent style={{ position: 'relative', }}>
@@ -90,12 +89,18 @@ class AssetsFilter extends React.Component<Props, State> {
                 marginEnd: '4rem',
               }}
               onChange={({ value, }) => {
-                const selectedAsset: Asset = assets.find(asset => asset.id === value);
-                this.setState({
-                  id: selectedAsset.id,
-                  expirationBenchmarkDates: selectedAsset.expirationBenchmarkDates,
-                  expirationBenchmarkDate: selectedAsset.expirationBenchmarkDates[0],
-                });
+                const selectedAsset: ?Asset = assets.find(
+                  asset => asset.id === value
+                );
+                if (selectedAsset) {
+                  this.setState({
+                    id: selectedAsset.id,
+                    expirationBenchmarkDates:
+                      selectedAsset.expirationBenchmarkDates,
+                    expirationBenchmarkDate:
+                      selectedAsset.expirationBenchmarkDates[0],
+                  });
+                }
               }}
               controlledSelectedItem={{
                 value: selectedItem.id,
@@ -103,15 +108,11 @@ class AssetsFilter extends React.Component<Props, State> {
                 key: selectedItem.id,
               }}
               variant="graph"
-              items={
-                assets.map((asset: Asset) => (
-                  {
-                    value: asset.id,
-                    display: asset.name,
-                    key: asset.id,
-                  }
-                ))
-              }
+              items={assets.map((asset: Asset) => ({
+                value: asset.id,
+                display: asset.name,
+                key: asset.id,
+              }))}
               attrs={{ 'aria-hidden': true, }}
               buttonMiscStyles={{
                 paddingBottom: '0.5rem',
@@ -136,15 +137,11 @@ class AssetsFilter extends React.Component<Props, State> {
                 key: `${id}-${selectedDate}`,
               }}
               variant="graph"
-              items={
-                expirationBenchmarkDates.map((expirationDate: string) => (
-                  {
-                    value: expirationDate,
-                    display: expirationDate,
-                    key: `${id}-${expirationDate}`,
-                  }
-                ))
-              }
+              items={expirationBenchmarkDates.map((expirationDate: string) => ({
+                value: expirationDate,
+                display: expirationDate,
+                key: `${id}-${expirationDate}`,
+              }))}
               attrs={{ 'aria-hidden': true, }}
               buttonMiscStyles={{
                 paddingBottom: '0.5rem',
@@ -163,7 +160,7 @@ class AssetsFilter extends React.Component<Props, State> {
             </Button>
           </FelaComponent>
         </FelaComponent>
-        {children({ assetId, expirationDate, })}
+        {children({ id: assetId, expirationBenchmarkDate, })}
       </Fragment>
     );
   }

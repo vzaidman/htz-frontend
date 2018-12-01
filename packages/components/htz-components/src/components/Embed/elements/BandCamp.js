@@ -77,35 +77,32 @@ function BandCamp({ embedType: type, settings, onLoadCallback, }) {
 
   const size = layout === 'slim' ? 'small' : 'large';
   const minimal = layout === 'artworkOnly' ? '/minimal=true' : '';
-  const trackList =
-    layout === 'standard' && !showTrackList ? '/tracklist=false' : '';
+  const trackList = layout === 'standard' && !showTrackList ? '/tracklist=false' : '';
   const track = type === 'track' ? `/track=${trackId}` : '';
-  const artwork =
-    !slimShowArt || !standardShowArt
-      ? '/artwork=none'
-      : layout === 'standard' && artworkSize === 'small'
-        ? '/artwork=small'
-        : '';
+  const artwork = !slimShowArt || !standardShowArt
+    ? '/artwork=none'
+    : layout === 'standard' && artworkSize === 'small'
+      ? '/artwork=small'
+      : '';
 
   const width = 600;
 
-  const height =
-    layout === 'slim'
-      ? 42
-      : layout === 'artworkOnly'
-        ? width
-        : standardShowArt === true &&
-          artworkSize === 'large' &&
-          showTrackList === false
-          ? width + 117
-          : standardShowArt === true &&
-            artworkSize === 'large' &&
-            showTrackList === true
-            ? width + 436
-            : (standardShowArt === false || artworkSize === 'small') &&
-              showTrackList === false
-              ? 120
-              : 472;
+  const height = layout === 'slim'
+    ? 42
+    : layout === 'artworkOnly'
+      ? width
+      : standardShowArt === true
+          && artworkSize === 'large'
+          && showTrackList === false
+        ? width + 117
+        : standardShowArt === true
+            && artworkSize === 'large'
+            && showTrackList === true
+          ? width + 436
+          : (standardShowArt === false || artworkSize === 'small')
+              && showTrackList === false
+            ? 120
+            : 472;
 
   return (
     <BandCampWrapper>

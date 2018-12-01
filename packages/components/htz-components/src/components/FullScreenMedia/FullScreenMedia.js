@@ -95,7 +95,7 @@ const Icon = ({ isFullScreen, hide, ...props }) => (
       const ToggleIcon = isFullScreen ? IconArrow : IconZoomIn;
       const label = isFullScreen ? theme.zoomoutText : theme.zoominText;
       return (
-        <button className={className} {...props} aria-label={label} tabIndex="-1">
+        <button type="button" className={className} {...props} aria-label={label} tabIndex="-1">
           <ToggleIcon
             color={[ 'neutral', '-10', ]}
             size={isFullScreen ? 3 : 2.5}
@@ -110,24 +110,23 @@ const Icon = ({ isFullScreen, hide, ...props }) => (
   />
 );
 
-const mediaWrapperStyle = ({ isFullScreen, theme, }) =>
-  (isFullScreen
-    ? {
-      position: 'relative',
-      overflow: 'hidden',
-      height: '100%',
-      width: '100%',
-      extend: [
-        theme.mq(
-          { from: 's', },
-          {
-            display: 'flex',
-            flexDirection: 'column',
-          }
-        ),
-      ],
-    }
-    : {});
+const mediaWrapperStyle = ({ isFullScreen, theme, }) => (isFullScreen
+  ? {
+    position: 'relative',
+    overflow: 'hidden',
+    height: '100%',
+    width: '100%',
+    extend: [
+      theme.mq(
+        { from: 's', },
+        {
+          display: 'flex',
+          flexDirection: 'column',
+        }
+      ),
+    ],
+  }
+  : {});
 
 /**
  * This component receives a media component
@@ -150,10 +149,10 @@ class FullScreenMedia extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.mediaWidth !== nextState.mediaWidth ||
-      this.state.isFullScreen !== nextState.isFullScreen ||
-      this.state.hide !== nextState.hide ||
-      this.props.captionElement !== nextProps.captionElement
+      this.state.mediaWidth !== nextState.mediaWidth
+      || this.state.isFullScreen !== nextState.isFullScreen
+      || this.state.hide !== nextState.hide
+      || this.props.captionElement !== nextProps.captionElement
     );
   }
 
@@ -176,10 +175,9 @@ class FullScreenMedia extends React.Component {
     }));
   };
 
-  toggleHide = hide =>
-    this.setState({
-      hide,
-    });
+  toggleHide = hide => this.setState({
+    hide,
+  });
 
   render() {
     const { render, captionElement, itemName, itemUrl, } = this.props;
@@ -225,13 +223,13 @@ class FullScreenMedia extends React.Component {
                 <ToolBar
                   itemName={itemName}
                   itemUrl={itemUrl}
-                  closeButton={
+                  closeButton={(
                     <Icon
                       isFullScreen
                       onClick={this.toggleFullScreen}
                       hide={false}
                     />
-                  }
+)}
                   captionElement={captionElement}
                 />
               </Fragment>

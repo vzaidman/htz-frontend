@@ -130,8 +130,7 @@ describe('UserFactory CookieBased Module', () => {
         expect(user).toBeDefined();
         expect(user).toBeInstanceOf(User);
         // console.log(Object.keys(user));
-        payingUserProps.forEach(prop =>
-          expect(Object.keys(user)).toContain(prop)
+        payingUserProps.forEach(prop => expect(Object.keys(user)).toContain(prop)
         );
       });
     });

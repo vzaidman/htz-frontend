@@ -3,8 +3,8 @@ import fontStacks from './fontStacks';
 const captionStyles = Object.freeze({
   fontFamily: fontStacks.alt,
   fontWeight: '700',
-  captionColor: ['neutral', '-2'],
-  backgroundColor: ['neutral', '-10'],
+  captionColor: [ 'neutral', '-2', ],
+  backgroundColor: [ 'neutral', '-10', ],
   captionTypeSettings: -2,
   creditStyles: Object.freeze({
     fontWeight: '300',

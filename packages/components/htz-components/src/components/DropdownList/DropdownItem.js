@@ -136,11 +136,11 @@ export default function Item({
                             position: 'static',
                             ...(isOpen
                               ? {
-                                  backgroundColor: theme.color(
-                                    'secondary',
-                                    '+1'
-                                  ),
-                                }
+                                backgroundColor: theme.color(
+                                  'secondary',
+                                  '+1'
+                                ),
+                              }
                               : {}),
                           }}
                         >

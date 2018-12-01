@@ -32,8 +32,12 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
-                <button onClick={clearForm}>clear</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
+                <button type="button" onClick={clearForm}>
+                  clear
+                </button>
               </div>
             </div>
           )}
@@ -60,8 +64,12 @@ describe('<Form>', () => {
 
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
-                <button onClick={clearForm}>clear</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
+                <button type="button" onClick={clearForm}>
+                  clear
+                </button>
               </div>
             </div>
           )}
@@ -130,7 +138,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={clearForm}>Clear</button>
+                <button type="button" onClick={clearForm}>
+                  Clear
+                </button>
               </div>
             </div>
           )}
@@ -170,7 +180,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
               </div>
             </div>
           )}
@@ -200,7 +212,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
               </div>
             </div>
           )}
@@ -254,7 +268,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
               </div>
             </div>
           )}
@@ -281,7 +297,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
               </div>
             </div>
           )}
@@ -309,7 +327,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
               </div>
             </div>
           )}
@@ -341,7 +361,9 @@ describe('<Form>', () => {
               />
               <br />
               <div style={{ display: 'flex', justifyContent: 'space-between', }}>
-                <button onClick={handleSubmit}>submit</button>
+                <button type="button" onClick={handleSubmit}>
+                  submit
+                </button>
               </div>
             </div>
           )}

@@ -43,6 +43,7 @@ class EventTracker extends PureComponent {
     /** Indicates rendered JSX wrapped */
     children: PropTypes.func.isRequired,
   };
+
   static defaultProps = {};
 
   render() {

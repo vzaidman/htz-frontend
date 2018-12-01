@@ -20,10 +20,10 @@ import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import StandardArticleQuery from './queries/standard_article';
 
-function StandardArticle({ articleId, slots, aaa,}) {
+function StandardArticle({ articleId, slots, aaa, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }} >
+      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -46,27 +46,25 @@ function StandardArticle({ articleId, slots, aaa,}) {
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
-                contentId,
-                { ...imgArray[0], aspects, },
-                {
-                  width: '1200',
-                  aspect: 'full',
-                  quality: 'auto',
-                }
-              )
+              contentId,
+              { ...imgArray[0], aspects, },
+              {
+                width: '1200',
+                aspect: 'full',
+                quality: 'auto',
+              }
+            )
             : '';
 
           const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
           const standardArticleElement = article.find(
-            element =>
-              element.inputTemplate === 'com.htz.StandardArticle' ||
-              element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-              element.inputTemplate === 'com.tm.BlogArticle' ||
-              element.inputTemplate === 'com.tm.StandardArticle'
+            element => element.inputTemplate === 'com.htz.StandardArticle'
+              || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
+              || element.inputTemplate === 'com.tm.BlogArticle'
+              || element.inputTemplate === 'com.tm.StandardArticle'
           );
 
-          const isMouse =
-            standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
+          const isMouse = standardArticleElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
 
           const {
             authors,
@@ -123,25 +121,24 @@ function StandardArticle({ articleId, slots, aaa,}) {
 
                     {article.map(element => {
                       if (
-                        element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
-                        element.inputTemplate === 'com.tm.PageTitle'
+                        element.inputTemplate === 'com.htz.ArticleHeaderElement'
+                        || element.inputTemplate === 'com.tm.PageTitle'
                       ) {
                         return null;
                       }
                       if (
-                        element.inputTemplate === 'com.htz.StandardArticle' ||
-                        element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-                        element.inputTemplate === 'com.tm.BlogArticle' ||
-                        element.inputTemplate === 'com.tm.StandardArticle'
+                        element.inputTemplate === 'com.htz.StandardArticle'
+                        || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
+                        || element.inputTemplate === 'com.tm.BlogArticle'
+                        || element.inputTemplate === 'com.tm.StandardArticle'
                       ) {
                         let bloggerInfo;
                         if (authors.length) {
                           const blogName = lineage[1].name;
                           const author = authors[0];
-                          bloggerInfo =
-                            element.inputTemplate === 'com.tm.BlogArticle' ? (
-                              <BloggerInfo author={author} blogName={blogName} />
-                            ) : null;
+                          bloggerInfo = element.inputTemplate === 'com.tm.BlogArticle' ? (
+                            <BloggerInfo author={author} blogName={blogName} />
+                          ) : null;
                         }
 
                         const labelsSections = [ '2.16463', '2.16464', '2.16455', '2.16457', '2.16465', ];
@@ -180,7 +177,7 @@ function StandardArticle({ articleId, slots, aaa,}) {
                                 <ArticleLayoutRow
                                   isArticleBody
                                   hideMargineliaComponentUnderLBp={!!authors}
-                                  margineliaComponent={
+                                  margineliaComponent={(
                                     <Fragment>
                                       {authors ? (
                                         <ArticleHeaderMeta
@@ -191,9 +188,9 @@ function StandardArticle({ articleId, slots, aaa,}) {
                                         />
                                       ) : null}
                                     </Fragment>
-                                  }
+)}
                                 >
-                                  <ArticleBody body={body} />                                  
+                                  <ArticleBody body={body} />
                                   {mouseDisclaimer}
                                   {bloggerInfo}
                                 </ArticleLayoutRow>
@@ -205,8 +202,8 @@ function StandardArticle({ articleId, slots, aaa,}) {
                       const Element = getComponent(element.inputTemplate);
                       const { properties, ...elementWithoutProperties } = element;
                       if (
-                        element.inputTemplate === 'com.polobase.OutbrainElement' ||
-                        element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                        element.inputTemplate === 'com.polobase.OutbrainElement'
+                        || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                       ) {
                         return (
                           <WideArticleLayoutRow
@@ -214,10 +211,10 @@ function StandardArticle({ articleId, slots, aaa,}) {
                             hideDivider
                             {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                               ? {
-                                  miscStyles: {
-                                    display: [ { until: 's', value: 'none', }, ],
-                                  },
-                                }
+                                miscStyles: {
+                                  display: [ { until: 's', value: 'none', }, ],
+                                },
+                              }
                               : {})}
                           >
                             <Element
@@ -233,9 +230,9 @@ function StandardArticle({ articleId, slots, aaa,}) {
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                             ? {
-                                title: theme.articleLayoutI18n.commentSectionTitle,
-                                id: 'commentsSection',
-                              }
+                              title: theme.articleLayoutI18n.commentSectionTitle,
+                              id: 'commentsSection',
+                            }
                             : {})}
                         >
                           <Element

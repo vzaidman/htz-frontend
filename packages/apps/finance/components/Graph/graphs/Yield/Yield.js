@@ -22,7 +22,7 @@ type Props = {
 };
 /* eslint-enable react/no-unused-prop-types */
 
-type State= {
+type State = {
   theme: Object,
   yScale: number => number,
   xScale: number => number,
@@ -39,18 +39,18 @@ class Yield extends React.Component<Props, State> {
 
   state = {
     /* Base scales for x & y axis */
-    yScale: d3.scaleBand().range(
-      [
+    yScale: d3
+      .scaleBand()
+      .range([
         this.props.height - this.props.margin.bottom,
         this.props.margin.top,
-      ]
-    ),
-    xScale: d3.scaleLinear().range(
-      [
+      ]),
+    xScale: d3
+      .scaleLinear()
+      .range([
         this.props.margin.left,
-        ((this.props.width - this.props.margin.right) / 2) - this.props.midSpace,
-      ]
-    ),
+        (this.props.width - this.props.margin.right) / 2 - this.props.midSpace,
+      ]),
     theme: {},
   };
 
@@ -69,6 +69,12 @@ class Yield extends React.Component<Props, State> {
     };
   }
 
+  /* Create graph's axis */
+  yAxis = d3
+    .axisRight()
+    .scale(this.state.yScale)
+    .tickSize(0);
+
   componentDidMount() {
     const { data, } = this.props;
     if (data) this.renderGraph(data);
@@ -79,24 +85,25 @@ class Yield extends React.Component<Props, State> {
     return false;
   }
 
-  svgRef: ElementRef<'svg'> | null;
-  barsRef: ElementRef<'g'> | null;
-  yAxisRef: ElementRef<'g'> | null;
-  midRef: ElementRef<'g'> | null;
+  svgRef: ElementRef<"svg"> | null;
 
-  /* Create graph's axis */
-  yAxis = d3.axisRight().scale(this.state.yScale).tickSize(0);
+  barsRef: ElementRef<"g"> | null;
+
+  yAxisRef: ElementRef<"g"> | null;
+
+  midRef: ElementRef<"g"> | null;
 
   /**
    * This function responsible for rendering and updating the graph.
    * @param data - An Array of stocks to be drawn.
    */
-  renderGraph: Array<BarData> => void = data => {
+  renderGraph: (Array<BarData>) => void = data => {
     const { yScale, xScale, theme, } = this.state;
     const { height, width, margin, midSpace, } = this.props;
 
     /* Set the init bars svg elements, and set the animation's key (its index). */
-    const bars = d3.select(this.barsRef)
+    const bars = d3
+      .select(this.barsRef)
       .selectAll('rect')
       .data(data, (d, i) => i);
 
@@ -118,47 +125,63 @@ class Yield extends React.Component<Props, State> {
       .append('rect')
       .attr('y', d => yScale(d.name))
       .attr('height', yScale.bandwidth())
-      .attr('x', d => (
-        d.value > 0
-          ? ((width - (margin.left + margin.right)) / 2) + (midSpace / 2)
-          : (
-            ((width - (margin.left + margin.right)) / 2) - xScale(Math.abs(d.value))
-          ) - (midSpace / 2)
-      ))
+      .attr(
+        'x',
+        d => (d.value > 0
+          ? (width - (margin.left + margin.right)) / 2 + midSpace / 2
+          : (width - (margin.left + margin.right)) / 2
+              - xScale(Math.abs(d.value))
+              - midSpace / 2)
+      )
       .attr('width', d => xScale(Math.abs(d.value)))
-      .attr('fill', d => (
-        d.value > 0
-          ? theme.color('secondary')
-          : theme.color('negative')
-      ));
+      .attr(
+        'fill',
+        d => (d.value > 0 ? theme.color('secondary') : theme.color('negative'))
+      );
 
     d3.select(this.barsRef)
       .selectAll('text')
       .data(data)
       .enter()
       .append('text')
-      .attr('x', d => (
-        d.value > 0
-          ? ((width - (margin.left + margin.right)) / 2) + xScale(Math.abs(d.value))
-          : ((width - (margin.left + margin.right)) / 2) - xScale(Math.abs(d.value))
-      ))
-      .attr('y', d => yScale(d.name) + (yScale.bandwidth() / 2))
+      .attr(
+        'x',
+        d => (d.value > 0
+          ? (width - (margin.left + margin.right)) / 2
+              + xScale(Math.abs(d.value))
+          : (width - (margin.left + margin.right)) / 2
+              - xScale(Math.abs(d.value)))
+      )
+      .attr('y', d => yScale(d.name) + yScale.bandwidth() / 2)
       .attr('dx', d => (d.value > 0 ? '10' : '-10'))
       .attr('dy', '.36em')
       .attr('text-anchor', d => (d.value > 0 ? 'start' : 'end'))
       .attr('fill', theme.color('neutral'))
       .attr('style', 'font-size: 12px; direction: ltr')
-      .text(d => `
+      .text(
+        d => `
         ${d.value > 0 ? '+' : '-'}
         ${Math.abs(d.value)}%
-      `);
-
+      `
+      );
 
     const poly = [
-      { x: ((width - (margin.left + margin.right)) / 2) - (midSpace / 2), y: margin.bottom, },
-      { x: ((width - (margin.left + margin.right)) / 2) + (midSpace / 2), y: margin.bottom, },
-      { x: ((width - (margin.left + margin.right)) / 2) + (midSpace / 2), y: height - margin.top, },
-      { x: ((width - (margin.left + margin.right)) / 2) - (midSpace / 2), y: height - margin.top, },
+      {
+        x: (width - (margin.left + margin.right)) / 2 - midSpace / 2,
+        y: margin.bottom,
+      },
+      {
+        x: (width - (margin.left + margin.right)) / 2 + midSpace / 2,
+        y: margin.bottom,
+      },
+      {
+        x: (width - (margin.left + margin.right)) / 2 + midSpace / 2,
+        y: height - margin.top,
+      },
+      {
+        x: (width - (margin.left + margin.right)) / 2 - midSpace / 2,
+        y: height - margin.top,
+      },
     ];
 
     d3.select(this.midRef)
@@ -166,7 +189,8 @@ class Yield extends React.Component<Props, State> {
       .data([ poly, ])
       .attr('stroke', theme.color('neutral', '-10'))
       .attr('fill', theme.color('neutral', '-10'))
-      .attr('points', points => points.map(point => [ point.x, point.y, ].join(',')).join(' '));
+      .attr('points', points => points.map(point => [ point.x, point.y, ].join(',')).join(' ')
+      );
 
     d3.select(this.midRef)
       .append('line')
@@ -181,8 +205,10 @@ class Yield extends React.Component<Props, State> {
     const yAxisRef = d3.select(this.yAxisRef);
 
     /* Remove the default vertical axis. */
-    yAxisRef.call(this.yAxis)
-      .select('.domain').remove();
+    yAxisRef
+      .call(this.yAxis)
+      .select('.domain')
+      .remove();
   };
 
   render(): Node {
@@ -199,32 +225,40 @@ class Yield extends React.Component<Props, State> {
         })}
         render={({ className, theme, }) => (
           <svg
-            ref={svgRef => { this.svgRef = svgRef; }}
+            ref={svgRef => {
+              this.svgRef = svgRef;
+            }}
             viewBox={`0 0 ${width} ${height}`}
             className={className}
             width="100%"
             direction="rtl"
           >
             <g
-              ref={barsRef => { this.barsRef = barsRef; }}
+              ref={barsRef => {
+                this.barsRef = barsRef;
+              }}
             />
             <FelaComponent
-              rule={({ theme, }) => ({
+              style={{
                 ...theme.type(-1),
                 fontWeight: '700',
                 fontFamily: theme.fontStacks.enhanced,
-              })}
+              }}
               render={({ className, }) => (
                 <g
                   className={className}
-                  ref={yAxisRef => { this.yAxisRef = yAxisRef; }}
+                  ref={yAxisRef => {
+                    this.yAxisRef = yAxisRef;
+                  }}
                   transform={`translate(${width}, 0)`}
                   fill={theme.color('neutral', '-3')}
                 />
               )}
             />
             <g
-              ref={midRef => { this.midRef = midRef; }}
+              ref={midRef => {
+                this.midRef = midRef;
+              }}
             />
           </svg>
         )}

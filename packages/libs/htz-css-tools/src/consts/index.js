@@ -1,3 +1,4 @@
+// @flow
 /**
  * The default font size of basically any known browser is `16px`
  *

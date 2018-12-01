@@ -36,8 +36,7 @@ const generateStorageKey = ssoUserId => `_ssoUser[${ssoUserId}]_`;
  * @return {string} - ssoGroupKey of the user
  * or null if none exists
  */
-export const retrieveSsoGroupKey = ssoUserId =>
-  localStorage.getItem(generateStorageKey(ssoUserId));
+export const retrieveSsoGroupKey = ssoUserId => localStorage.getItem(generateStorageKey(ssoUserId));
 
 /**
  * fetchs ssoGroupKey from the server and stores it in localStorage

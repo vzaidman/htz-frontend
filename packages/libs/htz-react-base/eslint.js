@@ -125,11 +125,21 @@ module.exports = {
 
     /* eslint/react related rules */
     'react/jsx-filename-extension': [ 1, { extensions: [ '.js', '.jsx', ], }, ],
+    'react/destructuring-assignment': 'off',
+    'react/require-default-props': [
+      'error',
+      { forbidDefaultForRequired: false, },
+    ],
+    'react/default-props-match-prop-types': [
+      'error',
+      { allowRequiredDefaults: true, },
+    ],
 
     /* eslint/jsx-11y related rules */
     'jsx-a11y/anchor-is-valid': 0,
 
     // Flow-type rules
+    'flowtype/delimiter-dangle': [ 'error', 'always', ],
     'flowtype/space-after-type-colon': [
       'error',
       'always',

@@ -31,8 +31,8 @@ describe(' DfpUser module', () => {
       });
 
       it('should have a user type string property ', () => {
-        expect(user.type).toEqual(expect.any(String)) &&
-          expect(user.type).toBeDefined();
+        expect(user.type).toEqual(expect.any(String))
+          && expect(user.type).toBeDefined();
       });
 
       it('should have an impression manager initialized ', () => {
@@ -67,8 +67,8 @@ describe(' DfpUser module', () => {
       });
 
       it('should have a user type string property ', () => {
-        expect(user.type).toEqual(expect.any(String)) &&
-          expect(user.type).toBeDefined();
+        expect(user.type).toEqual(expect.any(String))
+          && expect(user.type).toBeDefined();
       });
 
       it('should have an impression manager initialized ', () => {
@@ -76,9 +76,9 @@ describe(' DfpUser module', () => {
       });
 
       it('should have an age property within 1-120', () => {
-        expect(user.age).toEqual(expect.any(Number)) &&
-          expect(user.age > 1).toEqual(true) &&
-          expect(user.age < 120).toEqual(true);
+        expect(user.age).toEqual(expect.any(Number))
+          && expect(user.age > 1).toEqual(true)
+          && expect(user.age < 120).toEqual(true);
       });
 
       it('should have an gender property that is either 1 or 2', () => {
@@ -105,8 +105,8 @@ describe(' DfpUser module', () => {
       });
 
       it('should have a user type string property ', () => {
-        expect(user.type).toEqual(expect.any(String)) &&
-          expect(user.type).toBeDefined();
+        expect(user.type).toEqual(expect.any(String))
+          && expect(user.type).toBeDefined();
       });
 
       it('should have an impression manager initialized ', () => {
@@ -114,9 +114,9 @@ describe(' DfpUser module', () => {
       });
 
       it('should have an age property within 1-120', () => {
-        expect(user.age).toEqual(expect.any(Number)) &&
-          expect(user.age > 1).toEqual(true) &&
-          expect(user.age < 120).toEqual(true);
+        expect(user.age).toEqual(expect.any(Number))
+          && expect(user.age > 1).toEqual(true)
+          && expect(user.age < 120).toEqual(true);
       });
 
       it('should have an gender property that is either 1 or 2', () => {
@@ -144,8 +144,8 @@ describe(' DfpUser module', () => {
       });
 
       it('should have a user type string property ', () => {
-        expect(user.type).toEqual(expect.any(String)) &&
-          expect(user.type).toBeDefined();
+        expect(user.type).toEqual(expect.any(String))
+          && expect(user.type).toBeDefined();
       });
 
       it('should have an impression manager initialized ', () => {
@@ -179,8 +179,8 @@ describe(' DfpUser module', () => {
       });
 
       it('should have a user type string property ', () => {
-        expect(user.type).toEqual(expect.any(String)) &&
-          expect(user.type).toBeDefined();
+        expect(user.type).toEqual(expect.any(String))
+          && expect(user.type).toBeDefined();
       });
 
       it('should have an impression manager initialized ', () => {
@@ -188,9 +188,9 @@ describe(' DfpUser module', () => {
       });
 
       it('should have an age property within 1-120', () => {
-        expect(user.age).toEqual(expect.any(Number)) &&
-          expect(user.age > 1).toEqual(true) &&
-          expect(user.age < 120).toEqual(true);
+        expect(user.age).toEqual(expect.any(Number))
+          && expect(user.age > 1).toEqual(true)
+          && expect(user.age < 120).toEqual(true);
       });
 
       it('should have an gender property that is either 1 or 2', () => {
@@ -226,9 +226,9 @@ describe(' DfpUser module', () => {
       });
 
       it('should have an age property within 1-120', () => {
-        expect(user.age).toEqual(expect.any(Number)) &&
-          expect(user.age > 1).toEqual(true) &&
-          expect(user.age < 120).toEqual(true);
+        expect(user.age).toEqual(expect.any(Number))
+          && expect(user.age > 1).toEqual(true)
+          && expect(user.age < 120).toEqual(true);
       });
 
       it('should have an gender property that is either 1 or 2', () => {

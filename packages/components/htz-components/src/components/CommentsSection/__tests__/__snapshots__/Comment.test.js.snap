@@ -1164,7 +1164,7 @@ exports[`<Comment> DOM element renders correctly with isEditorPick true 1`] = `
           <span
             className="htz-bc htz-an"
           >
-            | 
+            |
             בחירת העורכים
           </span>
         </div>

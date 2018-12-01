@@ -46,6 +46,7 @@ class Announcer extends React.Component {
   }
 
   setAlternatePolite = false;
+
   setAlternateAssertive = false;
 
   render() {

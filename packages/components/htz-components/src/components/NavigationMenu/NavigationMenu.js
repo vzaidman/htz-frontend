@@ -7,7 +7,10 @@ import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
-import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../Masthead/mastheadDropdownListStyle';
 
 const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   border: 'none',
@@ -113,10 +116,11 @@ class NavigationMenu extends React.Component {
   state = { isHovered: false, };
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
+
   handleMouseLeave = () => this.setState({ isHovered: false, });
 
   componentDidUpdate = (prevProp, prevState) => {
-    this.changeHovered = (prevState.isHovered !== this.state.isHovered);
+    this.changeHovered = prevState.isHovered !== this.state.isHovered;
   };
 
   render() {
@@ -126,12 +130,11 @@ class NavigationMenu extends React.Component {
           const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
-          const combinedItems =
-            items && items.map(item => <Item key={`item ${item.name}`} {...item} />);
+          const combinedItems = items
+            && items.map(item => <Item key={`item ${item.name}`} {...item} />);
 
-          const combinedSites =
-            sites &&
-            sites.map(site => (
+          const combinedSites = sites
+            && sites.map(site => (
               <Item
                 key={`site ${site.name}`}
                 miscStyles={{
@@ -143,10 +146,9 @@ class NavigationMenu extends React.Component {
               />
             ));
 
-          const combinedPromotions =
-            !(this.props.userType === 'paying') &&
-            promotions &&
-            promotions.map(promotion => (
+          const combinedPromotions = !(this.props.userType === 'paying')
+            && promotions
+            && promotions.map(promotion => (
               <Item
                 key={`promotion ${promotion.name}`}
                 variant="salesOpaque"
@@ -178,10 +180,10 @@ class NavigationMenu extends React.Component {
                           onClick={toggleState}
                           aria-expanded={isOpen}
                           ref={el => {
-                              if (!this.hamburgerEl) {
-                                this.hamburgerEl = el;
-                              }
-                            }}
+                            if (!this.hamburgerEl) {
+                              this.hamburgerEl = el;
+                            }
+                          }}
                           onMouseEnter={this.handleMouseEnter}
                           onMouseLeave={this.handleMouseLeave}
                           onFocus={this.handleMouseEnter}
@@ -190,25 +192,27 @@ class NavigationMenu extends React.Component {
                         >
                           <FelaComponent
                             style={{
-                                marginStart: '2rem',
-                                marginEnd: '2rem',
-                                position: 'relative',
-                              }}
+                              marginStart: '2rem',
+                              marginEnd: '2rem',
+                              position: 'relative',
+                            }}
                             render="span"
                           >
                             <Hamburger
                               isOpen={isOpen}
                               color={{
-                                  close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
-                                  open: [ 'neutral', '-10', ],
-                                }}
+                                close: isHovered
+                                  ? [ 'neutral', '-10', ]
+                                  : [ 'neutral', '-3', ],
+                                open: [ 'neutral', '-10', ],
+                              }}
                               size={2.5}
                               isTransition
                             />
                           </FelaComponent>
                           <span>{theme.navigationMenuI18n.buttonText}</span>
                         </button>
-                        )}
+                      )}
                     />
                   ))}
                   {isOpen ? (

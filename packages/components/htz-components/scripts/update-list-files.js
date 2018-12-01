@@ -29,8 +29,8 @@ fs.readdir(viewsPath, (err, files) => {
 
 function getViewFiles(view, viewPath) {
   if (
-    fs.lstatSync(path.join(viewPath, `${view}.view.js`)).isFile() &&
-    fs.lstatSync(path.join(viewPath, `${view}.query.js`)).isFile()
+    fs.lstatSync(path.join(viewPath, `${view}.view.js`)).isFile()
+    && fs.lstatSync(path.join(viewPath, `${view}.query.js`)).isFile()
   ) {
     return {
       view: `./views/${view}/${view}.view.js`,

@@ -64,20 +64,19 @@ function UserBanner({ router, ignoreQueryParam, }) {
                               <button
                                 className={className}
                                 type="button"
-                                onClick={() =>
-                                  logout().then(() => {
-                                    console.log('clearing SessionStorage from user banner logout');
-                                    sessionStorage.clear();
-                                    const { pathName, asPath, } = pathGenerator(
-                                      'stage1',
-                                      router,
-                                      null,
-                                      ignoreQueryParam
-                                    );
-                                    refetch().then(() => {
-                                      Router.push(pathName, asPath);
-                                    });
-                                  })
+                                onClick={() => logout().then(() => {
+                                  console.log('clearing SessionStorage from user banner logout');
+                                  sessionStorage.clear();
+                                  const { pathName, asPath, } = pathGenerator(
+                                    'stage1',
+                                    router,
+                                    null,
+                                    ignoreQueryParam
+                                  );
+                                  refetch().then(() => {
+                                    Router.push(pathName, asPath);
+                                  });
+                                })
                                 }
                               >
                                 {theme.offerPage.userBanner.switch}

@@ -25,7 +25,7 @@ export default function ListItem({ children, itemStyle, onBlur, }) {
     <FelaComponent
       style={itemStyle}
       render={({ className, }) => (
-        <li
+        <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
           className={className}
           onKeyDown={e => {
             if (e.key === 'Tab' && !e.shiftKey) {

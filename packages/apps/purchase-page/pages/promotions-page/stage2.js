@@ -31,6 +31,7 @@ class Stage2 extends Component {
     pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
+
   render() {
     return (
       <OfferPageDataGetter
@@ -65,10 +66,9 @@ class Stage2 extends Component {
                         },
                       }) => {
                         const chosenSlot = data.purchasePage.slots[chosenSlotIndex];
-                        const campaignData =
-                          chosenProductIndex === 'couponProduct'
-                            ? couponProduct.campaignData
-                            : chosenSlot.products[chosenProductIndex].campaignData;
+                        const campaignData = chosenProductIndex === 'couponProduct'
+                          ? couponProduct.campaignData
+                          : chosenSlot.products[chosenProductIndex].campaignData;
                         return (
                           <div className={className}>
                             {campaignData ? (
@@ -93,11 +93,12 @@ class Stage2 extends Component {
                                               <Fragment>
                                                 <FelaComponent
                                                   style={{
-                                                      fontWeight: 'bold',
-                                                    }}
+                                                    fontWeight: 'bold',
+                                                  }}
                                                   render="span"
                                                 >
-                                                  {header.isFirst.textBeforeChosen}{' '}
+                                                  {header.isFirst.textBeforeChosen}
+                                                  {' '}
                                                   {
                                                       header.isFirst.chosenSubscriptionText[
                                                         chosenSlot.subscriptionName
@@ -107,16 +108,17 @@ class Stage2 extends Component {
                                                 </FelaComponent>
                                                 <div>{header.isFirst.textAfterChosen}</div>
                                               </Fragment>,
-                                              ]
+                                            ]
                                             : [
                                               <Fragment>
                                                 <FelaComponent
                                                   style={{
-                                                      fontWeight: 'bold',
-                                                    }}
+                                                    fontWeight: 'bold',
+                                                  }}
                                                   render="span"
                                                 >
-                                                  {header.notFirst.textBeforeChosen}{' '}
+                                                  {header.notFirst.textBeforeChosen}
+                                                  {' '}
                                                   {
                                                       header.notFirst.chosenSubscriptionText[
                                                         chosenSlot.subscriptionName
@@ -126,12 +128,12 @@ class Stage2 extends Component {
                                                 {'.'}
                                                 <div>{header.notFirst.textAfterChosen}</div>
                                               </Fragment>,
-                                              ]
+                                            ]
                                         }
                                       />
                                     ) : null
                                   }
-                                  stageElement={
+                                  stageElement={(
                                     <ChooseProductStage
                                       host={hostname.includes('themarker') ? 'TM' : 'HTZ'}
                                       chosenSubscription={chosenSlot.subscriptionName}
@@ -144,7 +146,7 @@ class Stage2 extends Component {
                                       subStage={subStage}
                                       userMessage={chosenSlot.userMessage}
                                     />
-                                  }
+)}
                                 />
                               </div>
                             </LayoutContainer>

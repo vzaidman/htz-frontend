@@ -46,14 +46,14 @@ function RecipeArticle({ articleId, slots, }) {
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
-                contentId,
-                { ...imgArray[0], aspects, },
-                {
-                  width: '1200',
-                  aspect: 'full',
-                  quality: 'auto',
-                }
-              )
+              contentId,
+              { ...imgArray[0], aspects, },
+              {
+                width: '1200',
+                aspect: 'full',
+                quality: 'auto',
+              }
+            )
             : '';
 
           const breadCrumbs = article.find(
@@ -62,9 +62,8 @@ function RecipeArticle({ articleId, slots, }) {
 
           const recipeArticleElement = article.find(
             // todo: change to recipe inputTemplate after updating papi
-            element =>
-              element.inputTemplate === 'com.htz.StandardArticle' ||
-              element.inputTemplate === 'com.tm.StandardArticle'
+            element => element.inputTemplate === 'com.htz.StandardArticle'
+              || element.inputTemplate === 'com.tm.StandardArticle'
           );
 
           const {
@@ -124,18 +123,18 @@ function RecipeArticle({ articleId, slots, }) {
                     >
                       {article.map(element => {
                         if (
-                          element.inputTemplate ===
-                            'com.htz.ArticleHeaderElement' ||
-                          element.inputTemplate === 'com.tm.PageTitle'
+                          element.inputTemplate
+                            === 'com.htz.ArticleHeaderElement'
+                          || element.inputTemplate === 'com.tm.PageTitle'
                         ) {
                           return null;
                         }
                         if (
                           // todo: change to recipe input template
-                          element.inputTemplate === 'com.htz.StandardArticle' ||
-                          element.inputTemplate ===
-                            'com.mouse.story.MouseStandardStory' ||
-                          element.inputTemplate === 'com.tm.StandardArticle'
+                          element.inputTemplate === 'com.htz.StandardArticle'
+                          || element.inputTemplate
+                            === 'com.mouse.story.MouseStandardStory'
+                          || element.inputTemplate === 'com.tm.StandardArticle'
                         ) {
                           return (
                             <ApolloConsumer key={element.contentId}>
@@ -150,7 +149,7 @@ function RecipeArticle({ articleId, slots, }) {
                                   <ArticleLayoutRow
                                     isArticleBody
                                     hideMargineliaComponentUnderLBp={false}
-                                    margineliaComponent={
+                                    margineliaComponent={(
                                       <Fragment>
                                         {authors ? (
                                           <ArticleHeaderMeta
@@ -187,7 +186,7 @@ function RecipeArticle({ articleId, slots, }) {
                                           }}
                                         />
                                       </Fragment>
-                                    }
+)}
                                   >
                                     <ArticleBody body={body} />
                                     <Ingredients
@@ -206,22 +205,22 @@ function RecipeArticle({ articleId, slots, }) {
                           ...elementWithoutProperties
                         } = element;
                         if (
-                          element.inputTemplate ===
-                            'com.polobase.OutbrainElement' ||
-                          element.inputTemplate ===
-                            'com.polobase.ClickTrackerBannersWrapper'
+                          element.inputTemplate
+                            === 'com.polobase.OutbrainElement'
+                          || element.inputTemplate
+                            === 'com.polobase.ClickTrackerBannersWrapper'
                         ) {
                           return (
                             <WideArticleLayoutRow
                               key={element.contentId}
-                              {...(element.inputTemplate ===
-                              'com.polobase.ClickTrackerBannersWrapper'
+                              {...(element.inputTemplate
+                              === 'com.polobase.ClickTrackerBannersWrapper'
                                 ? {
-                                    hideDivider: true,
-                                    miscStyles: {
-                                      display: [ { until: 's', value: 'none', }, ],
-                                    },
-                                  }
+                                  hideDivider: true,
+                                  miscStyles: {
+                                    display: [ { until: 's', value: 'none', }, ],
+                                  },
+                                }
                                 : {})}
                             >
                               <Element
@@ -235,13 +234,13 @@ function RecipeArticle({ articleId, slots, }) {
                         return (
                           <ArticleLayoutRow
                             key={element.contentId}
-                            {...(element.inputTemplate ===
-                            'com.tm.ArticleCommentsElement'
+                            {...(element.inputTemplate
+                            === 'com.tm.ArticleCommentsElement'
                               ? {
-                                  title:
+                                title:
                                     theme.articleLayoutI18n.commentSectionTitle,
-                                  id: 'commentsSection',
-                                }
+                                id: 'commentsSection',
+                              }
                               : {})}
                           >
                             <Element

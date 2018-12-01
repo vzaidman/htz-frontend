@@ -146,8 +146,8 @@ describe('globalConfig - unit tests for browser', () => {
     });
 
     it('should be an empty array', () => {
-      expect(path).toBeInstanceOf(Array) &&
-        expect(Object.keys(path)).toHaveLength(0);
+      expect(path).toBeInstanceOf(Array)
+        && expect(Object.keys(path)).toHaveLength(0);
     });
   });
 
@@ -186,8 +186,8 @@ describe('globalConfig - unit tests for browser', () => {
     });
 
     it('should be either undefined or a string', () => {
-      expect(articleId).toBeDefined() &&
-        expect(typeof articleId).toBe('string');
+      expect(articleId).toBeDefined()
+        && expect(typeof articleId).toBe('string');
     });
   });
 
@@ -387,8 +387,8 @@ describe('globalConfig - unit tests for browser', () => {
         beforeAll(() => {
           for (const slotKey in adSlot) {
             if (
-              {}.hasOwnProperty.call(adSlot, slotKey) &&
-              slotKey === 'responsiveAdSizeMapping'
+              {}.hasOwnProperty.call(adSlot, slotKey)
+              && slotKey === 'responsiveAdSizeMapping'
             ) {
               responsiveAdSizeMapping = adSlot[slotKey];
               break;

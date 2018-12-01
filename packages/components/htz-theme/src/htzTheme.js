@@ -39,7 +39,6 @@ import {
   mobileUserMenuI18n,
   navigationMenuI18n,
   newsletterI18n,
-  ModifiedDateText,
   osakaI18n,
   readingListMenuI18n,
   recipeIngredientsI18n,
@@ -60,13 +59,11 @@ import {
 
 // methods
 import getColor from './methods/getColor';
-import {
-  getDelay,
-  getDuration,
-  getTimingFunction,
-  getTransition,
-  getTransitionString,
-} from './methods/animation';
+import getDelay from './methods/getDelay';
+import getDuration from './methods/getDuration';
+import getTimingFunction from './methods/getTimingFunction';
+import getTransition from './methods/getTransition';
+import getTransitionString from './methods/getTransitionString';
 import getMqString from './methods/getMqString';
 import getZIndex from './methods/getZIndex';
 import pxToRem from './methods/pxToRem';
@@ -120,7 +117,6 @@ const htzTheme = Object.freeze({
   mobileUserMenuI18n,
   navigationMenuI18n,
   newsletterI18n,
-  ModifiedDateText,
   osakaI18n,
   readingListMenuI18n,
   recipeIngredientsI18n,

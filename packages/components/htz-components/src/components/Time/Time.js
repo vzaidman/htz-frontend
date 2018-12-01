@@ -108,8 +108,7 @@ function formatReducer(currentFormat, extendedFormatRule) {
 
   // from & until are given and the range is valid
   if (fromTime && untilTime && fromTime <= untilTime) {
-    selectedFormat =
-      fromTime <= time && time <= untilTime ? format : currentFormat;
+    selectedFormat = fromTime <= time && time <= untilTime ? format : currentFormat;
   }
   else if (fromTime && !untilTime) {
     // until is missing. check if current time is after fromTime

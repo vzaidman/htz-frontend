@@ -78,7 +78,10 @@ let hasMatchMedia;
 
 export class ButtonGroup extends Component {
   static propTypes = ButtonGroupPropTypes;
+
   static defaultProps = ButtonGroupDefaultProps;
+
+  instanceIsMounted = false;
 
   constructor(props) {
     super(props);
@@ -131,9 +134,9 @@ export class ButtonGroup extends Component {
 
     if (
       // When not responsive
-      !isColumnIsResponsive ||
+      !isColumnIsResponsive
       // When matchMedia doesn't exist.
-      !hasMatchMedia
+      || !hasMatchMedia
     ) {
       if (this.state.isColumn !== defaultValue) {
         this.setState({
@@ -149,8 +152,6 @@ export class ButtonGroup extends Component {
       hasMatchMedia = true;
     }
   };
-
-  instanceIsMounted = false;
 
   render() {
     const {
@@ -169,17 +170,16 @@ export class ButtonGroup extends Component {
         */}
         {Children.map(
           children,
-          (child, index) =>
-            (React.isValidElement(child)
-              ? React.cloneElement(child, {
-                isColumn: this.state.isColumn,
-                boxModel: getGroupPlacement(
-                  child,
-                  index,
-                  Children.count(children)
-                ),
-              })
-              : child)
+          (child, index) => (React.isValidElement(child)
+            ? React.cloneElement(child, {
+              isColumn: this.state.isColumn,
+              boxModel: getGroupPlacement(
+                child,
+                index,
+                Children.count(children)
+              ),
+            })
+            : child)
         )}
       </div>
     );
@@ -191,8 +191,7 @@ function groupDirection(prop, isColumn) {
 }
 
 function getGroupPlacement(child, index, length) {
-  const groupPlacement =
-    index === 0 ? 'start' : index === length - 1 ? 'end' : 'middle';
+  const groupPlacement = index === 0 ? 'start' : index === length - 1 ? 'end' : 'middle';
   const childBoxModel = child.props.boxModel;
 
   return !childBoxModel

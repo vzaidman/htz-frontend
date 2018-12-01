@@ -2,7 +2,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
-import { breadcrumbs, intersperse, } from '@haaretz/app-utils';
+import { breadcrumbs, } from '@haaretz/app-utils';
 
 import HtzLink from '../HtzLink/HtzLink';
 import Query from '../ApolloBoundary/Query';
@@ -62,11 +62,6 @@ const CityIcon = ({ icon, ...props }) => {
       return <IconGaniYoshua {...props} />;
   }
 };
-const Delimiter = props => (
-  <FelaComponent style={commonStyle} render="span" {...props}>
-    |
-  </FelaComponent>
-);
 
 // eslint-disable-next-line react/prop-types
 const ColoredLink = ({ crumb, }) => (
@@ -115,8 +110,11 @@ class Breadcrumbs extends React.Component {
   };
 
   render() {
-    const { className, } = this.props;
-    let { crumbs, } = this.props;
+    const { crumbs, className, } = this.props;
+
+    // exit early if no breadcrumbs
+    if (!crumbs.length) return null;
+
     const labelsSectionsIndex = {
       2.16463: 'IconRamatGan',
       2.16464: 'IconBeerSheva',
@@ -125,15 +123,21 @@ class Breadcrumbs extends React.Component {
       2.16465: 'IconGaniYoshua',
     };
     const labelsSections = Object.keys(labelsSectionsIndex);
-    const lastCrumb = crumbs.slice(-1)[0];
+    const lastCrumb = crumbs.slice(-1)[0] || '';
     const isLastOfLabelSection = labelsSections.includes(lastCrumb.contentId);
-    crumbs = isLastOfLabelSection ? this.addMousePostFix(crumbs) : crumbs;
-    const crumbLinks = crumbs.map(crumb => <ColoredLink crumb={crumb} />);
-    const crumbLinksWithDelimiters = intersperse(crumbLinks, <Delimiter />);
+    const updatedCrumbs = isLastOfLabelSection
+      ? this.addMousePostFix(crumbs)
+      : crumbs;
+    const crumbLinks = updatedCrumbs.map(crumb => (
+      <ColoredLink crumb={crumb} />
+    ));
 
     const cityIconWrapper = isLastOfLabelSection ? (
       <FelaComponent style={{ float: 'left', }} render="span">
-        <CityIcon icon={labelsSectionsIndex[lastCrumb.contentId]} height="4.5rem" />
+        <CityIcon
+          icon={labelsSectionsIndex[lastCrumb.contentId]}
+          height="4.5rem"
+        />
       </FelaComponent>
     ) : null;
 
@@ -146,34 +150,45 @@ class Breadcrumbs extends React.Component {
           return (
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
-                {crumbLinksWithDelimiters.map((elem, index) => (
-                  /* eslint-disable react/no-array-index-key */
-                  <FelaComponent
-                    key={index}
-                    style={theme => ({
-                      extend: [
-                        theme.mq(
-                          { until: 's', },
-                          {
-                            // hide every item but the last
-                            '&:not(:last-child)': { display: 'none', },
-                          }
-                        ),
-                        theme.mq(
-                          { from: 's', },
-                          {
-                            ':nth-child(3n) > *': {
-                              color: theme.color('neutral', '-2'),
-                              ':hover': {
-                                color: theme.color('neutral', '-1'),
+                {crumbLinks.map((elem, index) => (
+                  <Fragment
+                    key={
+                      elem.props.crumb.contentId + elem.props.crumb.pathSegment
+                    }
+                  >
+                    <FelaComponent
+                      style={theme => ({
+                        extend: [
+                          theme.mq(
+                            { until: 's', },
+                            {
+                              // hide every item but the last
+                              '&:not(:last-child)': { display: 'none', },
+                            }
+                          ),
+                          theme.mq(
+                            { from: 's', },
+                            {
+                              ':nth-child(3n) > *': {
+                                color: theme.color('neutral', '-2'),
+                                ':hover': {
+                                  color: theme.color('neutral', '-1'),
+                                },
                               },
-                            },
-                          }
-                        ),
-                      ],
-                    })}
-                    render={({ className, }) => <span className={className}>{elem}</span>}
-                  />
+                            }
+                          ),
+                        ],
+                      })}
+                      render={({ className, }) => (
+                        <span className={className}>{elem}</span>
+                      )}
+                    />
+                    {crumbLinks.length - 1 === index ? null : (
+                      <FelaComponent style={commonStyle} render="span">
+                        |
+                      </FelaComponent>
+                    )}
+                  </Fragment>
                 ))}
                 {cityIconWrapper}
               </nav>
@@ -190,7 +205,11 @@ Breadcrumbs.defaultProps = defaultProps;
 
 // eslint-disable-next-line react/prop-types
 export default ({ articleId, ...props }) => (
-  <Query query={GET_BREADCRUMBS} variables={{ path: articleId, }} errorPolicy="all">
+  <Query
+    query={GET_BREADCRUMBS}
+    variables={{ path: articleId, }}
+    errorPolicy="all"
+  >
     {({ data, loading, error, }) => {
       if (loading) return null;
       if (error) return null;

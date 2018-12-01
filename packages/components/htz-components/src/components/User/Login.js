@@ -9,22 +9,20 @@ const propTypes = {
 const defaultProps = {};
 
 class Login extends React.Component {
-  getLoginFunction = (user, plantImages, handleImgOnload) =>
-    function login(username, password) {
-      const userService = new UserService({
-        plantImagesCallback: plantImages,
-        onImageLoadCallback: handleImgOnload,
-      });
-      return userService.login({ username, password, user, });
-    };
+  getLoginFunction = (user, plantImages, handleImgOnload) => function login(username, password) {
+    const userService = new UserService({
+      plantImagesCallback: plantImages,
+      onImageLoadCallback: handleImgOnload,
+    });
+    return userService.login({ username, password, user, });
+  };
 
   render() {
     return (
       <UserDispenser
-        render={({ isLoggedIn, user, plantImages, handleImgOnload, }) =>
-          this.props.render({
-            login: this.getLoginFunction(user, plantImages, handleImgOnload),
-          })
+        render={({ isLoggedIn, user, plantImages, handleImgOnload, }) => this.props.render({
+          login: this.getLoginFunction(user, plantImages, handleImgOnload),
+        })
         }
       />
     );

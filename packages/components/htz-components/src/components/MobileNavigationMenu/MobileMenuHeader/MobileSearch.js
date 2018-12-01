@@ -26,10 +26,9 @@ class HeaderSearch extends React.Component {
 
   focusOnInput = inputRef => inputRef && inputRef.focus();
 
-  recordQuery = event =>
-    this.setState({
-      query: event.target.value,
-    });
+  recordQuery = event => this.setState({
+    query: event.target.value,
+  });
 
   submitHandler = (event, searchUrl) => {
     event.preventDefault();
@@ -67,8 +66,8 @@ class HeaderSearch extends React.Component {
               miscStyles={{
                 ...(searchIsOpen
                   ? {
-                      display: 'none',
-                    }
+                    display: 'none',
+                  }
                   : {}),
               }}
             >

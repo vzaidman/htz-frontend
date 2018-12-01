@@ -43,7 +43,10 @@ function StageCounter({ stage, }) {
             <H className={className}>
               {stage ? (
                 <Fragment>
-                  {beforeCounter} {startFromStage2 ? stage - 1 : stage}{' '}
+                  {beforeCounter}
+                  {' '}
+                  {startFromStage2 ? stage - 1 : stage}
+                  {' '}
                   {afterCounter(startFromStage2)}
                 </Fragment>
               ) : (

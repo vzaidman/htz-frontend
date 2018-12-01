@@ -13,16 +13,15 @@ const animate = theme => ({
   ],
 });
 
-const createRule = mediaQuery => ({ theme, isActive, }) =>
-  theme.mq(mediaQuery, {
-    ...(isActive ? animate(theme) : { opacity: 0, }),
-  });
+const createRule = mediaQuery => ({ theme, isActive, }) => theme.mq(mediaQuery, {
+  ...(isActive ? animate(theme) : { opacity: 0, }),
+});
 
 const FadeinViewport = ({ threshold, mediaQuery, children, }) => (
-  <Observer threshold={threshold} triggerOnce >
+  <Observer threshold={threshold} triggerOnce>
     {
       inView => (
-        <FelaComponent rule={createRule(mediaQuery)} isActive={inView} >
+        <FelaComponent rule={createRule(mediaQuery)} isActive={inView}>
           {children}
         </FelaComponent>
       )

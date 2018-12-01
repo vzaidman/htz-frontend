@@ -19,8 +19,7 @@ const timestamp: TimestampType = ({ start = null, end = null, }) => {
   return number.int({ min: startTime, max: endTime, });
 };
 
-const steppingTimestamp: SteppingTimestampType = ({ initialTime, step, index, }) =>
-  new Date(initialTime).getTime() + (step * index);
+const steppingTimestamp: SteppingTimestampType = ({ initialTime, step, index, }) => new Date(initialTime).getTime() + (step * index);
 
 export default {
   steppingTimestamp,

@@ -7,8 +7,7 @@ const premiumPrefix = '(?:\\.premium-)?';
 const multiSectionPrefix = '(?:\\/(.+?\\/)+)?';
 const articlePattern = '(?:.*-?)(1\\.\\d+.*)';
 const homepagePattern = '(^\\/(\\?.*)?$)';
-const offersPattern =
-  '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
+const offersPattern = '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
 
 const NonReactArticleTypes = [
   '(MAGAZINE-)',
@@ -65,9 +64,8 @@ export function getArticlePageTypeFromUrl(url) {
   // and return the article type string according to the
   // `${articleType.toLowerCase()}Article` standard.
   const articleType = articleTypes.reduce(
-    (articleTypeName, item) =>
-      articleTypeName ||
-      (url.includes(`${item}-`) ? `${item.toLowerCase()}Article` : false),
+    (articleTypeName, item) => articleTypeName
+      || (url.includes(`${item}-`) ? `${item.toLowerCase()}Article` : false),
     false
   );
 
@@ -89,10 +87,10 @@ export default function isNextLink(href) {
     return isNextLinkSimpleString(href, site);
   }
   if (
-    href &&
-    typeof href === 'object' &&
-    href.pathname &&
-    typeof href.pathname === 'string'
+    href
+    && typeof href === 'object'
+    && href.pathname
+    && typeof href.pathname === 'string'
   ) {
     return isNextLinkSimpleString(href.pathname, site);
   }
@@ -123,9 +121,9 @@ function isNextLinkSimpleString(href, site) {
   } = breakUrl(href) || {};
 
   return (
-    !isNonReactArticleType.test(path) &&
-    isReactType.test(path) &&
-    !isNonReactSectionRegex.test(path)
+    !isNonReactArticleType.test(path)
+    && isReactType.test(path)
+    && !isNonReactSectionRegex.test(path)
   );
 }
 

@@ -1,4 +1,5 @@
 /* @flow */
+/* eslint-disable operator-linebreak */
 
 import setBorder from '../border/setBorder';
 import visuallyHidden from '../mixins/visuallyHidden';
@@ -96,10 +97,9 @@ export default function parseStyleProp(
         // $FlowFixMe
         (valuesIsArray && values.every(item => typeof item === 'number')));
 
+    // Flow doesn't recognize the fact that validated the type of `values`
     return isAutospace
-      ? // Flow doesn't recognize the fact that validated the type of `values`
-      // prettier-ignore
-      // $FlowFixMe
+      ? // $FlowFixMe
       autospace(...(typeof values === 'number' ? [ values, ] : values))
       : prop.startsWith('border') && prop.toLowerCase().indexOf('radius') === -1
         ? // $FlowFixMe

@@ -75,7 +75,8 @@ const submitForm = ({
         if (displayError === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת') {
           displayError = (
             <FelaComponent style={{ fontWeight: 'normal', }} render="span">
-              הסיסמה שהזנתם שגויה, נסו שנית או -{' '}
+              הסיסמה שהזנתם שגויה, נסו שנית או -
+              {' '}
               <FelaComponent
                 style={{ fontWeight: 700, textDecoration: 'underline', }}
                 render={({ className, }) => (

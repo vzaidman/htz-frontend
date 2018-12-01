@@ -44,10 +44,10 @@ const ArticleData = new GraphQLObjectType({
         }),
       }),
       resolve: parentValue => {
-        const isMouseFirstElementImage =
-          parentValue.inputTemplate === 'com.mouse.story.MouseStandardStory' &&
-          parentValue.body[0].inputTemplate === 'com.tm.Image';
+        const isMouseFirstElementImage = parentValue.inputTemplate === 'com.mouse.story.MouseStandardStory'
+          && parentValue.body[0].inputTemplate === 'com.tm.Image';
         if (isMouseFirstElementImage) {
+          // eslint-disable-next-line no-param-reassign
           parentValue.mainElement = parentValue.body.splice(0, 1)[0];
         }
 

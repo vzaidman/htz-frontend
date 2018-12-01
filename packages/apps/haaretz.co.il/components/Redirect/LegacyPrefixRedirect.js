@@ -6,9 +6,11 @@ class LegacyPrefixRedirect extends Component {
   static propTypes = {
     pageType: PropTypes.string.isRequired,
   };
+
   componentDidMount() {
     Router.replace({ pathname: `/${this.props.pageType}`, query: Router.query, }, Router.asPath);
   }
+
   render() {
     return null;
   }

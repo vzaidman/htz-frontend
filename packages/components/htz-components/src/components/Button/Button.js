@@ -476,10 +476,10 @@ function setBorder(values, isColumn, groupPlacement, hp, vp) {
 function sideHasBorder(side, isColumn, groupPlacement) {
   if (groupPlacement) {
     if (
-      (isColumn && groupPlacement === 'start' && side === 'bottom') ||
-      (isColumn && groupPlacement === 'end' && side === 'top') ||
-      (!isColumn && groupPlacement === 'start' && side === 'end') ||
-      (!isColumn && groupPlacement === 'middle' && side === 'end')
+      (isColumn && groupPlacement === 'start' && side === 'bottom')
+      || (isColumn && groupPlacement === 'end' && side === 'top')
+      || (!isColumn && groupPlacement === 'start' && side === 'end')
+      || (!isColumn && groupPlacement === 'middle' && side === 'end')
     ) {
       return false;
     }

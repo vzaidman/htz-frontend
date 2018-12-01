@@ -1,8 +1,8 @@
 process.env.BABEL_ENV = process.env.BABEL_ENV || 'commonjs';
 
 console.log('Building dist/lib...');
-const { checkDir, } = require('./_checkDir');
 const fs = require('fs');
+const { checkDir, } = require('./_checkDir');
 
 checkDir('dist').then(hasDist => {
   if (!hasDist) {

@@ -73,8 +73,8 @@ function Modal({ closeModal, offerDisclaimer, isVisible, }) {
                   marginLeft: '4rem',
                 }}
               >
-                {offerDisclaimer &&
-                  offerDisclaimer.map(disclaimerParagraph => (
+                {offerDisclaimer
+                  && offerDisclaimer.map(disclaimerParagraph => (
                     <Paragraph
                       key={Math.random()}
                       marginBottom={{ ...theme.type(-1), }}

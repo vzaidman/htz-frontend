@@ -43,7 +43,7 @@ ThemedDropdownList.defaultProps = {
 // are assigned to the wrapping component.
 /* eslint-disable react/prop-types */
 class DropdownList extends React.Component {
-  state = { isOpen: false, focusButton: false, };
+  state = { isOpen: false, };
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.y === 0 || (nextProps.y > 0 && this.state.isOpen);
@@ -92,9 +92,9 @@ class DropdownList extends React.Component {
     const { direction, } = this.props;
     const key = evt.which || evt.keyCode;
     if (
-      this.state.isOpen &&
-      this.props.isLast &&
-      ((direction === 'rtl' && key === 39) || (direction === 'ltr' && key === 37))
+      this.state.isOpen
+      && this.props.isLast
+      && ((direction === 'rtl' && key === 39) || (direction === 'ltr' && key === 37))
     ) {
       this.toggleState();
     }
@@ -121,12 +121,11 @@ class DropdownList extends React.Component {
   render() {
     const { render, mainMenuStyle, } = this.props;
     const { isOpen, } = this.state;
-    const renderButton = buttonRenderer =>
-      buttonRenderer({
-        toggleState: this.toggleState,
-        closeList: this.closeList,
-        openList: this.openList,
-      });
+    const renderButton = buttonRenderer => buttonRenderer({
+      toggleState: this.toggleState,
+      closeList: this.closeList,
+      openList: this.openList,
+    });
     return (
       <FelaComponent
         style={mainMenuStyle}

@@ -87,12 +87,12 @@ const StyledCommentAuthor = ({ truncate, children, ...props }) => (
       },
       ...(truncate
         ? {
-            whiteSpace: 'nowrap',
-            marginInlineEnd: '1rem',
-            maxWidth: '50%',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }
+          whiteSpace: 'nowrap',
+          marginInlineEnd: '1rem',
+          maxWidth: '50%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }
         : {}),
       ...theme.type(0),
     })}
@@ -138,9 +138,9 @@ const StyledCommentText = ({ fade, children, ...props }) => (
       wordBreak: 'break-word',
       ...(fade
         ? {
-            overflow: 'hidden',
-            maxHeight: '80rem',
-          }
+          overflow: 'hidden',
+          maxHeight: '80rem',
+        }
         : {}),
     })}
     render={({ className, }) => (
@@ -312,22 +312,6 @@ class Comment extends React.Component {
     userLike: null,
   };
 
-  componentDidMount() {
-    const height = this.commentTextEl.clientHeight;
-    const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
-    if (remHeight > 80) {
-      // eslint-disable-next-line react/no-did-mount-set-state
-      this.setState({ fadeText: true, });
-    }
-  }
-
-  componentDidUpdate = (prevProp, prevState) => {
-    if (prevState.fadeText !== this.state.fadeText && !this.state.fadeText) {
-      this.commentTextEl.tabIndex = '-1';
-      this.commentTextEl.focus();
-    }
-  }
-
   commentPlusRateDB = Object.prototype.hasOwnProperty.call(
     this.props.commentsPlusRate,
     this.props.commentId
@@ -343,6 +327,22 @@ class Comment extends React.Component {
     : 0;
 
   isUsersChoice = this.commentPlusRate - this.commentMinusRate > 10;
+
+  componentDidMount() {
+    const height = this.commentTextEl.clientHeight;
+    const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
+    if (remHeight > 80) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ fadeText: true, });
+    }
+  }
+
+  componentDidUpdate = (prevProp, prevState) => {
+    if (prevState.fadeText !== this.state.fadeText && !this.state.fadeText) {
+      this.commentTextEl.tabIndex = '-1';
+      this.commentTextEl.focus();
+    }
+  }
 
   handleReplyClick = () => {
     this.state.displayReplyForm
@@ -377,8 +377,7 @@ class Comment extends React.Component {
       title,
     } = this.props;
 
-    const isHighlighted =
-      this.props.isEditorPick === 'true' || this.isUsersChoice;
+    const isHighlighted = this.props.isEditorPick === 'true' || this.isUsersChoice;
     const commentPlusRateUser = this.state.userLike === 'plus' ? 1 : 0;
     const commentPlusRate = this.commentPlusRateDB + commentPlusRateUser;
     const commentMinusRateUser = this.state.userLike === 'minus' ? 1 : 0;
@@ -424,10 +423,9 @@ class Comment extends React.Component {
                   <StyledCommentAuthor
                     truncate={this.state.truncateAuthorName}
                     data-test="comment-author"
-                    onClick={() =>
-                      this.setState((prevState, props) => ({
-                        truncateAuthorName: !prevState.truncateAuthorName,
-                      }))
+                    onClick={() => this.setState((prevState, props) => ({
+                      truncateAuthorName: !prevState.truncateAuthorName,
+                    }))
                     }
                   >
                     {author}
@@ -439,18 +437,26 @@ class Comment extends React.Component {
 
                   {isSubComment ? (
                     <FelaComponent style={subCommentAuthorStyle} render="span">
-                      <IconArrow /> {parentAuthor}
+                      <IconArrow />
+                      {' '}
+                      {parentAuthor}
                     </FelaComponent>
                   ) : (
                     undefined
                   )}
                   {isEditorPick === 'true' ? (
-                    <StyledEditorPickTag>| {editorsPick}</StyledEditorPickTag>
+                    <StyledEditorPickTag>
+|
+                      {editorsPick}
+                    </StyledEditorPickTag>
                   ) : (
                     undefined
                   )}
                   {this.isUsersChoice ? (
-                    <StyledEditorPickTag>| {usersPick}</StyledEditorPickTag>
+                    <StyledEditorPickTag>
+|
+                      {usersPick}
+                    </StyledEditorPickTag>
                   ) : (
                     undefined
                   )}
@@ -562,8 +568,7 @@ class Comment extends React.Component {
                     commentsPlusRate={commentsPlusRate}
                     commentsMinusRate={commentsMinusRate}
                     reportAbuse={reportAbuse}
-                    openParentReplyForm={() =>
-                      this.setState({ displayReplyForm: true, })
+                    openParentReplyForm={() => this.setState({ displayReplyForm: true, })
                     }
                   />
                 ) : null}
@@ -574,8 +579,7 @@ class Comment extends React.Component {
                 parentCommentId={commentId}
                 initNewComment={initNewComment}
                 signUpNotification={signUpNotification}
-                closeReplyForm={() =>
-                  this.setState({ displayReplyForm: false, })
+                closeReplyForm={() => this.setState({ displayReplyForm: false, })
                 }
               />
             ) : null}

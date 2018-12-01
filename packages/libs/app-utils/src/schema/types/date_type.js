@@ -3,9 +3,8 @@ import { GraphQLError, } from 'graphql/error';
 import { Kind, } from 'graphql/language';
 
 const toString = Object.prototype.toString;
-const isDate = value =>
-  // eslint-disable-next-line no-restricted-globals
-  toString.call(value) === '[object Date]' && !isNaN(value.valueOf());
+// eslint-disable-next-line no-restricted-globals
+const isDate = value => toString.call(value) === '[object Date]' && !isNaN(value.valueOf());
 
 const coerceDate = value => {
   const date = new Date(value);

@@ -20,6 +20,7 @@ class UserButton extends React.Component {
   state = { isHovered: false, };
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
+
   handleMouseLeave = () => this.setState({ isHovered: false, });
 
   render() {
@@ -41,16 +42,17 @@ class UserButton extends React.Component {
             theme.type(-1),
             isOpen || isHovered
               ? {
-                  backgroundColor: isHovered
-                    ? theme.color('userMenu', 'bgHover')
-                    : theme.color('userMenu', 'bgOpen'),
-                  color: theme.color('userMenu', 'textOpenOrHover'),
-                }
+                backgroundColor: isHovered
+                  ? theme.color('userMenu', 'bgHover')
+                  : theme.color('userMenu', 'bgOpen'),
+                color: theme.color('userMenu', 'textOpenOrHover'),
+              }
               : {},
           ],
         })}
         render={({ className, theme, }) => (
           <button
+            type="button"
             className={className}
             onClick={onClick}
             role={role}
@@ -78,7 +80,8 @@ class UserButton extends React.Component {
                   }}
                 >
                   {theme.userMenuI18n.buttonText}
-                  {','}{' '}
+                  {','}
+                  {' '}
                 </FelaComponent>
               ) : null}
               <FelaComponent

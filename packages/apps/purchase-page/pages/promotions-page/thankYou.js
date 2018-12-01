@@ -45,7 +45,7 @@ const ThankYouElement = ({ product, userMessage, fbFullRedirectUri, }) => (
         chosenSubscription={product}
         stage="thankYou"
         displayPhones={false}
-        headerElement={
+        headerElement={(
           <Fragment>
             <IconCheck color="positive" size={10} />
             <FelaComponent
@@ -69,7 +69,7 @@ const ThankYouElement = ({ product, userMessage, fbFullRedirectUri, }) => (
               )}
             />
           </Fragment>
-        }
+)}
         stageElement={<ThankYouStage fbFullRedirectUri={fbFullRedirectUri} />}
       />
     </LayoutContainer>
@@ -80,10 +80,8 @@ class StageThankYou extends React.Component {
   componentDidMount() {
     pixelEvent('track', 'PageView');
     // remove 'HtzRusr' cookie or TmRusr
-    document.cookie =
-      'HtzRusr=; domain=.haaretz.co.il; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie =
-      'TmRusr=; domain=.themarker.com; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'HtzRusr=; domain=.haaretz.co.il; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'TmRusr=; domain=.themarker.com; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
     if (window && window.sessionStorage.getItem('htz-paypal')) {
       const paypalAddProduct = window.sessionStorage.getItem('htz-add-product');
@@ -118,8 +116,7 @@ class StageThankYou extends React.Component {
         },
       } = this.props;
 
-      productId =
-        product === '243' ? 'HTZ' : product === '273' ? 'TM' : product === '274' ? 'BOTH' : null;
+      productId = product === '243' ? 'HTZ' : product === '273' ? 'TM' : product === '274' ? 'BOTH' : null;
       fbRedirectUri = redirect_uri;
       accountLinkToken = account_linking_token;
     }
@@ -143,12 +140,11 @@ class StageThankYou extends React.Component {
                   {({ data, loading, error, }) => {
                     if (error) return null;
                     if (loading) return null;
-                    const fbFullRedirectUri =
-                      accountLinkToken && data.fbSubscribePayload
-                        ? `${fbRedirectUri}?account_linking_token=${accountLinkToken}&subscription_payload=${
-                            data.fbSubscribePayload
-                          }`
-                        : null;
+                    const fbFullRedirectUri = accountLinkToken && data.fbSubscribePayload
+                      ? `${fbRedirectUri}?account_linking_token=${accountLinkToken}&subscription_payload=${
+                        data.fbSubscribePayload
+                      }`
+                      : null;
                     return productId ? (
                       <ThankYouElement product={productId} fbFullRedirectUri={fbFullRedirectUri} />
                     ) : (

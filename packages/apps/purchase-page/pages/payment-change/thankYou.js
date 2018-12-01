@@ -7,12 +7,13 @@ export default function PaymentChangeThankYouPage(props) {
   return (
     <MainLayout isThankYou displayBackButton={false}>
       <FelaComponent style={{
-      marginTop: '4rem',
+        marginTop: '4rem',
         marginInlineStart: 'auto',
         marginInlineEnd: 'auto',
         maxWidth: '80rem',
         textAlign: 'center',
-      }}>
+      }}
+      >
         <IconCheck color="positive" size={10} />
         <FelaComponent
           style={theme => ({

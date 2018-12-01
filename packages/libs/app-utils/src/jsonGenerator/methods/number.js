@@ -17,8 +17,7 @@ const int: IntType = ({ min = 0, max = 100, }) => {
   return Math.floor(Math.random() * ((maxFloor - minCeil) + 1)) + minCeil;
 };
 
-const float: FloatType = ({ min = 0, max = 100, fixed = 2, }) =>
-  Number.parseFloat(Number((Math.random() * (max - min)) + min).toFixed(fixed));
+const float: FloatType = ({ min = 0, max = 100, fixed = 2, }) => Number.parseFloat(Number((Math.random() * (max - min)) + min).toFixed(fixed));
 
 export default {
   int,

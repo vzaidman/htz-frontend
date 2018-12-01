@@ -12,6 +12,5 @@ const videoElement = () => ({
   border: 'none',
 });
 
-export const VideoElement = createComponent(videoElement, 'iframe', props =>
-  Object.keys(props)
+export const VideoElement = createComponent(videoElement, 'iframe', props => Object.keys(props)
 );

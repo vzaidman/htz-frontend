@@ -11,30 +11,40 @@ import H from '../AutoLevels/H';
 export function RegisterExample() {
   return (
     <UserDispenser
-      render={({ isLoggedIn, }) =>
-        (isLoggedIn ? (
-          <Logout
-            render={({ logout, }) => (
-              <div style={{ marginTop: '24px', marginBottom: '24px', }}>
-                <Button
-                  onClick={() => {
-                    logout()
-                      .then(() => console.log('logoutSuccess'))
-                      .catch(err => console.log('logout failed', err));
-                  }}
-                >
+      render={({ isLoggedIn, }) => (isLoggedIn ? (
+        <Logout
+          render={({ logout, }) => (
+            <div style={{ marginTop: '24px', marginBottom: '24px', }}>
+              <Button
+                onClick={() => {
+                  logout()
+                    .then(() => console.log('logoutSuccess'))
+                    .catch(err => console.log('logout failed', err));
+                }}
+              >
                   Logout
-                </Button>
-              </div>
-            )}
-          />
-        ) : (
-          <Register
-            render={({ register, }) => (
-              <div>
-                <H>Register</H>
-                <Form
-                  onSubmit={({
+              </Button>
+            </div>
+          )}
+        />
+      ) : (
+        <Register
+          render={({ register, }) => (
+            <div>
+              <H>Register</H>
+              <Form
+                onSubmit={({
+                  email,
+                  password,
+                  confirmPassword,
+                  firstName,
+                  lastName,
+                  mobilePrefix,
+                  mobileNumber,
+                  termsChk,
+                  gRecaptchaResponse = '',
+                }) => {
+                  console.log(
                     email,
                     password,
                     confirmPassword,
@@ -43,93 +53,82 @@ export function RegisterExample() {
                     mobilePrefix,
                     mobileNumber,
                     termsChk,
-                    gRecaptchaResponse = '',
-                  }) => {
-                    console.log(
-                      email,
-                      password,
-                      confirmPassword,
-                      firstName,
-                      lastName,
-                      mobilePrefix,
-                      mobileNumber,
-                      termsChk,
-                      gRecaptchaResponse
-                    );
-                    register(
-                      email,
-                      password,
-                      confirmPassword,
-                      firstName,
-                      lastName,
-                      mobilePrefix,
-                      mobileNumber,
-                      termsChk,
-                      gRecaptchaResponse
-                    )
-                      .then(() => {
-                        console.log('register Success!');
-                      })
-                      .catch(err => {
-                        console.log('register Error!', err);
-                      });
-                  }}
-                  render={({ getInputProps, handleSubmit, }) => (
+                    gRecaptchaResponse
+                  );
+                  register(
+                    email,
+                    password,
+                    confirmPassword,
+                    firstName,
+                    lastName,
+                    mobilePrefix,
+                    mobileNumber,
+                    termsChk,
+                    gRecaptchaResponse
+                  )
+                    .then(() => {
+                      console.log('register Success!');
+                    })
+                    .catch(err => {
+                      console.log('register Error!', err);
+                    });
+                }}
+                render={({ getInputProps, handleSubmit, }) => (
+                  <div>
+                    <TextInput
+                      {...getInputProps({
+                        name: 'email',
+                        label: 'email',
+                        type: 'email',
+                      })}
+                    />
+                    <TextInput
+                      {...getInputProps({
+                        name: 'password',
+                        label: 'password',
+                        type: 'password',
+                      })}
+                    />
+                    <TextInput
+                      {...getInputProps({
+                        name: 'firstName',
+                        label: 'firstName',
+                      })}
+                    />
+                    <TextInput
+                      {...getInputProps({
+                        name: 'lastName',
+                        label: 'lastName',
+                      })}
+                    />
+                    <TextInput
+                      {...getInputProps({
+                        name: 'mobilePrefix',
+                        label: 'mobilePrefix',
+                      })}
+                    />
+                    <TextInput
+                      {...getInputProps({
+                        name: 'mobileNumber',
+                        label: 'mobileNumber',
+                      })}
+                    />
+                    <CheckBox
+                      {...getInputProps({
+                        name: 'termsChk',
+                        label: 'termsChk',
+                      })}
+                    />
                     <div>
-                      <TextInput
-                        {...getInputProps({
-                          name: 'email',
-                          label: 'email',
-                          type: 'email',
-                        })}
-                      />
-                      <TextInput
-                        {...getInputProps({
-                          name: 'password',
-                          label: 'password',
-                          type: 'password',
-                        })}
-                      />
-                      <TextInput
-                        {...getInputProps({
-                          name: 'firstName',
-                          label: 'firstName',
-                        })}
-                      />
-                      <TextInput
-                        {...getInputProps({
-                          name: 'lastName',
-                          label: 'lastName',
-                        })}
-                      />
-                      <TextInput
-                        {...getInputProps({
-                          name: 'mobilePrefix',
-                          label: 'mobilePrefix',
-                        })}
-                      />
-                      <TextInput
-                        {...getInputProps({
-                          name: 'mobileNumber',
-                          label: 'mobileNumber',
-                        })}
-                      />
-                      <CheckBox
-                        {...getInputProps({
-                          name: 'termsChk',
-                          label: 'termsChk',
-                        })}
-                      />
-                      <div>
-                        <Button onClick={handleSubmit}>submit</Button>
-                      </div>
+                      <Button onClick={handleSubmit}>submit</Button>
                     </div>
-                  )}
-                />
-              </div>
-            )}
-          />
-        ))
+                  </div>
+                )}
+              />
+            </div>
+          )}
+        />
+      ))
       }
     />
   );

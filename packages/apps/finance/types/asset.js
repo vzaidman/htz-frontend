@@ -1,9 +1,10 @@
 // @flow
+export type AssetType = 'crypto' | 'bonds' | 'stocks' | 'options' | 'mtf' | 'etf' | 'exchange' | 'indices';
 export type Asset = {
   name: string,
   id: string,
   symbol: string,
-  type: 'crypto' | 'bonds' | 'stocks' | 'options' | 'mtf' | 'etf' | 'exchange' | 'indices',
+  type: AssetType,
   subType: string,
   assetNumber: number,
   assetSummary: string,

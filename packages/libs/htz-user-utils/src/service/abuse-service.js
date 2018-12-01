@@ -49,44 +49,41 @@ export function initiateAbuserLogic({
           aat: antiAbuseToken,
         }),
       })
-        .then(data =>
-          data.json().then(json => {
-            const signinUrl =
-              json.msg === 'null' ? MOBILE_ABUSE_LOGIN_PAGE : MOBILE_LOGIN_PAGE;
-            if (json.result === USER_IS_ABUSER) {
-              if (signinUrl === MOBILE_ABUSE_LOGIN_PAGE) {
-                localStorage.setItem(
-                  '__uaem',
-                  JSON.stringify({ em: email, id: ssoId, })
-                );
+        .then(data => data.json().then(json => {
+          const signinUrl = json.msg === 'null' ? MOBILE_ABUSE_LOGIN_PAGE : MOBILE_LOGIN_PAGE;
+          if (json.result === USER_IS_ABUSER) {
+            if (signinUrl === MOBILE_ABUSE_LOGIN_PAGE) {
+              localStorage.setItem(
+                '__uaem',
+                JSON.stringify({ em: email, id: ssoId, })
+              );
+            }
+            // Default behavior for abuser detection
+            const defaultOnLogoutComplete = () => {
+              // Navigate to signin URL
+              if (window.location !== signinUrl) {
+                window.location = signinUrl;
               }
-              // Default behavior for abuser detection
-              const defaultOnLogoutComplete = () => {
-                // Navigate to signin URL
-                if (window.location !== signinUrl) {
-                  window.location = signinUrl;
-                }
+            };
+            const onLogoutComplete = typeof overrideImageOnload === 'function'
+              ? () => {
+                overrideImageOnload();
+                resolve('done');
+              }
+              : () => {
+                defaultOnLogoutComplete();
+                resolve('done');
               };
-              const onLogoutComplete =
-                typeof overrideImageOnload === 'function'
-                  ? () => {
-                    overrideImageOnload();
-                    resolve('done');
-                  }
-                  : () => {
-                    defaultOnLogoutComplete();
-                    resolve('done');
-                  };
 
-              getUserServiceInstance({
-                plantImagesCallback,
-                onLogoutComplete,
-              }).logout();
-            }
-            else {
-              resolve('skipped');
-            }
-          })
+            getUserServiceInstance({
+              plantImagesCallback,
+              onLogoutComplete,
+            }).logout();
+          }
+          else {
+            resolve('skipped');
+          }
+        })
         )
         .catch(err => {
           reject();
@@ -108,6 +105,7 @@ export default class AbuseService {
       this.overrideImageOnload = overrideImageOnload;
     }
   }
+
   // eslint-disable-next-line class-methods-use-this
   activate() {
     return initiateAbuserLogic({
@@ -119,9 +117,9 @@ export default class AbuseService {
   // eslint-disable-next-line class-methods-use-this
   static getSsoOnAbusePage() {
     if (
-      window.location.href.includes('abuse-login') &&
-      localStorage &&
-      localStorage.getItem('__uaem')
+      window.location.href.includes('abuse-login')
+      && localStorage
+      && localStorage.getItem('__uaem')
     ) {
       return JSON.parse(localStorage.getItem('__uaem')).id;
     }

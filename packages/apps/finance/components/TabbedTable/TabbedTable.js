@@ -17,12 +17,13 @@ type State = {
 };
 
 type TabType = {
-  control: string,
-  tabData: any,
-  display: string,
+  control: string, // eslint-disable-line react/no-unused-prop-types
+  tabData: any, // eslint-disable-line react/no-unused-prop-types
+  display: string, // eslint-disable-line react/no-unused-prop-types
 };
 
 type Props = {
+  // eslint-disable-next-line react/no-unused-prop-types
   defaultTab: number,
   panel: ({ selectedTab: string, }) => Node,
   tabs: Array<TabType>,
@@ -55,11 +56,13 @@ class TabbedTable extends React.Component<Props, State> {
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const { defaultTab, tabs, } = nextProps;
-    return !prevState ? {
-      selectedTab: tabs[defaultTab].tabData,
-      controls: tabs[defaultTab].control,
-      index: defaultTab,
-    } : {};
+    return !prevState
+      ? {
+        selectedTab: tabs[defaultTab].tabData,
+        controls: tabs[defaultTab].control,
+        index: defaultTab,
+      }
+      : {};
   }
 
   changeSelectedTab: State => void = ({ controls, selectedTab, index, }) => {
@@ -84,28 +87,27 @@ class TabbedTable extends React.Component<Props, State> {
               ...theme.type(-1),
             }}
             render={({ className, }) => (
-              <Tabs
-                activeTab={index}
-              >
+              <Tabs activeTab={index}>
                 <TabList className={className}>
-                  {tabs.map(({ control, tabData, display, }: TabType, i: number) => (
-                    <Tab
-                      index={i}
-                      controls={`tab-${control}`}
-                      presentation={presentation}
-                      rule={tabRule}
-                      onClick={() => this.changeSelectedTab({
-                        controls: control,
-                        selectedTab: tabData,
-                        index: i,
-                      })}
-                      render={TabButton}
-                    >
-                      <span>
-                        {display}
-                      </span>
-                    </Tab>
-                  ))}
+                  {tabs.map(
+                    ({ control, tabData, display, }: TabType, i: number) => (
+                      <Tab
+                        index={i}
+                        controls={`tab-${control}`}
+                        presentation={presentation}
+                        rule={tabRule}
+                        onClick={() => this.changeSelectedTab({
+                          controls: control,
+                          selectedTab: tabData,
+                          index: i,
+                        })
+                        }
+                        render={TabButton}
+                      >
+                        <span>{display}</span>
+                      </Tab>
+                    )
+                  )}
                 </TabList>
                 <TabPanel id={`tab-${controls}`}>
                   {panel({ selectedTab, })}

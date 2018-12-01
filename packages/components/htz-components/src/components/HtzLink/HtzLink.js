@@ -160,9 +160,9 @@ const HtzLink = React.forwardRef(
         ref={
           refFunc
             ? linkRef => {
-                focus && linkRef && linkRef.focus();
-                refFunc && refFunc(linkRef);
-              }
+              focus && linkRef && linkRef.focus();
+              refFunc && refFunc(linkRef);
+            }
             : ref
         }
         onClick={passedOnClick}

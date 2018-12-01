@@ -1,3 +1,4 @@
+// @flow
 import type { Node, ElementType, } from 'react';
 import React from 'react';
 import { FelaComponent, } from 'react-fela';

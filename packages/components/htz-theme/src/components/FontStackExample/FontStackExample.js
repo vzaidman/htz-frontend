@@ -11,9 +11,19 @@ export default function FontStacks() {
           key={name}
           style={{ fontFamily: fontStacks[name], margin: '0 0 1rem', }}
         >
-          <strong>{name}:</strong> <code>font-familty: {fontStacks[name]}</code>
+          <strong>
+            {name}
+:
+          </strong>
+          {' '}
+          <code>
+font-familty:
+            {fontStacks[name]}
+          </code>
           <br />
-          <strong>Sample:</strong> <bdo dir="rtl">{pangram}</bdo>
+          <strong>Sample:</strong>
+          {' '}
+          <bdo dir="rtl">{pangram}</bdo>
         </p>
       ))}
     </div>

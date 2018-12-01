@@ -129,11 +129,11 @@ export default function NewsletterConfirmed({
               {...(signUpStatus === 'failed'
                 ? { onClick: () => closeConfirmation(), }
                 : {
-                    href:
+                  href:
                       host === 'tm'
                         ? 'https://www.themarker.com/personal-area/newsletter'
                         : 'https://www.haaretz.co.il/personal-area/newsletter',
-                  })}
+                })}
             >
               {newsletterConfirmedButton[signUpStatus]}
             </Button>

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { createRenderer, StyleProvider } from '@haaretz/fela-utils';
+import { createRenderer, StyleProvider, } from '@haaretz/fela-utils';
 
 import cssReset from '../src/consts/cssReset';
 
-const styleRenderer = createRenderer({ isRtl: true });
+const styleRenderer = createRenderer({ isRtl: true, });
 
 const globalRules = `
 ${cssReset}
@@ -24,14 +24,14 @@ const defaultProps = {
   children: null,
 };
 
-export default function StyleGuideProvider({ children }) {
+export default function StyleGuideProvider({ children, }) {
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
     [
       '../src/fonts/OpenSansHebrewRegular.woff',
       '../src/fonts/OpenSansHebrewRegular.woff2',
     ],
-    { fontWeight: 400 }
+    { fontWeight: 400, }
   );
   styleRenderer.renderFont(
     '"Open Sans Hebrew"',
@@ -39,7 +39,7 @@ export default function StyleGuideProvider({ children }) {
       '../src/fonts/OpenSansHebrewBold.woff',
       '../src/fonts/OpenSansHebrewBold.woff2',
     ],
-    { fontWeight: 700 }
+    { fontWeight: 700, }
   );
 
   styleRenderer.renderStatic(globalRules);

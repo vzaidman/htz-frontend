@@ -1,9 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import type {
-  ElementRef,
-  Node,
-} from 'react';
+import type { ElementRef, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import * as d3 from 'd3';
 import rgba from 'polished/lib/color/rgba';
@@ -28,7 +25,7 @@ type Props = {
 };
 /* eslint-enable react/no-unused-prop-types */
 
-type State= {
+type State = {
   duration: number,
   theme: Object,
   yScale: number => number,
@@ -42,18 +39,18 @@ class Scatter extends React.Component<Props, State> {
 
   state = {
     /* Base scales for x & y axis */
-    yScale: d3.scaleLinear().range(
-      [
+    yScale: d3
+      .scaleLinear()
+      .range([
         this.props.height - this.props.margin.bottom,
         this.props.margin.top,
-      ]
-    ),
-    xScale: d3.scaleLinear().range(
-      [
+      ]),
+    xScale: d3
+      .scaleLinear()
+      .range([
         this.props.margin.left,
         this.props.width - this.props.margin.right,
-      ]
-    ),
+      ]),
     theme: {},
     duration: 1000,
   };
@@ -68,14 +65,12 @@ class Scatter extends React.Component<Props, State> {
     const xPadding: number = 0;
 
     /* Extract the Min & Max points and inset them into the scales combine with the padding */
-    xScale.domain([
-      0,
-      data ? d3.max(data, d => d.x) + xPadding : 0,
-    ]);
-    yScale.domain(data ? [
-      d3.min(data, d => d.y) - yPadding,
-      d3.max(data, d => d.y) + yPadding,
-    ] : [ 0, 0, ]);
+    xScale.domain([ 0, data ? d3.max(data, d => d.x) + xPadding : 0, ]);
+    yScale.domain(
+      data
+        ? [ d3.min(data, d => d.y) - yPadding, d3.max(data, d => d.y) + yPadding, ]
+        : [ 0, 0, ]
+    );
 
     return {
       yScale,
@@ -84,6 +79,11 @@ class Scatter extends React.Component<Props, State> {
       theme,
     };
   }
+
+  /* Create graph's axis */
+  xAxis = d3.axisTop().scale(this.state.xScale);
+
+  yAxis = d3.axisLeft().scale(this.state.yScale);
 
   componentDidMount() {
     const { data, } = this.props;
@@ -94,18 +94,6 @@ class Scatter extends React.Component<Props, State> {
     if (nextProps.data && nextProps.data !== this.props.data) this.renderGraph(nextProps.data);
     return false;
   }
-
-  midItem: Asset;
-  zeroRef: ElementRef<'line'> | null;
-  circlesRef: ElementRef<'g'> | null;
-  xAxisRef: ElementRef<'g'> | null;
-  yAxisRef: ElementRef<'g'> | null;
-  lineRef: ElementRef<'line'> | null;
-  polyRef: ElementRef<'polygon'> | null;
-
-  /* Create graph's axis */
-  xAxis = d3.axisTop().scale(this.state.xScale);
-  yAxis = d3.axisLeft().scale(this.state.yScale);
 
   /**
    * This function is in charge of giving the indication line a new X position.
@@ -146,17 +134,32 @@ class Scatter extends React.Component<Props, State> {
       .data([ poly, ])
       .attr('fill', theme.color('neutral', '-2'))
       .transition(transition)
-      .attr('points', points => points.map(point => [ point.x, point.y, ].join(',')).join(' '));
+      .attr('points', points => points.map(point => [ point.x, point.y, ].join(',')).join(' ')
+      );
 
     /* Send the hovered asset and send it's data to the parent component. */
     this.props.changeStats(asset);
   };
 
+  circlesRef: ElementRef<"g"> | null;
+
+  lineRef: ElementRef<"line"> | null;
+
+  midItem: Asset;
+
+  polyRef: ElementRef<"polygon"> | null;
+
+  xAxisRef: ElementRef<"g"> | null;
+
+  yAxisRef: ElementRef<"g"> | null;
+
+  zeroRef: ElementRef<"line"> | null;
+
   /**
    * This function responsible for rendering and updating the graph.
    * @param data - An Array of assets to be drawn.
    */
-  renderGraph: Array<Asset> => void = data => {
+  renderGraph: (Array<Asset>) => void = data => {
     const { yScale, xScale, duration, theme, } = this.state;
     const { width, margin, } = this.props;
 
@@ -166,22 +169,23 @@ class Scatter extends React.Component<Props, State> {
     /* Find and save the average item
     (the one who'll be rendered closest to the middle of the X axis). */
     const midWidth: number = width / 2;
-    this.midItem =
-      data.reduce((prev, curr) => {
-        const currX: number = xScale(curr.x);
-        const prevX: number = xScale(prev.x);
-        return (
-          Math.abs(currX - midWidth) < Math.abs(prevX - midWidth) ? curr : prev
-        );
-      });
+    this.midItem = data.reduce((prev, curr) => {
+      const currX: number = xScale(curr.x);
+      const prevX: number = xScale(prev.x);
+      return Math.abs(currX - midWidth) < Math.abs(prevX - midWidth)
+        ? curr
+        : prev;
+    });
 
     /* Set the init circles svg elements, and set the animation's key (its index). */
-    const circles = d3.select(this.circlesRef)
+    const circles = d3
+      .select(this.circlesRef)
       .selectAll('circle')
       .data(data, (d, i) => i);
 
     /* Set the Exit event and animation. */
-    circles.exit()
+    circles
+      .exit()
       .transition(transition)
       .attr('r', 0)
       .remove();
@@ -195,16 +199,19 @@ class Scatter extends React.Component<Props, State> {
       .attr('cy', yScale(0));
 
     /* Merge the Enter event with the Update event and animation. */
-    enter.merge(circles)
+    enter
+      .merge(circles)
       .style('mix-blend-mode', 'hard-light')
       .on('mouseover', d => {
         this.moveLine(d, false);
       })
       .transition(transition)
-      .attr('fill', d => (d.y > 0
-        ? rgba(theme.color('positive', '-2'), 0.8)
-        : rgba(theme.color('negative', '-2'), 0.8)
-      ))
+      .attr(
+        'fill',
+        d => (d.y > 0
+          ? rgba(theme.color('positive', '-2'), 0.8)
+          : rgba(theme.color('negative', '-2'), 0.8))
+      )
       .attr('r', 5)
       .attr('cx', d => xScale(d.x))
       .attr('cy', d => yScale(d.y));
@@ -225,30 +232,32 @@ class Scatter extends React.Component<Props, State> {
     const yAxisRef = d3.select(this.yAxisRef);
 
     /* Remove the default horizontal axis and its ticks. */
-    xAxisRef.call(this.xAxis)
-      .selectAll('.tick line, .domain').remove();
+    xAxisRef
+      .call(this.xAxis)
+      .selectAll('.tick line, .domain')
+      .remove();
 
     /* Remove the default vertical axis. */
-    yAxisRef.call(this.yAxis)
-      .select('.domain').remove();
+    yAxisRef
+      .call(this.yAxis)
+      .select('.domain')
+      .remove();
 
     /* Select all vertical axis ticks. */
     const yAxisLines = yAxisRef.selectAll('.tick line');
 
-    yAxisRef.selectAll('.tick text')
-      .attr('fill', theme.color('neutral', '-3'));
-    xAxisRef.selectAll('.tick text')
-      .attr('fill', theme.color('neutral', '-3'));
+    yAxisRef.selectAll('.tick text').attr('fill', theme.color('neutral', '-3'));
+    xAxisRef.selectAll('.tick text').attr('fill', theme.color('neutral', '-3'));
 
     /* Set the Exit event. */
     yAxisLines.exit().remove();
 
     /* Set the Enter event and the init opacity. */
-    const linesEnter = yAxisLines
-      .attr('opacity', 0);
+    const linesEnter = yAxisLines.attr('opacity', 0);
 
     /* Merge the Enter event with the Update event and animation. */
-    linesEnter.merge(linesEnter)
+    linesEnter
+      .merge(linesEnter)
       .attr('stroke', '#777')
       .attr('stroke-width', 0.5)
       .attr('x1', 0)
@@ -271,12 +280,16 @@ class Scatter extends React.Component<Props, State> {
           >
             <g>
               <line
-                ref={zeroRef => { this.zeroRef = zeroRef; }}
+                ref={zeroRef => {
+                  this.zeroRef = zeroRef;
+                }}
               />
             </g>
             <g
               // eslint-disable-next-line no-return-assign
-              ref={circlesRef => { this.circlesRef = circlesRef; }}
+              ref={circlesRef => {
+                this.circlesRef = circlesRef;
+              }}
             />
             <FelaComponent
               style={{
@@ -287,12 +300,16 @@ class Scatter extends React.Component<Props, State> {
                 <Fragment>
                   <g
                     className={className}
-                    ref={xAxisRef => { this.xAxisRef = xAxisRef; }}
+                    ref={xAxisRef => {
+                      this.xAxisRef = xAxisRef;
+                    }}
                     transform={`translate(0, ${margin.top})`}
                   />
                   <g
                     className={className}
-                    ref={yAxisRef => { this.yAxisRef = yAxisRef; }}
+                    ref={yAxisRef => {
+                      this.yAxisRef = yAxisRef;
+                    }}
                     transform={`translate(${margin.left}, 0)`}
                   />
                 </Fragment>
@@ -300,10 +317,14 @@ class Scatter extends React.Component<Props, State> {
             />
             <g>
               <line
-                ref={lineRef => { this.lineRef = lineRef; }}
+                ref={lineRef => {
+                  this.lineRef = lineRef;
+                }}
               />
               <polygon
-                ref={polyRef => { this.polyRef = polyRef; }}
+                ref={polyRef => {
+                  this.polyRef = polyRef;
+                }}
               />
             </g>
           </svg>

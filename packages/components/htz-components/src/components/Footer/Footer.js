@@ -112,6 +112,7 @@ class Footer extends React.Component {
   static propTypes = {
     contentId: PropTypes.string.isRequired,
   };
+
   state = {
     expanded: false,
   };
@@ -146,7 +147,7 @@ class Footer extends React.Component {
                     if (prev && prev.combineWithNextColumn) {
                       r[r.length - 1].push(e);
                     }
- else r.push([ e, ]);
+                    else r.push([ e, ]);
                     return r;
                   }, []);
                   return (

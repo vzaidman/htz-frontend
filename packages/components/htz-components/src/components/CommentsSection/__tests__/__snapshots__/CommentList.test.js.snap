@@ -39,7 +39,7 @@ exports[`<Comment> DOM element renders correctly with required props 1`] = `
             <span
               className="htz-bd htz-ao"
             >
-              | 
+              |
               בחירת העורכים
             </span>
           </div>

@@ -85,8 +85,8 @@ export function getTransitionString(prop, duration, easing, delay) {
     transitionTimingFunction,
   } = getProps('transition', duration, easing, delay);
 
-  return `${prop} ${transitionDuration || ''} ${transitionTimingFunction ||
-    ''} ${transitionDelay || ''}`;
+  return `${prop} ${transitionDuration || ''} ${transitionTimingFunction
+    || ''} ${transitionDelay || ''}`;
 }
 
 export function getDuration(type, duration) {
@@ -111,9 +111,9 @@ export function getTimingFunction(type, easing) {
 
 function getProps(type, duration, easing, delay) {
   if (
-    typeof duration === 'undefined' &&
-    typeof delay === 'undefined' &&
-    !easing
+    typeof duration === 'undefined'
+    && typeof delay === 'undefined'
+    && !easing
   ) {
     throw new Error('You must pass at least one of the arguments');
   }

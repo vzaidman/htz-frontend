@@ -101,9 +101,9 @@ const decimalPlaces = num => {
   return Math.max(
     0,
     // Number of digits right of decimal point.
-    (match[1] ? match[1].length : 0) -
+    (match[1] ? match[1].length : 0)
       // Adjust for scientific notation.
-      (match[2] ? +match[2] : 0)
+      - (match[2] ? +match[2] : 0)
   );
 };
 
@@ -135,19 +135,22 @@ function PaymentSummary({
           </StyledPhonesCont>
           <StyledDetailsCont>
             <StyledDetailsHeader>
-              {chosenSubscriptionText[chosenSubscription]}{' '}
+              {chosenSubscriptionText[chosenSubscription]}
+              {' '}
               {chosenPaymentArrangementText[chosenPaymentArrangement]}
             </StyledDetailsHeader>
             <StyledDetailsPayments>
               <StyledPaymentText isFirst>
-                {firstPaymentText}{' '}
+                {firstPaymentText}
+                {' '}
                 <StyledPaymentAmount>
                   {firstPaymentAmount}
                   {decimalPlaces(firstPaymentAmount) === 1 && '0'}
                 </StyledPaymentAmount>
               </StyledPaymentText>
               <StyledPaymentText>
-                {nextPaymentText}{' '}
+                {nextPaymentText}
+                {' '}
                 <StyledPaymentAmount>
                   {nextPaymentAmount}
                   {decimalPlaces(nextPaymentAmount) === 1 && '0'}

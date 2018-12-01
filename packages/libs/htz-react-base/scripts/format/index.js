@@ -23,10 +23,9 @@ const args = process.argv.slice(2);
 // All arguments go to Prettier except for `--no-fix-lint`.
 const fixLint = !args.includes('--no-fix-lint');
 const bail = !args.includes('--no-bail');
-const nonScriptArgs =
-  fixLint && bail
-    ? args
-    : args.filter(arg => ![ '--no-fix-lint', '--no-bail', ].includes(arg));
+const nonScriptArgs = fixLint && bail
+  ? args
+  : args.filter(arg => ![ '--no-fix-lint', '--no-bail', ].includes(arg));
 
 const hasFileList = nonScriptArgs.includes('--files');
 const fileListStartPosition = nonScriptArgs.indexOf(

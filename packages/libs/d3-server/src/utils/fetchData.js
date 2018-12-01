@@ -56,25 +56,22 @@ const prepareBody = (type, time, assetId, fragment) => (type
   }));
 
 export default ({ type = null, time = null, assetId, fragment, }) => (type
-  ? new Promise((resolve, reject) =>
-    fetch('https://graphql.haaretz.co.il/', {
-      method: 'POST',
-      body: JSON.stringify(prepareBody(type, time, assetId, fragment)),
-      headers: { 'Content-Type': 'application/json', },
-    })
-      .then(res => res.json())
-      .then(json => resolve(json))
-      .catch(err => reject(err))
+  ? new Promise((resolve, reject) => fetch('https://graphql.haaretz.co.il/', {
+    method: 'POST',
+    body: JSON.stringify(prepareBody(type, time, assetId, fragment)),
+    headers: { 'Content-Type': 'application/json', },
+  })
+    .then(res => res.json())
+    .then(json => resolve(json))
+    .catch(err => reject(err))
   )
-  : new Promise((resolve, reject) =>
-    fetch('https://graphql.haaretz.co.il/', {
-      method: 'POST',
-      body: JSON.stringify(prepareBody(null, time, assetId, fragment)),
-      headers: { 'Content-Type': 'application/json', },
-    })
-      .then(res => res.json())
-      .then(json => resolve(json))
-      .catch(err => reject(err)),
+  : new Promise((resolve, reject) => fetch('https://graphql.haaretz.co.il/', {
+    method: 'POST',
+    body: JSON.stringify(prepareBody(null, time, assetId, fragment)),
+    headers: { 'Content-Type': 'application/json', },
+  })
+    .then(res => res.json())
+    .then(json => resolve(json))
+    .catch(err => reject(err)),
   )
 );
-

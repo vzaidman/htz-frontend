@@ -36,17 +36,17 @@ const getPath = gql`
 
 const DfpConfProvider = props => (
   <NoSSR>
-    <Query query={getPath} >
+    <Query query={getPath}>
       {({ data, loading, error, }) => {
-          if (error) {
-            console.log('[DfpConfProvider] error %o', error);
-          }
-          if (loading || error) {
-            return null;
-          }
-          return (
-            <Query query={getDfpConfigQuery} variables={{ path: `/${data.articleId}`, }}>
-              {
+        if (error) {
+          console.log('[DfpConfProvider] error %o', error);
+        }
+        if (loading || error) {
+          return null;
+        }
+        return (
+          <Query query={getDfpConfigQuery} variables={{ path: `/${data.articleId}`, }}>
+            {
                 ({ data, loading, error, }) => {
                   if (error) {
                     console.warn('[DfpConfProvider] error %o', error);
@@ -56,9 +56,9 @@ const DfpConfProvider = props => (
                     : props.children(data.page);
                 }
               }
-            </Query>
-          );
-        }
+          </Query>
+        );
+      }
       }
     </Query>
   </NoSSR>

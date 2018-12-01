@@ -47,19 +47,18 @@ const ArticlePageLayout = ({
   articleId,
   children,
 }) => {
-  const getElements = slot =>
-    slot.map(element => {
-      const Element = getComponent(element.inputTemplate);
-      const { properties, ...elementWithoutProperties } = element;
-      return (
-        <Element
-          key={element.contentId}
-          articleId={articleId}
-          {...elementWithoutProperties}
-          {...properties}
-        />
-      );
-    });
+  const getElements = slot => slot.map(element => {
+    const Element = getComponent(element.inputTemplate);
+    const { properties, ...elementWithoutProperties } = element;
+    return (
+      <Element
+        key={element.contentId}
+        articleId={articleId}
+        {...elementWithoutProperties}
+        {...properties}
+      />
+    );
+  });
 
   return (
     <Fragment>
@@ -79,7 +78,13 @@ const ArticlePageLayout = ({
           {getElements(postMain)}
         </LayoutRow>
       ) : null}
-      {footer ? <LayoutRow> {getElements(footer)} </LayoutRow> : null}
+      {footer ? (
+        <LayoutRow>
+          {' '}
+          {getElements(footer)}
+          {' '}
+        </LayoutRow>
+      ) : null}
       <Query query={ArticleBIQuery} variables={{ path: articleId, }} ssr={false}>
         {({ loading, error, data, client, }) => {
           if (loading) return null;

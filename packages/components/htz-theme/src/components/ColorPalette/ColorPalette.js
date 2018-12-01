@@ -41,17 +41,30 @@ ColorSwatch.propTypes = {
 function ColorSwatch({ groupName, swatchName, colorName, colorValue, }) {
   const isBase = swatchName === 'base';
   const exampleCode = !groupName ? (
-    <code>theme.color(&apos;{colorName}&apos;)</code>
+    <code>
+theme.color(&apos;
+      {colorName}
+&apos;)
+    </code>
   ) : swatchName === 'base' ? (
     <code>
-      theme.color(&apos;{colorName}&apos;
+      theme.color(&apos;
+      {colorName}
+&apos;
       <span style={{ color: getColor('neutral', '-4'), }}>
-        [, &apos;{swatchName}&apos;]
-      </span>)
+        [, &apos;
+        {swatchName}
+&apos;]
+      </span>
+)
     </code>
   ) : (
     <code>
-      theme.color(&apos;{colorName}&apos;, &apos;{swatchName}&apos;)
+      theme.color(&apos;
+      {colorName}
+&apos;, &apos;
+      {swatchName}
+&apos;)
     </code>
   );
 

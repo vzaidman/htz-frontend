@@ -118,7 +118,10 @@ export function Slot({ name, content, styles, pageContentId, }) {
   // Placeholder output, useful for debugging.
   return (
     <div className={styles.container}>
-      <H>Slot: {name}</H>
+      <H>
+Slot:
+        {name}
+      </H>
       {content.map((element, i) => mapper(element, i))}
     </div>
   );

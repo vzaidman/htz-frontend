@@ -14,8 +14,7 @@ const tableMap: Object = new Map([
     ],
     args && args.count && !(args.offset && args.count !== args.offset)
       ? args.count
-      : number.int({ max: 20, min: 3, })
-    ,
+      : number.int({ max: 20, min: 3, }),
     args,
   ), ],
 ]);

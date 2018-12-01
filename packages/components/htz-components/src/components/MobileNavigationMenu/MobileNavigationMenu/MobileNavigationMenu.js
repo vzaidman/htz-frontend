@@ -116,9 +116,7 @@ class MobileNavigationMenu extends React.Component {
   };
 
   toggleSearchState = () => {
-    this.setState({
-      searchIsOpen: !this.state.searchIsOpen,
-    });
+    this.setState(prevState => ({ searchIsOpen: !prevState.searchIsOpen, }));
   };
 
   render() {
@@ -134,6 +132,7 @@ class MobileNavigationMenu extends React.Component {
               menuIsOpen={menuIsOpen}
               render={({ theme, className, }) => (
                 <button
+                  type="button"
                   className={className}
                   onClick={e => {
                     e.stopPropagation();

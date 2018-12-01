@@ -16,10 +16,9 @@ function withTimeout(
   timeout = 8000,
   msgOnTimeout = 'לא הצלחנו לקבל תשובה מהשרת, אנא נסו שוב'
 ) {
-  const timer = new Promise((resolve, reject) =>
-    setTimeout(() => {
-      reject(new Error(msgOnTimeout));
-    }, timeout)
+  const timer = new Promise((resolve, reject) => setTimeout(() => {
+    reject(new Error(msgOnTimeout));
+  }, timeout)
   );
   return Promise.race([ promise, timer, ]);
 }
@@ -53,19 +52,16 @@ export default function UserService(config = {}) {
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/isuser?email=${email}`;
 
-    const checkEmailPromise = new Promise((resolve, reject) =>
-      fetch(serviceUrl).then(data =>
-        data
-          .json()
-          .then(json => {
-            return resolve(json.success);
-            // return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
-          })
-          .catch(err => {
-            console.log('error from check email', err);
-            return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
-          })
+    const checkEmailPromise = new Promise((resolve, reject) => fetch(serviceUrl).then(data => data
+      .json()
+      .then(json => resolve(json.success)
+        // return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
       )
+      .catch(err => {
+        console.log('error from check email', err);
+        return reject(new Error('בדיקת דוא"ל נכשלה, נא לנסות שנית'));
+      })
+    )
     );
 
     return withTimeout(checkEmailPromise, defaultTimeout);
@@ -91,36 +87,33 @@ export default function UserService(config = {}) {
     }
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/loginUrlEncoded`;
-    const params =
-      'newsso=true' +
-      '&fromlogin=true' +
-      '&layer=login' +
-      `&site=${siteConfig.siteId}` +
-      `&userName=${username}` +
-      `&anonymousId=${anonymousId}` +
-      `&password=${password}` +
-      '&termsChk=on';
+    const params = 'newsso=true'
+      + '&fromlogin=true'
+      + '&layer=login'
+      + `&site=${siteConfig.siteId}`
+      + `&userName=${username}`
+      + `&anonymousId=${anonymousId}`
+      + `&password=${password}`
+      + '&termsChk=on';
 
-    const loginPromise = new Promise((resolve, reject) =>
-      fetch(serviceUrl, {
-        method: 'POST',
-        body: params,
-        headers: new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }),
-      })
-        .then(parseResponse)
-        .then(loginData =>
-          handleSsoResponse(loginData).then(
-            () => {
-              if (onImageLoadCallback) {
-                onImageLoadCallback();
-              }
-              resolve();
-            },
-            reason => reject(reason)
-          )
-        )
+    const loginPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
+      method: 'POST',
+      body: params,
+      headers: new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    })
+      .then(parseResponse)
+      .then(loginData => handleSsoResponse(loginData).then(
+        () => {
+          if (onImageLoadCallback) {
+            onImageLoadCallback();
+          }
+          resolve();
+        },
+        reason => reject(reason)
+      )
+      )
     );
     return withTimeout(loginPromise, defaultTimeout);
   }
@@ -137,26 +130,24 @@ export default function UserService(config = {}) {
     const params = `mobile=true&userId=${builtUser.id}&anonymousId=${
       builtUser.anonymousId
     }`;
-    const logoutPromise = new Promise((resolve, reject) =>
-      fetch(serviceUrl, {
-        method: 'POST',
-        body: params,
-        headers: new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }),
-      })
-        .then(parseResponse)
-        .then(logoutData =>
-          handleSsoResponse(logoutData).then(
-            () => {
-              if (onImageLoadCallback) {
-                onImageLoadCallback();
-                resolve();
-              }
-            },
-            reason => reject(reason)
-          )
-        )
+    const logoutPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
+      method: 'POST',
+      body: params,
+      headers: new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    })
+      .then(parseResponse)
+      .then(logoutData => handleSsoResponse(logoutData).then(
+        () => {
+          if (onImageLoadCallback) {
+            onImageLoadCallback();
+            resolve();
+          }
+        },
+        reason => reject(reason)
+      )
+      )
     );
     return withTimeout(logoutPromise, defaultTimeout);
   }
@@ -191,40 +182,37 @@ export default function UserService(config = {}) {
   }) {
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/registerUrlEncoded`;
-    const params =
-      'newsso=true' +
-      '&layer=createuser' +
-      `&site=${siteConfig.siteId}` +
-      `&userName=${email}` +
-      `&password=${password}` +
-      `&confirmPassword=${confirmPassword}` +
-      `&firstName=${firstName}` +
-      `&lastName=${lastName}` +
-      `&mobilePrefix=${mobilePrefix}` +
-      `&mobileNumber=${mobileNumber}` +
-      `&termsChk=${termsChk ? 'on' : 'off'}` +
-      `&g-recaptcha-response=${gRecaptchaResponse}`;
+    const params = 'newsso=true'
+      + '&layer=createuser'
+      + `&site=${siteConfig.siteId}`
+      + `&userName=${email}`
+      + `&password=${password}`
+      + `&confirmPassword=${confirmPassword}`
+      + `&firstName=${firstName}`
+      + `&lastName=${lastName}`
+      + `&mobilePrefix=${mobilePrefix}`
+      + `&mobileNumber=${mobileNumber}`
+      + `&termsChk=${termsChk ? 'on' : 'off'}`
+      + `&g-recaptcha-response=${gRecaptchaResponse}`;
 
-    const registerPromise = new Promise((resolve, reject) =>
-      fetch(serviceUrl, {
-        method: 'POST',
-        body: params,
-        headers: new Headers({
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }),
-      })
-        .then(parseResponse)
-        .then(registerData =>
-          handleSsoResponse(registerData).then(
-            () => {
-              if (onImageLoadCallback) {
-                onImageLoadCallback();
-                resolve();
-              }
-            },
-            reason => reject(reason)
-          )
-        )
+    const registerPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
+      method: 'POST',
+      body: params,
+      headers: new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    })
+      .then(parseResponse)
+      .then(registerData => handleSsoResponse(registerData).then(
+        () => {
+          if (onImageLoadCallback) {
+            onImageLoadCallback();
+            resolve();
+          }
+        },
+        reason => reject(reason)
+      )
+      )
     );
     return withTimeout(registerPromise, defaultTimeout);
   }
@@ -237,26 +225,25 @@ export default function UserService(config = {}) {
    */
   function parseResponse(response) {
     return response.text().then(
-      responseText =>
-        new Promise(resolve => {
-          let tokens = responseText.substring(
-            responseText.indexOf('(') + 2,
-            responseText.length - 2
-          ); // remove (' and ')
-          tokens = tokens.split("','");
+      responseText => new Promise(resolve => {
+        let tokens = responseText.substring(
+          responseText.indexOf('(') + 2,
+          responseText.length - 2
+        ); // remove (' and ')
+        tokens = tokens.split("','");
 
-          const status = tokens[0];
-          let data = null;
-          if (status === 'success') {
-            data = JSON.parse(tokens[1]);
-          }
-          const message = tokens[2];
-          resolve({
-            status,
-            data,
-            message,
-          });
-        })
+        const status = tokens[0];
+        let data = null;
+        if (status === 'success') {
+          data = JSON.parse(tokens[1]);
+        }
+        const message = tokens[2];
+        resolve({
+          status,
+          data,
+          message,
+        });
+      })
     );
   }
 

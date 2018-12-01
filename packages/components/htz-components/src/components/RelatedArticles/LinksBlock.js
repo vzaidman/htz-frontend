@@ -102,18 +102,16 @@ function LinksBlock({ seriesTitle, articles, miscStyles, }) {
         <div className={className}>
           <SeriesTitle>{titlePrefix + seriesTitle}</SeriesTitle>
           <Query query={GET_ARTICLE_ID}>
-            {({ data: { articleId, }, }) =>
-              articles.map(
-                (article, i) =>
-                  (articleId !== article.contentId ? (
-                    <ArticleWrapper
-                      key={i} // eslint-disable-line react/no-array-index-key
-                      lastItem={i === articles.length - 1}
-                    >
-                      <ArticleLink article={article} isBlock />
-                    </ArticleWrapper>
-                  ) : null)
-              )
+            {({ data: { articleId, }, }) => articles.map(
+              (article, i) => (articleId !== article.contentId ? (
+                <ArticleWrapper
+                  key={i} // eslint-disable-line react/no-array-index-key
+                  lastItem={i === articles.length - 1}
+                >
+                  <ArticleLink article={article} isBlock />
+                </ArticleWrapper>
+              ) : null)
+            )
             }
           </Query>
         </div>

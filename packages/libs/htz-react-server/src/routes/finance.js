@@ -8,8 +8,7 @@ export default function finance(app, server) {
       'Content-Type': 'text/plain;charset=UTF-8',
     },
   };
-  server.get('/robots.txt', (req, res) =>
-    res.status(200).sendFile('robots.txt', options)
+  server.get('/robots.txt', (req, res) => res.status(200).sendFile('robots.txt', options)
   );
 
   /* Home Page */

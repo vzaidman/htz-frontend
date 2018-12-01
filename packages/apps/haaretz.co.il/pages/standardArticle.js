@@ -21,15 +21,11 @@ function StandardArticlePage({ url, }) {
   return (
     <ArticleLayout
       url={url}
-      render={({ articleId, slots, pageType, }) =>
-        // the following redirect is for legacy cases where
-        // we dont have a correct prefix according to article type.
-        // in such a case we will redirect on  the client to the correct pageType
-        (pageType !== 'regularArticle' ? (
-          <LegacyPrefixRedirect pageType={pageType} />
-        ) : (
-          <StandardArticle articleId={articleId} slots={slots} />
-        ))
+      render={({ articleId, slots, pageType, }) => (pageType !== 'regularArticle' ? (
+        <LegacyPrefixRedirect pageType={pageType} />
+      ) : (
+        <StandardArticle articleId={articleId} slots={slots} />
+      ))
       }
     />
   );

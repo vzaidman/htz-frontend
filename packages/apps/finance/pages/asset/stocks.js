@@ -60,7 +60,7 @@ type Props = {
 
 function stocks({ url: { query: { assetId, section, }, }, }: Props): Node {
   return (
-    <MainLayout section={section} assetId={assetId} >
+    <MainLayout section={section} assetId={assetId}>
       <Query
         query={StockQuery}
         variables={{ assetId, }}

@@ -7,8 +7,7 @@ describe('<Media /> on server', () => {
   it('does not match on the server by default', () => {
     const { component, } = felaSnapshotter(
       <Media query={{ from: 'l', }}>
-        {matches =>
-          (matches ? <p>matched on server</p> : <p>did not match on server</p>)
+        {matches => (matches ? <p>matched on server</p> : <p>did not match on server</p>)
         }
       </Media>
     );
@@ -18,8 +17,7 @@ describe('<Media /> on server', () => {
   it('match on the server when "matchOnServer" is true', () => {
     const { component, } = felaSnapshotter(
       <Media query={{ from: 'l', }} matchOnServer>
-        {matches =>
-          (matches ? <p>matched on server</p> : <p>did not match on server</p>)
+        {matches => (matches ? <p>matched on server</p> : <p>did not match on server</p>)
         }
       </Media>
     );

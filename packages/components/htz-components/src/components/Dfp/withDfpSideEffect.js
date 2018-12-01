@@ -1,5 +1,5 @@
 import React from 'react';
-import NoSSR from './../NoSSR/NoSSR';
+import NoSSR from '../NoSSR/NoSSR';
 
 const tryExecSideEffect = (sideEffect, data) => {
   try {
@@ -11,8 +11,7 @@ const tryExecSideEffect = (sideEffect, data) => {
   return null;
 };
 
-const ExecSideEffect = ({ sideEffect, data, }) =>
-  tryExecSideEffect(sideEffect, data);
+const ExecSideEffect = ({ sideEffect, data, }) => tryExecSideEffect(sideEffect, data);
 
 const withDfpSideEffect = (Component, { sideEffect, }) => props => (
   <React.Fragment>

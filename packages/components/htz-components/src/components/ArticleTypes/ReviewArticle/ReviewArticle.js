@@ -45,23 +45,22 @@ function ReviewArticle({ articleId, slots, }) {
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
-                contentId,
-                { ...imgArray[0], aspects, },
-                {
-                  width: '1200',
-                  aspect: 'full',
-                  quality: 'auto',
-                }
-              )
+              contentId,
+              { ...imgArray[0], aspects, },
+              {
+                width: '1200',
+                aspect: 'full',
+                quality: 'auto',
+              }
+            )
             : '';
 
           const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
 
           const reviewArticleElement = article.find(
             // todo: change to review inputTemplate after updating papi
-            element =>
-              element.inputTemplate === 'com.htz.StandardArticle' ||
-              element.inputTemplate === 'com.tm.StandardArticle'
+            element => element.inputTemplate === 'com.htz.StandardArticle'
+              || element.inputTemplate === 'com.tm.StandardArticle'
           );
 
           const {
@@ -110,17 +109,17 @@ function ReviewArticle({ articleId, slots, }) {
                     >
                       {article.map(element => {
                         if (
-                          element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
-                          element.inputTemplate === 'com.tm.PageTitle' ||
-                          element.inputTemplate === 'com.tm.element.List'
+                          element.inputTemplate === 'com.htz.ArticleHeaderElement'
+                          || element.inputTemplate === 'com.tm.PageTitle'
+                          || element.inputTemplate === 'com.tm.element.List'
                         ) {
                           return null;
                         }
                         if (
                           // todo: change to review input template
-                          element.inputTemplate === 'com.htz.StandardArticle' ||
-                          element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-                          element.inputTemplate === 'com.tm.StandardArticle'
+                          element.inputTemplate === 'com.htz.StandardArticle'
+                          || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
+                          || element.inputTemplate === 'com.tm.StandardArticle'
                         ) {
                           return (
                             <ApolloConsumer key={element.contentId}>
@@ -135,7 +134,7 @@ function ReviewArticle({ articleId, slots, }) {
                                   <ArticleLayoutRow
                                     isArticleBody
                                     hideMargineliaComponentUnderLBp={false}
-                                    margineliaComponent={
+                                    margineliaComponent={(
                                       <Fragment>
                                         {authors ? (
                                           <ArticleHeaderMeta
@@ -168,7 +167,7 @@ function ReviewArticle({ articleId, slots, }) {
                                           }}
                                         />
                                       </Fragment>
-                                    }
+)}
                                   >
                                     <ArticleBody body={body} />
                                   </ArticleLayoutRow>
@@ -180,21 +179,21 @@ function ReviewArticle({ articleId, slots, }) {
                         const Element = getComponent(element.inputTemplate);
                         const { properties, ...elementWithoutProperties } = element;
                         if (
-                          element.inputTemplate === 'com.polobase.OutbrainElement' ||
-                          element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                          element.inputTemplate === 'com.polobase.OutbrainElement'
+                          || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                         ) {
                           return (
                             <WideArticleLayoutRow
                               key={element.contentId}
                               hideDivider
-                              {...(element.inputTemplate ===
-                              'com.polobase.ClickTrackerBannersWrapper'
+                              {...(element.inputTemplate
+                              === 'com.polobase.ClickTrackerBannersWrapper'
                                 ? {
-                                    hideDivider: true,
-                                    miscStyles: {
-                                      display: [ { until: 's', value: 'none', }, ],
-                                    },
-                                  }
+                                  hideDivider: true,
+                                  miscStyles: {
+                                    display: [ { until: 's', value: 'none', }, ],
+                                  },
+                                }
                                 : {})}
                             >
                               <Element
@@ -210,9 +209,9 @@ function ReviewArticle({ articleId, slots, }) {
                             key={element.contentId}
                             {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                               ? {
-                                  title: theme.articleLayoutI18n.commentSectionTitle,
-                                  id: 'commentsSection',
-                                }
+                                title: theme.articleLayoutI18n.commentSectionTitle,
+                                id: 'commentsSection',
+                              }
                               : {})}
                           >
                             <Element

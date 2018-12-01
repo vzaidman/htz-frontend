@@ -54,6 +54,7 @@ class ResetPasswordModal extends Component {
     email: null,
     offerDisclaimer: null,
   };
+
   state = {
     resetEmailSent: false,
     message: null,
@@ -137,85 +138,84 @@ class ResetPasswordModal extends Component {
                 ) : (
                   <FelaComponent style={{ textAlign: 'center', }}>
                     <ApolloConsumer>
-                      {client =>
-                        (this.props.isVisible ? (
-                          <Form
-                            clearFormAfterSubmit={false}
-                            initialValues={{ resetEmail: this.props.email, }}
-                            onSubmit={async ({ resetEmail, }) => {
-                              this.setState({ loading: true, });
-                              const {
-                                data: { resetPassword: { status, message, }, },
-                              } = await client.query({
-                                query: RESET_PASSWORD,
-                                variables: { userName: resetEmail, },
+                      {client => (this.props.isVisible ? (
+                        <Form
+                          clearFormAfterSubmit={false}
+                          initialValues={{ resetEmail: this.props.email, }}
+                          onSubmit={async ({ resetEmail, }) => {
+                            this.setState({ loading: true, });
+                            const {
+                              data: { resetPassword: { status, message, }, },
+                            } = await client.query({
+                              query: RESET_PASSWORD,
+                              variables: { userName: resetEmail, },
+                            });
+                            this.setState({
+                              resetEmailSent: status === 'success',
+                              message,
+                              loading: false,
+                            });
+                          }}
+                          validate={({ resetEmail = '', }) => {
+                            const errors = [];
+                            if (!isEmail(resetEmail)) {
+                              errors.push({
+                                name: 'resetEmail',
+                                order: 1,
+                                errorText: form.email.errorText,
                               });
-                              this.setState({
-                                resetEmailSent: status === 'success',
-                                message,
-                                loading: false,
-                              });
-                            }}
-                            validate={({ resetEmail = '', }) => {
-                              const errors = [];
-                              if (!isEmail(resetEmail)) {
-                                errors.push({
-                                  name: 'resetEmail',
-                                  order: 1,
-                                  errorText: form.email.errorText,
-                                });
-                              }
+                            }
 
-                              return errors;
-                            }}
-                            render={({ getInputProps, handleSubmit, }) => (
-                              <Fragment>
-                                <FelaComponent
-                                  style={{ textAlign: 'inline-start', }}
-                                >
-                                  <TextInput
-                                    {...getInputProps({
-                                      variant: 'primary',
-                                      name: 'resetEmail',
-                                      label: form.email.label,
-                                      type: 'email',
-                                      noteText: form.email.noteText,
-                                      errorText: this.state.message,
-                                      isError: !!this.state.message,
-                                      onChange: () => {
-                                        this.setState({ message: null, });
-                                      },
-                                    })}
-                                  />
-                                </FelaComponent>
-                                <BIAction>
-                                  {action => (
-                                    <Button
-                                      variant="primaryOpaque"
-                                      miscStyles={buttonStyle}
-                                      attrs={{
-                                        'aria-described':
+                            return errors;
+                          }}
+                          render={({ getInputProps, handleSubmit, }) => (
+                            <Fragment>
+                              <FelaComponent
+                                style={{ textAlign: 'inline-start', }}
+                              >
+                                <TextInput
+                                  {...getInputProps({
+                                    variant: 'primary',
+                                    name: 'resetEmail',
+                                    label: form.email.label,
+                                    type: 'email',
+                                    noteText: form.email.noteText,
+                                    errorText: this.state.message,
+                                    isError: !!this.state.message,
+                                    onChange: () => {
+                                      this.setState({ message: null, });
+                                    },
+                                  })}
+                                />
+                              </FelaComponent>
+                              <BIAction>
+                                {action => (
+                                  <Button
+                                    variant="primaryOpaque"
+                                    miscStyles={buttonStyle}
+                                    attrs={{
+                                      'aria-described':
                                           'forgetPasswordDescription',
-                                      }}
-                                      onClick={evt => {
-                                        handleSubmit(evt);
-                                        action({
-                                          actionCode: 34,
-                                          additionalInfo: {
-                                            stage: 'login-register',
-                                          },
-                                        });
-                                      }}
-                                      isBusy={this.state.loading}
-                                    >
-                                      {resetPasswordButton}
-                                    </Button>
-                                  )}
-                                </BIAction>
-                              </Fragment>
-                            )}
-                          />
-                        ) : null)
+                                    }}
+                                    onClick={evt => {
+                                      handleSubmit(evt);
+                                      action({
+                                        actionCode: 34,
+                                        additionalInfo: {
+                                          stage: 'login-register',
+                                        },
+                                      });
+                                    }}
+                                    isBusy={this.state.loading}
+                                  >
+                                    {resetPasswordButton}
+                                  </Button>
+                                )}
+                              </BIAction>
+                            </Fragment>
+                          )}
+                        />
+                      ) : null)
                       }
                     </ApolloConsumer>
                   </FelaComponent>

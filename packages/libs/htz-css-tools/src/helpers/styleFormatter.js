@@ -9,7 +9,7 @@
  * @type {Object}
  */
 // eslint-disable-next-line no-use-before-define
-export type CSSDecleration = { [prop: string]: StyleValue };
+export type CSSDecleration = { [prop: string]: StyleValue, };
 
 /**
  * A CSS value.

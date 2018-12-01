@@ -35,7 +35,7 @@ function indices({ url: { query: { section, }, }, }: Props): Node {
                 assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
                 miscStyles={{ marginTop: '2rem', tableLayout: 'auto', }}
                 type="indices"
-                fragment={`
+                fragment="
                   name
                   value
                   changePercentage
@@ -44,7 +44,7 @@ function indices({ url: { query: { section, }, }, }: Props): Node {
                   quarterlyYield
                   yearlyYield
                   threeYearsYield
-                `}
+                "
                 fields={[
                   {
                     name: 'name',

@@ -9,9 +9,8 @@ import BlockLink from '../../../BlockLink/BlockLink';
 import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
 import Image from '../../../Image/Image';
-import HtzLink from '../../../HtzLink/HtzLink';
 
-// eslint-disable-next-line react/prop-types
+/* eslint-disable react/prop-types */
 export const PromotedItem = ({
   path,
   title,
@@ -20,6 +19,7 @@ export const PromotedItem = ({
   paragraphHeight,
   textType = -1,
 }) => (
+  /* eslint-enable react/prop-types */
   <FelaTheme
     render={theme => (
       <Fragment>
@@ -50,16 +50,9 @@ export const PromotedItem = ({
               marginTop: '1rem',
               maxHeight: '12rem',
               overflow: 'hidden',
-              extend: [
-                theme.type(textType),
-                paragraphHeight || {},
-                ],
-              }}
-            render={({ className, }) => (
-              <H className={className}>
-                {title}
-              </H>
-            )}
+              extend: [ theme.type(textType), paragraphHeight || {}, ],
+            }}
+            render={({ className, }) => <H className={className}>{title}</H>}
           />
           {suffix ? (
             <FelaComponent

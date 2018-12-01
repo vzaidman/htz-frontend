@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
@@ -22,19 +23,21 @@ export default class AuthorNotificationsRegistration extends React.Component {
   }
 
   onRegistrationSuccess(data) {
-    this.setState({
-      showDialog: true,
-      registrationSuccess: true,
-    }, () => {
-      this.props.biAction({
+    this.setState(
+      {
+        showDialog: true,
+        registrationSuccess: true,
+      },
+      () => {
+        this.props.biAction({
           actionCode: 93,
           additionalInfo: {
             writer_id: this.props.author.contentId,
             platform: this.props.platform,
           },
-        })
+        });
       }
-    )
+    );
   }
 
   onRegistrationError(data) {

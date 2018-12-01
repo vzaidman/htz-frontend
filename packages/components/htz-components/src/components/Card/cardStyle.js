@@ -6,17 +6,21 @@ import type {
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import setColor from '../../utils/setColor';
 
+type BackgroundColorType =
+  | ?string
+  | [string, ]
+  | [string, string, ]
+  | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
+
+type FillHeightType = boolean | ComponentPropResponsiveObject<boolean>[];
+
 export type cardStyleOptions = {
   /** A Fela theme object */
   theme: Object,
-  backgroundColor:
-    | ?string
-    | [string]
-    | [string, string]
-    | ComponentPropResponsiveObject<string | [string] | [string, string]>[],
+  backgroundColor: BackgroundColorType,
   isElevated: ?true,
-  fillHeight: ?boolean | ComponentPropResponsiveObject<boolean>[],
-  miscStyles: ?StyleProps
+  fillHeight: ?FillHeightType,
+  miscStyles: ?StyleProps,
 };
 
 export default function cardStyleRule({
@@ -41,7 +45,8 @@ export default function cardStyleRule({
     overflow: 'hidden',
     extend: [
       // Set background-color
-      parseComponentProp(
+      // eslint-disable-next-line space-infix-ops, no-mixed-operators
+      parseComponentProp<BackgroundColorType>(
         'backgroundColor',
         backgroundColor || cardStyle.cardBackgroundColor,
         theme.mq,
@@ -51,7 +56,7 @@ export default function cardStyleRule({
       // fill height of parent
       ...[
         fillHeight
-          ? parseComponentProp(
+          ? parseComponentProp<FillHeightType>( // eslint-disable-line space-infix-ops, no-mixed-operators
             'fillHeight',
             fillHeight,
             theme.mq,

@@ -6,10 +6,9 @@ import embedded from 'fela-plugin-embedded';
 import extend from 'fela-plugin-extend';
 import fallbackValue from 'fela-plugin-fallback-value';
 import lvha from 'fela-plugin-lvha';
-import prefix from 'inline-style-prefixer/static';
+import { prefix, } from 'inline-style-prefixer';
 import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import unit from 'fela-plugin-unit';
-import removeUndefined from 'fela-plugin-remove-undefined'; // Only used in prod
 // Plugins used only during development
 import validator from 'fela-plugin-validator';
 
@@ -72,7 +71,7 @@ export default function createRenderer({
     enhancers.push(beautifier({ autosemicolon: true, }));
   }
   else {
-    plugins.push(removeUndefined());
+    // prod-only plugins
   }
 
   return createFelaRenderer({

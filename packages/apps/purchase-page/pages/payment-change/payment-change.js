@@ -11,31 +11,27 @@ const products = [
   '274', // htz-tm
 ];
 
-// eslint-disable-next-line react/prop-types
 export default function PaymentChangePage(props) {
-  const isLegitProd = products.includes(props.url.query.productId || '-99');
+  // eslint-disable-next-line react/prop-types
+  const { productId, } = (props.url && props.url.query) || {};
+  const isLegitProd = products.includes(productId || '-99');
 
   return (
     <MainLayout displayBackButton={false}>
-      { isLegitProd ?
-        (
-          <ChangePaymentCreditGuardIframe
-            productId={props.url.query.productId}
-          />
-        ) : (
-          <FelaComponent
-            style={theme => ({
-              marginTop: '3rem',
-              textAlign: 'center',
-              extend: [ theme.type(3), ],
-            })}
-            render={({ theme, className, }) => (
-              <div className={className}>Ilegal product</div>
-              )
-            }
-          />
-        )
-      }
+      {isLegitProd ? (
+        <ChangePaymentCreditGuardIframe productId={productId} />
+      ) : (
+        <FelaComponent
+          style={theme => ({
+            marginTop: '3rem',
+            textAlign: 'center',
+            extend: [ theme.type(3), ],
+          })}
+          render={({ theme, className, }) => (
+            <div className={className}>Ilegal product</div>
+          )}
+        />
+      )}
     </MainLayout>
   );
 }

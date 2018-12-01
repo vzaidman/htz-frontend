@@ -45,13 +45,11 @@ const AudioWrapper = ({ height, children, }) => (
 );
 
 function StandardAudio({ embedType, source, onLoadCallback, }) {
-  const src =
-    embedType === '103FM'
-      ? `https://103fm.maariv.co.il/mediaEmbed.aspx?${source}`
-      : `https://w.soundcloud.com/player/?url=${source}`;
+  const src = embedType === '103FM'
+    ? `https://103fm.maariv.co.il/mediaEmbed.aspx?${source}`
+    : `https://w.soundcloud.com/player/?url=${source}`;
 
-  const height =
-    embedType === '103FM' ? 300 : embedType === 'playlist' ? 450 : 180;
+  const height = embedType === '103FM' ? 300 : embedType === 'playlist' ? 450 : 180;
 
   return (
     <AudioWrapper height={height}>

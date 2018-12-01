@@ -36,20 +36,17 @@ class ShareBar extends React.Component<Props, State> {
     hiddenButtonsBarWidth: -1,
   };
 
-  toggleOpen: boolean => void = () =>
-    this.setState((prevState: State) => ({
-      isOpen: !prevState.isOpen,
-    }));
+  toggleOpen: boolean => void = () => this.setState((prevState: State) => ({
+    isOpen: !prevState.isOpen,
+  }));
 
-  changeFocus: boolean => void = (focused: boolean) =>
-    this.setState({
-      focused,
-    });
+  changeFocus: boolean => void = (focused: boolean) => this.setState({
+    focused,
+  });
 
-  toggleHover: boolean => void = (hover: boolean) =>
-    this.setState({
-      hover,
-    });
+  toggleHover: boolean => void = (hover: boolean) => this.setState({
+    hover,
+  });
 
   render(): Node {
     const { title, canonicalUrl, } = this.props;
@@ -122,13 +119,13 @@ class ShareBar extends React.Component<Props, State> {
                             buttonStyles: isArticleSaved => ({
                               ...(isArticleSaved
                                 ? {
+                                  color: theme.color('neutral', '-10'),
+                                  backgroundColor: theme.color('primary'),
+                                  ':hover': {
                                     color: theme.color('neutral', '-10'),
-                                    backgroundColor: theme.color('primary'),
-                                    ':hover': {
-                                      color: theme.color('neutral', '-10'),
-                                      backgroundColor: theme.color('secondary'),
-                                    },
-                                  }
+                                    backgroundColor: theme.color('secondary'),
+                                  },
+                                }
                                 : {}),
                             }),
                           },
@@ -139,9 +136,9 @@ class ShareBar extends React.Component<Props, State> {
                         style={{
                           ...(this.state.hiddenButtonsBarWidth === -1
                             ? {
-                                position: 'absolute',
-                                right: '100%',
-                              }
+                              position: 'absolute',
+                              right: '100%',
+                            }
                             : {}),
                         }}
                         render={({ className, }) => (

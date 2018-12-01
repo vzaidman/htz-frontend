@@ -19,12 +19,11 @@ function LoginRedirect({ chosenSubscription, pageNumber, }) {
       redirect = <Redirect destination="stage1" replace />;
       break;
     case 3.2:
-      redirect =
-        chosenSubscription === 'TM' || chosenSubscription === 'HTZ' || !chosenSubscription ? (
-          <Redirect destination="stage2" replace />
-        ) : (
-          <Redirect destination="stage4" replace />
-        );
+      redirect = chosenSubscription === 'TM' || chosenSubscription === 'HTZ' || !chosenSubscription ? (
+        <Redirect destination="stage2" replace />
+      ) : (
+        <Redirect destination="stage4" replace />
+      );
       break;
     case 3.4:
     case 3.6:

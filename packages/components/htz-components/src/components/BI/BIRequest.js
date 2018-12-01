@@ -40,10 +40,12 @@ class BIRequest extends Component {
     articleId: PropTypes.string,
     authors: PropTypes.string,
   };
+
   static defaultProps = {
     articleId: null,
     authors: null,
   };
+
   state = { shouldRender: false, };
 
   componentDidMount() {

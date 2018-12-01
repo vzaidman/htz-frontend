@@ -91,6 +91,7 @@ class RadioGroup extends Component {
     refFunc: null,
     value: null,
   };
+
   state = {
     noteId: this.props.noteId
       ? this.props.noteId

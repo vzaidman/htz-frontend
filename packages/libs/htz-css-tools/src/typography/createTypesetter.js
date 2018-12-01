@@ -7,7 +7,7 @@ import { fallbackFormatter, } from '../helpers/fallbackFormatter';
 import { styleFormatter, } from '../helpers/styleFormatter';
 import getTypeProps from './getTypeProps';
 
-import type { TypeConf, TypeScaleOpts, } from './confTypes';
+import type { TypeConf, } from './confTypes';
 import type { WidthBpsConfig, MqFunc, } from '../mq/createMqFunc';
 import type { RhythmBpData, } from '../helpers/getRhythmBpsData';
 
@@ -83,7 +83,7 @@ export type TypesetterOpts = {
 export type Typesetter = (
   step: number,
   options?: TypesetterOpts
-) => TypographicStyles | { [mq: string]: TypographicStyles };
+) => TypographicStyles | { [mq: string]: TypographicStyles, };
 
 /**
  * Return a media-query-enabled function for typesetting based on
@@ -128,9 +128,8 @@ export default function createTypesetter(
   return function typesetter(
     step: number,
     { lines, fromBp, untilBp, pxFallback, }: TypesetterOpts = {}
-  ): TypographicStyles | { [mq: string]: TypographicStyles } {
-    const generatePxFallback =
-      pxFallback || (pxFallback === undefined && defaultPxFallback);
+  ): TypographicStyles | { [mq: string]: TypographicStyles, } {
+    const generatePxFallback = pxFallback || (pxFallback === undefined && defaultPxFallback);
     const bpsData = getRhythmBpsData(
       bpNamesByLength,
       orderedRhtyhmBps,
@@ -141,7 +140,7 @@ export default function createTypesetter(
     return bpsData.reduce(
       (
         allStyles: Object,
-        bp: TypeScaleOpts,
+        bp: RhythmBpData,
         i: number,
         allBpsData: RhythmBpData[]
       ): Object => {

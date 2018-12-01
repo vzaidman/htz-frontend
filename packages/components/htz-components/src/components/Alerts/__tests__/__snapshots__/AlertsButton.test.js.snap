@@ -8,12 +8,14 @@ Object {
       aria-expanded={false}
       className={null}
       onClick={[Function]}
+      type="button"
     >
       <span
         className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
         id="alerts_btn_description"
       >
-        קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
+        קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ
+         
         Avi Kaufman
       </span>
       Follow me

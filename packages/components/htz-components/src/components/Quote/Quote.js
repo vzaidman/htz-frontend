@@ -98,15 +98,14 @@ const imgOptions = {
  *
  */
 function Quote({ text, credit, imagesList, }) {
-  const quoteType =
-    imagesList && imagesList.length > 0
-      ? 'image'
-      : credit && credit.trim().length > 0
-        ? 'quote'
-        : 'border';
+  const quoteType = imagesList && imagesList.length > 0
+    ? 'image'
+    : credit && credit.trim().length > 0
+      ? 'quote'
+      : 'border';
 
   return (
-    <FadeinViewport threshold={0.5} mediaQuery={{ until: 's', }} >
+    <FadeinViewport threshold={0.5} mediaQuery={{ until: 's', }}>
       <QuoteWrapper>
         {quoteType === 'image' ? (
           <Image

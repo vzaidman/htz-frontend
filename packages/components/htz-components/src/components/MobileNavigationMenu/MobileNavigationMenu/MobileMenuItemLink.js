@@ -40,10 +40,10 @@ export default function ItemLink({ name, url, isHeader, isSite, }) {
         ),
         ...(isSite
           ? {
-              backgroundColor: theme.color('primary', '+1'),
-              fontWeight: 'normal',
-              textDecoration: 'underline',
-            }
+            backgroundColor: theme.color('primary', '+1'),
+            fontWeight: 'normal',
+            textDecoration: 'underline',
+          }
           : {}),
       })}
       render={({ className, }) => (

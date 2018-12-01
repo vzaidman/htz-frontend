@@ -77,8 +77,8 @@ const arrowDashStyle = (theme, isOpen, color, size, thickness) => ({
   left: '50%',
   content: '""',
   extend: [
-    ...(isOpen ?
-      [
+    ...(isOpen
+      ? [
         parseComponentProp(
           'backgroundColor',
           color.open || color.close || color,
@@ -87,8 +87,7 @@ const arrowDashStyle = (theme, isOpen, color, size, thickness) => ({
           theme.color
         ),
       ]
-      :
-      [
+      : [
         parseComponentProp(
           'backgroundColor',
           color.close || color.open || color,
@@ -180,17 +179,17 @@ const arrowStyle = ({ theme, isOpen, color, size, thickness, direction, }) => {
       bottom: `${50 + (size * 2.5)}%`,
       transform: `
         translateY(${
-    isOpen ?
-      end.position.before.y :
-      start.position.before.y
+    isOpen
+      ? end.position.before.y
+      : start.position.before.y
     }rem) translateX(${
-      isOpen ?
-        end.position.before.x :
-        start.position.before.x
+      isOpen
+        ? end.position.before.x
+        : start.position.before.x
     }%) rotate(${
-      isOpen ?
-        end.rotation.before :
-        start.rotation.before
+      isOpen
+        ? end.rotation.before
+        : start.rotation.before
     }deg)
       `,
     },
@@ -199,17 +198,17 @@ const arrowStyle = ({ theme, isOpen, color, size, thickness, direction, }) => {
       top: `${50 + (size * 2.5)}%`,
       transform: `
         translateY(${
-    isOpen ?
-      end.position.after.y :
-      start.position.after.y
+    isOpen
+      ? end.position.after.y
+      : start.position.after.y
     }rem) translateX(${
-      isOpen ?
-        end.position.after.x :
-        start.position.after.x
+      isOpen
+        ? end.position.after.x
+        : start.position.after.x
     }%) rotate(${
-      isOpen ?
-        end.rotation.after :
-        start.rotation.after
+      isOpen
+        ? end.rotation.after
+        : start.rotation.after
     }deg)
       `,
     },

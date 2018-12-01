@@ -38,9 +38,8 @@ const ${
         width,
         height,
         rest
-      ) =>
-        `${pre}${svgTag}width="${width /
-              height}em" height="1em" ${viewBox} className={className} {...props} {...attrs} ${rest}`
+      ) => `${pre}${svgTag}width="${width
+              / height}em" height="1em" ${viewBox} className={className} {...props} {...attrs} ${rest}`
     )
     .replace(/\r?\n|\r/gm, '')}
     )}

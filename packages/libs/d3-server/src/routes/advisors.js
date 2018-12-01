@@ -16,6 +16,7 @@ router.post([ '/area', ], (req, res) => {
     .then(({ data, }) => {
       const { financeGraph: { dataSource, }, } = data;
       peRatioData && dataSource.forEach((entry, index) => {
+        // eslint-disable-next-line no-param-reassign
         entry.peRatio = peRatioData[index].peRatio;
       });
       const result = {

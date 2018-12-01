@@ -36,10 +36,9 @@ export function debounce(func, wait = 100, immediate) {
  */
 export function getBreakpoint(breakpoints) {
   let breakpoint;
-  const windowWidth =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
+  const windowWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
   switch (true) {
     case windowWidth < breakpoints.xs:
       breakpoint = breakpoints.xxs;

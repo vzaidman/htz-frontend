@@ -13,12 +13,11 @@ function testCase(name, Component, { only = false, } = {}) {
 
 describe('<Button>', () => {
   it('throw an error if both "isHard" and "isRound" are true', () => {
-    expect(() =>
-      felaSnapshotter(
-        <Button isHard isRound>
+    expect(() => felaSnapshotter(
+      <Button isHard isRound>
           click
-        </Button>
-      )
+      </Button>
+    )
     ).toThrow(/cannot be "hard" and "round" at the same time/);
   });
 

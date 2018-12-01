@@ -3,8 +3,7 @@ import createMqFunc from '../createMqFunc';
 
 describe('# Media Queries', () => {
   describe('## getLengthString()', () => {
-    const test = length =>
-      getLengthString(length, { s: 600, m: 1024, l: 1280, });
+    const test = length => getLengthString(length, { s: 600, m: 1024, l: 1280, });
     it('Return a number-string in ems when passed a number', () => {
       expect(test(320)).toEqual('20em');
     });
@@ -33,8 +32,8 @@ describe('# Media Queries', () => {
       );
 
       expect(result).toBe(
-        `@media (min-width: ${600 / 16}em) and (max-width: ${(1024 - 1) /
-          16}em) and (orientation: landscape)`
+        `@media (min-width: ${600 / 16}em) and (max-width: ${(1024 - 1)
+          / 16}em) and (orientation: landscape)`
       );
     });
     it('return a media query string without the "@media" prefix', () => {
@@ -48,8 +47,8 @@ describe('# Media Queries', () => {
       );
 
       expect(result).toBe(
-        `(min-width: ${600 / 16}em) and (max-width: ${(1024 - 1) /
-          16}em) and (orientation: landscape)`
+        `(min-width: ${600 / 16}em) and (max-width: ${(1024 - 1)
+          / 16}em) and (orientation: landscape)`
       );
     });
   });

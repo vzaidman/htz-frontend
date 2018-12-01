@@ -65,6 +65,7 @@ const StyledSpan = createComponent(spanStyle);
 
 export class RadioButton extends Component {
   static propTypes = radioButtonPropType;
+
   static defaultProps = {
     attrs: null,
     checked: null,
@@ -81,6 +82,7 @@ export class RadioButton extends Component {
     value: null,
     variant: 'primary',
   };
+
   state = {
     radioButtonId: this.props.radioButtonId || Math.random().toString(),
     checked: this.props.checked || false,

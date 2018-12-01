@@ -29,14 +29,12 @@ class UserDispenser extends Component {
     images: [],
   };
 
-  handleImgOnload = () =>
-    Promise.resolve(logger.debug('onload handleImgOnload resolved'));
+  handleImgOnload = () => Promise.resolve(logger.debug('onload handleImgOnload resolved'));
 
-  plantImages = images =>
-    new Promise((resolve, reject) => {
-      this.setState((prevState, props) => ({ ...prevState, images, }));
-      this.state.resolveMeWhenImageWasLoaded = resolve;
-    });
+  plantImages = images => new Promise((resolve, reject) => {
+    this.setState((prevState, props) => ({ ...prevState, images, }));
+    this.state.resolveMeWhenImageWasLoaded = resolve;
+  });
 
   render() {
     return (
@@ -58,17 +56,16 @@ class UserDispenser extends Component {
           )}
         </Mutation>
         <Query query={GET_USER}>
-          {({ data: { user, }, }) =>
-            this.props.render({
-              isLoggedIn: !!(
-                user &&
-                (user.type === UserTypes.paying ||
-                  user.type === UserTypes.registered)
-              ),
-              user,
-              plantImages: this.plantImages,
-              handleImgOnload: this.handleImgOnload,
-            })
+          {({ data: { user, }, }) => this.props.render({
+            isLoggedIn: !!(
+              user
+                && (user.type === UserTypes.paying
+                  || user.type === UserTypes.registered)
+            ),
+            user,
+            plantImages: this.plantImages,
+            handleImgOnload: this.handleImgOnload,
+          })
           }
         </Query>
       </Fragment>

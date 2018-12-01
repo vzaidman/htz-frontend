@@ -9,22 +9,20 @@ const propTypes = {
 const defaultProps = {};
 
 class Logout extends React.Component {
-  getLogoutFunction = (user, plantImages, handleImgOnload) =>
-    function logout() {
-      const userService = new UserService({
-        plantImagesCallback: plantImages,
-        onImageLoadCallback: handleImgOnload,
-      });
-      return userService.logout({ user, });
-    };
+  getLogoutFunction = (user, plantImages, handleImgOnload) => function logout() {
+    const userService = new UserService({
+      plantImagesCallback: plantImages,
+      onImageLoadCallback: handleImgOnload,
+    });
+    return userService.logout({ user, });
+  };
 
   render() {
     return (
       <UserDispenser
-        render={({ isLoggedIn, user, plantImages, handleImgOnload, }) =>
-          this.props.render({
-            logout: this.getLogoutFunction(user, plantImages, handleImgOnload),
-          })
+        render={({ isLoggedIn, user, plantImages, handleImgOnload, }) => this.props.render({
+          logout: this.getLogoutFunction(user, plantImages, handleImgOnload),
+        })
         }
       />
     );

@@ -72,7 +72,7 @@ const numToString: number => string = num => (
 
 function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
   return (
-    <MainLayout section={section} >
+    <MainLayout section={section}>
       <Query
         query={BondQuery}
         variables={{ assetId, }}
@@ -316,12 +316,11 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                                   fontWeight: '700',
                                   width: '50%',
                                 },
-                                render: value =>
-                                  new Date(value).toLocaleString('it-It', {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: 'numeric',
-                                  }),
+                                render: value => new Date(value).toLocaleString('it-It', {
+                                  day: '2-digit',
+                                  month: '2-digit',
+                                  year: 'numeric',
+                                }),
                               },
                               {
                                 name: 'paymentDate',
@@ -331,12 +330,11 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                                   direction: 'ltr',
                                   textAlign: 'start',
                                 },
-                                render: value =>
-                                  new Date(value).toLocaleString('it-It', {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: 'numeric',
-                                  }),
+                                render: value => new Date(value).toLocaleString('it-It', {
+                                  day: '2-digit',
+                                  month: '2-digit',
+                                  year: 'numeric',
+                                }),
                               },
                               {
                                 name: 'periodicalInterest',

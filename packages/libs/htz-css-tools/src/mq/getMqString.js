@@ -85,10 +85,9 @@ export default function getMqString(
     : '';
   const namedMisc = miscBps[misc || ''];
   const miscOption = namedMisc || misc || '';
-  const miscString =
-    (typeString || minString || maxString) && misc
-      ? ` and ${miscOption}`
-      : miscOption;
+  const miscString = (typeString || minString || maxString) && misc
+    ? ` and ${miscOption}`
+    : miscOption;
 
   const mediaString = typeString + minString + maxString + miscString;
 

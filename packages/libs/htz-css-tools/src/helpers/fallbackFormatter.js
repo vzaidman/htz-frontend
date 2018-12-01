@@ -12,7 +12,7 @@
  *  fontSize: ['16px', '1rem'],
  * }
  */
-type FallbackRule = {| [property: string]: (string | number)[] |};
+type FallbackRule = {| [property: string]: (string | number)[], |};
 
 /**
  * A utility to format css fallback values

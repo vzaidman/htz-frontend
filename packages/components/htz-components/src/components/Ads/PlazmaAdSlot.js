@@ -11,7 +11,7 @@ const style = ({ theme, }) => ({
 });
 
 const PlazmaAdSlot = props => (
-  <FelaComponent style={{ textAlign: 'center', }} >
+  <FelaComponent style={{ textAlign: 'center', }}>
     <AdSlotBase styleRule={style} {...props} />
   </FelaComponent>
 );

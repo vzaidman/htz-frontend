@@ -121,9 +121,8 @@ export function NewsletterForm({
   userEmail,
   variant,
 }) {
-  const NewsletterIcon =
-    icon &&
-    (icon.toLowerCase() === 'htz'
+  const NewsletterIcon = icon
+    && (icon.toLowerCase() === 'htz'
       ? IconAlefLogoTransparent
       : icon.toLowerCase() === 'tm' ? IconMarkerLogoTransparent : null);
   return (

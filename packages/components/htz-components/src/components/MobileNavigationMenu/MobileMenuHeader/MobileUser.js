@@ -17,8 +17,8 @@ export default function MobileUserButton({ isLoggedIn, }) {
         display: 'flex',
         ...(!isLoggedIn
           ? {
-              extend: [ borderEnd('1px', 'solid', theme.color('primary', '+1')), ],
-            }
+            extend: [ borderEnd('1px', 'solid', theme.color('primary', '+1')), ],
+          }
           : {}),
       })}
       render={({ theme, className, }) => {

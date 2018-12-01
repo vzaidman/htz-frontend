@@ -36,9 +36,9 @@ export type CardProps = {
    */
   backgroundColor:
     | string
-    | [string]
-    | [string, string]
-    | ComponentPropResponsiveObject<string | [string] | [string, string]>[],
+    | [string, ]
+    | [string, string, ]
+    | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
   /**
    * indicates if the card is elevated.
    */
@@ -53,7 +53,7 @@ export type CardProps = {
   miscStyles: StyleProps,
   children: Node,
   /** The html element to use for the card */
-  tagName: ElementType
+  tagName: ElementType,
 };
 
 Card.defaultProps = {

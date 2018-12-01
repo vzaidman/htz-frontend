@@ -32,17 +32,17 @@ class ImageCookies extends React.Component {
                 onLoad={
                   src.includes(domain)
                     ? () => {
-                        this.props.onload();
-                        if (
-                          typeof window !== 'undefined' &&
-                          window.location.search.includes('debug')
-                        ) {
-                          console.log(
-                            '%c Cookie Image DOM onload done',
-                            'background: #232; color: #bada55'
-                          );
-                        }
+                      this.props.onload();
+                      if (
+                        typeof window !== 'undefined'
+                          && window.location.search.includes('debug')
+                      ) {
+                        console.log(
+                          '%c Cookie Image DOM onload done',
+                          'background: #232; color: #bada55'
+                        );
                       }
+                    }
                     : null
                 }
                 src={src}

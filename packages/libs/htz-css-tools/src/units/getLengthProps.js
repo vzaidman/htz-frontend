@@ -6,7 +6,7 @@ import getUnit from './getUnit';
 /**
  * The properties of a css `length` broken into `unit` and `unitlessValue`
  */
-export type LengthProps = { unit: string, unitlessValue: number };
+export type LengthProps = { unit: string, unitlessValue: number, };
 
 /**
  * Get the properties of css length number-string

@@ -14,13 +14,12 @@ function MobileListWrapper({ lists, }: Props) {
   return (
     <Media
       query={{ until: 's', }}
-      render={() =>
-        lists.map(list => {
-          const Element: ComponentType<Object> = getComponent(
-            list.inputTemplate
-          );
-          return <Element key={list.contentId} {...list} />;
-        })
+      render={() => lists.map(list => {
+        const Element: ComponentType<Object> = getComponent(
+          list.inputTemplate
+        );
+        return <Element key={list.contentId} {...list} />;
+      })
       }
     />
   );

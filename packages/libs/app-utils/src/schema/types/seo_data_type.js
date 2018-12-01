@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLObjectType, GraphQLString, } from 'graphql';
 import ImageType from './image_type';
 

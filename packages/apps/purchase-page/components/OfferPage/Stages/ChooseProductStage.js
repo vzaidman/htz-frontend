@@ -116,8 +116,25 @@ class ChooseProductStage extends Component {
   };
 
   componentDidMount() {
-    this.props.products[this.state.chosenProduct].offerList.map((item, idx) =>
-      ReactGA.ga('ec:addImpression', {
+    this.props.products[this.state.chosenProduct].offerList.map((item, idx) => ReactGA.ga('ec:addImpression', {
+      id: item.paymentData.saleCode,
+      name: `${item.type}-${
+        this.props.products[this.state.chosenProduct].contentName
+      }`,
+      brand: `salecode[${item.paymentData.saleCode}]`,
+      position: idx + 1,
+      price: item.price,
+      variant: `promotionNumber-${item.paymentData.promotionNumber}`,
+      list: 'Product Stage Results',
+    })
+    );
+    ReactGA.ga('send', 'pageview');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // only update impressions if the chosenProduct state has changed
+    if (prevState.chosenProduct !== this.state.chosenProduct) {
+      this.props.products[this.state.chosenProduct].offerList.map((item, idx) => ReactGA.ga('ec:addImpression', {
         id: item.paymentData.saleCode,
         name: `${item.type}-${
           this.props.products[this.state.chosenProduct].contentName
@@ -128,28 +145,11 @@ class ChooseProductStage extends Component {
         variant: `promotionNumber-${item.paymentData.promotionNumber}`,
         list: 'Product Stage Results',
       })
-    );
-    ReactGA.ga('send', 'pageview');
-  }
-  componentDidUpdate(prevProps, prevState) {
-    // only update impressions if the chosenProduct state has changed
-    if (prevState.chosenProduct !== this.state.chosenProduct) {
-      this.props.products[this.state.chosenProduct].offerList.map((item, idx) =>
-        ReactGA.ga('ec:addImpression', {
-          id: item.paymentData.saleCode,
-          name: `${item.type}-${
-            this.props.products[this.state.chosenProduct].contentName
-          }`,
-          brand: `salecode[${item.paymentData.saleCode}]`,
-          position: idx + 1,
-          price: item.price,
-          variant: `promotionNumber-${item.paymentData.promotionNumber}`,
-          list: 'Product Stage Results',
-        })
       );
       ReactGA.ga('send', 'pageview');
     }
   }
+
   openModal = offerListChosenTermsIndex => {
     this.setState({ modalOpen: true, offerListChosenTermsIndex, });
   };
@@ -157,6 +157,7 @@ class ChooseProductStage extends Component {
   closeModal = () => {
     this.setState({ modalOpen: false, offerListChosenTermsIndex: null, });
   };
+
   render() {
     const {
       chosenProductIndex,
@@ -170,10 +171,9 @@ class ChooseProductStage extends Component {
       userMessage,
     } = this.props;
 
-    const { offerList, cancelButtonText, contentName, } =
-      chosenProductIndex === 'couponProduct'
-        ? JSON.parse(couponProduct)
-        : products[chosenProductIndex];
+    const { offerList, cancelButtonText, contentName, } = chosenProductIndex === 'couponProduct'
+      ? JSON.parse(couponProduct)
+      : products[chosenProductIndex];
     const productName = gaMapper.productId[offerList[0].paymentData.productID];
     return (
       <FelaComponent
@@ -204,7 +204,7 @@ class ChooseProductStage extends Component {
                   offerDisclaimer={
                     this.state.offerListChosenTermsIndex !== null
                       ? offerList[this.state.offerListChosenTermsIndex]
-                          .disclaimer
+                        .disclaimer
                       : null
                   }
                 />
@@ -223,46 +223,45 @@ class ChooseProductStage extends Component {
                     {({ biAction, gaAction, }) => (
                       <StyledMoreOptionsCont>
                         {products.map(
-                          (product, idx) =>
-                            (idx !== chosenProductIndex ? (
-                              <Fragment key={product.productTitle}>
-                                <Button
-                                  key={product.productTitle}
-                                  variant="primary"
-                                  attrs={{
-                                    'aria-controls': 'offerListWrapper',
-                                  }}
-                                  miscStyles={moreOptionsButtonsMiscStyles}
-                                  onClick={() => {
-                                    cache.writeData({
-                                      data: {
-                                        promotionsPageState: {
-                                          chosenProductIndex: idx,
-                                          __typename: 'PromotionsPageState',
-                                        },
+                          (product, idx) => (idx !== chosenProductIndex ? (
+                            <Fragment key={product.productTitle}>
+                              <Button
+                                key={product.productTitle}
+                                variant="primary"
+                                attrs={{
+                                  'aria-controls': 'offerListWrapper',
+                                }}
+                                miscStyles={moreOptionsButtonsMiscStyles}
+                                onClick={() => {
+                                  cache.writeData({
+                                    data: {
+                                      promotionsPageState: {
+                                        chosenProductIndex: idx,
+                                        __typename: 'PromotionsPageState',
                                       },
-                                    });
-                                    this.setState({ chosenProduct: idx, });
-                                    biAction({
-                                      actionCode: 25,
-                                      additionalInfo: {
-                                        stage: 'product',
-                                      },
-                                    });
-                                    gaAction({
-                                      category: `promotions-step-3-${productName}`,
-                                      action: 'student-button',
-                                      label: `${productName}`,
-                                    });
-                                  }}
-                                >
-                                  {product.productTitle}
-                                </Button>
-                              </Fragment>
-                            ) : null)
+                                    },
+                                  });
+                                  this.setState({ chosenProduct: idx, });
+                                  biAction({
+                                    actionCode: 25,
+                                    additionalInfo: {
+                                      stage: 'product',
+                                    },
+                                  });
+                                  gaAction({
+                                    category: `promotions-step-3-${productName}`,
+                                    action: 'student-button',
+                                    label: `${productName}`,
+                                  });
+                                }}
+                              >
+                                {product.productTitle}
+                              </Button>
+                            </Fragment>
+                          ) : null)
                         )}
-                        {couponExist &&
-                          (this.state.couponFormOpen ? (
+                        {couponExist
+                          && (this.state.couponFormOpen ? (
                             <Form
                               clearFormAfterSubmit={false}
                               onSubmit={async ({ couponCode, }) => {
@@ -287,7 +286,7 @@ class ChooseProductStage extends Component {
                                       label: `coupon-submitted-error-${productName}`,
                                     });
                                   }
- else {
+                                  else {
                                     this.setState({
                                       couponLoading: false,
                                       couponFormOpen: false,
@@ -310,7 +309,7 @@ class ChooseProductStage extends Component {
                                     });
                                   }
                                 }
- catch (err) {
+                                catch (err) {
                                   this.setState({
                                     couponLoading: false,
                                     couponError,
@@ -405,7 +404,8 @@ class ChooseProductStage extends Component {
                           })}
                           render="p"
                         >
-                          {entitlements.beforeLinkText}{' '}
+                          {entitlements.beforeLinkText}
+                          {' '}
                           <a
                             onClick={() => {
                               gaAction({

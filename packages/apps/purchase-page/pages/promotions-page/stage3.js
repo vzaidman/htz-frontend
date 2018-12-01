@@ -27,6 +27,7 @@ const GET_PROMOTIONS_STATE = gql`
 
 class Stage3 extends Component {
   static propTypes = pagePropTypes;
+
   state = {
     registerOrLoginStage: 'checkEmail',
     refetch: false,
@@ -70,10 +71,10 @@ class Stage3 extends Component {
                   } = clientData;
 
                   const chosenSlot = data.purchasePage.slots
-                    ? data.purchasePage.slots[chosenSlotIndex] ||
+                    ? data.purchasePage.slots[chosenSlotIndex]
                       // slot might be invalid due to getting new data with only one slot
                       // in such a case we need to update the PromotionsPageState back to defaults
-                      (() => {
+                      || (() => {
                         client.writeData({
                           data: {
                             promotionsPageState: {
@@ -99,8 +100,8 @@ class Stage3 extends Component {
 
                   const chosenPaymentArrangement = chosenSlot
                     ? chosenSlot.products[chosenProductIndex].offerList[
-                        chosenOfferIndex
-                      ].type
+                      chosenOfferIndex
+                    ].type
                     : null;
 
                   if (this.state.refetch) {
@@ -118,7 +119,7 @@ class Stage3 extends Component {
                               chosenSubscription={this.state.chosenSubscription}
                               pageNumber={data.purchasePage.pageNumber}
                             />
-                    );
+                          );
                         }}
                       />
                     );
@@ -141,19 +142,21 @@ class Stage3 extends Component {
                           >
                             <StageTransition
                               chosenSubscription={chosenSubscription}
-                              headerElement={
+                              headerElement={(
                                 <StageHeader
                                   headerElements={[
                                     <FelaComponent
                                       style={{ fontWeight: 'bold', }}
                                       render="span"
                                     >
-                                      <span>{header.textBeforeChosen}</span>{' '}
+                                      <span>{header.textBeforeChosen}</span>
+                                      {' '}
                                       {
                                         header.chosenSubscriptionText[
                                           chosenSubscription
                                         ]
-                                      }{' '}
+                                      }
+                                      {' '}
                                       {`${
                                         header.chosenPaymentArrangementText[
                                           chosenPaymentArrangement
@@ -169,8 +172,8 @@ class Stage3 extends Component {
                                     </Fragment>,
                                   ]}
                                 />
-                              }
-                              stageElement={
+)}
+                              stageElement={(
                                 <LoginOrRegisterStage
                                   registerOrLoginStage={
                                     this.state.registerOrLoginStage
@@ -186,7 +189,7 @@ class Stage3 extends Component {
                                   }
                                   updateRefetchState={this.updateRefetchStage}
                                 />
-                              }
+)}
                             />
                           </LayoutContainer>
                         </div>

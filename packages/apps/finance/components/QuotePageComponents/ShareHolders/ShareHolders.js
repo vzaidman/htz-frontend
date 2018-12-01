@@ -1,55 +1,59 @@
+// @flow
 import React from 'react';
 
-import type { StatelessFunctionalComponent, } from 'react';
+import type { Node, } from 'react';
 
 import StaticTable from '../../StaticTable/StaticTable';
 
 type Props = {
-  data: Object,
+  data: {
+    shareHolderName: string,
+    equityHolderPercentage: number,
+    holdingMarketCap: number,
+  }[],
 };
 
-const numToString: number => string = num => (
-  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
-);
+const numToString = (num: number): string => num.toLocaleString('he', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
-const ShareHolders: StatelessFunctionalComponent<Props> =
-  // eslint-disable-next-line react/prop-types
-  ({ data, }) => (
-    <StaticTable
-      data={data}
-      columns={[
-        {
-          name: 'shareHolderName',
-          title: 'שם',
-          styles: {
-            paddingStart: '2rem',
-            fontWeight: '700',
-            width: '50%',
-          },
-          render: value => value,
+const ShareHolders = ({ data, }: Props): Node => (
+  <StaticTable
+    data={data}
+    columns={[
+      {
+        name: 'shareHolderName',
+        title: 'שם',
+        styles: {
+          paddingStart: '2rem',
+          fontWeight: '700',
+          width: '50%',
         },
-        {
-          name: 'equityHolderPercentage',
-          title: '% החזקה בהון',
-          styles: {
-            paddingStart: '2rem',
-            direction: 'ltr',
-            textAlign: 'start',
-          },
-          render: value => `${numToString(value)}%`,
+        render: value => value,
+      },
+      {
+        name: 'equityHolderPercentage',
+        title: '% החזקה בהון',
+        styles: {
+          paddingStart: '2rem',
+          direction: 'ltr',
+          textAlign: 'start',
         },
-        {
-          name: 'holdingMarketCap',
-          title: 'שווי שוק',
-          styles: {
-            paddingStart: '2rem',
-            direction: 'ltr',
-            textAlign: 'start',
-          },
-          render: value => numToString(value),
+        render: value => `${numToString(value)}%`,
+      },
+      {
+        name: 'holdingMarketCap',
+        title: 'שווי שוק',
+        styles: {
+          paddingStart: '2rem',
+          direction: 'ltr',
+          textAlign: 'start',
         },
-      ]}
-    />
-  );
+        render: value => numToString(value),
+      },
+    ]}
+  />
+);
 
 export default ShareHolders;

@@ -44,8 +44,8 @@ export default function mediaMatchesQuery(bps, { queries, }) {
       ? `(min-width:${from / DEFAULT_BROWSER_FONT_SIZE}em)`
       : '';
     const maxQuery = until
-      ? `${from ? ' and ' : ''}(max-width:${(until - 1) /
-          DEFAULT_BROWSER_FONT_SIZE}em)`
+      ? `${from ? ' and ' : ''}(max-width:${(until - 1)
+          / DEFAULT_BROWSER_FONT_SIZE}em)`
       : '';
     const miscQuery = misc ? `${from || until ? ' and ' : ''}${misc}` : '';
 

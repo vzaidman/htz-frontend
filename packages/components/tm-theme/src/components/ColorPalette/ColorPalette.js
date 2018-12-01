@@ -8,7 +8,7 @@ ColorGroup.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function ColorGroup({ groupName, children }) {
+function ColorGroup({ groupName, children, }) {
   return (
     <section
       style={{
@@ -16,15 +16,17 @@ function ColorGroup({ groupName, children }) {
         borderBottomWidth: '6px',
         marginBottom: '48px',
         padding: '12px 12px 24px',
-      }}>
+      }}
+    >
       <h3
         style={{
           fontSize: '2em',
           margin: '0',
-        }}>
+        }}
+      >
         {groupName}
       </h3>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>{children}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', }}>{children}</div>
     </section>
   );
 }
@@ -36,20 +38,33 @@ ColorSwatch.propTypes = {
   colorValue: PropTypes.string.isRequired,
 };
 
-function ColorSwatch({ groupName, swatchName, colorName, colorValue }) {
+function ColorSwatch({ groupName, swatchName, colorName, colorValue, }) {
   const isBase = swatchName === 'base';
   const exampleCode = !groupName ? (
-    <code>theme.color(&apos;{colorName}&apos;)</code>
+    <code>
+theme.color(&apos;
+      {colorName}
+&apos;)
+    </code>
   ) : swatchName === 'base' ? (
     <code>
-      theme.color(&apos;{colorName}&apos;
-      <span style={{ color: getColor('neutral', '-4') }}>
-        [, &apos;{swatchName}&apos;]
-      </span>)
+      theme.color(&apos;
+      {colorName}
+&apos;
+      <span style={{ color: getColor('neutral', '-4'), }}>
+        [, &apos;
+        {swatchName}
+&apos;]
+      </span>
+)
     </code>
   ) : (
     <code>
-      theme.color(&apos;{colorName}&apos;, &apos;{swatchName}&apos;)
+      theme.color(&apos;
+      {colorName}
+&apos;, &apos;
+      {swatchName}
+&apos;)
     </code>
   );
 
@@ -64,7 +79,8 @@ function ColorSwatch({ groupName, swatchName, colorName, colorValue }) {
         marginRight: '12px',
         maxWidth: '100%',
         // width: isBase ? '100%' : 'calc(33.33333333333333% - 12px)',
-      }}>
+      }}
+    >
       <div
         style={{
           backgroundColor: colorValue,
@@ -84,15 +100,17 @@ function ColorSwatch({ groupName, swatchName, colorName, colorValue }) {
               : 'none',
           margin: 0,
           padding: isBase && groupName ? '12px 6px' : '12px 0',
-        }}>
+        }}
+      >
         {groupName && <strong>{groupName}</strong>}
         {isBase ? (groupName ? ': ' : '') : ` ${swatchName}: `}
 
-        <span style={{ color: colorValue === '#FFF' ? '#333' : colorValue }}>
+        <span style={{ color: colorValue === '#FFF' ? '#333' : colorValue, }}>
           {colorValue}
         </span>
         <span
-          style={{ display: 'block', fontSize: '12px', lineHeight: '18px' }}>
+          style={{ display: 'block', fontSize: '12px', lineHeight: '18px', }}
+        >
           {exampleCode}
         </span>
       </p>

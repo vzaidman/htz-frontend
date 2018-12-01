@@ -218,10 +218,8 @@ function setWidth(prop, width) {
     flexShrink: 0,
     flexBasis:
       width > 1
-        ? // fixed width in rems
-        widthInRem
-        : // relative width in percentage
-        widthInPercent,
+        ? widthInRem // fixed width in rems
+        : widthInPercent, // relative width in percentage
   };
 }
 

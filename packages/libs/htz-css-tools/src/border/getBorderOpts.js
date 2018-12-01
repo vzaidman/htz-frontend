@@ -18,13 +18,13 @@ export default function getBorderOpts(
   lines?: number,
   style?: BorderStyle,
   color?: string
-): [number | string, number | void, BorderStyle | void, string | void] {
+): [number | string, number | void, BorderStyle | void, string | void, ] {
   const errorMessage = 'You passed invalid arguments to a "border" function';
   if (
-    typeof optsOrWidth === 'object' &&
-    typeof lines === 'undefined' &&
-    typeof style === 'undefined' &&
-    typeof color === 'undefined'
+    typeof optsOrWidth === 'object'
+    && typeof lines === 'undefined'
+    && typeof style === 'undefined'
+    && typeof color === 'undefined'
   ) {
     if (typeof optsOrWidth.width === 'undefined') {
       throw new Error(errorMessage);

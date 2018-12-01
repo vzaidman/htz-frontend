@@ -94,8 +94,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 1064, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 1064, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -118,8 +117,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -142,8 +140,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -166,8 +163,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -195,8 +191,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -224,8 +219,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -249,8 +243,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -274,8 +267,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();
@@ -309,8 +301,7 @@ describe('<Comment>', () => {
           signUpNotification={mockFunc}
         />,
         {
-          createNodeMock: element =>
-            (element.type === 'div' ? { clientHeight: 26, } : null),
+          createNodeMock: element => (element.type === 'div' ? { clientHeight: 26, } : null),
         }
       );
       expect(component).toMatchSnapshot();

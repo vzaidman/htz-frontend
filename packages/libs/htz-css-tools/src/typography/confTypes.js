@@ -1,3 +1,4 @@
+// @flow
 // ////////////////////////////////////////////////////////////////// //
 //            Interfaces for typographic Settings objects             //
 // ////////////////////////////////////////////////////////////////// //
@@ -85,33 +86,3 @@ export type TypeConf = {
   default: TypeScaleOpts,
   [bpName: string]: TypeScaleOpts,
 };
-
-// function getFZ(step, base = 16, ratio = 2, stepsPerInterval = 5) {
-//   return Math.round(base * Math.pow(ratio, step / stepsPerInterval));
-// }
-//
-// function getLH(fz, rhythmUnit = 6, minPadding = 2) {
-//   const fzLineSpan = Math.ceil(fz / rhythmUnit);
-//   const lines = linesPerSize(fz, fzLineSpan, rhythmUnit, minPadding);
-//
-//   return lines * rhythmUnit;
-// }
-//
-// function linesPerSize(fz, lines, rhythmUnit, minPadding) {
-//   const addPadding = ((lines * rhythmUnit) - fz) < (minPadding * 2);
-//
-//   return addPadding ?
-//     linesPerSize(fz, lines + 1, rhythmUnit, minPadding) :
-//     lines;
-// }
-//
-// function getTypeProps(step, base = 16, rhythmUnit = 6, minPadding = 2, ratio = 2, stepsPerInterval = 5) {
-//   const fontSize = getFZ(step, base, ratio, stepsPerInterval);
-//   const lineHeight = getLH(fontSize, rhythmUnit, minPadding);
-//   return {
-//     fontSize,
-//     lineHeight,
-//     lines: lineHeight / rhythmUnit,
-//     ratio: lineHeight / fontSize,
-//   };
-// }

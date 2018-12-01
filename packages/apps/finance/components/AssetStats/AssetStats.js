@@ -2,21 +2,20 @@
 import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
-import type { Node, StatelessFunctionalComponent, } from 'react';
+import type { Node, } from 'react';
 import type { Asset as LineAsset, } from '../Graph/graphs/Line/Line';
 import type { Asset as ScatterAsset, } from '../Graph/graphs/Scatter/Scatter';
 
-type Stats = Array<{ title: string, value: string | number, }>
+type Stats = Array<{ title: string, value: string | number, }>;
 
-const numToString: (number | string) => string = num => (
-  typeof num === 'number' ? (
-    num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
-  )
-    : num
-);
+const numToString: (number | string) => string = num => (typeof num === 'number'
+  ? num.toLocaleString('he', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+  : num);
 
-// eslint-disable-next-line react/prop-types
-export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscStyles, }) => (
+export const Stat = ({ children, title, miscStyles, }: any): Node => (
   <FelaComponent
     style={theme => ({
       alignItems: 'center',
@@ -41,7 +40,9 @@ export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscS
       },
     })}
   >
-    <FelaComponent style={{ fontWeight: '700', }} render="span">{title}</FelaComponent>
+    <FelaComponent style={{ fontWeight: '700', }} render="span">
+      {title}
+    </FelaComponent>
     <FelaComponent
       style={theme => ({
         ...theme.type(1),
@@ -55,16 +56,24 @@ export const Stat: StatelessFunctionalComponent<any> = ({ children, title, miscS
     />
   </FelaComponent>
 );
-
+export type GraphType = "line" | "scatter" | "hotMoney";
+export type Period =
+  | "daily"
+  | "weekly"
+  | "monthly"
+  | "quarterly"
+  | "yearly"
+  | "tripleYear"
+  | "max";
 type Props = {
-  graphType: 'line' | 'scatter' | 'hotMoney',
-  period: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'yearly' | 'tripleYear' | 'max',
-  render: ({changeStats: (stock: LineAsset | ScatterAsset) => void}) => Node,
+  graphType: GraphType,
+  period: Period,
+  render: ({ changeStats: (stock: LineAsset | ScatterAsset) => void, }) => Node,
   miscStyles: ?Object,
-}
+};
 type State = {
   stats: Stats,
-}
+};
 
 class AssetStats extends React.Component<Props, State> {
   static defaultProps = {
@@ -75,13 +84,19 @@ class AssetStats extends React.Component<Props, State> {
     stats: [],
   };
 
-  getDateStat: (number, string) => { title: string, value: string, } = (date, time) => {
+  getDateStat: (number, string) => { title: string, value: string, } = (
+    date,
+    time
+  ) => {
     let title: string;
     let value: string;
     switch (time) {
       case 'daily':
         title = 'שעה';
-        value = new Date(date).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', });
+        value = new Date(date).toLocaleTimeString('it-IT', {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
         break;
       default:
         title = 'תאריך';
@@ -144,44 +159,46 @@ class AssetStats extends React.Component<Props, State> {
                 ],
               }}
             >
-              {
-                stats && stats.length > 0 ? (
-                  <Fragment>
-                    {
-                      stats.map((stat, index) => (
-                        <Stat
-                          key={stat.title}
-                          title={stat.title}
-                          miscStyles={index === (stats.length - 1)
-                            ? {
-                              color: Number(stat.value) < 0
-                                ? theme.color('negative', '-2')
-                                : theme.color('positive', '-2'),
-                              direction: 'ltr',
-                              ':before': {
-                                content: Number(stat.value) > 0 ? '"+"' : Number(stat.value) < 0 ? '"-"' : '""',
-                              },
-                              ':after': {
-                                content: '"%"',
-                              },
-                            }
-                            : {}
+              {stats && stats.length > 0 ? (
+                <Fragment>
+                  {stats.map((stat, index) => (
+                    <Stat
+                      key={stat.title}
+                      title={stat.title}
+                      miscStyles={
+                        index === stats.length - 1
+                          ? {
+                            color:
+                                Number(stat.value) < 0
+                                  ? theme.color('negative', '-2')
+                                  : theme.color('positive', '-2'),
+                            direction: 'ltr',
+                            ':before': {
+                              content:
+                                  Number(stat.value) > 0
+                                    ? '"+"'
+                                    : Number(stat.value) < 0
+                                      ? '"-"'
+                                      : '""',
+                            },
+                            ':after': {
+                              content: '"%"',
+                            },
                           }
-                        >
-                          {className => (
-                            <span className={className}>
-                              {index === (stats.length - 1)
-                                ? numToString(Math.abs(Number(stat.value)))
-                                : stat.value
-                              }
-                            </span>
-                          )}
-                        </Stat>
-                      ))
-                    }
-                  </Fragment>
-                ) : null
-              }
+                          : {}
+                      }
+                    >
+                      {className => (
+                        <span className={className}>
+                          {index === stats.length - 1
+                            ? numToString(Math.abs(Number(stat.value)))
+                            : stat.value}
+                        </span>
+                      )}
+                    </Stat>
+                  ))}
+                </Fragment>
+              ) : null}
             </FelaComponent>
           </Fragment>
         )}

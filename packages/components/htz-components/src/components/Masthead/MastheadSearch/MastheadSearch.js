@@ -40,7 +40,9 @@ class HeaderSearch extends React.Component {
   focusOnInput = inputRef => inputRef && inputRef.focus();
 
   handleMouseEnter = () => this.setState({ isHovered: true, });
+
   handleMouseLeave = () => this.setState({ isHovered: false, });
+
   handleGlobalKeydown = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
@@ -52,10 +54,9 @@ class HeaderSearch extends React.Component {
     }
   };
 
-  recordQuery = e =>
-    this.setState({
-      query: e.target.value,
-    });
+  recordQuery = e => this.setState({
+    query: e.target.value,
+  });
 
   render() {
     const { isHovered, } = this.state;
@@ -97,19 +98,19 @@ class HeaderSearch extends React.Component {
                 zIndex: '1',
                 ...(searchIsOpen
                   ? {
-                      backgroundColor: color('headerSearch', 'bgHover'),
-                      color: color('headerSearch', 'textOpenOrHover'),
-                    }
+                    backgroundColor: color('headerSearch', 'bgHover'),
+                    color: color('headerSearch', 'textOpenOrHover'),
+                  }
                   : {}),
                 extend: [
                   type(-1),
                   isHovered
                     ? {
-                        backgroundColor: isHovered
-                          ? color('headerSearch', 'bgHover')
-                          : color('headerSearch', 'bgOpen'),
-                        color: color('headerSearch', 'textOpenOrHover'),
-                      }
+                      backgroundColor: isHovered
+                        ? color('headerSearch', 'bgHover')
+                        : color('headerSearch', 'bgOpen'),
+                      color: color('headerSearch', 'textOpenOrHover'),
+                    }
                     : {},
                   getTransition(1, 'swiftOut'),
                 ],

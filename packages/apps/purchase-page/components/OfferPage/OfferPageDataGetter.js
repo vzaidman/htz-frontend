@@ -32,14 +32,13 @@ function OfferPageDataGetter({ render, router, }) {
             query={GET_PURCHASE_PAGE_DATA}
             variables={{ path: getCampaignFromPath(router.asPath), userId: id, }}
           >
-            {({ loading, error, data, refetch, client, }) =>
-              render({
-                data,
-                loading,
-                error,
-                refetch,
-                client,
-              })
+            {({ loading, error, data, refetch, client, }) => render({
+              data,
+              loading,
+              error,
+              refetch,
+              client,
+            })
             }
           </Query>
         )}

@@ -74,8 +74,7 @@ export default function pxTo(targetUnit: TargetUnit): PxToUnitConverter {
   return function (pxVal: number | number[], context: number): string {
     return Array.isArray(pxVal)
       ? pxVal.reduce(
-        (result, item) =>
-          `${result}${result ? ' ' : ''}${item / context}${unit}`,
+        (result, item) => `${result}${result ? ' ' : ''}${item / context}${unit}`,
         ''
       )
       : `${pxVal / context}${unit}`;

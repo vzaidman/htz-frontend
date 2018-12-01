@@ -50,10 +50,9 @@ async function getPageToRender(req, logger, DEV = false) {
   try {
     const fetchData = await fetch(fetchUrl);
     const { pageNumber, } = await fetchData.json();
-    const stageToRender =
-      Math.floor(pageNumber) === 7
-        ? 'thankYou'
-        : Math.floor(pageNumber) === 3 ? 'stage2' : 'stage1';
+    const stageToRender = Math.floor(pageNumber) === 7
+      ? 'thankYou'
+      : Math.floor(pageNumber) === 3 ? 'stage2' : 'stage1';
     globalStageToRender = stageToRender;
     DEV && logger.debug('pageNumber from async await', pageNumber);
     DEV && logger.debug('stageToRender ', stageToRender);
@@ -103,13 +102,12 @@ export default function purchase(app, server, DEV = false) {
   server.get(
     [ `${appPrefix}/${friendlyRoutes.stage1}`, `${appPrefix}/stage1`, ],
     async (req, res) => {
-      DEV &&
-        logger.debug('globalStageToRender from stage 1', globalStageToRender);
+      DEV
+        && logger.debug('globalStageToRender from stage 1', globalStageToRender);
       DEV && logger.debug('isRedirect from stage 1', isRedirect);
-      const pageToRender =
-        isRedirect && globalStageToRender
-          ? globalStageToRender
-          : await getPageToRender(req, logger, DEV);
+      const pageToRender = isRedirect && globalStageToRender
+        ? globalStageToRender
+        : await getPageToRender(req, logger, DEV);
 
       if (pageToRender === 'stage1') {
         return render(req, res, 'stage1');
@@ -122,17 +120,16 @@ export default function purchase(app, server, DEV = false) {
   server.get(
     [ `${appPrefix}/${friendlyRoutes.stage2}`, `${appPrefix}/stage2`, ],
     async (req, res) => {
-      DEV &&
-        logger.debug(
+      DEV
+        && logger.debug(
           'globalStageToRender from stage 2 before fetch',
           globalStageToRender
         );
       DEV && logger.debug('isRedirect from stage 2', isRedirect);
 
-      const pageToRender =
-        isRedirect && globalStageToRender
-          ? globalStageToRender
-          : await getPageToRender(req, logger, DEV);
+      const pageToRender = isRedirect && globalStageToRender
+        ? globalStageToRender
+        : await getPageToRender(req, logger, DEV);
 
       if (pageToRender === 'stage2') {
         return render(req, res, 'stage2');
@@ -143,16 +140,15 @@ export default function purchase(app, server, DEV = false) {
 
   /* Offers thankYou */
   server.get(`${appPrefix}/thankYou`, async (req, res) => {
-    DEV &&
-      logger.debug(
+    DEV
+      && logger.debug(
         'globalStageToRender from stage thankYou before fetch',
         globalStageToRender
       );
     DEV && logger.debug('isRedirect from stage thankYou', isRedirect);
-    const pageToRender =
-      isRedirect && globalStageToRender
-        ? globalStageToRender
-        : await getPageToRender(req, logger, DEV);
+    const pageToRender = isRedirect && globalStageToRender
+      ? globalStageToRender
+      : await getPageToRender(req, logger, DEV);
     if (pageToRender === 'thankYou' || req.query.msg === 'thank_user') {
       return render(req, res, 'thankYou');
     }
@@ -182,8 +178,7 @@ export default function purchase(app, server, DEV = false) {
       'Content-Type': 'text/plain;charset=UTF-8',
     },
   };
-  server.get('/robots.txt', (req, res) =>
-    res.status(200).sendFile('robots.txt', options)
+  server.get('/robots.txt', (req, res) => res.status(200).sendFile('robots.txt', options)
   );
 
   /* Promos */
@@ -192,8 +187,8 @@ export default function purchase(app, server, DEV = false) {
     req.query = Object.assign({}, req.query, {
       offer: req.params.promo,
     });
-    DEV &&
-      logger.debug(
+    DEV
+      && logger.debug(
         'promo from /:promo redirect req.param.promo',
         req.params.promo
       );
@@ -210,8 +205,8 @@ export default function purchase(app, server, DEV = false) {
     req.query = Object.assign({}, req.query, {
       offer: req.params.promo,
     });
-    DEV &&
-      logger.debug(
+    DEV
+      && logger.debug(
         'promo from /:promo/:subPromo redirect req.param.promo',
         req.params.promo
       );

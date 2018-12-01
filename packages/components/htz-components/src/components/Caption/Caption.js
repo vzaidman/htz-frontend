@@ -16,8 +16,7 @@ const captionWrapperStyle = ({
   typeStyles,
   miscStyles,
 }) => {
-  const { bgc, captionColor, captionTypeSettings, fontFamily, fontWeight, } =
-    theme.captionStyles || {};
+  const { bgc, captionColor, captionTypeSettings, fontFamily, fontWeight, } = theme.captionStyles || {};
   const typeSettings = typeStyles || captionTypeSettings;
 
   return {
@@ -111,7 +110,9 @@ const Caption = props => {
       </FelaComponent>
       {props.credit ? (
         <Credit floatCredit={props.floatCredit}>
-          {props.creditprefix}: {props.credit}
+          {props.creditprefix}
+:
+          {props.credit}
         </Credit>
       ) : (
         ''

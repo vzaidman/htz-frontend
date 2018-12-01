@@ -16,6 +16,7 @@ exports[`<MastheadUserMenu DOM element renders correctly with no props 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="button"
+      type="button"
     >
       <span
         className="htz-o htz-i htz-j"
@@ -59,6 +60,7 @@ exports[`<MastheadUserMenu DOM element renders correctly with props 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="button"
+      type="button"
     >
       <span
         className="htz-p htz-j htz-k"

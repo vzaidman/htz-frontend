@@ -13,9 +13,8 @@ import { Kind, } from 'graphql/language/kinds';
 import shareHolder from './finance_share_holder_type';
 import eventPrediction from './finance_event_prediction_type';
 
-const isDate = value =>
-  // eslint-disable-next-line no-restricted-globals
-  typeof (value) === 'number' && !isNaN(value.valueOf());
+// eslint-disable-next-line no-restricted-globals
+const isDate = value => typeof value === 'number' && !isNaN(value.valueOf());
 
 const coerceDate = value => {
   const date = new Date(value).getTime();

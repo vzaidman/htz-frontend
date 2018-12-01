@@ -11,8 +11,7 @@ const camelCaseToDashCase = camelCaseStr => camelCaseStr
 
 
 // TODO: jsdoc
-const propToString = ([ name, value, ]) =>
-  `${camelCaseToDashCase(name)}: ${value}`;
+const propToString = ([ name, value, ]) => `${camelCaseToDashCase(name)}: ${value}`;
 
 
 // TODO: jsdoc

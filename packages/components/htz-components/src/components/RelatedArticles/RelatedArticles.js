@@ -84,7 +84,8 @@ const RelatedArticles = ({ articles, miscStyles, }) => (
             key={article.contentId}
             lastItem={i === articles.length - 1}
             render={({ className, theme, }) => (
-              <li
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+              <li // eslint-disable-line jsx-a11y/no-noninteractive-element-interactions
                 className={className}
                 onClick={() => {
                   biAction({
@@ -94,16 +95,16 @@ const RelatedArticles = ({ articles, miscStyles, }) => (
                       NoInList: i + 1,
                       ViewName: 'Related article',
                     },
-                });
-               }}
+                  });
+                }}
               >
                 <ArticleLink article={article} />
               </li>
-        )}
+            )}
           />
-      )}
+        )}
       </EventTracker>
-  ))}
+    ))}
   </FelaComponent>
 );
 

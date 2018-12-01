@@ -179,12 +179,11 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
 
   const { items, } = list;
 
-  const content = itemsToRender =>
-    (itemsToRender
-      ? items
-        .slice(0, itemsToRender)
-        .map((item, i) => BenderItem(item, i, itemsToRender))
-      : null);
+  const content = itemsToRender => (itemsToRender
+    ? items
+      .slice(0, itemsToRender)
+      .map((item, i) => BenderItem(item, i, itemsToRender))
+    : null);
 
   return (
     <FelaComponent

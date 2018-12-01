@@ -56,9 +56,9 @@ export default class RadioGroup extends React.Component {
           <Selection
             key={option.embedType}
             isSelected={
-              this.state.groupName === this.props.groupName &&
-              this.state.selectedIndex &&
-              index === +this.state.selectedIndex
+              this.state.groupName === this.props.groupName
+              && this.state.selectedIndex
+              && index === +this.state.selectedIndex
             }
           >
             <input

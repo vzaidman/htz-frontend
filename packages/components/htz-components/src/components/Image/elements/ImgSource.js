@@ -62,19 +62,18 @@ const defaultProps = {
 };
 
 // Styles that cause the image to occupy its wrapper's dimensions
-const styles = ({ hasWrapper, theme, }) =>
-  (hasWrapper
-    ? {
-      height: '100%',
-      left: '0',
-      position: 'absolute',
-      top: '0',
-      width: '100%',
-    }
-    : {
-      maxWidth: '100%',
-      maxHeight: '100%',
-    });
+const styles = ({ hasWrapper, theme, }) => (hasWrapper
+  ? {
+    height: '100%',
+    left: '0',
+    position: 'absolute',
+    top: '0',
+    width: '100%',
+  }
+  : {
+    maxWidth: '100%',
+    maxHeight: '100%',
+  });
 
 function ImgSource({
   attrs,
@@ -94,17 +93,17 @@ function ImgSource({
       {...(alt ? { alt, } : {})}
       {...(tagName === 'img'
         ? {
-            src,
-            ...(title ? { title, } : {}),
-            ...(className ? { className, } : {}),
-          }
+          src,
+          ...(title ? { title, } : {}),
+          ...(className ? { className, } : {}),
+        }
         : {})}
       {...(tagName === 'source'
         ? {
-            srcSet: !srcSet || srcSet.length === 0 ? src : srcSet,
-            ...(media ? { media, } : {}),
-            ...(type ? { type, } : {}),
-          }
+          srcSet: !srcSet || srcSet.length === 0 ? src : srcSet,
+          ...(media ? { media, } : {}),
+          ...(type ? { type, } : {}),
+        }
         : {})}
       {...(sizes ? { sizes, } : {})}
       {...(srcSet ? { srcSet, } : {})}

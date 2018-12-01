@@ -77,9 +77,7 @@ class List extends React.Component {
             if (error) return null;
             const { title, items, } = {
               title: list.title,
-              items: list.items.filter(item =>
-                // eslint-disable-next-line no-prototype-builtins
-                item.hasOwnProperty('contentId')
+              items: list.items.filter(item => Object.prototype.hasOwnProperty.call(item, 'contentId')
               ),
             };
 

@@ -4,11 +4,11 @@ export default element => {
     // Firefox
     return 'transitionend';
   }
-  else if ('onwebkittransitionend' in window) {
+  if ('onwebkittransitionend' in window) {
     // Chrome/Saf (+ Mobile Saf)/Android
     return 'webkitTransitionEnd';
   }
-  else if ('onotransitionend' in element || navigator.appName === 'Opera') {
+  if ('onotransitionend' in element || navigator.appName === 'Opera') {
     // Opera
     // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
     // so it will always use the navigator.appName fallback

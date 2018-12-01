@@ -32,7 +32,10 @@ class DynamicAdSlot extends Component {
   render() {
     return (
       <Zen animate>
-        <Debug>AdUnit: {this.props.id}</Debug>
+        <Debug>
+AdUnit:
+          {this.props.id}
+        </Debug>
         <div id={this.props.id} />
       </Zen>
     );
