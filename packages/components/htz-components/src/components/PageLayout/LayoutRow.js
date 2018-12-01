@@ -1,9 +1,11 @@
-import React from 'react';
 import { FelaComponent, } from 'react-fela';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import PropTypes from 'prop-types';
-import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import React from 'react';
+
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
+import setColor from '../../utils/setColor';
 
 const propTypes = {
   /**
@@ -37,7 +39,15 @@ const defaultProps = {
   miscStyles: null,
 };
 
-export function LayoutRow({ attrs, children, tagName, id, miscStyles, bgc, }) {
+export default function LayoutRow({
+  attrs,
+  children,
+  tagName,
+  id,
+  miscStyles,
+  bgc,
+  namedBgc,
+}) {
   const Tag = tagName;
   return (
     <FelaComponent
@@ -45,6 +55,17 @@ export function LayoutRow({ attrs, children, tagName, id, miscStyles, bgc, }) {
         backgroundColor: bgc || theme.color('layout', 'rowBg'),
         width: '100%',
         extend: [
+          ...[
+            namedBgc
+              ? parseComponentProp(
+                'backgroundColor',
+                namedBgc,
+                theme.mq,
+                setColor,
+                theme.color
+              )
+              : {},
+          ],
           ...(miscStyles
             ? parseStyleProps(miscStyles, theme.mq, theme.type)
             : []),
@@ -61,5 +82,3 @@ export function LayoutRow({ attrs, children, tagName, id, miscStyles, bgc, }) {
 
 LayoutRow.propTypes = propTypes;
 LayoutRow.defaultProps = defaultProps;
-
-export default LayoutRow;

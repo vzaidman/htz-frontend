@@ -46,13 +46,13 @@ type SeperatorOptions = {
 };
 export type CardContentSeperator = true | SeperatorOptions;
 
-type ColorType =
+export type ColorType =
   | ?string
   | [string, ]
   | [string, string, ]
   | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
 
-type PaddingType =
+export type PaddingType =
   | PaddingValueType
   | ComponentPropResponsiveObject<PaddingValueType>[];
 
