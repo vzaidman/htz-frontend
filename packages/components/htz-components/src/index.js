@@ -73,6 +73,10 @@ import Section from './components/AutoLevels/Section';
 import Select from './components/Select/Select';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
+import Teaser from './components/Teaser/Teaser';
+import TeaserContent from './components/TeaserContent/TeaserContent';
+import TeaserMedia from './components/TeaserMedia/TeaserMedia';
+import TeaserSubtitle from './components/TeaserSubtitle/TeaserSubtitle';
 import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
 import Video from './components/Video/Video';
@@ -141,7 +145,6 @@ import IconPetachTikva from './components/Icon/icons/IconPetachTikva';
 import IconJerusalem from './components/Icon/icons/IconJerusalem';
 import IconGaniYoshua from './components/Icon/icons/IconGaniYoshua';
 import IconBeerSheva from './components/Icon/icons/IconBeerSheva';
-
 
 // User
 import CheckEmailExists from './components/User/CheckEmailExists';
@@ -239,6 +242,10 @@ export {
   Section,
   Select,
   SeriesArticles,
+  Teaser,
+  TeaserContent,
+  TeaserMedia,
+  TeaserSubtitle,
   Tags,
   TextInput,
   TextLink,
