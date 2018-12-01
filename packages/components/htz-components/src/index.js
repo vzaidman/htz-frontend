@@ -23,6 +23,9 @@ import Mutation from './components/ApolloBoundary/Mutation';
 import ApolloConsumer from './components/ApolloBoundary/ApolloConsumer';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
+import Card from './components/Card/Card';
+import CardContent from './components/CardContent/CardContent';
+import CardFooter from './components/CardFooter/CardFooter';
 import Caption from './components/Caption/Caption';
 import Carousel from './components/Carousel/Carousel';
 import ChangeableElementGroup from './components/ChangeableElementGroup/ChangeableElementGroup';
@@ -189,6 +192,9 @@ export {
   AboveBlockLink,
   BlockLink,
   Caption,
+  Card,
+  CardContent,
+  CardFooter,
   Carousel,
   ChangeableElementGroup,
   CheckBox,
