@@ -21,6 +21,7 @@ export type TeaserDataType = {
   mediaFlags?: { video?: boolean, html_embed?: boolean, gallery?: boolean, },
   path?: ?string,
   publishDate?: ?number,
+  rank?: ?number,
   relatedArticles?: ?(TeaserDataType[]),
   reportingFrom?: ?string,
   representedContent?: ?string,

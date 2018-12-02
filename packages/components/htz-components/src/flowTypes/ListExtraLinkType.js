@@ -2,8 +2,9 @@
 
 export type ListExtraLinkType = {
   contentId: string,
-  contentName: string, // This is the actual content
-  href?: string,
-  inputTemplate: string, // TODO: is it always "com.tm.Link",
+  contentName: string,
+  href: string,
+  inputTemplate: 'com.tm.Link',
+  linkText: string, // This is the viewable content
   toolTip?: string,
 };
