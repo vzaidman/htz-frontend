@@ -96,7 +96,7 @@ class LoginForms extends Component {
                           <ContentWrapper>
                             <FormWrapper>
                               <ItemCenterer>
-                                <h5>שלום, כיצד תרצה/י להתחבר לחשבונך?</h5>
+                                <h5>שלום, באפשרותך להתחבר לאתר בשתי דרכים?</h5>
                               </ItemCenterer>
 
                               {/* ----------- Forgot Password Modal ------------ */}
@@ -138,7 +138,7 @@ class LoginForms extends Component {
                               >
                                 {/* TAB 1 */}
                                 <PhoneForms
-                                  tabname='כניסה באמצעות SMS'
+                                  tabname='כניסה עם קוד SMS'
                                   flow={flow}
                                   doTransition={doTransition}
                                   findRout={findRout}
@@ -148,7 +148,7 @@ class LoginForms extends Component {
 
                                 {/* TAB 2 */}
                                 <PasswordForm
-                                  tabname='כניסה באמצעות סיסמה'
+                                  tabname='כניסה עם סיסמה'
                                   login={login}
                                   theme={theme}
                                   client={client}

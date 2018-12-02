@@ -52,4 +52,7 @@ export default {
     notMyPhone: 'loginFormsPhone',
     sendAgain: 'otpValidation2',
   },
+  otpValidation2: {
+    withPassword: 'loginFormsPass',
+  },
 };

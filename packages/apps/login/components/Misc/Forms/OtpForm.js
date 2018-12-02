@@ -151,7 +151,7 @@ class OtpForm extends Component {
                           handleGenerateOtp(client, doTransition);
                         }}
                       >
-                        שלח בשנית
+                        שלח שוב
                       </button>
                     </InputLinkButton>
                   </div>

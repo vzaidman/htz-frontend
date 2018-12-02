@@ -41,17 +41,14 @@ const PhoneMailSent2 = () => (
         <ContentWrapper>
           <FormWrapper>
             <ItemCenterer>
-              <h5>נשלח אלייך מייל בשנית</h5>
+              <h5>שלחנו שוב את המייל</h5>
             </ItemCenterer>
 
             <BottomLinks spacing={0}>
               <span>לא הגיע?</span>
               <br />
-              <HtzLink
-                href="https://www.haaretz.co.il/misc/contact-us"
-                target="_blank"
-              >
-                פניה לשירות לקוחות
+              <HtzLink href="https://www.haaretz.co.il/misc/contact-us" target="_blank">
+                פנו לשירות הלקוחות שלנו
               </HtzLink>
 
               <br />
@@ -65,7 +62,7 @@ const PhoneMailSent2 = () => (
                   Router.push(route);
                 }}
               >
-                כניסה באמצעות סיסמה
+                להתחברות באמצעות הסיסמה שברשותכם
               </HtzLink>
             </BottomLinks>
           </FormWrapper>
