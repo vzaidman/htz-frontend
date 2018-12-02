@@ -111,11 +111,13 @@ const mutation = new GraphQLObjectType({
       args: {
         email: { type: GraphQLString, },
         confirmation: { type: GraphQLString, },
+        mobilePrefix: { type: GraphQLString, },
+        mobileNum: { type: GraphQLString, },
       },
-      resolve(parentValue, { email, confirmation, }, { dataSources, }) {
+      resolve(parentValue, { email, confirmation, mobilePrefix, mobileNum, }, { dataSources, }) {
         return dataSources
           .NewSsoOperationsAPI
-          .validateEmailPhoneConnect(email, confirmation);
+          .validateEmailPhoneConnect(email, confirmation, mobilePrefix, mobileNum);
       },
     },
     sendEmailConfirmation: {

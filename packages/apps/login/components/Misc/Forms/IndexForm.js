@@ -1,6 +1,7 @@
 import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { UserTransformations, } from '@haaretz/htz-user-utils';
 import isEmail from 'validator/lib/isEmail';
 import Router from 'next/router';
 import objTransform from '../../../util/objectTransformationUtil';
@@ -115,7 +116,6 @@ const handleGenerateOtp = ({
   route,
   showError,
   setPreloader,
-  confirmation,
   eventsHandler,
 }) =>
   generateOtp(client)({ typeId: phoneNum, })
@@ -142,17 +142,10 @@ const handleResponseFromGraphql = ({
   showError,
   setPreloader,
   eventsTrackers,
-  confirmation,
-  facebook,
 }) => {
   const dataSaved = saveUserData(client)({ userData: res.userByMail, });
-  const userData = getUserData(dataSaved);
   const transformedObj = objTransform(res);
   const flow = getFlowByData(transformedObj.user);
-  if (confirmation) {
-    flow.flowNumber = 1;
-    flow.initialState = 'loginFormsOtp';
-  }
   storeFlowNumber(client)(flow.flowNumber);
   const eventsHandler = sendTrackingEvents(eventsTrackers, { page: 'Main Login', flowNumber: flow.flowNumber, label: 'proceedEmail', });
   const { route, metadata, } = parseRouteInfo(flow.initialTransition);
@@ -160,7 +153,7 @@ const handleResponseFromGraphql = ({
 
   setFacebookParamsOnApollo(client);
 
-  if (!isEmailValidationRequired(dataSaved) && (hasValidatedPhone(dataSaved) || confirmation)) {
+  if (!isEmailValidationRequired(dataSaved) && hasValidatedPhone(dataSaved)) {
     handleGenerateOtp({
       client,
       email,
@@ -173,7 +166,6 @@ const handleResponseFromGraphql = ({
       route,
       showError,
       setPreloader,
-      confirmation,
       eventsHandler,
     });
   }
@@ -283,8 +275,9 @@ class IndexForm extends Component {
   autoSubmit = ({ client, getFlowByData, }) => {
     const { confirmation, email, phone, facebook, type, } = getUrlParams();
     const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction, };
+    const { prefix, suffix, } = UserTransformations.mobileNumberParser(phone);
     if (confirmation && type === 'phoneEmailConnect') {
-      validateMailWithPhone(client)({ email, confirmation, })
+      validateMailWithPhone(client)({ email, confirmation, mobilePrefix: prefix, mobileNum: suffix, })
         .then(
           () => onSubmit(
             client,
