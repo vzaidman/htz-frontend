@@ -77,7 +77,7 @@ class PhoneMailSent extends Component {
                   <ContentWrapper>
                     <FormWrapper>
                       <ItemCenterer>
-                        <h5>נשלח אלייך מייל על מנת לאשר את המספר הטלפון שלך</h5>
+                        <h5>נשלח אליכם דוא"ל שבאמצעותו ניתן לוודא את מספר הטלפון</h5>
                       </ItemCenterer>
 
                       <ItemCenterer>
@@ -98,7 +98,7 @@ class PhoneMailSent extends Component {
                             sendAgain(client, doTransition);
                           }}
                         >
-                          לחץ כאן
+                          לחצו כאן
                         </HtzLink>
 
                         <br/><br/>
@@ -111,7 +111,7 @@ class PhoneMailSent extends Component {
                             Router.push(route);
                           }}
                         >
-                          לא כרגע. כניסה באמצעות סיסמה
+                          להתחברות באמצעות הסיסמה שברשותכם
                         </HtzLink>
                       </BottomLinks>
                     </FormWrapper>
