@@ -47,7 +47,7 @@ const getUrlParams = () => {
   // eslint-disable-next-line no-undef
   const pageUrl = new URL(window.location.href);
   return {
-    confirmation: pageUrl.searchParams.get('confirmation'),
+    confirmation: (pageUrl.searchParams.get('confirmation') ? pageUrl.searchParams.get('confirmation').split(' ').join('+') : null),
     type: pageUrl.searchParams.get('type'),
     ...getParamsData(pageUrl.searchParams.get('params')),
     facebook: {
@@ -184,7 +184,6 @@ const handleResponseFromGraphql = ({
       email,
       url: `${prefix}.${getHost(client)}`,
       paramString: JSON.stringify({ email, }),
-      userName: userData.firstName || email,
     })
       .then(
         () => {
@@ -307,7 +306,7 @@ class IndexForm extends Component {
             this.hideError,
             this.setPreloader,
             eventsTrackers
-          ),
+          )({ email, phone, }),
           fail => this.showError(fail.message)
         );
     }

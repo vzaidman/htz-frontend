@@ -455,7 +455,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
           url,
           userMobile: phone,
           // eslint-disable-next-line no-undef
-          paramsString: `${Buffer.from(paramString).toString('base64')}&type=phoneEmailConnect`,
+          paramsString: `${paramString}&type=phoneEmailConnect`,
         },
       }),
     }).then(
@@ -477,7 +477,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
         templateParams: {
           url,
           // eslint-disable-next-line no-undef
-          paramsString: `params=${Buffer.from(paramString).toString('base64')}&type=mailValidation`,
+          paramsString: `params=${paramString}&type=mailValidation`,
         },
       }),
     }).then(

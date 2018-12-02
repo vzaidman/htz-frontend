@@ -167,7 +167,7 @@ const onSubmit = ({ register, doTransition, user, showError, hideError, setPrelo
 };
 
 const sendAgain = e => {
-  console.log('test...');
+  console.log('test...'); // TODO send again
 };
 // --------------------------
 
@@ -196,7 +196,6 @@ class RegisterPage extends Component {
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
 
   valdiateForm = ({ firstname, lastname, email, password, phone, terms, }) => {
-    console.log(terms);
     let errors = [];
     if (firstname !== null) {
       errors = [ ...validateFirstNameInput({ firstname, }), ];

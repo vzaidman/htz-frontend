@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLString, } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLBoolean, } from 'graphql';
 
 const ValidateConfirmation = new GraphQLObjectType({
   name: 'ValidateConfirmation',
   fields: () => ({
-    message: { type: GraphQLString, },
-    success: { type: GraphQLString, },
+    msg: { type: GraphQLString, },
+    success: { type: GraphQLBoolean, },
   }),
 });
 
