@@ -73,7 +73,7 @@ Teaser.defaultProps = {
   isRev: false,
 };
 
-function Teaser({
+export default function Teaser({
   children,
   data,
 
