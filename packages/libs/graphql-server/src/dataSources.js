@@ -397,14 +397,14 @@ class NewSsoOperationsAPI extends RESTDataSource {
     return this.context.newSsoService;
   }
 
-  async validateEmailPhoneConnect(email, confirmation) {
+  async validateEmailPhoneConnect(email, confirmation, mobilePrefix, mobileNum) {
     return fetch(`${this.context.newSsoService}/validateEmailPhoneConnect`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, confirmation, }),
+      body: JSON.stringify({ email, confirmation, mobilePrefix, mobileNum, }),
     }).then(
       success => success.json(),
       () => Promise.resolve({ success: false, msg: 'server error', })
@@ -447,7 +447,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
           url,
           userMobile: phone,
           // eslint-disable-next-line no-undef
-          paramsString: `${paramString}&type=phoneEmailConnect`,
+          paramsString: `params=${paramString}&type=phoneEmailConnect`,
         },
       }),
     }).then(
