@@ -62,9 +62,14 @@ const generateOtp = client => phoneNumObj =>
     mutation: GENERATE_HASH,
   });
 
-const connectMailWithPhone = client => dataObj =>
+const connectMailWithPhone = client => ({ email, paramString, url, userName, }) =>
   client.mutate({
-    variables: dataObj,
+    variables: {
+      email,
+      url,
+      userName,
+      paramString: `${Buffer.from(paramString).toString('base64')}`,
+    },
     mutation: CONNECT_MAIL_MOBILE,
   });
 
@@ -74,9 +79,13 @@ const validateMailWithPhone = client => dataObj =>
     mutation: VALIDATE_MAIL_TO_MOBILE,
   });
 
-const sendMailConfirmation = client => dataObj =>
+const sendMailConfirmation = client => ({ email, paramString, url, }) =>
   client.mutate({
-    variables: dataObj,
+    variables: {
+      email,
+      url,
+      paramString: `${Buffer.from(paramString).toString('base64')}`,
+    },
     mutation: SEND_MAIL_CONFIRMATION_REQUEST,
   });
 
