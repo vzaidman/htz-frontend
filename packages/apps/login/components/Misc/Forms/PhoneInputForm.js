@@ -18,10 +18,6 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // Methods -------------------
 const generateSmsCodeError = message => [ { name: 'smscode', order: 1, errorText: message, }, ];
 
-const isValidPhoneNumber = number => {
-  const phoneRegex = /^(\s*|[+0-9]\d{6,})$/;
-  return phoneRegex.test(number);
-};
 const validatePhoneNumber = ({ phoneNumber, }) =>
   (!isMobile(phoneNumber) || !phoneNumber || phoneNumber.length < 10
     ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
@@ -32,8 +28,8 @@ const getEmailUrl = (hostname) => {
     `https://${hostname}` : `http://${hostname}:3000`;
 }
 
-const cleanPhoneNumber = (phoneNumber) => {
-  return phoneNumber.replace(/[\s\-]/g, '');
+const cleanPhoneNumber = phoneNumber => {
+  return phoneNumber ? phoneNumber.replace(/[\s\-]/g, '') : phoneNumber;
 }
 
 const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, }) => ({ phoneNumber, }) => {
@@ -44,7 +40,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, })
   phoneNumber = cleanPhoneNumber(phoneNumber);
   connectMailWithPhone(client)({
     email,
-    userName: userData.firstName,
+    userName: userData.firstName || email,
     phone: phoneNumber,
     paramString: JSON.stringify({ email, phone: phoneNumber, }),
     url: getEmailUrl(getHostname(client)),
