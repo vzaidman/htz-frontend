@@ -44,7 +44,7 @@ const Header = () => (
     <HeaderWrapper>
       <div>הארץ</div>
       <TitleWrapper>
-        <div>ברוכים הבאים</div>
+        <div>התחברות</div>
       </TitleWrapper>
       <ImageWrapper>
         <ImageHolder>
