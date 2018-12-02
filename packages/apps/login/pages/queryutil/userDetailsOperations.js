@@ -62,12 +62,13 @@ const generateOtp = client => phoneNumObj =>
     mutation: GENERATE_HASH,
   });
 
-const connectMailWithPhone = client => ({ email, paramString, url, userName, }) =>
+const connectMailWithPhone = client => ({ email, paramString, url, userName, phone, }) =>
   client.mutate({
     variables: {
       email,
       url,
       userName,
+      phone,
       paramString: `${Buffer.from(paramString).toString('base64')}`,
     },
     mutation: CONNECT_MAIL_MOBILE,
