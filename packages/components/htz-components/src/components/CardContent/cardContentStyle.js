@@ -15,8 +15,8 @@ import setColor from '../../utils/setColor';
 // ///////// //
 //   Types   //
 // ///////// //
-type SeperatorColorType = string | [string, ] | [string, string, ];
-type SeperatorStyleType =
+export type SeperatorColorType = string | [string, ] | [string, string, ];
+export type SeperatorStyleType =
   | "dashed"
   | "dotted"
   | "double"

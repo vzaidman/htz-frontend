@@ -12,26 +12,25 @@ import StandardArticle from './components/ArticleTypes/StandardArticle/StandardA
 // components
 import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
-import ActionButtons from './components/ActionButtons/ActionButtons';
-import AriaLive from './components/AriaLive/AriaLive';
-import AriaDescription from './components/AriaDescription/AriaDescription';
-import ArticleBody from './components/ArticleBody/ArticleBody';
 import AboveBlockLink from './components/BlockLink/AboveBlockLink';
-import BlockLink from './components/BlockLink/BlockLink';
-import Query from './components/ApolloBoundary/Query';
-import Mutation from './components/ApolloBoundary/Mutation';
+import ActionButtons from './components/ActionButtons/ActionButtons';
 import ApolloConsumer from './components/ApolloBoundary/ApolloConsumer';
+import AriaDescription from './components/AriaDescription/AriaDescription';
+import AriaLive from './components/AriaLive/AriaLive';
+import ArticleBody from './components/ArticleBody/ArticleBody';
+import BlockLink from './components/BlockLink/BlockLink';
 import Button from './components/Button/Button';
 import ButtonGroup from './components/Button/ButtonGroup';
+import Caption from './components/Caption/Caption';
 import Card from './components/Card/Card';
 import CardContent from './components/CardContent/CardContent';
 import CardFooter from './components/CardFooter/CardFooter';
-import Caption from './components/Caption/Caption';
 import Carousel from './components/Carousel/Carousel';
 import ChangeableElementGroup from './components/ChangeableElementGroup/ChangeableElementGroup';
 import CheckBox from './components/CheckBox/CheckBox';
 import Comments from './components/CommentsSection/CommentsInViewWrapper';
 import Debug from './components/Debug/Debug';
+import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
 import Embed from './components/Embed/Embed';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
@@ -42,30 +41,32 @@ import GridItem from './components/Grid/GridItem';
 import H from './components/AutoLevels/H';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
+import HtzLink from './components/HtzLink/HtzLink';
 import Image from './components/Image/Image';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import InitPixel from './components/Scripts/InitPixel';
 import Interactive from './components/Interactive/Interactive';
-import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
-import HtzLink from './components/HtzLink/HtzLink';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
 import Masthead from './components/Masthead/Masthead';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import Mutation from './components/ApolloBoundary/Mutation';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
-import Outbrain from './components/Outbrain/Outbrain';
 import Osaka from './components/Osaka/OsakaController';
+import Outbrain from './components/Outbrain/Outbrain';
 import PageSchema from './components/PageSchema/PageSchema';
 import Paragraph from './components/Paragraph/Paragraph';
 import Portal from './components/Portal/Portal';
+import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
+import Query from './components/ApolloBoundary/Query';
 import Quote from './components/Quote/Quote';
-import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RadioButton from './components/RadioButton/RadioButton';
 import RadioGroup from './components/RadioButton/RadioGroup';
+import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RouteChangeListener from './components/EventListeners/RouteChangeListener';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
@@ -80,7 +81,6 @@ import TeaserSubtitle from './components/TeaserSubtitle/TeaserSubtitle';
 import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
 import Video from './components/Video/Video';
-import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
 
 // Icons
 import IconAccessibility from './components/Icon/icons/IconAccessibility';
@@ -92,6 +92,7 @@ import IconAndroid from './components/Icon/icons/IconAndroid';
 import IconApple from './components/Icon/icons/IconApple';
 import IconAvatar from './components/Icon/icons/IconAvatar';
 import IconBack from './components/Icon/icons/IconBack';
+import IconBeerSheva from './components/Icon/icons/IconBeerSheva';
 import IconBold from './components/Icon/icons/IconBold';
 import IconBundle from './components/Icon/icons/IconBundle';
 import IconCamera from './components/Icon/icons/IconCamera';
@@ -105,11 +106,13 @@ import IconDrive from './components/Icon/icons/IconDrive';
 import IconFacebook from './components/Icon/icons/IconFacebook';
 import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
-import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
+import IconGaniYoshua from './components/Icon/icons/IconGaniYoshua';
 import IconHaaretzFullLogo from './components/Icon/icons/IconHaaretzFullLogo';
+import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
 import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
 import IconInfo from './components/Icon/icons/IconInfo';
 import IconItalic from './components/Icon/icons/IconItalic';
+import IconJerusalem from './components/Icon/icons/IconJerusalem';
 import IconLevels from './components/Icon/icons/IconLevels';
 import IconLike from './components/Icon/icons/IconLike';
 import IconLock from './components/Icon/icons/IconLock';
@@ -121,10 +124,12 @@ import IconMenu from './components/Icon/icons/IconMenu';
 import IconMessenger from './components/Icon/icons/IconMessenger';
 import IconPaypal from './components/Icon/icons/IconPaypal';
 import IconPdf from './components/Icon/icons/IconPdf';
+import IconPetachTikva from './components/Icon/icons/IconPetachTikva';
 import IconPlus from './components/Icon/icons/IconPlus';
 import IconPortions from './components/Icon/icons/IconPortions';
 import IconPrint from './components/Icon/icons/IconPrint';
 import IconQuote from './components/Icon/icons/IconQuote';
+import IconRamatGan from './components/Icon/icons/IconRamatGan';
 import IconReading from './components/Icon/icons/IconReading';
 import IconRss from './components/Icon/icons/IconRss';
 import IconSafePayment from './components/Icon/icons/IconSafePayment';
@@ -140,11 +145,6 @@ import IconWhatsapp from './components/Icon/icons/IconWhatsapp';
 import IconZen from './components/Icon/icons/IconZen';
 import IconZoomIn from './components/Icon/icons/IconZoomIn';
 import IconZoomOut from './components/Icon/icons/IconZoomOut';
-import IconRamatGan from './components/Icon/icons/IconRamatGan';
-import IconPetachTikva from './components/Icon/icons/IconPetachTikva';
-import IconJerusalem from './components/Icon/icons/IconJerusalem';
-import IconGaniYoshua from './components/Icon/icons/IconGaniYoshua';
-import IconBeerSheva from './components/Icon/icons/IconBeerSheva';
 
 // User
 import CheckEmailExists from './components/User/CheckEmailExists';
@@ -153,8 +153,6 @@ import Logout from './components/User/Logout';
 import Register from './components/User/Register';
 import UserDispenser from './components/User/UserDispenser';
 import UserInjector from './components/User/UserInjector';
-import LoginExample from './components/User/LoginExample';
-import RegisterExample from './components/User/RegisterExample';
 
 // DFP
 import DfpInjector from './components/Ads/DfpInjector';
@@ -163,12 +161,12 @@ import GeneralAdSlot from './components/Ads/GeneralAdSlot';
 /** ************************************ *
  *       U  T  I  L  I  T  I  E  S       *
  * ************************************* */
+import { appendScript, } from './utils/scriptTools';
 import createApp from './createApp';
 import createDocument from './createDocument';
-import setColor from './utils/setColor';
-import { appendScript, } from './utils/scriptTools';
-import { stylesPropType, } from './propTypes/stylesPropType';
 import extractParamFromUrl from './components/BI/extractParamFromUrl';
+import setColor from './utils/setColor';
+import { stylesPropType, } from './propTypes/stylesPropType';
 
 // BI
 import BIAction from './components/BI/BIAction';
@@ -180,20 +178,22 @@ import pixelEvent from './utils/pixelEvent';
 
 export {
   // ArticleTypes
-  StandardArticle,
   RecipeArticle,
   ReviewArticle,
+  StandardArticle,
+
   // Components
   A11yDialog,
   A11yError,
+  AboveBlockLink,
   ActionButtons,
-  AriaLive,
+  ApolloConsumer,
   AriaDescription,
+  AriaLive,
   ArticleBody,
+  BlockLink,
   Button,
   ButtonGroup,
-  AboveBlockLink,
-  BlockLink,
   Caption,
   Card,
   CardContent,
@@ -214,24 +214,28 @@ export {
   H,
   HeadlineElement,
   HtmlElement,
+  HtzLink,
   Image,
   ImageGallery,
   InitPixel,
   Interactive,
   LayoutContainer,
   LayoutRow,
-  HtzLink,
   LinksBlock,
   List,
   Masthead,
   Media,
   MobileQuickRegistration,
+  Mutation,
   NavigationMenu,
-  Outbrain,
+  Newsletter,
   Osaka,
+  Outbrain,
   PageSchema,
   Paragraph,
   Portal,
+  PremiumContentMeta,
+  Query,
   Quote,
   RadioButton,
   RadioGroup,
@@ -242,15 +246,15 @@ export {
   Section,
   Select,
   SeriesArticles,
+  Tags,
   Teaser,
   TeaserContent,
   TeaserMedia,
   TeaserSubtitle,
-  Tags,
   TextInput,
   TextLink,
   Video,
-  PremiumContentMeta,
+
   // Icons
   IconAccessibility,
   IconAlef,
@@ -261,6 +265,7 @@ export {
   IconApple,
   IconAvatar,
   IconBack,
+  IconBeerSheva,
   IconBold,
   IconBundle,
   IconCamera,
@@ -274,11 +279,13 @@ export {
   IconFacebook,
   IconFacebookLogo,
   IconGPlus,
-  IconHaaretzLogo,
+  IconGaniYoshua,
   IconHaaretzFullLogo,
+  IconHaaretzLogo,
   IconHtzLoader,
   IconInfo,
   IconItalic,
+  IconJerusalem,
   IconLevels,
   IconLike,
   IconLock,
@@ -290,10 +297,12 @@ export {
   IconMessenger,
   IconPaypal,
   IconPdf,
+  IconPetachTikva,
   IconPlus,
   IconPortions,
   IconPrint,
   IconQuote,
+  IconRamatGan,
   IconReading,
   IconRss,
   IconSafePayment,
@@ -309,37 +318,32 @@ export {
   IconZen,
   IconZoomIn,
   IconZoomOut,
-  IconBeerSheva,
-  IconGaniYoshua,
-  IconJerusalem,
-  IconPetachTikva,
-  IconRamatGan,
+
+  // DFP
+  DfpInjector,
+  GeneralAdSlot,
+
   // User
   CheckEmailExists,
   Login,
   Logout,
-  Newsletter,
   Register,
   UserDispenser,
   UserInjector,
-  LoginExample,
-  RegisterExample,
-  DfpInjector,
-  GeneralAdSlot,
+
   // Utils
   appendScript,
   createApp,
   createDocument,
+  extractParamFromUrl,
   setColor,
   stylesPropType,
-  extractParamFromUrl,
+
   // BI
   BIAction,
   BIRequest,
+
   // Event tracker
   EventTracker,
   pixelEvent,
-  Query,
-  Mutation,
-  ApolloConsumer,
 };

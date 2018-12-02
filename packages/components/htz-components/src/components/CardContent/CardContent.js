@@ -3,9 +3,10 @@ import type { Node, ElementType, } from 'react';
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 
+import cardContentStyle from './cardContentStyle.js';
+
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import type { CardContentStyleOptions, } from './cardContentStyle.js';
-import cardContentStyle from './cardContentStyle.js';
 
 export type CardContentProps = {
   ...CardContentStyleOptions,
