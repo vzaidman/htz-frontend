@@ -27,6 +27,9 @@ export const textInputI18n = Object.freeze({
 export const tagsElementI18n = Object.freeze({
   prefix: 'תגיות:',
 });
+export const topNewsI18n = Object.freeze({
+  title: 'בראש החדשות:',
+});
 
 export const breadcrumbsI18n = Object.freeze({
   ariaLabel: 'מיקומך באתר',
