@@ -35,7 +35,7 @@ const VALIDATE_MAIL_TO_MOBILE = gql`
   mutation ValidateMailMobileConfirmation($email: String!, $confirmation: String!) {
     validateMobileEmailConnection(email: $email, confirmation: $confirmation) {
       success
-      message
+      msg
     }
   }
 `;
@@ -61,7 +61,7 @@ const CONFIRM_MAIL = gql`
   mutation ValidateEmail($email: String!, $confirmation: String!) {
     validateEmail(email: $email, confirmation: $confirmation) {
       success
-      message
+      msg
     }
   }
 `;
