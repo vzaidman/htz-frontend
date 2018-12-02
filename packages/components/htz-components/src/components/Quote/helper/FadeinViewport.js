@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FelaComponent from 'react-fela/lib/FelaComponent';
+import { FelaComponent, } from 'react-fela';
 import Observer from 'react-intersection-observer';
 
 const animate = theme => ({

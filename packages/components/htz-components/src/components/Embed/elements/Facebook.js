@@ -8,7 +8,7 @@
 /* globals FB */
 import React from 'react';
 import PropTypes from 'prop-types';
-import FelaComponent from 'react-fela/lib/FelaComponent';
+import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
 export default class Facebook extends React.Component {

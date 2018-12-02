@@ -3,7 +3,6 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
-// import { Form,RadioButton,Button } from '@haaretz/htz-components';
 import Form from '../Form/Form';
 import { RadioButton, } from '../RadioButton/RadioButton';
 import TextInput from '../TextInput/TextInput';
