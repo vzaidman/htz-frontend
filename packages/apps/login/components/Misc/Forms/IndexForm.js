@@ -171,7 +171,7 @@ const handleResponseFromGraphql = ({
   }
   else if (dataSaved && dataSaved.userData && !hasValidatedEmail(dataSaved)) {
     // eslint-disable-next-line no-undef
-    const prefix = /(http.?\/\/\D*).(haaretz.co.il|themarker.com|haaretz.com).*/.exec(window.location.origin)[1];
+    const prefix = /(https?:\/\/\D*).(haaretz.co.il|themarker.com|haaretz.com).*/.exec(window.location.origin)[1];
     sendMailConfirmation(client)({
       email,
       url: `${prefix}.${getHost(client)}`,
