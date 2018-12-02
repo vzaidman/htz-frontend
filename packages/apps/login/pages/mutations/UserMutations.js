@@ -32,8 +32,18 @@ const CONNECT_MAIL_MOBILE = gql`
 `;
 
 const VALIDATE_MAIL_TO_MOBILE = gql`
-  mutation ValidateMailMobileConfirmation($email: String!, $confirmation: String!) {
-    validateMobileEmailConnection(email: $email, confirmation: $confirmation) {
+  mutation ValidateMailMobileConfirmation(
+    $email: String!,
+    $confirmation: String!
+    $mobilePrefix: String!
+    $mobileNum: String!
+  ) {
+    validateMobileEmailConnection(
+      email: $email,
+      confirmation: $confirmation,
+      mobilePrefix: $mobilePrefix,
+      mobileNum: $mobileNum
+    ) {
       success
       msg
     }
