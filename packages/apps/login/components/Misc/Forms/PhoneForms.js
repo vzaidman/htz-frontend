@@ -47,7 +47,7 @@ class PhoneForms extends React.Component {
             this.changeFormType(0);
           }}
         >
-          לא הטלפון שלך?
+          לא המספר שלכם?
         </HtzLink>
       </BottomLinks>
     ));

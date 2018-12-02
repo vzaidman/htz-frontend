@@ -79,7 +79,8 @@ class OtpValidation2 extends Component {
                   <FormWrapper>
                     <ItemCenterer>
                       <h5>
-                        להתחברות הזינו את הקוד שנשלח למספר
+                        שלחנו שוב את הקוד
+                        אנא הזינו את הקוד שנשלח למספר
                         <br />
                         <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
                       </h5>
@@ -126,20 +127,19 @@ class OtpValidation2 extends Component {
                       )}
                     />
                     <BottomLinks spacing={0}>
-                      <span>הקוד נשלח בשנית. לא הגיע?</span>
+                      <span>לא הגיע?</span>
         
                       <br />
         
                       <HtzLink
-                        href="/"
-                        //href={`${findRout('withPassword')}`}
+                        href={`${findRout('withPassword')}`}
                         onClick={e => {
                           e.preventDefault();
-                          /*const route = doTransition('withPassword');
-                          Router.push(route);*/
+                          const route = doTransition('withPassword');
+                          Router.push(route);
                         }}
                       >
-                        כניסה באמצעות סיסמה
+                        כניסה עם סיסמה
                       </HtzLink>
         
                       <br />
@@ -148,7 +148,7 @@ class OtpValidation2 extends Component {
                       <HtzLink
                         href="https://www.haaretz.co.il/misc/contact-us"
                       >
-                        פניה לשירות לקוחות
+                        פנו לשירות לקוחות שלנו
                       </HtzLink>
                     </BottomLinks>
                   </FormWrapper>
