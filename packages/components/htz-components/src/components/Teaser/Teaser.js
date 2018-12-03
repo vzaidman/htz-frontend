@@ -2,10 +2,7 @@
 
 import * as React from 'react';
 
-import type {
-  ComponentPropResponsiveObject,
-  StyleProps,
-} from '@haaretz/htz-css-tools';
+import type { ComponentPropResponsiveObject, StyleProps, } from '@haaretz/htz-css-tools';
 
 import BlockLink from '../BlockLink/BlockLink';
 import Card from '../Card/Card';
@@ -88,11 +85,7 @@ function Teaser({
   isRev,
 }: TeaserPropTypes): React.Node {
   return (
-    <Card
-      tagName="article"
-      fillHeight
-      {...{ miscStyles, backgroundColor, isElevated, attrs, }}
-    >
+    <Card tagName="article" fillHeight {...{ miscStyles, backgroundColor, isElevated, attrs, }}>
       <BlockLink href={data.path}>
         <Grid gutter={gutter} {...(isRev ? { isRev, } : {})}>
           {children}
@@ -101,3 +94,5 @@ function Teaser({
     </Card>
   );
 }
+
+export default Teaser;

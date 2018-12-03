@@ -39,7 +39,7 @@ export default function AboveBlockLink({ children, render, }) {
         position: 'relative',
         zIndex: '1',
       }}
-      render={children || render}
+      render={typeof children === 'function' ? children : children ? () => children : render}
     />
   );
 }
