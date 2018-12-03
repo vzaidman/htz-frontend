@@ -106,7 +106,11 @@ export default function TeaserContent({
           {...{ attrs, backgroundColor, color, padding, miscStyles, }}
         >
           <AboveBlockLink>
-            {renderContent && renderContent(data)}
+            {({ className, }) => (
+              <div className={className}>
+                {renderContent && renderContent(data)}
+              </div>
+            )}
           </AboveBlockLink>
         </CardContent>
 
@@ -121,7 +125,9 @@ export default function TeaserContent({
             miscStyles={footerMiscStyles}
           >
             <AboveBlockLink>
-              {renderFooter && renderFooter(data)}
+              {({ className, }) => (
+                <div className={className}>{renderFooter(data)}</div>
+              )}
             </AboveBlockLink>
           </CardFooter>
         )}
