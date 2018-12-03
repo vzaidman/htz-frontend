@@ -32,8 +32,8 @@ services:
       - GRAPHQL_SUB_DOMAIN=grahpql
 
     networks:
-      - prod01
+      - production
 
 networks:
-  prod01:
+  production:
     external: true
