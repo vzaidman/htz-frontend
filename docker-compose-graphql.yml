@@ -33,8 +33,8 @@ services:
       - ENGINE_API_KEY=service:Haaretz-Prod:6n6m0aRAYOlqR6m0_TvH6g      
 
     networks:
-      - prod01
+      - production
 
 networks:
-  prod01:
+  production:
     external: true
