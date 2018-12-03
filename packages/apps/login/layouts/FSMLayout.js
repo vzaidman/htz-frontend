@@ -55,6 +55,7 @@ const FSMLayout = ({ children, }) => (
                               findRout,
                               doTransition,
                             })}
+                            <MobileFooterSpacer />
                             <Footer contentId="7.1283189" />
                           </PageWrapper>
                         </Fragment>

@@ -102,7 +102,7 @@ class LoginForms extends Component {
                           <ContentWrapper>
                             <FormWrapper>
                               <ItemCenterer>
-                                <h5>שלום, באפשרותך להתחבר לאתר בשתי דרכים?</h5>
+                                <h5>באפשרותכם להתחבר לאתר בשתי דרכים</h5>
                               </ItemCenterer>
 
                               {/* ----------- Forgot Password Modal ------------ */}
@@ -123,7 +123,7 @@ class LoginForms extends Component {
                                         <CloseButton />
                                         <h4>החלפת סיסמה</h4>
                                         <br />
-                                        <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך.</h5>
+                                        <h5>הוראות לאיפוס הסיסמה נשלחו לתיבת הדוא”ל שלך</h5>
                                         <ItemCenterer>
                                           <Preloader isLoading={this.state.isLoading} />
                                           <Button onClick={closeModal}>התחברות</Button>

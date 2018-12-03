@@ -320,7 +320,7 @@ class IndexForm extends Component {
     return (
       <FormWrapper>
         <ItemCenterer>
-          <h5>לכניסה או הרשמה לאתר הזינו כתובת דוא”ל</h5>
+          <h5>לכניסה או להרשמה לאתר הזינו כתובת דוא”ל</h5>
         </ItemCenterer>
         <Form
           clearFormAfterSubmit={false}
