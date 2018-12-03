@@ -2,12 +2,14 @@ import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 
-import { HtzLink, } from '@haaretz/htz-components';
+import { EventTracker, HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 import { connectMailWithPhone, getUserData, getEmail, getHostname, getPhoneNum, } from './queryutil/userDetailsOperations';
 
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import theme from '../theme/index';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
 import {
@@ -72,50 +74,61 @@ class PhoneMailSent extends Component {
         {({ currentState, findRout, doTransition, }) => (
           <ApolloConsumer>
             {client => {
+              const flow = getFlowNumber(client);
               return (
                 <Fragment>
-                  <ContentWrapper>
-                    <FormWrapper>
-                      <ItemCenterer>
-                        <h5>נשלח אליכם דוא"ל שבאמצעותו ניתן לוודא את מספר הטלפון</h5>
-                      </ItemCenterer>
+                  <EventTracker>
+                    {({ biAction, gaAction, gaMapper, }) => (
+                      <ContentWrapper>
+                        <FormWrapper>
+                          <ItemCenterer>
+                            <h5>נשלח אליכם דוא"ל שבאמצעותו ניתן לוודא את מספר הטלפון</h5>
+                          </ItemCenterer>
 
-                      <ItemCenterer>
-                        <Preloader isLoading={this.state.isLoading} />
-                      </ItemCenterer>
+                          <ItemCenterer>
+                            <Preloader isLoading={this.state.isLoading} />
+                          </ItemCenterer>
 
-                      <BottomLinks spacing={0}>
-                        <span>לא הגיע?</span>
+                          <BottomLinks spacing={0}>
+                            <span>לא הגיע?</span>
 
-                        <br/>
+                            <br/>
 
-                        <span>לשליחה חוזרת </span>
-                        <HtzLink
-                          href="/"
-                          onClick={e => {
-                            e.preventDefault();
-                            this.setPreloader(true);
-                            sendAgain(client, doTransition);
-                          }}
-                        >
-                          לחצו כאן
-                        </HtzLink>
+                            <span>לשליחה חוזרת </span>
+                            <HtzLink
+                              href="/"
+                              onClick={e => {
+                                e.preventDefault();
+                                this.setPreloader(true);
+                                sendTrackingEvents({ biAction, gaAction, }, { page: 'Phone validation', flowNumber: flow, label: 'sendAgainPhoneEmail', })(() => {
+                                    sendAgain(client, doTransition);
+                                  }
+                                );
+                              }}
+                            >
+                              לחצו כאן
+                            </HtzLink>
 
-                        <br/><br/>
+                            <br/><br/>
 
-                        <HtzLink
-                          href={`${findRout('withPassword')}`}
-                          onClick={e => {
-                            e.preventDefault();
-                            const route = doTransition('withPassword');
-                            Router.push(route);
-                          }}
-                        >
-                          להתחברות באמצעות הסיסמה שברשותכם
-                        </HtzLink>
-                      </BottomLinks>
-                    </FormWrapper>
-                  </ContentWrapper>
+                            <HtzLink
+                              href={`${findRout('withPassword')}`}
+                              onClick={e => {
+                                e.preventDefault();
+                                const route = doTransition('withPassword');
+                                sendTrackingEvents({ biAction, gaAction, }, { page: 'Phone validation', flowNumber: flow, label: 'withPassword', })(() => {
+                                    Router.push(route);
+                                  }
+                                );
+                              }}
+                            >
+                              להתחברות באמצעות הסיסמה שברשותכם
+                            </HtzLink>
+                          </BottomLinks>
+                        </FormWrapper>
+                      </ContentWrapper>
+                    )}
+                  </EventTracker>
                 </Fragment>
               )
             }}

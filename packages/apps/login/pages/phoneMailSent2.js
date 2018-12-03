@@ -1,11 +1,14 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
+import { ApolloConsumer, } from 'react-apollo';
 
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
+import { EventTracker, Form, TextInput, Button, } from '@haaretz/htz-components';
 import theme from '../theme/index';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import BottomLinks from '../components/Misc/BottomLinks';
 import {
   LoginContentStyles,
@@ -37,37 +40,62 @@ const onSubmit = doTransitionFunction => {
 const PhoneMailSent2 = () => (
   <FSMLayout>
     {({ currentState, findRout, doTransition, }) => (
-      <Fragment>
-        <ContentWrapper>
-          <FormWrapper>
-            <ItemCenterer>
-              <h5>שלחנו שוב את הדוא"ל</h5>
-            </ItemCenterer>
+      <ApolloConsumer>
+        {client => {
+          const flow = getFlowNumber(client);
+          return (
+            <Fragment>
+              <EventTracker>
+                {({ biAction, gaAction, gaMapper, }) => (
+                  <ContentWrapper>
+                    <FormWrapper>
+                      <ItemCenterer>
+                        <h5>שלחנו שוב את הדוא"ל</h5>
+                      </ItemCenterer>
 
-            <BottomLinks spacing={0}>
-              <span>לא הגיע?</span>
-              <br />
-              <HtzLink href="https://www.haaretz.co.il/misc/contact-us" target="_blank">
-                פנו לשירות הלקוחות שלנו
-              </HtzLink>
+                      <BottomLinks spacing={0}>
+                        <span>לא הגיע?</span>
+                        <br />
+                        <HtzLink
+                          href={`${findRout('withPassword')}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            const route = doTransition('withPassword');
+                            Router.push(route);
+                            sendTrackingEvents({ biAction, gaAction, }, { page: 'Phone validation 2', flowNumber: flow, label: 'withPassword', })(() => {
+                                Router.push(route);
+                              }
+                            );
+                          }}
+                        >
+                          פנו לשירות הלקוחות שלנו
+                        </HtzLink>
 
-              <br />
-              <br />
+                        <br />
+                        <br />
 
-              <HtzLink
-                href={`${findRout('withPassword')}`}
-                onClick={e => {
-                  e.preventDefault();
-                  const route = doTransition('withPassword');
-                  Router.push(route);
-                }}
-              >
-                להתחברות באמצעות הסיסמה שברשותכם
-              </HtzLink>
-            </BottomLinks>
-          </FormWrapper>
-        </ContentWrapper>
-      </Fragment>
+                        <HtzLink
+                          href={`${findRout('withPassword')}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            const route = doTransition('withPassword');
+                            sendTrackingEvents({ biAction, gaAction, }, { page: 'Phone validation 2', flowNumber: flow, label: 'withPassword', })(() => {
+                                Router.push(route);
+                              }
+                            );
+                          }}
+                        >
+                          להתחברות באמצעות הסיסמה שברשותכם
+                        </HtzLink>
+                      </BottomLinks>
+                    </FormWrapper>
+                  </ContentWrapper>
+                )}
+              </EventTracker>
+            </Fragment>
+          )}
+        }
+      </ApolloConsumer>
     )}
   </FSMLayout>
 );

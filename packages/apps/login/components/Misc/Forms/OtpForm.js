@@ -8,6 +8,7 @@ import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmai
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
+import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -29,13 +30,18 @@ const getFacebookLogin = user => {
     false;
 };
 
-const onSubmit = ({ client, host, user, loginWithMobile, showError, hideError, setPreloader, }) => ({ smsCode, termsChk, }) => {
+const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
     .then(
       // eslint-disable-next-line no-undef
-      () => { window.location = getFacebookLogin(user) || `https://www.${host}`; },
+      () => {
+        sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', })(() => {
+            window.location = getFacebookLogin(user) || `https://www.${host}`;
+          }
+        );
+      },
       reason => {
         setPreloader(false);
         showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
@@ -105,7 +111,7 @@ class OtpForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, findRout, doTransition, user, } = this.props;
+    const { client, findRout, doTransition, user, eventsTrackers, flow, } = this.props;
     const host = getHost(client);
 
     return (
@@ -123,7 +129,7 @@ class OtpForm extends Component {
               clearFormAfterSubmit={false}
               // initialValues={{ email: 'insert email' }}
               validate={validateSmsCodeInput}
-              onSubmit={onSubmit({ host, client, user, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
+              onSubmit={onSubmit({ host, client, user, flow, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
               render={({ getInputProps, handleSubmit, clearForm, }) => (
                 <Fragment>
                   <div>
@@ -146,7 +152,10 @@ class OtpForm extends Component {
                         data-role="resend"
                         onClick={(e) => {
                           e.preventDefault();
-                          handleGenerateOtp(client, doTransition);
+                          sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'sendAgainOtp', })(() => {
+                            handleGenerateOtp(client, doTransition);
+                            }
+                          );
                         }}
                       >
                         שלח שוב

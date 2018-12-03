@@ -11,6 +11,7 @@ import Preloader from '../../Misc/Preloader';
 import isEmail from 'validator/lib/isEmail';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
+import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -55,14 +56,17 @@ const modifyErrorMessage = (message) => {
     'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message;
 }
 
-const onSubmit = ({ login, host, user, showError, hideError, setPreloader, }) =>
+const onSubmit = ({ login, host, user, flow, showError, hideError, setPreloader, eventsTrackers, }) =>
   ({ email, password, }) => {
     setPreloader(true);
     hideError();
     login(email, password)
       .then(
         () => {
-          window.location = getFacebookLogin(user) || `https://www.${host}`;
+          sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
+              window.location = getFacebookLogin(user) || `https://www.${host}`;
+            }
+          );
         },
         reason => {
           setPreloader(false);
@@ -140,7 +144,7 @@ class PasswordForm extends Component {
   
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, login, theme, showDialog, user, } = this.props;
+    const { client, login, theme, showDialog, user, flow, eventsTrackers, } = this.props;
     const host = getHost(client);
     const { InputLinkButton, TermsWrapper, } = LoginMiscLayoutStylesThemed(host);
     return (
@@ -149,7 +153,7 @@ class PasswordForm extends Component {
           clearFormAfterSubmit={false}
           initialValues={ {email: getEmail(client)} }
           validate={this.validateForm}
-          onSubmit={onSubmit({ login, host, user, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
+          onSubmit={onSubmit({ login, host, user, flow, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <div>
@@ -189,7 +193,10 @@ class PasswordForm extends Component {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      showDialog();
+                      sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'forgotPassword', })(() => {
+                          showDialog();
+                        }
+                      );
                     }}
                   >
                     שכחתי סיסמה

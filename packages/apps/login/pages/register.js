@@ -3,12 +3,14 @@ import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
 import { FelaTheme, createComponent, } from 'react-fela';
 
-import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
+import { EventTracker, HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 import { UserTransformations, } from '@haaretz/htz-user-utils';
 
 import FSMLayout from '../layouts/FSMLayout';
 import isEmail from 'validator/lib/isEmail';
 import { getEmail, getUserData, } from './queryutil/userDetailsOperations';
+import { sendTrackingEvents, } from '../util/trackingEventsUtil';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
 import {
@@ -140,7 +142,7 @@ const getFacebookLogin = (user) => {
 }
 
 
-const onSubmit = ({ register, doTransition, user, showError, hideError, setPreloader, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
+const onSubmit = ({ register, doTransition, user, flow, showError, hideError, setPreloader, eventsTrackers, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
   hideError();
   const { mobilePrefix, mobileSuffix, } = phone ? UserTransformations.mobileNumberParser(phone) : { mobilePrefix: '', mobileSuffix: '', };
@@ -155,7 +157,10 @@ const onSubmit = ({ register, doTransition, user, showError, hideError, setPrelo
     terms
   ).then(
     () => {
-      Router.push(doTransition('success'));
+      sendTrackingEvents(eventsTrackers, { page: 'Register', flowNumber: flow, label: 'register', })(() => {
+          Router.push(doTransition('success'));
+        }
+      );
     },
     reason => {
       setPreloader(false);
@@ -225,159 +230,175 @@ class RegisterPage extends Component {
     return (
       <ApolloConsumer>
         {client => {
+          const flow = getFlowNumber(client);
           return (
             <FSMLayout>
               {({ currentState, findRout, doTransition, }) => (
                 <FelaTheme
                   render={theme => (
                     <Fragment>
-                      <ContentWrapper>
-                        <FormWrapper>
-                          <ItemCenterer>
-                            <h5>הרשמה</h5>
-                          </ItemCenterer>
-                          <Register render={({ register, }) => (
-                            <Form
-                              clearFormAfterSubmit={false}
-                              // initialValues={{ email: 'insert email' }}
-                              validate={this.valdiateForm}
-                              initialValues={ {email: getEmail(client)} }
-                              onSubmit={onSubmit({ register, doTransition, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, })}
-                              render={({ getInputProps, handleSubmit, clearForm, }) => (
-                                <Fragment>
+                      <EventTracker>
+                        {({ biAction, gaAction, gaMapper, }) => (
+                          <ContentWrapper>
+                            <FormWrapper>
+                              <ItemCenterer>
+                                <h5>הרשמה</h5>
+                              </ItemCenterer>
+                              <Register render={({ register, }) => (
+                                <Form
+                                  clearFormAfterSubmit={false}
+                                  // initialValues={{ email: 'insert email' }}
+                                  validate={this.valdiateForm}
+                                  initialValues={ {email: getEmail(client)} }
+                                  onSubmit={onSubmit({
+                                    register,
+                                    doTransition,
+                                    flow: flow,
+                                    showError: this.showError,
+                                    hideError: this.hideError,
+                                    setPreloader: this.setPreloader,
+                                    eventsTrackers: { biAction, gaAction, },
+                                  })}
+                                  render={({ getInputProps, handleSubmit, clearForm, }) => (
+                                    <Fragment>
 
-                                  <HalfSizeWrapper>
-                                    <HalfSize>
-                                      <TextInput
-                                        type="text"
-                                        label={theme.nameInputLabel[0]}
-                                        noteText="אנא הזינו שם פרטי"
-                                        requiredText={{
-                                          long: theme.nameInputRequiredLong,
-                                          short: theme.nameInputRequiredShort,
-                                        }}
-                                        {...getInputProps({
-                                          name: 'firstname',
-                                          label: theme.nameInputLabel[0],
-                                          type: 'text',
-                                        })}
-                                      />
-                                    </HalfSize>
+                                      <HalfSizeWrapper>
+                                        <HalfSize>
+                                          <TextInput
+                                            type="text"
+                                            label={theme.nameInputLabel[0]}
+                                            noteText="אנא הזינו שם פרטי"
+                                            requiredText={{
+                                              long: theme.nameInputRequiredLong,
+                                              short: theme.nameInputRequiredShort,
+                                            }}
+                                            {...getInputProps({
+                                              name: 'firstname',
+                                              label: theme.nameInputLabel[0],
+                                              type: 'text',
+                                            })}
+                                          />
+                                        </HalfSize>
 
-                                    <HalfSize>
-                                      <TextInput
-                                        type="text"
-                                        label={theme.nameInputLabel[1]}
-                                        noteText="אנא הזינו שם משפחה"
-                                        requiredText={{
-                                          long: theme.nameInputRequiredLong,
-                                          short: theme.nameInputRequiredShort,
-                                        }}
-                                        {...getInputProps({
-                                          name: 'lastname',
-                                          label: theme.nameInputLabel[1],
-                                          type: 'text',
-                                        })}
-                                      />
-                                    </HalfSize>
-                                  </HalfSizeWrapper>
+                                        <HalfSize>
+                                          <TextInput
+                                            type="text"
+                                            label={theme.nameInputLabel[1]}
+                                            noteText="אנא הזינו שם משפחה"
+                                            requiredText={{
+                                              long: theme.nameInputRequiredLong,
+                                              short: theme.nameInputRequiredShort,
+                                            }}
+                                            {...getInputProps({
+                                              name: 'lastname',
+                                              label: theme.nameInputLabel[1],
+                                              type: 'text',
+                                            })}
+                                          />
+                                        </HalfSize>
+                                      </HalfSizeWrapper>
 
-                                  <div>
-                                    <TextInput
-                                      type="email"
-                                      noteText="אנא הזינו כתובת דוא”ל"
-                                      maxLength={64}
-                                      value={getEmail(client)}
-                                      requiredText={{
-                                        long: theme.emailInputRequiredLong,
-                                        short: theme.emailInputRequiredShort,
-                                      }}
-                                      {...getInputProps({
-                                        name: 'email',
-                                        label: theme.emailInputLabel,
-                                        type: 'email',
-                                      })}
-                                    />
-                                  </div>
+                                      <div>
+                                        <TextInput
+                                          type="email"
+                                          noteText="אנא הזינו כתובת דוא”ל"
+                                          maxLength={64}
+                                          value={getEmail(client)}
+                                          requiredText={{
+                                            long: theme.emailInputRequiredLong,
+                                            short: theme.emailInputRequiredShort,
+                                          }}
+                                          {...getInputProps({
+                                            name: 'email',
+                                            label: theme.emailInputLabel,
+                                            type: 'email',
+                                          })}
+                                        />
+                                      </div>
 
-                                  <div>
-                                    <TextInput
-                                      type="password"
-                                      label={theme.emailInputLabel}
-                                      noteText="אנא הזינו סיסמה"
-                                      requiredText={{
-                                        long: theme.emailInputRequiredLong,
-                                        short: theme.emailInputRequiredShort,
-                                      }}
-                                      {...getInputProps({
-                                        name: 'password',
-                                        label: theme.passwordInputLabel,
-                                        type: 'password',
-                                      })}
-                                    />
-                                  </div>
+                                      <div>
+                                        <TextInput
+                                          type="password"
+                                          label={theme.emailInputLabel}
+                                          noteText="אנא הזינו סיסמה"
+                                          requiredText={{
+                                            long: theme.emailInputRequiredLong,
+                                            short: theme.emailInputRequiredShort,
+                                          }}
+                                          {...getInputProps({
+                                            name: 'password',
+                                            label: theme.passwordInputLabel,
+                                            type: 'password',
+                                          })}
+                                        />
+                                      </div>
 
-                                  {/*<div>
-                                    <TextInput
-                                      type="tel"
-                                      label={theme.phoneInputLabel}
-                                      noteText="אנא הזינו קידומת ומספר סלולרי"
-                                      {...getInputProps({
-                                        name: 'phone',
-                                        label: theme.phoneInputLabel,
-                                        type: 'tel',
-                                      })}
-                                    />
-                                  </div>*/}
+                                      {/*<div>
+                                        <TextInput
+                                          type="tel"
+                                          label={theme.phoneInputLabel}
+                                          noteText="אנא הזינו קידומת ומספר סלולרי"
+                                          {...getInputProps({
+                                            name: 'phone',
+                                            label: theme.phoneInputLabel,
+                                            type: 'tel',
+                                          })}
+                                        />
+                                      </div>*/}
 
-                                  <TermsWrapper>
-                                    <CheckBox
-                                      type="checkbox"
-                                      label="terms"
-                                      noteText="יש לאשר את תנאי השימוש באתר"
-                                      errorText="יש לאשר את תנאי השימוש באתר"
-                                      onClick={this.toggleChecked}
-                                      checked={this.state.isChecked}
-                                      {...getInputProps({
-                                        name: 'terms',
-                                        label: getTermsText(),
-                                        type: 'checkbox',
-                                      })}
-                                    />
-                                  </TermsWrapper>
+                                      <TermsWrapper>
+                                        <CheckBox
+                                          type="checkbox"
+                                          label="terms"
+                                          noteText="יש לאשר את תנאי השימוש באתר"
+                                          errorText="יש לאשר את תנאי השימוש באתר"
+                                          onClick={this.toggleChecked}
+                                          checked={this.state.isChecked}
+                                          {...getInputProps({
+                                            name: 'terms',
+                                            label: getTermsText(),
+                                            type: 'checkbox',
+                                          })}
+                                        />
+                                      </TermsWrapper>
 
-                                  <ErrorBox className={this.state.showError ? '' : 'hidden'}>
-                                    <span>
-                                      {this.state.errorMessage}
-                                    </span>
-                                  </ErrorBox>
+                                      <ErrorBox className={this.state.showError ? '' : 'hidden'}>
+                                        <span>
+                                          {this.state.errorMessage}
+                                        </span>
+                                      </ErrorBox>
 
-                                  <ItemCenterer>
-                                    <Preloader isLoading={this.state.isLoading} />
-                                    <Button onClick={handleSubmit}>הרשמה</Button>
-                                  </ItemCenterer>
-                                </Fragment>
+                                      <ItemCenterer>
+                                        <Preloader isLoading={this.state.isLoading} />
+                                        <Button onClick={handleSubmit}>הרשמה</Button>
+                                      </ItemCenterer>
+                                    </Fragment>
+                                  )}
+                                />
                               )}
-                            />
-                          )}
-                          />
+                              />
 
-                          <BottomLinks spacing={2.5}>
-                            <span>כבר רשומים? </span>
-                            <HtzLink
-                              href={`${findRout('backToLogin')}`}
-                              onClick={e => {
-                                e.preventDefault();
-                                const route = doTransition('backToLogin');
-                                Router.push(route);
-                              }}
-                            >
-                              התחברו
-                            </HtzLink>
-                          </BottomLinks>
+                              <BottomLinks spacing={2.5}>
+                                <span>כבר רשומים? </span>
+                                <HtzLink
+                                  href={`${findRout('backToLogin')}`}
+                                  onClick={e => {
+                                    e.preventDefault();
+                                    const route = doTransition('backToLogin');
+                                    sendTrackingEvents({ biAction, gaAction, }, { page: 'Register', flowNumber: flow, label: 'loginPage', })(() => {
+                                        Router.push(route);
+                                      }
+                                    );
+                                  }}
+                                >
+                                  התחברו
+                                </HtzLink>
+                              </BottomLinks>
 
-                        </FormWrapper>
-                      </ContentWrapper>
+                            </FormWrapper>
+                          </ContentWrapper>
+                        )}
+                      </EventTracker>
                     </Fragment>
                   )}
                 />
