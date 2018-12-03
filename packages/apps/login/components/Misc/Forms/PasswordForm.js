@@ -5,7 +5,7 @@ import { Form, TextInput, Button, Login, HtzLink, CheckBox, } from '@haaretz/htz
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getUser, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getUser, getReferrer, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import isEmail from 'validator/lib/isEmail';
@@ -56,7 +56,7 @@ const modifyErrorMessage = (message) => {
     'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message;
 }
 
-const onSubmit = ({ login, host, user, flow, showError, hideError, setPreloader, eventsTrackers, }) =>
+const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, eventsTrackers, }) =>
   ({ email, password, }) => {
     setPreloader(true);
     hideError();
@@ -64,7 +64,8 @@ const onSubmit = ({ login, host, user, flow, showError, hideError, setPreloader,
       .then(
         () => {
           sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
-              window.location = getFacebookLogin(user) || `https://www.${host}`;
+              const referrerUrl = getReferrer(client);
+              window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
             }
           );
         },
@@ -153,7 +154,7 @@ class PasswordForm extends Component {
           clearFormAfterSubmit={false}
           initialValues={ {email: getEmail(client)} }
           validate={this.validateForm}
-          onSubmit={onSubmit({ login, host, user, flow, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
+          onSubmit={onSubmit({ login, host, user, flow, client, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <div>

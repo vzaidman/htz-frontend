@@ -5,10 +5,11 @@ import { ApolloConsumer, } from 'react-apollo';
 import { EventTracker, Form, TextInput, Button, Login, HtzLink, } from '@haaretz/htz-components';
 
 import FSMLayout from '../layouts/FSMLayout';
-import { getUserData, getPhoneNum, getOtpHash, getEmail, } from './queryutil/userDetailsOperations';
+import { getUser, getUserData, getPhoneNum, getOtpHash, getEmail, getReferrer, } from './queryutil/userDetailsOperations';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
+import { getFacebookLoginUrl, getFacebookParams, } from '../util/facebookLoginUtil';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -31,6 +32,21 @@ const validateSmsCodeInput = ({ smsCode, }) =>
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
+const getUserFromApollo = (client) => {
+  try {
+    return getUser(client);
+  } catch(e) {
+    return false;
+  }
+}
+
+const getFacebookLogin = user => {
+  const facebookParams = getFacebookParams(user);
+  return facebookParams ?
+    getFacebookLoginUrl(facebookParams) :
+    false;
+};
+
 const onSubmit = ({ client, host, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
   hideError();
@@ -39,7 +55,8 @@ const onSubmit = ({ client, host, flow, loginWithMobile, showError, hideError, s
       // eslint-disable-next-line no-undef
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'SMS code 2', flowNumber: flow, label: 'login', })(() => {
-            window.location = `https://www.${host}`;
+            const referrerUrl = getReferrer(client);
+            window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
           }
         );
       },
@@ -81,6 +98,7 @@ class OtpValidation2 extends Component {
           <ApolloConsumer>
             {client => {
               const flow = getFlowNumber(client);
+              const user = getUserFromApollo(client);
               const host = client.readQuery({ query: GET_HOST, }).hostname.match(/^(?:.*?\.)?(.*)/i)[1];
               return (
                 <ContentWrapper>
