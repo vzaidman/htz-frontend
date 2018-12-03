@@ -49,9 +49,13 @@ export default function TeaserMedia({
   return (
     <GridItem width={width} stretchContent>
       <AboveBlockLink>
-        <HtzLink href={data.path} attrs={{ tabIndex: -1, }}>
-          {children}
-        </HtzLink>
+        {({ className, }) => (
+          <div className={className}>
+            <HtzLink href={data.path} attrs={{ tabIndex: -1, }}>
+              {children}
+            </HtzLink>
+          </div>
+        )}
       </AboveBlockLink>
     </GridItem>
   );
