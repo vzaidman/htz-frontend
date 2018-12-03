@@ -73,7 +73,7 @@ class EmailValidationSent2 extends React.Component {
                       <FormWrapper>
                         <TextBox>
                           <GreenText>
-                            <h5>נשלח אלייך מייל בשנית</h5>
+                            <h5>שלחנו אליכם דוא"ל נוסף</h5>
                           </GreenText>
                         </TextBox>
             
