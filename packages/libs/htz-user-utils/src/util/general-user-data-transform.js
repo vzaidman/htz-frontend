@@ -1,4 +1,5 @@
 const mobileNumberParser = mobileNum => {
+  if (!mobileNum) return { prefix: '', suffix: '', };
   let mobilePrefix;
   let mobileSuffix;
 

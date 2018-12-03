@@ -57,20 +57,6 @@ const handleGenerateOtp = (client, doTransition) => {
 
 const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
-/*const vlidateEmailPhoneConnection = (client) => {
-  const email = getEmail(client);
-  const confirmation = getPhoneEmailConfirmation(client);
-  validateMailWithPhone(client)({ email, confirmation, })
-    .then(
-      () => {
-        console.log("------ success vlidateEmailPhoneConnection");
-      },
-      (error) => {
-        showError(error.message)
-      }
-    );
-}*/
-
 // --------------------------
 
 class OtpValidation extends Component {
@@ -80,7 +66,7 @@ class OtpValidation extends Component {
     errorMessage: '',
   };
 
-  showError = (errorMsg) => {
+  showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   };
 

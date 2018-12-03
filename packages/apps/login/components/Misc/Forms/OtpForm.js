@@ -18,7 +18,7 @@ const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
 const generateSmsCodeError = message => [ { name: 'smsCode', order: 1, errorText: message, }, ];
 const isNumeric = number => Number(number).toString() !== 'NaN';
 const validateSmsCodeInput = ({ smsCode, }) =>
-  (!isNumeric(smsCode) || !smsCode || smsCode.length < 1
+  (!isNumeric(smsCode) || !smsCode || smsCode.length !== 5
     ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
     : []);
 
@@ -68,12 +68,11 @@ const hidePhone = phoneNumber => {
 // --------------------------
 
 class OtpForm extends Component {
-
   state = {
     showError: false,
     errorMessage: '',
     isLoading: false,
-  }
+  };
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
   static propTypes = {
@@ -90,21 +89,20 @@ class OtpForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
-  showError = (errorMsg) => {
+  showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
-  }
+  };
 
   hideError = () => {
     this.setState({ showError: false, errorMessage: "", });
-  }
+  };
 
-  setPreloader = (isLoadingStatus) => {
+  setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus, });
-  }
+  };
 
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
 
-  
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
     const { client, findRout, doTransition, user, } = this.props;
