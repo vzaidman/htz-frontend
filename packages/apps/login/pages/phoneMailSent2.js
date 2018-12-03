@@ -41,7 +41,7 @@ const PhoneMailSent2 = () => (
         <ContentWrapper>
           <FormWrapper>
             <ItemCenterer>
-              <h5>שלחנו שוב את המייל</h5>
+              <h5>שלחנו שוב את הדוא"ל</h5>
             </ItemCenterer>
 
             <BottomLinks spacing={0}>

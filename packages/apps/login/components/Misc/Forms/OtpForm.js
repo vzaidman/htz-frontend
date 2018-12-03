@@ -138,7 +138,7 @@ class OtpForm extends Component {
                       {...getInputProps({
                         name: 'smsCode',
                         label: 'קוד אימות',
-                        type: 'number',
+                        type: 'tel',
                       })}
                     />
                     <InputLinkButton>

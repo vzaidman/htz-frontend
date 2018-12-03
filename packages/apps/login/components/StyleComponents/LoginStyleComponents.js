@@ -51,6 +51,7 @@ const Styles = {
       justifyContent: 'center',
       flexWrap: 'nowrap',
       clear: 'both',
+      paddingBottom: '0 !important',
       '> button': {
         margin: '25px 0',
         textAlign: 'center',
