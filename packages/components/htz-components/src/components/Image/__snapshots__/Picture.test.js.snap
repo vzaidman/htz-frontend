@@ -7,7 +7,7 @@ exports[`<Picture /> Render picture element correctly 1`] = `
   >
     <picture>
       <source
-        media="screen and (min-width: 37.5em) and (max-width: 63.9375em) and (orientation: landscape)"
+        media="screen and (min-width: 600px) and (max-width: 1023px) and (orientation: landscape)"
         srcSet={
           Array [
             "https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg 1045w",
@@ -15,7 +15,7 @@ exports[`<Picture /> Render picture element correctly 1`] = `
         }
       />
       <source
-        media="screen and (min-width: 64em) and (max-width: 79.9375em) and (orientation: landscape)"
+        media="screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: landscape)"
         sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 280px"
         srcSet={
           Array [
@@ -47,7 +47,7 @@ exports[`<Picture /> Render picture sources with animated gifs correctly 1`] = `
   >
     <picture>
       <source
-        media="(max-width: 47.9375em)"
+        media="(max-width: 767px)"
         srcSet={
           Array [
             "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.webp 1045w",
@@ -56,7 +56,7 @@ exports[`<Picture /> Render picture sources with animated gifs correctly 1`] = `
         type="image/webp"
       />
       <source
-        media="(max-width: 47.9375em)"
+        media="(max-width: 767px)"
         srcSet={
           Array [
             "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.gif 1045w",
@@ -84,7 +84,7 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
   >
     <picture>
       <source
-        media="(max-width: 47.9375em)"
+        media="(max-width: 767px)"
         srcSet={
           Array [
             "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 1045w",
@@ -92,7 +92,7 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         }
       />
       <source
-        media="(max-width: 79.9375em)"
+        media="(max-width: 1279px)"
         srcSet={
           Array [
             "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto:best,h_433,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 745w",
@@ -103,7 +103,7 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         type="image/jpeg2000"
       />
       <source
-        media="(min-width: 80em) and (orientation: landscape)"
+        media="(min-width: 1280px) and (orientation: landscape)"
         srcSet={
           Array [
             "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto:best,h_148,w_345,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 345w",

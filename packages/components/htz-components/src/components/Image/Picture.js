@@ -307,8 +307,7 @@ function getMedia({ sources, theme, }) {
     const imgHasMedia = [ from, until, misc, type, ]
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
-
-    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true) : undefined;
+    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true, true) : undefined;
   });
   return finalMedia;
 }
