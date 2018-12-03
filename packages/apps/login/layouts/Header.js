@@ -50,9 +50,9 @@ const Header = () => (
       <title>Login</title>
     </Head>
     <HeaderWrapper>
-      <IconHaaretzLogo size={3} />
+      <IconHaaretzLogo size={2.7} />
       <TitleWrapper>
-        <div>התחברות לאתר</div>
+        <div>התחברות</div>
       </TitleWrapper>
       <ImageWrapper>
         <ImageHolder>

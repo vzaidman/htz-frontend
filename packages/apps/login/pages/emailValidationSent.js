@@ -5,8 +5,8 @@ import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
 import { ApolloConsumer, } from '@haaretz/htz-components';
-import { sendMailValidation, } from '../util/requestUtil';
-import { getEmail, } from './queryutil/userDetailsOperations';
+import { getEmail, sendMailConfirmation, } from './queryutil/userDetailsOperations';
+import { getHost, } from '../util/requestUtil';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
 import {
@@ -23,7 +23,12 @@ const sendEmailAgain = (client, route, showError, hideError, setPreloader) => {
   setPreloader(true);
   hideError();
   const email = getEmail(client);
-  sendMailValidation({ email, }).then(
+  const prefix = /(https?:\/\/\D*).(haaretz.co.il|themarker.com|haaretz.com).*/.exec(window.location.origin)[1];
+  sendMailConfirmation(client)({ 
+    email,
+    url: `${prefix}.${getHost(client)}`,
+    paramString: JSON.stringify({ email, }),
+   }).then(
     () => {
       Router.push(route);
     },
