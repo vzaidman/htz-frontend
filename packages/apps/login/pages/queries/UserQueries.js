@@ -75,6 +75,12 @@ const HOSTNAME = gql`
   }
 `;
 
+const REFERRER = gql`
+  query getReferrer {
+    loginReferrer @client
+  }
+`;
+
 const USER_EMAIL = gql`
   query getUserEmail {
     userEmail @client
@@ -87,4 +93,13 @@ const PHONE_EMAIL_CONFIRMATION = gql`
   }
 `;
 
-export { USER, USER_DATA, PHONE_NUM, OTP_HASH, USER_EMAIL, HOSTNAME, PHONE_EMAIL_CONFIRMATION, };
+export {
+  USER,
+  USER_DATA,
+  PHONE_NUM,
+  OTP_HASH,
+  USER_EMAIL,
+  HOSTNAME,
+  REFERRER,
+  PHONE_EMAIL_CONFIRMATION,
+};

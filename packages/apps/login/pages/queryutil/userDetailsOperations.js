@@ -5,6 +5,7 @@ import INSPECT_EMAIL, {
   OTP_HASH,
   USER_EMAIL,
   HOSTNAME,
+  REFERRER,
   PHONE_EMAIL_CONFIRMATION,
 } from '../queries/UserQueries';
 import {
@@ -48,6 +49,7 @@ const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
 const getEmail = client => client.readQuery({ query: USER_EMAIL, }).userEmail;
 const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.phoneNum;
 const getHostname = client => client.readQuery({ query: HOSTNAME, }).hostname;
+const getReferrer = client => client.readQuery({ query: REFERRER, }).loginReferrer;
 const getPhoneEmailConfirmation = client =>
   client.readQuery({ query: PHONE_EMAIL_CONFIRMATION, }).phoneEmailConfirmation;
 
@@ -117,6 +119,7 @@ export {
   getUser,
   getUserData,
   getHostname,
+  getReferrer,
   saveUserData,
   getOtpHash,
   saveOtpHash,
