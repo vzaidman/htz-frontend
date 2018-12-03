@@ -1,5 +1,4 @@
 /* global document, Event, fetch */
-// eslint-disable-next-line import/no-named-as-default
 import getCookieAsMap, {
   plantCookie,
   getCookie,
@@ -70,8 +69,8 @@ describe('cookieUtilModule', () => {
       });
 
       it('parsed map should contain a valid cookie correctly', () => {
-        expect(map[ssoKey]).not.toBe('string')
-          && expect(map[ssoKey]).toBe('object');
+        expect(map[ssoKey]).not.toBe('string') &&
+          expect(map[ssoKey]).toBe('object');
       });
       describe(`'${ssoKey}' map`, () => {
         let ssoMap;
@@ -81,8 +80,8 @@ describe('cookieUtilModule', () => {
           done();
         });
         it('should have a userId', () => {
-          expect(ssoMap.userId).not.toBe(undefined)
-            && expect(ssoMap.userId).toEqual('8738500615');
+          expect(ssoMap.userId).not.toBe(undefined) &&
+            expect(ssoMap.userId).toEqual('8738500615');
         });
         it('should contain the following keys: userId, userName, firstName, lastName', () => {
           expect(Object.keys(ssoMap)).toEqual(

@@ -33,8 +33,8 @@ const innerContStyle = ({ theme, }) => ({
     `linear-gradient(130deg, ${theme.color('primary', '-2')}, ${theme.color(
       'secondary',
       '+1'
-    )}),`
-    + 'url(http://res.cloudinary.com/dmymrss4v/image/upload/v1518514050/BG_image_haaretz.png)',
+    )}),` +
+    'url(http://res.cloudinary.com/dmymrss4v/image/upload/v1518514050/BG_image_haaretz.png)',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   // todo: should it be 100% height and width auto like it is now?
@@ -50,8 +50,8 @@ const innerContStyle = ({ theme, }) => ({
       `linear-gradient(130deg, ${theme.color('primary', '-2')}, ${theme.color(
         'secondary',
         '+1'
-      )}),`
-      + 'url(http://res.cloudinary.com/dmymrss4v/image/upload/v1518514050/BG_image_haaretz.png)',
+      )}),` +
+      'url(http://res.cloudinary.com/dmymrss4v/image/upload/v1518514050/BG_image_haaretz.png)',
   },
 });
 

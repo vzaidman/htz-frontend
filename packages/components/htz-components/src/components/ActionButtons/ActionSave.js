@@ -18,8 +18,8 @@ export default class ActionSave extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      nextState.isArticleSaved !== this.state.isArticleSaved
-      || nextProps.buttonStyles !== this.props.buttonStyles
+      nextState.isArticleSaved !== this.state.isArticleSaved ||
+      nextProps.buttonStyles !== this.props.buttonStyles
     );
   }
 

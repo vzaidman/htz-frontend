@@ -20,7 +20,7 @@ const style = ({ theme, }) => ({
 });
 
 const WebInreadAdSlot = props => (
-  <FelaComponent style={{ textAlign: 'center', }}>
+  <FelaComponent style={{ textAlign: 'center', }} >
     <AdSlotBase styleRule={style} {...props} />
   </FelaComponent>
 );

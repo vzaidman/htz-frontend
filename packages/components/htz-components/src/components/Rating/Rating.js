@@ -11,32 +11,25 @@ class Rating extends Component {
     rating: PropTypes.number,
     newRating: PropTypes.func,
   };
-
   static defaultProps = {
     disabled: false,
     numberOfStars: 5,
     rating: 0,
     newRating: null,
   };
-
   state = {
     hoveredStar: null,
   };
 
   starColor = (isStarRightHalf, starNumber) => {
     if (this.state.hoveredStar) {
-      return this.state.hoveredStar >= starNumber
-        ? [ 'primary', ]
-        : [ 'neutral', '-5', ];
+      return this.state.hoveredStar >= starNumber ? [ 'primary', ] : [ 'neutral', '-5', ];
     }
     if (isStarRightHalf) {
-      return this.props.rating >= starNumber - 0.5
-        ? [ 'primary', ]
-        : [ 'neutral', '-5', ];
+      return this.props.rating >= starNumber - 0.5 ? [ 'primary', ] : [ 'neutral', '-5', ];
     }
     return this.props.rating >= starNumber ? [ 'primary', ] : [ 'neutral', '-5', ];
   };
-
   render() {
     const { disabled, numberOfStars, newRating, } = this.props;
     const starArr = [];
@@ -51,7 +44,6 @@ class Rating extends Component {
           render={({ className, }) => (
             <button
               key={`star${starNumber}`}
-              type="button"
               className={className}
               onMouseEnter={() => {
                 if (!disabled) {

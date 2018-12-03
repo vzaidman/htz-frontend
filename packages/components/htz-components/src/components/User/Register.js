@@ -10,22 +10,8 @@ const propTypes = {
 const defaultProps = {};
 
 class Register extends React.Component {
-  getRegisterFunction = (user, plantImages, handleImgOnload) => function register(
-    email,
-    password,
-    confirmPassword,
-    firstName,
-    lastName,
-    mobilePrefix,
-    mobileNumber,
-    termsChk,
-    gRecaptchaResponse
-  ) {
-    const userService = new UserService({
-      plantImagesCallback: plantImages,
-      onImageLoadCallback: handleImgOnload,
-    });
-    return userService.register({
+  getRegisterFunction = (user, plantImages, handleImgOnload) =>
+    function register(
       email,
       password,
       confirmPassword,
@@ -34,21 +20,37 @@ class Register extends React.Component {
       mobilePrefix,
       mobileNumber,
       termsChk,
-      gRecaptchaResponse,
-      user,
-    });
-  };
+      gRecaptchaResponse
+    ) {
+      const userService = new UserService({
+        plantImagesCallback: plantImages,
+        onImageLoadCallback: handleImgOnload,
+      });
+      return userService.register({
+        email,
+        password,
+        confirmPassword,
+        firstName,
+        lastName,
+        mobilePrefix,
+        mobileNumber,
+        termsChk,
+        gRecaptchaResponse,
+        user,
+      });
+    };
 
   render() {
     return (
       <UserDispenser
-        render={({ user, plantImages, handleImgOnload, }) => this.props.render({
-          register: this.getRegisterFunction(
-            user,
-            plantImages,
-            handleImgOnload
-          ),
-        })
+        render={({ user, plantImages, handleImgOnload, }) =>
+          this.props.render({
+            register: this.getRegisterFunction(
+              user,
+              plantImages,
+              handleImgOnload
+            ),
+          })
         }
       />
     );

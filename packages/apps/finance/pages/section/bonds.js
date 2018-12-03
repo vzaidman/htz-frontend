@@ -16,6 +16,7 @@ import TabList from '../../components/TabList/TabList';
 import TabPanel from '../../components/TabPanel/TabPanel';
 import Tab from '../../components/Tab/Tab';
 import { TabButton, } from '../../components/TabbedGraph/TabbedGraph';
+import gql from 'graphql-tag';
 
 type Props = {
   url: {

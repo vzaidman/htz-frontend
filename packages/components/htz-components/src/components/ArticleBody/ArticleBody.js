@@ -21,16 +21,17 @@ const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 // eslint-disable-next-line react/prop-types
 const Figure = ({ lastItem, children, }) => (
   <FelaComponent
-    style={theme => (!lastItem
-      ? {
-        ...parseComponentProp(
-          'marginBottom',
-          theme.articleStyle.body.marginBottom,
-          theme.mq,
-          mediaQueryCallback
-        ),
-      }
-      : {})
+    style={theme =>
+      (!lastItem
+        ? {
+            ...parseComponentProp(
+              'marginBottom',
+              theme.articleStyle.body.marginBottom,
+              theme.mq,
+              mediaQueryCallback
+            ),
+          }
+        : {})
     }
     render="figure"
   >
@@ -130,16 +131,16 @@ const buildComponent = (context, index, isLastItem) => {
                 isLastItem
                   ? null
                   : parseComponentProp(
-                    'marginBottom',
-                    theme.articleStyle.body.marginBottom,
-                    theme.mq,
-                    mediaQueryCallback
-                  )
+                      'marginBottom',
+                      theme.articleStyle.body.marginBottom,
+                      theme.mq,
+                      mediaQueryCallback
+                    )
               }
               {...(uniqueId === 'p' || uniqueId === 'a' || uniqueId === 'h4'
                 ? {
-                  renderFirstImpression: !isLastItem,
-                }
+                    renderFirstImpression: !isLastItem,
+                  }
                 : {})}
             />
           )}

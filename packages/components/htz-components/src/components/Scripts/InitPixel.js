@@ -20,7 +20,6 @@ class InitPixel extends Component {
   shouldComponentUpdate() {
     return false;
   }
-
   render() {
     return (
       <Query query={GET_HOST_NAME}>

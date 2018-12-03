@@ -77,7 +77,8 @@ const Items = createComponent(itemsStyle);
 const currentItemsStyle = ({ moving, direction, }) => ({
   position: 'static',
 });
-const CurrentItems = createComponent(currentItemsStyle, Items, props => Object.keys(props)
+const CurrentItems = createComponent(currentItemsStyle, Items, props =>
+  Object.keys(props)
 );
 
 /**
@@ -127,8 +128,8 @@ class Carousel extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.displayItemNum !== nextState.displayItemNum
-      || this.state.moving !== nextState.moving
+      this.state.displayItemNum !== nextState.displayItemNum ||
+      this.state.moving !== nextState.moving
     );
   }
 
@@ -171,13 +172,13 @@ class Carousel extends React.Component {
       // Firefox
       return 'transitionend';
     }
-    if ('onwebkittransitionend' in window) {
+    else if ('onwebkittransitionend' in window) {
       // Chrome/Saf (+ Mobile Saf)/Android
       return 'webkitTransitionEnd';
     }
-    if (
-      'onotransitionend' in this.currentItems
-      || navigator.appName === 'Opera'
+    else if (
+      'onotransitionend' in this.currentItems ||
+      navigator.appName === 'Opera'
     ) {
       // Opera
       // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
@@ -231,19 +232,21 @@ class Carousel extends React.Component {
       startAt, // eslint-disable-line no-unused-vars
     } = this.props;
 
-    const positionChange = this.state.direction === 'next'
-      ? 100
-      : this.state.direction === 'previous' ? -100 : 0;
+    const positionChange =
+      this.state.direction === 'next'
+        ? 100
+        : this.state.direction === 'previous' ? -100 : 0;
 
-    const renderPreviousItems = itemsRenderer => (this.state.displayItemNum > 0 || loop) && (
-    <Items
-      position={100 + positionChange}
-      moving={this.state.moving}
-      animationDuration={animationDuration}
-    >
-      {itemsRenderer({ itemIndex: this.getIndex('prev'), })}
-    </Items>
-    );
+    const renderPreviousItems = itemsRenderer =>
+      (this.state.displayItemNum > 0 || loop) && (
+        <Items
+          position={100 + positionChange}
+          moving={this.state.moving}
+          animationDuration={animationDuration}
+        >
+          {itemsRenderer({ itemIndex: this.getIndex('prev'), })}
+        </Items>
+      );
 
     const renderNextItems = itemsRenderer => (
       (this.state.displayItemNum < itemsLength - 1 || loop) ? (
@@ -283,7 +286,8 @@ class Carousel extends React.Component {
       </ApolloConsumer>
     );
 
-    const renderButton = buttonRenderer => buttonRenderer({ changeItem: this.changeItem, });
+    const renderButton = buttonRenderer =>
+      buttonRenderer({ changeItem: this.changeItem, });
 
     const renderIndicator = indicatorRenderer => indicatorRenderer();
 

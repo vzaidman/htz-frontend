@@ -158,8 +158,7 @@ const Fry = ({ list, lazyLoad, gaAction, biAction, listId, }) => (
                                 render="p"
                               >
                                 {/* eslint-disable-next-line camelcase */}
-                                {source_display_name}
-                                {' '}
+                                {source_display_name}{' '}
                               </FelaComponent>
                             </H>
                           )}

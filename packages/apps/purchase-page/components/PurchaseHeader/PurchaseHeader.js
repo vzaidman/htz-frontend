@@ -19,8 +19,7 @@ const propTypes = {
   host: PropTypes.string.isRequired,
   router: PropTypes.shape().isRequired,
   /** passing stage from client promotionsPageState to EventTrackers */
-  stage: PropTypes.PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ])
-    .isRequired,
+  stage: PropTypes.PropTypes.oneOfType([ PropTypes.string, PropTypes.number, ]).isRequired,
 };
 
 // const defaultProps = {};
@@ -137,7 +136,6 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                   <EventTracker>
                     {({ biAction, gaAction, }) => (
                       <button
-                        type="button"
                         className={className}
                         onClick={() => {
                           biAction({
@@ -160,9 +158,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
                             marginInlineEnd: '1.5rem',
                           }}
                         />
-                        <FelaComponent style={backLinkTextStyle}>
-                          {backLinkText}
-                        </FelaComponent>
+                        <FelaComponent style={backLinkTextStyle}>{backLinkText}</FelaComponent>
                       </button>
                     )}
                   </EventTracker>
@@ -198,9 +194,7 @@ function PurchaseHeader({ host, router, displayBackButton, stage, }) {
               )}
             </a>
 
-            <FelaComponent style={underLogoStyle}>
-              {underLogoText[host]}
-            </FelaComponent>
+            <FelaComponent style={underLogoStyle}>{underLogoText[host]}</FelaComponent>
           </FelaComponent>
           <FelaComponent style={trustedBadgeContStyle}>
             <FelaComponent style={trustedBadgeCircleStyle}>

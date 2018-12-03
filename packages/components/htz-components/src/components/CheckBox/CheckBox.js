@@ -159,7 +159,6 @@ export class CheckBox extends Component {
       ),
     ]),
   };
-
   static defaultProps = {
     attrs: null,
     checked: null,
@@ -181,7 +180,6 @@ export class CheckBox extends Component {
     refFunc: undefined,
     variant: 'primary',
   };
-
   state = {
     checkBoxId: this.props.checkBoxId || Math.random().toString(),
     ...(this.props.checked === null

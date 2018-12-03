@@ -183,177 +183,179 @@ class CommentForm extends React.Component {
 
     return (
       <UserDispenser
-        render={({ user, isLoggedIn, }) => (this.state.displaySentComp ? (
-          <div>
-            <CommentSent
-              focusEl={this.focusEl}
-              userEmail={user.email}
-              closeDisplayThankYou={() => {
-                this.setState({
-                  displayThankYou: false,
-                  displaySentComp: false,
-                });
-                if (this.isReplyForm) {
-                  closeReplyForm();
+        render={({ user, isLoggedIn, }) =>
+          (this.state.displaySentComp ? (
+            <div>
+              <CommentSent
+                focusEl={this.focusEl}
+                userEmail={user.email}
+                closeDisplayThankYou={() => {
+                  this.setState({
+                    displayThankYou: false,
+                    displaySentComp: false,
+                  });
+                  if (this.isReplyForm) {
+                    closeReplyForm();
+                  }
+                }}
+                displayThankYou={this.state.displayThankYou}
+                isReplyForm={this.isReplyForm}
+                signUpNotification={(didSignUp, notificationEmail) =>
+                  this.handleSignUpNotification(didSignUp, notificationEmail)
                 }
+              />
+            </div>
+          ) : (
+            <Form
+              disableSubmitOnEnterKeyDown
+              onSubmit={({ commentAuthor, commentTextHtml, }) => {
+                this.handleSubmitComment(commentAuthor, commentTextHtml);
               }}
-              displayThankYou={this.state.displayThankYou}
-              isReplyForm={this.isReplyForm}
-              signUpNotification={(didSignUp, notificationEmail) => this.handleSignUpNotification(didSignUp, notificationEmail)
+              validate={({ commentAuthor, commentTextHtml, }) => {
+                const errors = [];
+                if (!commentAuthor) {
+                  errors.push({
+                    name: 'commentAuthor',
+                    order: 1,
+                  });
                 }
-            />
-          </div>
-        ) : (
-          <Form
-            disableSubmitOnEnterKeyDown
-            onSubmit={({ commentAuthor, commentTextHtml, }) => {
-              this.handleSubmitComment(commentAuthor, commentTextHtml);
-            }}
-            validate={({ commentAuthor, commentTextHtml, }) => {
-              const errors = [];
-              if (!commentAuthor) {
-                errors.push({
-                  name: 'commentAuthor',
-                  order: 1,
-                });
-              }
-              if (
-                !commentTextHtml
-                  || getPrintableCharsCount(commentTextHtml) === 0
-              ) {
-                errors.push({ name: 'commentTextHtml', order: 2, });
-              }
-              if (getPrintableCharsCount(commentTextHtml) > 1000) {
-                errors.push({
-                  name: 'commentTextHtml',
-                  errorText: commentErrorTooLongNoteTxt,
-                  order: 2,
-                });
-              }
+                if (
+                  !commentTextHtml ||
+                  getPrintableCharsCount(commentTextHtml) === 0
+                ) {
+                  errors.push({ name: 'commentTextHtml', order: 2, });
+                }
+                if (getPrintableCharsCount(commentTextHtml) > 1000) {
+                  errors.push({
+                    name: 'commentTextHtml',
+                    errorText: commentErrorTooLongNoteTxt,
+                    order: 2,
+                  });
+                }
 
-              return errors;
-            }}
-            render={({ getInputProps, handleSubmit, }) => (
-              <Query query={PLATFORM_QUERY}>
-                {({ loading, error, data, client, }) => {
-                  if (loading) return null;
-                  if (error) console.log(error);
-                  const { platform, } = data;
-                  return (
-                    <EventTracker>
-                      {({ biAction, biActionMapper, }) => (
-                        <StyledForm isReplyForm={this.isReplyForm}>
-                          <InputAndToggleWrapper>
-                            <TextInputWrapper>
-                              <TextInput
-                                {...getInputProps({
-                                  name: 'commentAuthor',
-                                  errorText: nameErrorNoteTxt,
-                                  noteText: nameNoteTxt,
-                                  label: nameLabelTxt,
-                                  maxLength: 50,
-                                  variant: this.TextInputVariant,
-                                  isDisabled: this.state.identifiedComment,
-                                  refFunc: elem => {
-                                    this.commentAuthorElem = elem;
-                                  },
-                                  ...(this.state.identifiedComment
-                                    ? {
-                                      value: `${user.firstName} ${
-                                        user.lastName
-                                      }`,
-                                    }
-                                    : {}),
-                                })}
-                              />
-                            </TextInputWrapper>
-                            {isLoggedIn ? (
-                              <ToggleButton
-                                type="button"
-                                onClick={() => {
-                                  this.setState(
-                                    prevState => ({
-                                      identifiedComment: !prevState.identifiedComment,
-                                    }),
-                                    () => {
-                                      this.commentAuthorElem.focus();
-                                    }
-                                  );
-                                }}
-                              >
-                                {toggleUserBtnText(
-                                  this.state.identifiedComment
-                                )}
-                              </ToggleButton>
-                            ) : null}
-                          </InputAndToggleWrapper>
-
-                          <TextInput
-                            {...getInputProps({
-                              name: 'commentTextHtml',
-                              errorText: commentErrorNoteTxt,
-                              height: 14,
-                              toggleCommandBiCallBack: command => {
-                                biAction({
-                                  actionCode: biActionMapper.get(
-                                    'text_design_tools'
-                                  ),
-                                  additionalInfo: {
-                                    effect: command,
-                                    platform,
-                                  },
-                                });
-                              },
-                              isContentEditable: true,
-                              noteText: commentNoteTxt,
-                              label: commentLabelTxt,
-                              miscStyles: { marginTop: '4.14rem', },
-                              variant: this.TextInputVariant,
-                            })}
-                          />
-
-                          <StyledAddCommentFooter>
-                            <StyledSendCommentButtonsCont>
-                              {this.isReplyForm ? (
-                                <Button
-                                  variant="negative"
-                                  boxModel={{ hp: 5, vp: 0.5, }}
-                                  miscStyles={{
-                                    marginInlineEnd: '2rem',
+                return errors;
+              }}
+              render={({ getInputProps, handleSubmit, }) => (
+                <Query query={PLATFORM_QUERY}>
+                  {({ loading, error, data, client, }) => {
+                    if (loading) return null;
+                    if (error) console.log(error);
+                    const { platform, } = data;
+                    return (
+                      <EventTracker>
+                        {({ biAction, biActionMapper, }) => (
+                          <StyledForm isReplyForm={this.isReplyForm}>
+                            <InputAndToggleWrapper>
+                              <TextInputWrapper>
+                                <TextInput
+                                  {...getInputProps({
+                                    name: 'commentAuthor',
+                                    errorText: nameErrorNoteTxt,
+                                    noteText: nameNoteTxt,
+                                    label: nameLabelTxt,
+                                    maxLength: 50,
+                                    variant: this.TextInputVariant,
+                                    isDisabled: this.state.identifiedComment,
+                                    refFunc: elem => {
+                                      this.commentAuthorElem = elem;
+                                    },
+                                    ...(this.state.identifiedComment
+                                      ? {
+                                          value: `${user.firstName} ${
+                                            user.lastName
+                                          }`,
+                                        }
+                                      : {}),
+                                  })}
+                                />
+                              </TextInputWrapper>
+                              {isLoggedIn ? (
+                                <ToggleButton
+                                  type="button"
+                                  onClick={() => {
+                                    this.setState(
+                                      prevState => ({
+                                        identifiedComment: !prevState.identifiedComment,
+                                      }),
+                                      () => {
+                                        this.commentAuthorElem.focus();
+                                      }
+                                    );
                                   }}
-                                  onClick={closeReplyForm}
                                 >
-                                  {cancelBtnTxt}
-                                </Button>
+                                  {toggleUserBtnText(
+                                    this.state.identifiedComment
+                                  )}
+                                </ToggleButton>
                               ) : null}
-                              <Button
-                                miscStyles={{}}
-                                boxModel={{ hp: 5, vp: 0.5, }}
-                                onClick={evt => {
+                            </InputAndToggleWrapper>
+
+                            <TextInput
+                              {...getInputProps({
+                                name: 'commentTextHtml',
+                                errorText: commentErrorNoteTxt,
+                                height: 14,
+                                toggleCommandBiCallBack: command => {
                                   biAction({
                                     actionCode: biActionMapper.get(
-                                      'send_comment'
+                                      'text_design_tools'
                                     ),
                                     additionalInfo: {
+                                      effect: command,
                                       platform,
                                     },
                                   });
-                                  handleSubmit(evt);
-                                }}
-                              >
-                                {sendBtnTxt}
-                              </Button>
-                            </StyledSendCommentButtonsCont>
-                          </StyledAddCommentFooter>
-                        </StyledForm>
-                      )}
-                    </EventTracker>
-                  );
-                }}
-              </Query>
-            )}
-          />
-        ))
+                                },
+                                isContentEditable: true,
+                                noteText: commentNoteTxt,
+                                label: commentLabelTxt,
+                                miscStyles: { marginTop: '4.14rem', },
+                                variant: this.TextInputVariant,
+                              })}
+                            />
+
+                            <StyledAddCommentFooter>
+                              <StyledSendCommentButtonsCont>
+                                {this.isReplyForm ? (
+                                  <Button
+                                    variant="negative"
+                                    boxModel={{ hp: 5, vp: 0.5, }}
+                                    miscStyles={{
+                                      marginInlineEnd: '2rem',
+                                    }}
+                                    onClick={closeReplyForm}
+                                  >
+                                    {cancelBtnTxt}
+                                  </Button>
+                                ) : null}
+                                <Button
+                                  miscStyles={{}}
+                                  boxModel={{ hp: 5, vp: 0.5, }}
+                                  onClick={evt => {
+                                    biAction({
+                                      actionCode: biActionMapper.get(
+                                        'send_comment'
+                                      ),
+                                      additionalInfo: {
+                                        platform,
+                                      },
+                                    });
+                                    handleSubmit(evt);
+                                  }}
+                                >
+                                  {sendBtnTxt}
+                                </Button>
+                              </StyledSendCommentButtonsCont>
+                            </StyledAddCommentFooter>
+                          </StyledForm>
+                        )}
+                      </EventTracker>
+                    );
+                  }}
+                </Query>
+              )}
+            />
+          ))
         }
       />
     );

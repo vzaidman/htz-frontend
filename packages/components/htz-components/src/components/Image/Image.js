@@ -133,7 +133,6 @@ class Image extends React.Component {
      */
     miscStyles: stylesPropType,
   };
-
   static defaultProps = {
     attrs: null,
     bgcolor: null,
@@ -217,10 +216,10 @@ Please use the "<Picture />" component`
           attrs={
             isPresentational
               ? {
-                ...attrs,
-                role: 'presentation',
-                'aria-hidden': true,
-              }
+                  ...attrs,
+                  role: 'presentation',
+                  'aria-hidden': true,
+                }
               : attrs
           }
         />
@@ -236,10 +235,10 @@ Please use the "<Picture />" component`
         attrs={
           isPresentational
             ? {
-              ...attrs,
-              role: 'presentation',
-              'aria-hidden': true,
-            }
+                ...attrs,
+                role: 'presentation',
+                'aria-hidden': true,
+              }
             : attrs
         }
       />
@@ -298,7 +297,8 @@ function getSources(
   const hasSrcset = transformsArray.length > 1;
   const imageNameFromData = imgArray[0].imgName;
 
-  const imgName = isAnimatedGif && isWebP ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
+  const imgName =
+    isAnimatedGif && isWebP ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
 
   // Always use the first image in the imageArray
   const imgVersion = imgArray[0].version;

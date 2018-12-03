@@ -21,8 +21,6 @@ class Outbrain extends React.Component {
     }).isRequired,
   };
 
-  site = config.get('domain');
-
   componentDidMount() {
     appendScript({
       src: 'https://widgets.outbrain.com/outbrain.js',
@@ -45,17 +43,19 @@ class Outbrain extends React.Component {
     this.props.client.writeData({ data: { osakaCanRender: false, }, });
   }
 
+  site = config.get('domain');
   render() {
     return (
       <Query query={GET_OUTBRAIN_DATA}>
-        {({ data: { articleId, isMouseStory, }, }) => (isMouseStory ? null : (
-          <div
-            className="OUTBRAIN"
-            data-src={`https://www.${this.site}/${articleId}`}
-            data-widget-id="AR_14"
-            data-ob-template="haaretz-heb"
-          />
-        ))
+        {({ data: { articleId, isMouseStory, }, }) =>
+          (isMouseStory ? null : (
+            <div
+              className="OUTBRAIN"
+              data-src={`https://www.${this.site}/${articleId}`}
+              data-widget-id="AR_14"
+              data-ob-template="haaretz-heb"
+            />
+          ))
         }
       </Query>
     );
@@ -63,9 +63,7 @@ class Outbrain extends React.Component {
 }
 
 const OutbrainWithClient = props => (
-  <ApolloConsumer>
-    {client => <Outbrain client={client} {...props} />}
-  </ApolloConsumer>
+  <ApolloConsumer>{client => <Outbrain client={client} {...props} />}</ApolloConsumer>
 );
 
 export default OutbrainWithClient;

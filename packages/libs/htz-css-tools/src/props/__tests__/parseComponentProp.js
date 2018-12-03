@@ -32,7 +32,8 @@ describe('parseProp()', () => {
         [
           'hasBg',
           true,
-          (prop, value) => (value === true ? { backgroundColor: 'red', } : undefined),
+          (prop, value) =>
+            (value === true ? { backgroundColor: 'red', } : undefined),
         ],
         { backgroundColor: 'red', }
       );
@@ -86,7 +87,8 @@ describe('parseProp()', () => {
         [
           'hasBg',
           [ { from: 's', until: 'm', value: true, }, { from: 'xl', value: true, }, ],
-          (prop, value) => (value === true ? { backgroundColor: 'red', } : undefined),
+          (prop, value) =>
+            (value === true ? { backgroundColor: 'red', } : undefined),
         ],
         {
           '@media (min-width: 37.5em) and (max-width: 47.9375em)': {

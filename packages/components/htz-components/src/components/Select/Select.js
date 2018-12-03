@@ -208,7 +208,6 @@ export class Select extends Component {
       ),
     ]),
   };
-
   static defaultProps = {
     attrs: null,
     buttonMiscStyles: null,

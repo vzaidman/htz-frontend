@@ -32,9 +32,7 @@ export default function createFelaEnzymeRenderers(renderer, baseTheme) {
 
     const component = mount(node, {
       childContextTypes: {
-        // eslint-disable-next-line react/forbid-prop-types
         renderer: PropTypes.object,
-        // eslint-disable-next-line react/forbid-prop-types
         _FELA_THEME_: PropTypes.object,
       },
       context: {

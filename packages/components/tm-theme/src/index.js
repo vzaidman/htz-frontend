@@ -3,6 +3,7 @@ import baseColors from './consts/baseColors';
 import bps from './consts/bps';
 import cssReset from './consts/cssReset';
 import fontStacks from './consts/fontStacks';
+import i18n from './consts/i18n';
 
 // methods
 import getColor from './methods/getColor';
@@ -23,4 +24,5 @@ export {
   mq,
   pxToRem,
   typesetter,
+  i18n,
 };

@@ -99,9 +99,7 @@ function StageDebt({ pastDebts, router, }) {
         <div className={className}>
           <FelaComponent style={headerStyle}>{header}</FelaComponent>
           <FelaComponent style={debtAmountStyle} render="span">
-            {amount(totalDebt)}
-            {' '}
-            {currency}
+            {amount(totalDebt)} {currency}
           </FelaComponent>
 
           <FelaComponent style={underDebtAmountStyle} render="span">

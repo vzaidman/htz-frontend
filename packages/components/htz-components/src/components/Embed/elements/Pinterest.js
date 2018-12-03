@@ -74,24 +74,25 @@ export default class Pinterest extends React.Component {
   render() {
     const { embedType: type, source, settings: { showCaption, }, } = this.props;
 
-    const tag = type === 'pin' ? (
-    // eslint-disable-next-line jsx-a11y/anchor-has-content
-      <a
-        data-pin-do="embedPin"
-        data-pin-width="large"
-        data-pin-terse={showCaption ? 'true' : 'false'}
-        href={source}
-      />
-    ) : (
-    // eslint-disable-next-line jsx-a11y/anchor-has-content
-      <a
-        data-pin-do={type === 'board' ? 'embedBoard' : 'embedUser'}
-        data-pin-board-width="350"
-        data-pin-scale-height="500"
-        data-pin-scale-width="240"
-        href={source}
-      />
-    );
+    const tag =
+      type === 'pin' ? (
+        // eslint-disable-next-line jsx-a11y/anchor-has-content
+        <a
+          data-pin-do="embedPin"
+          data-pin-width="large"
+          data-pin-terse={showCaption ? 'true' : 'false'}
+          href={source}
+        />
+      ) : (
+        // eslint-disable-next-line jsx-a11y/anchor-has-content
+        <a
+          data-pin-do={type === 'board' ? 'embedBoard' : 'embedUser'}
+          data-pin-board-width="350"
+          data-pin-scale-height="500"
+          data-pin-scale-width="240"
+          href={source}
+        />
+      );
     return <PinterestWrapper>{tag}</PinterestWrapper>;
   }
 }

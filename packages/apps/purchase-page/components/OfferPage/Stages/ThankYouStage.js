@@ -50,7 +50,6 @@ class StageThankYou extends React.Component {
   static defaultProps = {
     fbFullRedirectUri: null,
   };
-
   state = {
     hasNavigator: false,
   };

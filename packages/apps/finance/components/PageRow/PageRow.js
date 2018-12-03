@@ -7,11 +7,11 @@ import { parseStyleProps, } from '@haaretz/htz-css-tools';
 type Props = {
   children: ChildrenArray<Node> | Node,
   lines?: number,
-  miscStyles?: Object,
+  miscStyles? : Object,
 }
 
 // eslint-disable-next-line react/prop-types
-const PageRow: StatelessFunctionalComponent<Props> = ({ children, miscStyles, lines, }) => (
+const PageRow:StatelessFunctionalComponent<Props> = ({ children, miscStyles, lines, }) => (
   <FelaComponent
     style={theme => ({
       width: '127rem',

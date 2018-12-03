@@ -1,5 +1,4 @@
 /* @flow */
-/* eslint-disable operator-linebreak */
 
 import type { Typesetter, } from '../typography/createTypesetter';
 
@@ -15,7 +14,7 @@ import type { Typesetter, } from '../typography/createTypesetter';
  * keys. The `lines` key, if provided, overrides the default
  * number of vertical rhythm lines each line of text occupies.
  */
-export type TypographyValueType = number | { step: number, lines?: number, };
+export type TypographyValueType = number | { step: number, lines?: number };
 
 /**
  * The shape of a single item when the value of a typographic
@@ -28,7 +27,7 @@ export type TypographyValueType = number | { step: number, lines?: number, };
 export type TypographyPropResponsiveObjectType = {
   from?: string,
   until?: string,
-  value: TypographyValueType,
+  value: TypographyValueType
 };
 
 /**
@@ -122,8 +121,8 @@ function createTypeStyles(
       typeof typographicValues.value === 'number'
         ? typographicValues.value
         : // We already checked, `typographicValues.value` is a `TypographyValueType`
-      // object and thus has a `step` key
-      // $FlowFixMe
+        // object and thus has a `step` key
+        // $FlowFixMe
         typographicValues.value.step,
       // Lines, fromBp and untilBp in this case are always the correct type
       // $FlowFixMe

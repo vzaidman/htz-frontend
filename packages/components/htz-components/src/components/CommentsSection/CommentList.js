@@ -27,7 +27,6 @@ const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
 
 const commentsVerticalMargin = '4rem';
 
-// eslint-disable-next-line react/prop-types
 const CommentAdSlot = ({ adSlotId, }) => (
   <FelaComponent
     style={{
@@ -103,7 +102,6 @@ class CommentList extends Component {
      */
     signUpNotification: PropTypes.func,
   };
-
   static defaultProps = {
     comments: [],
     isSubComment: false,

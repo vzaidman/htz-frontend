@@ -102,9 +102,9 @@ export default function MobileBarActionButtons({ elementUrl, isOpen, }) {
                   buttonStyles: isArticleSaved => ({
                     ...(isArticleSaved
                       ? {
-                        color: theme.color('neutral', '-10'),
-                        backgroundColor: theme.color('secondary'),
-                      }
+                          color: theme.color('neutral', '-10'),
+                          backgroundColor: theme.color('secondary'),
+                        }
                       : {}),
                     ...transition(6),
                   }),

@@ -61,25 +61,28 @@ describe('conflictResolver', () => {
     });
 
     it("should throw an error when called without an 'resolvedSize' parameter", () => {
-      expect(() => conflictResolver.updateResolvedSlot(
-        'haaretz.co.il.web.halfpage.floating_x'
-      )
+      expect(() =>
+        conflictResolver.updateResolvedSlot(
+          'haaretz.co.il.web.halfpage.floating_x'
+        )
       ).toThrow();
     });
 
     it('should not throw an error when called with both parameters', () => {
-      expect(() => conflictResolver.updateResolvedSlot('haaretz.co.il.web.plazma', [
-        970,
-        250,
-      ])
+      expect(() =>
+        conflictResolver.updateResolvedSlot('haaretz.co.il.web.plazma', [
+          970,
+          250,
+        ])
       ).not.toThrow();
     });
 
     it('should not throw an error when called with an undefined node', () => {
-      expect(() => conflictResolver.updateResolvedSlot(
-        'haaretz.co.il.web.halfpage.floating_x',
-        [ 970, 250, ]
-      )
+      expect(() =>
+        conflictResolver.updateResolvedSlot(
+          'haaretz.co.il.web.halfpage.floating_x',
+          [ 970, 250, ]
+        )
       ).not.toThrow();
     });
 
@@ -186,8 +189,8 @@ describe('conflictResolver', () => {
     it("should return 'isBlocked=false' on an none blocking node", () => {
       expect(conflictResolver.isBlocking('haaretz.co.il.web.ruler')).toBe(
         false
-      )
-        && expect(
+      ) &&
+        expect(
           conflictResolver.isBlocking('haaretz.co.il.web.halfpage.floating_x')
         ).toBe(false);
     });

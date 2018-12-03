@@ -8,14 +8,12 @@ Object {
       aria-expanded={false}
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
       onClick={[Function]}
-      type="button"
     >
       <span
         className="htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
         id="alerts_btn_description"
       >
-        קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ
-         
+        קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ 
         Avi Kaufman
       </span>
       <svg

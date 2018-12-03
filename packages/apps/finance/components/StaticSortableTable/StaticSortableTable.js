@@ -1,4 +1,3 @@
-// @flow
 import React, { Fragment, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
@@ -13,31 +12,33 @@ import { SortIcons, } from '../SortableTable/SortableTable';
 type FieldType = {
   name: string,
   display: string,
-  sortingOrder: "ascend" | "descend",
+  sortingOrder: 'ascend' | 'descend',
   style?: Object => StyleProps,
   value: Object => string,
-};
+}
 
 type Props = {
-  miscStyles?: ?StyleProps,
-  headerMiscStyles?: ?StyleProps,
+  miscStyles?: StyleProps,
+  headerMiscStyles?: StyleProps,
   initialSort: string, // eslint-disable-line react/no-unused-prop-types
   fields: Array<FieldType>,
   data: Assets,
 };
 
 type State = {
-  sortBy: ?string,
-  sortOrder: ?string,
+  sortBy?: string,
+  sortOrder?: string,
 };
 
-const tdHeaderStyle = (theme: Object, miscStyles: ?StyleProps): Object => ({
+const tdHeaderStyle: (Object, StyleProps) => Object = (theme, miscStyles) => ({
   paddingTop: '0.5rem',
   paddingBottom: '0.5rem',
   textAlign: 'start',
   backgroundColor: theme.color('neutral', '-6'),
   extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+    ...(miscStyles
+      ? parseStyleProps(miscStyles, theme.mq, theme.type)
+      : []),
   ],
 });
 
@@ -82,7 +83,6 @@ const Table = ({
                 style={{ width: '100%', }}
                 render={({ className, }) => (
                   <button
-                    type="button"
                     className={className}
                     onClick={() => sortData(field)}
                   >
@@ -138,6 +138,7 @@ const Table = ({
   </Fragment>
 );
 
+
 class StaticSortableTable extends React.Component<Props, State> {
   static defaultProps = {
     miscStyles: null,
@@ -150,60 +151,55 @@ class StaticSortableTable extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const initialSortOrder = nextProps.fields.find(
-      (field: FieldType) => field.name === nextProps.initialSort
-    );
     return {
       sortBy: prevState.sortBy || nextProps.initialSort,
-      sortOrder: prevState.sortOrder
-        ? prevState.sortOrder
-        : initialSortOrder
-          ? initialSortOrder.sortingOrder
-          : nextProps.initialSort,
+      sortOrder: prevState.sortOrder ||
+        nextProps.fields.find((field: FieldType) => (
+          field.name === nextProps.initialSort
+        )).sortingOrder,
     };
   }
 
   sortData: FieldType => void = field => {
-    this.setState((prevState, props) => {
-      const { name, sortingOrder, } = field;
-      const { data, } = props;
-      const sortOrder = field
-        ? prevState.sortBy !== name
-          ? sortingOrder
-          : prevState.sortOrder === 'descend'
-            ? 'ascend'
-            : 'descend'
-        : prevState.sortOrder;
+    const { name, sortingOrder, } = field;
+    const { data, } = this.props;
+    const sortOrder = field
+      ? this.state.sortBy !== name
+        ? sortingOrder
+        : this.state.sortOrder === 'descend'
+          ? 'ascend'
+          : 'descend'
+      : this.state.sortOrder;
 
-      data.sort((itemA, itemB) => {
-        const valueA = typeof itemA[name] === 'string'
-          ? itemA[name].toUpperCase()
-          : itemA[name]; // ignore upper and lowercase
-        const valueB = typeof itemB[name] === 'string'
-          ? itemB[name].toUpperCase()
-          : itemB[name]; // ignore upper and lowercase
-        if (valueA < valueB) {
-          return sortOrder === 'ascend' ? -1 : 1;
-        }
-        if (valueA > valueB) {
-          return sortOrder === 'ascend' ? 1 : -1;
-        }
+    data.sort((itemA, itemB) => {
+      const valueA =
+        typeof itemA[name] === 'string' ? itemA[name].toUpperCase() : itemA[name]; // ignore upper and lowercase
+      const valueB =
+        typeof itemB[name] === 'string' ? itemB[name].toUpperCase() : itemB[name]; // ignore upper and lowercase
+      if (valueA < valueB) {
+        return sortOrder === 'ascend' ? -1 : 1;
+      }
+      if (valueA > valueB) {
+        return sortOrder === 'ascend' ? 1 : -1;
+      }
 
-        // values must be equal
-        return 0;
-      });
-
-      console.log(data);
-
-      return {
-        sortBy: name,
-        sortOrder,
-      };
+      // values must be equal
+      return 0;
     });
+
+    this.setState({
+      sortBy: name,
+      sortOrder,
+    });
+
+    console.log(data);
   };
 
   render(): Node {
-    const { data, ...props } = this.props;
+    const {
+      data,
+      ...props
+    } = this.props;
 
     const { sortBy, sortOrder, } = this.state;
     return (
@@ -218,3 +214,4 @@ class StaticSortableTable extends React.Component<Props, State> {
 }
 
 export default StaticSortableTable;
+

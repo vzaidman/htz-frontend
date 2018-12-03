@@ -5,7 +5,6 @@ class ConflictResolver {
     this.dependencyMap = this.initializeDependencyMap(conflictManagementConfig);
     this.deferredSlots = new Set();
   }
-
   initializeDependencyMap(conflictManagementJson) {
     const queue = new Map();
     Object.keys(conflictManagementJson).map((key, value) => {

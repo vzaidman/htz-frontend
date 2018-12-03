@@ -13,8 +13,9 @@ import { Kind, } from 'graphql/language/kinds';
 import shareHolder from './finance_share_holder_type';
 import eventPrediction from './finance_event_prediction_type';
 
-// eslint-disable-next-line no-restricted-globals
-const isDate = value => typeof value === 'number' && !isNaN(value.valueOf());
+const isDate = value =>
+  // eslint-disable-next-line no-restricted-globals
+  typeof (value) === 'number' && !isNaN(value.valueOf());
 
 const coerceDate = value => {
   const date = new Date(value).getTime();
@@ -83,7 +84,6 @@ const financeAsset = new GraphQLObjectType({
     eventsPrediction: { type: new GraphQLList(eventPrediction), },
     value: { type: GraphQLFloat, },
     USDValue: { type: GraphQLFloat, },
-    numeralValue: { type: GraphQLFloat, },
     baseValue: { type: GraphQLFloat, },
     openingValue: { type: GraphQLFloat, },
     dailyHigh: { type: GraphQLFloat, },
@@ -169,6 +169,7 @@ const financeAsset = new GraphQLObjectType({
     // relates to MTFs and ETFs
     manager: { type: GraphQLString, },
     trustee: { type: GraphQLString, },
+    exposure: { type: GraphQLString, },
     exposureProfile: { type: GraphQLString, },
     indexExposure: { type: new GraphQLList(financeAsset), },
     assetBaseHoldingRatio: { type: GraphQLFloat, },
@@ -179,13 +180,6 @@ const financeAsset = new GraphQLObjectType({
     loadChargeRate: { type: GraphQLFloat, },
     distributionCommission: { type: GraphQLFloat, },
     mainCurrency: { type: GraphQLString, },
-    mtfHoldingRatio: { type: GraphQLFloat, },
-    mtfLinkForeignExchange: { type: GraphQLFloat, },
-    mtfLinkIndex: { type: GraphQLFloat, },
-    mtfLinkShekel: { type: GraphQLFloat, },
-    mtfLinkOptions: { type: GraphQLFloat, },
-    mtfLinkStocks: { type: GraphQLFloat, },
-    mtfLinkFunds: { type: GraphQLFloat, },
     mtfEtfPolicy: { type: GraphQLString, },
     policyChangeDate: { type: GraphQLTimestamp, },
     primeClassification: { type: GraphQLString, },

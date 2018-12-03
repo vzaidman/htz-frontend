@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -64,7 +65,8 @@ const menuListStyle = () => ({
   appearance: 'menulist',
 });
 
-const MenuList = createComponent(menuListStyle, 'select', props => Object.keys(props)
+const MenuList = createComponent(menuListStyle, 'select', props =>
+  Object.keys(props)
 );
 
 /*
@@ -113,15 +115,6 @@ export default class Embed extends React.Component {
     isLoading: false,
   };
 
-  componentsWhoDoNotReceiveOnLoadCallback = [
-    'Apester',
-    'ArtiMedia',
-    'FileUpload',
-    'Instagram',
-    'Pinterest',
-    'SportTable',
-  ];
-
   componentDidMount() {
     if (this.props.inputTemplate) {
       this.setState({ fromProps: true, }); // eslint-disable-line react/no-did-mount-set-state
@@ -130,9 +123,9 @@ export default class Embed extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (
-      !this.state.props
-      || nextState.props !== this.state.props
-      || nextState.component !== this.state.component
+      !this.state.props ||
+      nextState.props !== this.state.props ||
+      nextState.component !== this.state.component
     ) {
       return true;
     }
@@ -164,9 +157,10 @@ export default class Embed extends React.Component {
     if (e.target.selectedOptions) {
       const type = e.target.selectedOptions[0].value;
       const props = exampleProps(type);
-      const showLoading = this.componentsWhoDoNotReceiveOnLoadCallback.findIndex(
-        component => component === type
-      ) === -1;
+      const showLoading =
+        this.componentsWhoDoNotReceiveOnLoadCallback.findIndex(
+          component => component === type
+        ) === -1;
       this.setState({
         type,
         props,
@@ -178,10 +172,10 @@ export default class Embed extends React.Component {
     }
     else {
       const propsIndex = e.target.value;
-      this.setState(prevState => ({
-        props: prevState.multiProps[propsIndex],
-        isLoading: prevState.showLoading,
-      }));
+      this.setState({
+        props: this.state.multiProps[propsIndex],
+        isLoading: this.state.showLoading,
+      });
     }
   };
 
@@ -197,9 +191,10 @@ export default class Embed extends React.Component {
   getEmbedComponentFromState = () => {
     if (!Array.isArray(this.state.props)) {
       getEmbed(this.state.type)
-        .then(response => this.setState({
-          component: response.default,
-        })
+        .then(response =>
+          this.setState({
+            component: response.default,
+          })
         )
         .catch(err => console.log(err));
     }
@@ -213,6 +208,15 @@ export default class Embed extends React.Component {
       onSelection={this.onSelectEmbed}
     />
   );
+
+  componentsWhoDoNotReceiveOnLoadCallback = [
+    'Apester',
+    'ArtiMedia',
+    'FileUpload',
+    'Instagram',
+    'Pinterest',
+    'SportTable',
+  ];
 
   render() {
     const Component = this.state.component;

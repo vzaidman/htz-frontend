@@ -17,7 +17,8 @@ const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) =
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
-    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
+    ...sources.map(({ from, until, misc, type, ...restOfImgData }) =>
+      theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
     ),
     parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
     // Trump all other styles with those defined in `miscStyles`
@@ -180,34 +181,35 @@ function Picture(props) {
   const Element = (
     <picture>
       {sources.map(
-        (img, index) => (img.data.isAnimatedGif ? (
-        // eslint-disable-next-line react/no-array-index-key
-          <Fragment key={index}>
+        (img, index) =>
+          (img.data.isAnimatedGif ? (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              <ImgSource
+                {...(media[index] ? { media: media[index], } : [])}
+                tagName="source"
+                type="image/webp"
+                srcSet={getSources(props, index, true)}
+                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+              />
+              <ImgSource
+                {...(media[index] ? { media: media[index], } : [])}
+                tagName="source"
+                srcSet={getSources(props, index, false)}
+                {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+              />
+            </Fragment>
+          ) : (
             <ImgSource
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               {...(media[index] ? { media: media[index], } : [])}
               tagName="source"
-              type="image/webp"
-              srcSet={getSources(props, index, true)}
-              {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
-            />
-            <ImgSource
-              {...(media[index] ? { media: media[index], } : [])}
-              tagName="source"
+              {...(img.mimeType ? { type: img.mimeType, } : {})}
               srcSet={getSources(props, index, false)}
               {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
             />
-          </Fragment>
-        ) : (
-          <ImgSource
-              // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            {...(media[index] ? { media: media[index], } : [])}
-            tagName="source"
-            {...(img.mimeType ? { type: img.mimeType, } : {})}
-            srcSet={getSources(props, index, false)}
-            {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
-          />
-        ))
+          ))
       )}
       <ImgSource
         {...(alt ? { alt, } : {})}
@@ -219,10 +221,10 @@ function Picture(props) {
         attrs={
           isPresentational
             ? {
-              ...attrs,
-              role: 'presentation',
-              'aria-hidden': true,
-            }
+                ...attrs,
+                role: 'presentation',
+                'aria-hidden': true,
+              }
             : attrs
         }
       />
@@ -307,7 +309,8 @@ function getMedia({ sources, theme, }) {
     const imgHasMedia = [ from, until, misc, type, ]
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
-    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true, true) : undefined;
+
+    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true) : undefined;
   });
   return finalMedia;
 }

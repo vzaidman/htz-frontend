@@ -142,7 +142,8 @@ const Item = ({ title, image, path, listId, index, biAction, listLength, }) => (
 // eslint-disable-next-line react/prop-types
 const Zoidberg = ({ list, lazyLoad, biAction, listId, }) => {
   const { title, items, } = list;
-  const stdItemsLength = items.length && items.filter(item => [ 'com.polobase.ClickTrackerBannersWrapper', 'com.polobase.DfpBannerElement', ].includes(item.inputTemplate) === false
+  const stdItemsLength = items.length && items.filter(item =>
+    [ 'com.polobase.ClickTrackerBannersWrapper', 'com.polobase.DfpBannerElement', ].includes(item.inputTemplate) === false
   ).length;
   return (
     <FelaComponent
@@ -166,23 +167,23 @@ const Zoidberg = ({ list, lazyLoad, biAction, listId, }) => {
         {items.map((item, index) => (
           <ListItem key={item.contentId}>
             {item.inputTemplate ? (
-              item.inputTemplate
-              === 'com.polobase.ClickTrackerBannersWrapper' ? (
+              item.inputTemplate ===
+              'com.polobase.ClickTrackerBannersWrapper' ? (
                 <ClickTrackerItem
                   item={item}
                   index={index}
                   biAction={biAction}
                   listId={listId}
                 />
-                ) : item.inputTemplate === 'com.polobase.DfpBannerElement' ? (
-                  <GeneralAdSlot
-                    {...item}
-                    styleRule={{
-                      ...listItemStyle,
-                      marginTop: '1rem',
-                    }}
-                  />
-                ) : null
+              ) : item.inputTemplate === 'com.polobase.DfpBannerElement' ? (
+                <GeneralAdSlot
+                  {...item}
+                  styleRule={{
+                    ...listItemStyle,
+                    marginTop: '1rem',
+                  }}
+                />
+              ) : null
             ) : (
               <Item {...item} index={index} biAction={biAction} listId={listId} listLength={stdItemsLength} />
             )}

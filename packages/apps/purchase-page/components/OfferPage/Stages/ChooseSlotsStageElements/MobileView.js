@@ -140,7 +140,6 @@ class MobileView extends Component {
       return { menuOpen: subscriptionName, };
     });
   };
-
   render() {
     const {
       host,
@@ -183,8 +182,7 @@ class MobileView extends Component {
                       href={`${loginRedirect.url[host]}?account_linking_token=${accountLinkToken}&redirect_uri=${fbRedirectUri}`}
                     >
                       <Fragment>
-                        {loginRedirect.beforeLinkText}
-                        {' '}
+                        {loginRedirect.beforeLinkText}{' '}
                         <FelaComponent
                           render="span"
                           style={theme => ({
@@ -322,13 +320,12 @@ class MobileView extends Component {
                           {this.state.menuOpen === item.subscriptionName ? (
                             <div id="HTZExpendedArea">
                               {staticTableData.tbody.list.map(
-                                row => row[item.subscriptionName] && (
-                                <StyledTableItem key={Math.random()}>
-                                  <div>{row.description}</div>
-                                  {' '}
-                                  <PositiveCircle />
-                                </StyledTableItem>
-                                )
+                                row =>
+                                  row[item.subscriptionName] && (
+                                    <StyledTableItem key={Math.random()}>
+                                      <div>{row.description}</div> <PositiveCircle />
+                                    </StyledTableItem>
+                                  )
                               )}
                               {item.pricingYearly && (
                                 <StyledTableItem>

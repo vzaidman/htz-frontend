@@ -11,8 +11,8 @@ export default class SlideinBox extends React.Component {
   };
 
   componentDidMount() {
-    this.element
-      && this.element.addEventListener(
+    this.element &&
+      this.element.addEventListener(
         getTransitionEnd(this.element),
         this.handleTransitionEnd,
         false
@@ -25,26 +25,26 @@ export default class SlideinBox extends React.Component {
     }
   }
 
+  handleTransitionEnd(event) {
+    if (event.target === this.element) {
+      this.changeState();
+    }
+  }
+
   changeState = () => {
     this.setState(
       prevState => ({
         animating: !prevState.animating,
       }),
       () => {
-        this.element
-          && this.props.show
-          && this.props.focus
-          && !this.state.animating
-          && this.element.focus();
+        this.element &&
+          this.props.show &&
+          this.props.focus &&
+          !this.state.animating &&
+          this.element.focus();
       }
     );
   };
-
-  handleTransitionEnd(event) {
-    if (event.target === this.element) {
-      this.changeState();
-    }
-  }
 
   render() {
     const { animating, } = this.state;
@@ -87,14 +87,14 @@ export default class SlideinBox extends React.Component {
           <div className={className} aria-expanded={show} aria-hidden={!show}>
             <FelaComponent
               rule={({ theme, }) => ({
-                transform: `logical translate${axis}(${tdir
-                  * (show ? 0 : 100)}%)`,
+                transform: `logical translate${axis}(${tdir *
+                  (show ? 0 : 100)}%)`,
                 transitionProperty: 'transform',
                 ...theme.getDuration('transition', duration / 2),
                 ...theme.getDelay('transition', duration / 2),
                 ...theme.getTimingFunction('transition', 'linear'),
               })}
-              render={({ className, }) => (
+              render={({ className, }) => (                
                 <div
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
                   tabIndex={show ? '0' : '-1'}

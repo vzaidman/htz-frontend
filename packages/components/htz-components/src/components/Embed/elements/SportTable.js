@@ -21,16 +21,17 @@ type Props = {
 };
 
 // eslint-disable-next-line react/prop-types
-const TableWrapper: StatelessFunctionalComponent<{ children: ChildrenArray<Node> | Node, }> = ({ children, }) => ( // eslint-disable-line react/prop-types
-  <FelaComponent
-    style={{
-      textAlign: 'center',
-      margin: '0 auto',
-    }}
-  >
-    {children}
-  </FelaComponent>
-);
+const TableWrapper: StatelessFunctionalComponent<{ children: ChildrenArray<Node> | Node, }> =
+  ({ children, }) => ( // eslint-disable-line react/prop-types
+    <FelaComponent
+      style={{
+        textAlign: 'center',
+        margin: '0 auto',
+      }}
+    >
+      {children}
+    </FelaComponent>
+  );
 
 // eslint-disable-next-line react/prop-types
 const SportsTable: StatelessFunctionalComponent<Props> = ({ settings, }) => (

@@ -53,9 +53,9 @@ const svgFiles = fs
     }
 
     return (
-      !fileName.startsWith('.')
-      && path.extname(fileName) === '.svg'
-      && fs.lstatSync(path.join(inDir, fileName)).isFile()
+      !fileName.startsWith('.') &&
+      path.extname(fileName) === '.svg' &&
+      fs.lstatSync(path.join(inDir, fileName)).isFile()
     );
   })
   .map(fileName => path.join(inDir, fileName));
@@ -75,106 +75,108 @@ Object.keys(cache).filter(filePath => {
 
 Promise.all(
   svgFiles.map(
-    filePath => new Promise((resolve, reject) => {
-      fs.readFile(filePath, 'utf8', (err, svg) => {
-        if (err) {
-          console.error(
-            `${err.stack}\n\n${chalk.red(
-              `Failed to read the "${chalk.cyan(
-                path.basename(filePath)
-              )}" from disk. Please try again later\n`
-            )}`
+    filePath =>
+      new Promise((resolve, reject) => {
+        fs.readFile(filePath, 'utf8', (err, svg) => {
+          if (err) {
+            console.error(
+              `${err.stack}\n\n${chalk.red(
+                `Failed to read the "${chalk.cyan(
+                  path.basename(filePath)
+                )}" from disk. Please try again later\n`
+              )}`
+            );
+            resolve(err.message);
+          }
+          const componentPath = getCorrespondingComponent(
+            path.basename(filePath),
+            outDir
           );
-          resolve(err.message);
-        }
-        const componentPath = getCorrespondingComponent(
-          path.basename(filePath),
-          outDir
-        );
-        const componentName = path.basename(componentPath, '.js');
-        svgr(svg, {
-          componentName,
-          prettier: false,
-          semi: true,
-          singleQuote: true,
-          svgo: true,
-          tabs: false,
-          tabWidth: 2,
-          template: componentTemplate,
-          title: false,
-          trailingComma: 'all',
-          bracketSpacing: true,
-          jsxBracketSameLine: false,
-        })
-        // eslint-disable-next-line consistent-return
-          .then(component => {
-            const componentHash = md5(component);
-            const cachedHash = cache[componentPath];
-            console.log(fs.existsSync(componentPath));
-            const noOverWrite = fs.existsSync(componentPath)
-                && fs
+          const componentName = path.basename(componentPath, '.js');
+          svgr(svg, {
+            componentName,
+            prettier: false,
+            semi: true,
+            singleQuote: true,
+            svgo: true,
+            tabs: false,
+            tabWidth: 2,
+            template: componentTemplate,
+            title: false,
+            trailingComma: 'all',
+            bracketSpacing: true,
+            jsxBracketSameLine: false,
+          })
+            // eslint-disable-next-line consistent-return
+            .then(component => {
+              const componentHash = md5(component);
+              const cachedHash = cache[componentPath];
+              console.log(fs.existsSync(componentPath));
+              const noOverWrite =
+                fs.existsSync(componentPath) &&
+                fs
                   .readFileSync(componentPath, 'utf8')
                   .startsWith('/* noOverWrite */');
 
-            // Check if the component needs to be create or updated
-            // We check the against component hases instead of svg hashes,
-            // so that changes to the template automatically affect all generated
-            // components, even if the svg itself hasn't changed.
-            if (componentHash !== cachedHash && !noOverWrite) {
-              const iconTestFile = componentTestTemplate(componentName);
-              const IconTestFilePath = path.join(
-                IconsTestsDir,
-                `${componentName}.test.js`
-              );
-              async.each(
-                [
-                  { file: component, path: componentPath, },
-                  { file: iconTestFile, path: IconTestFilePath, },
-                ],
-                (icon, callback) => {
-                  fs.writeFile(icon.path, icon.file, error => {
-                    if (error) {
-                      console.error(
-                        `${error.stack}\n\n${chalk.red(
-                          `Failed to write the updated "${chalk.yellow(
-                            path.basename(componentPath)
-                          )}" component to disk. Please try again later\n`
-                        )}`
-                      );
-                      callback(error);
-                    }
-                    callback();
-                  });
-                },
-                error => {
-                  if (error) resolve(error.message);
-                  // Update the cache
-                  cache[componentPath] = componentHash;
+              // Check if the component needs to be create or updated
+              // We check the against component hases instead of svg hashes,
+              // so that changes to the template automatically affect all generated
+              // components, even if the svg itself hasn't changed.
+              if (componentHash !== cachedHash && !noOverWrite) {
+                const iconTestFile = componentTestTemplate(componentName);
+                const IconTestFilePath = path.join(
+                  IconsTestsDir,
+                  `${componentName}.test.js`
+                );
+                async.each(
+                  [
+                    { file: component, path: componentPath, },
+                    { file: iconTestFile, path: IconTestFilePath, },
+                  ],
+                  (icon, callback) => {
+                    fs.writeFile(icon.path, icon.file, error => {
+                      if (error) {
+                        console.error(
+                          `${error.stack}\n\n${chalk.red(
+                            `Failed to write the updated "${chalk.yellow(
+                              path.basename(componentPath)
+                            )}" component to disk. Please try again later\n`
+                          )}`
+                        );
+                        callback(error);
+                      }
+                      callback();
+                    });
+                  },
+                  error => {
+                    if (error) resolve(error.message);
+                    // Update the cache
+                    cache[componentPath] = componentHash;
 
-                  // Inform the user
-                  console.log(
-                    componentFiles.includes(componentPath)
-                      ? chalk.yellow(
-                        `The source svg of "${chalk.magenta(
-                          path.basename(componentPath)
-                        )}" has changed. Updating the icon component.\n`
-                      )
-                      : `${chalk.yellow(
-                        `Generated a new "${chalk.magenta(
-                          chalk.bold(path.basename(componentPath))
-                        )}" component.`
-                      )}\nDon't forget to add it to the exported component in "src/index.js"..\n`
-                  );
-                  resolve(component);
-                }
-              );
-            }
-            else {
-              resolve(component);
-            }
-          });
-      });
-    })
+                    // Inform the user
+                    console.log(
+                      componentFiles.includes(componentPath)
+                        ? chalk.yellow(
+                          `The source svg of "${chalk.magenta(
+                            path.basename(componentPath)
+                          )}" has changed. Updating the icon component.\n`
+                        )
+                        : `${chalk.yellow(
+                          `Generated a new "${chalk.magenta(
+                            chalk.bold(path.basename(componentPath))
+                          )}" component.`
+                        )}\nDon't forget to add it to the exported component in "src/index.js"..\n`
+                    );
+                    resolve(component);
+                  }
+                );
+              }
+              else {
+                resolve(component);
+              }
+            });
+        });
+      })
   )
 ).then(values => {
   // Write cache file

@@ -1,9 +1,6 @@
 import { ApolloLink, } from 'apollo-link';
 import { ApolloClient, } from 'apollo-client';
-import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher, } from 'apollo-cache-inmemory';
 import { onError, } from 'apollo-link-error';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
@@ -63,12 +60,10 @@ if (!process.browser) {
 
 function create(initialState, appDefaultState, req) {
   // const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
-  const hostname = initialState.ROOT_QUERY !== undefined
-    ? initialState.ROOT_QUERY.hostname
-    : req.hostname;
-  const referer = initialState.ROOT_QUERY !== undefined
-    ? initialState.ROOT_QUERY.referer
-    : req.headers.referer;
+  const hostname =
+    initialState.ROOT_QUERY !== undefined ? initialState.ROOT_QUERY.hostname : req.hostname;
+  const referer =
+    initialState.ROOT_QUERY !== undefined ? initialState.ROOT_QUERY.referer : req.headers.referer;
   const graphqlLink = switchToDomain(hostname, config.get('service.graphql'));
   console.log('the graphql link is: ', graphqlLink);
   const link = new HttpLink({
@@ -88,29 +83,27 @@ function create(initialState, appDefaultState, req) {
     includeExtensions: true,
   });
 
-  const errorLink = onError(
-    ({ response, operation, graphQLErrors, networkError, }) => {
-      if (graphQLErrors) {
+  const errorLink = onError(({ response, operation, graphQLErrors, networkError, }) => {
+    if (graphQLErrors) {
+      console.log(`${'[GraphQL error]:'} Operation Name: ${operation.operationName}`);
+      graphQLErrors.map(({ message, locations, path, }) =>
         console.log(
-          `${'[GraphQL error]:'} Operation Name: ${operation.operationName}`
-        );
-        graphQLErrors.map(({ message, locations, path, }) => console.log(
           `${'[GraphQL error]:'} Message: ${message}, Location: ${locations.map(
             ({ line, column, }) => `{ line: ${line}, column: ${column} }`
           )}, Path: ${path}`
         )
-        );
-      }
-      if (networkError) {
-        console.log(`${'[Network error]:'} ${networkError}`);
-      }
-      if (response) response.errors = null;
+      );
     }
-  );
+    if (networkError) {
+      console.log(`${'[Network error]:'} ${networkError}`);
+    }
+    if (response) response.errors = null;
+  });
 
   const inMemoryCache = new InMemoryCache({
     fragmentMatcher: customFragmentMatcher,
-    dataIdFromObject: ({ __typename, contentId, }) => (contentId ? `${__typename}:${contentId}` : null),
+    dataIdFromObject: ({ __typename, contentId, }) =>
+      (contentId ? `${__typename}:${contentId}` : null),
   }).restore(initialState || {});
 
   // try creating a user from initial request (server only)

@@ -79,8 +79,10 @@ class CommentsSection extends React.Component {
     maxCommentsToRender: 10,
   };
 
-  // number of additional comments to render each time load more button is clicked
-  commentPaginationCount = 50;
+  onSubmitCaptcha = commentId => {
+    this.setState({ reportCommentId: commentId, });
+    this.recaptcha.execute();
+  };
 
   onReCaptchaResolve = () => {
     console.log('on recaptcha resolved');
@@ -88,11 +90,6 @@ class CommentsSection extends React.Component {
     this.props.reportAbuse(this.state.reportCommentId, captchaKey);
     this.setState({ reportCommentId: null, });
     this.recaptcha.reset();
-  };
-
-  onSubmitCaptcha = commentId => {
-    this.setState({ reportCommentId: commentId, });
-    this.recaptcha.execute();
   };
 
   getCommentNetRate(commentId) {
@@ -113,9 +110,7 @@ class CommentsSection extends React.Component {
   }
 
   getCommentsWithNumber(comments) {
-    const sortedComments = comments
-      .concat()
-      .sort(this.sortCommentsByMethod('dateDescending'));
+    const sortedComments = comments.concat().sort(this.sortCommentsByMethod('dateDescending'));
     const sortedCommentsWithNumbers = sortedComments.map((comment, idx) => ({
       ...comment,
       number: this.props.totalHits - idx,
@@ -124,20 +119,18 @@ class CommentsSection extends React.Component {
     return sortedCommentsWithNumbers;
   }
 
+  // number of additional comments to render each time load more button is clicked
+  commentPaginationCount = 50;
+
   sortCommentsByMethod(orderName) {
     if (orderName === 'dateAscending') {
       return (a, b) => a.publishingDateSortable - b.publishingDateSortable;
     }
-    if (orderName === 'commentRating') {
-      return (a, b) => this.getCommentNetRate(b.commentId)
-        - this.getCommentNetRate(a.commentId);
+    else if (orderName === 'commentRating') {
+      return (a, b) => this.getCommentNetRate(b.commentId) - this.getCommentNetRate(a.commentId);
     }
-    if (orderName === 'editorsPick') {
-      return (a, b) => (a.isEditorPick === b.isEditorPick
-        ? 0
-        : a.isEditorPick === 'true'
-          ? -1
-          : 1);
+    else if (orderName === 'editorsPick') {
+      return (a, b) => (a.isEditorPick === b.isEditorPick ? 0 : a.isEditorPick === 'true' ? -1 : 1);
     }
     return (a, b) => b.publishingDateSortable - a.publishingDateSortable;
   }
@@ -186,18 +179,12 @@ class CommentsSection extends React.Component {
               extend: [
                 theme.mq({ until: 's', }, { paddingBottom: '3rem', }),
                 theme.mq({ from: 's', until: 'l', }, { paddingBottom: '7rem', }),
-                theme.mq(
-                  { from: 'l', until: 'xl', },
-                  { paddingBottom: '14rem', }
-                ),
+                theme.mq({ from: 'l', until: 'xl', }, { paddingBottom: '14rem', }),
                 theme.mq({ from: 'xl', }, { paddingBottom: '1rem', }),
               ],
             })}
           >
-            <CommentForm
-              initNewComment={initNewComment}
-              signUpNotification={signUpNotification}
-            />
+            <CommentForm initNewComment={initNewComment} signUpNotification={signUpNotification} />
             <FelaComponent
               style={{
                 width: '100%',
@@ -246,8 +233,7 @@ class CommentsSection extends React.Component {
                     this.loadComments();
                     this.setState(prevState => ({
                       maxCommentsToRender:
-                        prevState.maxCommentsToRender
-                        + this.commentPaginationCount,
+                        prevState.maxCommentsToRender + this.commentPaginationCount,
                     }));
                   }}
                 >

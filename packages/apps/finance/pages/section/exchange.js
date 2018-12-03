@@ -34,25 +34,23 @@ function exchange({ url: { query: { section, }, }, }: Props): Node {
           />
         </RowItem>
         {
-          crypto
-            ? (
-              <Button
-                fontSize={-2}
-                isFlat
-                variant="salesOpaque"
-                boxModel={{ hp: 2, vp: 0.5, }}
-                miscStyles={{
-                  borderRadius: '4px',
-                  position: 'absolute',
-                  top: '0',
-                  end: '0',
-                }}
-                href="https://www.google.com"
-              >
+          crypto ?
+            <Button
+              fontSize={-2}
+              isFlat
+              variant="salesOpaque"
+              boxModel={{ hp: 2, vp: 0.5, }}
+              miscStyles={{
+                borderRadius: '4px',
+                position: 'absolute',
+                top: '0',
+                end: '0',
+              }}
+              href="https://www.google.com"
+            >
               קנו/מכרו ביטקוין
-              </Button>
-            )
-            : null
+            </Button>
+          : null
         }
       </PageRow>
       <PageRow>

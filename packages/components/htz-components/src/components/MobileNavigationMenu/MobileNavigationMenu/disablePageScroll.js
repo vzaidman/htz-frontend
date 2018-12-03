@@ -1,11 +1,12 @@
-/* global document */
+/* global window */
 
 export default isOn => {
-  if (typeof document !== 'undefined') {
-    const html = document.documentElement;
+  try {
+    const html = window.document.getElementsByTagName('html')[0];
     html.style.overflow = isOn ? 'hidden' : null;
     // todo: remove the touchAction disabling once the backdrop scrolling issue is fully resolved
     html.style.touchAction = isOn ? 'none' : null;
   }
+  catch (error) { }
   return null;
 };

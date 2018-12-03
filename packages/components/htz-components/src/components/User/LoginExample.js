@@ -10,69 +10,70 @@ import H from '../AutoLevels/H';
 export function LoginExample() {
   return (
     <UserDispenser
-      render={({ isLoggedIn, }) => (isLoggedIn ? (
-        <Logout
-          render={({ logout, }) => (
-            <div style={{ marginTop: '24px', marginBottom: '24px', }}>
-              <Button
-                onClick={() => {
-                  logout()
-                    .then(() => console.log('logoutSuccess'))
-                    .catch(err => console.log('logout failed', err));
-                }}
-              >
+      render={({ isLoggedIn, }) =>
+        (isLoggedIn ? (
+          <Logout
+            render={({ logout, }) => (
+              <div style={{ marginTop: '24px', marginBottom: '24px', }}>
+                <Button
+                  onClick={() => {
+                    logout()
+                      .then(() => console.log('logoutSuccess'))
+                      .catch(err => console.log('logout failed', err));
+                  }}
+                >
                   Logout
-              </Button>
-            </div>
-          )}
-        />
-      ) : (
-        <Login
-          render={({ login, }) => (
-            <div style={{ marginTop: '24px', marginBottom: '24px', }}>
-              <H>Login</H>
-              <Form
-                onSubmit={({ email, password, }) => {
-                  login(email, password)
-                    .then(() => {
-                      console.log('Login Success!');
-                    })
-                    .catch(err => {
-                      console.log('Login Error!', err);
-                    });
-                }}
-                render={({ getInputProps, handleSubmit, }) => (
-                  <div>
-                    <TextInput
-                      {...getInputProps({
-                        name: 'email',
-                        label: 'email',
-                        type: 'email',
-                      })}
-                    />
-                    <TextInput
-                      {...getInputProps({
-                        name: 'password',
-                        label: 'password',
-                        type: 'password',
-                      })}
-                    />
+                </Button>
+              </div>
+            )}
+          />
+        ) : (
+          <Login
+            render={({ login, }) => (
+              <div style={{ marginTop: '24px', marginBottom: '24px', }}>
+                <H>Login</H>
+                <Form
+                  onSubmit={({ email, password, }) => {
+                    login(email, password)
+                      .then(() => {
+                        console.log('Login Success!');
+                      })
+                      .catch(err => {
+                        console.log('Login Error!', err);
+                      });
+                  }}
+                  render={({ getInputProps, handleSubmit, }) => (
+                    <div>
+                      <TextInput
+                        {...getInputProps({
+                          name: 'email',
+                          label: 'email',
+                          type: 'email',
+                        })}
+                      />
+                      <TextInput
+                        {...getInputProps({
+                          name: 'password',
+                          label: 'password',
+                          type: 'password',
+                        })}
+                      />
 
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <Button onClick={handleSubmit}>submit</Button>
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <Button onClick={handleSubmit}>submit</Button>
+                      </div>
                     </div>
-                  </div>
-                )}
-              />
-            </div>
-          )}
-        />
-      ))
+                  )}
+                />
+              </div>
+            )}
+          />
+        ))
       }
     />
   );

@@ -99,9 +99,10 @@ const aspectRatios = {
  */
 export function buildURLs(contentId, data, options, excludeWidthDescriptor) {
   return options.map(
-    imgOption => `${buildUrl(contentId, data, imgOption)}${
-      !excludeWidthDescriptor ? ` ${imgOption.width}w` : ''
-    }`
+    imgOption =>
+      `${buildUrl(contentId, data, imgOption)}${
+        !excludeWidthDescriptor ? ` ${imgOption.width}w` : ''
+      }`
   );
 }
 
@@ -125,8 +126,9 @@ export function buildURLs(contentId, data, options, excludeWidthDescriptor) {
 
 export function buildUrl(contentId, data, options = {}) {
   const baseUrl = config.has('service.image') && config.get('service.image');
-  const polopolyImageBaseHref = config.has('service.polopolyImageBaseHref')
-    && config.get('service.polopolyImageBaseHref');
+  const polopolyImageBaseHref =
+    config.has('service.polopolyImageBaseHref') &&
+    config.get('service.polopolyImageBaseHref');
   const { imgName, version, aspects, } = data;
   const imageNameFromData = imgName.split('/')[1];
 
@@ -140,15 +142,15 @@ export function buildUrl(contentId, data, options = {}) {
 
   if (!baseUrl) {
     throw new Error(
-      'Your app\'s "imgBaseUrl" is not configured.\n'
-        + 'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
+      'Your app\'s "imgBaseUrl" is not configured.\n' +
+        'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
     );
   }
 
   if (!version && !polopolyImageBaseHref) {
     throw new Error(
-      'Your app\'s "polopolyImageBaseHref" is not configured.\n'
-        + 'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
+      'Your app\'s "polopolyImageBaseHref" is not configured.\n' +
+        'See https://github.com/Haaretz/htz-frontend/blob/master/docs/Configuration.md'
     );
   }
 
@@ -173,7 +175,8 @@ export function buildUrl(contentId, data, options = {}) {
 
   const initialTransforms = `${Object.keys(cropData).reduce(
     (allTransforms, propName) => {
-      const transfromString = transformPrefixes[propName] + cropData[propName].toString();
+      const transfromString =
+        transformPrefixes[propName] + cropData[propName].toString();
       return allTransforms + (allTransforms ? ',' : '/') + transfromString;
     },
     ''
@@ -194,8 +197,9 @@ export function buildUrl(contentId, data, options = {}) {
   const baseFlags = `/fl_any_format.preserve_transparency.progressive:${
     settings.isProgressive ? 'steep' : 'none'
   }`;
-  // eslint-disable-next-line eqeqeq
-  const miscTransforms = transforms != null ? `/${transforms.join('/')}` : '';
+  const miscTransforms =
+    // eslint-disable-next-line eqeqeq
+    transforms != undefined ? `/${transforms.join('/')}` : '';
   // eslint-disable-next-line eqeqeq
   const miscFlags = flags != undefined ? `/${flags.join('.')}` : '';
 
@@ -204,14 +208,15 @@ export function buildUrl(contentId, data, options = {}) {
     ? `/v${version}/${contentId}.${imageNameFromData}`
     : `/${polopolyImageBaseHref}/polopoly_fs/${contentId}!/image/${imageNameFromData}`;
   // construct url string from params
-  const url = baseUrl
-    + (version ? '/upload' : '/fetch')
-    + initialTransforms
-    + userTransforms
-    + baseFlags
-    + miscTransforms
-    + miscFlags
-    + urlSuffix;
+  const url =
+    baseUrl +
+    (version ? '/upload' : '/fetch') +
+    initialTransforms +
+    userTransforms +
+    baseFlags +
+    miscTransforms +
+    miscFlags +
+    urlSuffix;
   return url;
 }
 

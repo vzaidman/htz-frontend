@@ -12,7 +12,8 @@ const searchMap: Object = new Map([
         options: assetObject,
       },
     ],
-    number.int({ max: 50, min: 5, }),
+    number.int({ max: 50, min: 5, })
+    ,
     args,
   ), ],
 ]);

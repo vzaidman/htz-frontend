@@ -56,18 +56,19 @@ function Masthead({ content, articleId, }) {
     <Fragment>
       {content
         ? content.map(element => {
-          const Element = element.inputTemplate === 'com.tm.GridElementGroup'
-            ? Osaka
-            : getComponent(element.inputTemplate);
-          return (
-            <Element
-              key={element.contentId}
-              {...element}
-              {...(element.inputTemplate === 'com.htz.EditableNavigationElement' ? { Logo, } : {})}
-              articleId={articleId}
-            />
-          );
-        })
+            const Element =
+              element.inputTemplate === 'com.tm.GridElementGroup'
+                ? Osaka
+                : getComponent(element.inputTemplate);
+            return (
+              <Element
+                key={element.contentId}
+                {...element}
+                {...(element.inputTemplate === 'com.htz.EditableNavigationElement' ? { Logo, } : {})}
+                articleId={articleId}
+              />
+            );
+          })
         : null}
     </Fragment>
   );

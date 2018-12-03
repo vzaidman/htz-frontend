@@ -22,15 +22,15 @@ const { Component, } = React;
 // ////////////////////////////////////////////////////////////////// //
 
 type ClickAreaState = {
-  isActive: boolean,
+  isActive: boolean
 };
 
 type SizeType = number | ComponentPropResponsiveObject<number>[];
 type RippleColorType =
   | string
-  | [string, ]
-  | [string, string, ]
-  | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
+  | [string]
+  | [string, string]
+  | ComponentPropResponsiveObject<string | [string] | [string, string]>[];
 type ClickAreaProps = {
   /**
    * attributes to be passed to the DOM element
@@ -50,7 +50,7 @@ type ClickAreaProps = {
     | string
     | {
         pathname: string,
-        asPath: string,
+        asPath: string
       },
   asPath: string,
   /**
@@ -121,7 +121,7 @@ type ClickAreaProps = {
    *     ```
    */
   rippleColor: ?RippleColorType,
-  miscStyles: StyleProps,
+  miscStyles: StyleProps
 };
 
 class ClickAreaInner extends Component<any, ClickAreaState> {
@@ -142,12 +142,9 @@ class ClickAreaInner extends Component<any, ClickAreaState> {
     rippleColor: [ 'primary', 'base', ],
     miscStyles: null,
   };
-
   state = {
     isActive: false,
   };
-
-  ripple = React.createRef();
 
   componentDidMount() {
     if (this.ripple.current) {
@@ -161,14 +158,14 @@ class ClickAreaInner extends Component<any, ClickAreaState> {
     }
   }
 
-  deactivate = () => this.setState(() => ({ isActive: false, }));
+  ripple = React.createRef();
 
+  deactivate = () => this.setState(() => ({ isActive: false, }));
   handleFocus = (evt: SyntheticEvent<*>) => {
     const onFocus = (this.props.attrs || {}).onFocus;
     this.setState(() => ({ isActive: true, }));
     if (typeof onFocus === 'function') onFocus(evt);
   };
-
   handleBlur = (evt: SyntheticEvent<*>) => {
     const onBlur = (this.props.attrs || {}).onBlur;
     this.deactivate();
@@ -242,7 +239,7 @@ type ClickAreaStyleOptions = {
   isDisabled: boolean,
   rippleColor: ?RippleColorType,
   size: SizeType,
-  miscStyles?: ?StyleProps,
+  miscStyles?: ?StyleProps
 };
 
 function clickAreaStyle({
@@ -306,7 +303,7 @@ function clickAreaStyle({
 function setSize(
   prop: string,
   value: number
-): { minHeight: string, minWidth: string, } {
+): { minHeight: string, minWidth: string } {
   if (typeof value === 'number') {
     return {
       minHeight: `${value}rem`,

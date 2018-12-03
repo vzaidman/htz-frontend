@@ -92,11 +92,6 @@ class Line extends React.Component<Props, State> {
       theme,
     };
   }
-  /* Create graph's axis */
-
-  xAxis = d3.axisTop(this.state.xScale);
-
-  yAxis = d3.axisLeft(this.state.yScale);
 
   componentDidMount() {
     const { data, } = this.props;
@@ -129,13 +124,28 @@ class Line extends React.Component<Props, State> {
     const i: number = bisectDate(data, x, 1);
 
     /* In case the cursor is between two items, calculate which on is the closest */
-    const assetIndex: number = !data[i - 1] ? i
-      : !data[i] ? i - 1
-        : x - data[i - 1].time > data[i].time - x ? i : i - 1;
+    const assetIndex: number =
+      !data[i - 1] ? i
+        : !data[i] ? i - 1
+          : x - data[i - 1].time > data[i].time - x ? i : i - 1;
 
     this.dataIndex = assetIndex;
     return data[assetIndex];
   };
+
+  yMean: number;
+  dataIndex: number;
+  graphRef: ElementRef<'g'> | null;
+  xAxisRef: ElementRef<'g'> | null;
+  yAxisRef: ElementRef<'g'> | null;
+  lineRef: ElementRef<'line'> | null;
+  circleRef: ElementRef<'circle'> | null;
+  polyRef: ElementRef<'polygon'> | null;
+  overlayRef: ElementRef<'rect'> | null;
+
+  /* Create graph's axis */
+  xAxis = d3.axisTop(this.state.xScale);
+  yAxis = d3.axisLeft(this.state.yScale);
 
   /**
    * This function is in charge of giving the indication line a new X position.
@@ -194,24 +204,6 @@ class Line extends React.Component<Props, State> {
     /* Send the hovered asset and send it's data to the parent component. */
     this.props.changeStats(asset);
   };
-
-  yMean: number;
-
-  dataIndex: number;
-
-  graphRef: ElementRef<'g'> | null;
-
-  xAxisRef: ElementRef<'g'> | null;
-
-  yAxisRef: ElementRef<'g'> | null;
-
-  lineRef: ElementRef<'line'> | null;
-
-  circleRef: ElementRef<'circle'> | null;
-
-  polyRef: ElementRef<'polygon'> | null;
-
-  overlayRef: ElementRef<'rect'> | null;
 
   /**
    * This function responsible for rendering and updating the graph.

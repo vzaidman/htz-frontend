@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FelaComponent, } from 'react-fela';
+import FelaComponent from 'react-fela/lib/FelaComponent';
 import Observer from 'react-intersection-observer';
 
 const animate = theme => ({
@@ -13,15 +13,16 @@ const animate = theme => ({
   ],
 });
 
-const createRule = mediaQuery => ({ theme, isActive, }) => theme.mq(mediaQuery, {
-  ...(isActive ? animate(theme) : { opacity: 0, }),
-});
+const createRule = mediaQuery => ({ theme, isActive, }) =>
+  theme.mq(mediaQuery, {
+    ...(isActive ? animate(theme) : { opacity: 0, }),
+  });
 
 const FadeinViewport = ({ threshold, mediaQuery, children, }) => (
-  <Observer threshold={threshold} triggerOnce>
+  <Observer threshold={threshold} triggerOnce >
     {
       inView => (
-        <FelaComponent rule={createRule(mediaQuery)} isActive={inView}>
+        <FelaComponent rule={createRule(mediaQuery)} isActive={inView} >
           {children}
         </FelaComponent>
       )

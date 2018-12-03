@@ -40,9 +40,10 @@ export default class Embed extends React.Component {
   componentDidMount() {
     // eslint-disable-next-line react/no-did-mount-set-state
     embedTypes(this.props.inputTemplate)
-      .then(response => this.setState({
-        component: response.default,
-      })
+      .then(response =>
+        this.setState({
+          component: response.default,
+        })
       )
       .catch(err => console.log(err));
   }

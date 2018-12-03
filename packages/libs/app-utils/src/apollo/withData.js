@@ -13,14 +13,14 @@ export default (App, appDefaultState) => {
 
   return class WithData extends React.Component {
     static displayName = `WithData(${componentName})`;
-
     static propTypes = pagePropTypes;
 
     constructor(props) {
       super(props);
       const { serverState, } = this.props;
-      this.apolloClient = this.apolloClient
-        || createClient(serverState.apollo.data, appDefaultState);
+      this.apolloClient =
+        this.apolloClient ||
+        createClient(serverState.apollo.data, appDefaultState);
     }
 
     /**

@@ -55,7 +55,7 @@ function Tags({ tagsList, }) {
               >
                 <HtzLink
                   href={tag.url}
-                  content={(
+                  content={
                     <FelaComponent
                       style={{
                         color: theme.color('neutral', '-2'),
@@ -65,7 +65,7 @@ function Tags({ tagsList, }) {
                     >
                       {tag.contentName}
                     </FelaComponent>
-)}
+                  }
                 />
               </FelaComponent>
             ))}

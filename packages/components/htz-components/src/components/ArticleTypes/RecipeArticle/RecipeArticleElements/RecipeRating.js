@@ -2,9 +2,9 @@
 
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
+import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
-import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
 import IconClock from '../../../Icon/icons/IconClock';
 import IconLevels from '../../../Icon/icons/IconLevels';
 import IconPortions from '../../../Icon/icons/IconPortions';
@@ -111,21 +111,21 @@ class RecipeRating extends Component {
           const rows = [
             ...(recipeDifficultyLevel
               ? [
-                {
-                  icon: 'levels',
-                  highLightedText: highlightedText.level,
-                  text: levelText[recipeDifficultyLevel],
-                },
-              ]
+                  {
+                    icon: 'levels',
+                    highLightedText: highlightedText.level,
+                    text: levelText[recipeDifficultyLevel],
+                  },
+                ]
               : []),
             ...(numOfServings
               ? [
-                {
-                  icon: 'portions',
-                  highLightedText: highlightedText.portions,
-                  text: numOfServings,
-                },
-              ]
+                  {
+                    icon: 'portions',
+                    highLightedText: highlightedText.portions,
+                    text: numOfServings,
+                  },
+                ]
               : []),
             ...(totalCookTime
               ? [ { icon: 'clock', highLightedText: highlightedText.time, text: totalCookTime, }, ]
@@ -241,8 +241,7 @@ class RecipeRating extends Component {
                       style={{ fontWeight: 'bold', marginInlineEnd: '1rem', }}
                       render="span"
                     >
-                      {row.highLightedText}
-:
+                      {row.highLightedText}:
                     </FelaComponent>
                     <span>{row.text}</span>
                   </FelaComponent>

@@ -2,12 +2,13 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import AlertsButton, {
   alertButtonPropTypes,
-  alertsButtonDefaultProps,
+  alertButtonDefaultProps,
 } from './AlertsButton';
 import IconMailAlert from '../Icon/icons/IconMailAlert';
 
 const Alerts = React.forwardRef((props, ref) => {
   const { author, onToggle, } = props;
+
   return (
     <FelaComponent
       style={theme => ({
@@ -47,9 +48,7 @@ const Alerts = React.forwardRef((props, ref) => {
       render={({
         className,
         theme,
-        theme: {
-          alertsI18n: { mobileAlertsText, desktopAlertsText, },
-        },
+        theme: { alertsI18n: { mobileAlertsText, desktopAlertsText, }, },
       }) => (
         <AlertsButton
           className={className}
@@ -85,6 +84,6 @@ const Alerts = React.forwardRef((props, ref) => {
 });
 
 Alerts.propTypes = alertButtonPropTypes;
-Alerts.defaultProps = alertsButtonDefaultProps;
+Alerts.defaultProps = alertButtonDefaultProps;
 
 export default Alerts;

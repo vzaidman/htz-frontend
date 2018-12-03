@@ -23,7 +23,8 @@ export default function breakUrl(url) {
     path,
     query,
     fragment,
-  ] = urlRegex.exec(url) || [];
+  ] =
+    urlRegex.exec(url) || [];
   return {
     fullMatch,
     baseUrl,

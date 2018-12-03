@@ -45,9 +45,9 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
 
   shouldComponentUpdate(nextProps: PropTypes, nextState: StateTypes) {
     return (
-      (!nextState.someoneIsAnimating
-        && this.state.someoneIsAnimating !== nextState.someoneIsAnimating)
-      || this.state.elementIndex !== nextState.elementIndex
+      (!nextState.someoneIsAnimating &&
+        this.state.someoneIsAnimating !== nextState.someoneIsAnimating) ||
+      this.state.elementIndex !== nextState.elementIndex
     );
   }
 

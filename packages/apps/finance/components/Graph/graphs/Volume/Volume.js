@@ -21,17 +21,16 @@ type Props = {
 };
 /* eslint-enable react/no-unused-prop-types */
 
-type State = {
+type State= {
   duration?: number,
   theme: Object,
   yScale: number => number,
   xScale: number => number,
 };
 
-const numToString: number => string = num => num.toLocaleString('he', {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
 
 class Volume extends React.Component<Props, State> {
   static defaultProps = {
@@ -43,18 +42,14 @@ class Volume extends React.Component<Props, State> {
 
   state = {
     /* Base scales for x & y axis */
-    yScale: d3
-      .scaleBand()
-      .range([
-        this.props.height - this.props.margin.bottom,
-        this.props.margin.top,
-      ]),
-    xScale: d3
-      .scaleLinear()
-      .range([
-        this.props.margin.right,
-        this.props.width - this.props.margin.left,
-      ]),
+    yScale: d3.scaleBand().range([
+      this.props.height - this.props.margin.bottom,
+      this.props.margin.top,
+    ]),
+    xScale: d3.scaleLinear().range([
+      this.props.margin.right,
+      this.props.width - this.props.margin.left,
+    ]),
     theme: {},
   };
 
@@ -73,12 +68,6 @@ class Volume extends React.Component<Props, State> {
     };
   }
 
-  /* Create graph's axis */
-  yAxis = d3
-    .axisRight()
-    .scale(this.state.yScale)
-    .tickSize(0);
-
   componentDidMount() {
     const { data, } = this.props;
     if (data) this.renderGraph(data);
@@ -89,33 +78,30 @@ class Volume extends React.Component<Props, State> {
     return false;
   }
 
-  svgRef: ElementRef<"svg"> | null;
+  svgRef: ElementRef<'svg'> | null;
+  barsRef: ElementRef<'g'> | null;
+  yAxisRef: ElementRef<'g'> | null;
 
-  barsRef: ElementRef<"g"> | null;
-
-  yAxisRef: ElementRef<"g"> | null;
+  /* Create graph's axis */
+  yAxis = d3.axisRight().scale(this.state.yScale).tickSize(0);
 
   /**
    * This function responsible for rendering and updating the graph.
    * @param data - An Array of stocks to be drawn.
    */
-  renderGraph: (Array<BarData>) => void = data => {
+  renderGraph: Array<BarData> => void = data => {
     const { yScale, xScale, theme, } = this.state;
     const { width, margin, } = this.props;
 
     /* Set the init bars svg elements, and set the animation's key (its index). */
-    const bars = d3
-      .select(this.barsRef)
+    const bars = d3.select(this.barsRef)
       .selectAll()
       .data(data, (d, i) => i);
 
     /* Set the Exit event. */
     bars.exit().remove();
 
-    const barElements = bars
-      .enter()
-      .append('g')
-      .attr('class', (d, i) => `bar${i}`);
+    const barElements = bars.enter().append('g').attr('class', (d, i) => `bar${i}`);
     /* Set the filled bar. */
     barElements
       .append('rect')
@@ -138,7 +124,7 @@ class Volume extends React.Component<Props, State> {
     barElements
       .append('text')
       .attr('x', d => width - xScale(d.value))
-      .attr('y', d => yScale(d.name) + yScale.bandwidth() / 2)
+      .attr('y', d => yScale(d.name) + (yScale.bandwidth() / 2))
       .attr('dx', '10')
       .attr('dy', '.36em')
       .attr('text-anchor', 'end')
@@ -150,8 +136,8 @@ class Volume extends React.Component<Props, State> {
       const rectElement = d3.select(`.bar${i} rect`);
       const textElement = d3.select(`.bar${i} text`);
       if (
-        rectElement.node().getBoundingClientRect().width
-        < textElement.node().getBoundingClientRect().width
+        rectElement.node().getBoundingClientRect().width <
+        textElement.node().getBoundingClientRect().width
       ) {
         textElement
           .attr('dx', '-10')
@@ -164,10 +150,8 @@ class Volume extends React.Component<Props, State> {
     const yAxisRef = d3.select(this.yAxisRef);
 
     /* Remove the default vertical axis. */
-    yAxisRef
-      .call(this.yAxis)
-      .select('.domain')
-      .remove();
+    yAxisRef.call(this.yAxis)
+      .select('.domain').remove();
   };
 
   render(): Node {
@@ -184,31 +168,25 @@ class Volume extends React.Component<Props, State> {
         })}
         render={({ className, theme, }) => (
           <svg
-            ref={svgRef => {
-              this.svgRef = svgRef;
-            }}
+            ref={svgRef => { this.svgRef = svgRef; }}
             viewBox={`0 0 ${width} ${height}`}
             className={className}
             width="100%"
             direction="rtl"
           >
             <g
-              ref={barsRef => {
-                this.barsRef = barsRef;
-              }}
+              ref={barsRef => { this.barsRef = barsRef; }}
             />
             <FelaComponent
-              style={{
+              rule={({ theme, }) => ({
                 ...theme.type(-2),
                 fontWeight: '700',
                 fontFamily: theme.fontStacks.enhanced,
-              }}
+              })}
               render={({ className, }) => (
                 <g
                   className={className}
-                  ref={yAxisRef => {
-                    this.yAxisRef = yAxisRef;
-                  }}
+                  ref={yAxisRef => { this.yAxisRef = yAxisRef; }}
                   transform={`translate(${width}, 0)`}
                   fill={theme.color('neutral', '-3')}
                 />

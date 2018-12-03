@@ -16,9 +16,10 @@ function getRandomInt(min, max) {
 }
 
 const isValidSsoMap = ssoMap => {
-  const typeValidity = typeof ssoMap !== 'undefined'
-    && typeof ssoMap === 'object'
-    && typeof ssoMap.userId === 'string';
+  const typeValidity =
+    typeof ssoMap !== 'undefined' &&
+    typeof ssoMap === 'object' &&
+    typeof ssoMap.userId === 'string';
   const valueValidity = typeValidity && Number(ssoMap.userId) > 0;
   return typeValidity && valueValidity;
 };
@@ -66,14 +67,15 @@ export default class UserFactory {
    */
   build() {
     this.config = this.config || createSiteConfig(this.hostname);
-    const ssoMap = this.cookieMap !== undefined
-      ? this.cookieMap[this.config.ssoKey]
-      : undefined;
+    const ssoMap =
+      this.cookieMap !== undefined
+        ? this.cookieMap[this.config.ssoKey]
+        : undefined;
     let anonymousId = this.cookieMap.anonymousId;
     if (
-      !anonymousId
-      && typeof window !== 'undefined'
-      && typeof window.document !== 'undefined'
+      !anonymousId &&
+      typeof window !== 'undefined' &&
+      typeof window.document !== 'undefined'
     ) {
       anonymousId = generateAnonymousId();
     }

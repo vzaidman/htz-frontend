@@ -1,7 +1,6 @@
 import color from '../methods/getColor';
-import getDuration from '../methods/getDuration';
-import getTimingFunction from '../methods/getTimingFunction';
 import type from '../methods/typesetter';
+import { getDuration, getTimingFunction, } from '../methods/animation';
 
 const article = Object.freeze({
   marginStart: [

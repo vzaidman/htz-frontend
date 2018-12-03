@@ -1,4 +1,3 @@
-// @flow
 import type {
   ComponentPropResponsiveObject,
   StyleProps,
@@ -15,53 +14,61 @@ import setColor from '../../utils/setColor';
 // ///////// //
 //   Types   //
 // ///////// //
-export type SeperatorColorType = string | [string, ] | [string, string, ];
-export type SeperatorStyleType =
-  | "dashed"
-  | "dotted"
-  | "double"
-  | "groove"
-  | "hidden"
-  | "inherit"
-  | "initial"
-  | "inset"
-  | "none"
-  | "outset"
-  | "ridge"
-  | "solid"
-  | "unset";
+type SeperatorColor = string | [string] | [string, string];
+type SeperatorStyle =
+  | 'dashed'
+  | 'dotted'
+  | 'double'
+  | 'groove'
+  | 'hidden'
+  | 'inherit'
+  | 'initial'
+  | 'inset'
+  | 'none'
+  | 'outset'
+  | 'ridge'
+  | 'solid'
+  | 'unset';
+
+type SeperatorOptions = {|
+  color?: SeperatorColor,
+  width?: number,
+  style?: SeperatorStyle,
+|};
 
 type PaddingArray =
-  | [number, ]
-  | [number, number, ]
-  | [number, number, number, ]
-  | [number, number, number, number, ];
-
-export type PaddingValueType = number | PaddingArray;
-
-type SeperatorOptions = {
-  seperatorColor?: SeperatorColorType,
-  seperatorWidth?: number,
-  seperatorStyle?: SeperatorStyleType,
-};
+  | [number]
+  | [number, number]
+  | [number, number, number]
+  | [number, number, number, number];
+export type CardContentPadding = number | PaddingArray;
 export type CardContentSeperator = true | SeperatorOptions;
-
-export type ColorType =
-  | ?string
-  | [string, ]
-  | [string, string, ]
-  | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
-
-export type PaddingType =
-  | PaddingValueType
-  | ComponentPropResponsiveObject<PaddingValueType>[];
 
 export type CardContentStyleOptions = {
   /** A Fela theme object */
   theme: Object,
-  backgroundColor: ?ColorType,
-  color: ?ColorType,
-  padding: ?PaddingType,
+  backgroundColor:
+    | ?string
+    | [string]
+    | [string, string]
+    | {
+        ...ComponentPropResponsiveObject,
+        value: string | [string] | [string, string],
+      }[],
+  color:
+    | ?string
+    | [string]
+    | [string, string]
+    | {
+        ...ComponentPropResponsiveObject,
+        value: string | [string] | [string, string],
+      }[],
+  padding:
+    | ?CardContentPadding
+    | {
+        ...ComponentPropResponsiveObject,
+        value: CardContentPadding,
+      },
   seperator: ?CardContentSeperator,
   miscStyles: ?StyleProps,
 };
@@ -73,21 +80,20 @@ export type CardContentStyleOptions = {
 const getSeperatorProps = (
   options: CardContentSeperator,
   themeStyles: Object
-): SeperatorOptions => [ 'Color', 'Style', 'Width', ].reduce(
-  (result, prop) => ({
-    ...result,
-    [`seperator${prop}`]:
-        options === true
-          ? themeStyles[`cardContentSeperator${prop}`]
-          : options[prop.toLowerCase()]
-            || themeStyles[`cardContentSeperator${prop}`],
-  }),
-  {}
-);
+): SeperatorOptions =>
+  [ 'Color', 'Style', 'Width', ].reduce(
+    (result, prop) => ({
+      ...result,
+      [`seperator${prop}`]:
+        options[prop.toLowerCase()] ||
+        themeStyles[`cardContentSeperator${prop}`],
+    }),
+    {}
+  );
 
 const getPaddingArray = (
-  paddingOpts: ?PaddingValueType,
-  themeOpts: PaddingValueType
+  paddingOpts: CardContentPadding,
+  themeOpts: CardContentPadding
 ): PaddingArray => {
   const paddingValues = paddingOpts == null ? themeOpts : paddingOpts;
 
@@ -98,32 +104,33 @@ const getPaddingSideValue = (
   paddingValues: PaddingArray,
   pos: 0 | 1 | 2 | 3
 ): number => {
-  // $FlowFixMe
   const valueAtCurrentPos = paddingValues[pos];
   if (valueAtCurrentPos !== undefined) return valueAtCurrentPos;
-  // $FlowFixMe
   const correspondingPos = Math.min(paddingValues.length, pos === 3 ? 1 : 0);
-  // $FlowFixMe
   return getPaddingSideValue(paddingValues, correspondingPos);
 };
 
 const getPaddingValues = (
-  paddingOpts: ?PaddingValueType,
-  themeOpts: PaddingValueType
-): [
-  number, // paddingTop
-  number, // paddingInlineStart
-  number, // paddingBottom
-  number, // paddingInlineEnd
-] => {
+  paddingOpts: CardContentPadding,
+  themeOpts: CardContentPadding
+): {
+  paddingTop: number,
+  paddingInlineStart: number,
+  paddingBottom: number,
+  paddingInlineEnd: number,
+} => {
   const paddingArray = getPaddingArray(paddingOpts, themeOpts);
 
-  // The arry type matches the return tuple
-  // $FlowFixMe
   return [ 0, 1, 2, 3, ].map(pos => getPaddingSideValue(paddingArray, pos));
 };
 
-type BoxModelValues = {
+function setBoxModel(
+  prop: string,
+  paddingOptions: ?CardContentPadding,
+  seperatorOptions: ?CardContentSeperator,
+  cardStyle: Object,
+  getColor: ColorGetter
+): {
   paddingTop?: string,
   paddingInlineStart?: string,
   paddingBottom?: string,
@@ -131,15 +138,7 @@ type BoxModelValues = {
   borderTopWidth?: string,
   borderTopColor?: string,
   borderTopStyle?: string,
-};
-
-function setBoxModel(
-  prop: string,
-  paddingOptions: ?PaddingValueType,
-  seperatorOptions: ?CardContentSeperator,
-  cardStyle: Object,
-  getColor: ColorGetter
-): BoxModelValues {
+} {
   const [
     paddingTop,
     paddingInlineStart,
@@ -147,37 +146,35 @@ function setBoxModel(
     paddingInlineEnd,
   ] = getPaddingValues(paddingOptions, cardStyle.cardContentPadding);
 
-  const paddingValues = {
-    paddingTop: `${paddingTop}rem`,
-    paddingInlineStart: `${paddingInlineStart}rem`,
-    paddingBottom: `${paddingBottom}rem`,
-    paddingInlineEnd: `${paddingInlineEnd}rem`,
-  };
-
-  if (!seperatorOptions) return paddingValues;
-
+  if (!seperatorOptions) {
+    return {
+      paddingTop,
+      paddingInlineStart,
+      paddingBottom,
+      paddingInlineEnd,
+    };
+  }
   const { seperatorColor, seperatorStyle, seperatorWidth, } = getSeperatorProps(
     seperatorOptions,
     cardStyle
   );
 
+  const seperatorColorArgs = Array.isArray(seperatorColor)
+    ? seperatorColor
+    : [ seperatorColor, ];
+
   const topBorderAndPaddingProps = borderTop({
     width: seperatorWidth,
     lines: paddingTop,
     style: seperatorStyle,
-    color:
-      seperatorColor != undefined // eslint-disable-line eqeqeq
-        ? getColor(
-          ...(Array.isArray(seperatorColor)
-            ? seperatorColor
-            : [ seperatorColor, ])
-        )
-        : undefined,
+    color: seperatorColor ? getColor(...seperatorColorArgs) : undefined,
   });
 
   return {
-    ...paddingValues,
     ...topBorderAndPaddingProps,
+    paddingInlineStart,
+    paddingBottom,
+    paddingInlineEnd,
   };
 }
 

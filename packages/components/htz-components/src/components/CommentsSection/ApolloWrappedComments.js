@@ -144,7 +144,8 @@ class CommentsWithApollo extends React.Component {
                                   submitNewComment
                                 );
                               }}
-                              signUpNotification={email => this.initSignUpNotificationEmail(email, submitNotificationEmail)
+                              signUpNotification={email =>
+                                this.initSignUpNotificationEmail(email, submitNotificationEmail)
                               }
                               loadAllComments={() => this.handleLoadAllComments(fetchMore)}
                               comments={commentsElement ? commentsElement.comments : []}

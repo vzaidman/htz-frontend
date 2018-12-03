@@ -82,7 +82,8 @@ function Youtube({ embedType, settings, source, onLoadCallback, }) {
   const start = embedType === 'playlist' ? '&start=' : '?start=';
 
   /* eslint-disable no-unused-vars */
-  const { controls, related, loop, logo, mute, autoplay, startAt, videoImage, } = settings || defaultSettings;
+  const { controls, related, loop, logo, mute, autoplay, startAt, videoImage, } =
+    settings || defaultSettings;
   /* eslint-enable no-unused-vars */
 
   return (

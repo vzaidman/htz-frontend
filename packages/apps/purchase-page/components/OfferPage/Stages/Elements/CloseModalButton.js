@@ -40,11 +40,7 @@ function CloseModalButton({ handleClose, }) {
     <FelaComponent
       style={{ height: '2rem', width: '2rem', }}
       render={({ className, }) => (
-        <button
-          type="button"
-          className={className}
-          onClick={() => handleClose()}
-        >
+        <button className={className} onClick={() => handleClose()}>
           <FelaComponent style={closeButtonStyle} render="span" />
           <AriaDescription id="closeModal">סגירה</AriaDescription>
         </button>

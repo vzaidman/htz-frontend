@@ -92,12 +92,13 @@ const alertsAndDesktopTimeContStyle = theme => ({
 const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
   const MILISECS_IN_HOUR = 3600 * 1000;
   return (
-    new Date(startTime).getTime() - new Date(endTime).getTime()
-    < hours * MILISECS_IN_HOUR
+    new Date(startTime).getTime() - new Date(endTime).getTime() <
+    hours * MILISECS_IN_HOUR
   );
 };
 
-const articleTimeFormat = (startTime, endTime) => (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
+const articleTimeFormat = (startTime, endTime) =>
+  (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
 
 class ArticleHeaderMeta extends React.Component {
   constructor(props) {
@@ -126,29 +127,30 @@ class ArticleHeaderMeta extends React.Component {
 
   displayDates = (publishDate, modifiedDate, className) => {
     if (
-      new Date(publishDate).toDateString()
-      === new Date(modifiedDate).toDateString()
+      new Date(publishDate).toDateString() ===
+      new Date(modifiedDate).toDateString()
     ) {
-      const format = new Date().toDateString() === new Date(modifiedDate).toDateString()
-        ? 'HH:mm'
-        : 'DD.MM.YYYY';
+      const format =
+        new Date().toDateString() === new Date(modifiedDate).toDateString()
+          ? 'HH:mm'
+          : 'DD.MM.YYYY';
       return (
         <Fragment>
           <Time time={modifiedDate} format={format} className={className} />
         </Fragment>
       );
     }
-    const format = new Date().toDateString() === new Date(publishDate).toDateString()
-      ? 'HH:mm'
-      : 'DD.MM.YYYY';
+    const format =
+      new Date().toDateString() === new Date(publishDate).toDateString()
+        ? 'HH:mm'
+        : 'DD.MM.YYYY';
     return (
       <FelaComponent
         style={theme => ({
           extend: [ theme.mq({ from: 's', until: 'l', }, { display: 'inline', }), ],
         })}
       >
-        <Time time={publishDate} format={format} className={className} />
-        {' '}
+        <Time time={publishDate} format={format} className={className} />{' '}
         {this.setModifiedDate(modifiedDate, className)}
       </FelaComponent>
     );
@@ -261,15 +263,16 @@ class ArticleHeaderMeta extends React.Component {
                                     author.name || author.contentName
                                   }
                                   url={author.url}
-                                  onClick={() => biAction({
-                                    actionCode: 109,
-                                    additionalInfo: {
-                                      writer_id:
-                                          author.contentId
-                                          || author.contentName,
-                                      platform,
-                                    },
-                                  })
+                                  onClick={() =>
+                                    biAction({
+                                      actionCode: 109,
+                                      additionalInfo: {
+                                        writer_id:
+                                          author.contentId ||
+                                          author.contentName,
+                                        platform,
+                                      },
+                                    })
                                   }
                                   miscStyles={{
                                     ':after': {
@@ -336,18 +339,19 @@ class ArticleHeaderMeta extends React.Component {
                           </FelaComponent>
                           {/* alerts and desktop time */}
                           <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                            {authors.length === 1
-                            && authors[0].hasEmailAlerts ? (
+                            {authors.length === 1 &&
+                            authors[0].hasEmailAlerts ? (
                               <Alerts
                                 author={authors[0]}
-                                onToggle={() => this.toggleAuthorAlertsForm(
-                                  biAction,
-                                  platform
-                                )
+                                onToggle={() =>
+                                  this.toggleAuthorAlertsForm(
+                                    biAction,
+                                    platform
+                                  )
                                 }
                                 ref={this.alertsToggleBtnRef}
                               />
-                              ) : null}
+                            ) : null}
                           </FelaComponent>
                           <FelaComponent
                             rule={timeStyle}
@@ -365,8 +369,8 @@ class ArticleHeaderMeta extends React.Component {
                         </div>
                         <SlideinBox
                           show={
-                            authors[0].hasEmailAlerts
-                            && this.state.isShowAuthorAlertsForm
+                            authors[0].hasEmailAlerts &&
+                            this.state.isShowAuthorAlertsForm
                           }
                           duration={2}
                           focus
@@ -376,7 +380,8 @@ class ArticleHeaderMeta extends React.Component {
                             author={authors[0]}
                             platform={platform}
                             biAction={biAction}
-                            onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)
+                            onCancel={() =>
+                              this.toggleAuthorAlertsForm(biAction, platform)
                             }
                           />
                         </SlideinBox>

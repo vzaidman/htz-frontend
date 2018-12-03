@@ -19,7 +19,7 @@
   "scripts": {
     "build": "htz-scripts build && yarn run distFlowTypes",
     "build:esm": "htz-scripts build:esm",
-    "watch": "htz-scripts build:esm watch",
+    "watch": "htz-scripts build:lib watch",
     "distFlowTypes": "htz-scripts distFlowTypes",
     "build:docs": "rimraf docs/**/* && documentation build src --config documentation.yml -f html -o docs",
     "clean": "htz-scripts clean",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
-    "documentation": "^8.1.2",
+    "documentation": "^5.3.3",
     "mq-polyfill": "^1.1.8",
     "rimraf": "^2.6.2"
   }

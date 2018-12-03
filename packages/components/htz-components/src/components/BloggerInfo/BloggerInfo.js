@@ -93,9 +93,7 @@ function BloggerInfo({ author, blogName, }) {
         </FelaComponent>
 
         <FelaComponent render="span" style={bloggerNickName}>
-          &nbsp;|
-          {' '}
-          {blogName}
+          &nbsp;| {blogName}
         </FelaComponent>
       </FelaComponent>
       <FelaComponent style={bloggerInfoText}>

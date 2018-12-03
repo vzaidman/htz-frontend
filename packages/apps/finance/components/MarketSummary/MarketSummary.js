@@ -5,9 +5,9 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { H, Grid, GridItem, Query, } from '@haaretz/htz-components';
 
-import type { Node, } from 'react';
+import type { StatelessFunctionalComponent, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
-import type { Asset, AssetType, } from '../../types/asset';
+import type { Asset, } from '../../types/asset';
 
 import SectionLink from '../SectionLink/SectionLink';
 
@@ -28,26 +28,26 @@ type AssetData = {
   value: number,
   changePercentage: number,
   id: string,
-  type: AssetType,
+  type: string,
 };
 
 type Props = {
   asset: AssetData,
-  miscStyles: ?Object,
+  miscStyles?: Object,
 };
 
-const numToString: number => string = num => num.toLocaleString('he', {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
+const numToString: number => string = num =>
+  num.toLocaleString('he', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
-type ItemProps = {
-  children: (className: string) => Node,
-  title: ?string,
-  miscStyles: ?Object,
-};
-
-const Item = ({ children, title, miscStyles, }: ItemProps): Node => (
+// eslint-disable-next-line react/prop-types
+const Item: StatelessFunctionalComponent<any> = ({
+  children,
+  title,
+  miscStyles,
+}) => (
   <FelaComponent
     style={theme => ({
       alignItems: 'center',
@@ -96,12 +96,11 @@ const Item = ({ children, title, miscStyles, }: ItemProps): Node => (
   </FelaComponent>
 );
 
-Item.defaultProps = {
-  title: null,
-  miscStyles: null,
-};
-
-const MarketSummary = ({ asset, miscStyles, }: Props): Node => {
+// eslint-disable-next-line react/prop-types
+const MarketSummary: StatelessFunctionalComponent<Props> = ({
+  asset,
+  miscStyles,
+}) => {
   const { name, value, changePercentage, id, type, } = asset;
   return (
     <FelaTheme
@@ -184,10 +183,7 @@ const MarketSummary = ({ asset, miscStyles, }: Props): Node => {
               paddingBottom: '0.5rem',
             }}
           >
-            <span>
-              לבורסת
-              {name}
-            </span>
+            <span>לבורסת {name}</span>
           </SectionLink>
         </FelaComponent>
       )}
@@ -195,7 +191,7 @@ const MarketSummary = ({ asset, miscStyles, }: Props): Node => {
   );
 };
 
-export default ({ miscStyles, }: { miscStyles: ?Object, }): Node => (
+export default (props: any) => (
   <Query
     query={MarketSummaryQuery}
     variables={{
@@ -209,11 +205,7 @@ export default ({ miscStyles, }: { miscStyles: ?Object, }): Node => (
         <Grid>
           {assets.map((asset: Asset) => (
             <GridItem key={asset.id} width={1 / 3}>
-              <MarketSummary
-                key={asset.id}
-                miscStyles={miscStyles}
-                asset={asset}
-              />
+              <MarketSummary key={asset.id} {...props} asset={asset} />
             </GridItem>
           ))}
         </Grid>

@@ -97,7 +97,6 @@ class Wrapper extends Component {
       });
     }, 3000);
   }
-
   render() {
     const {
       chosenSubscription,

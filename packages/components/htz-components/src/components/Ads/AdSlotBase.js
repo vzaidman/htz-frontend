@@ -2,6 +2,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { instance, } from './DfpInjector';
 import Debug from '../Debug/Debug';
 
 const propTypes = {
@@ -23,12 +24,7 @@ class AdSlotBase extends Component {
 
   componentDidMount() {
     if (!this.state.shouldRender) {
-      const debugJsx = (
-        <Debug>
-          AdUnit:
-          {this.props.id}
-        </Debug>
-      );
+      const debugJsx = <Debug>AdUnit: {this.props.id}</Debug>;
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, debugJsx, });
     }
@@ -47,13 +43,15 @@ class AdSlotBase extends Component {
           <FelaComponent
             customClass={`js-dfp-ad ${this.props.className}`}
             rule={this.props.styleRule}
-            render={({ className, }) => (
-              <div
-                id={this.props.id}
-                data-audtarget={audianceTarget}
-                className={className}
-              />
-            )}
+            render={
+              ({ className, }) => (
+                <div
+                  id={this.props.id}
+                  data-audtarget={audianceTarget}
+                  className={className}
+                />
+              )
+            }
           />
         </React.Fragment>
       );

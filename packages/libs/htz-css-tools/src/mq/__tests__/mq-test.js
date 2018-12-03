@@ -3,7 +3,8 @@ import createMqFunc from '../createMqFunc';
 
 describe('# Media Queries', () => {
   describe('## getLengthString()', () => {
-    const test = length => getLengthString(length, { s: 600, m: 1024, l: 1280, });
+    const test = length =>
+      getLengthString(length, { s: 600, m: 1024, l: 1280, });
     it('Return a number-string in ems when passed a number', () => {
       expect(test(320)).toEqual('20em');
     });
@@ -32,8 +33,8 @@ describe('# Media Queries', () => {
       );
 
       expect(result).toBe(
-        `@media (min-width: ${600 / 16}em) and (max-width: ${(1024 - 1)
-          / 16}em) and (orientation: landscape)`
+        `@media (min-width: ${600 / 16}em) and (max-width: ${(1024 - 1) /
+          16}em) and (orientation: landscape)`
       );
     });
     it('return a media query string without the "@media" prefix', () => {
@@ -47,42 +48,8 @@ describe('# Media Queries', () => {
       );
 
       expect(result).toBe(
-        `(min-width: ${600 / 16}em) and (max-width: ${(1024 - 1)
-          / 16}em) and (orientation: landscape)`
-      );
-    });
-    it('return a media query string in pixels with the "@media" prefix', () => {
-      const widths = { s: 600, m: 1024, l: 1280, };
-      const result = getMqString(
-        {
-          widths,
-          misc: { landscape: '(orientation: landscape)', },
-        },
-        { from: 's', until: 'm', misc: 'landscape', },
-        false,
-        true
-      );
-
-      expect(result).toBe(
-        `@media (min-width: ${widths.s}px) and (max-width: ${widths.m
-          - 1}px) and (orientation: landscape)`
-      );
-    });
-    it('return a media query string in pixels without the "@media" prefix', () => {
-      const widths = { s: 600, m: 1024, l: 1280, };
-      const result = getMqString(
-        {
-          widths,
-          misc: { landscape: '(orientation: landscape)', },
-        },
-        { from: 's', until: 'm', misc: 'landscape', },
-        true,
-        true
-      );
-
-      expect(result).toBe(
-        `(min-width: ${widths.s}px) and (max-width: ${widths.m
-          - 1}px) and (orientation: landscape)`
+        `(min-width: ${600 / 16}em) and (max-width: ${(1024 - 1) /
+          16}em) and (orientation: landscape)`
       );
     });
   });

@@ -179,8 +179,8 @@ describe('adSlot', () => {
       });
 
       it('should return false for any other adSlotId ', () => {
-        expect(stub(adExamples.regular)).toEqual(false)
-          && expect(stub('random.data.ad.id')).toEqual(false);
+        expect(stub(adExamples.regular)).toEqual(false) &&
+          expect(stub('random.data.ad.id')).toEqual(false);
       });
     });
 
@@ -245,8 +245,8 @@ describe('adSlot', () => {
       });
 
       it('should return false for any other adSlotId ', () => {
-        expect(stub(adExamples.regular)).toEqual(false)
-          && expect(stub('random.data.ad.id')).toEqual(false);
+        expect(stub(adExamples.regular)).toEqual(false) &&
+          expect(stub('random.data.ad.id')).toEqual(false);
       });
     });
 

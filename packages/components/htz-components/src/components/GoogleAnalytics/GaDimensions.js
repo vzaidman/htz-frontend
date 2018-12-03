@@ -14,7 +14,6 @@ class GaDimensions extends React.Component {
     // User type
     userType: PropTypes.string,
   };
-
   static defaultProps = {
     articlePaywallMode: null,
     authors: null,
@@ -25,9 +24,10 @@ class GaDimensions extends React.Component {
   componentDidMount() {
     const { articlePaywallMode, authors, pageType, userType, } = this.props;
     if (userType) {
-      const visitor = userType === 'anonymous'
-        ? 'Non-registered'
-        : userType === 'registered' ? 'Registered' : 'Paying';
+      const visitor =
+        userType === 'anonymous'
+          ? 'Non-registered'
+          : userType === 'registered' ? 'Registered' : 'Paying';
       ReactGA.ga('set', 'dimension1', visitor);
     }
     authors && ReactGA.ga('set', 'dimension2', authors);

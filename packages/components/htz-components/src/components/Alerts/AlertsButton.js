@@ -44,7 +44,6 @@ class AlertsButton extends Component {
 
     return (
       <button
-        type="button"
         ref={forwardedRef}
         className={className}
         aria-expanded={this.state.isExpanded}
@@ -52,9 +51,7 @@ class AlertsButton extends Component {
         aria-describedby="alerts_btn_description"
       >
         <AriaDescription id="alerts_btn_description">
-          קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ
-          {' '}
-          {author.name}
+          קבל התראות בתיבת הדואר האלקטרוני שלך עבור כתבות מ {author.name}
         </AriaDescription>
         {children}
       </button>

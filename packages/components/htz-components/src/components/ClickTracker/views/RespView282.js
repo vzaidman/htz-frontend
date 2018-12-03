@@ -39,7 +39,7 @@ export default function RespView282({
     <HtzLink
       href={link}
       target={linkTarget}
-      content={(
+      content={
         <FelaComponent
           style={theme => ({
             backgroundColor: theme.color('neutral', '-6'),
@@ -103,7 +103,7 @@ export default function RespView282({
             </div>
           )}
         />
-)}
+      }
     />
   );
 }

@@ -389,7 +389,8 @@ module.exports = {
     // which is not what we want when using the default config.
     if (componentPath.indexOf('..') === 1) {
       // eslint-disable-next-line no-param-reassign
-      componentPath = resolveFrom.silent(__dirname, componentPath) || componentPath;
+      componentPath =
+        resolveFrom.silent(__dirname, componentPath) || componentPath;
     }
     // eslint-disable-next-line no-param-reassign
     componentPath = path.relative(process.cwd(), componentPath);

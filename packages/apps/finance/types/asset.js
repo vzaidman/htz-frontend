@@ -1,10 +1,9 @@
 // @flow
-export type AssetType = 'crypto' | 'bonds' | 'stocks' | 'options' | 'mtf' | 'etf' | 'exchange' | 'indices';
 export type Asset = {
   name: string,
   id: string,
   symbol: string,
-  type: AssetType,
+  type: 'crypto' | 'bonds' | 'stocks' | 'options' | 'mtf' | 'etf' | 'exchange' | 'indices',
   subType: string,
   assetNumber: number,
   assetSummary: string,
@@ -26,7 +25,6 @@ export type Asset = {
   }>,
   value: number,
   USDValue: number,
-  numeralValue: number,
   baseValue: number,
   openingValue: number,
   dailyHigh: number,
@@ -122,13 +120,6 @@ export type Asset = {
   loadChargeRate: number,
   distributionCommission: number,
   mainCurrency: string,
-  mtfHoldingRatio: number,
-  mtfLinkForeignExchange: number,
-  mtfLinkIndex: number,
-  mtfLinkShekel: number,
-  mtfLinkOptions: number,
-  mtfLinkStocks: number,
-  mtfLinkFunds: number,
   mtfEtfPolicy: string,
   policyChangeDate: number,
   primeClassification: string,

@@ -454,14 +454,14 @@ function DesktopView({
                           ))
                         ) : cellData ? (
                           <React.Fragment>
-                            <AriaDescription id={`Description${idx + rowNum}`}>
+                            <AriaDescription id={`Description${idx + rowNum}`} >
                               כלול ב-
                               {tHeadData[idx - 1].heading}
                             </AriaDescription>
                             <PositiveCircle />
                           </React.Fragment>
                         ) : (
-                          <AriaDescription id={`Description${idx + rowNum}`}>
+                          <AriaDescription id={`Description${idx + rowNum}`} >
                               לא כלול ב
                             {tHeadData[idx - 1].heading}
                           </AriaDescription>

@@ -9,18 +9,17 @@ import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const Crosshead = props => (
-  <FelaComponent
-    style={theme => ({ extend: [ theme.type(2), ], })}
-    render={({ className, }) => <H className={className} {...props} />}
-  />
-);
+const Crosshead = props => (<FelaComponent
+  style={theme => (
+    { extend: [ theme.type(2), ], }
+  )}
+  render={({ className, }) => (<H className={className} {...props} />)}
+/>);
 
 const paragraphStyle = ({ miscStyles, theme, }) => ({
   marginBottom: '3rem',
   extend: [
-    theme.type(1, { untilBp: 'xl', lines: 5, }),
-    theme.type(0, { fromBp: 'xl', lines: 5, }),
+    theme.type(1, { untilBp: 'xl', lines: 5, }), theme.type(0, { fromBp: 'xl', lines: 5, }),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -188,12 +187,11 @@ const extractAttributes = attrArray => {
  */
 const whoShouldNotMargin = [ 'question', 'h3', ];
 
-// eslint-disable-next-line no-unused-vars
 const shouldMargin = content => {
   if (whoShouldNotMargin.includes(content.tag)) {
     return false;
   }
-  if (content.content) {
+  else if (content.content) {
     for (const element of content.content) {
       if (!shouldMargin(element)) {
         return false;
@@ -224,15 +222,17 @@ const getTag = tag => {
   return tagsMap.get(tag);
 };
 
-const genChildren = tagElements => tagElements.map(
-  (tag, index) => (tag.tag === 'br' ? (
-    <br />
-  ) : tag.content ? (
-    <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
-  ) : (
-    tag.attributes[0].value
-  ))
-);
+const genChildren = tagElements =>
+  tagElements.map(
+    (tag, index) =>
+      (tag.tag === 'br' ? (
+        <br />
+      ) : tag.content ? (
+        <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
+      ) : (
+        tag.attributes[0].value
+      ))
+  );
 
 WrapperTag.propTypes = {
   /** The HTML tag name */
@@ -256,15 +256,9 @@ WrapperTag.propTypes = {
 WrapperTag.defaultProps = {
   renderFirstImpression: false,
   miscStyles: {},
-};
+}
 
-function WrapperTag({
-  tag: tagName,
-  content: tagElements,
-  attributes,
-  renderFirstImpression,
-  miscStyles,
-}) {
+function WrapperTag({ tag: tagName, content: tagElements, attributes, renderFirstImpression, miscStyles, }) {
   /**
    * Check if the Tag has a class names 'bg-brand--d'.
    * If so, it means that the Tag is actually `<mark />` (That's how the FCKEditor translates it).
@@ -291,10 +285,7 @@ function WrapperTag({
   }
   if (tagName === 'br') return Tag;
   return Tag ? (
-    <Tag
-      {...attributes}
-      {...(tagName === 'p' ? { renderFirstImpression, miscStyles, } : {})}
-    >
+    <Tag {...attributes} {...(tagName === 'p' ? { renderFirstImpression, miscStyles, } : {})}>
       {genChildren(tagElements)}
     </Tag>
   ) : null;
@@ -352,7 +343,7 @@ Paragraph.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   content: PropTypes.array.isRequired, // eslint-disable-line react/no-unused-prop-types
   /** Should the Paragraph render a firstImpression placeholder after every p tag */
-  renderFirstImpression: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
+  renderFirstImpression: PropTypes.bool,
 };
 
 Paragraph.defaultProps = {

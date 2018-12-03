@@ -177,13 +177,14 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
     </GridItem>
   );
 
-  const { items, title, } = list;
+  const { items, } = list;
 
-  const content = itemsToRender => (itemsToRender
-    ? items
-      .slice(0, itemsToRender)
-      .map((item, i) => BenderItem(item, i, itemsToRender))
-    : null);
+  const content = itemsToRender =>
+    (itemsToRender
+      ? items
+        .slice(0, itemsToRender)
+        .map((item, i) => BenderItem(item, i, itemsToRender))
+      : null);
 
   return (
     <FelaComponent
@@ -204,7 +205,7 @@ export default function Bender({ list, lazyLoad, gaAction, biAction, listId, }) 
               ],
             }}
             render={({ className, }) => (
-              <H className={className}>{title || theme.benderStyle.mainTitle.text}</H>
+              <H className={className}>{theme.benderStyle.mainTitle.text}</H>
             )}
           />
           <Media query={{ from: 's', until: 'l', }}>

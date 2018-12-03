@@ -1,9 +1,9 @@
 /* global window, document,  googletag */
 import isEqual from 'lodash/isEqual';
 import { UserTypes, } from '@haaretz/htz-user-utils';
-import DfpUser from './user';
-import ConflictResolver from './conflictResolver';
-import AdSlot from './adSlot';
+import DfpUser from '../objects/user';
+import ConflictResolver from '../objects/conflictResolver';
+import AdSlot from '../objects/adSlot';
 import { getBreakpoint, getBreakpointName, } from '../utils/breakpoints';
 import { retrieveSsoGroupKey, storeSsoGroupKey, } from '../services/ssoGroup';
 
@@ -79,16 +79,16 @@ export default class AdManager {
       });
       // Holds adSlot objects as soon as possible.
       googletag.cmd.push(() => {
-        this.DEBUG
-          && console.log(
+        this.DEBUG &&
+          console.log(
             `3. Define slots - definition for ${
               adPriorities.high
             } priority slots`
           );
         this.adSlots = this.initAdSlots(config.adSlotConfig, adPriorities.high);
         googletag.cmd.push(() => {
-          this.DEBUG
-            && console.log(
+          this.DEBUG &&
+            console.log(
               `3. Define slots - definition for ${
                 adPriorities.normal
               } priority slots`
@@ -99,51 +99,51 @@ export default class AdManager {
           );
         });
       });
-      // Once DOM ready, add more adSlots.
-      // const onDomLoaded = () => {
-      //   // eslint-disable-line no-inner-declarations
-      //   try {
-      //     googletag.cmd.push(() => {
-      //       this.DEBUG
-      //         && console.log(
-      //           `3. Define slots - secondary definition for ${
-      //             adPriorities.high
-      //           } priority slots`
-      //         );
-      //       this.adSlots = this.initAdSlots(
-      //         config.adSlotConfig,
-      //         adPriorities.high
-      //       );
-      //     });
-      //   }
-      //   catch (err) {
-      //     console.log(err); // eslint-disable-line no-console
-      //   }
-      // };
+      //Once DOM ready, add more adSlots.
+      const onDomLoaded = () => {
+        // eslint-disable-line no-inner-declarations
+        try {
+          googletag.cmd.push(() => {
+            this.DEBUG &&
+              console.log(
+                `3. Define slots - secondary definition for ${
+                  adPriorities.high
+                } priority slots`
+              );
+            this.adSlots = this.initAdSlots(
+              config.adSlotConfig,
+              adPriorities.high
+            );
+          });
+        }
+        catch (err) {
+          console.log(err); // eslint-disable-line no-console
+        }
+      };
       // Once window was loaded, add the rest of the adSlots.
-      // const onWindowLoaded = () => {
-      //   // eslint-disable-line no-inner-declarations
-      //   googletag.cmd.push(() => {
-      //     this.DEBUG
-      //       && console.log(
-      //         `3. Define slots - definition for ${
-      //           adPriorities.low
-      //         } priority slots`
-      //       );
-      //     this.adSlots = this.initAdSlots(
-      //       config.adSlotConfig,
-      //       adPriorities.low
-      //     );
-      //     // Clean blocking adSlots that are not defined on this page
-      //     for (const blockingAdSlotKey of this.conflictResolver.dependencyMap.keys()) {
-      //       if (!this.adSlots.has(blockingAdSlotKey)) {
-      //         this.conflictResolver.dependencyMap.delete(blockingAdSlotKey);
-      //       }
-      //     }
-      //     this.showAllDeferredSlots();
-      //   });
-      // };
-      /* switch (document.readyState) {
+      const onWindowLoaded = () => {
+        // eslint-disable-line no-inner-declarations
+        googletag.cmd.push(() => {
+          this.DEBUG &&
+            console.log(
+              `3. Define slots - definition for ${
+                adPriorities.low
+              } priority slots`
+            );
+          this.adSlots = this.initAdSlots(
+            config.adSlotConfig,
+            adPriorities.low
+          );
+          // Clean blocking adSlots that are not defined on this page
+          for (const blockingAdSlotKey of this.conflictResolver.dependencyMap.keys()) {
+            if (!this.adSlots.has(blockingAdSlotKey)) {
+              this.conflictResolver.dependencyMap.delete(blockingAdSlotKey);
+            }
+          }
+          this.showAllDeferredSlots();
+        });
+      };
+      /*switch (document.readyState) {
         case 'loading':
           document.addEventListener('DOMContentLoaded', onDomLoaded);
           window.addEventListener('load', onWindowLoaded);
@@ -158,7 +158,7 @@ export default class AdManager {
           // 'complete' - no need for event listeners.
           onDomLoaded();
           onWindowLoaded();
-      } */
+      }*/
     }
     catch (err) {
       console.error(err); // eslint-disable-line no-console
@@ -187,11 +187,11 @@ export default class AdManager {
       const adSlotMatchPriorityFilter = adSlot.priority === priorityFilter;
       if (
         // adSlot.type !== adTypes.talkback &&
-        adSlotMatchPriorityFilter
-        && this.shouldSendRequestToDfp(adSlot)
+        adSlotMatchPriorityFilter &&
+        this.shouldSendRequestToDfp(adSlot)
       ) {
-        this.DEBUG
-          && console.log(
+        this.DEBUG &&
+          console.log(
             `${
               adSlot.id
             } this.shouldSendRequestToDfp(adSlot) is: ${!!this.shouldSendRequestToDfp(
@@ -240,8 +240,8 @@ export default class AdManager {
       const adSlot = this.adSlots.get(adSlotKey);
       if (adSlot.responsive && adSlot.type !== adTypes.maavaron) {
         if (
-          adSlot.lastResolvedWithBreakpoint !== currentBreakpoint
-          && this.shouldSendRequestToDfp(adSlot)
+          adSlot.lastResolvedWithBreakpoint !== currentBreakpoint &&
+          this.shouldSendRequestToDfp(adSlot)
         ) {
           this.DEBUG && console.log(`calling refresh for adSlot: ${adSlot.id}`);
           adSlot.refresh();
@@ -325,9 +325,9 @@ export default class AdManager {
           const adSlotInstance = new AdSlot(computedAdSlotConfig);
           adSlots.set(adSlotId, adSlotInstance);
           if (
-            adSlotInstance.type !== adTypes.talkback
-            && adSlotInstance.priority === adPriorities.high
-            && this.shouldSendRequestToDfp(adSlotInstance)
+            adSlotInstance.type !== adTypes.talkback &&
+            adSlotInstance.priority === adPriorities.high &&
+            this.shouldSendRequestToDfp(adSlotInstance)
           ) {
             /*
               console.log('calling show for high priority slot', adSlotInstance.id, ' called @',
@@ -343,14 +343,13 @@ export default class AdManager {
     }
     return adSlots;
   }
-
   // eslint-disable-next-line class-methods-use-this
   isPriority(adSlotId) {
     return (
-      typeof adSlotId === 'string'
-      && (adSlotId.indexOf('plazma') > 0
-        || adSlotId.indexOf('maavaron') > 0
-        || adSlotId.indexOf('popunder') > 0)
+      typeof adSlotId === 'string' &&
+      (adSlotId.indexOf('plazma') > 0 ||
+        adSlotId.indexOf('maavaron') > 0 ||
+        adSlotId.indexOf('popunder') > 0)
     );
   }
 
@@ -379,35 +378,35 @@ export default class AdManager {
   shouldSendRequestToDfp(adSlot) {
     // Conflict management check
     return (
-      adSlot !== undefined
+      adSlot !== undefined &&
       // Has a required DOM Element
-      && adSlot.htmlElement
+      adSlot.htmlElement &&
       // Isn't blocked by another adSlot
-      && this.conflictResolver.isBlocked(adSlot.id) === false
+      this.conflictResolver.isBlocked(adSlot.id) === false &&
       // Valid Referrer check
-      && adSlot.isWhitelisted()
+      adSlot.isWhitelisted() &&
       // Not in referrer Blacklist
-      && adSlot.isBlacklisted() === false
-      && this.shouldDisplayAdAfterAdBlockRemoval(adSlot)
+      adSlot.isBlacklisted() === false &&
+      this.shouldDisplayAdAfterAdBlockRemoval(adSlot) &&
       //  if a paywall pop-up is shown And the number is 12 or more - SHOW MAAVRON
-      && this.shouldDisplayAdMaavaronAfterPayWallBanner(adSlot)
+      this.shouldDisplayAdMaavaronAfterPayWallBanner(adSlot) &&
       // Mobile device detection (responsive)
-      && this.isMobile(adSlot)
+      this.isMobile(adSlot) &&
       // Responsive: breakpoint contains ad?
-      && this.doesBreakpointContainAd(adSlot)
+      this.doesBreakpointContainAd(adSlot) &&
       // check in case of Smartphoneapp
-      && this.haveValidCookieForSmartphoneapp()
+      this.haveValidCookieForSmartphoneapp() &&
       // Targeting check (userType vs. slotTargeting)
-      && this.doesUserTypeMatchBannerTargeting(adSlot)
+      this.doesUserTypeMatchBannerTargeting(adSlot) &&
       // Impressions Manager check (limits number of impressions per slot)
-      && this.user.impressionManager.reachedQuota(adSlot.id) === false
+      this.user.impressionManager.reachedQuota(adSlot.id) === false
     );
   }
 
   shouldDisplayAdAfterAdBlockRemoval(adSlot) {
     return !(
-      this.config.adBlockRemoved === true
-      && (adSlot.type === adTypes.maavaron || adSlot.type === adTypes.popunder)
+      this.config.adBlockRemoved === true &&
+      (adSlot.type === adTypes.maavaron || adSlot.type === adTypes.popunder)
     );
   }
 
@@ -416,10 +415,11 @@ export default class AdManager {
     if (this.config.site === 'haaretz' && adSlot.type === adTypes.maavaron) {
       try {
         const paywallBanner = JSON.parse(window.localStorage.getItem('_cobj'));
-        shouldDisplay = !paywallBanner
-          || ((paywallBanner.mc && paywallBanner.mc >= 12)
-            || (paywallBanner.nextslotLocation
-              && !paywallBanner.nextslotLocation.includes('pop')));
+        shouldDisplay =
+          !paywallBanner ||
+          ((paywallBanner.mc && paywallBanner.mc >= 12) ||
+            (paywallBanner.nextslotLocation &&
+              !paywallBanner.nextslotLocation.includes('pop')));
       }
       catch (err) {
         /* eslint-disable no-console */
@@ -447,9 +447,10 @@ export default class AdManager {
    */
   doesUserTypeMatchBannerTargeting(adSlotOrTarget) {
     const userType = this.user.type;
-    const adTarget = typeof adSlotOrTarget === 'string'
-      ? adSlotOrTarget
-      : adSlotOrTarget.target;
+    const adTarget =
+      typeof adSlotOrTarget === 'string'
+        ? adSlotOrTarget
+        : adSlotOrTarget.target;
 
     switch (adTarget) {
       case adTargets.all:
@@ -512,9 +513,10 @@ export default class AdManager {
     }
     let containsBreakpoint = true;
     if (adSlot.responsive === true) {
-      const mapping = adSlot.responsiveAdSizeMapping[
-        getBreakpointName(breakpoint, breakpoints)
-      ];
+      const mapping =
+        adSlot.responsiveAdSizeMapping[
+          getBreakpointName(breakpoint, breakpoints)
+        ];
       if (Array.isArray(mapping) === false) {
         throw new Error(
           `Invalid argument: breakpoint:${breakpoint} doesn't exist!`,
@@ -552,10 +554,10 @@ export default class AdManager {
       const pubads = window.googletag.pubads();
       pubads.addEventListener('slotRenderEnded', event => {
         const id = event.slot.getAdUnitPath().split('/')[3];
-        // const isEmpty = event.isEmpty;
-        // const resolvedSize = event.size;
-        this.DEBUG
-          && console.log(
+        const isEmpty = event.isEmpty;
+        const resolvedSize = event.size;
+        this.DEBUG &&
+          console.log(
             'slotRenderEnded for slot',
             id,
             ' called @',
@@ -615,8 +617,8 @@ export default class AdManager {
           if (deferredAdSlot && this.shouldSendRequestToDfp(deferredAdSlot)) {
             this.conflictResolver.deferredSlots.delete(deferredSlotKey);
             if (deferredAdSlot.deferredSlot) {
-              this.DEBUG
-                && console.log(
+              this.DEBUG &&
+                console.log(
                   `Runtime Define slots - definition for a defered (blocked) slot ${
                     deferredAdSlot.id
                   }`
@@ -630,8 +632,8 @@ export default class AdManager {
       }
     }
     catch (err) {
-      this.DEBUG
-        && console.error(`Cannot updateSlotDependencies for adSlot: ${adSlot.id}`);
+      this.DEBUG &&
+        console.error(`Cannot updateSlotDependencies for adSlot: ${adSlot.id}`);
     }
   }
 
@@ -683,8 +685,8 @@ export default class AdManager {
         pubads.setTargeting('articleId', [ this.config.articleId, ]);
       }
       if (
-        this.config.gStatCampaignNumber
-        && this.config.gStatCampaignNumber !== -1
+        this.config.gStatCampaignNumber &&
+        this.config.gStatCampaignNumber !== -1
       ) {
         pubads.setTargeting('gstat_campaign_id', [
           this.config.gStatCampaignNumber,

@@ -2,6 +2,7 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
+import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
 
 import HeaderText from '../../../ArticleHeader/HeaderText';
 import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
@@ -51,133 +52,133 @@ function Header({
   headlineElement,
   reportingFrom,
 }) {
-  return (
-    <FelaComponent
-      style={theme => ({
-        textAlign: 'start',
-        overflow: 'hidden',
-        extend: [
-          theme.mq(
-            { until: 'm', },
-            { display: 'flex', flexDirection: 'column', }
-          ),
-        ],
-      })}
-      render={({ className, theme, }) => (
-        <header className={className}>
-          {hasBreadCrumbs ? (
-            <FelaComponent
-              style={{
-                paddingInlineStart: theme.layoutStyle.startColumnPadding,
-                marginTop: '3rem',
-                extend: [
-                  theme.mq(
-                    { until: 's', },
-                    { paddingInlineStart: theme.layoutStyle.contPaddingS, }
-                  ),
-                  theme.mq(
-                    { from: 'xl', },
-                    {
-                      paddingInlineStart:
-                              theme.layoutStyle.startColumnPaddingXL,
-                    }
-                  ),
-                  theme.mq(
-                    { until: 's', },
-                    { order: -1, marginTop: '2rem', marginBottom: '3rem', }
-                  ),
-                ],
-              }}
-              render={({ className, }) => (
-                <Breadcrumbs
-                  articleId={articleId}
-                  className={className}
-                />
-              )}
-            />
-          ) : null}
+        return (
           <FelaComponent
-            style={{
-              marginTop: '3rem',
-              paddingInlineStart: '2rem',
+            style={theme => ({
+              textAlign: 'start',
+              overflow: 'hidden',
               extend: [
                 theme.mq(
-                  { until: 's', },
-                  {
-                    paddingInlineEnd: '3rem',
-                    paddingInlineStart: '3rem',
-                    marginTop: '0',
-                  }
+                  { until: 'm', },
+                  { display: 'flex', flexDirection: 'column', }
                 ),
-                theme.mq(
-                  { from: 's', until: 'l', },
-                  { paddingInlineEnd: '2rem', }
-                ),
-                theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
               ],
-            }}
-            render={({ className, }) => (
-              <HeaderText
-                className={className}
-                kicker={exclusive}
-                subtitle={subtitle}
-                title={title}
-              />
+            })}
+            render={({ className, theme, }) => (
+              <header className={className}>
+                {hasBreadCrumbs ? (
+                  <FelaComponent
+                    style={{
+                      paddingInlineStart: theme.layoutStyle.startColumnPadding,
+                      marginTop: '3rem',
+                      extend: [
+                        theme.mq(
+                          { until: 's', },
+                          { paddingInlineStart: theme.layoutStyle.contPaddingS, }
+                        ),
+                        theme.mq(
+                          { from: 'xl', },
+                          {
+                            paddingInlineStart:
+                              theme.layoutStyle.startColumnPaddingXL,
+                          }
+                        ),
+                        theme.mq(
+                          { until: 's', },
+                          { order: -1, marginTop: '2rem', marginBottom: '3rem', }
+                        ),
+                      ],
+                    }}
+                    render={({ className, }) => (
+                      <Breadcrumbs
+                        articleId={articleId}
+                        className={className}
+                      />
+                    )}
+                  />
+                ) : null}
+                <FelaComponent
+                  style={{
+                    marginTop: '3rem',
+                    paddingInlineStart: '2rem',
+                    extend: [
+                      theme.mq(
+                        { until: 's', },
+                        {
+                          paddingInlineEnd: '3rem',
+                          paddingInlineStart: '3rem',
+                          marginTop: '0',
+                        }
+                      ),
+                      theme.mq(
+                        { from: 's', until: 'l', },
+                        { paddingInlineEnd: '2rem', }
+                      ),
+                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
+                    ],
+                  }}
+                  render={({ className, }) => (
+                    <HeaderText
+                      className={className}
+                      kicker={exclusive}
+                      subtitle={subtitle}
+                      title={title}
+                    />
+                  )}
+                />
+                <ArticleHeaderMeta
+                  authors={authors}
+                  publishDate={pubDate}
+                  modifiedDate={modDate}
+                  reportingFrom={reportingFrom}
+                  miscStyles={{
+                    marginTop: [
+                      { until: 's', value: '3rem', },
+                      { from: 's', until: 'l', value: '2rem', },
+                    ],
+                    marginInlineStart: [
+                      {
+                        from: 's',
+                        value: theme.layoutStyle.startColumnPadding,
+                      },
+                      { until: 's', value: theme.layoutStyle.contPaddingS, },
+                    ],
+                    marginInlineEnd: [
+                      {
+                        from: 's',
+                        value: theme.layoutStyle.startColumnPadding,
+                      },
+                      { until: 's', value: theme.layoutStyle.contPaddingS, },
+                    ],
+                    display: [
+                      { until: 'l', value: 'block', },
+                      { from: 'l', value: 'none', },
+                    ],
+                  }}
+                />
+                <FelaComponent
+                  style={{
+                    paddingInlineStart: '2rem',
+                    extend: [
+                      theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
+                    ],
+                  }}
+                >
+                  <ShareBar title={title} canonicalUrl={canonicalUrl} />
+                </FelaComponent>
+                {headlineElement ? (
+                  <HeadlineElement
+                    elementObj={headlineElement}
+                    miscStyles={{
+                      marginTop: [ { from: 's', value: '2rem', }, ],
+                      order: [ { until: 's', value: -2, }, ],
+                    }}
+                  />
+                ) : null}
+              </header>
             )}
           />
-          <ArticleHeaderMeta
-            authors={authors}
-            publishDate={pubDate}
-            modifiedDate={modDate}
-            reportingFrom={reportingFrom}
-            miscStyles={{
-              marginTop: [
-                { until: 's', value: '3rem', },
-                { from: 's', until: 'l', value: '2rem', },
-              ],
-              marginInlineStart: [
-                {
-                  from: 's',
-                  value: theme.layoutStyle.startColumnPadding,
-                },
-                { until: 's', value: theme.layoutStyle.contPaddingS, },
-              ],
-              marginInlineEnd: [
-                {
-                  from: 's',
-                  value: theme.layoutStyle.startColumnPadding,
-                },
-                { until: 's', value: theme.layoutStyle.contPaddingS, },
-              ],
-              display: [
-                { until: 'l', value: 'block', },
-                { from: 'l', value: 'none', },
-              ],
-            }}
-          />
-          <FelaComponent
-            style={{
-              paddingInlineStart: '2rem',
-              extend: [
-                theme.mq({ from: 'xl', }, { paddingInlineStart: '3rem', }),
-              ],
-            }}
-          >
-            <ShareBar title={title} canonicalUrl={canonicalUrl} />
-          </FelaComponent>
-          {headlineElement ? (
-            <HeadlineElement
-              elementObj={headlineElement}
-              miscStyles={{
-                marginTop: [ { from: 's', value: '2rem', }, ],
-                order: [ { until: 's', value: -2, }, ],
-              }}
-            />
-          ) : null}
-        </header>
-      )}
-    />
-  );
+        );
 }
 
 export default Header;

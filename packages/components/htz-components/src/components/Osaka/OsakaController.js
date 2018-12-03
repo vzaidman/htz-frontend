@@ -24,11 +24,6 @@ class OsakaWithOutbrain extends React.Component {
     articles: null,
   };
 
-  keys = new Map([
-    [ 'haaretz.co.il', 'HAAREPDLHNAQD24GF05E6D3F5', ],
-    [ 'themarker.com', 'THEMA156KEJ20O1N23B59L29D', ],
-  ]);
-
   componentDidMount() {
     appendScript({
       src: '//widgets.outbrain.com/outbrain.js',
@@ -45,8 +40,8 @@ class OsakaWithOutbrain extends React.Component {
     const url = canonicalUrl ? this.changeSubDomain(canonicalUrl) : '';
     const promoted = promotedElement[0].banners[0];
     const siteKey = this.keys.get(hostname);
-    OBR
-      && OBR.extern.callRecs(
+    OBR &&
+      OBR.extern.callRecs(
         {
           permalink: url,
           installationKey: siteKey,
@@ -88,6 +83,11 @@ class OsakaWithOutbrain extends React.Component {
         }
       );
   };
+
+  keys = new Map([
+    [ 'haaretz.co.il', 'HAAREPDLHNAQD24GF05E6D3F5', ],
+    [ 'themarker.com', 'THEMA156KEJ20O1N23B59L29D', ],
+  ]);
 
   // TODO: Temporary until outbrain will ignore the subDomain
   changeSubDomain = url => {

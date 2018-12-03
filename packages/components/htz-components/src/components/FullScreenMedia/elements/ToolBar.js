@@ -132,10 +132,10 @@ class ToolBar extends React.Component {
                         backgroundColor: theme.color('neutral', '+1'),
                       },
                     }}
-                    onClick={
-                      () => this.setState(prevState => ({
-                        isOpen: !prevState.isOpen,
-                      }))
+                    onClick={() =>
+                      this.setState({
+                        isOpen: !this.state.isOpen,
+                      })
                     }
                   >
                     <IconInfo size={4} color={[ 'neutral', -10, ]} />
@@ -220,10 +220,10 @@ class ToolBar extends React.Component {
                   (prop, value) => ({ [prop]: value, })
                 ),
               }}
-              onClick={
-                () => this.setState(prevState => ({
-                  isOpen: !prevState.isOpen,
-                }))
+              onClick={() =>
+                this.setState({
+                  isOpen: !this.state.isOpen,
+                })
               }
             >
               <FlippingArrow

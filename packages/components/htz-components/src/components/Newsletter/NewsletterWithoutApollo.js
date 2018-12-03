@@ -84,7 +84,6 @@ export default class NewsletterWithoutApollo extends React.Component {
       ),
     ]).isRequired,
   };
-
   static defaultProps = {
     host: null,
     icon: null,
@@ -92,7 +91,6 @@ export default class NewsletterWithoutApollo extends React.Component {
     miscStyles: null,
     userEmail: null,
   };
-
   state = {
     signUpStatus: null,
   };

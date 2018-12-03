@@ -14,7 +14,7 @@ exports[`<Select> DOM element renders correctly with a Error 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -57,7 +57,7 @@ exports[`<Select> DOM element renders correctly with a Note 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -84,7 +84,7 @@ exports[`<Select> DOM element renders correctly with a Note 1`] = `
 </div>
 `;
 
-exports[`<Select> DOM element renders correctly with a Note 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{position:absolute}.htz-d{background-color:white}.htz-e{z-index:1}.htz-f{top:0}.htz-g{color:#0B7EB5}.htz-h{border-left-width:1px}.htz-i{border-left-style:solid}.htz-j{border-left-color:#0B7EB5}.htz-k{border-right-width:1px}.htz-l{border-right-style:solid}.htz-m{border-right-color:#0B7EB5}.htz-n{border-top-width:1px}.htz-o{border-top-style:solid}.htz-p{border-top-color:#0B7EB5}.htz-q{padding-top:calc(1e-18rem - 1px)}.htz-r{border-bottom-width:1px}.htz-s{border-bottom-style:solid}.htz-t{border-bottom-color:#0B7EB5}.htz-u{padding-bottom:calc(1e-18rem - 1px)}.htz-v:before{left:0}.htz-w:before{right:0}.htz-x:before{z-index:1}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between}.htz-ag{align-items:center}.htz-ah:after{content:\\"\\"}.htz-ai:after{width:0}.htz-aj:after{height:0}.htz-ak:after{border-left:0.3em solid transparent}.htz-al:after{border-right:0.3em solid transparent}.htz-am:after{border-top:0.5em solid #0B7EB5}.htz-an:after{transition-property:all}.htz-ao:after{transform-origin:center center}.htz-ap:after{transition-duration:.25s}.htz-aq:after{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ar:after{-webkit-transition-property:all}.htz-as:after{-moz-transition-property:all}.htz-at{border-top-color:#EBEBEB}.htz-au{padding-top:1rem}.htz-av:before{content:}.htz-aw{padding-bottom:1rem}.htz-ax:focus{outline:none}.htz-ay:focus{background-color:#EBF2F5}.htz-az{-webkit-box-pack:justify}.htz-ba{-webkit-box-align:center}.htz-bb{display:block}.htz-bg{color:#505050}@media (max-width: 79.9375em){.htz-bc{font-size:1.8333333333333333rem}.htz-bd{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-be{font-size:1.7142857142857142rem}.htz-bf{line-height:1.75em}}"`;
+exports[`<Select> DOM element renders correctly with a Note 2`] = `".htz-a{position:relative}.htz-b{width:100%}.htz-c{position:absolute}.htz-d{background-color:white}.htz-e{z-index:1}.htz-f{top:0}.htz-g{color:#0B7EB5}.htz-h{border-left-width:1px}.htz-i{border-left-style:solid}.htz-j{border-left-color:#0B7EB5}.htz-k{border-right-width:1px}.htz-l{border-right-style:solid}.htz-m{border-right-color:#0B7EB5}.htz-n{border-top-width:1px}.htz-o{border-top-style:solid}.htz-p{border-top-color:#0B7EB5}.htz-q{padding-top:calc(1e-18rem - 1px)}.htz-r{border-bottom-width:1px}.htz-s{border-bottom-style:solid}.htz-t{border-bottom-color:#0B7EB5}.htz-u{padding-bottom:calc(1e-18rem - 1px)}.htz-v:before{left:0}.htz-w:before{right:0}.htz-x:before{z-index:1}.htz-y{text-align:right}.htz-z{padding-right:1rem}.htz-ab{padding-left:1rem}.htz-ac{background-color:#FFF}.htz-ae{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-af{justify-content:space-between}.htz-ag{align-items:center}.htz-ah:after{content:\\"\\"}.htz-ai:after{width:0}.htz-aj:after{height:0}.htz-ak:after{border-left:0.3em solid transparent}.htz-al:after{border-right:0.3em solid transparent}.htz-am:after{border-top:0.5em solid #0B7EB5}.htz-an:after{transition-property:all}.htz-ao:after{transform-origin:center center}.htz-ap:after{transition-duration:.25s}.htz-aq:after{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ar:after{-webkit-transition-property:all}.htz-as:after{-moz-transition-property:all}.htz-at{border-top-color:#EBEBEB}.htz-au{padding-top:1rem}.htz-av:before{content:}.htz-aw{padding-bottom:1rem}.htz-ax:focus{outline:none}.htz-ay:focus{background-color:#EBF2F5}.htz-az{-webkit-box-pack:justify}.htz-ba{-webkit-box-align:center}.htz-bb{display:block}.htz-bg{color:#787878}@media (max-width: 79.9375em){.htz-bc{font-size:1.8333333333333333rem}.htz-bd{line-height:1.6363636363636365em}}@media (min-width: 80em){.htz-be{font-size:1.7142857142857142rem}.htz-bf{line-height:1.75em}}"`;
 
 exports[`<Select> DOM element renders correctly with a controlled selected item 1`] = `
 <div>
@@ -100,7 +100,7 @@ exports[`<Select> DOM element renders correctly with a controlled selected item 
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -137,7 +137,7 @@ exports[`<Select> DOM element renders correctly with a placholder prop 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -175,7 +175,7 @@ exports[`<Select> DOM element renders correctly with custom attrs prop 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -212,7 +212,7 @@ exports[`<Select> DOM element renders correctly with custom miscStyles 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -249,7 +249,7 @@ exports[`<Select> DOM element renders correctly with default selected item 1`] =
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -286,7 +286,7 @@ exports[`<Select> DOM element renders correctly with minimal required props 1`] 
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}
@@ -323,7 +323,7 @@ exports[`<Select> DOM element renders correctly without display key in item 1`] 
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label="סדרו את התגובות לכתבה על פי סדר הופעתם"
+          aria-label="פתח תפריט"
           className="htz-b htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-n htz-o htz-at htz-au htz-v htz-w htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           data-toggle={true}
           onBlur={[Function]}

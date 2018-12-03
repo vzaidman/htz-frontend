@@ -1,14 +1,14 @@
 import React from 'react';
-import { createComponent, } from 'react-fela';
+import { createComponent } from 'react-fela';
 
 import getColor from '../../methods/getColor';
 import typesetter from '../../methods/typesetter';
 
 const pangram = 'איך נטוס? עם גד כץ. הזקן שמחלף בצרפת!';
 
-const style = ({ step, }) => ({
+const style = ({ step }) => ({
   // color: getColor('secondary', 'base'),
-  ...(step === 0 ? { color: getColor('tertiary', '+1'), } : undefined),
+  ...(step === 0 ? { color: getColor('tertiary', '+1') } : undefined),
   ...typesetter(step),
   margin: '0 0 1rem',
   maxWidth: '100%',
@@ -20,7 +20,7 @@ const style = ({ step, }) => ({
 const ScaleItem = createComponent(style, 'p', props => Object.keys(props));
 
 // eslint-disable-next-line react/prop-types
-export default function TypographicScale({ first, last, }) {
+export default function TypographicScale({ first, last }) {
   const steps = [];
   let index = first;
   while (index <= last) {
@@ -32,10 +32,8 @@ export default function TypographicScale({ first, last, }) {
       {steps.map(step => (
         <ScaleItem key={Math.random()} step={step}>
           <strong>
-            <bdo dir="ltr">{step}</bdo>
-:
-          </strong>
-          {' '}
+            <bdo dir="ltr">{step}</bdo>:
+          </strong>{' '}
           {pangram}
         </ScaleItem>
       ))}

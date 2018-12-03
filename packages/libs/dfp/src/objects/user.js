@@ -33,7 +33,7 @@ function getHdcUserType(userProducts) {
   if (userHasProduct(userProducts, productTypes.hdc, false)) {
     return userTypes.payer;
   }
-  if (userHasProduct(userProducts, productTypes.hdc, true)) {
+  else if (userHasProduct(userProducts, productTypes.hdc, true)) {
     // user has hdc trial product
     return userTypes.trial;
   }
@@ -43,14 +43,14 @@ function getHdcUserType(userProducts) {
 function getHtzTmUserType(userProducts, productType) {
   // user has htz/tm paying product
   if (
-    userHasProduct(userProducts, productType, false)
-    || userHasProduct(userProducts, productTypes.htz_tm, false)
+    userHasProduct(userProducts, productType, false) ||
+    userHasProduct(userProducts, productTypes.htz_tm, false)
   ) {
     return userTypes.payer;
   }
-  if (
-    userHasProduct(userProducts, productType, true)
-    || userHasProduct(userProducts, productTypes.htz_tm, true)
+  else if (
+    userHasProduct(userProducts, productType, true) ||
+    userHasProduct(userProducts, productTypes.htz_tm, true)
   ) {
     // user has htz/tm trial product
     return userTypes.trial;

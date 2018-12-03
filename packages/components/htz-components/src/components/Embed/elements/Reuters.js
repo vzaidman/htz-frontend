@@ -5,8 +5,6 @@
   ]
  * *************************************************************** */
 
-/* globals pym */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,12 +12,7 @@ import { VideoWrapper, } from '../sharedStyles/videoWrapper';
 import { VideoElement, } from '../sharedStyles/videoElement';
 import { appendScript, } from '../../../utils/scriptTools';
 
-const Reuters = ({
-  settings: { src, },
-  embedType,
-  onLoadCallback,
-  contentId,
-}) => {
+const Reuters = ({ settings: { src, }, embedType, onLoadCallback, contentId, }) => {
   if (embedType === 'video') {
     return (
       <VideoWrapper>
@@ -37,10 +30,9 @@ const Reuters = ({
       </VideoWrapper>
     );
   }
-  if (embedType === 'live') {
+  else if (embedType === 'live') {
     appendScript({
-      src:
-        'https://cdn1.agency.thomsonreuters.com/live-embed/initialize-iframe.js',
+      src: 'https://cdn1.agency.thomsonreuters.com/live-embed/initialize-iframe.js',
       id: 'reuters-live',
       isAsync: false,
     });
@@ -63,17 +55,22 @@ const Reuters = ({
       </VideoWrapper>
     );
   }
-  if (embedType === 'interactive') {
+  else if (embedType === 'interactive') {
     appendScript({
       src: 'http://graphics.thomsonreuters.com/pym.min.js',
       id: 'reuters-interactive',
       isAsync: false,
       onLoadFunction: () => {
-        // eslint-disable-next-line no-unused-vars
-        const pymParent = new pym.Parent(contentId, src, {});
+        const pymParent = new pym.Parent(
+          contentId,
+          src,
+          {}
+        );
       },
     });
-    return <div id={contentId} />;
+    return (
+      <div id={contentId} />
+    );
   }
   return null;
 };
@@ -101,5 +98,6 @@ Reuters.propTypes = {
 Reuters.defaultProps = {
   onLoadCallback: null,
 };
+
 
 export default Reuters;

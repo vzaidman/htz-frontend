@@ -63,9 +63,9 @@ export default class ServiceByMailRegistration extends React.Component {
       })
       .then(data => {
         if (
-          data.status
-          && data.status === 'success'
-          && this.props.onRegistrationSuccess
+          data.status &&
+          data.status === 'success' &&
+          this.props.onRegistrationSuccess
         ) {
           this.props.onRegistrationSuccess(data);
         }

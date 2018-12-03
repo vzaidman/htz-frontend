@@ -46,15 +46,17 @@ const dfpBaseConf = {
    * @returns {Array.<T>} an array of path names
    */
   get path() {
-    let sectionArray = this.articleId && this.articleId !== '0'
-      ? window.location.pathname.split('/').slice(1, -1)
-      : window.location.pathname.split('/').slice(1);
+    let sectionArray =
+      this.articleId && this.articleId !== '0'
+        ? window.location.pathname.split('/').slice(1, -1)
+        : window.location.pathname.split('/').slice(1);
     sectionArray = sectionArray.filter(
       path => path !== 'wwwMobileSite' && path !== 'whtzMobileSite'
     );
     return sectionArray
       .map(section => `.${section}`)
-      .map((section, index, arr) => arr.slice(0, index + 1).reduce((last, current) => last.concat(current))
+      .map((section, index, arr) =>
+        arr.slice(0, index + 1).reduce((last, current) => last.concat(current))
       );
   },
   /**
@@ -87,15 +89,15 @@ const dfpBaseConf = {
     };
     return window.location.port === '8080' || window.location.port === '3000'
       ? env.dev
-      : window.location.hostname.indexOf('pre.haaretz.co.il') > -1
-        || window.location.hostname.indexOf('pre.haaretz.com') > -1
-        || window.location.hostname.indexOf('tmtest.themarker.com') > -1
-        || window.location.hostname.indexOf('pre.themarker.com') > -1
-        || window.location.hostname.indexOf('react-stage.') > -1
+      : window.location.hostname.indexOf('pre.haaretz.co.il') > -1 ||
+        window.location.hostname.indexOf('pre.haaretz.com') > -1 ||
+        window.location.hostname.indexOf('tmtest.themarker.com') > -1 ||
+        window.location.hostname.indexOf('pre.themarker.com') > -1 ||
+        window.location.hostname.indexOf('react-stage.') > -1
         ? env.test
-        : window.location.pathname.indexOf('/cmlink/Haaretz.HomePage') > -1
-          || window.location.pathname.indexOf('/cmlink/TheMarker.HomePage') > -1
-          || window.location.pathname.indexOf('react-prod.') > -1
+        : window.location.pathname.indexOf('/cmlink/Haaretz.HomePage') > -1 ||
+          window.location.pathname.indexOf('/cmlink/TheMarker.HomePage') > -1 ||
+          window.location.pathname.indexOf('react-prod.') > -1
           ? env.prod
           : undefined;
   },
@@ -152,9 +154,10 @@ const dfpBaseConf = {
     try {
       // eslint-disable-next-line no-underscore-dangle
       if (cookieMap && cookieMap._htzwif) {
-        wifiLocation = cookieMap._htzwif === 'arcaffe' // eslint-disable-line no-underscore-dangle
-          ? 'ArCafe'
-          : 'university';
+        wifiLocation =
+          cookieMap._htzwif === 'arcaffe' // eslint-disable-line no-underscore-dangle
+            ? 'ArCafe'
+            : 'university';
       }
     }
     catch (err) {
@@ -347,11 +350,12 @@ function filterUnsettableProperties(config) {
   function isGetterBasedProperty(obj, prop) {
     // console.log(obj, prop);
     return (
-      obj
-      && Object.getOwnPropertyDescriptor(obj, prop)
-      && !!Object.getOwnPropertyDescriptor(obj, prop).get
+      obj &&
+      Object.getOwnPropertyDescriptor(obj, prop) &&
+      !!Object.getOwnPropertyDescriptor(obj, prop).get
     );
   }
 }
 
-export default config => Object.assign(dfpBaseConf, filterUnsettableProperties(config));
+export default config =>
+  Object.assign(dfpBaseConf, filterUnsettableProperties(config));

@@ -13,12 +13,10 @@ class NoSSR extends React.Component {
      */
     onSSR: PropTypes.node,
   };
-
   static defaultProps = {
     children: null,
     onSSR: null,
   };
-
   state = {
     shouldRender: false,
   };

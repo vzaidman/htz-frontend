@@ -127,14 +127,14 @@ const ArticleWrapper = createComponent(articleWrapperStyle, 'li');
 
 export default class SeriesArticles extends React.Component {
   static propTypes = propTypes;
-
   static defaultProps = defaultProps;
 
   componentWillMount() {
     const { articles, usePagination, itemsPerPage, } = this.props;
-    const pagination = articles.length > 3
-      && !(!usePagination || (usePagination && usePagination === 'false'))
-      && articles.length > +itemsPerPage;
+    const pagination =
+      articles.length > 3 &&
+      !(!usePagination || (usePagination && usePagination === 'false')) &&
+      articles.length > +itemsPerPage;
     const perPage = +itemsPerPage || 3;
     const articlesToDisplay = pagination
       ? this.props.articles.slice(0, perPage)
@@ -151,12 +151,12 @@ export default class SeriesArticles extends React.Component {
   }
 
   setArticlesToDisplay = () => {
-    this.setState((prevState, props) => ({
-      isOpen: !prevState.isOpen,
-      articlesToDisplay: prevState.isOpen
-        ? props.articles.slice(0, prevState.itemsPerPage)
-        : props.articles,
-    }));
+    this.setState({
+      isOpen: !this.state.isOpen,
+      articlesToDisplay: this.state.isOpen
+        ? this.props.articles.slice(0, this.state.itemsPerPage)
+        : this.props.articles,
+    });
   };
 
   render() {
@@ -180,28 +180,29 @@ export default class SeriesArticles extends React.Component {
             <ArticleListWrapper aria-live="polite">
               <SeriesTitle>{titlePrefix + this.props.seriesTitle}</SeriesTitle>
               <Query query={GET_ARTICLE_ID}>
-                {({ data: { articleId, }, }) => this.state.articlesToDisplay.map((article, i) => (
-                  <ArticleWrapper
+                {({ data: { articleId, }, }) =>
+                  this.state.articlesToDisplay.map((article, i) => (
+                    <ArticleWrapper
                       // eslint-disable-next-line react/no-array-index-key
-                    key={i}
-                    lastItem={i === this.state.articlesToDisplay.length - 1}
-                  >
-                    {this.state.isOpen && this.state.itemsPerPage === i ? (
-                      <AriaHidden>
-                        {loadButton.ariaText(
-                          this.state.remainingArticlesCount
-                        )}
-                      </AriaHidden>
-                    ) : null}
-                    <ArticleLink
-                      article={article}
-                      currentArticle={articleId === article.contentId}
-                      focus={
+                      key={i}
+                      lastItem={i === this.state.articlesToDisplay.length - 1}
+                    >
+                      {this.state.isOpen && this.state.itemsPerPage === i ? (
+                        <AriaHidden>
+                          {loadButton.ariaText(
+                            this.state.remainingArticlesCount
+                          )}
+                        </AriaHidden>
+                      ) : null}
+                      <ArticleLink
+                        article={article}
+                        currentArticle={articleId === article.contentId}
+                        focus={
                           this.state.isOpen && this.state.itemsPerPage === i
                         }
-                    />
-                  </ArticleWrapper>
-                ))
+                      />
+                    </ArticleWrapper>
+                  ))
                 }
               </Query>
             </ArticleListWrapper>

@@ -34,7 +34,8 @@ const menuListStyle = () => ({
   appearance: 'menulist',
 });
 
-const MenuList = createComponent(menuListStyle, 'select', props => Object.keys(props)
+const MenuList = createComponent(menuListStyle, 'select', props =>
+  Object.keys(props)
 );
 
 /*

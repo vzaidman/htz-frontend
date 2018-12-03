@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import MobileMenuButton from './MobileMenuItemButton';
 import MobileMenuLink from './MobileMenuItemLink';
+import MobileMenuSection from './MobileMenuSection';
 
 const baseProp = {
   /**
@@ -55,16 +56,15 @@ export default function List({ menuSections, searchIsOpen, }) {
   const { items, sites, promotions, } = menuSections;
 
   const combinedItems = items
-    ? items.map(item => (
-      <MobileMenuLink key={`item ${item.name}`} isHeader {...item} />
-    ))
+    ? items.map(item => <MobileMenuLink key={`item ${item.name}`} isHeader {...item} />)
     : [];
 
-  const combinedSites = theme => (sites
-    ? sites.map(site => (
-      <MobileMenuLink key={`site ${site.name}`} isSite {...site} />
-    ))
-    : []);
+  const combinedSites = theme =>
+    (sites
+      ? sites.map(site => (
+        <MobileMenuLink key={`site ${site.name}`} isSite {...site} />
+      ))
+      : []);
 
   const combinedPromotions = promotions
     ? promotions.map(promotion => (
@@ -92,7 +92,9 @@ export default function List({ menuSections, searchIsOpen, }) {
                 {combinedItems.map(item => (
                   <li key={item.key} className={className}>
                     {item}
-                    {item.props.pages ? null : null}
+                    {item.props.pages ? (
+                      null
+                    ) : null}
                   </li>
                 ))}
                 {combinedSites(theme).map(site => (

@@ -25,7 +25,8 @@ const lineMap: Object = new Map([
       {
         method: object,
         options: {
-          time: ({ index, args: { time, }, }) => date.steppingTimestamp({ initialTime: now, step: argsFromTime.get(time).step, index, }),
+          time: ({ index, args: { time, }, }) =>
+            date.steppingTimestamp({ initialTime: now, step: argsFromTime.get(time).step, index, }),
           value: () => number.float({ max: 2600, min: 2550, fixed: 2, }),
           change: () => number.float({ max: 25, min: -15, fixed: 2, }),
           volume: () => number.float({ max: 1000000, min: 0, fixed: 2, }),

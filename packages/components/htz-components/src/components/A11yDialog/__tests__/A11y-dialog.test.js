@@ -8,7 +8,6 @@ class DialogExample extends React.Component {
   state = {
     isOpen: false,
   };
-
   handleOpenClick = () => {
     this.setState({ isOpen: true, });
   };
@@ -25,9 +24,7 @@ class DialogExample extends React.Component {
           }}
         >
           <div id="hide">
-            <button type="button" onClick={this.handleOpenClick}>
-              open
-            </button>
+            <button onClick={this.handleOpenClick}>open</button>
             <A11yDialog
               appendTo="dialog-example-123"
               // set aria-hidden=true by id when Dialog is activated
@@ -44,17 +41,9 @@ class DialogExample extends React.Component {
                   render={({ className, }) => (
                     <div className={className}>
                       <div> this is Dialog content component </div>
-                      <button type="button" onClick={handleClose}>
-                        {' '}
-                        Close Content
-                        {' '}
-                      </button>
+                      <button onClick={handleClose}> Close Content </button>
                       <div>
-                        <button type="button" onClick={handleClose}>
-                          {' '}
-                          Button
-                          {' '}
-                        </button>
+                        <button onClick={handleClose}> Button </button>
                         <h3> No Focus trap!</h3>
                       </div>
                     </div>

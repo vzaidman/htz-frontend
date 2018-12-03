@@ -36,7 +36,7 @@ class OsakaWrapper extends React.Component {
   };
 
   componentDidMount() {
-    if (this.wrapperEl) {
+    if(this.wrapperEl) {
       this.wrapperEl.addEventListener(
         getTransitionEnd(this.wrapperEl),
         this.removeOsaka.bind(this),
@@ -56,11 +56,12 @@ class OsakaWrapper extends React.Component {
       this.wrapperEl.style.display = 'block';
     }
     window.setTimeout(
-      () => this.setState({ display, }, () => {
-        this.props.client.writeData({
-          data: { isOsakaDisplayed: this.state.display, },
-        });
-      }),
+      () =>
+        this.setState({ display, }, () => {
+          this.props.client.writeData({
+            data: { isOsakaDisplayed: this.state.display, },
+          });
+        }),
       50
     );
   }
@@ -135,13 +136,13 @@ class OsakaWrapper extends React.Component {
                               theme.osakaI18n.nextArticle
                             } ${sectionName}`;
                           }
-                          else if (sectionUrl) {
+ else if (sectionUrl) {
                             nextArticleUrl = sectionUrl;
                             nextArticleText = `${
                               theme.osakaI18n.backToSection
                             } ${sectionName}`;
                           }
-                          else {
+ else {
                             nextArticleUrl = '/';
                             nextArticleText = theme.osakaI18n.backToHome;
                           }

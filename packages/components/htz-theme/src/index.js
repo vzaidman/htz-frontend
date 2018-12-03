@@ -6,6 +6,7 @@ import bps from './consts/bps';
 import cssReset from './consts/cssReset';
 import globalAds from './consts/globalAds';
 import fontStacks from './consts/fontStacks';
+import i18n from './consts/i18n';
 
 // methods
 import getColor from './methods/getColor';
@@ -28,6 +29,7 @@ export {
   mq,
   pxToRem,
   typesetter,
+  i18n,
 };
 
 export type { CardStyle, };

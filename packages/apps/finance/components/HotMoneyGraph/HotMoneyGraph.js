@@ -25,7 +25,7 @@ type Props = {
     value: string,
     style: Object,
     percentage?: boolean,
-  }>,
+  }>
 };
 
 type GraphData = Array<{
@@ -44,35 +44,29 @@ class HotMoneyGraph extends React.Component<Props, State> {
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
-      !this.state
-      || (nextProps.period !== this.props.period
-        || nextState.period !== this.state.period)
+      !this.state || (
+        nextProps.period !== this.props.period ||
+        nextState.period !== this.state.period
+      )
     );
   }
 
   changeAsset: Asset => void = stockData => {
     const { period, part, } = this.props;
-    fetch(
-      `https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoneyCharts?indexId=${
-        stockData.id
-      }&part=${part}&period=${period}`,
-      {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json', },
-      }
-    )
+    fetch(`https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoneyCharts?indexId=${stockData.id}&part=${part}&period=${period}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json', },
+    })
       .then(res => res.json())
       .then(json => {
-        const graphData: GraphData = json.chart.dataSource.map(
-          (asset: { time: number, value: number, }) => ({
+        const graphData: GraphData =
+          json.chart.dataSource.map((asset: { time: number, value: number, }) => ({
             time: asset[0],
             value: asset[1],
-          })
-        );
+          }));
         this.setState({
           ...stockData,
           period,
-          // eslint-disable-next-line react/no-unused-state
           graphData,
         });
       })
@@ -113,11 +107,14 @@ class HotMoneyGraph extends React.Component<Props, State> {
                 }}
               />
             </GridItem>
-            <GridItem width={2 / 3}>
+            <GridItem
+              width={2 / 3}
+            >
               <StockStats
                 period={time}
                 graphType="hotMoney"
-                render={({ changeStats, }) => (graphData ? (
+                render={({ changeStats, }) => (
+                graphData ?
                   <Graph
                     data={graphData}
                     type="line"
@@ -127,8 +124,8 @@ class HotMoneyGraph extends React.Component<Props, State> {
                     height={250}
                     margin={{ top: 34, right: 10, bottom: 15, left: 50, }}
                   />
-                ) : null)
-                }
+                : null
+                )}
               />
             </GridItem>
           </Grid>

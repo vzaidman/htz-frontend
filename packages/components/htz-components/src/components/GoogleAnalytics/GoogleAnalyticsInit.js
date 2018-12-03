@@ -14,7 +14,6 @@ class GoogleAnalyticsInit extends React.Component {
     // Set true to Track pageView manually
     withPageView: PropTypes.bool,
   };
-
   static defaultProps = {
     host: null,
     userType: null,
@@ -39,11 +38,12 @@ class GoogleAnalyticsInit extends React.Component {
     //   clientTrackerId = tracker.get('clientId');
     //   console.log('clientId : ', clientTrackerId);
     // });
-    const visitor = userType === 'anonymous'
-      ? 'Non-registered'
-      : userType === 'registered'
-        ? 'Registered'
-        : 'Paying';
+    const visitor =
+      userType === 'anonymous'
+        ? 'Non-registered'
+        : userType === 'registered'
+          ? 'Registered'
+          : 'Paying';
     ReactGA.initialize(GaHost, {
       gaOptions: {
         userId: visitor,

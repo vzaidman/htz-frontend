@@ -28,8 +28,8 @@ export default class User {
       this.anonymousId = userOptions.anonymousId || null;
     }
     else if (
-      this.type === UserTypes.registered
-      || this.type === UserTypes.paying
+      this.type === UserTypes.registered ||
+      this.type === UserTypes.paying
     ) {
       this.anonymousId = userOptions.anonymousId;
       this.id = userOptions.userId;

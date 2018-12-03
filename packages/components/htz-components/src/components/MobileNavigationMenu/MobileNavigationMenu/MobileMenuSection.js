@@ -5,6 +5,7 @@ import { FelaComponent, } from 'react-fela';
 import FlippingArrow from '../../Animations/FlippingArrow';
 import MobileMenuLink from './MobileMenuItemLink';
 
+
 const typeSize = 0;
 const indentedStyle = {
   paddingInlineStart: '7rem',
@@ -65,19 +66,20 @@ export default class MobileMenuSection extends React.Component {
         }}
       >
         {pages.map(
-          (page, index) => (index < 2 || isOpen ? (
-            <FelaComponent
-              style={theme => ({
-                ...indentedStyle,
-                extend: [ theme.type(typeSize), ],
-              })}
-              render={({ className, }) => (
-                <li key={page.name} className={className}>
-                  <MobileMenuLink {...page} />
-                </li>
-              )}
-            />
-          ) : null)
+          (page, index) =>
+            (index < 2 || isOpen ? (
+              <FelaComponent
+                style={theme => ({
+                  ...indentedStyle,
+                  extend: [ theme.type(typeSize), ],
+                })}
+                render={({ className, }) => (
+                  <li key={page.name} className={className} >
+                    <MobileMenuLink {...page} />
+                  </li>
+                )}
+              />
+            ) : null)
         )}
         {pages.length > 2 ? (
           <li>
@@ -98,15 +100,14 @@ export default class MobileMenuSection extends React.Component {
               })}
               render={({ theme, className, }) => (
                 <button
-                  type="button"
                   className={className}
                   onClick={this.toggleOpen}
                   aria-expanded={isOpen}
                   aria-label={`more ${sectionName}`}
                 >
                   <FelaComponent
-                    style={{ color: theme.color('neutral', '-10'), }}
-                    render={({ className, }) => (
+                    style={theme => ({ color: theme.color('neutral', '-10'), })}
+                    render={({ theme, className, }) => (
                       <Fragment>
                         <span className={className}>
                           {isOpen

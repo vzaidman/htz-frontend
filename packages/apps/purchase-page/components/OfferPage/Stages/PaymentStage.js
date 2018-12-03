@@ -238,7 +238,7 @@ class PaymentStage extends Component {
                   const { pathName, asPath, } = pathGenerator('debt', router);
                   Router.push(pathName, asPath);
                 }
-                else {
+ else {
                   const { pathName, asPath, } = pathGenerator('stage5', router);
                   Router.push(pathName, asPath);
                 }
@@ -314,13 +314,11 @@ class PaymentStage extends Component {
                                                   {
                                                     form.continueWithCreditCardText
                                                   }
-                                                </span>
-                                                {' '}
+                                                </span>{' '}
                                               </FelaComponent>
                                               <span className={className}>
                                                 {fourDigits}
-                                              </span>
-                                              {' '}
+                                              </span>{' '}
                                               <span className={className}>
                                                 {form.hiddenCreditCardDigits}
                                               </span>
@@ -437,9 +435,7 @@ class PaymentStage extends Component {
                                           });
                                         }}
                                       >
-                                        {payVia}
-                                        {' '}
-                                        <br />
+                                        {payVia} <br />
                                         {creditCard}
                                       </Button>
                                     </div>
@@ -474,9 +470,7 @@ class PaymentStage extends Component {
                                               });
                                             }}
                                           >
-                                            {payVia}
-                                            {' '}
-                                            <br />
+                                            {payVia} <br />
                                             <AriaDescription id="paypal">
                                               Paypal
                                             </AriaDescription>

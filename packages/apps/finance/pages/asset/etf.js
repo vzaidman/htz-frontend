@@ -316,7 +316,7 @@ function etf({ url: { query: { section, assetId, }, }, }: Props): Node {
                                   month: '2-digit',
                                   year: 'numeric',
                                 })
-                            }`}
+                              }`}
                           </FelaComponent>
                           <FelaComponent
                             render="p"

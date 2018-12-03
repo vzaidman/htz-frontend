@@ -41,7 +41,9 @@ const labelStyle = ({
   paddingInlineStart: `${boxModel && boxModel.hp ? boxModel.hp : 1}rem`,
   paddingInlineEnd: `${boxModel && boxModel.hp ? boxModel.hp : 1}rem`,
   width: '100%',
-  ...(!isTextArea && !isContentEditable ? { position: 'relative', } : {}),
+  ...(!isTextArea && !isContentEditable
+    ? { position: 'relative', }
+    : {}),
   extend: [
     theme.type(theme.inputStyle.typeScale),
     parseComponentProp(
@@ -405,9 +407,11 @@ class TextInput extends Component {
      */
     miscStyles: stylesPropType,
     /** style for the wrapper of the textInput */
-    wrapperStyle: PropTypes.oneOf([ PropTypes.func, PropTypes.object, ]),
+    wrapperStyle: PropTypes.oneOf([
+      PropTypes.func,
+      PropTypes.object,
+    ]),
   };
-
   static defaultProps = {
     attrs: null,
     boxModel: null,
@@ -441,13 +445,11 @@ class TextInput extends Component {
     value: undefined,
     variant: 'primary',
   };
-
   static getDerivedStateFromProps(props, state) {
     return {
       isInputEmpty: !props.defaultValue && !props.value,
     };
   }
-
   state = {
     boldActive: false,
     disableBlur: false,
@@ -475,6 +477,19 @@ class TextInput extends Component {
   };
 
   /**
+   * handels executing clicking bold or italic format buttons
+   * execCommand method allows one to run commands to manipulate the contents of the editable region
+   *
+   * @param {aCommandName} command - in our use case either `"bold"` or `"italic"`
+   */
+  toggleCommand(command) {
+    this.props.toggleCommandBiCallBack &&
+      this.props.toggleCommandBiCallBack(command);
+    document.execCommand(command);
+    this.handleInputFocus(true, true);
+    this.setFormatButtonsState();
+  }
+  /**
    * handles updating the state isFocused and disableBlur properties
    *
    * disabling the blur is needed when clicking the format buttons,
@@ -492,21 +507,6 @@ class TextInput extends Component {
     }
     if (!disableFocusChange) this.setState({ disableBlur: false, });
   };
-
-  /**
-   * handels executing clicking bold or italic format buttons
-   * execCommand method allows one to run commands to manipulate the contents of the editable region
-   *
-   * @param {aCommandName} command - in our use case either `"bold"` or `"italic"`
-   */
-  toggleCommand(command) {
-    this.props.toggleCommandBiCallBack
-      && this.props.toggleCommandBiCallBack(command);
-    document.execCommand(command);
-    this.handleInputFocus(true, true);
-    this.setFormatButtonsState();
-  }
-
   /**
    * Used to simulate input native behaviour with contenteditable div
    * when disabled, click wont have an effect.
@@ -554,12 +554,15 @@ class TextInput extends Component {
       variant,
     } = this.props;
 
-    const isLabelUp = !isTextArea
-      && !isContentEditable
-      && (this.state.isFocused || !this.state.isInputEmpty);
+    const isLabelUp =
+      !isTextArea &&
+      !isContentEditable &&
+      (this.state.isFocused || !this.state.isInputEmpty);
 
     return (
-      <FelaComponent style={wrapperStyle}>
+      <FelaComponent
+        style={wrapperStyle}
+      >
         <StyledLabel
           htmlFor={this.state.inputId}
           variant={variant}
@@ -676,18 +679,18 @@ class TextInput extends Component {
             }}
             {...(!isContentEditable
               ? {
-                onChange: evt => {
-                  if (onChange) onChange(evt);
-                  if (!isTextArea) {
-                    if (evt.target.value.length > 0) {
-                      this.setState({ isInputEmpty: false, });
+                  onChange: evt => {
+                    if (onChange) onChange(evt);
+                    if (!isTextArea) {
+                      if (evt.target.value.length > 0) {
+                        this.setState({ isInputEmpty: false, });
+                      }
+                      if (evt.target.value.length === 0) {
+                        this.setState({ isInputEmpty: true, });
+                      }
                     }
-                    if (evt.target.value.length === 0) {
-                      this.setState({ isInputEmpty: true, });
-                    }
-                  }
-                },
-              }
+                  },
+                }
               : {})}
             onFocus={() => {
               this.handleInputFocus(true);
@@ -703,9 +706,9 @@ class TextInput extends Component {
             }}
             {...(isContentEditable
               ? {
-                setFormatButtonsState: this.setFormatButtonsState,
-                onContentEditableChange,
-              }
+                  setFormatButtonsState: this.setFormatButtonsState,
+                  onContentEditableChange,
+                }
               : {})}
             type={type}
             value={value}

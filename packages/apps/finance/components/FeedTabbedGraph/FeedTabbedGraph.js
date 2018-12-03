@@ -28,7 +28,6 @@ type Assets = Array<Asset>;
 type Props = {
   part: number,
   side: number,
-  // eslint-disable-next-line react/no-unused-prop-types
   defaultTab: number,
   tabs: Array<TabType>,
   headers: Array<{
@@ -36,7 +35,7 @@ type Props = {
     value: string,
     style: Object,
     percentage?: boolean,
-  }>,
+  }>
 };
 
 type State = {
@@ -62,20 +61,22 @@ class FeedTabbedGraph extends React.Component<Props, State> {
   componentDidMount() {
     const { period, } = this.props.tabs[0];
     this.fetchData(period)
-      .then(assets => this.setState({
-        assets,
-      })
+      .then(assets =>
+        this.setState({
+          assets,
+        })
       )
       .catch(err => console.log(err));
   }
 
   changeSelectedTab: State => void = ({ index, tab, }) => {
     this.fetchData(tab.period)
-      .then(assets => this.setState({
-        assets,
-        index,
-        tab,
-      })
+      .then(assets =>
+        this.setState({
+          assets,
+          index,
+          tab,
+        })
       )
       .catch(err => console.log(err));
   };
@@ -135,15 +136,13 @@ class FeedTabbedGraph extends React.Component<Props, State> {
             </TabList>
             <TabPanel id={control}>
               {
-                assets
-                  ? (
-                    <HotMoneyGraph
-                      period={period}
-                      part={part}
-                      assets={assets}
-                      headers={headers}
-                    />
-                  )
+                assets ?
+                  <HotMoneyGraph
+                    period={period}
+                    part={part}
+                    assets={assets}
+                    headers={headers}
+                  />
                   : null
               }
             </TabPanel>

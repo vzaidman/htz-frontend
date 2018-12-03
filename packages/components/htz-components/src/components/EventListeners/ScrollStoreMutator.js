@@ -45,7 +45,6 @@ export class ScrollStoreMutator extends React.Component {
       mutate({ variables: { x: nextProps.x, y: nextProps.y, velocity, }, });
     }
   }
-
   render() {
     return null;
   }

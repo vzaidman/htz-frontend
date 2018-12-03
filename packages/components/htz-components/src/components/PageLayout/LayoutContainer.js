@@ -2,7 +2,6 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
-import setColor from '../../utils/setColor';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
@@ -36,23 +35,12 @@ LayoutContainer.defaultProps = {
   miscStyles: null,
 };
 
-const styles = ({ bgc, namedBgc, miscStyles, theme, }) => ({
+const styles = ({ bgc, miscStyles, theme, }) => ({
   backgroundColor: bgc || theme.color('layout', 'containerBg'),
   marginRight: 'auto',
   marginLeft: 'auto',
   width: '100%',
   extend: [
-    ...[
-      namedBgc
-        ? parseComponentProp(
-          'backgroundColor',
-          namedBgc,
-          theme.mq,
-          setColor,
-          theme.color
-        )
-        : {},
-    ],
     parseComponentProp(
       'maxWidth',
       [
@@ -70,7 +58,6 @@ const styles = ({ bgc, namedBgc, miscStyles, theme, }) => ({
 export default function LayoutContainer({
   attrs,
   bgc,
-  namedBgc,
   children,
   miscStyles,
   tagName,
@@ -80,7 +67,6 @@ export default function LayoutContainer({
     <FelaComponent
       rule={styles}
       bgc={bgc}
-      namedBgc={namedBgc}
       miscStyles={miscStyles}
       render={({ className, }) => (
         <Tag {...attrs} className={className}>

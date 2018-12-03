@@ -38,13 +38,13 @@ export default class MastheadUserMenu extends React.Component {
           render={theme => (
             <HtzLink
               href={theme.userMenuI18n.loginUrl}
-              content={(
+              content={
                 <UserButton
                   isOpen={false}
                   userName={this.props.userName}
                   role="button"
                 />
-)}
+              }
             />
           )}
         />

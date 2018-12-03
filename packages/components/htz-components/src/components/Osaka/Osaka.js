@@ -44,7 +44,8 @@ const NextItemStyle = ({ theme, }) => ({
   alignSelf: 'center',
   textAlign: 'center',
 });
-const NextItem = createComponent(NextItemStyle, HtzLink, props => Object.keys(props)
+const NextItem = createComponent(NextItemStyle, HtzLink, props =>
+  Object.keys(props)
 );
 
 function Osaka({ nextArticleUrl, nextArticleText, lists, }) {
@@ -144,7 +145,7 @@ function Osaka({ nextArticleUrl, nextArticleText, lists, }) {
                           },
                         });
                       }}
-                      content={(
+                      content={
                         <FelaComponent
                           style={{ display: 'flex', alignItems: 'center', }}
                           render="p"
@@ -154,7 +155,7 @@ function Osaka({ nextArticleUrl, nextArticleText, lists, }) {
                             <IconBack size={4} />
                           </span>
                         </FelaComponent>
-)}
+                      }
                     />
                   )}
                 </EventTracker>

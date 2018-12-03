@@ -59,9 +59,9 @@ async function mapPackages() {
             type: 'confirm',
             name: 'overwrite',
             default: false,
-            message: `${`The "${name}" script already exists in:`
-              + `"${chalk.magenta(packagePath)}".\n`
-              + 'Overwrite '}${chalk.cyan(
+            message: `${`The "${name}" script already exists in:` +
+              `"${chalk.magenta(packagePath)}".\n` +
+              'Overwrite '}${chalk.cyan(
               `${JSON.stringify(name)}: ${JSON.stringify(existingCommand)}`
             )}\nwith ${chalk.cyan(
               `${JSON.stringify(name)}: ${JSON.stringify(command)}`

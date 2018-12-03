@@ -15,10 +15,12 @@ type Props = {
   assetsId: ?Array<string>,
   isExchange?: boolean,
   sortBy: ?string,
-  sortOrder: ?"ascend" | ?"descend",
+  sortOrder: ?'ascend' | ?'descend',
 };
 
-type State = Asset;
+type State = {
+  ...Asset,
+};
 
 class TableGraphConnector extends React.Component<Props, State> {
   static defaultProps = {
@@ -33,12 +35,16 @@ class TableGraphConnector extends React.Component<Props, State> {
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
-      !this.state
-      || (nextProps !== this.props || nextState.id !== this.state.id)
+      !this.state || (
+        nextProps !== this.props ||
+        nextState.id !== this.state.id
+      )
     );
   }
 
-  changeAsset: Asset => void = stockData => this.setState(stockData);
+  changeAsset: Asset => void = stockData => (
+    this.setState(stockData)
+  );
 
   render(): Node {
     const { id, name, type, } = this.state || {};
@@ -113,8 +119,12 @@ class TableGraphConnector extends React.Component<Props, State> {
                 }}
               />
             </GridItem>
-            <GridItem width={2 / 3}>
-              <GraphController selectedStockId={id} />
+            <GridItem
+              width={2 / 3}
+            >
+              <GraphController
+                selectedStockId={id}
+              />
               <SectionLink
                 href={{
                   pathname: `/asset/${type || ''}`,
@@ -125,10 +135,7 @@ class TableGraphConnector extends React.Component<Props, State> {
                 }}
                 as={`/${type || ''}/${id || ''}`}
               >
-                <span>
-                  למידע נוסף על
-                  {name}
-                </span>
+                <span>למידע נוסף על {name}</span>
               </SectionLink>
             </GridItem>
           </Grid>

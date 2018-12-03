@@ -3,8 +3,9 @@ import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
 // import Bender from '../views/Bender/Bender';
 
-window.matchMedia = window.matchMedia
-  || function () {
+window.matchMedia =
+  window.matchMedia ||
+  function () {
     return {
       matches: true,
       addListener() {},

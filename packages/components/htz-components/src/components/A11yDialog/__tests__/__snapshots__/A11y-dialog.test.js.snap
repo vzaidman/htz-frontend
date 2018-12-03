@@ -17,7 +17,6 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
     >
       <button
         onClick={[Function]}
-        type="button"
       >
         open
       </button>
@@ -77,20 +76,12 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                             <div>
                                this is Dialog content component 
                             </div>
-                            <button
-                              type="button"
-                            >
-                               
-                              Close Content
-                               
+                            <button>
+                               Close Content 
                             </button>
                             <div>
-                              <button
-                                type="button"
-                              >
-                                 
-                                Button
-                                 
+                              <button>
+                                 Button 
                               </button>
                               <h3>
                                  No Focus trap!
@@ -195,20 +186,12 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                     <div>
                                        this is Dialog content component 
                                     </div>
-                                    <button
-                                      type="button"
-                                    >
-                                       
-                                      Close Content
-                                       
+                                    <button>
+                                       Close Content 
                                     </button>
                                     <div>
-                                      <button
-                                        type="button"
-                                      >
-                                         
-                                        Button
-                                         
+                                      <button>
+                                         Button 
                                       </button>
                                       <h3>
                                          No Focus trap!
@@ -250,20 +233,12 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                       <div>
                                          this is Dialog content component 
                                       </div>
-                                      <button
-                                        type="button"
-                                      >
-                                         
-                                        Close Content
-                                         
+                                      <button>
+                                         Close Content 
                                       </button>
                                       <div>
-                                        <button
-                                          type="button"
-                                        >
-                                           
-                                          Button
-                                           
+                                        <button>
+                                           Button 
                                         </button>
                                         <h3>
                                            No Focus trap!
@@ -325,20 +300,14 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                           </div>
                                           <button
                                             onClick={[Function]}
-                                            type="button"
                                           >
-                                             
-                                            Close Content
-                                             
+                                             Close Content 
                                           </button>
                                           <div>
                                             <button
                                               onClick={[Function]}
-                                              type="button"
                                             >
-                                               
-                                              Button
-                                               
+                                               Button 
                                             </button>
                                             <h3>
                                                No Focus trap!
@@ -401,7 +370,6 @@ exports[`Dialog should open dialog with toggle state 1`] = `
     >
       <button
         onClick={[Function]}
-        type="button"
       >
         open
       </button>
@@ -461,20 +429,12 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                             <div>
                                this is Dialog content component 
                             </div>
-                            <button
-                              type="button"
-                            >
-                               
-                              Close Content
-                               
+                            <button>
+                               Close Content 
                             </button>
                             <div>
-                              <button
-                                type="button"
-                              >
-                                 
-                                Button
-                                 
+                              <button>
+                                 Button 
                               </button>
                               <h3>
                                  No Focus trap!
@@ -523,20 +483,12 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                             <div>
                                this is Dialog content component 
                             </div>
-                            <button
-                              type="button"
-                            >
-                               
-                              Close Content
-                               
+                            <button>
+                               Close Content 
                             </button>
                             <div>
-                              <button
-                                type="button"
-                              >
-                                 
-                                Button
-                                 
+                              <button>
+                                 Button 
                               </button>
                               <h3>
                                  No Focus trap!
@@ -640,20 +592,12 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                     <div>
                                        this is Dialog content component 
                                     </div>
-                                    <button
-                                      type="button"
-                                    >
-                                       
-                                      Close Content
-                                       
+                                    <button>
+                                       Close Content 
                                     </button>
                                     <div>
-                                      <button
-                                        type="button"
-                                      >
-                                         
-                                        Button
-                                         
+                                      <button>
+                                         Button 
                                       </button>
                                       <h3>
                                          No Focus trap!
@@ -694,20 +638,12 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                       <div>
                                          this is Dialog content component 
                                       </div>
-                                      <button
-                                        type="button"
-                                      >
-                                         
-                                        Close Content
-                                         
+                                      <button>
+                                         Close Content 
                                       </button>
                                       <div>
-                                        <button
-                                          type="button"
-                                        >
-                                           
-                                          Button
-                                           
+                                        <button>
+                                           Button 
                                         </button>
                                         <h3>
                                            No Focus trap!
@@ -768,20 +704,14 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                           </div>
                                           <button
                                             onClick={[Function]}
-                                            type="button"
                                           >
-                                             
-                                            Close Content
-                                             
+                                             Close Content 
                                           </button>
                                           <div>
                                             <button
                                               onClick={[Function]}
-                                              type="button"
                                             >
-                                               
-                                              Button
-                                               
+                                               Button 
                                             </button>
                                             <h3>
                                                No Focus trap!

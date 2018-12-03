@@ -3,6 +3,7 @@ import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
+// import { Form,RadioButton,Button } from '@haaretz/htz-components';
 import Form from '../Form/Form';
 import { RadioButton, } from '../RadioButton/RadioButton';
 import TextInput from '../TextInput/TextInput';
@@ -180,7 +181,8 @@ class UserSurveyInner extends Component {
               <div>
                 <FelaComponent tagName="div" style={closeButton}>
                   <IconClose
-                    onClick={() => this.onClose(this.props.user, setArticlePageSurvey)
+                    onClick={() =>
+                      this.onClose(this.props.user, setArticlePageSurvey)
                     }
                   />
                 </FelaComponent>
@@ -201,7 +203,8 @@ class UserSurveyInner extends Component {
                   </FelaComponent>
                 </FelaComponent>
                 <Form
-                  onSubmit={() => this.onSubmit(this.props.user, setArticlePageSurvey)
+                  onSubmit={() =>
+                    this.onSubmit(this.props.user, setArticlePageSurvey)
                   }
                   render={({ handleSubmit, }) => (
                     <div>
@@ -221,7 +224,8 @@ class UserSurveyInner extends Component {
                               { until: 's', value: 19, },
                             ]}
                             miscStyles={textArea}
-                            onChange={evt => this.setState({ userText: evt.target.value, })
+                            onChange={evt =>
+                              this.setState({ userText: evt.target.value, })
                             }
                             value={this.state.userText}
                           />

@@ -65,8 +65,8 @@ class ToggleFade extends React.Component {
   }
 
   componentDidMount() {
-    this.element
-      && this.element.addEventListener(
+    this.element &&
+      this.element.addEventListener(
         getTransitionEnd(this.element),
         () => this.isAnimating(false),
         false
@@ -101,14 +101,14 @@ class ToggleFade extends React.Component {
           opacity: show ? '1' : '0',
           ...(!((show && durationIn === 0) || (!show && durationOut === 0))
             ? {
-              transitionProperty: 'opacity',
-              ...theme.getDuration(
-                'transition',
-                show ? durationIn || duration : durationOut || duration
-              ),
-              ...theme.getTimingFunction('transition', 'linear'),
-              ...(delay != null ? theme.getDelay('transition', delay) : {}),
-            }
+                transitionProperty: 'opacity',
+                ...theme.getDuration(
+                  'transition',
+                  show ? durationIn || duration : durationOut || duration
+                ),
+                ...theme.getTimingFunction('transition', 'linear'),
+                ...(delay != null ? theme.getDelay('transition', delay) : {}),
+              }
             : {}),
           extend: [
             ...(miscStyles

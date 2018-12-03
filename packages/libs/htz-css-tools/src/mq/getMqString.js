@@ -40,11 +40,9 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './createMqFunc';
  *   e.g., `(orientation: landscape)`.
  * @param {string} [query.type]
  *   A media type, e.g., `only screen`, `print`, etc.
- * @param {boolean} [noCssMedia]
+ * @param {true} [noCssMedia]
  *   Omit the `@media` prefix from the returned string.
  *   Useful for usage in `matchMedia`
- * @param {boolean} [pixelOutput]
- *   Don't convert media query string from pixels to `em`s
  *
  * @return {string} a media-query string
  *
@@ -69,31 +67,28 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './createMqFunc';
 export default function getMqString(
   { widths, misc: miscBps, }: BpsConfig,
   { from, until, misc, type, }: MqOptions,
-  noCssMedia?: boolean,
-  pixelOutput?: boolean
+  noCssMedia?: true
 ): string {
   const typeString = !type || type.toLowerCase() === 'all' ? '' : type;
   const minString = from
     ? `${typeString ? ' and ' : ''}(min-width: ${getLengthString(
       from,
-      widths,
-      false,
-      pixelOutput
+      widths
     )})`
     : '';
   const maxString = until
     ? `${typeString || minString ? ' and ' : ''}(max-width: ${getLengthString(
       until,
       widths,
-      true,
-      pixelOutput
+      true
     )})`
     : '';
   const namedMisc = miscBps[misc || ''];
   const miscOption = namedMisc || misc || '';
-  const miscString = (typeString || minString || maxString) && misc
-    ? ` and ${miscOption}`
-    : miscOption;
+  const miscString =
+    (typeString || minString || maxString) && misc
+      ? ` and ${miscOption}`
+      : miscOption;
 
   const mediaString = typeString + minString + maxString + miscString;
 
@@ -118,8 +113,6 @@ export default function getMqString(
  * @param {true} [isUntil]
  *   Indicates that the length being calculated is for an
  *   `until` query, and should be exclusive.
- * @param {boolean} [pixelOutput]
- *   Don't convert media query string from pixels to `em`s
  *
  * @return {string} A CSS length-string for a media-query
  * @private
@@ -132,20 +125,16 @@ export default function getMqString(
 export function getLengthString(
   length: string | number,
   breakpoints: WidthBpsConfig,
-  isUntil?: boolean,
-  pixelOutput?: boolean
+  isUntil?: true
 ): string {
   // if `length` is a number, assume it is in pixels and convert to em
   if (typeof length === 'number') {
-    const pixelValue = length - (isUntil ? 1 : 0);
-    return pixelOutput
-      ? `${pixelValue}px`
-      : `${pixelValue / DEFAULT_BROWSER_FONT_SIZE}em`;
+    return `${(length - (isUntil ? 1 : 0)) / DEFAULT_BROWSER_FONT_SIZE}em`;
   }
   const lengthNumber = breakpoints[length] ? breakpoints[length] : undefined;
-  if (lengthNumber) return getLengthString(lengthNumber, breakpoints, isUntil, pixelOutput);
+  if (lengthNumber) return getLengthString(lengthNumber, breakpoints, isUntil);
   const { unitlessValue, unit, } = getLengthProps(length);
   return unit === 'px'
-    ? getLengthString(unitlessValue, breakpoints, isUntil, pixelOutput)
+    ? getLengthString(unitlessValue, breakpoints, isUntil)
     : length;
 }

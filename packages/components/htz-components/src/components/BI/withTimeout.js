@@ -11,9 +11,10 @@ export default function withTimeout(
   timeout = 5000,
   msgOnTimeout = 'operation timed out!'
 ) {
-  const timer = new Promise((resolve, reject) => setTimeout(() => {
-    reject(new Error(msgOnTimeout));
-  }, timeout)
+  const timer = new Promise((resolve, reject) =>
+    setTimeout(() => {
+      reject(new Error(msgOnTimeout));
+    }, timeout)
   );
   return Promise.race([ promise, timer, ]);
 }

@@ -100,7 +100,8 @@ function SpecialPromotions({
             <FelaComponent
               rule={textStyle}
               render={({ className, }) => {
-                const LogoName = variant === 'primary' ? IconAlefLogo : IconTheMarker;
+                const LogoName =
+                  variant === 'primary' ? IconAlefLogo : IconTheMarker;
                 return (
                   <Section tagName="div" className={className}>
                     <LogoName

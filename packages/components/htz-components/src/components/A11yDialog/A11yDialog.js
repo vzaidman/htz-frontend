@@ -122,7 +122,8 @@ class A11yDialog extends React.Component {
       }
     });
     if (Array.isArray(toggleRefs)) {
-      toggleRefs.forEach(id => buttonHandlers.setToggleHandler(id, this.toggleDialog)
+      toggleRefs.forEach(id =>
+        buttonHandlers.setToggleHandler(id, this.toggleDialog)
       );
     }
   };
@@ -139,7 +140,8 @@ class A11yDialog extends React.Component {
   componentWillUnmount = () => {
     const { toggleRefs, } = this.props;
     if (Array.isArray(toggleRefs)) {
-      toggleRefs.forEach(id => buttonHandlers.clearHandler(id, this.toggleDialog)
+      toggleRefs.forEach(id =>
+        buttonHandlers.clearHandler(id, this.toggleDialog)
       );
     }
   };
@@ -147,13 +149,14 @@ class A11yDialog extends React.Component {
   openDialog = () => {
     setAriaHidden.set(this.props.elementToHide);
     this.setState(
-      (prevState, props) => (prevState.wasRendered
-        ? { isVisible: true, returnFocusTo: document.activeElement, }
-        : {
-          isVisible: true,
-          wasRendered: true,
-          returnFocusTo: document.activeElement,
-        }),
+      (prevState, props) =>
+        (prevState.wasRendered
+          ? { isVisible: true, returnFocusTo: document.activeElement, }
+          : {
+            isVisible: true,
+            wasRendered: true,
+            returnFocusTo: document.activeElement,
+          }),
       () => {
         this.props.onOpen && this.props.onOpen();
         this.container.focus();
@@ -214,9 +217,9 @@ class A11yDialog extends React.Component {
                   className={className}
                   {...(closeOnOutsideClick
                     ? {
-                      onClick: this.closeDialog,
-                      tabIndex: '-1',
-                    }
+                        onClick: this.closeDialog,
+                        tabIndex: '-1',
+                      }
                     : {})}
                 />
                 <FelaComponent

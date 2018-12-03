@@ -3,7 +3,7 @@ const gridStyle = Object.freeze({
 
   // rule
   ruleWidth: 1, // (in pixels)
-  ruleColor: [ 'neutral', '-5', ],
+  ruleColor: ['neutral', '-5'],
 });
 
 export default gridStyle;

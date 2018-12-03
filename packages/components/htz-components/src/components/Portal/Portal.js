@@ -16,7 +16,6 @@ class Portal extends React.Component {
      */
     host: PropTypes.oneOfType([ PropTypes.string, PropTypes.node, ]).isRequired,
   };
-
   static defaultProps = {
     children: null,
   };

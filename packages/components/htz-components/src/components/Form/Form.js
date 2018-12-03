@@ -76,7 +76,6 @@ export default class Form extends Component {
      */
     render: PropTypes.func.isRequired,
   };
-
   static defaultProps = {
     attrs: null,
     disablePreventDefault: false,
@@ -151,18 +150,13 @@ export default class Form extends Component {
         formElementProperties = {
           checked: this.state.values[name] || false,
           onChange: callAll(onChange, evt => {
-            this.setState((prevState, props) => {
-              const values = {
-                ...prevState.values,
-                [name]: evt.target.checked,
-              };
-              const errors = props.isValidateOnChange
-                ? this.handleTouchedValidate(values)
-                : null;
-              return {
-                values,
-                ...(errors ? { errors, } : {}),
-              };
+            const values = { ...this.state.values, [name]: evt.target.checked, };
+            const errors = this.props.isValidateOnChange
+              ? this.handleTouchedValidate(values)
+              : null;
+            this.setState({
+              values,
+              ...(errors ? { errors, } : {}),
             });
           }),
         };
@@ -172,15 +166,13 @@ export default class Form extends Component {
           // RadioGroup needs the name in order to pass it to RadioButton
           name,
           onChange: callAll(onChange, evt => {
-            this.setState((prevState, props) => {
-              const values = { ...prevState.values, [name]: evt.target.value, };
-              const errors = props.isValidateOnChange
-                ? this.handleTouchedValidate(values)
-                : null;
-              return {
-                values,
-                ...(errors ? { errors, } : {}),
-              };
+            const values = { ...this.state.values, [name]: evt.target.value, };
+            const errors = this.props.isValidateOnChange
+              ? this.handleTouchedValidate(values)
+              : null;
+            this.setState({
+              values,
+              ...(errors ? { errors, } : {}),
             });
           }),
           value: this.state.values[name] || null,
@@ -189,15 +181,13 @@ export default class Form extends Component {
       case 'select':
         formElementProperties = {
           onChange: callAll(onChange, selectedItem => {
-            this.setState((prevState, props) => {
-              const values = { ...prevState.values, [name]: selectedItem, };
-              const errors = props.isValidateOnChange
-                ? this.handleTouchedValidate(values)
-                : null;
-              return {
-                values,
-                ...(errors ? { errors, } : {}),
-              };
+            const values = { ...this.state.values, [name]: selectedItem, };
+            const errors = this.props.isValidateOnChange
+              ? this.handleTouchedValidate(values)
+              : null;
+            this.setState({
+              values,
+              ...(errors ? { errors, } : {}),
             });
           }),
           controlledSelectedItem: this.state.values[name] || null,
@@ -210,20 +200,18 @@ export default class Form extends Component {
               onContentEditableChange: callAll(
                 onContentEditableChange,
                 (evt, contentEditableValue) => {
-                  this.setState((prevState, props) => {
-                    const values = {
-                      ...prevState.values,
-                      [name]: contentEditableValue,
-                      // value from getInputProps trumps all other values
-                      ...(value ? { [name]: value, } : {}),
-                    };
-                    const errors = props.isValidateOnChange
-                      ? this.handleTouchedValidate(values)
-                      : null;
-                    return {
-                      values,
-                      ...(errors ? { errors, } : {}),
-                    };
+                  const values = {
+                    ...this.state.values,
+                    [name]: contentEditableValue,
+                    // value from getInputProps trumps all other values
+                    ...(value ? { [name]: value, } : {}),
+                  };
+                  const errors = this.props.isValidateOnChange
+                    ? this.handleTouchedValidate(values)
+                    : null;
+                  this.setState({
+                    values,
+                    ...(errors ? { errors, } : {}),
                   });
                 }
               ),
@@ -231,20 +219,18 @@ export default class Form extends Component {
             }
             : {
               onChange: callAll(onChange, evt => {
-                this.setState((prevState, props) => {
-                  const values = {
-                    ...prevState.values,
-                    [name]: evt.target.value,
-                    // value from getInputProps trumps all other values
-                    ...(value ? { [name]: value, } : {}),
-                  };
-                  const errors = props.isValidateOnChange
-                    ? this.handleTouchedValidate(values)
-                    : null;
-                  return {
-                    values,
-                    ...(errors ? { errors, } : {}),
-                  };
+                const values = {
+                  ...this.state.values,
+                  [name]: evt.target.value,
+                  // value from getInputProps trumps all other values
+                  ...(value ? { [name]: value, } : {}),
+                };
+                const errors = this.props.isValidateOnChange
+                  ? this.handleTouchedValidate(values)
+                  : null;
+                this.setState({
+                  values,
+                  ...(errors ? { errors, } : {}),
                 });
               }),
             }),
@@ -256,14 +242,12 @@ export default class Form extends Component {
           value: (() => {
             if (value) {
               if (value !== this.state.values[name]) {
-                this.setState(prevState => {
-                  const values = {
-                    ...prevState.values,
-                    [name]: value,
-                  };
-                  const errors = this.handleTouchedValidate(values);
-                  return { values, errors, };
-                });
+                const values = {
+                  ...this.state.values,
+                  [name]: value,
+                };
+                const errors = this.handleTouchedValidate(values);
+                this.setState({ values, errors, });
               }
               return value;
             }
@@ -275,14 +259,13 @@ export default class Form extends Component {
       ...formElementProperties,
       onBlur: callAll(onBlur, evt => {
         if (!this.state.touched[name]) {
-          this.setState(prevState => ({
-            touched: { ...prevState.touched, [name]: true, },
-          }));
+          this.setState({
+            touched: { ...this.state.touched, [name]: true, },
+          });
         }
         if (this.props.isValidateOnBlur) {
-          this.setState(prevState => ({
-            errors: this.handleTouchedValidate(prevState.values, name),
-          }));
+          const errors = this.handleTouchedValidate(this.state.values, name);
+          this.setState({ errors, });
         }
       }),
       ...(stateError || isError ? { isError: true, } : {}),
@@ -379,12 +362,12 @@ export default class Form extends Component {
         {...attrs}
         {...(!disableSubmitOnEnterKeyDown
           ? {
-            onKeyDown: evt => {
-              if (evt.keyCode === 13) {
-                this.handleSubmit(evt);
-              }
-            },
-          }
+              onKeyDown: evt => {
+                if (evt.keyCode === 13) {
+                  this.handleSubmit(evt);
+                }
+              },
+            }
           : {})}
       >
         {render({

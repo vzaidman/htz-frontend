@@ -29,7 +29,6 @@ StyleProvider.defaultProps = {
 };
 
 StyleProvider.contextTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   renderer: PropTypes.object,
 };
 

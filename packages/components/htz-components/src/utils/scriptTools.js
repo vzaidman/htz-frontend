@@ -37,7 +37,8 @@ export const appendScript = ({
     if (innerHtml) script.innerHTML = innerHtml;
 
     if (attributes) {
-      Object.keys(attributes).map(attribute => script.setAttribute(attribute, attributes[attribute])
+      Object.keys(attributes).map(attribute =>
+        script.setAttribute(attribute, attributes[attribute])
       );
     }
 

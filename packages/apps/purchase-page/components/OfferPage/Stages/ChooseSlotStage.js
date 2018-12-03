@@ -84,17 +84,17 @@ const StyledHeading = createComponent(headingStyle, 'h1');
 
 class ChooseSlotStage extends React.Component {
   componentDidMount() {
-    this.props.tableData.map((item, idx) => ReactGA.ga('ec:addImpression', {
-      id: item.subscriptionName,
-      name: item.productTitle,
-      position: idx + 1,
-      price: item.pricingHead,
-      list: 'Slot Stage Results',
-    })
+    this.props.tableData.map((item, idx) =>
+      ReactGA.ga('ec:addImpression', {
+        id: item.subscriptionName,
+        name: item.productTitle,
+        position: idx + 1,
+        price: item.pricingHead,
+        list: 'Slot Stage Results',
+      })
     );
     ReactGA.ga('send', 'pageview');
   }
-
   render() {
     const {
       host,
@@ -190,8 +190,7 @@ class ChooseSlotStage extends React.Component {
                           }}
                         >
                           <Fragment>
-                            {entitlements.beforeLinkText}
-                            {' '}
+                            {entitlements.beforeLinkText}{' '}
                             <FelaComponent
                               render="span"
                               style={theme => ({

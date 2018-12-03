@@ -261,21 +261,21 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
                 miscStyles={{
                   ...(!displayIdImg
                     ? {
-                      marginTop: [
-                        { from: 'l', value: '5rem', },
-                        { from: 'm', until: 'l', value: '3rem', },
-                      ],
-                      marginBottom: [ { from: 'm', until: 'l', value: '3rem', }, ],
-                      marginInlineStart: [ { from: 'm', until: 'l', value: 'auto', }, ],
-                      marginInlineEnd: [ { from: 'm', until: 'l', value: 'auto', }, ],
-                      maxWidth: [
-                        {
-                          from: 'm',
-                          until: 'l',
-                          value: theme.articleStyle.body.maxWidth,
-                        },
-                      ],
-                    }
+                        marginTop: [
+                          { from: 'l', value: '5rem', },
+                          { from: 'm', until: 'l', value: '3rem', },
+                        ],
+                        marginBottom: [ { from: 'm', until: 'l', value: '3rem', }, ],
+                        marginInlineStart: [ { from: 'm', until: 'l', value: 'auto', }, ],
+                        marginInlineEnd: [ { from: 'm', until: 'l', value: 'auto', }, ],
+                        maxWidth: [
+                          {
+                            from: 'm',
+                            until: 'l',
+                            value: theme.articleStyle.body.maxWidth,
+                          },
+                        ],
+                      }
                     : {}),
                 }}
               >
@@ -297,8 +297,8 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
                     >
                       <FelaComponent
                         displayBorderInMBreak={
-                          isAmenitiesDivisibleByTwo
-                          || (!isAmenitiesDivisibleByTwo && displayItems.length !== i + 1)
+                          isAmenitiesDivisibleByTwo ||
+                          (!isAmenitiesDivisibleByTwo && displayItems.length !== i + 1)
                         }
                         itemBorderTop={i === 0}
                         rule={itemStyle}
@@ -325,8 +325,8 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
                                 <FelaComponent
                                   style={{
                                     extend: [
-                                      anObjectMapped.type === 'strong'
-                                        && theme.mq({ from: 'l', }, { display: 'inline-block', }),
+                                      anObjectMapped.type === 'strong' &&
+                                        theme.mq({ from: 'l', }, { display: 'inline-block', }),
                                     ],
                                   }}
                                   render={({ className, }) => (

@@ -20,7 +20,6 @@ class PapiAPI extends RESTDataSource {
   get baseURL() {
     return this.context.serviceBase;
   }
-
   async getCmLink(path) {
     const fetchPath = `json/cmlink/${path}${path.includes('?') ? '&' : '?'}ts=
     ${new Date().getTime()}`;
@@ -170,7 +169,6 @@ class PageAPI extends RESTDataSource {
   get baseURL() {
     return this.context.preview ? null : this.context.serviceBase;
   }
-
   async getPage(path) {
     const fetchPath = this.context.preview || `papi${path}`;
 
@@ -257,8 +255,9 @@ class PurchasePageAPI extends RESTDataSource {
     const baseUri = `${this.context.serviceBase}/papi`;
     const polopolyPromotionsPage = this.context.polopolyPromotionsPage;
 
-    const userId = userIdArg
-      || (this.context.cookies
+    const userId =
+      userIdArg ||
+      (this.context.cookies
         ? CookieUtils.stringToMap(this.context.cookies.get('tmsso') || '', {
           separator: /:\s?/,
         }).userId
@@ -310,8 +309,10 @@ class FinanceAPI extends RESTDataSource {
 
     if (json && sortBy) {
       json.assets.sort((itemA, itemB) => {
-        const valueA = typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
-        const valueB = typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
+        const valueA =
+          typeof itemA[sortBy] === 'string' ? itemA[sortBy].toUpperCase() : itemA[sortBy]; // ignore upper and lowercase
+        const valueB =
+          typeof itemB[sortBy] === 'string' ? itemB[sortBy].toUpperCase() : itemB[sortBy]; // ignore upper and lowercase
         if (valueA < valueB) {
           return sortOrder === 'ascend' ? -1 : 1;
         }
@@ -328,7 +329,8 @@ class FinanceAPI extends RESTDataSource {
 
   // eslint-disable-next-line class-methods-use-this
   async getGraph(type, time, assetId) {
-    const graphMap = type === 'line' ? lineGraphMap : type === 'scatter' ? scatterGraphMap : areaGraphMap;
+    const graphMap =
+      type === 'line' ? lineGraphMap : type === 'scatter' ? scatterGraphMap : areaGraphMap;
     return jsonGenerator({ map: graphMap, args: { time, }, });
   }
 

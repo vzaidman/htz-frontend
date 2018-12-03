@@ -20,9 +20,11 @@ describe('# border()', () => {
       );
     });
     it('throws if "lines" is undefined', () => {
-      const message = 'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
+      const message =
+        'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
       expect(() => border('1px', undefined, 'solid', 'red')).toThrow(message);
-      expect(() => border({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        border({ width: '1px', style: 'solid', color: 'red', })
       ).toThrow(message);
     });
   });
@@ -209,15 +211,18 @@ describe('# borderTop()', () => {
     it('throws if "width" is not provided', () => {
       const message = 'You passed invalid arguments to a "border" function';
       expect(() => borderTop(undefined, 1, 'solid', 'red')).toThrow(message);
-      expect(() => borderTop({ lines: 1, style: 'solid', color: 'red', })
+      expect(() =>
+        borderTop({ lines: 1, style: 'solid', color: 'red', })
       ).toThrow(message);
     });
     it('throws if "lines" is undefined', () => {
-      const message = 'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
+      const message =
+        'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
       expect(() => borderTop('1px', undefined, 'solid', 'red')).toThrow(
         message
       );
-      expect(() => borderTop({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderTop({ width: '1px', style: 'solid', color: 'red', })
       ).toThrow(message);
     });
   });
@@ -347,7 +352,8 @@ describe('# borderEnd()', () => {
     });
     it('doesn\'t throw if "lines" is undefined', () => {
       expect(() => borderEnd('1px', undefined, 'solid', 'red')).not.toThrow();
-      expect(() => borderEnd({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderEnd({ width: '1px', style: 'solid', color: 'red', })
       ).not.toThrow();
     });
   });
@@ -437,7 +443,8 @@ describe('# borderRight()', () => {
     });
     it('doesn\'t throw if "lines" is undefined', () => {
       expect(() => borderRight('1px', undefined, 'solid', 'red')).not.toThrow();
-      expect(() => borderRight({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderRight({ width: '1px', style: 'solid', color: 'red', })
       ).not.toThrow();
     });
   });
@@ -525,15 +532,18 @@ describe('# borderBottom()', () => {
     it('throws if "width" is not provided', () => {
       const message = 'You passed invalid arguments to a "border" function';
       expect(() => borderBottom(undefined, 1, 'solid', 'red')).toThrow(message);
-      expect(() => borderBottom({ lines: 1, style: 'solid', color: 'red', })
+      expect(() =>
+        borderBottom({ lines: 1, style: 'solid', color: 'red', })
       ).toThrow(message);
     });
     it('throws if "lines" is undefined', () => {
-      const message = 'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
+      const message =
+        'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
       expect(() => borderBottom('1px', undefined, 'solid', 'red')).toThrow(
         message
       );
-      expect(() => borderBottom({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderBottom({ width: '1px', style: 'solid', color: 'red', })
       ).toThrow(message);
     });
   });
@@ -663,7 +673,8 @@ describe('# borderStart()', () => {
     });
     it('doesn\'t throw if "lines" is undefined', () => {
       expect(() => borderStart('1px', undefined, 'solid', 'red')).not.toThrow();
-      expect(() => borderStart({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderStart({ width: '1px', style: 'solid', color: 'red', })
       ).not.toThrow();
     });
   });
@@ -753,7 +764,8 @@ describe('# borderLeft()', () => {
     });
     it('doesn\'t throw if "lines" is undefined', () => {
       expect(() => borderLeft('1px', undefined, 'solid', 'red')).not.toThrow();
-      expect(() => borderLeft({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderLeft({ width: '1px', style: 'solid', color: 'red', })
       ).not.toThrow();
     });
   });
@@ -844,9 +856,11 @@ describe('# borderHorizontal()', () => {
       expect(() => border({ style: 'solid', color: 'red', })).toThrow(message);
     });
     it('doesn\'t throw if "lines" is undefined', () => {
-      expect(() => borderHorizontal('1px', undefined, 'solid', 'red')
+      expect(() =>
+        borderHorizontal('1px', undefined, 'solid', 'red')
       ).not.toThrow();
-      expect(() => borderHorizontal({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderHorizontal({ width: '1px', style: 'solid', color: 'red', })
       ).not.toThrow();
     });
   });
@@ -948,15 +962,18 @@ describe('# borderVertical()', () => {
       expect(() => borderVertical(undefined, 1, 'solid', 'red')).toThrow(
         message
       );
-      expect(() => borderVertical({ lines: 1, style: 'solid', color: 'red', })
+      expect(() =>
+        borderVertical({ lines: 1, style: 'solid', color: 'red', })
       ).toThrow(message);
     });
     it('throws if "lines" is undefined', () => {
-      const message = 'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
+      const message =
+        'You must provide the "lines" argument to "border" functions so that vertical borders don\'t break the vertical rhythm';
       expect(() => borderVertical('1px', undefined, 'solid', 'red')).toThrow(
         message
       );
-      expect(() => borderVertical({ width: '1px', style: 'solid', color: 'red', })
+      expect(() =>
+        borderVertical({ width: '1px', style: 'solid', color: 'red', })
       ).toThrow(message);
     });
   });

@@ -24,7 +24,6 @@ class StageDebt extends Component {
     pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
-
   render() {
     return (
       <MainLayout>

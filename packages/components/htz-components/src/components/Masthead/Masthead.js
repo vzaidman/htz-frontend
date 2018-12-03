@@ -6,7 +6,6 @@ import { borderBottom, } from '@haaretz/htz-css-tools';
 import Query from '../ApolloBoundary/Query';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
-// eslint-disable-next-line import/no-named-as-default
 import LayoutRow from '../PageLayout/LayoutRow';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import NavigationMenu from '../NavigationMenu/NavigationMenu';

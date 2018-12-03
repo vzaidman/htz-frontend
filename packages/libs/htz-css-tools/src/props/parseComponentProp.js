@@ -16,7 +16,7 @@ export type ComponentPropResponsiveObject<T> = {
   until?: string,
   misc?: string,
   type?: string,
-  value: T,
+  value: T
 };
 
 /**
@@ -155,7 +155,12 @@ export default function parseComponentProp<Values: ComponentPropValue<*>>(
 function isResponsiveOptions(candidate: any): boolean {
   if (!Array.isArray(candidate)) return false;
   return candidate.every(
-    item => typeof item.value !== 'undefined'
-      && (item.from || item.until || item.misc || item.type)
+    item =>
+      // We're checking the shape of the array items by duck-typing
+      // to make sure it is a responsive options object.
+      // The whole point is to fail when the type is incorrect
+      // $FlowFixMe
+      typeof item.value !== 'undefined' &&
+      (item.from || item.until || item.misc || item.type)
   );
 }

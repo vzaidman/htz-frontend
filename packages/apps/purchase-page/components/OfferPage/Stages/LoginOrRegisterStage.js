@@ -123,8 +123,8 @@ class LoginOrRegisterStage extends React.Component {
                                   clearFormAfterSubmit={false}
                                   {...(email
                                     ? {
-                                      initialValues: { email, },
-                                    }
+                                        initialValues: { email, },
+                                      }
                                     : {})}
                                   onSubmit={fields => {
                                     console.log('submitting');
@@ -146,19 +146,20 @@ class LoginOrRegisterStage extends React.Component {
                                       openResetPasswordModal: this.openModal,
                                     });
                                   }}
-                                  validate={fields => validateForm({
-                                    ...fields,
-                                    form,
-                                    site,
-                                    openModal: this.openModal,
-                                    registerOrLoginStage,
-                                  })
+                                  validate={fields =>
+                                    validateForm({
+                                      ...fields,
+                                      form,
+                                      site,
+                                      openModal: this.openModal,
+                                      registerOrLoginStage,
+                                    })
                                   }
                                   render={({ getInputProps, handleSubmit, }) => (
                                     <FelaComponent style={formContStyle}>
                                       {/* render form header only when user is registering or loging in and nothing is loading */}
-                                      {registerOrLoginStage === 'register'
-                                      || registerOrLoginStage === 'login' ? (
+                                      {registerOrLoginStage === 'register' ||
+                                      registerOrLoginStage === 'login' ? (
                                         <FelaComponent style={formHeaderStyle}>
                                           <FelaComponent
                                             style={theme => ({
@@ -185,22 +186,21 @@ class LoginOrRegisterStage extends React.Component {
                                                 onClick={
                                                   registerOrLoginStage === 'register'
                                                     ? () => {
-                                                      this.setState({
-                                                        email: null,
-                                                      });
-                                                      updateRegisterOrLoginStage('checkEmail');
-                                                    }
+                                                        this.setState({
+                                                          email: null,
+                                                        });
+                                                        updateRegisterOrLoginStage('checkEmail');
+                                                      }
                                                     : evt => {
-                                                      this.openModal(evt);
-                                                    }
+                                                        this.openModal(evt);
+                                                      }
                                                 }
                                               >
                                                 {
                                                   form.registerHeader.buttonText[
                                                     registerOrLoginStage
                                                   ]
-                                                }
-                                                {' '}
+                                                }{' '}
                                                 <FelaComponent
                                                   style={{
                                                     fontWeight: 'bold',
@@ -218,7 +218,7 @@ class LoginOrRegisterStage extends React.Component {
                                             )}
                                           />
                                         </FelaComponent>
-                                        ) : null}
+                                      ) : null}
 
                                       <TextInput
                                         {...getInputProps({
@@ -334,8 +334,7 @@ class LoginOrRegisterStage extends React.Component {
                                                             {
                                                               form.terms.register
                                                                 .labelBeforeTermsButton
-                                                            }
-                                                            {' '}
+                                                            }{' '}
                                                             <FelaComponent
                                                               style={theme => ({
                                                                 color: theme.color(
@@ -396,8 +395,8 @@ class LoginOrRegisterStage extends React.Component {
                                           variant="primaryOpaque"
                                           {...(this.state.loading
                                             ? {
-                                              isBusy: true,
-                                            }
+                                                isBusy: true,
+                                              }
                                             : {})}
                                           onClick={evt => {
                                             handleSubmit(evt);

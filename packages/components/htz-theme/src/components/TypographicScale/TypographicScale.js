@@ -32,10 +32,8 @@ export default function TypographicScale({ first, last, }) {
       {steps.map(step => (
         <ScaleItem key={Math.random()} step={step}>
           <strong>
-            <bdo dir="ltr">{step}</bdo>
-:
-          </strong>
-          {' '}
+            <bdo dir="ltr">{step}</bdo>:
+          </strong>{' '}
           {pangram}
         </ScaleItem>
       ))}

@@ -19,13 +19,14 @@ const GET_PROMOTIONS_STATE = gql`
   }
 `;
 
-const getChooseSlotsData = slots => slots.map(slot => {
-  const { offerList, cancelButtonText, ...cleanData } = slot.products[0];
-  return {
-    subscriptionName: slot.subscriptionName,
-    ...cleanData,
-  };
-});
+const getChooseSlotsData = slots =>
+  slots.map(slot => {
+    const { offerList, cancelButtonText, ...cleanData } = slot.products[0];
+    return {
+      subscriptionName: slot.subscriptionName,
+      ...cleanData,
+    };
+  });
 
 class Stage1 extends React.Component {
   static propTypes = pagePropTypes;
@@ -34,7 +35,6 @@ class Stage1 extends React.Component {
     pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
-
   static getInitialProps({ url, }) {
     return { url, };
   }

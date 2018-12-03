@@ -58,8 +58,7 @@ export default function ListWrapper({
                   if (child === children.slice(-1)[0]) {
                     closeList();
                   }
-                }}
-              >
+                }}>
                 {child}
               </ListItem>
             ))}

@@ -149,9 +149,7 @@ const gridStyles = ({
       'margin',
       gutter === null
         ? theme.gridStyle.gutterWidth
-        : typeof gutter === 'number'
-          ? gutter
-          : gutter.queries,
+        : typeof gutter === 'number' ? gutter : gutter.queries,
       theme.mq,
       setMarginByGutter,
       theme.gridStyle.gutter
@@ -268,8 +266,6 @@ let hasMatchMedia;
 
 /* eslint-disable react/prop-types */
 class GridComponent extends Component {
-  instanceIsMounted = false;
-
   constructor(props) {
     super(props);
     this.getUpdatedGutter = debounce(this.getUpdatedGutter.bind(this), 150);
@@ -313,17 +309,18 @@ class GridComponent extends Component {
   }
 
   getUpdatedGutter = () => {
-    const gutter = this.props.gutter === null
-      ? this.props.theme.gridStyle.gutterWidth
-      : this.props.gutter;
+    const gutter =
+      this.props.gutter === null
+        ? this.props.theme.gridStyle.gutterWidth
+        : this.props.gutter;
     const gutterIsResponsive = typeof gutter === 'object';
     const defaultValue = gutterIsResponsive ? gutter.onServerRender : gutter;
 
     if (
       // When not responsive
-      !gutterIsResponsive
+      !gutterIsResponsive ||
       // When matchMedia doesn't exist
-      || !hasMatchMedia
+      !hasMatchMedia
     ) {
       if (this.state.gutter !== defaultValue) {
         this.setState({
@@ -340,6 +337,8 @@ class GridComponent extends Component {
     }
   };
 
+  instanceIsMounted = false;
+
   render() {
     const { attrs, children, className, id, tagName, } = this.props;
     const GridElement = tagName;
@@ -348,11 +347,12 @@ class GridComponent extends Component {
         {/* Pass down `gutter` to children */}
         {Children.map(
           children,
-          (child, index) => (React.isValidElement(child)
-            ? React.cloneElement(child, {
-              gutter: this.state.gutter,
-            })
-            : child)
+          (child, index) =>
+            (React.isValidElement(child)
+              ? React.cloneElement(child, {
+                  gutter: this.state.gutter,
+                })
+              : child)
         )}
       </GridElement>
     );
@@ -386,7 +386,5 @@ export default function Grid({ children, ...props }) {
 function getInitialGutter(gutter, defaultGutter) {
   return gutter === null
     ? defaultGutter
-    : typeof gutter === 'number'
-      ? gutter
-      : gutter.onServerRender;
+    : typeof gutter === 'number' ? gutter : gutter.onServerRender;
 }

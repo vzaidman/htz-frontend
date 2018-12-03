@@ -31,7 +31,7 @@ import SpecialPromotions from '../components/SpecialPromotions/SpecialPromotions
 import Tags from '../components/Tags/Tags';
 import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
-import withDfpSideEffect from '../components/Dfp/withDfpSideEffect';
+import withDfpSideEffect from './../components/Dfp/withDfpSideEffect';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -112,11 +112,7 @@ const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
   `);
   return (
     <Debug>
-      <p>
-        {inputTemplate}
-        {' '}
-is currently not supported
-      </p>
+      <p>{inputTemplate} is currently not supported</p>
     </Debug>
   );
 };

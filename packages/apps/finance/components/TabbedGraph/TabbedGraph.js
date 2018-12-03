@@ -14,7 +14,7 @@ type TabType = {
   display: string,
   control: string,
   sortBy: string,
-  sortOrder: "ascend" | "descend",
+  sortOrder: 'ascend' | 'descend',
 };
 
 type Props = {
@@ -30,7 +30,7 @@ type State = {
 type TabButtonProps = {
   children: ChildrenArray<Node> | Node,
   isActive: boolean,
-};
+}
 
 export const tabRule: Object => Object = ({ theme, }) => ({
   flexGrow: '1',
@@ -52,35 +52,29 @@ export const tabRule: Object => Object = ({ theme, }) => ({
 });
 
 export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
-  isActive,
-  children,
-  ...props // eslint-disable-line react/prop-types
+  isActive, children, ...props // eslint-disable-line react/prop-types
 }) => (
   <FelaComponent
     style={theme => ({
-      ...(isActive
-        ? {
-          backgroundColor: theme.color('neutral', '-10'),
-          color: theme.color('primary'),
-          fontWeight: '700',
-        }
-        : {}),
+      ...(isActive ? {
+        backgroundColor: theme.color('neutral', '-10'),
+        color: theme.color('primary'),
+        fontWeight: '700',
+      } : {}),
       paddingTop: '0.5rem',
       paddingBottom: '0.5rem',
       width: '100%',
-      ...borderTop(
-        3,
-        2,
-        'solid',
-        isActive ? theme.color('primary') : 'transparent'
-      ),
+      ...borderTop(3, 2, 'solid', isActive ? theme.color('primary') : 'transparent'),
       ':focus': {
         outline: 'none',
         backgroundColor: theme.color('neutral', '-10'),
       },
     })}
     render={({ className, }) => (
-      <button type="button" className={className} {...props}>
+      <button
+        className={className}
+        {...props}
+      >
         {children}
       </button>
     )}
@@ -105,10 +99,7 @@ class TabbedGraph extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const {
-      index,
-      tab: { sortBy, sortOrder, control, },
-    } = this.state;
+    const { index, tab: { sortBy, sortOrder, control, }, } = this.state;
     const { assetId, tabs, } = this.props;
     return (
       <FelaComponent
@@ -119,7 +110,9 @@ class TabbedGraph extends React.Component<Props, State> {
           ...theme.type(-1),
         })}
         render={({ className, }) => (
-          <Tabs activeTab={index}>
+          <Tabs
+            activeTab={index}
+          >
             <TabList className={className}>
               {tabs.map((tab: TabType, i: number) => (
                 <Tab
@@ -131,8 +124,7 @@ class TabbedGraph extends React.Component<Props, State> {
                   onClick={() => this.changeSelectedTab({
                     index: i,
                     tab,
-                  })
-                  }
+                  })}
                   render={TabButton}
                 >
                   <span>{tab.display}</span>
@@ -140,11 +132,7 @@ class TabbedGraph extends React.Component<Props, State> {
               ))}
             </TabList>
             <TabPanel id={control}>
-              <TableGraphConnector
-                assetId={assetId}
-                sortBy={sortBy}
-                sortOrder={sortOrder}
-              />
+              <TableGraphConnector assetId={assetId} sortBy={sortBy} sortOrder={sortOrder} />
             </TabPanel>
           </Tabs>
         )}

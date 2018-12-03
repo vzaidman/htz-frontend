@@ -109,15 +109,16 @@ export const ActionButton = ({ render, }: ActionButtonProps): Node => (
       const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
       return (
         <EventTracker>
-          {({ biAction, biActionMapper, }) => render({
-            platform,
-            biAction,
-            biActionMapper,
-            host,
-            hostname,
-            articleId,
-            userId,
-          })
+          {({ biAction, biActionMapper, }) =>
+            render({
+              platform,
+              biAction,
+              biActionMapper,
+              host,
+              hostname,
+              articleId,
+              userId,
+            })
           }
         </EventTracker>
       );
@@ -171,21 +172,22 @@ export const Button: StatelessFunctionalComponent<ButtonProps> = ({
           : []),
       ],
     })}
-    render={({ className, }: { className: string, }) => (href ? (
-      <HtzLink
-        href={href}
-        className={className}
-        attrs={{ title, }}
-        {...props}
-      >
-        {children}
-      </HtzLink>
-    ) : (
-      <button type="button" className={className} title={title} {...props}>
-        <AriaDescription id={title}>{title}</AriaDescription>
-        {children}
-      </button>
-    ))
+    render={({ className, }: { className: string }) =>
+      (href ? (
+        <HtzLink
+          href={href}
+          className={className}
+          attrs={{ title, }}
+          {...props}
+        >
+          {children}
+        </HtzLink>
+      ) : (
+        <button className={className} title={title} {...props}>
+          <AriaDescription id={title}>{title}</AriaDescription>
+          {children}
+        </button>
+      ))
     }
   />
 );
@@ -302,7 +304,8 @@ class FacebookLogo extends React.Component<
     prevProps: FacebookLogoProps,
     prevState: FacebookLogoState
   ) {
-    const eligibleForFacebookFetch: boolean = prevState.host !== this.state.host;
+    const eligibleForFacebookFetch: boolean =
+      prevState.host !== this.state.host;
     if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
     }

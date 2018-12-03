@@ -134,13 +134,13 @@ const ActionButtons = ({
         buttonStyles={
           buttonStyles && typeof buttonStyles === 'function'
             ? {
-              func: buttonStyles,
-              global: globalButtonsStyles || {},
-            }
+                func: buttonStyles,
+                global: globalButtonsStyles || {},
+              }
             : {
-              ...(globalButtonsStyles || {}),
-              ...(buttonStyles || {}),
-            }
+                ...(globalButtonsStyles || {}),
+                ...(buttonStyles || {}),
+              }
         }
         size={size}
         iconStyles={{
@@ -153,9 +153,10 @@ const ActionButtons = ({
     );
   };
 
-  const getBatch = (buttonsObj, end) => (buttonsObj instanceof Array
-    ? buttonsObj.map((button, index) => getButton(button, index))
-    : getButton(buttonsObj));
+  const getBatch = (buttonsObj, end) =>
+    (buttonsObj instanceof Array
+      ? buttonsObj.map((button, index) => getButton(button, index))
+      : getButton(buttonsObj));
 
   return (
     <ActionWrapper vertical={vertical} miscStyles={miscStyles}>

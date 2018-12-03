@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { createComponent, } from 'react-fela';
 import HtzLink from '../HtzLink/HtzLink';
 
-const articleStyle = ({ theme, isBlock, }) => (isBlock
-  ? theme.articleStyle.linksBlockLink
-  : theme.articleStyle.relatedArticlesLink);
+const articleStyle = ({ theme, isBlock, }) =>
+  (isBlock
+    ? theme.articleStyle.linksBlockLink
+    : theme.articleStyle.relatedArticlesLink);
 const Article = createComponent(articleStyle, 'span');
 
-const currentArticleStyle = ({ theme, }) => theme.articleStyle.currentArticleInSeries;
+const currentArticleStyle = ({ theme, }) =>
+  theme.articleStyle.currentArticleInSeries;
 const CurrentArticle = createComponent(currentArticleStyle, 'span');
 
 const authorStyle = ({ theme, }) => ({
@@ -58,7 +60,7 @@ function ArticleLink({ article, currentArticle, focus, isBlock, }) {
   ) : (
     <HtzLink
       href={article.path}
-      content={(
+      content={
         <Article isBlock={isBlock}>
           {article.title}
           {isBlock && article.authors ? (
@@ -67,7 +69,7 @@ function ArticleLink({ article, currentArticle, focus, isBlock, }) {
             </Author>
           ) : null}
         </Article>
-)}
+      }
       focus={focus}
     />
   );

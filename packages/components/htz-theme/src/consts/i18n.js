@@ -57,13 +57,15 @@ export const mobileQuickRegistrationI18n = Object.freeze({
 export const headerSearchI18n = Object.freeze({
   buttonText: 'חיפוש',
   placeHolder: 'הקלידו לחיפוש באתר',
-  queryUrl: query => `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
+  queryUrl: query =>
+    `https://www.haaretz.co.il/misc/search-results?text=${query}&searchType=textSearch`,
 });
 
 export const mobileSearchI18n = Object.freeze({
   buttonText: 'חיפוש',
   placeHolder: 'חיפוש',
-  queryUrl: query => `https://www.haaretz.co.il/misc/mobile-search-results?text=${query}&searchType=textSearch`,
+  queryUrl: query =>
+    `https://www.haaretz.co.il/misc/mobile-search-results?text=${query}&searchType=textSearch`,
 });
 
 export const osakaI18n = Object.freeze({
@@ -89,7 +91,8 @@ export const commentFormI18n = Object.freeze({
   buttons: Object.freeze({
     sendBtnTxt: 'שלחו',
     cancelBtnTxt: 'בטלו',
-    toggleUserBtnText: identified => (identified ? 'להוספת תגובה אנונימית לחצו כאן' : 'להוספת תגובה מזוהה לחצו כאן'),
+    toggleUserBtnText: identified =>
+      (identified ? 'להוספת תגובה אנונימית לחצו כאן' : 'להוספת תגובה מזוהה לחצו כאן'),
   }),
   labels: Object.freeze({
     nameLabelTxt: 'שם',

@@ -11,7 +11,7 @@ const btnStyle = Object.freeze({
   borderStartStyle: 'solid',
   borderTopStyle: 'solid',
   radius: 0,
-  boxModel: { hp: 4, vp: 1, },
+  boxModel: { hp: 4, vp: 1 },
 
   // Font Style
   fontWeight: 'bold',

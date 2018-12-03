@@ -1,6 +1,6 @@
 /* global window, document, googletag */
 import isEqual from 'lodash/isEqual';
-import { adTypes, adTargets, } from './adManager';
+import { adTypes, adTargets, } from '../objects/adManager';
 
 const hiddenClass = 'h-hidden';
 let globalConfig;
@@ -104,14 +104,12 @@ export default class AdSlot {
         return false;
     }
   }
-
   // eslint-disable-next-line class-methods-use-this
   isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       window.navigator.userAgent || ''
     );
   }
-
   /**
    * Checks whether or not this adSlot has a non-empty whitelist, and if so, that the current
    * referrer appears in the whitelist.
@@ -173,8 +171,8 @@ export default class AdSlot {
         if (this.deferredSlot || !this.slot) {
           this.slot = this.defineSlot();
         }
-        this.adManager.DEBUG
-          && console.log(
+        this.adManager.DEBUG &&
+          console.log(
             'calling show for slot',
             this.id,
             ' called @',
@@ -185,8 +183,8 @@ export default class AdSlot {
       });
     }
     else {
-      this.adManager.DEBUG
-        && console.error(
+      this.adManager.DEBUG &&
+        console.error(
           `calling show for an ad slot that ${
             this.shown
               ? 'was already shown!'
@@ -307,8 +305,8 @@ export default class AdSlot {
       });
     }
     else {
-      this.adManager.DEBUG
-        && console.error(
+      this.adManager.DEBUG &&
+        console.error(
           'calling refresh for an ad slot that is missing a required DOM element!',
           this
         );

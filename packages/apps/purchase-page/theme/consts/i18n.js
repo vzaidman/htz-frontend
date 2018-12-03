@@ -472,7 +472,8 @@ export const newsletterI18n = Object.freeze({
     }),
   }),
   texts: Object.freeze({
-    newsletterTitle: site => `קבלו את ${site === 'tm' ? 'TheMarker' : 'הארץ'} בכל בוקר לתיבת האימייל שלכם`,
+    newsletterTitle: site =>
+      `קבלו את ${site === 'tm' ? 'TheMarker' : 'הארץ'} בכל בוקר לתיבת האימייל שלכם`,
     newsletterButton: 'הרשמה בקליק',
     newsletterConfirmedTitleText: Object.freeze({
       ok: 'תודה שנרשמת',
@@ -494,13 +495,14 @@ export const textInputI18n = Object.freeze({
 
 export const thankYou = Object.freeze({
   afterPurchase: product => {
-    const item = product === 'HTZ'
-      ? 'להארץ'
-      : product === 'TM'
-        ? 'ל-TheMarker'
-        : product === 'BOTH'
-          ? 'משולב להארץ ו-TheMarker'
-          : '';
+    const item =
+      product === 'HTZ'
+        ? 'להארץ'
+        : product === 'TM'
+          ? 'ל-TheMarker'
+          : product === 'BOTH'
+            ? 'משולב להארץ ו-TheMarker'
+            : '';
     return `תודה שרכשתם מינוי ${item}`;
   },
   backToArticle: 'חזרה לכתבה:',

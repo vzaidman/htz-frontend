@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import gql from 'graphql-tag';
-import type { Node, ComponentType, } from 'react';
+import type { StatelessFunctionalComponent, ComponentType, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
 import { Query, } from '@haaretz/htz-components';
 
@@ -35,11 +35,11 @@ const GraphQuery: DocumentNode = gql`
 `;
 
 type Props = {
-  indexId?: ?number | string,
-  time?: ?string,
+  indexId?: number | string,
+  time?: string,
   type: string,
   changeStats: Function,
-  miscStyles?: ?Object,
+  miscStyles?: Object,
   data: Object,
 };
 
@@ -60,44 +60,33 @@ const graphTypes: Object = new Map([
   ],
 ]);
 
-const Graph = ({
-  indexId,
-  time,
-  type,
-  miscStyles,
-  data,
-  ...props
-}: Props): Node => {
-  const GraphElement: ComponentType<any> = graphTypes.get(type);
-  return (
-    <FelaTheme
-      render={theme => (
-        <FelaComponent
-          style={{
-            extend: [
-              ...(miscStyles
-                ? parseStyleProps(miscStyles, theme.mq, theme.type)
-                : []),
-            ],
-          }}
-        >
-          <GraphElement
-            time={time}
-            theme={theme}
-            data={data || null}
-            {...props}
-          />
-        </FelaComponent>
-      )}
-    />
-  );
-};
-
-Graph.defaultProps = {
-  indexId: null,
-  time: null,
-  miscStyles: null,
-};
+const Graph: StatelessFunctionalComponent<Props> =
+  // eslint-disable-next-line react/prop-types
+  ({ indexId, time, type, miscStyles, data, ...props }) => {
+    const GraphElement: ComponentType<any> = graphTypes.get(type);
+    return (
+      <FelaTheme
+        render={theme => (
+          <FelaComponent
+            style={{
+              extend: [
+                ...(miscStyles
+                  ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                  : []),
+              ],
+            }}
+          >
+            <GraphElement
+              time={time}
+              theme={theme}
+              data={data || null}
+              {...props}
+            />
+          </FelaComponent>
+        )}
+      />
+    );
+  };
 
 export default (props: any) => {
   if (!props.data) {
@@ -114,10 +103,7 @@ export default (props: any) => {
         {({ loading, error, data, }) => {
           if (error) return null;
           return (
-            <Graph
-              {...props}
-              data={!loading ? data.financeGraph.dataSource : null}
-            />
+            <Graph {...props} data={!loading ? data.financeGraph.dataSource : null} />
           );
         }}
       </Query>

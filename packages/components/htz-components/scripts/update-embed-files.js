@@ -60,8 +60,8 @@ function readFromFiles() {
         }
 
         if (
-          data
-          && data.indexOf('This element does not emits an onLoad event') >= 0
+          data &&
+          data.indexOf('This element does not emits an onLoad event') >= 0
         ) {
           exceptionalElements.push(fileName);
         }

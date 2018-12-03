@@ -11,7 +11,8 @@ import mq from '../methods/mq';
  *
  * @return {string} the converted string in kebab-case
  */
-const camelToKebab = string => string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+const camelToKebab = string =>
+  string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
 /**
  * The typeConf breakpoint-names, sorted in an array by ascending width
@@ -27,10 +28,11 @@ const typeConfBpsOrder = Object.keys(typeConf).sort(
  *
  * @return {string} - a css-like string
  */
-const objToCSSString = rules => Object.keys(rules).reduce(
-  (cssString, prop) => `${cssString}${camelToKebab(prop)}:${rules[prop]};`,
-  ''
-);
+const objToCSSString = rules =>
+  Object.keys(rules).reduce(
+    (cssString, prop) => `${cssString}${camelToKebab(prop)}:${rules[prop]};`,
+    ''
+  );
 
 /**
  * Base fontSize for `html` element
@@ -47,7 +49,7 @@ const htmlFontSizes = typeConfBpsOrder.reduce((rules, bp, i) => {
 
   return {
     ...rules,
-    ...mq(mqOptions, { fontSize: `${typeConf[bp].rhythmUnit}px`, }),
+    ...mq(mqOptions, { fontSize: `${typeConf[bp].rhythmUnit}px` }),
   };
 }, {});
 
@@ -57,7 +59,8 @@ const htmlFontSizes = typeConfBpsOrder.reduce((rules, bp, i) => {
  * @type {string}
  */
 export const htmlFontSizesAsString = Object.keys(htmlFontSizes).reduce(
-  (rules, mqName) => `${rules}${mqName}{html{${objToCSSString(htmlFontSizes[mqName])}}}`,
+  (rules, mqName) =>
+    `${rules}${mqName}{html{${objToCSSString(htmlFontSizes[mqName])}}}`,
   ''
 );
 
@@ -66,7 +69,7 @@ export const htmlFontSizesAsString = Object.keys(htmlFontSizes).reduce(
  *
  * @type {object}
  */
-const bodyTypographyRules = { ...typesetter('0'), };
+const bodyTypographyRules = { ...typesetter('0') };
 
 /**
  * Base typographic style for `body` element
@@ -77,7 +80,8 @@ const bodyTypographyRules = { ...typesetter('0'), };
 export const bodyTypographyRulesAsString = Object.keys(
   bodyTypographyRules
 ).reduce(
-  (rules, mqName) => `${rules}${mqName}{body{${objToCSSString(bodyTypographyRules[mqName])}}}`,
+  (rules, mqName) =>
+    `${rules}${mqName}{body{${objToCSSString(bodyTypographyRules[mqName])}}}`,
   ''
 );
 

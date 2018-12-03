@@ -9,9 +9,10 @@ const SideBar = new GraphQLList(
   new GraphQLUnionType({
     name: 'SideBar',
     types: [ content, changeableElementGroup, ],
-    resolveType: value => (value.inputTemplate === getInputTemplate('ChangeableElementGroup')
-      ? changeableElementGroup
-      : content),
+    resolveType: value =>
+      (value.inputTemplate === getInputTemplate('ChangeableElementGroup')
+        ? changeableElementGroup
+        : content),
   })
 );
 

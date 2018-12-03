@@ -47,18 +47,19 @@ function SideBar({ content, }) {
           })}
         >
           <WrappedScroll
-            render={({ y, }) => content.map(element => {
-              const Element = getComponent(element.inputTemplate);
-              const { properties, ...elementWithoutProperties } = element;
-              return (
-                <Element
-                  scrollY={y}
-                  key={element.contentId}
-                  {...elementWithoutProperties}
-                  {...properties}
-                />
-              );
-            })
+            render={({ y, }) =>
+              content.map(element => {
+                const Element = getComponent(element.inputTemplate);
+                const { properties, ...elementWithoutProperties } = element;
+                return (
+                  <Element
+                    scrollY={y}
+                    key={element.contentId}
+                    {...elementWithoutProperties}
+                    {...properties}
+                  />
+                );
+              })
             }
           />
         </FelaComponent>

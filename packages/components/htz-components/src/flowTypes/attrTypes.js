@@ -5,5 +5,5 @@ export type attrFlowType = {
   [attribute: string]: | boolean
     | number
     | string
-    | ((evt: SyntheticEvent<*>) => void),
+    | ((evt: SyntheticEvent<*>) => void)
 };

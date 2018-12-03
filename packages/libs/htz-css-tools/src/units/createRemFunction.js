@@ -6,7 +6,7 @@ import { fallbackFormatter, } from '../helpers/fallbackFormatter';
 import { styleFormatter, } from '../helpers/styleFormatter';
 
 import type { MqFunc, WidthBpsConfig, } from '../mq/createMqFunc';
-import type { TypeConf, } from '../typography/confTypes.js';
+import type { TypeConf, TypeScaleOpts, } from '../typography/confTypes.js';
 import type { RhythmBpData, } from '../helpers/getRhythmBpsData';
 
 /**
@@ -78,7 +78,8 @@ export default function createRemFunction(
     untilBp?: string,
     pxFallback?: boolean
   ): Object {
-    const generatePxFallback = pxFallback || (pxFallback === undefined && defaultPxFallback);
+    const generatePxFallback =
+      pxFallback || (pxFallback === undefined && defaultPxFallback);
     const bpsData = getRhythmBpsData(
       bpNamesByLength,
       orderedRhtyhmBps,
@@ -89,7 +90,7 @@ export default function createRemFunction(
     return bpsData.reduce(
       (
         allStyles: Object,
-        bp: RhythmBpData,
+        bp: TypeScaleOpts,
         i: number,
         allBpsData: RhythmBpData[]
       ): Object => {

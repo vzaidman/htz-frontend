@@ -50,7 +50,6 @@ class Stage5 extends Component {
     pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
-
   render() {
     return (
       <MainLayout>
@@ -75,10 +74,10 @@ class Stage5 extends Component {
                   } = clientData;
 
                   if (
-                    typeof window !== 'undefined'
-                    && paymentType !== 'PayPal'
-                    && (window.sessionStorage.getItem('htz-revenue')
-                      || window.sessionStorage.getItem('htz-paypal'))
+                    typeof window !== 'undefined' &&
+                    paymentType !== 'PayPal' &&
+                    (window.sessionStorage.getItem('htz-revenue') ||
+                      window.sessionStorage.getItem('htz-paypal'))
                   ) {
                     window.sessionStorage.removeItem('htz-paypal');
                     window.sessionStorage.removeItem('htz-revenue');
@@ -88,9 +87,10 @@ class Stage5 extends Component {
                   const parsedCouponProduct = JSON.parse(couponProduct);
 
                   // if couponProduct is chosen use the couponProduct from local state
-                  const chosenProduct = chosenProductIndex === 'couponProduct'
-                    ? parsedCouponProduct
-                    : data.purchasePage.slots[chosenSlotIndex].products[chosenProductIndex];
+                  const chosenProduct =
+                    chosenProductIndex === 'couponProduct'
+                      ? parsedCouponProduct
+                      : data.purchasePage.slots[chosenSlotIndex].products[chosenProductIndex];
                   const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
                   const chosenProductContentName = chosenProduct.contentName;
                   const paymentData = chosenOffer.paymentData;
@@ -103,7 +103,8 @@ class Stage5 extends Component {
                     thankYouEmailTemplate
                   );
 
-                  const chosenSubscription = data.purchasePage.slots[chosenSlotIndex].subscriptionName;
+                  const chosenSubscription =
+                    data.purchasePage.slots[chosenSlotIndex].subscriptionName;
 
                   const chosenPaymentArrangement = chosenOffer.type;
 
@@ -123,7 +124,7 @@ class Stage5 extends Component {
                               render={({ user, }) => (
                                 <StageTransition
                                   chosenSubscription={chosenSubscription}
-                                  headerElement={(
+                                  headerElement={
                                     <StageHeader
                                       headerElements={[
                                         <FelaComponent style={{ fontWeight: 'bold', }}>
@@ -132,7 +133,7 @@ class Stage5 extends Component {
                                         <span>{header.textNewLine[paymentType]}</span>,
                                       ]}
                                     />
-)}
+                                  }
                                   stageElement={
                                     paymentType === 'PayPal' ? (
                                       <PayPalStage creditGuardSrc={creditGuardSrc} />

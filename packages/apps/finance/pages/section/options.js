@@ -33,38 +33,31 @@ type Props = {
   },
 };
 
-const numToString: number => string = num => num.toLocaleString('he', {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
+const numToString: number => string = num => (
+  num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
+);
 
-function options({
-  url: {
-    query: { section, },
-  },
-}: Props): Node {
+function options({ url: { query: { section, }, }, }: Props): Node {
   return (
     <MainLayout section={section}>
       <FelaTheme
         render={theme => (
           <PageRow>
-            <RowItem title="אופציות מעו״ף">
-              <Query query={OptionsAssetsQuery}>
+            <RowItem
+              title="אופציות מעו״ף"
+            >
+              <Query
+                query={OptionsAssetsQuery}
+              >
                 {({ loading, error, data, }) => {
                   if (loading) return null;
                   if (error) return null;
                   const assets: Array<Asset> = data.assetsList;
                   return (
                     <AssetsFilter assets={assets}>
-                      {({
-                        id: assetId,
-                        expirationBenchmarkDate: expirationDate,
-                      }) => (
+                      {({ assetId, expirationDate, }) => (
                         <SortableTable
-                          miscStyles={{
-                            marginTop: '7rem',
-                            tableLayout: 'auto',
-                          }}
+                          miscStyles={{ marginTop: '7rem', tableLayout: 'auto', }}
                           parentId={assetId}
                           expirationBenchmarkDate={expirationDate}
                           loadMore
@@ -104,10 +97,9 @@ function options({
                               display: '% שינוי',
                               sortingOrder: 'descend',
                               style: ({ changePercentage, }) => ({
-                                color:
-                                  changePercentage < 0
-                                    ? theme.color('negative')
-                                    : theme.color('positive'),
+                                color: changePercentage < 0
+                                  ? theme.color('negative')
+                                  : theme.color('positive'),
                                 direction: 'ltr',
                                 fontWeight: '700',
                                 paddingEnd: '2rem',
@@ -136,10 +128,9 @@ function options({
                               display: 'שינוי\nפוזיציות פתוחות',
                               sortingOrder: 'descend',
                               style: ({ openPositionsChangeRate, }) => ({
-                                color:
-                                  openPositionsChangeRate < 0
-                                    ? theme.color('negative')
-                                    : theme.color('positive'),
+                                color: openPositionsChangeRate < 0
+                                  ? theme.color('negative')
+                                  : theme.color('positive'),
                                 direction: 'ltr',
                                 fontWeight: '700',
                                 paddingEnd: '2rem',
@@ -148,9 +139,7 @@ function options({
                               }),
                               value: ({ openPositionsChangeRate, }) => `
                                 ${openPositionsChangeRate > 0 ? '+' : '-'}
-                                ${numToString(
-                                Math.abs(openPositionsChangeRate)
-                              )}%
+                                ${numToString(Math.abs(openPositionsChangeRate))}%
                               `,
                             },
                             {

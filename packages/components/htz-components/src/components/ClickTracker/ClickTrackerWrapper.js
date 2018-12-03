@@ -69,9 +69,10 @@ class ClickTrackerWrapper extends Component {
     super(props);
     this.banners = this.props.banners || [];
     const hasBanners = this.banners.length > 0;
-    this.viewMode = this.props.viewModes && this.props.viewModes.viewModeHtz
-      ? this.props.viewModes.viewModeHtz
-      : '';
+    this.viewMode =
+      this.props.viewModes && this.props.viewModes.viewModeHtz
+        ? this.props.viewModes.viewModeHtz
+        : '';
     const hasValidViewMode = isValidViewMode(this.viewMode);
     if (hasBanners && hasValidViewMode) {
       this.banners = this.props.banners;
@@ -84,27 +85,29 @@ class ClickTrackerWrapper extends Component {
 
   componentDidMount() {
     if (!this.state.shouldRender) {
-      const DEBUG = typeof window !== 'undefined'
-        && window.location.search.includes('debug');
+      const DEBUG =
+        typeof window !== 'undefined' &&
+        window.location.search.includes('debug');
       if (Array.isArray(this.banners) && this.banners.length > 0) {
         const randomSelection = getRandomIntInclusive(
           0,
           this.props.totalPercentage
         );
         let selectedBanner = this.banners.find(
-          banner => randomSelection > banner.minRange
-            && randomSelection < banner.maxRange
+          banner =>
+            randomSelection > banner.minRange &&
+            randomSelection < banner.maxRange
         );
         if (!selectedBanner) {
           selectedBanner = this.banners[0];
-          DEBUG
-            && logger.debug(
+          DEBUG &&
+            logger.debug(
               'ClickTrackerWrapper: selection of banner failed, falling back to the first one'
             );
         }
         else {
-          DEBUG
-            && logger.debug(
+          DEBUG &&
+            logger.debug(
               `ClickTrackerWrapper: selection of banner was successfull, selected ${this.banners.indexOf(
                 selectedBanner
               ) + 1} out of ${this.banners.length}`

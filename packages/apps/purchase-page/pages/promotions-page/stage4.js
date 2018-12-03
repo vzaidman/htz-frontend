@@ -30,7 +30,6 @@ class Stage4 extends Component {
     pixelEvent('track', 'PageView');
     checkSessionForPurchase();
   }
-
   static getInitialProps({ url, }) {
     return { url, };
   }
@@ -69,14 +68,16 @@ class Stage4 extends Component {
 
                   // if couponProduct is chosen use the couponProduct from local state
 
-                  const chosenProduct = chosenProductIndex === 'couponProduct'
-                    ? parsedCouponProduct
-                    : data.purchasePage.slots[chosenSlotIndex].products[chosenProductIndex];
+                  const chosenProduct =
+                    chosenProductIndex === 'couponProduct'
+                      ? parsedCouponProduct
+                      : data.purchasePage.slots[chosenSlotIndex].products[chosenProductIndex];
 
                   const chosenOffer = chosenProduct.offerList[chosenOfferIndex];
                   const chosenProductContentName = chosenProduct.contentName;
                   const paymentData = chosenOffer.paymentData;
-                  const chosenSubscription = data.purchasePage.slots[chosenSlotIndex].subscriptionName;
+                  const chosenSubscription =
+                    data.purchasePage.slots[chosenSlotIndex].subscriptionName;
                   const chosenPaymentArrangement = chosenOffer.type;
 
                   return (
@@ -93,16 +94,16 @@ class Stage4 extends Component {
                           <LayoutContainer bgc="white" miscStyles={{ paddingTop: '1.5rem', }}>
                             <StageTransition
                               chosenSubscription={chosenSubscription}
-                              headerElement={(
+                              headerElement={
                                 <StageHeader
                                   headerElements={[
                                     ...(loggedInOrRegistered
                                       ? [
                                         <FelaComponent style={{ fontWeight: 'bold', }}>
                                           {`${
-                                            header[loggedInOrRegistered || 'connected']
-                                              .textTopLine
-                                          }`}
+                                              header[loggedInOrRegistered || 'connected']
+                                                .textTopLine
+                                            }`}
                                         </FelaComponent>,
                                         <span>
                                           {
@@ -110,30 +111,28 @@ class Stage4 extends Component {
                                                 .textNewLine
                                             }
                                         </span>,
-                                      ]
+                                        ]
                                       : [
                                         <Fragment>
                                           <FelaComponent
                                             style={{ fontWeight: 'bold', }}
                                             render="span"
                                           >
-                                            {details.textBeforeChosen}
-                                            {' '}
-                                            {details.chosenSubscriptionText[chosenSubscription]}
-                                            {' '}
+                                            {details.textBeforeChosen}{' '}
+                                            {details.chosenSubscriptionText[chosenSubscription]}{' '}
                                             {`${
-                                              details.chosenPaymentArrangementText[
-                                                chosenPaymentArrangement
-                                              ]
-                                            }.`}
+                                                details.chosenPaymentArrangementText[
+                                                  chosenPaymentArrangement
+                                                ]
+                                              }.`}
                                           </FelaComponent>
                                         </Fragment>,
                                         <span>{details.textNewLine}</span>,
-                                      ]),
+                                        ]),
                                   ]}
                                 />
-)}
-                              stageElement={(
+                              }
+                              stageElement={
                                 <PaymentStage
                                   // chosenOffer={chosenOffer} hope we wont use it
                                   chosenProductContentName={chosenProductContentName}
@@ -146,7 +145,7 @@ class Stage4 extends Component {
                                   paymentData={paymentData}
                                   displayPayPal={paymentData.paymentType === 'J4' && !isFbInstant}
                                 />
-)}
+                              }
                             />
                           </LayoutContainer>
                         </div>
