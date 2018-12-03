@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Form, TextInput, Button, Login, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getReferrer, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
@@ -38,7 +38,8 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
       // eslint-disable-next-line no-undef
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', })(() => {
-            window.location = getFacebookLogin(user) || `https://www.${host}`;
+            const referrerUrl = getReferrer(client);
+            window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
           }
         );
       },
