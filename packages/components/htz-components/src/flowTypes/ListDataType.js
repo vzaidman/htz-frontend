@@ -15,7 +15,7 @@ export type ListDataType = {
     title: string,
     href: string,
     subtitle?: string,
-    CTA: string,
+    cta: string,
   },
   items: TeaserDataType[],
   contentId: string,
