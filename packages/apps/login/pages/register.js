@@ -123,13 +123,22 @@ const getTermsText = () => (
       אני מאשר/ת את <HtzLink target="_blank" href="https://www.haaretz.co.il/misc/terms-of-use">תנאי השימוש</HtzLink> באתר הארץ, וכן קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
   </div>
 );
-
+const getGeneralErrorMessage = () => (
+  <span>
+    סליחה תקלה. אנא נסו שוב בעוד כמה דקות או פנו ל
+    <HtzLink target="_blank" href="https://www.haaretz.co.il/misc/contact-us">
+      <span style={ {textDecoration: "underline",} } >שירות הלקוחות </span>
+    </HtzLink>
+    שלנו
+  </span>
+);
 const getFacebookLogin = (user) => {
   const facebookParams = getFacebookParams(user);
   return facebookParams ?
     getFacebookLoginUrl(facebookParams) :
     false;
 }
+
 
 const onSubmit = ({ register, doTransition, user, showError, hideError, setPreloader, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
@@ -150,14 +159,11 @@ const onSubmit = ({ register, doTransition, user, showError, hideError, setPrelo
     },
     reason => {
       setPreloader(false);
-      showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
+      showError((reason.message || getGeneralErrorMessage()));
     }
   );
 };
 
-const sendAgain = e => {
-  console.log('test...'); // TODO send again
-};
 // --------------------------
 
 class RegisterPage extends Component {

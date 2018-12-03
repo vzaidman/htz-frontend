@@ -50,6 +50,11 @@ const getFacebookLogin = (user) => {
     false;
 }
 
+const modifyErrorMessage = (message) => {
+  return message === "הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת" ?
+    'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message;
+}
+
 const onSubmit = ({ login, host, user, showError, hideError, setPreloader, }) =>
   ({ email, password, }) => {
     setPreloader(true);
@@ -61,7 +66,7 @@ const onSubmit = ({ login, host, user, showError, hideError, setPreloader, }) =>
         },
         reason => {
           setPreloader(false);
-          showError(reason.message);
+          showError(modifyErrorMessage(reason.message));
         }
       );
   };
