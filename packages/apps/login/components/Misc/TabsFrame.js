@@ -2,6 +2,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
+import { sendTrackingEvents, } from '../../util/trackingEventsUtil';
 import { LoginContentStylesThemed, } from '../StyleComponents/LoginStyleComponentsByTheme';
 
 export default class TabsFrame extends React.Component {
@@ -32,9 +33,12 @@ export default class TabsFrame extends React.Component {
   }
 
   /* ------------ Functionality ------------ */
-  changeTab = (index) => {
+  changeTab = (index, flow, eventsTrackers, label) => {
     return () => {
-      this.setState({ activeTab: index, });
+      sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: label, })(() => {
+          this.setState({ activeTab: index, });
+        }
+      );
     };
   }
 
@@ -53,7 +57,7 @@ export default class TabsFrame extends React.Component {
               name="tab"
               id={`tab${index}`}
               value={`tab${index}`}
-              onClick={this.changeTab(index)}
+              onClick={this.changeTab(index, child.props.flow, child.props.eventsTrackers, child.props.label)}
               tabIndex={index === this.state.activeTab ? -1 : 1}
             />
           </label>

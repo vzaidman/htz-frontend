@@ -6,13 +6,14 @@ import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import Preloader from '../Preloader';
 import { getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 
 // Styling Components -------
 const { ItemCenterer, } = LoginContentStyles;
 const { ErrorBox, } = LoginMiscLayoutStyles;
 // --------------------------
 
-const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, }) => ({
+const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, flow, eventsTrackers, }) => ({
   email,
 }) => {
   setPreloader(true);
@@ -34,7 +35,11 @@ const onResetPassword = ({ host, nextStage, showError, hideError, setPreloader, 
     .then(json => {
       setPreloader(false);
       if (json.status === 'success') {
-        nextStage();
+        sendTrackingEvents(eventsTrackers, { page: 'Reset Password', flowNumber: flow, label: 'sendResetPassword', })(() => {
+            nextStage();
+          }
+        );
+        
       }
       else {
         hideError();
@@ -72,7 +77,7 @@ class ResetPasswordForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { nextStage, closeModal, CloseButton, host, theme, validateEmailInput, client } = this.props;
+    const { nextStage, closeModal, CloseButton, host, theme, validateEmailInput, client, flow, eventsTrackers, } = this.props;
 
     return (
       <Fragment>
@@ -89,6 +94,8 @@ class ResetPasswordForm extends Component {
               showError: this.showError,
               hideError: this.hideError,
               setPreloader: this.setPreloader,
+              flow,
+              eventsTrackers,
             })}
             render={({ getInputProps, handleSubmit, clearForm, }) => (
               <Fragment>

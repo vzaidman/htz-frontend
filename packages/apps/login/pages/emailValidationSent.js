@@ -4,9 +4,11 @@ import Router from 'next/router';
 import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
-import { ApolloConsumer, } from '@haaretz/htz-components';
+import { EventTracker, ApolloConsumer, } from '@haaretz/htz-components';
 import { getEmail, sendMailConfirmation, } from './queryutil/userDetailsOperations';
 import { getHost, } from '../util/requestUtil';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
 import {
@@ -71,55 +73,66 @@ class EmailValidationSent extends React.Component {
     return this.state.firstTime ? (
       <ApolloConsumer>
         {client => {
+          const flow = getFlowNumber(client);
           return (
             <FSMLayout>
               {({ currentState, findRout, doTransition, }) => (
                 <Fragment>
-                  <ContentWrapper>
-                    <FormWrapper>
-                      <TextBox>
-                        <h5>נשלח אליכם דוא"ל</h5>
-                        <span>
-                          יש ללחוץ על כפתור האישור בדוא"ל שקיבלתם להמשך הגלישה באתר
-                        </span>
-                      </TextBox>
+                  <EventTracker>
+                    {({ biAction, gaAction, gaMapper, }) => (
+                      <ContentWrapper>
+                        <FormWrapper>
+                          <TextBox>
+                            <h5>נשלח אליכם דוא"ל</h5>
+                            <span>
+                              יש ללחוץ על כפתור האישור בדוא"ל שקיבלתם להמשך הגלישה באתר
+                            </span>
+                          </TextBox>
 
-                      <br/>
-                      <ItemCenterer>
-                        <Preloader isLoading={this.state.isLoading} />
-                      </ItemCenterer>
+                          <br/>
+                          <ItemCenterer>
+                            <Preloader isLoading={this.state.isLoading} />
+                          </ItemCenterer>
 
-                      <ErrorBox className={this.state.showError ? '' : 'hidden'}>
-                        <span>
-                          {this.state.errorMessage}
-                        </span>
-                      </ErrorBox>
+                          <ErrorBox className={this.state.showError ? '' : 'hidden'}>
+                            <span>
+                              {this.state.errorMessage}
+                            </span>
+                          </ErrorBox>
 
-                      <BottomLinks spacing={1}>
-                        <span>הדוא"ל לא הגיע? </span>
-                        <HtzLink
-                          href={`${findRout('sendAgain')}`}
-                          onClick={e => {
-                            e.preventDefault();
-                            sendEmailAgain(client, doTransition('sendAgain'), this.showError, this.hideError, this.setPreloader);
-                          }}
-                        >
-                          אנא נסו בשנית
-                        </HtzLink>
-                        <br />
-                        <HtzLink
-                          href={`${findRout('notRegistered')}`}
-                          onClick={e => {
-                            e.preventDefault();
-                            const route = doTransition('notRegistered');
-                            Router.push(route);
-                          }}
-                        >
-                          או הירשם לאתר
-                        </HtzLink>
-                      </BottomLinks>
-                    </FormWrapper>
-                  </ContentWrapper>
+                          <BottomLinks spacing={1}>
+                            <span>הדוא"ל לא הגיע? </span>
+                            <HtzLink
+                              href={`${findRout('sendAgain')}`}
+                              onClick={e => {
+                                e.preventDefault();
+                                sendTrackingEvents({ biAction, gaAction, }, { page: 'Email validation 1', flowNumber: flow, label: 'sendAgainAddressEmail', })(() => {
+                                    sendEmailAgain(client, doTransition('sendAgain'), this.showError, this.hideError, this.setPreloader);
+                                  }
+                                );
+                              }}
+                            >
+                              אנא נסו בשנית
+                            </HtzLink>
+                            <br />
+                            <HtzLink
+                              href={`${findRout('notRegistered')}`}
+                              onClick={e => {
+                                e.preventDefault();
+                                const route = doTransition('notRegistered');
+                                sendTrackingEvents({ biAction, gaAction, }, { page: 'Email validation 1', flowNumber: flow, label: 'registrationPage', })(() => {
+                                    Router.push(route);
+                                  }
+                                );
+                              }}
+                            >
+                              או הירשם לאתר
+                            </HtzLink>
+                          </BottomLinks>
+                        </FormWrapper>
+                      </ContentWrapper>
+                    )}
+                  </EventTracker>
                 </Fragment>
               )}
             </FSMLayout>

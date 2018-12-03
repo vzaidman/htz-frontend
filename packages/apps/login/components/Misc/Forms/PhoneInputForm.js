@@ -8,7 +8,9 @@ import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
 
 import { connectMailWithPhone, getUserData, getEmail, getHostname, saveUserData, } from '../../../pages/queryutil/userDetailsOperations';
+import { getFlowNumber, } from '../../../components/FlowDispenser/flowStorage';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
+import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -32,11 +34,12 @@ const cleanPhoneNumber = phoneNumber => {
   return phoneNumber ? phoneNumber.replace(/[\s\-]/g, '') : phoneNumber;
 }
 
-const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, }) => ({ phoneNumber, }) => {
+const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, eventsTrackers, }) => ({ phoneNumber, }) => {
   setPreloader(true);
   hideError();
   const userData = getUserData(client);
   const email = getEmail(client);
+  const flow = getFlowNumber(client);
   phoneNumber = cleanPhoneNumber(phoneNumber);
   connectMailWithPhone(client)({
     email,
@@ -48,6 +51,7 @@ const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, })
     () => {
       saveUserData(client)({ userData: { phoneNum: phoneNumber, __typename: "SsoUser", }, });
       const route = doTransition('accept');
+      sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', });
       Router.push(route);
     },
     error => {
@@ -77,7 +81,7 @@ class PhoneInputForm extends React.Component {
   };
 
   render() {
-    const { client, findRout, doTransition, } = this.props;
+    const { client, findRout, doTransition, eventsTrackers, } = this.props;
     return (
       <ContentWrapper>
         <FormWrapper>
@@ -91,6 +95,7 @@ class PhoneInputForm extends React.Component {
               showError: this.showError,
               hideError: this.hideError,
               setPreloader: this.setPreloader,
+              eventsTrackers,
             })}
             render={({ getInputProps, handleSubmit, clearForm, }) => (
               <Fragment>

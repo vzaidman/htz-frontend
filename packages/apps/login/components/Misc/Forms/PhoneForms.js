@@ -5,6 +5,7 @@ import { PhoneInputForm, } from './PhoneInputForm';
 import OtpForm from './OtpForm';
 import { getFlowNumber, } from '../../FlowDispenser/flowStorage';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 
 // Styling Components -----------------
 const { ItemCenterer, } = LoginContentStyles;
@@ -36,14 +37,14 @@ class PhoneForms extends React.Component {
       );
   }
 
-  getLinks = ({ findRout, doTransition, }) =>
+  getLinks = ({ findRout, doTransition, }, eventsTrackers, flow,) =>
     (this.state.formIndex === 0 ? null : (
       <BottomLinks spacing={2.5}>
         <HtzLink
           href="/"
           onClick={e => {
             e.preventDefault();
-            //doTransition('notMyPhone');
+            sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'notMyPhone', });
             this.changeFormType(0);
           }}
         >
@@ -57,8 +58,9 @@ class PhoneForms extends React.Component {
   };
 
   render() {
+    const { eventsTrackers, flow, } = this.props;
     const Form = () => this.getForm(this.props);
-    const Links = () => this.getLinks(this.props);
+    const Links = () => this.getLinks(this.props, eventsTrackers, flow,);
     return (
       <Fragment>
         <Form />
