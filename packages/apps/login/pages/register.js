@@ -1,15 +1,14 @@
 import React, { Fragment, Component, } from 'react';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
+import { FelaTheme, createComponent, } from 'react-fela';
 
 import { HtzLink, Register, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
+import { UserTransformations, } from '@haaretz/htz-user-utils';
 
 import FSMLayout from '../layouts/FSMLayout';
-import styleRenderer from '../components/styleRenderer/styleRenderer';
 import isEmail from 'validator/lib/isEmail';
 import { getEmail, getUserData, } from './queryutil/userDetailsOperations';
-import theme from '../theme';
-import { FelaTheme, createComponent, } from 'react-fela';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
 import {
@@ -125,21 +124,6 @@ const getTermsText = () => (
   </div>
 );
 
-const mobileNumberParser = mobileNum => {
-  let mobilePrefix;
-  let mobileSuffix;
-
-  if (mobileNum.startsWith('+')) {
-    mobilePrefix = '00';
-    mobileSuffix = mobileNum.substring(1);
-  }
-  else {
-    mobilePrefix = mobileNum.substring(0, 3);
-    mobileSuffix = mobileNum.substring(3);
-  }
-  return { mobilePrefix, mobileSuffix, };
-};
-
 const getFacebookLogin = (user) => {
   const facebookParams = getFacebookParams(user);
   return facebookParams ?
@@ -150,7 +134,7 @@ const getFacebookLogin = (user) => {
 const onSubmit = ({ register, doTransition, user, showError, hideError, setPreloader, }) => ({ firstname, lastname, email, password, phone, terms, }) => {
   setPreloader(true);
   hideError();
-  const { mobilePrefix, mobileSuffix, } = phone ? mobileNumberParser(phone) : { mobilePrefix: '', mobileSuffix: '', };
+  const { mobilePrefix, mobileSuffix, } = phone ? UserTransformations.mobileNumberParser(phone) : { mobilePrefix: '', mobileSuffix: '', };
   register(
     email.trim(),
     password.trim(),
@@ -163,12 +147,6 @@ const onSubmit = ({ register, doTransition, user, showError, hideError, setPrelo
   ).then(
     () => {
       Router.push(doTransition('success'));
-      /*const facebookLoginUrl = getFacebookLogin(user);
-      if(facebookLoginUrl) {
-        window.location = getFacebookLogin(user);
-      } else {
-        Router.push(doTransition('success'));
-      }*/
     },
     reason => {
       setPreloader(false);
