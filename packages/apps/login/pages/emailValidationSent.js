@@ -73,9 +73,9 @@ class EmailValidationSent extends React.Component {
                   <ContentWrapper>
                     <FormWrapper>
                       <TextBox>
-                        <h5>נשלח אלייך מייל</h5>
+                        <h5>נשלח אליכם דוא"ל</h5>
                         <span>
-                          יש לאשר את המייל שנשלח אלייך על מנת לקרוא 6 כתבות באתר מדיי חודש
+                          יש ללחוץ על כפתור האישור בדוא"ל שקיבלתם להמשך הגלישה באתר
                         </span>
                       </TextBox>
 
@@ -91,7 +91,7 @@ class EmailValidationSent extends React.Component {
                       </ErrorBox>
 
                       <BottomLinks spacing={1}>
-                        <span>לא הגיע המייל? </span>
+                        <span>הדוא"ל לא הגיע? </span>
                         <HtzLink
                           href={`${findRout('sendAgain')}`}
                           onClick={e => {
@@ -99,7 +99,7 @@ class EmailValidationSent extends React.Component {
                             sendEmailAgain(client, doTransition('sendAgain'), this.showError, this.hideError, this.setPreloader);
                           }}
                         >
-                          אנא נסה בשנית
+                          אנא נסו בשנית
                         </HtzLink>
                         <br />
                         <HtzLink

@@ -128,7 +128,7 @@ class OtpForm extends Component {
                 <Fragment>
                   <div>
                     <TextInput
-                      type="number"
+                      type="tel"
                       label={theme.emailInputLabel}
                       noteText="אנא הזינו את הקוד שנשלח אליכם"
                       requiredText={{
