@@ -51,6 +51,40 @@ describe('# Media Queries', () => {
           / 16}em) and (orientation: landscape)`
       );
     });
+    it('return a media query string in pixels with the "@media" prefix', () => {
+      const widths = { s: 600, m: 1024, l: 1280, };
+      const result = getMqString(
+        {
+          widths,
+          misc: { landscape: '(orientation: landscape)', },
+        },
+        { from: 's', until: 'm', misc: 'landscape', },
+        false,
+        true
+      );
+
+      expect(result).toBe(
+        `@media (min-width: ${widths.s}px) and (max-width: ${widths.m
+          - 1}px) and (orientation: landscape)`
+      );
+    });
+    it('return a media query string in pixels without the "@media" prefix', () => {
+      const widths = { s: 600, m: 1024, l: 1280, };
+      const result = getMqString(
+        {
+          widths,
+          misc: { landscape: '(orientation: landscape)', },
+        },
+        { from: 's', until: 'm', misc: 'landscape', },
+        true,
+        true
+      );
+
+      expect(result).toBe(
+        `(min-width: ${widths.s}px) and (max-width: ${widths.m
+          - 1}px) and (orientation: landscape)`
+      );
+    });
   });
   describe('## mqFuncFactory()', () => {
     it('Return a function when not passing a configuration oject', () => {

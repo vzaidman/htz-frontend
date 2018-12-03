@@ -40,9 +40,11 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './createMqFunc';
  *   e.g., `(orientation: landscape)`.
  * @param {string} [query.type]
  *   A media type, e.g., `only screen`, `print`, etc.
- * @param {true} [noCssMedia]
+ * @param {boolean} [noCssMedia]
  *   Omit the `@media` prefix from the returned string.
  *   Useful for usage in `matchMedia`
+ * @param {boolean} [pixelOutput]
+ *   Don't convert media query string from pixels to `em`s
  *
  * @return {string} a media-query string
  *
@@ -67,20 +69,24 @@ import type { BpsConfig, MqOptions, WidthBpsConfig, } from './createMqFunc';
 export default function getMqString(
   { widths, misc: miscBps, }: BpsConfig,
   { from, until, misc, type, }: MqOptions,
-  noCssMedia?: true
+  noCssMedia?: boolean,
+  pixelOutput?: boolean
 ): string {
   const typeString = !type || type.toLowerCase() === 'all' ? '' : type;
   const minString = from
     ? `${typeString ? ' and ' : ''}(min-width: ${getLengthString(
       from,
-      widths
+      widths,
+      false,
+      pixelOutput
     )})`
     : '';
   const maxString = until
     ? `${typeString || minString ? ' and ' : ''}(max-width: ${getLengthString(
       until,
       widths,
-      true
+      true,
+      pixelOutput
     )})`
     : '';
   const namedMisc = miscBps[misc || ''];
@@ -112,6 +118,8 @@ export default function getMqString(
  * @param {true} [isUntil]
  *   Indicates that the length being calculated is for an
  *   `until` query, and should be exclusive.
+ * @param {boolean} [pixelOutput]
+ *   Don't convert media query string from pixels to `em`s
  *
  * @return {string} A CSS length-string for a media-query
  * @private
@@ -124,16 +132,20 @@ export default function getMqString(
 export function getLengthString(
   length: string | number,
   breakpoints: WidthBpsConfig,
-  isUntil?: true
+  isUntil?: boolean,
+  pixelOutput?: boolean
 ): string {
   // if `length` is a number, assume it is in pixels and convert to em
   if (typeof length === 'number') {
-    return `${(length - (isUntil ? 1 : 0)) / DEFAULT_BROWSER_FONT_SIZE}em`;
+    const pixelValue = length - (isUntil ? 1 : 0);
+    return pixelOutput
+      ? `${pixelValue}px`
+      : `${pixelValue / DEFAULT_BROWSER_FONT_SIZE}em`;
   }
   const lengthNumber = breakpoints[length] ? breakpoints[length] : undefined;
-  if (lengthNumber) return getLengthString(lengthNumber, breakpoints, isUntil);
+  if (lengthNumber) return getLengthString(lengthNumber, breakpoints, isUntil, pixelOutput);
   const { unitlessValue, unit, } = getLengthProps(length);
   return unit === 'px'
-    ? getLengthString(unitlessValue, breakpoints, isUntil)
+    ? getLengthString(unitlessValue, breakpoints, isUntil, pixelOutput)
     : length;
 }

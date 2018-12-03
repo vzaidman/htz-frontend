@@ -55,7 +55,7 @@
   "devDependencies": {
     "@haaretz/htz-react-base": "^1.0.0",
     "babel-loader": "^8.0.0-beta.4",
-    "documentation": "^5.3.3",
+    "documentation": "^8.1.2",
     "fela": "^6.1.7",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
