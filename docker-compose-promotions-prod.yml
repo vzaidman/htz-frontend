@@ -30,8 +30,8 @@ services:
       - GRAPHQL_EXPOSE_PORT=false
 
     networks:
-      - prod01
+      - production
 
 networks:
-  prod01:
+  production:
     external: true

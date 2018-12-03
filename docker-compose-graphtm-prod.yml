@@ -32,8 +32,8 @@ services:
       - D3_PORT=5505
 
     networks:
-      - prod01
+      - production
 
 networks:
-  prod01:
+  production:
     external: true
