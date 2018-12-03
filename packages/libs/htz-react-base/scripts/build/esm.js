@@ -1,9 +1,23 @@
 process.env.BABEL_ENV = process.env.BABEL_ENV || 'esm';
 
 console.log('Building dist/esm...');
+const fs = require('fs');
+const { checkDir, } = require('./_checkDir');
 
-if (process.argv.length < 3) {
-  process.argv.push('src', '--source-maps', '--out-dir', 'dist/esm');
-}
+checkDir('dist').then(hasDist => {
+  if (!hasDist) {
+    fs.mkdirSync('dist');
+  }
 
-require('@babel/cli/bin/babel');
+  const watchIndex = process.argv.indexOf('watch');
+  if (watchIndex !== -1) process.argv.splice(watchIndex, 1);
+  if (process.argv.length < 3) {
+    process.argv.push('src', '--source-maps', '--out-dir', 'dist/esm');
+  }
+
+  if (watchIndex > -1) {
+    process.argv.push('--watch');
+  }
+
+  require('@babel/cli/bin/babel');
+});
