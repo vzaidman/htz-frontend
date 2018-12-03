@@ -255,6 +255,7 @@ class IndexForm extends Component {
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
+    this.setReferrer(this.props.client)
     this.autoSubmit(this.props);
   }
 
@@ -269,6 +270,11 @@ class IndexForm extends Component {
   showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   };
+
+  setReferrer = (client) => {
+    const referrerUrl = document.referrer;
+    saveUserData(client)({ loginReferrer: referrerUrl, })
+  }
 
   /**
    * the autoSubmit method runs when the user returns to the login page from a confirmation email

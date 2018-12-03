@@ -5,9 +5,11 @@ import { HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
 
 import { createComponent, } from 'react-fela';
-import { ApolloConsumer, } from '@haaretz/htz-components';
+import { EventTracker, ApolloConsumer, } from '@haaretz/htz-components';
 import BottomLinks from '../components/Misc/BottomLinks';
 import { sendMailValidation, } from '../util/requestUtil';
+import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
+import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import { getEmail, } from './queryutil/userDetailsOperations';
 import {
   LoginContentStyles,
@@ -63,41 +65,58 @@ class EmailValidationSent2 extends React.Component {
     return(
       <ApolloConsumer>
         {client => {
-            //const email = getEmail(client);
-            //this.sendEmail(email);
+            const flow = getFlowNumber(client);
             return(
               <FSMLayout>
                 {({ currentState, findRout, doTransition, }) => (
                   <Fragment>
-                    <ContentWrapper>
-                      <FormWrapper>
-                        <TextBox>
-                          <GreenText>
-                            <h5>שלחנו אליכם דוא"ל נוסף</h5>
-                          </GreenText>
-                        </TextBox>
-            
-                        <BottomLinks spacing={2}>
-                          <span>לא הגיע? </span>
-                          <br/>
-                          <HtzLink href="https://www.haaretz.co.il/misc/contact-us" target="_blank">
-                            פניה לשירות לקוחות
-                          </HtzLink>
-                            <br/>
-                          <HtzLink
-                            href={`${findRout('withPassword')}`}
-                            onClick={e => {
-                              e.preventDefault();
-                              const route = doTransition('withPassword');
-                              Router.push(route);
-                            }}
-                          >
-                            כניסה באמצעות סיסמה 
-                          </HtzLink>
-                        </BottomLinks>
-            
-                      </FormWrapper>
-                    </ContentWrapper>
+                    <EventTracker>
+                      {({ biAction, gaAction, gaMapper, }) => (
+                        <ContentWrapper>
+                          <FormWrapper>
+                            <TextBox>
+                              <GreenText>
+                                <h5>שלחנו אליכם דוא"ל נוסף</h5>
+                              </GreenText>
+                            </TextBox>
+                
+                            <BottomLinks spacing={2}>
+                              <span>לא הגיע? </span>
+                              <br/>
+                              <HtzLink
+                                href="https://www.haaretz.co.il/misc/contact-us"
+                                onClick={e => {
+                                  e.preventDefault();
+                                  const route = doTransition('withPassword');
+                                  sendTrackingEvents({ biAction, gaAction, }, { page: 'Email validation 2', flowNumber: flow, label: 'getCustomerService', })(() => {
+                                      window.open("https://www.haaretz.co.il/misc/contact-us");
+                                    }
+                                  );
+                                }}
+                              >
+                                פניה לשירות לקוחות
+                              </HtzLink>
+                                <br/>
+                              <HtzLink
+                                href={`${findRout('withPassword')}`}
+                                onClick={e => {
+                                  e.preventDefault();
+                                  const route = doTransition('withPassword');
+                                  Router.push(route);
+                                  sendTrackingEvents({ biAction, gaAction, }, { page: 'Email validation 2', flowNumber: flow, label: 'withPassword', })(() => {
+                                      Router.push(route);
+                                    }
+                                  );
+                                }}
+                              >
+                                כניסה באמצעות סיסמה 
+                              </HtzLink>
+                            </BottomLinks>
+                
+                          </FormWrapper>
+                        </ContentWrapper>
+                      )}
+                    </EventTracker>
                   </Fragment>
                 )}
               </FSMLayout>
