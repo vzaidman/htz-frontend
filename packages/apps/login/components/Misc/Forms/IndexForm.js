@@ -124,8 +124,9 @@ const handleGenerateOtp = ({
       saveOtpHash(client)({ otpHash: json.hash, });
       if (json.success) {
         saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
-        eventsHandler();
-        Router.push(route);
+        eventsHandler(() => {
+            Router.push(route);
+        });
       }
       else {
         setPreloader(false);
