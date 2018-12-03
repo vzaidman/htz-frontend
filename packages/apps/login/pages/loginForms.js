@@ -20,8 +20,8 @@ import Preloader from '../components/Misc/Preloader';
 import TabsFrame from '../components/Misc/TabsFrame';
 import LoginDialog from '../components/Misc/LoginDialog';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
-import { getHost } from '../util/requestUtil';
-import { PhoneForms } from '../components/Misc/Forms/PhoneForms';
+import { getHost, } from '../util/requestUtil';
+import { PhoneForms, } from '../components/Misc/Forms/PhoneForms';
 import PasswordForm from '../components/Misc/Forms/PasswordForm';
 import ResetPasswordForm from '../components/Misc/Forms/ResetPasswordForm';
 
@@ -95,7 +95,6 @@ class LoginForms extends Component {
                   const flow = getFlowNumber(client);
                   const activeTab = '2345'.includes(flow) ? 0 : 1;
                   const user = getUserFromApollo(client);
-                  console.log('flow: ', flow, 'active tab: ', activeTab);
                   return (
                     <FelaTheme
                       render={theme => (
