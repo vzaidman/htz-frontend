@@ -111,7 +111,7 @@ class PhoneInputForm extends React.Component {
                     {...getInputProps({
                       name: 'phoneNumber',
                       label: 'מספר טלפון נייד',
-                      type: 'text',
+                      type: 'tel',
                     })}
                   />
                 </div>
