@@ -151,6 +151,7 @@ export default class Form extends Component {
         formElementProperties = {
           checked: this.state.values[name] || false,
           onChange: callAll(onChange, evt => {
+            evt.persist();
             this.setState((prevState, props) => {
               const values = {
                 ...prevState.values,
@@ -172,8 +173,12 @@ export default class Form extends Component {
           // RadioGroup needs the name in order to pass it to RadioButton
           name,
           onChange: callAll(onChange, evt => {
+            evt.persist();
             this.setState((prevState, props) => {
-              const values = { ...prevState.values, [name]: evt.target.value, };
+              const values = {
+                ...prevState.values,
+                [name]: evt.target && evt.target.value,
+              };
               const errors = props.isValidateOnChange
                 ? this.handleTouchedValidate(values)
                 : null;
@@ -231,10 +236,11 @@ export default class Form extends Component {
             }
             : {
               onChange: callAll(onChange, evt => {
+                evt.persist();
                 this.setState((prevState, props) => {
                   const values = {
                     ...prevState.values,
-                    [name]: evt.target.value,
+                    [name]: evt.target && evt.target.value,
                     // value from getInputProps trumps all other values
                     ...(value ? { [name]: value, } : {}),
                   };
