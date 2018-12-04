@@ -14,6 +14,7 @@ export default [
     loginFormsPass: {
       registration: 'register',
       withSms: 'loginFormsOtp',
+      accept: 'phoneMailSent',
     },
   },
   {
@@ -28,6 +29,7 @@ export default [
     loginFormsPass: {
       registration: 'register',
       withSms: 'loginFormsPhone',
+      accept: 'phoneMailSent',
     },
   },
   {
@@ -38,6 +40,7 @@ export default [
     loginFormsPass: {
       registration: 'register',
       withSms: 'loginFormsPhone',
+      accept: 'phoneMailSent',
     },
   },
   {
@@ -48,6 +51,7 @@ export default [
     loginFormsPass: {
       registration: 'register',
       withSms: 'loginFormsPhone',
+      accept: 'phoneMailSent',
     },
   },
   {
@@ -58,6 +62,7 @@ export default [
     loginFormsPass: {
       registration: 'register',
       withSms: 'loginFormsPhone',
+      accept: 'phoneMailSent',
     },
   },
   {
@@ -68,6 +73,7 @@ export default [
     loginFormsPass: {
       registration: 'register',
       withSms: 'loginFormsOtp',
+      accept: 'phoneMailSent',
     },
   },
 ];
