@@ -30,16 +30,17 @@ const getFacebookLogin = user => {
     false;
 };
 
-const getReferrerUrl = (client) => {
+const getReferrerUrl = client => {
   try {
     const referrerUrl = getReferrer(client);
     const loginUrlRegex = /(login-dev)|(login)|(:3000)/;
     const siteUrlRegex = /(haaretz.co.il)|(themarker.com)/;
     return (!loginUrlRegex.test(referrerUrl) && siteUrlRegex.test(siteUrlRegex)) ? referrerUrl : false;
-  } catch(e) {
+  }
+  catch (e) {
     return false;
   }
-}
+};
 
 const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
@@ -49,9 +50,9 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
       // eslint-disable-next-line no-undef
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', })(() => {
-            const referrerUrl = getReferrerUrl(client);
-            window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
-          }
+          const referrerUrl = getReferrerUrl(client);
+          window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
+        }
         );
       },
       reason => {
@@ -74,14 +75,12 @@ const handleGenerateOtp = (client, doTransition, setPreloader) => {
       }
       else {
         setPreloader(false);
-        showError((json.msg || "אירעה שגיאה, אנא נסה שנית מאוחר יותר."));
+        showError((json.msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
       }
     });
-}
-    
-const hidePhone = phoneNumber => {
-  return phoneNumber.substring(0, 3) + "****" + phoneNumber.substring(7);
-}
+};
+
+const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
 
 // --------------------------
 
@@ -112,7 +111,7 @@ class OtpForm extends Component {
   };
 
   hideError = () => {
-    this.setState({ showError: false, errorMessage: "", });
+    this.setState({ showError: false, errorMessage: '', });
   };
 
   setPreloader = isLoadingStatus => {
@@ -162,7 +161,7 @@ class OtpForm extends Component {
                     <InputLinkButton>
                       <button
                         data-role="resend"
-                        onClick={(e) => {
+                        onClick={e => {
                           e.preventDefault();
                           sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'sendAgainOtp', })(() => {
                             handleGenerateOtp(client, doTransition, this.setPreloader);
@@ -175,12 +174,12 @@ class OtpForm extends Component {
                     </InputLinkButton>
                   </div>
 
-                  <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                  <ErrorBox className={this.state.showError ? '' : 'hidden'}>
                     <span>
                       {this.state.errorMessage}
                     </span>
                   </ErrorBox>
-                  
+
                   <ItemCenterer>
                     <Preloader isLoading={this.state.isLoading} />
                     <Button onClick={handleSubmit}>התחברות</Button>
@@ -194,6 +193,6 @@ class OtpForm extends Component {
     );
     /* :::::::::::::::::::::::::::::::::::: RENDER } :::::::::::::::::::::::::::::::::::: */
   }
-};
+}
 
 export default OtpForm;
