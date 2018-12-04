@@ -9,6 +9,7 @@ export default [
       registration: 'register',
       notMyPhone: 'loginFormsPhone',
       sendAgain: 'otpValidation2',
+      accept: 'phoneMailSent',
     },
     loginFormsPass: {
       registration: 'register',
