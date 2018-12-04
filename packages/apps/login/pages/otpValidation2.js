@@ -50,8 +50,9 @@ const getFacebookLogin = user => {
 const getReferrerUrl = (client) => {
   try {
     const referrerUrl = getReferrer(client);
-    const urlRegex = /(login-dev)|(login)|(:3000)/;
-    return !urlRegex.test(referrerUrl) ? referrerUrl : false;
+    const loginUrlRegex = /(login-dev)|(login)|(:3000)/;
+    const siteUrlRegex = /(haaretz.co.il)|(themarker.com)/;
+    return (!loginUrlRegex.test(referrerUrl) && siteUrlRegex.test(siteUrlRegex)) ? referrerUrl : false;
   } catch(e) {
     return false;
   }
