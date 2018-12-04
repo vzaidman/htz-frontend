@@ -1,6 +1,6 @@
 module.exports = api => {
-  api.cache(true);
-
+  api.cache( process.env.NODE_ENV !== 'development');
+  
   return {
     presets: [ '@babel/preset-flow', 'next/babel', ],
     plugins: [
