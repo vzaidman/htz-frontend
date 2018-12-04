@@ -30,6 +30,16 @@ const getFacebookLogin = user => {
     false;
 };
 
+const getReferrerUrl = (client) => {
+  try {
+    const referrerUrl = getReferrer(client);
+    const urlRegex = /(login-dev)|(login)|(:3000)/;
+    return !urlRegex.test(referrerUrl) ? referrerUrl : false;
+  } catch(e) {
+    return false;
+  }
+}
+
 const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
   hideError();
@@ -38,7 +48,7 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
       // eslint-disable-next-line no-undef
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', })(() => {
-            const referrerUrl = getReferrer(client);
+            const referrerUrl = getReferrerUrl(client);
             window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
           }
         );
@@ -51,13 +61,13 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
 };
 
 const handleGenerateOtp = (client, doTransition, setPreloader) => {
+  setPreloader(true);
   generateOtp(client)({ typeId: getUserData(client).phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
       saveOtpHash(client)({ otpHash: json.hash, });
 
       if (json.success) {
-        console.log("SmS Sent again");
         const route = doTransition('sendAgain');
         Router.push(route);
       }
