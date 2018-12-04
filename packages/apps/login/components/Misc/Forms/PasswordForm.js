@@ -51,6 +51,16 @@ const getFacebookLogin = (user) => {
     false;
 }
 
+const getReferrerUrl = (client) => {
+  try {
+    const referrerUrl = getReferrer(client);
+    const urlRegex = /(login-dev)|(login)|(:3000)/;
+    return !urlRegex.test(referrerUrl) ? referrerUrl : false;
+  } catch(e) {
+    return false;
+  }
+}
+
 const modifyErrorMessage = (message) => {
   return message === "הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת" ?
     'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message;
@@ -64,7 +74,7 @@ const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPr
       .then(
         () => {
           sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
-              const referrerUrl = getReferrer(client);
+              const referrerUrl = getReferrerUrl(client);
               window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
             }
           );
