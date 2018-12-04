@@ -58,6 +58,12 @@ export default function htz(app, server, DEV) {
       console.log('found review, rendering review page');
       return app.render(req, res, '/reviewArticle', query);
     }
+
+    if (req.path.indexOf('FELA_TEST') >= 0) {
+      console.log('found review, rendering FELA_TEST');
+      return app.render(req, res, '/test', query);
+    }
+    
     console.log('rendering standardArticle');
     return app.render(req, res, '/standardArticle', query);
   });
