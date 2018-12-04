@@ -5,12 +5,12 @@ import { borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 import Section from '../AutoLevels/Section';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const WideArticleLayoutRow = ({ children, hideDivider, miscStyles, }) => (
+const WideArticleLayoutRow = ({ children, hideDivider, miscStyles, showBorderTop}) => (
   <FelaComponent
     style={theme => ({
       marginTop: '3rem',
       extend: [
-        borderTop('2px', 2, 'solid', hideDivider ? 'transparent' : theme.color('primary')),
+        showBorderTop ? borderTop('2px', 2, 'solid', hideDivider ? 'transparent' : theme.color('primary')) : {},
         theme.mq(
           { from: 'l', until: 'xl', },
           {
@@ -38,11 +38,13 @@ WideArticleLayoutRow.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   hideDivider: PropTypes.bool,
   miscStyles: stylesPropType,
+  showBorderTop: PropTypes.bool,
 };
 
 WideArticleLayoutRow.defaultProps = {
   hideDivider: false,
   miscStyles: null,
+  showBorderTop: true,
 };
 
 export default WideArticleLayoutRow;

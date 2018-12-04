@@ -56,9 +56,7 @@ function RecipeArticle({ articleId, slots, }) {
             )
             : '';
 
-          const breadCrumbs = article.find(
-            element => element.inputTemplate === 'com.tm.PageTitle'
-          );
+          const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
 
           const recipeArticleElement = article.find(
             // todo: change to recipe inputTemplate after updating papi
@@ -113,18 +111,12 @@ function RecipeArticle({ articleId, slots, }) {
                   >
                     <FelaComponent
                       style={{
-                        extend: [
-                          theme.mq(
-                            { from: 'l', },
-                            { width: 'calc(100% - 300px - 8rem)', }
-                          ),
-                        ],
+                        extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
                       }}
                     >
                       {article.map(element => {
                         if (
-                          element.inputTemplate
-                            === 'com.htz.ArticleHeaderElement'
+                          element.inputTemplate === 'com.htz.ArticleHeaderElement'
                           || element.inputTemplate === 'com.tm.PageTitle'
                         ) {
                           return null;
@@ -132,8 +124,7 @@ function RecipeArticle({ articleId, slots, }) {
                         if (
                           // todo: change to recipe input template
                           element.inputTemplate === 'com.htz.StandardArticle'
-                          || element.inputTemplate
-                            === 'com.mouse.story.MouseStandardStory'
+                          || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
                           || element.inputTemplate === 'com.tm.StandardArticle'
                         ) {
                           return (
@@ -158,40 +149,28 @@ function RecipeArticle({ articleId, slots, }) {
                                             publishDate={header.pubDate}
                                             modifiedDate={header.modDate}
                                             miscStyles={{
-                                              display: [
-                                                { until: 'l', value: 'none', },
-                                              ],
+                                              display: [ { until: 'l', value: 'none', }, ],
                                             }}
                                           />
                                         ) : null}
 
                                         <RecipeRating
                                           articleId={articleId}
-                                          articleRankersCounter={
-                                            articleRankersCounter
-                                          }
-                                          articleRankCounter={
-                                            articleRankCounter
-                                          }
+                                          articleRankersCounter={articleRankersCounter}
+                                          articleRankCounter={articleRankCounter}
                                           totalCookTime={totalCookTime}
                                           numOfServings={numOfServings}
-                                          recipeDifficultyLevel={
-                                            recipeDifficultyLevel
-                                          }
+                                          recipeDifficultyLevel={recipeDifficultyLevel}
                                           miscStyles={{
                                             marginTop: '6rem',
-                                            marginBottom: [
-                                              { until: 'l', value: '4rem', },
-                                            ],
+                                            marginBottom: [ { until: 'l', value: '4rem', }, ],
                                           }}
                                         />
                                       </Fragment>
 )}
                                   >
                                     <ArticleBody body={body} />
-                                    <Ingredients
-                                      ingredientLists={ingredients}
-                                    />
+                                    <Ingredients ingredientLists={ingredients} />
                                     <Instructions instructions={instructions} />
                                   </ArticleLayoutRow>
                                 );
@@ -200,18 +179,14 @@ function RecipeArticle({ articleId, slots, }) {
                           );
                         }
                         const Element = getComponent(element.inputTemplate);
-                        const {
-                          properties,
-                          ...elementWithoutProperties
-                        } = element;
+                        const { properties, ...elementWithoutProperties } = element;
                         if (
-                          element.inputTemplate
-                            === 'com.polobase.OutbrainElement'
-                          || element.inputTemplate
-                            === 'com.polobase.ClickTrackerBannersWrapper'
+                          element.inputTemplate === 'com.polobase.OutbrainElement'
+                          || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                         ) {
                           return (
                             <WideArticleLayoutRow
+                              showBorderTop={false}
                               key={element.contentId}
                               {...(element.inputTemplate
                               === 'com.polobase.ClickTrackerBannersWrapper'
@@ -234,11 +209,9 @@ function RecipeArticle({ articleId, slots, }) {
                         return (
                           <ArticleLayoutRow
                             key={element.contentId}
-                            {...(element.inputTemplate
-                            === 'com.tm.ArticleCommentsElement'
+                            {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                               ? {
-                                title:
-                                    theme.articleLayoutI18n.commentSectionTitle,
+                                title: theme.articleLayoutI18n.commentSectionTitle,
                                 id: 'commentsSection',
                               }
                               : {})}
@@ -263,10 +236,7 @@ function RecipeArticle({ articleId, slots, }) {
                         alignItems: 'flex-start',
                         extend: [
                           theme.mq({ until: 'l', }, { display: 'none', }),
-                          theme.mq(
-                            { from: 'l', },
-                            { width: 'calc(300px + 8rem)', }
-                          ),
+                          theme.mq({ from: 'l', }, { width: 'calc(300px + 8rem)', }),
                         ],
                       }}
                       render={({ className, }) => (
