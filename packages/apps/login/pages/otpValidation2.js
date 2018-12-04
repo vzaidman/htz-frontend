@@ -47,7 +47,17 @@ const getFacebookLogin = user => {
     false;
 };
 
-const onSubmit = ({ client, host, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
+const getReferrerUrl = (client) => {
+  try {
+    const referrerUrl = getReferrer(client);
+    const urlRegex = /(login-dev)|(login)|(:3000)/;
+    return !urlRegex.test(referrerUrl) ? referrerUrl : false;
+  } catch(e) {
+    return false;
+  }
+}
+
+const onSubmit = ({ client, host, flow, user, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
@@ -55,7 +65,7 @@ const onSubmit = ({ client, host, flow, loginWithMobile, showError, hideError, s
       // eslint-disable-next-line no-undef
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'SMS code 2', flowNumber: flow, label: 'login', })(() => {
-            const referrerUrl = getReferrer(client);
+            const referrerUrl = getReferrerUrl(client);
             window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
           }
         );
@@ -119,7 +129,7 @@ class OtpValidation2 extends Component {
                               clearFormAfterSubmit={false}
                               // initialValues={{ email: 'insert email' }}
                               validate={validateSmsCodeInput}
-                              onSubmit={onSubmit({ client, host, flow, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers: {biAction, gaAction,}, })}
+                              onSubmit={onSubmit({ client, host, flow, user, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers: {biAction, gaAction,}, })}
                               render={({ getInputProps, handleSubmit, clearForm, }) => (
                                 <Fragment>
                                   <div>
