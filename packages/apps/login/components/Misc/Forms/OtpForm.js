@@ -50,7 +50,7 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
     );
 };
 
-const handleGenerateOtp = (client, doTransition) => {
+const handleGenerateOtp = (client, doTransition, setPreloader) => {
   generateOtp(client)({ typeId: getUserData(client).phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
@@ -154,7 +154,7 @@ class OtpForm extends Component {
                         onClick={(e) => {
                           e.preventDefault();
                           sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'sendAgainOtp', })(() => {
-                            handleGenerateOtp(client, doTransition);
+                            handleGenerateOtp(client, doTransition, this.setPreloader);
                             }
                           );
                         }}

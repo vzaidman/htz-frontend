@@ -51,6 +51,7 @@ export default {
     registration: 'register',
     notMyPhone: 'loginFormsPhone',
     sendAgain: 'otpValidation2',
+    accept: 'phoneMailSent',
   },
   otpValidation2: {
     withPassword: 'loginFormsPass',
