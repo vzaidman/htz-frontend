@@ -29,11 +29,11 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods ----------------------------
-const checkIfLoggedin = (client) => {
+const checkIfLoggedin = client => {
   const host = getHost(client);
-  return CookieUtils.getCookie("tmsso") ?
+  return CookieUtils.getCookie('tmsso') ?
     window.location = (getReferrerUrl(client) || `https://www.${host}`) : false;
-}
+};
 
 const b64DecodeUnicode = str => (str
   // eslint-disable-next-line no-undef
@@ -100,7 +100,7 @@ const hasActiveSub = dataSaved => {
         (crmStatus.isActiveTm || crmStatus.isActiveHeb);
 };
 
-const isEmailValidationRequired = (dataSaved) =>
+const isEmailValidationRequired = dataSaved =>
   !hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved);
 
 const setFacebookParamsOnApollo = client => {
@@ -132,7 +132,7 @@ const handleGenerateOtp = ({
       if (json.success) {
         saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
         eventsHandler(() => {
-            Router.push(route);
+          Router.push(route);
         });
       }
       else {
@@ -279,9 +279,9 @@ class IndexForm extends Component {
     this.setState({ showError: true, errorMessage: errorMsg, });
   };
 
-  setReferrer = (client) => {
+  setReferrer = client => {
     const referrerUrl = document.referrer;
-    saveUserData(client)({ loginReferrer: referrerUrl, })
+    saveUserData(client)({ loginReferrer: referrerUrl, });
   }
 
   /**
