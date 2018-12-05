@@ -188,6 +188,8 @@ const RootQuery = new GraphQLObjectType({
         assetSubSection: { type: GraphQLString, },
         assetId: { type: GraphQLString, },
         expirationBenchmarkDate: { type: GraphQLString, },
+        mtfCategory: { type: GraphQLString, },
+        mtfCategoryExposure: { type: GraphQLString, },
         count: { type: GraphQLInt, },
         sortBy: { type: GraphQLString, },
         sortOrder: { type: GraphQLString, },

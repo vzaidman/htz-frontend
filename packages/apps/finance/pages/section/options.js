@@ -12,7 +12,7 @@ import MainLayout from '../../layouts/MainLayout';
 import RowItem from '../../components/RowItem/RowItem';
 import PageRow from '../../components/PageRow/PageRow';
 import SortableTable from '../../components/SortableTable/SortableTable';
-import AssetsFilter from '../../components/AssetsFilter/AssetsFilter';
+import ExpirationBenchmarkFilter from '../../components/ExpirationBenchmarkFilter/ExpirationBenchmarkFilter';
 
 const OptionsAssetsQuery: DocumentNode = gql`
   query OptionsAssets {
@@ -55,10 +55,10 @@ function options({
                   if (error) return null;
                   const assets: Array<Asset> = data.assetsList;
                   return (
-                    <AssetsFilter assets={assets}>
+                    <ExpirationBenchmarkFilter assets={assets}>
                       {({
-                        id: assetId,
-                        expirationBenchmarkDate: expirationDate,
+                        assetId,
+                        expirationDate,
                       }) => (
                         <SortableTable
                           miscStyles={{
@@ -170,7 +170,7 @@ function options({
                           count={11}
                         />
                       )}
-                    </AssetsFilter>
+                    </ExpirationBenchmarkFilter>
                   );
                 }}
               </Query>
