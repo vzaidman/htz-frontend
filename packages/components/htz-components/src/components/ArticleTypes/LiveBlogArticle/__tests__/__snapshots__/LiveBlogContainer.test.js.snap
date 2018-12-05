@@ -83,14 +83,14 @@ Object {
               className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds"
+                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
               />
               <div
-                className="htz-dm htz-dq htz-dt htz-du htz-dv htz-da htz-dr htz-dw htz-de htz-df htz-dg htz-dx htz-dy htz-dz htz-dk htz-dl"
+                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-dz htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
               />
             </div>
             <div
-              className="htz-ea"
+              className="htz-ed"
             >
               מהאחרון לראשון
             </div>
@@ -113,14 +113,14 @@ Object {
               className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds"
+                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
               />
               <div
-                className="htz-dm htz-dq htz-dt htz-du htz-dv htz-da htz-dr htz-ds htz-de htz-df htz-dg htz-dx htz-dy htz-dz htz-dk htz-dl"
+                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-ds htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
               />
             </div>
             <div
-              className="htz-ea"
+              className="htz-ed"
             >
               מהראשון לאחרון
             </div>
@@ -128,7 +128,7 @@ Object {
         </div>
       </div>
       <div
-        className="htz-a htz-b htz-c htz-d htz-eb"
+        className="htz-a htz-b htz-c htz-d htz-ee"
       >
         <LiveBlogItem
           bps={
@@ -179,7 +179,6 @@ Object {
           }
           theme={
             Object {
-              "ModifiedDateText": undefined,
               "a11yMenuI18n": Object {
                 "a11yToggle": [Function],
                 "menuItems": Array [
@@ -468,7 +467,7 @@ Object {
                 "creditStyles": Object {
                   "fontWeight": "300",
                 },
-                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontFamily": undefined,
                 "fontWeight": "700",
               },
               "cardStyle": Object {
@@ -568,7 +567,42 @@ Object {
               "direction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "base": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "criticalFont": Object {
+                  "applyToSelector": "body",
+                  "name": "\\"Open Sans Hebrew\\"",
+                  "subset": Object {
+                    "files": Array [
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff2",
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff",
+                    ],
+                    "properties": Object {
+                      "unicodeRange": "U+05D0-U+05EA",
+                    },
+                  },
+                  "variations": Array [
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewRegular.woff2",
+                        "/static/fonts/OpenSansHebrewRegular.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 400,
+                      },
+                    },
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewBold.woff2",
+                        "/static/fonts/OpenSansHebrewBold.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 700,
+                      },
+                    },
+                  ],
+                },
               },
               "footerBorderStyle": Object {
                 "borderStyle": "solid",
@@ -767,7 +801,7 @@ Object {
                 "ratingTitle": "דירוג",
               },
               "selectAriaLabel": Object {
-                "text": "פתח תפריט",
+                "text": "סדרו את התגובות לכתבה על פי סדר הופעתם",
               },
               "selectStyle": Object {
                 "borderStyle": "solid",
@@ -1006,7 +1040,6 @@ Object {
           }
           theme={
             Object {
-              "ModifiedDateText": undefined,
               "a11yMenuI18n": Object {
                 "a11yToggle": [Function],
                 "menuItems": Array [
@@ -1295,7 +1328,7 @@ Object {
                 "creditStyles": Object {
                   "fontWeight": "300",
                 },
-                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontFamily": undefined,
                 "fontWeight": "700",
               },
               "cardStyle": Object {
@@ -1395,7 +1428,42 @@ Object {
               "direction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "base": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "criticalFont": Object {
+                  "applyToSelector": "body",
+                  "name": "\\"Open Sans Hebrew\\"",
+                  "subset": Object {
+                    "files": Array [
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff2",
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff",
+                    ],
+                    "properties": Object {
+                      "unicodeRange": "U+05D0-U+05EA",
+                    },
+                  },
+                  "variations": Array [
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewRegular.woff2",
+                        "/static/fonts/OpenSansHebrewRegular.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 400,
+                      },
+                    },
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewBold.woff2",
+                        "/static/fonts/OpenSansHebrewBold.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 700,
+                      },
+                    },
+                  ],
+                },
               },
               "footerBorderStyle": Object {
                 "borderStyle": "solid",
@@ -1594,7 +1662,7 @@ Object {
                 "ratingTitle": "דירוג",
               },
               "selectAriaLabel": Object {
-                "text": "פתח תפריט",
+                "text": "סדרו את התגובות לכתבה על פי סדר הופעתם",
               },
               "selectStyle": Object {
                 "borderStyle": "solid",
@@ -1720,7 +1788,7 @@ Object {
       </div>
     </div>
   </div>,
-  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:7rem}.htz-o{color:#006B96}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#ccc}.htz-s:before{background-color:#EBF2F5}.htz-t:before{height:0.5em}.htz-u:before{top:0}.htz-v:before{border-bottom:1px solid #ccc}.htz-w:before{position:absolute}.htz-x:before{content:\\"\\"}.htz-y:before{width:1rem}.htz-z:before{right:-0.6em}.htz-ae:before{transform:translate(-50%,0)}.htz-af{position:relative}.htz-as:before{content:}.htz-at:before{height:1rem}.htz-au:before{border:1px solid #ccc}.htz-av:before{top:50%}.htz-aw:before{right:-1.6em}.htz-ax:before{border-radius:50%}.htz-ay:before{transform:translate(-50%, -50%)}.htz-be{padding-bottom:0}.htz-bf:before{height:calc(100% - 0.5em)}.htz-bg:before{top:0.5em}.htz-bh:before{border-top:1px solid #bbb}.htz-bi{background-color:white}.htz-bj{padding-bottom:4rem}.htz-bk{padding-top:4rem}.htz-ce{color:#A8001C}.htz-cf{font-weight:bold}.htz-cl{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cm{paddin-top:1rem}.htz-cp{align-items:baseline}.htz-cq{margin-left:3rem}.htz-cv{-webkit-box-align:baseline}.htz-cw{top:0.15em}.htz-cx{height:1em}.htz-cy{width:1em}.htz-cz{flex-shrink:0}.htz-da{border-radius:50%}.htz-db{justify-content:center}.htz-dc{align-items:center}.htz-dd{background-color:#FFF}.htz-de{transition-property:all}.htz-df{border-width:1px}.htz-dg{border-style:solid}.htz-dh{border-color:#0B7EB5}.htz-di{-webkit-box-pack:center}.htz-dj{-webkit-box-align:center}.htz-dk{-webkit-transition-property:all}.htz-dl{-moz-transition-property:all}.htz-dm{position:absolute}.htz-dn{height:8rem}.htz-do{width:8rem}.htz-dp{left:50%}.htz-dq{top:50%}.htz-dr{background-color:#0B7EB5}.htz-ds{opacity:0}.htz-dt{transform:translateY(-50%)}.htz-du{height:80%}.htz-dv{width:80%}.htz-dw{opacity:1}.htz-dx{border-color:white}.htz-dy{transition-duration:.3s}.htz-dz{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ea{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ac:before{right:-0.4em}.htz-ag{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ah{align-items:baseline}.htz-ai{padding-bottom:3rem}.htz-an{-webkit-box-align:baseline}.htz-ba{margin-left:2rem}.htz-bb:before{right:-1.3em}.htz-bn{justify-content:space-between}.htz-bo{margin-right:4rem}.htz-bp{margin-left:4rem}.htz-bq{align-items:center}.htz-br{-webkit-box-pack:justify}.htz-bs{-webkit-box-align:center}.htz-eb{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{margin-top:15rem}.htz-m{padding-left:0rem}.htz-bt{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bu{justify-content:space-between}.htz-bv{padding-right:4rem}.htz-bw{padding-left:4rem}.htz-bx{align-items:center}.htz-by{border-top-width:13px}.htz-bz{border-top-style:solid}.htz-ca{border-top-color:#EBF2F5}.htz-cb{padding-top:calc(6rem - 13px)}.htz-cc{-webkit-box-pack:justify}.htz-cd{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ab:before{right:-0.4em}.htz-az:before{right:-1.2em}.htz-bl{padding-right:2rem}.htz-bm{padding-left:2rem}.htz-cg{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-aq{font-size:2rem}.htz-ar{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-bc{display:inline}.htz-bd{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ch{font-size:4rem}.htz-ci{line-height:1.25em}.htz-cr{font-size:2.3333333333333335rem}.htz-cs{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cj{font-size:3.857142857142857rem}.htz-ck{line-height:1.2962962962962963em}.htz-ct{font-size:2.2857142857142856rem}.htz-cu{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cn{justify-content:flex-start}.htz-co{-webkit-box-pack:right}}",
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:7rem}.htz-o{color:#006B96}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#ccc}.htz-s:before{background-color:#EBF2F5}.htz-t:before{height:0.5em}.htz-u:before{top:0}.htz-v:before{border-bottom:1px solid #ccc}.htz-w:before{position:absolute}.htz-x:before{content:\\"\\"}.htz-y:before{width:1rem}.htz-z:before{right:-0.6em}.htz-ae:before{transform:translate(-50%,0)}.htz-af{position:relative}.htz-as:before{content:}.htz-at:before{height:1rem}.htz-au:before{border:1px solid #ccc}.htz-av:before{top:50%}.htz-aw:before{right:-1.6em}.htz-ax:before{border-radius:50%}.htz-ay:before{transform:translate(-50%, -50%)}.htz-be{padding-bottom:0}.htz-bf:before{height:calc(100% - 0.5em)}.htz-bg:before{top:0.5em}.htz-bh:before{border-top:1px solid #bbb}.htz-bi{background-color:white}.htz-bj{padding-bottom:4rem}.htz-bk{padding-top:4rem}.htz-ce{color:#A8001C}.htz-cf{font-weight:bold}.htz-cl{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cm{paddin-top:1rem}.htz-cp{align-items:baseline}.htz-cq{margin-left:3rem}.htz-cv{-webkit-box-align:baseline}.htz-cw{top:0.15em}.htz-cx{height:1em}.htz-cy{width:1em}.htz-cz{flex-shrink:0}.htz-da{border-radius:50%}.htz-db{justify-content:center}.htz-dc{align-items:center}.htz-dd{background-color:#FFF}.htz-de{transition-property:all}.htz-df{border-width:1px}.htz-dg{border-style:solid}.htz-dh{border-color:#0B7EB5}.htz-di{-webkit-box-pack:center}.htz-dj{-webkit-box-align:center}.htz-dk{-webkit-transition-property:all}.htz-dl{-moz-transition-property:all}.htz-dm{position:absolute}.htz-dn{height:3.5em}.htz-do{width:3.5em}.htz-dp{left:50%}.htz-dq{top:50%}.htz-dr{background-color:#0B7EB5}.htz-ds{opacity:0}.htz-dt{pointer-events:none}.htz-du{animation-direction:alternate}.htz-dv{animation-duration:0.5s}.htz-dw{transform:translateY(-50%)}.htz-dx{height:80%}.htz-dy{width:80%}.htz-dz{opacity:1}.htz-ea{border-color:white}.htz-eb{transition-duration:.3s}.htz-ec{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ed{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ac:before{right:-0.4em}.htz-ag{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ah{align-items:baseline}.htz-ai{padding-bottom:3rem}.htz-an{-webkit-box-align:baseline}.htz-ba{margin-left:2rem}.htz-bb:before{right:-1.3em}.htz-bn{justify-content:space-between}.htz-bo{margin-right:4rem}.htz-bp{margin-left:4rem}.htz-bq{align-items:center}.htz-br{-webkit-box-pack:justify}.htz-bs{-webkit-box-align:center}.htz-ee{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{padding-block-start:3rem}.htz-m{padding-left:0rem}.htz-bt{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bu{justify-content:space-between}.htz-bv{padding-right:4rem}.htz-bw{padding-left:4rem}.htz-bx{align-items:center}.htz-by{border-top-width:13px}.htz-bz{border-top-style:solid}.htz-ca{border-top-color:#EBF2F5}.htz-cb{padding-top:calc(6rem - 13px)}.htz-cc{-webkit-box-pack:justify}.htz-cd{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ab:before{right:-0.4em}.htz-az:before{right:-1.2em}.htz-bl{padding-right:2rem}.htz-bm{padding-left:2rem}.htz-cg{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-aq{font-size:2rem}.htz-ar{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-bc{display:inline}.htz-bd{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ch{font-size:4rem}.htz-ci{line-height:1.25em}.htz-cr{font-size:2.3333333333333335rem}.htz-cs{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cj{font-size:3.857142857142857rem}.htz-ck{line-height:1.2962962962962963em}.htz-ct{font-size:2.2857142857142856rem}.htz-cu{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cn{justify-content:flex-start}.htz-co{-webkit-box-pack:right}}",
 }
 `;
 
@@ -1807,14 +1875,14 @@ Object {
               className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds"
+                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
               />
               <div
-                className="htz-dm htz-dq htz-dt htz-du htz-dv htz-da htz-dr htz-dw htz-de htz-df htz-dg htz-dx htz-dy htz-dz htz-dk htz-dl"
+                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-dz htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
               />
             </div>
             <div
-              className="htz-ea"
+              className="htz-ed"
             >
               מהאחרון לראשון
             </div>
@@ -1837,14 +1905,14 @@ Object {
               className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds"
+                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
               />
               <div
-                className="htz-dm htz-dq htz-dt htz-du htz-dv htz-da htz-dr htz-ds htz-de htz-df htz-dg htz-dx htz-dy htz-dz htz-dk htz-dl"
+                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-ds htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
               />
             </div>
             <div
-              className="htz-ea"
+              className="htz-ed"
             >
               מהראשון לאחרון
             </div>
@@ -1852,7 +1920,7 @@ Object {
         </div>
       </div>
       <div
-        className="htz-a htz-b htz-c htz-d htz-eb"
+        className="htz-a htz-b htz-c htz-d htz-ee"
       >
         <LiveBlogItem
           bps={
@@ -1903,7 +1971,6 @@ Object {
           }
           theme={
             Object {
-              "ModifiedDateText": undefined,
               "a11yMenuI18n": Object {
                 "a11yToggle": [Function],
                 "menuItems": Array [
@@ -2192,7 +2259,7 @@ Object {
                 "creditStyles": Object {
                   "fontWeight": "300",
                 },
-                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontFamily": undefined,
                 "fontWeight": "700",
               },
               "cardStyle": Object {
@@ -2292,7 +2359,42 @@ Object {
               "direction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "base": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "criticalFont": Object {
+                  "applyToSelector": "body",
+                  "name": "\\"Open Sans Hebrew\\"",
+                  "subset": Object {
+                    "files": Array [
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff2",
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff",
+                    ],
+                    "properties": Object {
+                      "unicodeRange": "U+05D0-U+05EA",
+                    },
+                  },
+                  "variations": Array [
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewRegular.woff2",
+                        "/static/fonts/OpenSansHebrewRegular.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 400,
+                      },
+                    },
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewBold.woff2",
+                        "/static/fonts/OpenSansHebrewBold.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 700,
+                      },
+                    },
+                  ],
+                },
               },
               "footerBorderStyle": Object {
                 "borderStyle": "solid",
@@ -2491,7 +2593,7 @@ Object {
                 "ratingTitle": "דירוג",
               },
               "selectAriaLabel": Object {
-                "text": "פתח תפריט",
+                "text": "סדרו את התגובות לכתבה על פי סדר הופעתם",
               },
               "selectStyle": Object {
                 "borderStyle": "solid",
@@ -2730,7 +2832,6 @@ Object {
           }
           theme={
             Object {
-              "ModifiedDateText": undefined,
               "a11yMenuI18n": Object {
                 "a11yToggle": [Function],
                 "menuItems": Array [
@@ -3019,7 +3120,7 @@ Object {
                 "creditStyles": Object {
                   "fontWeight": "300",
                 },
-                "fontFamily": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "fontFamily": undefined,
                 "fontWeight": "700",
               },
               "cardStyle": Object {
@@ -3119,7 +3220,42 @@ Object {
               "direction": "rtl",
               "fontStacks": Object {
                 "alt": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
-                "default": "\\"Open Sans Hebrew\\",\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "base": "\\"Helvetica Neue\\",Helvetica,Arial,sans-serif",
+                "criticalFont": Object {
+                  "applyToSelector": "body",
+                  "name": "\\"Open Sans Hebrew\\"",
+                  "subset": Object {
+                    "files": Array [
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff2",
+                      "/static/fonts/subset/OpenSansHebrewRegularSubset.woff",
+                    ],
+                    "properties": Object {
+                      "unicodeRange": "U+05D0-U+05EA",
+                    },
+                  },
+                  "variations": Array [
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewRegular.woff2",
+                        "/static/fonts/OpenSansHebrewRegular.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 400,
+                      },
+                    },
+                    Object {
+                      "files": Array [
+                        "/static/fonts/OpenSansHebrewBold.woff2",
+                        "/static/fonts/OpenSansHebrewBold.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 700,
+                      },
+                    },
+                  ],
+                },
               },
               "footerBorderStyle": Object {
                 "borderStyle": "solid",
@@ -3318,7 +3454,7 @@ Object {
                 "ratingTitle": "דירוג",
               },
               "selectAriaLabel": Object {
-                "text": "פתח תפריט",
+                "text": "סדרו את התגובות לכתבה על פי סדר הופעתם",
               },
               "selectStyle": Object {
                 "borderStyle": "solid",
@@ -3444,6 +3580,6 @@ Object {
       </div>
     </div>
   </div>,
-  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:7rem}.htz-o{color:#006B96}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#ccc}.htz-s:before{background-color:#EBF2F5}.htz-t:before{height:0.5em}.htz-u:before{top:0}.htz-v:before{border-bottom:1px solid #ccc}.htz-w:before{position:absolute}.htz-x:before{content:\\"\\"}.htz-y:before{width:1rem}.htz-z:before{right:-0.6em}.htz-ae:before{transform:translate(-50%,0)}.htz-af{position:relative}.htz-as:before{content:}.htz-at:before{height:1rem}.htz-au:before{border:1px solid #ccc}.htz-av:before{top:50%}.htz-aw:before{right:-1.6em}.htz-ax:before{border-radius:50%}.htz-ay:before{transform:translate(-50%, -50%)}.htz-be{padding-bottom:0}.htz-bf:before{height:calc(100% - 0.5em)}.htz-bg:before{top:0.5em}.htz-bh:before{border-top:1px solid #bbb}.htz-bi{background-color:white}.htz-bj{padding-bottom:4rem}.htz-bk{padding-top:4rem}.htz-ce{color:#A8001C}.htz-cf{font-weight:bold}.htz-cl{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cm{paddin-top:1rem}.htz-cp{align-items:baseline}.htz-cq{margin-left:3rem}.htz-cv{-webkit-box-align:baseline}.htz-cw{top:0.15em}.htz-cx{height:1em}.htz-cy{width:1em}.htz-cz{flex-shrink:0}.htz-da{border-radius:50%}.htz-db{justify-content:center}.htz-dc{align-items:center}.htz-dd{background-color:#FFF}.htz-de{transition-property:all}.htz-df{border-width:1px}.htz-dg{border-style:solid}.htz-dh{border-color:#0B7EB5}.htz-di{-webkit-box-pack:center}.htz-dj{-webkit-box-align:center}.htz-dk{-webkit-transition-property:all}.htz-dl{-moz-transition-property:all}.htz-dm{position:absolute}.htz-dn{height:8rem}.htz-do{width:8rem}.htz-dp{left:50%}.htz-dq{top:50%}.htz-dr{background-color:#0B7EB5}.htz-ds{opacity:0}.htz-dt{transform:translateY(-50%)}.htz-du{height:80%}.htz-dv{width:80%}.htz-dw{opacity:1}.htz-dx{border-color:white}.htz-dy{transition-duration:.3s}.htz-dz{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ea{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ac:before{right:-0.4em}.htz-ag{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ah{align-items:baseline}.htz-ai{padding-bottom:3rem}.htz-an{-webkit-box-align:baseline}.htz-ba{margin-left:2rem}.htz-bb:before{right:-1.3em}.htz-bn{justify-content:space-between}.htz-bo{margin-right:4rem}.htz-bp{margin-left:4rem}.htz-bq{align-items:center}.htz-br{-webkit-box-pack:justify}.htz-bs{-webkit-box-align:center}.htz-eb{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{margin-top:15rem}.htz-m{padding-left:0rem}.htz-bt{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bu{justify-content:space-between}.htz-bv{padding-right:4rem}.htz-bw{padding-left:4rem}.htz-bx{align-items:center}.htz-by{border-top-width:13px}.htz-bz{border-top-style:solid}.htz-ca{border-top-color:#EBF2F5}.htz-cb{padding-top:calc(6rem - 13px)}.htz-cc{-webkit-box-pack:justify}.htz-cd{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ab:before{right:-0.4em}.htz-az:before{right:-1.2em}.htz-bl{padding-right:2rem}.htz-bm{padding-left:2rem}.htz-cg{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-aq{font-size:2rem}.htz-ar{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-bc{display:inline}.htz-bd{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ch{font-size:4rem}.htz-ci{line-height:1.25em}.htz-cr{font-size:2.3333333333333335rem}.htz-cs{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cj{font-size:3.857142857142857rem}.htz-ck{line-height:1.2962962962962963em}.htz-ct{font-size:2.2857142857142856rem}.htz-cu{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cn{justify-content:flex-start}.htz-co{-webkit-box-pack:right}}",
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:7rem}.htz-o{color:#006B96}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#ccc}.htz-s:before{background-color:#EBF2F5}.htz-t:before{height:0.5em}.htz-u:before{top:0}.htz-v:before{border-bottom:1px solid #ccc}.htz-w:before{position:absolute}.htz-x:before{content:\\"\\"}.htz-y:before{width:1rem}.htz-z:before{right:-0.6em}.htz-ae:before{transform:translate(-50%,0)}.htz-af{position:relative}.htz-as:before{content:}.htz-at:before{height:1rem}.htz-au:before{border:1px solid #ccc}.htz-av:before{top:50%}.htz-aw:before{right:-1.6em}.htz-ax:before{border-radius:50%}.htz-ay:before{transform:translate(-50%, -50%)}.htz-be{padding-bottom:0}.htz-bf:before{height:calc(100% - 0.5em)}.htz-bg:before{top:0.5em}.htz-bh:before{border-top:1px solid #bbb}.htz-bi{background-color:white}.htz-bj{padding-bottom:4rem}.htz-bk{padding-top:4rem}.htz-ce{color:#A8001C}.htz-cf{font-weight:bold}.htz-cl{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cm{paddin-top:1rem}.htz-cp{align-items:baseline}.htz-cq{margin-left:3rem}.htz-cv{-webkit-box-align:baseline}.htz-cw{top:0.15em}.htz-cx{height:1em}.htz-cy{width:1em}.htz-cz{flex-shrink:0}.htz-da{border-radius:50%}.htz-db{justify-content:center}.htz-dc{align-items:center}.htz-dd{background-color:#FFF}.htz-de{transition-property:all}.htz-df{border-width:1px}.htz-dg{border-style:solid}.htz-dh{border-color:#0B7EB5}.htz-di{-webkit-box-pack:center}.htz-dj{-webkit-box-align:center}.htz-dk{-webkit-transition-property:all}.htz-dl{-moz-transition-property:all}.htz-dm{position:absolute}.htz-dn{height:3.5em}.htz-do{width:3.5em}.htz-dp{left:50%}.htz-dq{top:50%}.htz-dr{background-color:#0B7EB5}.htz-ds{opacity:0}.htz-dt{pointer-events:none}.htz-du{animation-direction:alternate}.htz-dv{animation-duration:0.5s}.htz-dw{transform:translateY(-50%)}.htz-dx{height:80%}.htz-dy{width:80%}.htz-dz{opacity:1}.htz-ea{border-color:white}.htz-eb{transition-duration:.3s}.htz-ec{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ed{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ac:before{right:-0.4em}.htz-ag{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ah{align-items:baseline}.htz-ai{padding-bottom:3rem}.htz-an{-webkit-box-align:baseline}.htz-ba{margin-left:2rem}.htz-bb:before{right:-1.3em}.htz-bn{justify-content:space-between}.htz-bo{margin-right:4rem}.htz-bp{margin-left:4rem}.htz-bq{align-items:center}.htz-br{-webkit-box-pack:justify}.htz-bs{-webkit-box-align:center}.htz-ee{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{padding-block-start:3rem}.htz-m{padding-left:0rem}.htz-bt{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bu{justify-content:space-between}.htz-bv{padding-right:4rem}.htz-bw{padding-left:4rem}.htz-bx{align-items:center}.htz-by{border-top-width:13px}.htz-bz{border-top-style:solid}.htz-ca{border-top-color:#EBF2F5}.htz-cb{padding-top:calc(6rem - 13px)}.htz-cc{-webkit-box-pack:justify}.htz-cd{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ab:before{right:-0.4em}.htz-az:before{right:-1.2em}.htz-bl{padding-right:2rem}.htz-bm{padding-left:2rem}.htz-cg{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-aq{font-size:2rem}.htz-ar{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-bc{display:inline}.htz-bd{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ch{font-size:4rem}.htz-ci{line-height:1.25em}.htz-cr{font-size:2.3333333333333335rem}.htz-cs{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cj{font-size:3.857142857142857rem}.htz-ck{line-height:1.2962962962962963em}.htz-ct{font-size:2.2857142857142856rem}.htz-cu{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cn{justify-content:flex-start}.htz-co{-webkit-box-pack:right}}",
 }
 `;

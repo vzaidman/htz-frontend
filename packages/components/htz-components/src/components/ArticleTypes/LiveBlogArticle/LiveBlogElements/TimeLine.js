@@ -143,7 +143,8 @@ function TimeLine({ keyEvents, miscStyles, }) {
                 paddingBlockStart: '5rem',
                 paddingInlineStart: '2rem',
                 paddingInlineEnd: '2rem',
-                ...theme.mq({ from: 'l', }, { marginTop: '15rem', paddingInlineEnd: '0rem', }),
+                // ...theme.mq({ from: 'l', }, { marginTop: '15rem', paddingInlineEnd: '0rem', }),
+                ...theme.mq({ from: 'l', }, { paddingBlockStart: '3rem', paddingInlineEnd: '0rem', }),
               })}
               render={({ className, }) => (
                 <ul className={className}>

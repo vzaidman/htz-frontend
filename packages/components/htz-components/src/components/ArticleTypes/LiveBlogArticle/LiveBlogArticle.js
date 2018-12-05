@@ -3,6 +3,7 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ApolloConsumer, } from 'react-apollo';
+import gql from 'graphql-tag';
 import Query from '../../ApolloBoundary/Query';
 
 import LayoutContainer from '../../PageLayout/LayoutContainer';
@@ -24,6 +25,12 @@ import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
 import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
 import TimeLine from './LiveBlogElements/TimeLine';
 import LiveBlogContainer from './LiveBlogElements/LiveBlogContainer';
+
+const IS_OSAKA_DISPLAYED = gql`
+  query IsOsakaDisplayed {
+    isOsakaDisplayed @client
+  }
+`;
 
 function LiveBlog({ articleId, slots, }) {
   return (
@@ -51,24 +58,23 @@ function LiveBlog({ articleId, slots, }) {
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
-                contentId,
-                { ...imgArray[0], aspects, },
-                {
-                  width: '1200',
-                  aspect: 'full',
-                  quality: 'auto',
-                }
-              )
+              contentId,
+              { ...imgArray[0], aspects, },
+              {
+                width: '1200',
+                aspect: 'full',
+                quality: 'auto',
+              }
+            )
             : '';
 
           const breadCrumbs = article.find(element => element.inputTemplate === 'com.tm.PageTitle');
 
           const LiveBlogElement = article.find(
-            element =>
-              element.inputTemplate === 'com.htz.StandardArticle' ||
-              element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-              element.inputTemplate === 'com.tm.BlogArticle' ||
-              element.inputTemplate === 'com.tm.StandardArticle'
+            element => element.inputTemplate === 'com.htz.StandardArticle'
+              || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
+              || element.inputTemplate === 'com.tm.BlogArticle'
+              || element.inputTemplate === 'com.tm.StandardArticle'
           );
 
           const isMouse = LiveBlogElement.inputTemplate === 'com.mouse.story.MouseStandardStory';
@@ -133,16 +139,16 @@ function LiveBlog({ articleId, slots, }) {
 
                     {article.map(element => {
                       if (
-                        element.inputTemplate === 'com.htz.ArticleHeaderElement' ||
-                        element.inputTemplate === 'com.tm.PageTitle'
+                        element.inputTemplate === 'com.htz.ArticleHeaderElement'
+                        || element.inputTemplate === 'com.tm.PageTitle'
                       ) {
                         return null;
                       }
                       if (
-                        element.inputTemplate === 'com.htz.StandardArticle' ||
-                        element.inputTemplate === 'com.mouse.story.MouseStandardStory' ||
-                        element.inputTemplate === 'com.tm.BlogArticle' ||
-                        element.inputTemplate === 'com.tm.StandardArticle'
+                        element.inputTemplate === 'com.htz.StandardArticle'
+                        || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
+                        || element.inputTemplate === 'com.tm.BlogArticle'
+                        || element.inputTemplate === 'com.tm.StandardArticle'
                       ) {
                         return (
                           <ApolloConsumer key={element.contentId}>
@@ -167,16 +173,15 @@ function LiveBlog({ articleId, slots, }) {
                               if (authors.length) {
                                 const blogName = lineage[1].name;
                                 const author = authors[0];
-                                bloggerInfo =
-                                  element.inputTemplate === 'com.tm.BlogArticle' ? (
-                                    <BloggerInfo author={author} blogName={blogName} />
-                                  ) : null;
+                                bloggerInfo = element.inputTemplate === 'com.tm.BlogArticle' ? (
+                                  <BloggerInfo author={author} blogName={blogName} />
+                                ) : null;
                               }
                               return (
                                 <LiveBlogLayoutRow
                                   isArticleBody
                                   hideMargineliaComponentUnderLBp={!!authors}
-                                  margineliaComponent={
+                                  margineliaComponent={(
                                     <Fragment>
                                       {authors ? (
                                         <LiveBlogHeaderMeta
@@ -186,19 +191,31 @@ function LiveBlog({ articleId, slots, }) {
                                           liveblogItems={liveblogItems}
                                           publishDate={header.pubDate}
                                           modifiedDate={header.modDate}
+                                          miscStyles={{
+                                            marginBottom: '10rem',
+                                          }}
                                         />
                                       ) : null}
-                                      <TimeLine
-                                        keyEvents={keyEvents}
-                                        miscStyles={{
-                                          position: 'sticky',
-                                          top: '2rem',
-                                          transform: 'translateY(14rem)',
-                                          paddingBottom: newsletterProps.length > 0 ? '36rem' : '15rem',
-                                        }}
-                                      />
+                                      <Query query={IS_OSAKA_DISPLAYED}>
+                                        {({ data: { isOsakaDisplayed, }, }) => (
+                                          <TimeLine
+                                            keyEvents={keyEvents}
+                                            miscStyles={{
+                                              position: 'sticky',
+                                              top: isOsakaDisplayed ? '17rem' : '0',
+                                              transform: 'translateY(0rem)',
+                                              paddingBottom:
+                                                newsletterProps.length > 0 ? '36rem' : '15rem',
+                                              transitionProperty: 'top',
+                                              ...theme.getDelay('transition', -1),
+                                              ...theme.getDuration('transition', -1),
+                                              ...theme.getTimingFunction('transition', 'linear'),
+                                            }}
+                                          />
+                                        )}
+                                      </Query>
                                     </Fragment>
-                                  }
+)}
                                 >
                                   <ArticleBody
                                     body={body}
@@ -271,8 +288,8 @@ function LiveBlog({ articleId, slots, }) {
                       const Element = getComponent(element.inputTemplate);
                       const { properties, ...elementWithoutProperties } = element;
                       if (
-                        element.inputTemplate === 'com.polobase.OutbrainElement' ||
-                        element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                        element.inputTemplate === 'com.polobase.OutbrainElement'
+                        || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                       ) {
                         return (
                           <WideArticleLayoutRow
@@ -280,12 +297,12 @@ function LiveBlog({ articleId, slots, }) {
                             hideDivider
                             {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                               ? {
-                                  hideDivider: true,
-                                  miscStyles: {
-                                    backgroundColor: theme.color('primary', '-6'),
-                                    display: [ { until: 's', value: 'none', }, ],
-                                  },
-                                }
+                                hideDivider: true,
+                                miscStyles: {
+                                  backgroundColor: theme.color('primary', '-6'),
+                                  display: [ { until: 's', value: 'none', }, ],
+                                },
+                              }
                               : {})}
                           >
                             <Element
@@ -301,9 +318,9 @@ function LiveBlog({ articleId, slots, }) {
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
                             ? {
-                                title: theme.articleLayoutI18n.commentSectionTitle,
-                                id: 'commentsSection',
-                              }
+                              title: theme.articleLayoutI18n.commentSectionTitle,
+                              id: 'commentsSection',
+                            }
                             : {})}
                           isCommentsSection
                           miscStyles={{ backgroundColor: 'white', marginTop: '4rem', }}

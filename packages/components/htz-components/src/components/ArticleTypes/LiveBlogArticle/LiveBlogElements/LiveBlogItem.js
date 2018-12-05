@@ -14,10 +14,10 @@ import GridItem from '../../../Grid/GridItem';
 import ArticleBody from '../../../ArticleBody/ArticleBody';
 
 // eslint-disable-next-line react/prop-types
-const Fade = ({ children, }) => (
+const Fade = ({ children, fadeText, }) => (
   <FelaComponent
     style={theme => ({
-      display: 'block',
+      display: fadeText ? 'block' : 'none',
       height: '14rem',
       position: 'absolute',
       width: '100%',
@@ -64,21 +64,32 @@ class LiveBlogItem extends React.Component {
 
   componentDidMount() {
     if (typeof window !== 'undefined') {
-      const intViewportWidth = window.innerWidth;
-      if (intViewportWidth < this.props.bps.widths.s) {
-        const height = this.mainContainerEl.clientHeight;
-        const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
-        if (remHeight > 60 || this.isEmbedInclude) {
-          // eslint-disable-next-line react/no-did-mount-set-state
-          this.setState({ fadeText: true, });
-        }
-        else {
-          // eslint-disable-next-line react/no-did-mount-set-state
-          this.setState({ fadeText: false, });
-        }
-      }
+      this.updateDimensions();
+      window.addEventListener('resize', this.updateDimensions);
     }
   }
+
+  componentWillUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.updateDimensions);
+    }  
+  }
+
+  updateDimensions = () => {
+    const intViewportWidth = window.innerWidth;
+    if (intViewportWidth < this.props.bps.widths.s) {
+      const height = this.mainContainerEl.clientHeight;
+      const remHeight = getRemFromPx(this.props.bps, this.props.typeConf, height);
+      if (remHeight > 60 || this.isEmbedInclude) {
+        // eslint-disable-next-line react/no-did-mount-set-state
+        this.setState({ fadeText: true, });
+      }
+    }
+    else {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({ fadeText: false, });
+    }
+  };
 
   render() {
     // Check when item includes embed element.
@@ -86,6 +97,7 @@ class LiveBlogItem extends React.Component {
       this.isEmbedInclude = this.props.item.body.filter(v => v.elementType === 'embedElement').length > 0;
     }
     const { canonicalUrl, item, } = this.props;
+
     return (
       <React.Fragment>
         <FelaTheme
@@ -175,9 +187,9 @@ class LiveBlogItem extends React.Component {
                     ...theme.mq(
                       { until: 's', },
                       {
-                      height: !this.isEmbedInclude || this.state.itemExpanded ? 'auto' : '65rem',
-                      ...(this.state.fadeText || this.state.fadeText === -1
-                       ? {
+                        height: !this.isEmbedInclude || this.state.itemExpanded ? 'auto' : '65rem',
+                        ...(this.state.fadeText || this.state.fadeText === -1
+                          ? {
                             overflow: 'hidden',
                             maxHeight: '65rem',
                           }
@@ -198,7 +210,7 @@ class LiveBlogItem extends React.Component {
                   </a>
 
                   <ArticleBody body={item.body} />
-                  {this.state.fadeText === true ? <Fade /> : null}
+                  {this.state.fadeText === true ? <Fade fadeText={this.state.fadeText} /> : null}
                 </GridItem>
 
                 {/* Mobile Action Buttons */}
@@ -238,26 +250,26 @@ class LiveBlogItem extends React.Component {
                           <Button
                             variant="inverseOpaque"
                             miscStyles={{
-                            marginBottom: '1rem',
-                            ':focus': {
-                              color: theme.color('neutral', '-2'),
-                            },
-                          }}
+                              marginBottom: '1rem',
+                              ':focus': {
+                                color: theme.color('neutral', '-2'),
+                              },
+                            }}
                             boxModel={{ hp: 2, vp: 1, }}
                             onClick={() => this.setState({ fadeText: false, itemExpanded: true, })}
                           >
                             {theme.liveBlogI18n.expand}
                           </Button>
-                      ) : (
-                        <Button
-                          variant="inverseOpaque"
-                          miscStyles={{ marginBottom: '1rem', }}
-                          boxModel={{ hp: 2, vp: 1, }}
-                          onClick={() => this.setState({ fadeText: true, itemExpanded: false, })}
-                        >
-                          {theme.liveBlogI18n.close}
-                        </Button>
-                      )}
+                        ) : (
+                          <Button
+                            variant="inverseOpaque"
+                            miscStyles={{ marginBottom: '1rem', }}
+                            boxModel={{ hp: 2, vp: 1, }}
+                            onClick={() => this.setState({ fadeText: true, itemExpanded: false, })}
+                          >
+                            {theme.liveBlogI18n.close}
+                          </Button>
+                        )}
                     </span>
                   )}
                 />
