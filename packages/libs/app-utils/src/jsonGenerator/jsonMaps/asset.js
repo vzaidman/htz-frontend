@@ -52,7 +52,6 @@ export const assetObject: Object = {
   fiveYearsParentYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
   maxParentYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
   dailyAvgMtfYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
-  weeklyAvgMtfYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
   monthlyAvgMtfYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
   quarterlyAvgMtfYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
   yearlyAvgMtfYield: () => number.float({ max: 100, min: 0, fixed: 2, }),
@@ -67,41 +66,13 @@ export const assetObject: Object = {
   yearlyinflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
   monthlyoutflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
   quarterlyoutflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
-  yearlyoutflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
-  monthlymtfBeat: () => list(
-    [
-      {
-        method: number.int,
-        options: { max: 1000, },
-      },
-    ],
-    2
-  ),
-  quarterlymtfBeat: () => list(
-    [
-      {
-        method: number.int,
-        options: { max: 1000, },
-      },
-    ],
-    2
-  ),
-  yearlymtfBeat: () => list(
-    [
-      {
-        method: number.int,
-        options: { max: 1000, },
-      },
-    ],
-    2
-  ),
+  yearlyoutflows:  () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
   assetsUnderManagement: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
-  managementFee: () => number.float({ max: 100, min: 0, fixed: 2, }),
+  managementFee: () => number.float({ max: 100, min:0, fixed: 2, }),
   standardDeviation: () => number.float({ max: 30, min: 0, fixed: 2, }),
   peRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   pbRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   psRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
-  historicalPeRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   historicalProfit: () => number.float({ max: 1000000, min: 0, fixed: 2, }),
   dailyAvgVolume: () => number.float({ max: 1000000, min: 0, fixed: 2, }),
   issuerName: () => string.word({}),
