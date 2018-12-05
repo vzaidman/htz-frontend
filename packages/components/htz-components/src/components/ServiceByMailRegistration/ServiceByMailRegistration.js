@@ -62,11 +62,7 @@ export default class ServiceByMailRegistration extends React.Component {
         return json;
       })
       .then(data => {
-        if (
-          data.status
-          && data.status === 'success'
-          && this.props.onRegistrationSuccess
-        ) {
+        if (data.status && data.status === 'success' && this.props.onRegistrationSuccess) {
           this.props.onRegistrationSuccess(data);
         }
       })
@@ -93,10 +89,20 @@ export default class ServiceByMailRegistration extends React.Component {
               paddingBottom: '2rem',
               paddingEnd: '1rem',
               position: 'relative',
+              textAlign: 'start',
             })}
             render={({ className, theme, }) => (
               <div className={className}>
-                {this.props.title ? <h2>{this.props.title}</h2> : ''}
+                {this.props.title ? (
+                  <FelaComponent
+                    style={{ fontWeight: 'bold', extend: [ theme.type(-1), ], }}
+                    render="p"
+                  >
+                    {this.props.title}
+                  </FelaComponent>
+                ) : (
+                  ''
+                )}
                 <Form
                   onSubmit={this.handleSubmit}
                   initialValues={{ email: isLoggedIn ? user.email : null, }}
@@ -105,7 +111,7 @@ export default class ServiceByMailRegistration extends React.Component {
                     <Fragment>
                       <FelaComponent
                         style={{
-                          paddingTop: '1rem',
+                          marginTop: '2rem',
                           paddingBottom: '2rem',
                         }}
                       >
@@ -115,14 +121,17 @@ export default class ServiceByMailRegistration extends React.Component {
                             label: theme.serviceByMailI18n.inpEmailLabelText,
                             type: 'email',
                             isError: false,
-                            placeHolder:
-                              theme.serviceByMailI18n.inpEmailLabelText,
+                            placeHolder: theme.serviceByMailI18n.inpEmailLabelText,
                             noteText: theme.serviceByMailI18n.inpEmailNoteText,
                             variant: 'primaryOpaque',
                             requiredText: {
                               isSup: true,
                               long: 'required',
                               short: '*',
+                            },
+                            miscStyles: {
+                              type: [ { from: 'l', value: -2, }, ],
+                              fontWeight: 'bold',
                             },
                           })}
                         />
@@ -153,10 +162,7 @@ export default class ServiceByMailRegistration extends React.Component {
                             onClick={handleSubmit}
                             isBusy={this.state.isBusy}
                             miscStyles={{
-                              type: [
-                                { until: 's', value: 0, },
-                                { from: 's', value: -2, },
-                              ],
+                              type: [ { until: 's', value: 0, }, { from: 's', value: -2, }, ],
                             }}
                           >
                             {theme.serviceByMailI18n.btnSubmitText}
@@ -167,10 +173,7 @@ export default class ServiceByMailRegistration extends React.Component {
                               isFlat
                               onClick={() => this.props.onCancel()}
                               miscStyles={{
-                                type: [
-                                  { until: 's', value: 0, },
-                                  { from: 's', value: -2, },
-                                ],
+                                type: [ { until: 's', value: 0, }, { from: 's', value: -2, }, ],
                                 marginStart: '1rem',
                               }}
                             >

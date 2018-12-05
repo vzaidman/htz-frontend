@@ -23,78 +23,95 @@ const PLATFORM_QUERY = gql`
 `;
 
 const outerStyle = ({ theme, miscStyles, }) => ({
-  extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-  ],
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
-const wrapperStyle = ({ theme, miscStyles, }) => ({
+const wrapperStyle = ({ theme, miscStyles, variationMq, }) => ({
   display: 'flex',
   alignItems: 'center',
   extend: [
-    theme.mq(
-      { until: 's', },
-      {
-        flexGrow: 1,
-        justifyContent: 'space-between',
-        ...borderVertical({
-          width: '1px',
-          lines: 1,
-          style: 'solid',
-          color: theme.color('articleHeader', 'metaBorder'),
+    ...(variationMq.a
+      ? [
+        // the media query rule is passed through the variationMq.a prop,
+        // this pattern is used through the whole component
+        theme.mq(variationMq.a, {
+          flexGrow: 1,
+          justifyContent: 'space-between',
+          ...borderVertical({
+            width: '1px',
+            lines: 1,
+            style: 'solid',
+            color: theme.color('articleHeader', 'metaBorder'),
+          }),
         }),
-      }
-    ),
-    theme.mq({ from: 's', }, { justifyContent: 'flex-start', }),
-    theme.mq(
-      { from: 'l', },
-      { flexDirection: 'column', alignItems: 'flex-start', }
-    ),
+      ]
+      : []),
+    ...(variationMq.b ? [ theme.mq(variationMq.b, { justifyContent: 'flex-start', }), ] : []),
+    ...(variationMq.c
+      ? [
+        theme.mq(variationMq.c, {
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+        }),
+      ]
+      : []),
   ],
 });
 
 // the time needs to render in different locations for mobile
 // mobileTime indicates if this is the mobile location
-const timeStyle = ({ theme, mobileTime, }) => ({
+const timeStyle = ({ theme, mobileTime, variationMq, }) => ({
   extend: [
-    theme.mq({ until: 's', }, { display: 'block', }),
-    theme.mq({ [mobileTime ? 'from' : 'until']: 'l', }, { display: 'none', }),
-    theme.mq(
-      { from: 's', until: 'l', },
-      { marginInlineStart: '1rem', marginInlineEnd: '1rem', }
-    ),
-    theme.mq({ from: 'l', }, { marginTop: '0.5rem', }),
+    ...(variationMq.a
+      ? [ theme.mq(variationMq.a, { display: mobileTime ? 'inline-block' : 'none', }), ]
+      : []),
+    ...(variationMq.b
+      ? [ theme.mq(variationMq.b, { marginInlineStart: '1rem', marginInlineEnd: '1rem', }), ]
+      : []),
+    ...(variationMq.c
+      ? [
+        theme.mq(variationMq.c, {
+          marginTop: '0.5rem',
+          display: mobileTime ? 'none' : 'inline-block',
+        }),
+      ]
+      : []),
     theme.type(-3),
   ],
 });
 
-const imageAuthorsAndMobileTimeContStyle = theme => ({
+const imageAuthorsAndMobileTimeContStyle = ({ theme, variationMq, }) => ({
   display: 'flex',
   alignItems: 'center',
   extend: [
-    theme.mq(
-      { from: 'l', },
-      { flexDirection: 'column', alignItems: 'flex-start', }
-    ),
+    ...(variationMq.c
+      ? [ theme.mq(variationMq.c, { flexDirection: 'column', alignItems: 'flex-start', }), ]
+      : []),
   ],
 });
 
-const authorsAndTimeContStyle = theme => ({
-  extend: [ theme.mq({ from: 'l', }, { marginTop: '0.5rem', }), ],
+const authorsAndTimeContStyle = ({ theme, variationMq, }) => ({
+  extend: [
+    ...(variationMq.a ? [ theme.mq(variationMq.a, {}), ] : []),
+    ...(variationMq.b ? [ theme.mq(variationMq.b, {}), ] : []),
+    ...(variationMq.c ? [ theme.mq(variationMq.c, { marginTop: '0.5rem', }), ] : []),
+  ],
 });
 
-const alertsAndDesktopTimeContStyle = theme => ({
+const alertsAndDesktopTimeContStyle = ({ theme, variationMq, }) => ({
   extend: [
-    theme.mq({ until: 'l', }, { marginStart: 'auto', }),
-    theme.mq({ from: 'l', }, { marginTop: '1rem', }),
+    ...(variationMq.a ? [ theme.mq(variationMq.a, { marginStart: 'auto', }), ] : []),
+    ...(variationMq.b ? [ theme.mq(variationMq.b, { marginStart: 'auto', }), ] : []),
+    ...(variationMq.c ? [ theme.mq(variationMq.c, { marginTop: '1rem', }), ] : []),
   ],
 });
 
 const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
   const MILISECS_IN_HOUR = 3600 * 1000;
-  return (
-    new Date(startTime).getTime() - new Date(endTime).getTime()
-    < hours * MILISECS_IN_HOUR
-  );
+  return new Date(startTime).getTime() - new Date(endTime).getTime() < hours * MILISECS_IN_HOUR;
 };
 
 const articleTimeFormat = (startTime, endTime) => (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
@@ -115,20 +132,11 @@ class ArticleHeaderMeta extends React.Component {
       return null;
     }
     const format = articleTimeFormat(new Date(), modifiedDate);
-    return (
-      <Time
-        time={modifiedDate}
-        format={`עודכן ב-${format}`}
-        className={className}
-      />
-    );
+    return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
   };
 
-  displayDates = (publishDate, modifiedDate, className) => {
-    if (
-      new Date(publishDate).toDateString()
-      === new Date(modifiedDate).toDateString()
-    ) {
+  displayDates = (publishDate, modifiedDate, className, variationMq) => {
+    if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
       const format = new Date().toDateString() === new Date(modifiedDate).toDateString()
         ? 'HH:mm'
         : 'DD.MM.YYYY';
@@ -138,13 +146,15 @@ class ArticleHeaderMeta extends React.Component {
         </Fragment>
       );
     }
-    const format = new Date().toDateString() === new Date(publishDate).toDateString()
-      ? 'HH:mm'
-      : 'DD.MM.YYYY';
+    const format = new Date().toDateString() === new Date(publishDate).toDateString() ? 'HH:mm' : 'DD.MM.YYYY';
     return (
       <FelaComponent
         style={theme => ({
-          extend: [ theme.mq({ from: 's', until: 'l', }, { display: 'inline', }), ],
+          extend: [
+            ...(variationMq.a ? [ theme.mq(variationMq.a, {}), ] : []),
+            ...(variationMq.b ? [ theme.mq(variationMq.b, { display: 'inline', }), ] : []),
+            ...(variationMq.c ? [ theme.mq(variationMq.c, {}), ] : []),
+          ],
         })}
       >
         <Time time={publishDate} format={format} className={className} />
@@ -183,6 +193,7 @@ class ArticleHeaderMeta extends React.Component {
       reportingFrom,
       miscStyles,
       modifiedDate,
+      variationMq,
     } = this.props;
     return (
       <EventTracker>
@@ -196,25 +207,28 @@ class ArticleHeaderMeta extends React.Component {
                 return (
                   <FelaComponent
                     rule={wrapperStyle}
+                    variationMq={variationMq}
                     render={({ className, theme, }) => (
                       <Fragment>
                         <div className={className}>
                           <FelaComponent
-                            style={imageAuthorsAndMobileTimeContStyle}
+                            rule={imageAuthorsAndMobileTimeContStyle}
+                            variationMq={variationMq}
                           >
                             {/*  Author image */}
                             {authors.length > 1 || !authors[0].image ? (
                               <IconAlefLogo
                                 color="primary"
-                                size={[
-                                  { until: 'l', value: 6, },
-                                  { from: 'l', value: 10, },
-                                ]}
+                                size={[ { until: 'l', value: 6, }, { from: 'l', value: 10, }, ]}
                                 miscStyles={{
                                   display: [
-                                    { until: 's', value: 'inline-block', },
-                                    { from: 's', until: 'l', value: 'none', },
-                                    { from: 'l', value: 'block', },
+                                    ...(variationMq.a
+                                      ? [ { ...variationMq.a, value: 'inline-block', }, ]
+                                      : []),
+                                    ...(variationMq.b ? [ { ...variationMq.b, value: 'none', }, ] : []),
+                                    ...(variationMq.c
+                                      ? [ { ...variationMq.c, value: 'block', }, ]
+                                      : []),
                                   ],
                                   marginInlineEnd: '1rem',
                                 }}
@@ -232,20 +246,30 @@ class ArticleHeaderMeta extends React.Component {
                                 }}
                                 miscStyles={{
                                   width: [
-                                    { until: 'l', value: '6rem', },
-                                    { from: 'l', value: '10rem', },
+                                    ...(variationMq.a ? [ { ...variationMq.a, value: '6rem', }, ] : []),
+                                    ...(variationMq.b ? [ { ...variationMq.b, value: '6rem', }, ] : []),
+                                    ...(variationMq.c
+                                      ? [ { ...variationMq.c, value: '10rem', }, ]
+                                      : []),
                                   ],
                                   height: [
-                                    { until: 'l', value: '6rem', },
-                                    { from: 'l', value: '10rem', },
+                                    ...(variationMq.a ? [ { ...variationMq.a, value: '6rem', }, ] : []),
+                                    ...(variationMq.b ? [ { ...variationMq.b, value: '6rem', }, ] : []),
+                                    ...(variationMq.c
+                                      ? [ { ...variationMq.c, value: '10rem', }, ]
+                                      : []),
                                   ],
                                   paddingBottom: '6rem',
                                   borderRadius: '50%',
                                   overflow: 'hidden',
                                   display: [
-                                    { until: 's', value: 'inline-block', },
-                                    { from: 's', until: 'l', value: 'none', },
-                                    { from: 'l', value: 'block', },
+                                    ...(variationMq.a
+                                      ? [ { ...variationMq.a, value: 'inline-block', }, ]
+                                      : []),
+                                    ...(variationMq.b ? [ { ...variationMq.b, value: 'none', }, ] : []),
+                                    ...(variationMq.c
+                                      ? [ { ...variationMq.c, value: 'block', }, ]
+                                      : []),
                                   ],
                                   marginInlineEnd: '1rem',
                                 }}
@@ -253,20 +277,16 @@ class ArticleHeaderMeta extends React.Component {
                             )}
 
                             {/* Author name and publish-date */}
-                            <FelaComponent style={authorsAndTimeContStyle}>
+                            <FelaComponent rule={authorsAndTimeContStyle} variationMq={variationMq}>
                               {authors.map((author, idx) => (
                                 <CreditArticle
                                   key={author.contentId || author.name}
-                                  contentName={
-                                    author.name || author.contentName
-                                  }
+                                  contentName={author.name || author.contentName}
                                   url={author.url}
                                   onClick={() => biAction({
                                     actionCode: 109,
                                     additionalInfo: {
-                                      writer_id:
-                                          author.contentId
-                                          || author.contentName,
+                                      writer_id: author.contentId || author.contentName,
                                       platform,
                                     },
                                   })
@@ -297,20 +317,27 @@ class ArticleHeaderMeta extends React.Component {
                                         untilBp: 'xl',
                                       }),
                                       theme.type(-2, { untilBp: 's', }),
-                                      theme.mq(
-                                        { from: 'l', },
-                                        { display: 'block', }
-                                      ),
-                                      theme.mq(
-                                        {
-                                          until: 'l',
-                                        },
-                                        {
-                                          ':before': {
-                                            content: '" | "',
-                                          },
-                                        }
-                                      ),
+                                      ...(variationMq.a
+                                        ? [
+                                          theme.mq(variationMq.a, {
+                                            ':before': {
+                                              content: '" | "',
+                                            },
+                                          }),
+                                        ]
+                                        : []),
+                                      ...(variationMq.b
+                                        ? [
+                                          theme.mq(variationMq.b, {
+                                            ':before': {
+                                              content: '" | "',
+                                            },
+                                          }),
+                                        ]
+                                        : []),
+                                      ...(variationMq.c
+                                        ? [ theme.mq(variationMq.c, { display: 'block', }), ]
+                                        : []),
                                     ],
                                   }}
                                   render="span"
@@ -322,12 +349,14 @@ class ArticleHeaderMeta extends React.Component {
                               <FelaComponent
                                 rule={timeStyle}
                                 mobileTime
+                                variationMq={variationMq}
                                 render={({ className, }) => (
                                   <Fragment>
                                     {this.displayDates(
                                       publishDate,
                                       modifiedDate,
-                                      className
+                                      className,
+                                      variationMq
                                     )}
                                   </Fragment>
                                 )}
@@ -335,39 +364,36 @@ class ArticleHeaderMeta extends React.Component {
                             </FelaComponent>
                           </FelaComponent>
                           {/* alerts and desktop time */}
-                          <FelaComponent style={alertsAndDesktopTimeContStyle}>
-                            {authors.length === 1
-                            && authors[0].hasEmailAlerts ? (
+                          <FelaComponent
+                            rule={alertsAndDesktopTimeContStyle}
+                            variationMq={variationMq}
+                          >
+                            {authors.length === 1 && authors[0].hasEmailAlerts ? (
                               <Alerts
                                 author={authors[0]}
-                                onToggle={() => this.toggleAuthorAlertsForm(
-                                  biAction,
-                                  platform
-                                )
-                                }
+                                onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
                                 ref={this.alertsToggleBtnRef}
                               />
-                              ) : null}
+                            ) : null}
                           </FelaComponent>
                           <FelaComponent
                             rule={timeStyle}
+                            variationMq={variationMq}
                             mobileTime={false}
                             render={({ className, }) => (
                               <Fragment>
                                 {this.displayDates(
                                   publishDate,
                                   modifiedDate,
-                                  className
+                                  className,
+                                  variationMq
                                 )}
                               </Fragment>
                             )}
                           />
                         </div>
                         <SlideinBox
-                          show={
-                            authors[0].hasEmailAlerts
-                            && this.state.isShowAuthorAlertsForm
-                          }
+                          show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
                           duration={2}
                           focus
                           maxHeight={100}
@@ -376,8 +402,7 @@ class ArticleHeaderMeta extends React.Component {
                             author={authors[0]}
                             platform={platform}
                             biAction={biAction}
-                            onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)
-                            }
+                            onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
                           />
                         </SlideinBox>
                       </Fragment>
@@ -397,9 +422,7 @@ ArticleHeaderMeta.propTypes = {
   /**
    * An array of Article's authors
    */
-  authors: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
-  ).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
   /**
    * The publishing date of the article
    */
@@ -416,12 +439,48 @@ ArticleHeaderMeta.propTypes = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType,
+  /**
+   * This component has three view variation,
+   * by default:
+   * variation a is used up to 's' bp,
+   * variation b is used from 's' to 'l',
+   * variation c from: 'l'.
+   * In cases that we want to use each view from different  breakpoints,
+   * we pass the variationMq prop, specifying which variation should be used for each bp.
+   * you can skip one of the variation if not needed but make sure to cover all breakpoints
+   * e.g :
+   * variationMq: {
+   * a: { until: 's', },
+   * b: {},
+   * c: { from: 's', },
+   *   },
+   *
+   */
+  variationMq: PropTypes.shape({
+    a: PropTypes.shape({
+      until: PropTypes.oneOf([ 's', 'm', 'l', 'xl', ]),
+      from: PropTypes.oneOf([ 's', 'm', 'l', 'xl', ]),
+    }),
+    b: PropTypes.shape({
+      until: PropTypes.oneOf([ 's', 'm', 'l', 'xl', ]),
+      from: PropTypes.oneOf([ 's', 'm', 'l', 'xl', ]),
+    }),
+    c: PropTypes.shape({
+      until: PropTypes.oneOf([ 's', 'm', 'l', 'xl', ]),
+      from: PropTypes.oneOf([ 's', 'm', 'l', 'xl', ]),
+    }),
+  }),
 };
 
 ArticleHeaderMeta.defaultProps = {
   reportingFrom: null,
   modifiedDate: null,
   miscStyles: null,
+  variationMq: {
+    a: { until: 's', },
+    b: { from: 's', until: 'l', },
+    c: { from: 'l', },
+  },
 };
 
 export default ArticleHeaderMeta;

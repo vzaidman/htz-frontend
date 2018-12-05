@@ -48,21 +48,20 @@ export default class SlideinBox extends React.Component {
 
   render() {
     const { animating, } = this.state;
-    const { children, duration, show, direction, maxHeight, } = this.props;
+    const { children, duration, show, direction, maxHeight, position, } = this.props;
     const axis = direction.match(/(ttb|btt)/i) ? 'y' : 'x';
     const tdir = direction.match(/(ttb|ste)/) ? -1 : 1;
 
     return (
       <FelaComponent
         rule={({ theme, }) => ({
-          position: 'relative',
           overflow: 'hidden',
+          position,
+          left: 0,
+          right: 0,
+          zIndex: theme.getZIndex('above'),
           extend: [
-            ...parseStyleProps(
-              show ? { maxHeight, } : { maxHeight: 0.333, },
-              theme.mq,
-              theme.type
-            ),
+            ...parseStyleProps(show ? { maxHeight, } : { maxHeight: 0.333, }, theme.mq, theme.type),
           ],
           transitionProperty: 'max-height',
           ...theme.getDuration('transition', duration / 2),
@@ -87,8 +86,7 @@ export default class SlideinBox extends React.Component {
           <div className={className} aria-expanded={show} aria-hidden={!show}>
             <FelaComponent
               rule={({ theme, }) => ({
-                transform: `logical translate${axis}(${tdir
-                  * (show ? 0 : 100)}%)`,
+                transform: `logical translate${axis}(${tdir * (show ? 0 : 100)}%)`,
                 transitionProperty: 'transform',
                 ...theme.getDuration('transition', duration / 2),
                 ...theme.getDelay('transition', duration / 2),
@@ -147,9 +145,11 @@ SlideinBox.propTypes = {
       })
     ),
   ]).isRequired,
+  position: PropTypes.oneOf([ 'absolute', 'relative', ]),
 };
 SlideinBox.defaultProps = {
   duration: 0,
   focus: false,
   direction: 'ttb',
+  position: 'relative',
 };
