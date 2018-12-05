@@ -190,6 +190,8 @@ const RootQuery = new GraphQLObjectType({
         expirationBenchmarkDate: { type: GraphQLString, },
         mtfCategory: { type: GraphQLString, },
         mtfCategoryExposure: { type: GraphQLString, },
+        etfCategory: { type: GraphQLString, },
+        etfCategoryPosition: { type: GraphQLString, },
         count: { type: GraphQLInt, },
         sortBy: { type: GraphQLString, },
         sortOrder: { type: GraphQLString, },

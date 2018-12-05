@@ -39,6 +39,8 @@ type Props = {
   expirationBenchmarkDate: ?string,
   mtfCategory: ?string,
   mtfCategoryExposure: ?string,
+  etfCategory: ?string,
+  etfCategoryPosition: ?string,
   extractData: ?(any) => Array<Asset>,
 };
 
@@ -49,6 +51,8 @@ type State = {
   expirationBenchmarkDate: ?string,
   mtfCategory: ?string,
   mtfCategoryExposure: ?string,
+  etfCategory: ?string,
+  etfCategoryPosition: ?string,
 };
 
 type SortIconsProps = {
@@ -71,6 +75,8 @@ const TableQuery: string => DocumentNode = fragment => gql`
     $expirationBenchmarkDate: String,
     $mtfCategory: String,
     $mtfCategoryExposure: String,
+    $etfCategory: String,
+    $etfCategoryPosition: String,
     $count: Int!,
     $sortBy: String!,
     $sortOrder: String!,
@@ -83,6 +89,8 @@ const TableQuery: string => DocumentNode = fragment => gql`
       expirationBenchmarkDate: $expirationBenchmarkDate,
       mtfCategory: $mtfCategory,
       mtfCategoryExposure: $mtfCategoryExposure,
+      etfCategory: $etfCategory,
+      etfCategoryPosition: $etfCategoryPosition,
       count: $count,
       sortBy: $sortBy,
       sortOrder: $sortOrder,
@@ -332,6 +340,8 @@ class SortableTable extends React.Component<Props, State> {
     expirationBenchmarkDate: null,
     mtfCategory: null,
     mtfCategoryExposure: null,
+    etfCategory: null,
+    etfCategoryPosition: null,
     linkText: null,
     addLink: null,
     loadMore: null,
@@ -345,6 +355,8 @@ class SortableTable extends React.Component<Props, State> {
     expirationBenchmarkDate: null,
     mtfCategory: null,
     mtfCategoryExposure: null,
+    etfCategory: null,
+    etfCategoryPosition: null,
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -370,6 +382,14 @@ class SortableTable extends React.Component<Props, State> {
         nextProps.mtfCategoryExposure
         || prevState.mtfCategoryExposure
         || null,
+      etfCategory:
+        nextProps.etfCategory
+        || prevState.etfCategory
+        || null,
+      etfCategoryPosition:
+        nextProps.etfCategoryPosition
+        || prevState.etfCategoryPosition
+        || null,
     };
   }
 
@@ -386,6 +406,8 @@ class SortableTable extends React.Component<Props, State> {
       expirationBenchmarkDate,
       mtfCategory,
       mtfCategoryExposure,
+      etfCategory,
+      etfCategoryPosition,
       fragment,
     } = props || this.props;
     this.setState(prevState => {
@@ -412,6 +434,8 @@ class SortableTable extends React.Component<Props, State> {
             expirationBenchmarkDate,
             mtfCategory,
             mtfCategoryExposure,
+            etfCategory,
+            etfCategoryPosition,
           },
         })
         .then(() => this.setState({ sortBy, sortOrder, }));
@@ -428,6 +452,8 @@ class SortableTable extends React.Component<Props, State> {
       expirationBenchmarkDate,
       mtfCategory,
       mtfCategoryExposure,
+      etfCategory,
+      etfCategoryPosition,
       fragment,
       extractData,
       ...props
@@ -448,6 +474,8 @@ class SortableTable extends React.Component<Props, State> {
           expirationBenchmarkDate,
           mtfCategory,
           mtfCategoryExposure,
+          etfCategory,
+          etfCategoryPosition,
         }}
       >
         {({ loading, error, data, fetchMore, client, }) => {
