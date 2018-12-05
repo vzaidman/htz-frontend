@@ -10,7 +10,6 @@ import { appendScript, } from '../../utils/scriptTools';
 const GET_OUTBRAIN_DATA = gql`
   query GetOutbrainData {
     articleId @client
-    isMouseStory @client
   }
 `;
 
@@ -48,7 +47,7 @@ class Outbrain extends React.Component {
   render() {
     return (
       <Query query={GET_OUTBRAIN_DATA}>
-        {({ data: { articleId, isMouseStory, }, }) => (isMouseStory ? null : (
+        {({ data: { articleId, }, }) => ((
           <div
             className="OUTBRAIN"
             data-src={`https://www.${this.site}/${articleId}`}
