@@ -4,6 +4,7 @@ import FryMock from './listMocks/FryMock';
 import ZoidbergMock from './listMocks/ZoidbergMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
 import MomMock from './listMocks/MomMock';
+import SlugsMock from './listMocks/SlugsMock';
 
 export default (root, { listId, }) => {
   switch (listId) {
@@ -19,6 +20,8 @@ export default (root, { listId, }) => {
       return FryMock;
     case 'Mom':
       return MomMock;
+    case 'Slugs':
+      return SlugsMock;
     default:
       return DefaultMock;
   }

@@ -48,6 +48,13 @@ const views = new Map([
     },
   ],
   [
+    'Slugs',
+    {
+      view: () => import('./views/Slugs/Slugs.view.js'),
+      query: () => import('./views/Slugs/Slugs.query.js'),
+    },
+  ],
+  [
     'Zoidberg',
     {
       view: () => import('./views/Zoidberg/Zoidberg.view.js'),

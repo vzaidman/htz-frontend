@@ -50,6 +50,7 @@ const TeaserInListType = new GraphQLObjectType({
       }),
     },
     exclusive: { type: GraphQLString, },
+    rank: { type: GraphQLID, },
     titleMobile: { type: GraphQLString, },
     hash: { type: GraphQLString, },
     authors: { type: new GraphQLList(author), },
