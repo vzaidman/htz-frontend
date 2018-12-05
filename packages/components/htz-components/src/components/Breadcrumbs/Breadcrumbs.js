@@ -68,10 +68,8 @@ const ColoredLink = ({ crumb, }) => (
   <FelaComponent
     key={crumb.contentId}
     style={theme => ({
-      ...commonStyle(theme),
-      color: theme.color('primary', 'base'),
-      ':hover': {
-        color: theme.color('primary', '+1'),
+      ...commonStyle(theme),      
+      ':hover': {        
         textDecoration: 'underline',
         underlineSkip: 'ink',
       },
@@ -125,19 +123,12 @@ class Breadcrumbs extends React.Component {
     const labelsSections = Object.keys(labelsSectionsIndex);
     const lastCrumb = crumbs.slice(-1)[0] || '';
     const isLastOfLabelSection = labelsSections.includes(lastCrumb.contentId);
-    const updatedCrumbs = isLastOfLabelSection
-      ? this.addMousePostFix(crumbs)
-      : crumbs;
-    const crumbLinks = updatedCrumbs.map(crumb => (
-      <ColoredLink crumb={crumb} />
-    ));
+    const updatedCrumbs = isLastOfLabelSection ? this.addMousePostFix(crumbs) : crumbs;
+    const crumbLinks = updatedCrumbs.map(crumb => <ColoredLink crumb={crumb} />);
 
     const cityIconWrapper = isLastOfLabelSection ? (
       <FelaComponent style={{ float: 'left', }} render="span">
-        <CityIcon
-          icon={labelsSectionsIndex[lastCrumb.contentId]}
-          height="4.5rem"
-        />
+        <CityIcon icon={labelsSectionsIndex[lastCrumb.contentId]} height="4.5rem" />
       </FelaComponent>
     ) : null;
 
@@ -151,11 +142,7 @@ class Breadcrumbs extends React.Component {
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
                 {crumbLinks.map((elem, index) => (
-                  <Fragment
-                    key={
-                      elem.props.crumb.contentId + elem.props.crumb.pathSegment
-                    }
-                  >
+                  <Fragment key={elem.props.crumb.contentId + elem.props.crumb.pathSegment}>
                     <FelaComponent
                       style={theme => ({
                         extend: [
@@ -169,6 +156,10 @@ class Breadcrumbs extends React.Component {
                           theme.mq(
                             { from: 's', },
                             {
+                              color: theme.color('primary'),
+                              ':hover': {
+                                color: theme.color('primary', '+1'),
+                              },
                               ':nth-child(3n) > *': {
                                 color: theme.color('neutral', '-2'),
                                 ':hover': {
@@ -179,12 +170,11 @@ class Breadcrumbs extends React.Component {
                           ),
                         ],
                       })}
-                      render={({ className, }) => (
-                        <span className={className}>{elem}</span>
-                      )}
+                      render={({ className, }) => <span className={className}>{elem}</span>}
                     />
                     {crumbLinks.length - 1 === index ? null : (
                       <FelaComponent style={commonStyle} render="span">
+
                         |
                       </FelaComponent>
                     )}
@@ -205,11 +195,7 @@ Breadcrumbs.defaultProps = defaultProps;
 
 // eslint-disable-next-line react/prop-types
 export default ({ articleId, ...props }) => (
-  <Query
-    query={GET_BREADCRUMBS}
-    variables={{ path: articleId, }}
-    errorPolicy="all"
-  >
+  <Query query={GET_BREADCRUMBS} variables={{ path: articleId, }} errorPolicy="all">
     {({ data, loading, error, }) => {
       if (loading) return null;
       if (error) return null;
