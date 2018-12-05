@@ -243,7 +243,9 @@ export class Select extends Component {
 
   componentWillUnmount() {
     const { onUnMount, } = this.props;
-    onUnMount();
+    if (onUnMount) {
+      onUnMount();
+    }
   }
 
   handleChange = selectedItem => {
