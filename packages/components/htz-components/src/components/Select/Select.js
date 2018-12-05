@@ -197,6 +197,10 @@ export class Select extends Component {
      * example use case: focusing the Select.
      */
     refFunc: PropTypes.func,
+    /**
+     * A function that should be executed when the component unmounting.
+     */
+    onUnMount: PropTypes.func,
     /** The `<Select />`'s stylistic variant */
     variant: PropTypes.oneOfType([
       selectVariants,
@@ -224,6 +228,7 @@ export class Select extends Component {
     onFocus: null,
     placeholder: 'בחר אחת מהאפשרויות הבאות',
     refFunc: null,
+    onUnMount: null,
     variant: 'primary',
   };
 
@@ -235,6 +240,11 @@ export class Select extends Component {
         : null,
     selectedItem: null,
   };
+
+  componentWillUnmount() {
+    const { onUnMount, } = this.props;
+    onUnMount();
+  }
 
   handleChange = selectedItem => {
     this.setState({ selectedItem, });
