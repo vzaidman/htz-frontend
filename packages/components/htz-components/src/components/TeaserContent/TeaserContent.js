@@ -1,10 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import type {
-  ComponentPropResponsiveObject,
-  StyleProps,
-} from '@haaretz/htz-css-tools';
+import type { ComponentPropResponsiveObject, StyleProps, } from '@haaretz/htz-css-tools';
 
 import CardContent from '../CardContent/CardContent';
 import CardFooter from '../CardFooter/CardFooter';
@@ -12,11 +9,7 @@ import GridItem from '../Grid/GridItem';
 
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
-import type {
-  ColorType,
-  PaddingType,
-  CardContentSeperator,
-} from '../CardContent/cardContentStyle';
+import type { ColorType, PaddingType, CardContentSeperator, } from '../CardContent/cardContentStyle';
 
 type TeaserContentType = {
   data: TeaserDataType,
