@@ -4,6 +4,7 @@ import { quoteImage, } from '../image/image';
 
 export default gql`
   fragment Quote on Quote {
+    position
     text
     credit
     afterParagraph

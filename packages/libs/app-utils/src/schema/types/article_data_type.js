@@ -92,6 +92,7 @@ const ArticleData = new GraphQLObjectType({
     // review article related
     reviewType: { type: GraphQLString, },
     amenities: { type: new GraphQLList(GraphQLJSON), },
+    magazineArticleViewType: { type: GraphQLString, },
   }),
 });
 

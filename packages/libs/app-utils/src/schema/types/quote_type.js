@@ -11,6 +11,7 @@ const QuoteType = new GraphQLObjectType({
   name: 'Quote',
   fields: () => ({
     text: { type: GraphQLString, },
+    position: { type: GraphQLString, },
     credit: { type: GraphQLString, },
     afterParagraph: { type: GraphQLString, },
     imagesList: { type: new GraphQLList(ImageType), },

@@ -58,6 +58,10 @@ export default function htz(app, server, DEV) {
       console.log('found review, rendering review page');
       return app.render(req, res, '/reviewArticle', query);
     }
+    if (req.path.indexOf('MAGAZINE-') >= 0) {
+      console.log('found MAGAZINE, rendering MAGAZINE page');
+      return app.render(req, res, '/magazineArticle', query);
+    }
     console.log('rendering standardArticle');
     return app.render(req, res, '/standardArticle', query);
   });

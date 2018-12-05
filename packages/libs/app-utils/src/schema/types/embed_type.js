@@ -13,6 +13,8 @@ const EmbedType = new GraphQLObjectType({
     contentName: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
     settings: { type: GraphQLJSON, },
+    viewMode: { type: GraphQLString, },
+    position: { type: GraphQLString, },
   }),
 });
 

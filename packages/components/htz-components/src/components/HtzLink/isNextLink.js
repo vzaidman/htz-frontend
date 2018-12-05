@@ -10,7 +10,6 @@ const homepagePattern = '(^\\/(\\?.*)?$)';
 const offersPattern = '(\\/promotions-page\\/(product|price|login|method|payment|thankYou|debt|stage\\d))';
 
 const NonReactArticleTypes = [
-  '(MAGAZINE-)',
   '(TAG-)',
   '(WRITER-)',
   '(CARD-)',

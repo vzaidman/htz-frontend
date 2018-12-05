@@ -6,6 +6,7 @@ const ImageType = new GraphQLObjectType({
   name: 'Image',
   fields: () => ({
     viewMode: { type: GraphQLString, },
+    position: { type: GraphQLString, },
     accessibility: { type: GraphQLString, },
     title: { type: GraphQLString, },
     credit: { type: GraphQLString, },

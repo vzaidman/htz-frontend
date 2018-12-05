@@ -38,7 +38,7 @@ const testUrls = [
   [ '/misc/writers/1.681414', false, ],
   [ '/sport/magazine', false, ],
   [ '/sport/nba?123123', false, ],
-  [ '/realestate/MAGAZINE-1.5958669', false, ],
+  [ '/realestate/MAGAZINE-1.5958669', true, ],
   [ 'https://www.themarker.com/', false, ],
   [ 'https://www.haaretz.co.il/realestate/1.6193372', true, ],
   [ 'https://www.themarker.com/realestate/1.6193372', false, ],
