@@ -1,12 +1,15 @@
 // @flow
-import type { AuthorDataType, } from './AuthorDataType';
+// import type { AuthorDataType, } from './AuthorDataType';
 import type { ImageDataType, } from './ImageDataType';
 import type { HTMLEmbedDataType, } from './HTMLEmbedDataType';
 import type { GalleryDataType, } from './GalleryDataType';
 
 export type TeaserDataType = {
   authorImage?: ?ImageDataType,
-  authors?: ?(AuthorDataType[]),
+  authors?: ?({
+    name: string,
+    url?: ?string,
+  }[]),
   commentsCount?: number,
   contentId: string,
   exclusive?: ?string,

@@ -33,27 +33,38 @@ type TeaserMediaPropsType = {
    * />
    */
   width: number | ComponentPropResponsiveObject<number>[],
+  /**
+   * Don't wrap the media element with an `<a>` element.
+   * Useful for interactive  content.
+   */
+  disableAnchor: boolean,
   children: React.Node,
 };
 
 TeaserMedia.defaultProps = {
-  width: null,
   children: null,
+  disableAnchor: false,
+  width: null,
 };
 
 export default function TeaserMedia({
   data,
   width,
   children,
+  disableAnchor,
 }: TeaserMediaPropsType): React.Node {
   return (
     <GridItem width={width} stretchContent>
       <AboveBlockLink>
         {({ className, }) => (
           <div className={className}>
-            <HtzLink href={data.path} attrs={{ tabIndex: -1, }}>
-              {children}
-            </HtzLink>
+            {disableAnchor ? (
+              children
+            ) : (
+              <HtzLink href={data.path} attrs={{ tabIndex: -1, }}>
+                {children}
+              </HtzLink>
+            )}
           </div>
         )}
       </AboveBlockLink>

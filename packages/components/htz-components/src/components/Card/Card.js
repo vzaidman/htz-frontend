@@ -15,7 +15,7 @@ export type CardProps = {
   /**
    * attributes to be passed to the DOM element
    */
-  attrs: attrFlowType,
+  attrs: ?attrFlowType,
   /**
    * The background color of the card.
    * Can be:
@@ -35,7 +35,7 @@ export type CardProps = {
    *     ```
    */
   backgroundColor:
-    | string
+    | ?string
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
@@ -50,7 +50,7 @@ export type CardProps = {
    * trump all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
-  miscStyles: StyleProps,
+  miscStyles: ?StyleProps,
   children: Node,
   /** The html element to use for the card */
   tagName: ElementType,

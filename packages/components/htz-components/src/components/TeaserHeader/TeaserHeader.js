@@ -9,6 +9,7 @@ import type {
   TypographyPropType,
 } from '@haaretz/htz-css-tools';
 
+import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import H from '../AutoLevels/H';
 import HtzLink from '../HtzLink/HtzLink';
@@ -36,7 +37,7 @@ type TeaserHeaderProps = {
   titleMobile: string,
   exclusive: string,
   exclusiveMobile: string,
-  href: string,
+  path: string,
 
   /**
    * The font-size and line height of the headline
@@ -129,7 +130,7 @@ TeaserHeader.defaultProps = {
   titleMobile: null,
   exclusive: null,
   exclusiveMobile: null,
-  href: null,
+  path: null,
   // style props
   typeScale: null,
   color: null,
@@ -147,7 +148,7 @@ export default function TeaserHeader({
   titleMobile,
   exclusive,
   exclusiveMobile,
-  href,
+  path,
   // style props
   typeScale,
   color,
@@ -156,33 +157,39 @@ export default function TeaserHeader({
   kickerTypeScale,
 }: TeaserHeaderProps): React.Node {
   return (
-    <FelaComponent
-      color={color}
-      typeScale={typeScale}
-      miscStyles={miscStyles}
-      rule={style}
-      render={({ className, }) => (
-        <React.Fragment>
-          {(exclusive || exclusiveMobile) && (
-            <Kicker
-              {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
-              {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
-            >
-              <TeaserResponsiveText text={title} mobileText={titleMobile} />
-            </Kicker>
-          )}
-          <HtzLink href={href}>
-            <H
-              className={className}
-              isH1={isH1}
-              offset={offset}
-              {...attrs || {}}
-            >
-              <TeaserResponsiveText text={title} mobileText={titleMobile} />
-            </H>
+    <AboveBlockLink>
+      {({ className, }) => (
+        <div className={className}>
+          <HtzLink href={path} className={className}>
+            {(exclusive || exclusiveMobile) && (
+              <React.Fragment>
+                <Kicker
+                  {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
+                  {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
+                >
+                  <TeaserResponsiveText text={exclusive} mobileText={exclusiveMobile} />
+                </Kicker>
+                <FelaComponent
+                  color={color}
+                  typeScale={typeScale}
+                  miscStyles={miscStyles}
+                  rule={style}
+                  render={({ className, }) => (
+                    <H
+                      className={className}
+                      isH1={isH1}
+                      offset={offset}
+                      {...attrs || {}}
+                    >
+                      <TeaserResponsiveText text={title} mobileText={titleMobile} />
+                    </H>
+                  )}
+                />
+              </React.Fragment>
+            )}
           </HtzLink>
-        </React.Fragment>
+        </div>
       )}
-    />
+    </AboveBlockLink>
   );
 }

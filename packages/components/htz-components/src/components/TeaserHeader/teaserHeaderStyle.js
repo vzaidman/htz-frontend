@@ -78,6 +78,7 @@ export default function style({
   miscStyles,
 }: StyleTypes): Object {
   return {
+    display: 'inline',
     fontWeight: '700',
     extend: [
       // Set background-color

@@ -3,9 +3,9 @@ import type { ImageDataType, } from './ImageDataType';
 
 export type AuthorDataType =
   | {
-      contentName: "com.tm.Author",
+      contentName: string,
       contentId: string,
-      inputTemplate: string,
+      inputTemplate: "com.tm.Author",
       authorType?: string,
       email?: string,
       facebook?: string,

@@ -20,7 +20,7 @@ type TeaserPropTypes = {
   /**
    * attributes to be passed to the DOM element
    */
-  attrs: attrFlowType,
+  attrs: ?attrFlowType,
   /**
    * The background-color of the headline
    * Can be:
@@ -40,7 +40,7 @@ type TeaserPropTypes = {
    *     ```
    */
   backgroundColor:
-    | string
+    | ?string
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
@@ -53,7 +53,7 @@ type TeaserPropTypes = {
    * trump all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
-  miscStyles: StyleProps,
+  miscStyles: ?StyleProps,
   gutter:
     | number
     | {

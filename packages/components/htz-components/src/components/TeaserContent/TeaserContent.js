@@ -6,7 +6,6 @@ import type {
   StyleProps,
 } from '@haaretz/htz-css-tools';
 
-import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import CardContent from '../CardContent/CardContent';
 import CardFooter from '../CardFooter/CardFooter';
 import GridItem from '../Grid/GridItem';
@@ -105,13 +104,7 @@ export default function TeaserContent({
         <CardContent
           {...{ attrs, backgroundColor, color, padding, miscStyles, }}
         >
-          <AboveBlockLink>
-            {({ className, }) => (
-              <div className={className}>
-                {renderContent && renderContent(data)}
-              </div>
-            )}
-          </AboveBlockLink>
+          {renderContent && renderContent(data)}
         </CardContent>
 
         {renderFooter && (
@@ -124,11 +117,7 @@ export default function TeaserContent({
             seperator={footerSeperator}
             miscStyles={footerMiscStyles}
           >
-            <AboveBlockLink>
-              {({ className, }) => (
-                <div className={className}>{renderFooter(data)}</div>
-              )}
-            </AboveBlockLink>
+            {renderFooter(data)}
           </CardFooter>
         )}
       </GridItem>
