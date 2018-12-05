@@ -1,4 +1,5 @@
-/* global window, document */
+/* global window */
+/* global document */
 import React, { Component, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
@@ -6,12 +7,15 @@ import IconClose from '../Icon/icons/IconClose';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
-const close = (theme, side) => ({  
-  flexBasis: '0 0 auto',    
-  paddingStart: '1.5rem',
-  paddingEnd: '1.5rem',
-  order: '1',  
-  cursor: 'pointer',    
+const close = (theme, side) => ({
+  height: '100%',
+  width: '5.8rem',
+  position: 'absolute',
+  left: side === 'RIGHT' ? 'auto' : '0',
+  right: side === 'RIGHT' ? '0' : 'auto',
+  cursor: 'pointer',
+  top: 0,
+  display: 'flex',
   background: theme.color('secondary', 'base'),
   textAlign: 'center',
 });
@@ -20,24 +24,15 @@ const closeInner = {
   margin: 'auto',
 };
 
-const tooltipInner = {
-  paddingTop: '1rem',
-  paddingBottom: '1rem',
-  paddingEnd: '3rem',
-  flexBasis: 'fill',
-  paddingStart: '3rem',
-  display: 'inline-block'
-};
-
 class Tooltip extends Component {
   static propTypes = {
     /** The text of the tooltip */
     text: PropTypes.string.isRequired,
     /** The local storage parameter */
     storageParam: PropTypes.string,
-    /** number of times to show the tooltip after closing */
+    /** Amount of times to show the tooltip after closing */
     closingCount: PropTypes.number,
-    /** horizentol openning side (auto | top | bottom | inlineEnd | inlineStart) */
+    /** horizentol openning side (auto | TOP | BOTTOM | LEFT | RIGHT) */
     openSide: PropTypes.string,
     /** change X offset */
     offsetX: PropTypes.number,
@@ -90,76 +85,64 @@ class Tooltip extends Component {
     else {
       openSide = this.props.openSide;
     }
-    const insetInlineEnd = `calc(50% + ${this.props.offsetX}rem)`;
+    let left = `calc(50% + ${this.props.offsetX}rem)`;
 
     let bottom;
     let top;
-    const insetInlineStart = 'auto';
+    let right = 'auto';
     const delta = this.props.offsetY;
     switch (openSide) {
-      case 'top':
+      case 'TOP':
         bottom = `calc(100% + ${delta}rem)`;
         top = 'auto';
-        this.tooltipPosition = { bottom, top, insetInlineEnd, transform: 'translateX(-50%)', };
+        this.tooltipPosition = { bottom, top, left, transform: 'translateX(-50%)', };
         this.arrowStyle = {
           borderWidth: '7px 7px 0 7px',
           borderColor: `${this.theme.color('primary', 'base')} transparent transparent transparent`,
           transform: 'translateX(-50%)',
           top: '100%',
-          insetInlineEnd: `calc(50% - ${this.props.offsetX}rem)`,
+          left: `calc(50% - ${this.props.offsetX}rem)`,
         };
         break;
-      case 'bottom':
+      case 'BOTTOM':
         bottom = 'auto';
         top = `calc(100% + ${delta}rem)`;
-        this.tooltipPosition = { bottom, top, insetInlineEnd, transform: 'translateX(-50%)', };
+        this.tooltipPosition = { bottom, top, left, transform: 'translateX(-50%)', };
         this.arrowStyle = {
           borderWidth: '0px 7px 7px 7px',
           borderColor: `transparent transparent ${this.theme.color('primary', 'base')} transparent`,
           transform: 'translateX(-50%)',
           bottom: '100%',
-          insetInlineEnd: `calc(50% - ${this.props.offsetX}rem)`,
+          left: `calc(50% - ${this.props.offsetX}rem)`,
         };
         break;
-      case 'inlineEnd':
+      case 'LEFT':
         bottom = 'auto';
         top = '50%';
-        insetInlineEnd = 'auto';
-        insetInlineStart = `calc(100% + ${this.props.offsetX}rem)`;
-        this.tooltipPosition = {
-          bottom,
-          top,
-          insetInlineEnd,
-          insetInlineStart,
-          transform: 'translateY(-50%)',
-        };
+        left = 'auto';
+        right = `calc(100% + ${this.props.offsetX}rem)`;
+        this.tooltipPosition = { bottom, top, left, right, transform: 'translateY(-50%)', };
         this.arrowStyle = {
           top: `calc(50% - ${this.props.offsetY}rem)`,
           borderWidth: '7px 0px 7px 7px',
           borderColor: `transparent transparent transparent ${this.theme.color('primary', 'base')}`,
           transform: 'translateY(-50%)',
-          insetInlineEnd: '100%',
+          left: '100%',
         };
         break;
-      case 'inlineStart':
+      case 'RIGHT':
         bottom = 'auto';
         top = `calc(50% + ${this.props.offsetY}rem)`;
-        insetInlineEnd = `calc(100% + ${this.props.offsetX}rem)`;
-        insetInlineStart = 'auto';
-        this.tooltipPosition = {
-          bottom,
-          top,
-          insetInlineEnd,
-          insetInlineStart,
-          transform: 'translateY(-50%)',
-        };
+        left = `calc(100% + ${this.props.offsetX}rem)`;
+        right = 'auto';
+        this.tooltipPosition = { bottom, top, left, right, transform: 'translateY(-50%)', };
         this.arrowStyle = {
           top: `calc(50% - ${this.props.offsetY}rem)`,
           borderWidth: '7px 7px 7px 0px',
           borderColor: `transparent ${this.theme.color('primary', 'base')} transparent transparent`,
           transform: 'translateY(-50%)',
-          insetInlineStart: '100%',
-          insetInlineEnd: 'auto',
+          right: '100%',
+          left: 'auto',
         };
         break;
       default:
@@ -188,12 +171,14 @@ class Tooltip extends Component {
   }) => ({
     ...tooltipPosition,
     position: 'absolute',
-    zIndex: theme.getZIndex('above'),
-    display: hide ? 'none' : 'flex',
-    alignItems: 'stretch',    
+    zIndex: '1',
+    display: hide ? 'none' : 'inline-block',
     backgroundColor: theme.color('primary', 'base'),
-    color: theme.color('white'),
-    minWidth: '25rem',  
+    color: '#FFF',
+    minWidth: '25rem',
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
+    ...this.calcPadding(openSide),
     textAlign: 'center',
     ':after': {
       content: "''",
@@ -218,7 +203,14 @@ class Tooltip extends Component {
   hideTooltip = () => {
     this.setState({ hide: true, });
   };
-  
+
+  calcPadding = openSide => {
+    const closeButtonSide = this.props.openOnMouseOver ? '3rem' : '8rem';
+    return {
+      paddingLeft: openSide === 'RIGHT' ? '3rem' : closeButtonSide,
+      paddingRight: openSide === 'RIGHT' ? closeButtonSide : '3rem',
+    };
+  };
   render() {
     if (!this.id) {
       this.id = `aria${parseInt(Math.random() * 10000000, 10)}`;
@@ -275,9 +267,7 @@ class Tooltip extends Component {
                 />
               )}
 
-            <FelaComponent style={tooltipInner} render={({className,}) =>(
-              <span class={className} id={this.id}>{text}</span>
-            )}/>
+              <span id={this.id}>{text}</span>
             </div>
           )}
         />

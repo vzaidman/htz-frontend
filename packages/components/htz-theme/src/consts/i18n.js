@@ -292,10 +292,6 @@ export const mobileAdditionalShare = Object.freeze({
   text: 'שיתוף',
 });
 
-export const shareBar = Object.freeze({
-  whatsappTooltip: 'שתפו וחבריכם יקראו את הכתבה ללא תשלום',
-});
-
 export const mobileUserMenuI18n = Object.freeze({
   noUserData: 'כניסה',
   userLoggedIn: 'יציאה',
@@ -316,6 +312,7 @@ export const recipeInstructionsI18n = Object.freeze({
 export const recipeIngredientsI18n = Object.freeze({
   sectionTitle: 'רכיבים',
 });
+
 
 export const recipeRatingI18n = Object.freeze({
   levelText: Object.freeze({

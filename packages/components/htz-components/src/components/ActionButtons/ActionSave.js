@@ -43,6 +43,7 @@ export default class ActionSave extends React.Component {
               return (
                 <Button
                   title="שמירת כתבה"
+                  tabIndex="-1"
                   {...props}
                   miscStyles={{
                     ...buttonStyles.global,
@@ -53,25 +54,31 @@ export default class ActionSave extends React.Component {
                       articleId,
                       userId,
                       operation: isArticleSaved ? 'subtract' : 'add',
-                      readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
+                      readingListId:
+                        'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
                       update: true,
                       pq: 'reading_pq',
                     };
-                    fetch('https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager', {
-                      method: 'POST',
-                      cache: 'no-cache',
-                      credentials: 'include',
-                      headers: {
-                        // 'Content-Type': 'application/json; charset=utf-8',
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                      },
-                      body: querystring.stringify(bodyReq),
-                    })
+                    fetch(
+                      'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
+                      {
+                        method: 'POST',
+                        cache: 'no-cache',
+                        credentials: 'include',
+                        headers: {
+                          // 'Content-Type': 'application/json; charset=utf-8',
+                          'Content-Type':
+                            'application/x-www-form-urlencoded; charset=utf-8',
+                        },
+                        body: querystring.stringify(bodyReq),
+                      }
+                    )
                       .then(response => response.json())
                       .then(response => {
                         cache.writeData({
                           data: {
-                            readingListArray: response.readinglist.articlesIdsListStr,
+                            readingListArray:
+                              response.readinglist.articlesIdsListStr,
                           },
                         });
                         this.setState(prevState => ({

@@ -10,11 +10,11 @@
 
 ## Openning side
 
-Forcing the tooltip openning side. Sccepts : top | bottom | inlineEnd | inlineStart | auto (default)
+Forcing the tooltip openning side. Sccepts : TOP | BOTTOM | LEFT | RIHGT | AUTO (default)
 
 ```jsx
 <div style={{ margin: '100px 0 0 300px' }}>
-  <Tooltip text="What is up?" openSide="inlineStart">
+  <Tooltip text="What is up?" openSide="RIGHT">
     <p style={{ margin: '0px', display: 'inline-block' }}>goodby</p>
   </Tooltip>
 </div>
@@ -24,7 +24,7 @@ Forcing the tooltip openning side. Sccepts : top | bottom | inlineEnd | inlineSt
 
 ```jsx
 <div style={{ margin: '100px 0 0 300px' }}>
-  <Tooltip text="What is up?" openSide="inlineStart" offsetX="2" offsetY="1.5">
+  <Tooltip text="What is up?" openSide="RIGHT" offsetX="2" offsetY="1.5">
     <p style={{ margin: '0px', display: 'inline-block' }}>goodby</p>
   </Tooltip>
 </div>
