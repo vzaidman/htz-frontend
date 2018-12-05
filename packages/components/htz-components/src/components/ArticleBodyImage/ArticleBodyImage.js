@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 
@@ -10,13 +9,6 @@ import Image from '../Image/Image';
 import Picture from '../Image/Picture';
 import { buildUrl, } from '../../utils/buildImgURLs';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import Mutation from '../ApolloBoundary/Mutation';
-
-const ADD_IMAGE = gql`
-  mutation AddImageToSchema($image: Object!) {
-    addImageToSchema(image: $image) @client
-  }
-`;
 
 const articleImagePropTypes = {
   /**
@@ -54,6 +46,11 @@ const articleImagePropTypes = {
    */
   imgArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
+   * A function that gets the aspect and isFullScreen args
+   * should return an objects of imgOptions the includes sizes and transforms
+   */
+  imgOptions: PropTypes.func.isRequired,
+  /**
    * Should the image be rendered as full-screen.
    */
   isFullScreen: PropTypes.bool,
@@ -79,6 +76,10 @@ const articleImagePropTypes = {
    * Image's title.
    */
   title: PropTypes.string,
+  /**
+   * Toggle full screen mode function
+   */
+  toggleFullScreen: PropTypes.func.isRequired,
   /**
    * The image's selected view mode set by the editor (regular, full or 1/3).
    */
@@ -112,6 +113,11 @@ const imagePropTypes = {
    */
   imgArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
+   * A function that gets the aspect and isFullScreen args
+   * should return an objects of imgOptions the includes sizes and transforms
+   */
+  imgOptions: PropTypes.func.isRequired,
+  /**
    * Should the view switch to full-screen.
    */
   isFullScreen: PropTypes.bool,
@@ -134,14 +140,7 @@ const imageDefaultProps = {
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const wrapperStyle = ({
-  viewMode,
-  lastItem,
-  isHeadline,
-  miscStyles,
-  theme,
-  isFullScreen,
-}) => ({
+const wrapperStyle = ({ viewMode, lastItem, isHeadline, miscStyles, theme, isFullScreen, }) => ({
   position: 'relative',
   display: 'block',
   width: '100%',
@@ -183,7 +182,9 @@ const wrapperStyle = ({
         float: 'end',
         marginBottom: '0.75rem',
         marginStart: '1.5rem',
-        ...(viewMode !== 'VerticalView' ? { width: `calc(100% *  ${viewMode === 'OneThirdView' ? 1 : 2}/3)`, } : {}),
+        ...(viewMode !== 'VerticalView'
+          ? { width: `calc(100% *  ${viewMode === 'OneThirdView' ? 1 : 2}/3)`, }
+          : {}),
         width: 'calc(100%*1/3)',
       }
       : {},
@@ -196,37 +197,43 @@ const getAspect = viewMode => {
       return 'full';
     case 'OneThirdView':
       return 'full';
+    case 'landscapeView':
+      return 'landscape';
+    case 'squareView':
+      return 'square';
+    case 'verticalView':
+      return 'vertical';
+    case 'FullColumnWithVerticalImage':
+      return 'headline';
     default:
       return 'full';
   }
 };
 
 const ImageElement = props => {
-  const { imageType, imgArray, isFullScreen, viewMode, forceAspect, } = props;
+  const { imageType, imgArray, isFullScreen, viewMode, forceAspect, imgOptions, } = props;
 
   const aspect = forceAspect || getAspect(viewMode);
 
-  const imgOptions = {
-    transforms: {
-      width: isFullScreen ? '1920' : '700',
-      aspect,
-      quality: 'auto',
-    },
-  };
-  const sourceOptions = {
-    transforms: {
-      width: isFullScreen ? '1920' : '700',
-      aspect,
-      quality: 'auto',
-    },
-  };
+  const sourceAndImageOptions = imgOptions
+    ? imgOptions(aspect, isFullScreen)
+    : {
+      sizes: '100vw',
+      transforms: [
+        {
+          width: 'auto',
+          aspect,
+          quality: 'auto',
+        },
+      ],
+    };
 
   return imageType === 'image' ? (
     <Image
       hasWrapper={!isFullScreen}
       data={props}
       attrs={{ alt: props.accessibility, }}
-      imgOptions={imgOptions}
+      imgOptions={sourceAndImageOptions}
       bgcolor={isFullScreen ? 'neutral' : ''}
     />
   ) : (
@@ -234,7 +241,7 @@ const ImageElement = props => {
       hasWrapper={!isFullScreen}
       defaultImg={{
         data: props,
-        sourceOptions,
+        sourceOptions: sourceAndImageOptions,
       }}
       sources={[
         {
@@ -243,7 +250,7 @@ const ImageElement = props => {
             ...props,
             imgArray: [ imgArray[1], ],
           },
-          sourceOptions,
+          sourceOptions: sourceAndImageOptions,
         },
         {
           from: 'm',
@@ -251,7 +258,7 @@ const ImageElement = props => {
             ...props,
             imgArray: [ imgArray[0], ],
           },
-          sourceOptions,
+          sourceOptions: sourceAndImageOptions,
         },
       ]}
       bgcolor={isFullScreen ? 'neutral' : ''}
@@ -265,6 +272,7 @@ ImageElement.defaultProps = imageDefaultProps;
 const UnwrappedImage = ({
   className,
   credit,
+  imgOptions,
   isFullScreen,
   isHeadline,
   lastItem,
@@ -284,10 +292,21 @@ const UnwrappedImage = ({
     className={className}
     miscStyles={miscStyles}
     isFullScreen={isFullScreen}
-    render={({ className, theme: { creditPrefixI18n: { imageCreditPrefix, }, }, }) => (
+    render={({
+      className,
+      theme: {
+        creditPrefixI18n: { imageCreditPrefix, },
+      },
+    }) => (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       <figure className={className} onClick={!isFullScreen ? toggleFullScreen : null}>
-        <ImageElement forceAspect={forceAspect} {...image} isFullScreen={isFullScreen} />
+        <ImageElement
+          imgOptions={imgOptions}
+          forceAspect={forceAspect}
+          viewMode={viewMode}
+          {...image}
+          isFullScreen={isFullScreen}
+        />
         {showCaption && !isFullScreen ? (
           <Caption caption={title} credit={credit} creditprefix={imageCreditPrefix} />
         ) : null}
@@ -306,25 +325,6 @@ UnwrappedImage.defaultProps = articleImageDefaultProps;
  * a default.
  */
 class ArticleBodyImage extends React.Component {
-  componentDidMount() {
-    const { title, addImageToSchema, } = this.props;
-    if (addImageToSchema) {
-      addImageToSchema({
-        variables: {
-          image: {
-            type: 'ImageObject',
-            url: this.getImageUrl(),
-            description: title,
-            name: title,
-            width: 640,
-            height: 370,
-            __typename: 'Image',
-          },
-        },
-      }).then(() => null);
-    }
-  }
-
   getImageUrl = () => {
     const { contentId, imgArray, aspects, } = this.props;
     return buildUrl(
@@ -350,12 +350,7 @@ class ArticleBodyImage extends React.Component {
         }}
         render={({ className, theme, }) => (
           <div className={className}>
-            <Caption
-              caption={title}
-              credit={credit}
-              color={[ 'neutral', '-10', ]}
-              typeStyles={-1}
-            />
+            <Caption caption={title} credit={credit} color={[ 'neutral', '-10', ]} typeStyles={-1} />
           </div>
         )}
       />
@@ -383,17 +378,4 @@ class ArticleBodyImage extends React.Component {
 ArticleBodyImage.propTypes = articleImagePropTypes;
 ArticleBodyImage.defaultProps = articleImageDefaultProps;
 
-export default props => (
-  // eslint-disable-next-line react/prop-types
-  props.ignoreSchema
-    ? (
-      <ArticleBodyImage {...props} />
-    )
-    : (
-      <Mutation mutation={ADD_IMAGE}>
-        {addImageToSchema => (
-          <ArticleBodyImage {...props} addImageToSchema={addImageToSchema} />
-        )}
-      </Mutation>
-    )
-);
+export default ArticleBodyImage;

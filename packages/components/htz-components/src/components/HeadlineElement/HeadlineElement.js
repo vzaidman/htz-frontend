@@ -3,22 +3,26 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
-import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import Caption from '../Caption/Caption';
-import Embed from '../Embed/Embed';
-// import ImageGallery from '../ImageGallery/ImageGallery';
-import Video from '../Video/Video';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
+import getHeadlineElement from './getHeadlinelElement';
 
 const propTypes = {
   /**
    * Override the caption misc styles.
    */
   captionMiscStyles: PropTypes.shape({}),
+  /** aspect to force on article image */
+  forceAspect: PropTypes.string,
   /**
    * The media object as it passed down from papi.
    */
   elementObj: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  /**
+   * A function that gets the aspect and isFullScreen args
+   * should return an objects of imgOptions the includes sizes and transforms for the headline image
+   */
+  imgOptions: PropTypes.func.isRequired,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -30,6 +34,7 @@ const propTypes = {
 const defaultProps = {
   miscStyles: null,
   captionMiscStyles: {},
+  forceAspect: 'headline',
 };
 
 /**
@@ -41,27 +46,9 @@ const defaultProps = {
  * @returns {XML}
  * @constructor
  */
-function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
+function HeadlineElement({ captionMiscStyles, elementObj, forceAspect, imgOptions, miscStyles, }) {
   const uniqueId = elementObj.elementType || elementObj.inputTemplate || null;
-
-  const Element = () => {
-    switch (uniqueId) {
-      case 'com.tm.Image':
-      case 'com.tm.BlogImage':
-        return (
-          <ArticleImage {...elementObj} showCaption={false} forceAspect="headline" isHeadline />
-        );
-      case 'com.tm.ImageGalleryElement':
-        // return <ImageGallery {...elementObj} forceAspect="headline" />;
-        return () => <p>ImageGallery</p>;
-      case 'com.tm.Video':
-        return <Video {...elementObj} />;
-      case 'embedElement':
-        return <Embed showCaption={false} {...elementObj} />;
-      default:
-        return null;
-    }
-  };
+  const Element = getHeadlineElement(uniqueId);
 
   // if the Element is an image. credit prefix should set to 'צילום', issue: #1011
   const creditPrefix = elementObj.inputTemplate === 'com.tm.Image' ? 'צילום' : null;
@@ -75,7 +62,13 @@ function HeadlineElement({ captionMiscStyles, elementObj, miscStyles, }) {
         ],
       })}
     >
-      <Element />
+      <Element
+        {...elementObj}
+        showCaption={false}
+        forceAspect={forceAspect}
+        isHeadline
+        imgOptions={imgOptions}
+      />
       <Caption
         caption={elementObj.caption || elementObj.title}
         credit={elementObj.credit}

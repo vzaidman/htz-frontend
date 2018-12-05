@@ -79,11 +79,64 @@ const Aside = ({ children, }) => (
   </FelaComponent>
 );
 
+const buildImgOptions = (aspect, isFullScreen) => ({
+  sizes: isFullScreen ? '100vw' : '(min-width:1280px) 627px,(min-width:1024px) 460px,(min-width:600px) 540px, calc(100vw - 6rem)',
+  transforms: [
+    {
+      width: '1920',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '1440',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '1280',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '1028',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '768',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '600',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '425',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '375',
+      aspect,
+      quality: 'auto',
+    },
+  ],
+});
+
 const buildComponent = (context, index, isLastItem) => {
   const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
 
   if ([ 'com.tm.Image', 'com.tm.BlogImage', ].includes(uniqueId)) {
-    return <ArticleImage key={context.contentId} lastItem={isLastItem} {...context} />;
+    return (
+      <ArticleImage
+        key={context.contentId}
+        lastItem={isLastItem}
+        {...context}
+        imgOptions={(aspect, isFullScreen) => buildImgOptions(aspect, isFullScreen)}
+      />
+    );
   }
 
   const Component = getComponent(uniqueId);
@@ -94,8 +147,19 @@ const buildComponent = (context, index, isLastItem) => {
           <Component {...context} />
         </Figure>
       );
-    case 'interactiveElement':
     case 'com.tm.ImageGalleryElement':
+      return (
+        <Figure key={context.contentId} lastItem={isLastItem}>
+          <Component
+            {...context}
+            imgOptions={(aspect, isFullScreen) => buildImgOptions(aspect, isFullScreen)}
+          />
+          {context.title || context.caption || context.credit ? (
+            <Caption caption={context.title || context.caption} credit={context.credit} />
+          ) : null}
+        </Figure>
+      );
+    case 'interactiveElement':
     case 'com.tm.Video': // eslint-disable-line no-case-declarations
       return (
         <Figure key={context.contentId} lastItem={isLastItem}>

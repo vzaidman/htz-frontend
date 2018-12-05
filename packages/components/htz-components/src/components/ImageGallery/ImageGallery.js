@@ -174,6 +174,7 @@ const Gallery = ({
   currentDisplaying,
   forceAspect,
   images,
+  imgOptions,
   name,
   showTitle,
 }) => {
@@ -250,6 +251,7 @@ const Gallery = ({
                         showCaption={false}
                         enableEnlarge={false}
                         ignoreSchema
+                        imgOptions={imgOptions}
                         miscStyles={{
                           textAlign: 'center',
                           marginBottom: '0 !important',
@@ -275,26 +277,17 @@ const Gallery = ({
                           flexWrap: 'nowrap',
                           position: 'relative',
                           extend: [
-                            theme.mq(
-                              { from: 's', misc: 'portrait', },
-                              { flexShrink: '1', }
-                            ),
-                            theme.mq(
-                              { from: 'm', misc: 'landscape', },
-                              { flexShrink: '1', }
-                            ),
+                            theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
+                            theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
                           ],
                         }}
                       >
                         {renderPreviousItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
                         ))}
-                        {renderCurrentItems(
-                          image.alt || image.title,
-                          ({ itemIndex, }) => (
-                            <Image {...images[itemIndex]} />
-                          )
-                        )}
+                        {renderCurrentItems(image.alt || image.title, ({ itemIndex, }) => (
+                          <Image {...images[itemIndex]} />
+                        ))}
                         {renderNextItems(({ itemIndex, }) => (
                           <Image {...images[itemIndex]} />
                         ))}
@@ -318,10 +311,7 @@ const Gallery = ({
                                 height: '9rem',
                                 zIndex: '3',
                                 color: theme.color('neutral', '-1'),
-                                backgroundColor: rgba(
-                                  theme.color('quaternary'),
-                                  0.8
-                                ),
+                                backgroundColor: rgba(theme.color('quaternary'), 0.8),
                                 start: '0',
                               }}
                               render={({ className, }) => (
@@ -352,10 +342,7 @@ const Gallery = ({
                                 zIndex: '3',
                                 end: '0',
                                 color: theme.color('neutral', '-1'),
-                                backgroundColor: rgba(
-                                  theme.color('quaternary'),
-                                  0.8
-                                ),
+                                backgroundColor: rgba(theme.color('quaternary'), 0.8),
                               }}
                               render={({ className, }) => (
                                 <button

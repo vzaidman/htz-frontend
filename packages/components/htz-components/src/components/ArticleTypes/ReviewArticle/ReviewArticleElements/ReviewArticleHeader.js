@@ -140,6 +140,60 @@ function Header({
                 paddingStart: [ { until: 'l', value: '2rem', }, { from: 'l', value: 0, }, ],
               }}
               elementObj={headlineElement}
+              imgOptions={(aspect, isFullScreen) => ({
+                sizes: `${
+                  isFullScreen
+                    ? '100vw'
+                    : '(min-width:1280px) 910px, (min-width:1024px) 912px, (min-width:768px) 768px,(min-width:600px) 600px, 100vw'
+                }`,
+                transforms: [
+                  {
+                    width: '1920',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1420',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1280',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1024',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '912',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '768',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '600',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '450',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '350',
+                    aspect,
+                    quality: 'auto',
+                  },
+                ],
+              })}
               miscStyles={{
                 marginTop: '4rem',
                 marginBottom: [ { until: 'm', value: 0, }, ],

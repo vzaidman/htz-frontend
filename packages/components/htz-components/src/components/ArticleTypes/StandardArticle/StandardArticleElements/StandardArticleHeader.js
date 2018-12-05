@@ -13,9 +13,7 @@ Header.propTypes = {
   /**
    * An array of Article's authors.
    */
-  authors: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
-  ).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
   articleId: PropTypes.string.isRequired,
   canonicalUrl: PropTypes.string.isRequired,
   hasBreadCrumbs: PropTypes.bool.isRequired,
@@ -55,7 +53,6 @@ function Header({
     <FelaComponent
       style={theme => ({
         textAlign: 'start',
-        overflow: 'hidden',
         extend: [
           theme.mq(
             { until: 'm', },
@@ -168,6 +165,65 @@ function Header({
           {headlineElement ? (
             <HeadlineElement
               elementObj={headlineElement}
+              imgOptions={(aspect, isFullScreen) => ({
+                sizes: `${
+                  isFullScreen
+                    ? '100vw'
+                    : '(min-width:1280px) 840px, (min-width:1024px) 652px, (min-width:768px) 768px,(min-width:600px) 600px, 100vw'
+                }`,
+                transforms: [
+                  {
+                    width: '1920',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1420',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1280',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1024',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '840',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '652',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '768',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '600',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '450',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '350',
+                    aspect,
+                    quality: 'auto',
+                  },
+                ],
+              })}
               miscStyles={{
                 marginTop: [ { from: 's', value: '2rem', }, ],
                 order: [ { until: 's', value: -2, }, ],
