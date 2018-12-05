@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import {
-  parseComponentProp,
-  parseStyleProps,
-  parseTypographyProp,
-} from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, parseTypographyProp, } from '@haaretz/htz-css-tools';
 import setColor from '../../utils/setColor';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
@@ -15,6 +11,7 @@ const captionWrapperStyle = ({
   color,
   typeStyles,
   miscStyles,
+  floatCredit,
 }) => {
   const { bgc, captionColor, captionTypeSettings, fontFamily, fontWeight, } = theme.captionStyles || {};
   const typeSettings = typeStyles || captionTypeSettings;
@@ -22,7 +19,7 @@ const captionWrapperStyle = ({
   return {
     fontFamily,
     fontWeight,
-
+    ...(floatCredit ? {} : { paddingInlineStart: '1rem', }),
     extend: [
       // Set background color
       ...(backgroundColor || bgc
@@ -39,15 +36,7 @@ const captionWrapperStyle = ({
 
       // Set color
       ...(captionColor || color
-        ? [
-          parseComponentProp(
-            'color',
-            color || captionColor,
-            theme.mq,
-            setColor,
-            theme.color
-          ),
-        ]
+        ? [ parseComponentProp('color', color || captionColor, theme.mq, setColor, theme.color), ]
         : []),
       // set typographic styles (line height and font-size)
       ...(typeSettings ? [ parseTypographyProp(typeSettings, theme.type), ] : []),
@@ -86,11 +75,7 @@ const creditRule = ({ theme, prefix, floatCredit, }) => {
 
 // eslint-disable-next-line react/prop-types
 const Credit = ({ floatCredit, children, }) => (
-  <FelaComponent
-    floatCredit={floatCredit}
-    rule={creditRule}
-    render="span"
-  >
+  <FelaComponent floatCredit={floatCredit} rule={creditRule} render="span">
     {children}
   </FelaComponent>
 );
@@ -141,27 +126,15 @@ Caption.propTypes = {
   /**
    * The color of the background.
    */
-  backgroundColor: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
+  backgroundColor: PropTypes.oneOfType([ PropTypes.string, PropTypes.array, PropTypes.object, ]),
   /**
    * The color of the inner text.
    */
-  color: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
+  color: PropTypes.oneOfType([ PropTypes.string, PropTypes.array, PropTypes.object, ]),
   /**
    * The typography of the text.
    */
-  typeStyles: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
+  typeStyles: PropTypes.oneOfType([ PropTypes.number, PropTypes.array, PropTypes.object, ]),
   /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by

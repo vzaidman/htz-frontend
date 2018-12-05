@@ -22,6 +22,14 @@ const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
 });
 
 const propTypes = {
+  // should article layout render the postHeader slot
+  renderPostHeader: PropTypes.bool,
+  /**
+   * the background color passed to all the LayoutRow components.
+   */
+  rowBgc: PropTypes.string,
+  /** should the masthead border bottom be full width */
+  mastheadFullWidthBorder: PropTypes.bool,
   /**
    * Article's slots content.
    */
@@ -42,10 +50,19 @@ const propTypes = {
   children: PropTypes.element.isRequired,
 };
 
+const defaultProps = {
+  rowBgc: null,
+  mastheadFullWidthBorder: false,
+  renderPostHeader: true,
+};
+
 const ArticlePageLayout = ({
   slots: { preHeader, header, postHeader, postMain, footer, },
   articleId,
   children,
+  rowBgc,
+  mastheadFullWidthBorder,
+  renderPostHeader,
 }) => {
   const getElements = slot => slot.map(element => {
     const Element = getComponent(element.inputTemplate);
@@ -62,29 +79,28 @@ const ArticlePageLayout = ({
 
   return (
     <Fragment>
-      {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
+      {preHeader ? <LayoutRow bgc={rowBgc}>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside Masthead Component because its miscStyles depend on state */}
-      <Masthead content={header} articleId={articleId} />
-      <LayoutRow>
-        {postHeader ? (
+      <Masthead
+        rowBgc={rowBgc}
+        content={header}
+        articleId={articleId}
+        mastheadFullWidthBorder={mastheadFullWidthBorder}
+      />
+      {postHeader && renderPostHeader ? (
+        <LayoutRow bgc={rowBgc}>
           <LayoutContainer>{getElements(postHeader)}</LayoutContainer>
-        ) : null}
-      </LayoutRow>
-      <LayoutRow tagName="main" id="pageRoot" miscStyles={{ flexGrow: 1, }}>
+        </LayoutRow>
+      ) : null}
+      <LayoutRow bgc={rowBgc} tagName="main" id="pageRoot" miscStyles={{ flexGrow: 1, }}>
         {children}
       </LayoutRow>
       {postMain ? (
-        <LayoutRow miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
+        <LayoutRow bgc={rowBgc} miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
           {getElements(postMain)}
         </LayoutRow>
       ) : null}
-      {footer ? (
-        <LayoutRow>
-          {' '}
-          {getElements(footer)}
-          {' '}
-        </LayoutRow>
-      ) : null}
+      {footer ? <LayoutRow bgc={rowBgc}>{getElements(footer)}</LayoutRow> : null}
       <Query query={ArticleBIQuery} variables={{ path: articleId, }} ssr={false}>
         {({ loading, error, data, client, }) => {
           if (loading) return null;
@@ -100,10 +116,7 @@ const ArticlePageLayout = ({
           });
           return (
             <Fragment>
-              <BIRequest
-                articleId={articleId}
-                authors={extractAuthorsFromArticle(article)}
-              />
+              <BIRequest articleId={articleId} authors={extractAuthorsFromArticle(article)} />
               <UserDispenser
                 render={({ user, isLoggedIn, }) => {
                   if (isLoggedIn) {
@@ -122,11 +135,12 @@ const ArticlePageLayout = ({
           );
         }}
       </Query>
-      <LayoutRow idName="modalsRoot" />
+      <LayoutRow bgc={rowBgc} idName="modalsRoot" />
     </Fragment>
   );
 };
 
 ArticlePageLayout.propTypes = propTypes;
+ArticlePageLayout.defaultProps = defaultProps;
 
 export default ArticlePageLayout;

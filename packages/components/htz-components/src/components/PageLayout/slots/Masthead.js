@@ -17,6 +17,16 @@ const propTypes = {
    * The elements composing the page’s header.
    */
   content: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * the background color passed to the LayoutRow component.
+   */
+  rowBgc: PropTypes.string,
+  /** should the masthead border bottom be full width */
+  mastheadFullWidthBorder: PropTypes.bool.isRequired,
+};
+
+const defaultProps = {
+  rowBgc: null,
 };
 
 // eslint-disable-next-line react/prop-types
@@ -51,7 +61,7 @@ const Logo = ({ host, }) => (
   />
 );
 
-function Masthead({ content, articleId, }) {
+function Masthead({ content, articleId, rowBgc, mastheadFullWidthBorder, }) {
   return (
     <Fragment>
       {content
@@ -63,7 +73,9 @@ function Masthead({ content, articleId, }) {
             <Element
               key={element.contentId}
               {...element}
-              {...(element.inputTemplate === 'com.htz.EditableNavigationElement' ? { Logo, } : {})}
+              {...(element.inputTemplate === 'com.htz.EditableNavigationElement'
+                ? { Logo, rowBgc, mastheadFullWidthBorder, }
+                : {})}
               articleId={articleId}
             />
           );
@@ -74,5 +86,6 @@ function Masthead({ content, articleId, }) {
 }
 
 Masthead.propTypes = propTypes;
+Masthead.defaultProps = defaultProps;
 
 export default Masthead;

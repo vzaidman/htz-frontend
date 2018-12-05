@@ -9,7 +9,7 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 const embedWrapper = ({ setHeight, }) => ({
   position: 'relative',
-  width: 'inherit',
+  width: '100%',
   extend: [ ...(setHeight ? [ { height: '350px', }, ] : []), ],
 });
 

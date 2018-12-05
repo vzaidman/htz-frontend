@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
+import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ArticleLink from './articleLink';
 import EventTracker from '../../utils/EventTracker';
@@ -72,6 +72,7 @@ const RelatedArticles = ({ articles, miscStyles, }) => (
       extend: [
         parseComponentProp('marginBottom', '5rem', theme.mq),
         parseComponentProp('marginTop', '5rem', theme.mq),
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
       ],
     })}
     render="ul"

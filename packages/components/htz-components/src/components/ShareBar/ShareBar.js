@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import { borderTop, } from '@haaretz/htz-css-tools';
+import { borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
 import gql from 'graphql-tag';
 
@@ -9,10 +9,11 @@ import ActionButtons from '../ActionButtons/ActionButtons';
 import PlusClose from '../Animations/PlusClose';
 import { Button, } from '../ActionButtons/actionList';
 import Query from '../ApolloBoundary/Query';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 
 const IS_MOUSE_STORY: Object = gql`
   query isMouseStory {
-    isMouseStory @client    
+    isMouseStory @client
     isCommentsNumberLoaded @client
   }
 `;
@@ -20,6 +21,7 @@ const IS_MOUSE_STORY: Object = gql`
 type Props = {
   title: string,
   canonicalUrl: string,
+  miscStyles: stylesPropType,
 };
 
 type State = {
@@ -27,6 +29,10 @@ type State = {
 };
 
 class ShareBar extends React.Component<Props, State> {
+  static defaultProps: {
+    miscStyles: null,
+  };
+
   state = {
     isOpen: false,
   };
@@ -42,7 +48,7 @@ class ShareBar extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const { title, canonicalUrl, } = this.props;
+    const { title, canonicalUrl, miscStyles, } = this.props;
     const { isOpen, } = this.state;
 
     return (
@@ -59,6 +65,7 @@ class ShareBar extends React.Component<Props, State> {
               color: theme.color('neutral', '-5'),
             }),
             theme.mq({ until: 's', }, { display: 'none', }),
+            ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
           ],
         })}
         render={({ className, theme, }) => (

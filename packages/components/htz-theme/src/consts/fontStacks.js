@@ -19,6 +19,16 @@ const fontStacks = Object.freeze({
     variations: [
       {
         files: [
+          '/static/fonts/OpenSansHebrewLight.woff2',
+          '/static/fonts/OpenSansHebrewLight.woff',
+        ],
+        properties: {
+          fontWeight: 200,
+          fontDisplay: 'swap',
+        },
+      },
+      {
+        files: [
           '/static/fonts/OpenSansHebrewRegular.woff2',
           '/static/fonts/OpenSansHebrewRegular.woff',
         ],
