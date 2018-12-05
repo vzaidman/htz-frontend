@@ -296,7 +296,7 @@ function index(): Node {
             </PageRow>
             <PageRow>
               <RowItem
-                title="מבט לשווקים"
+                title="הכי חם בשוק"
               >
                 <TabbedGraph
                   assetId="general"

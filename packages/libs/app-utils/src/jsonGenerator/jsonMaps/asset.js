@@ -62,9 +62,13 @@ export const assetObject: Object = {
   bondYieldSpread: () => number.float({ max: 100, min: 0, fixed: 2, }),
   averageMtfYieldInCategory: () => number.float({ max: 100, min: 0, fixed: 2, }),
   managementFee: () => number.float({ max: 10, min: 0, fixed: 2, }),
-  inflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
-  outflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
-  mtfBeat: () => list(
+  monthlyinflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  quarterlyinflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  yearlyinflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  monthlyoutflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  quarterlyoutflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  yearlyoutflows: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  monthlymtfBeat: () => list(
     [
       {
         method: number.int,
@@ -73,6 +77,26 @@ export const assetObject: Object = {
     ],
     2
   ),
+  quarterlymtfBeat: () => list(
+    [
+      {
+        method: number.int,
+        options: { max: 1000, },
+      },
+    ],
+    2
+  ),
+  yearlymtfBeat: () => list(
+    [
+      {
+        method: number.int,
+        options: { max: 1000, },
+      },
+    ],
+    2
+  ),
+  assetsUnderManagement: () => number.float({ max: 10000000, min: -10000000, fixed: 2, }),
+  managementFee: () => number.float({ max: 100, min: 0, fixed: 2, }),
   standardDeviation: () => number.float({ max: 30, min: 0, fixed: 2, }),
   peRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),
   pbRatio: () => number.float({ max: 100, min: 0, fixed: 2, }),

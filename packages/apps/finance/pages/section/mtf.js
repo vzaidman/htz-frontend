@@ -1,13 +1,9 @@
 // @flow
-import React from 'react';
+import React, { Fragment, } from 'react';
 import { FelaTheme, } from 'react-fela';
-import gql from 'graphql-tag';
-import { Query, } from '@haaretz/htz-components';
+import { Grid, GridItem, } from '@haaretz/htz-components';
 
 import type { Node, } from 'react';
-import type { DocumentNode, } from 'graphql/language/ast';
-import type { Asset, } from '../../types/asset';
-
 
 import MainLayout from '../../layouts/MainLayout';
 import PageRow from '../../components/PageRow/PageRow';
@@ -33,156 +29,462 @@ function mtf({ url: { query: { section, }, }, }: Props): Node {
     <MainLayout section={section}>
       <FelaTheme
         render={theme => (
-          <PageRow>
-            <RowItem
-              title="קרנות נאמנות"
-            >
-              <AssetsFilter
-                filters={{
-                  title: 'a',
-                  value: 'mtfCatgory',
-                  fields: [
-                    {
-                      display: 'ענף',
-                      value: {
-                        queryString: 'branchExposure',
-                        subFilters: {
-                          title: 'b',
-                          value: 'mtfcatgoryExposure',
-                          fields: [
-                            { display: 'עד 10% מניות',
-                              value: {
-                                queryString: 'branchExposure',
-                                subFilters: {
-                                  title: 'b',
-                                  value: 'mtfcatgoryExposure2',
-                                  fields: [
-                                    { display: 'עד 10000% מניות', value: { queryString: 10, }, },
-                                    { display: 'עד 20% מניות', value: { queryString: 20, }, },
-                                    { display: 'עד 30% מניות', value: { queryString: 30, }, },
-                                    { display: 'הכל', value: { queryString: Infinity, }, },
-                                  ],
-                                },
-                              }, },
-                            { display: 'עד 20% מניות', value: { queryString: 20, }, },
-                            { display: 'עד 30% מניות', value: { queryString: 30, }, },
-                            { display: 'הכל', value: { queryString: Infinity, }, },
-                          ],
+          <Fragment>
+            <PageRow>
+              <RowItem
+                title="קרנות נאמנות"
+              >
+                <AssetsFilter
+                  filters={{
+                    title: 'בחר אפיק / מנהל',
+                    value: 'mtfCategory',
+                    fields: [
+                      {
+                        display: 'ענף',
+                        value: {
+                          queryString: 'branchExposure',
+                          subFilters: {
+                            title: 'בחר חשיפה',
+                            value: 'mtfCategoryExposure',
+                            fields: [
+                              { display: 'עד 10% מניות', value: { queryString: 10, }, },
+                              { display: 'עד 20% מניות', value: { queryString: 20, }, },
+                              { display: 'עד 30% מניות', value: { queryString: 30, }, },
+                              { display: 'הכל', value: { queryString: Infinity, }, },
+                            ],
+                          },
                         },
                       },
-                    },
-                    { display: 'חשיפה למניות', value: { queryString: 'stocksExposure', }, },
-                    { display: 'חשיפה למטבע', value: { queryString: 'currencyExposure', }, },
-                    { display: 'מנהל', value: { queryString: 'managerExposure', }, },
-                    { display: 'נכסים', value: { queryString: 'holdingExposure', }, },
-                  ],
-                }}
-              >
-                {({ filters, }) => (
-                  <SortableTable
-                    miscStyles={{ marginTop: '7rem', tableLayout: 'auto', }}
-                    loadMore
-                    type="mtf"
-                    fragment="
-                      name
-                      value
-                      changePercentage
-                      volume
-                      openPositions
-                      openPositionsChangeRate
-                      assetNumber
-                      putCallRatio
-                    "
-                    fields={[
+                      { display: 'חשיפה למניות', value: { queryString: 'stocksExposure', }, },
+                      { display: 'חשיפה למטבע', value: { queryString: 'currencyExposure', }, },
+                      { display: 'מנהל', value: { queryString: 'managerExposure', }, },
+                      { display: 'נכסים', value: { queryString: 'holdingExposure', }, },
+                    ],
+                  }}
+                >
+                  {({ filters, }) => (
+                    <SortableTable
+                      miscStyles={{ marginTop: '7rem', tableLayout: 'auto', }}
+                      loadMore
                       {
-                        name: 'name',
-                        display: 'שם אופציה',
-                        sortingOrder: 'ascend',
-                        style: () => ({
-                          fontWeight: '700',
-                          maxWidth: '17rem',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
-                        }),
-                        value: ({ name, }) => name,
-                      },
-                      {
-                        name: 'value',
-                        display: 'שער',
-                        sortingOrder: 'descend',
-                        value: ({ value, }) => numToString(value),
-                      },
-                      {
-                        name: 'changePercentage',
-                        display: '% שינוי',
-                        sortingOrder: 'descend',
-                        style: ({ changePercentage, }) => ({
-                          color: changePercentage < 0
-                            ? theme.color('negative')
-                            : theme.color('positive'),
-                          direction: 'ltr',
-                          fontWeight: '700',
-                          paddingEnd: '2rem',
-                          position: 'relative',
-                          textAlign: 'start',
-                        }),
-                        value: ({ changePercentage, }) => `
-                                ${changePercentage > 0 ? '+' : '-'}
-                                ${numToString(Math.abs(changePercentage))}%
-                               `,
-                      },
-                      {
-                        name: 'volume',
-                        display: 'מחזור (א׳ ש״ח)',
-                        sortingOrder: 'descend',
-                        value: ({ volume, }) => numToString(volume),
-                      },
-                      {
-                        name: 'openPositions',
-                        display: 'פוזיציות פתוחות',
-                        sortingOrder: 'descend',
-                        value: ({ openPositions, }) => numToString(openPositions),
-                      },
-                      {
-                        name: 'openPositionsChangeRate',
-                        display: 'שינוי\nפוזיציות פתוחות',
-                        sortingOrder: 'descend',
-                        style: ({ openPositionsChangeRate, }) => ({
-                          color: openPositionsChangeRate < 0
-                            ? theme.color('negative')
-                            : theme.color('positive'),
-                          direction: 'ltr',
-                          fontWeight: '700',
-                          paddingEnd: '2rem',
-                          position: 'relative',
-                          textAlign: 'start',
-                        }),
-                        value: ({ openPositionsChangeRate, }) => `
-                                ${openPositionsChangeRate > 0 ? '+' : '-'}
-                                ${numToString(Math.abs(openPositionsChangeRate))}%
-                              `,
-                      },
-                      {
-                        name: 'assetNumber',
-                        display: 'מס׳ ני״ע',
-                        sortingOrder: 'descend',
-                        value: ({ assetNumber, }) => assetNumber,
-                      },
-                      {
-                        name: 'putCallRatio',
-                        display: 'יחס P/C',
-                        sortingOrder: 'descend',
-                        value: ({ putCallRatio, }) => numToString(putCallRatio),
-                      },
-                    ]}
-                    initialSort="name"
-                    count={11}
-                  />
-                )}
-              </AssetsFilter>
-            </RowItem>
-          </PageRow>
+                        ...filters.reduce((obj, item) => {
+                          obj[item.key] = item.value.toString();
+                          return obj;
+                        }, {})
+                      }
+                      type="mtf"
+                      fragment="
+                        name
+                        dailyAvgMtfYield
+                        yearlyAvgMtfYield
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם אופציה',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'dailyAvgMtfYield',
+                          display: '% שינוי יומי',
+                          sortingOrder: 'descend',
+                          style: ({ dailyAvgMtfYield, }) => ({
+                            color: dailyAvgMtfYield < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ dailyAvgMtfYield, }) => `
+                                  ${dailyAvgMtfYield > 0 ? '+' : '-'}
+                                  ${numToString(Math.abs(dailyAvgMtfYield))}%
+                                 `,
+                        },
+                        {
+                          name: 'yearlyAvgMtfYield',
+                          display: '% שינוי שנתי',
+                          sortingOrder: 'descend',
+                          style: ({ yearlyAvgMtfYield, }) => ({
+                            color: yearlyAvgMtfYield < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ yearlyAvgMtfYield, }) => `
+                                  ${yearlyAvgMtfYield > 0 ? '+' : '-'}
+                                  ${numToString(Math.abs(yearlyAvgMtfYield))}%
+                                 `,
+                        },
+                      ]}
+                      initialSort="name"
+                      count={11}
+                    />
+                  )}
+                </AssetsFilter>
+              </RowItem>
+            </PageRow>
+            <PageRow>
+              <Grid>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="ביצועי הקרנות הנמוכות בשוק"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        yearlyYield
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'yearlyYield',
+                          display: 'תשואה',
+                          sortingOrder: 'ascend',
+                          style: ({ yearlyYield, }) => ({
+                            color: yearlyYield < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ yearlyYield, }) => `
+                            ${yearlyYield > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(yearlyYield))}%
+                          `,
+                        },
+                      ]}
+                      initialSort="yearlyYield"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="ביצועי הקרנות הגבוהות בשוק"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        yearlyYield
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'yearlyYield',
+                          display: 'תשואה',
+                          sortingOrder: 'descend',
+                          style: ({ yearlyYield, }) => ({
+                            color: yearlyYield < 0
+                              ? theme.color('negative')
+                              : theme.color('positive'),
+                            direction: 'ltr',
+                            fontWeight: '700',
+                            paddingEnd: '2rem',
+                            position: 'relative',
+                            textAlign: 'start',
+                          }),
+                          value: ({ yearlyYield, }) => `
+                            ${yearlyYield > 0 ? '+' : '-'}
+                            ${numToString(Math.abs(yearlyYield))}%
+                          `,
+                        },
+                      ]}
+                      initialSort="yearlyYield"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+              </Grid>
+            </PageRow>
+            <PageRow>
+              <Grid>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="הקרנות עם דמי הניהול הכי נמוכים"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        managementFee
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'managementFee',
+                          display: 'דמי ניהול',
+                          sortingOrder: 'ascend',
+                          value: ({ managementFee, }) => numToString(managementFee),
+                        },
+                      ]}
+                      initialSort="managementFee"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="הקרנות עם דמי הניהול הכי גבוהים"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        managementFee
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'descend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'managementFee',
+                          display: 'דמי ניהול',
+                          sortingOrder: 'descend',
+                          value: ({ managementFee, }) => numToString(managementFee),
+                        },
+                      ]}
+                      initialSort="managementFee"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+              </Grid>
+            </PageRow>
+            <PageRow>
+              <Grid>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="הקרנות שגייסו הכי הרבה כסף השנה"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        yearlyinflows
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'yearlyinflows',
+                          display: 'סך הגיוסים',
+                          sortingOrder: 'ascend',
+                          value: ({ yearlyinflows, }) => numToString(yearlyinflows),
+                        },
+                      ]}
+                      initialSort="yearlyinflows"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="הקרנות שפדו הכי הרבה כסף השנה"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        yearlyoutflows
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'descend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'yearlyoutflows',
+                          display: 'סך פדיונות',
+                          sortingOrder: 'ascend',
+                          value: ({ yearlyoutflows, }) => numToString(yearlyoutflows),
+                        },
+                      ]}
+                      initialSort="yearlyoutflows"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+              </Grid>
+            </PageRow>
+            <PageRow>
+              <Grid>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="הקרנות עם היקף הנכסים הגדול ביותר"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        assetsUnderManagement
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'ascend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'assetsUnderManagement',
+                          display: 'סך נכסים',
+                          sortingOrder: 'descend',
+                          value: ({ assetsUnderManagement, }) => numToString(assetsUnderManagement),
+                        },
+                      ]}
+                      initialSort="assetsUnderManagement"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+                <GridItem width={1 / 2}>
+                  <RowItem
+                    title="הקרנות עם היקף הנכסים הקטן ביותר"
+                  >
+                    <SortableTable
+                      parentId="generalMtf"
+                      type="mtf"
+                      fragment="
+                        name
+                        assetsUnderManagement
+                      "
+                      fields={[
+                        {
+                          name: 'name',
+                          display: 'שם הקרן',
+                          sortingOrder: 'descend',
+                          style: () => ({
+                            fontWeight: '700',
+                            maxWidth: '17rem',
+                            overflow: 'hidden',
+                            paddingStart: '2rem',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }),
+                          value: ({ name, }) => name,
+                        },
+                        {
+                          name: 'assetsUnderManagement',
+                          display: 'סך נכסים',
+                          sortingOrder: 'ascend',
+                          value: ({ assetsUnderManagement, }) => numToString(assetsUnderManagement),
+                        },
+                      ]}
+                      initialSort="assetsUnderManagement"
+                      count={9}
+                    />
+                  </RowItem>
+                </GridItem>
+              </Grid>
+            </PageRow>
+          </Fragment>
         )}
       />
     </MainLayout>

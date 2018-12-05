@@ -44,7 +44,7 @@ type Props = {
 
 type State = {
   sortBy: ?string,
-  sortOrder: "ascend" | "descend",
+  sortOrder: ?("ascend" | "descend"),
   parentId: ?string,
   expirationBenchmarkDate: ?string,
   mtfCategory: ?string,
@@ -340,7 +340,7 @@ class SortableTable extends React.Component<Props, State> {
 
   state = {
     sortBy: null,
-    sortOrder: 'descend',
+    sortOrder: null,
     parentId: null,
     expirationBenchmarkDate: null,
     mtfCategory: null,
@@ -348,7 +348,7 @@ class SortableTable extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const getSortOrder: () => "ascend" | "descend" = () => {
+    const getSortOrder: () => ?("ascend" | "descend") = () => {
       const selectedField: ?FieldType = nextProps.fields.find(
         (field: FieldType) => field.name === nextProps.initialSort
       );
