@@ -18,6 +18,7 @@ import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import GET_HOST from './queries/GetHost';
 import OtpForm from '../components/Misc/Forms/OtpForm';
 import { sendTrackingEvents, } from '../util/trackingEventsUtil';
+import { getReferrerUrl, } from '../util/referrerUtil';
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -46,17 +47,6 @@ const getFacebookLogin = user => {
     getFacebookLoginUrl(facebookParams) :
     false;
 };
-
-const getReferrerUrl = (client) => {
-  try {
-    const referrerUrl = getReferrer(client);
-    const loginUrlRegex = /(login-dev)|(login)|(:3000)/;
-    const siteUrlRegex = /(haaretz.co.il)|(themarker.com)/;
-    return (!loginUrlRegex.test(referrerUrl) && siteUrlRegex.test(siteUrlRegex)) ? referrerUrl : false;
-  } catch(e) {
-    return false;
-  }
-}
 
 const onSubmit = ({ client, host, flow, user, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
   setPreloader(true);

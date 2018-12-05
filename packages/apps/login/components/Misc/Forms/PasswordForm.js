@@ -12,6 +12,7 @@ import isEmail from 'validator/lib/isEmail';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
+import { getReferrerUrl, } from '../../../util/referrerUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -49,17 +50,6 @@ const getFacebookLogin = (user) => {
   return facebookParams ?
     getFacebookLoginUrl(facebookParams) :
     false;
-}
-
-const getReferrerUrl = (client) => {
-  try {
-    const referrerUrl = getReferrer(client);
-    const loginUrlRegex = /(login-dev)|(login)|(:3000)/;
-    const siteUrlRegex = /(haaretz.co.il)|(themarker.com)/;
-    return (!loginUrlRegex.test(referrerUrl) && siteUrlRegex.test(siteUrlRegex)) ? referrerUrl : false;
-  } catch(e) {
-    return false;
-  }
 }
 
 const modifyErrorMessage = (message) => {
