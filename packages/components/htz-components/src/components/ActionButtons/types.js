@@ -92,8 +92,6 @@ export type TwitterButtonProps = {
 export type WhatsappButtonProps = {
   ...CommonButtonProps,
   elementUrl: string,
-  shouldMainNavBarDisplay: boolean,
-
 };
 
 export type ZenButtonProps = {
