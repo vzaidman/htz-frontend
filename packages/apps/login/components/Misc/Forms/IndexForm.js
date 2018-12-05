@@ -1,7 +1,7 @@
 import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
-import { UserTransformations, } from '@haaretz/htz-user-utils';
+import { UserTransformations, CookieUtils, } from '@haaretz/htz-user-utils';
 import isEmail from 'validator/lib/isEmail';
 import Router from 'next/router';
 import objTransform from '../../../util/objectTransformationUtil';
@@ -20,6 +20,7 @@ import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil
 import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
+import { getReferrerUrl, } from '../../../util/referrerUtil';
 import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
@@ -28,6 +29,12 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods ----------------------------
+const checkIfLoggedin = (client) => {
+  const host = getHost(client);
+  return CookieUtils.getCookie("tmsso") ?
+    window.location = (getReferrerUrl(client) || `https://www.${host}`) : false;
+}
+
 const b64DecodeUnicode = str => (str
   // eslint-disable-next-line no-undef
   ? decodeURIComponent(atob(str).split('').map(c => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''))
@@ -255,7 +262,8 @@ class IndexForm extends Component {
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
-    this.setReferrer(this.props.client)
+    this.setReferrer(this.props.client);
+    checkIfLoggedin(this.props.client);
     this.autoSubmit(this.props);
   }
 
