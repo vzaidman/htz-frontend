@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 
 import { borderTop, getRemFromPx, } from '@haaretz/htz-css-tools';
-import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
 import ActionButtons from '../../../ActionButtons/ActionButtons';
 import Button from '../../../Button/Button';
@@ -25,6 +24,7 @@ const Fade = ({ children, fadeText, }) => (
       margin: 'auto',
       backgroundImage:
         'linear-gradient(0deg,#fff,#fff 0%,hsla(0,0%,100%,.8) 25%,hsla(0,0%,100%,0))',
+      extend: [ { marginBottom: '0.4rem', }, ],
     })}
     render="span"
   >
@@ -72,7 +72,7 @@ class LiveBlogItem extends React.Component {
   componentWillUnmount() {
     if (typeof window !== 'undefined') {
       window.removeEventListener('resize', this.updateDimensions);
-    }  
+    }
   }
 
   updateDimensions = () => {
@@ -102,7 +102,7 @@ class LiveBlogItem extends React.Component {
       <React.Fragment>
         <FelaTheme
           render={theme => (
-            <Section>
+            <React.Fragment>
               <Grid
                 tagName="article"
                 attrs={{ itemid: `${canonicalUrl}#${item.cardId}`, }}
@@ -166,6 +166,8 @@ class LiveBlogItem extends React.Component {
                     globalButtonsStyles={{
                       paddingInlineEnd: '1rem',
                       paddingInlineStart: '1rem',
+                      paddingTop: '1rem',
+                      paddingBottom: '1rem',
                     }}
                     miscStyles={{
                       justifyContent: 'flex-start',
@@ -205,9 +207,9 @@ class LiveBlogItem extends React.Component {
                   // eslint-disable-next-line no-return-assign
                   attrs={{ ref: mainContainerEl => (this.mainContainerEl = mainContainerEl), }}
                 >
-                  <a href={`#${item.cardId}`}>
-                    <H style={{ fontSize: '3rem', marginBottom: '2rem', }}>{item.title}</H>
-                  </a>
+                  <H style={{ fontSize: '3rem', marginBottom: '2rem', }}>
+                    <a href={`#${item.cardId}`}>{item.title}</a>
+                  </H>
 
                   <ArticleBody body={item.body} />
                   {this.state.fadeText === true ? <Fade fadeText={this.state.fadeText} /> : null}
@@ -241,7 +243,6 @@ class LiveBlogItem extends React.Component {
                         size={3.5}
                         isFlat
                         miscStyles={{
-                          marginInlineStart: '-2rem',
                           paddingBottom: '1.5rem',
                         }}
                       />
@@ -275,7 +276,7 @@ class LiveBlogItem extends React.Component {
                 />
                 {/* Mobile action buttons end */}
               </Grid>
-            </Section>
+            </React.Fragment>
           )}
         />
       </React.Fragment>

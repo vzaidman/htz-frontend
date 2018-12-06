@@ -40,8 +40,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
 
 const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   paddingInlineStart: '2rem',
-  paddingBottom: '7rem',
-  color: theme.color('primary', '+1'),
+  paddingBottom: '4rem',
   extend: [
     borderStart({
       width: '1px',
@@ -98,21 +97,23 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
 
 const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   position: 'relative',
+  display: 'block',
+  fontWeight: 'bold',
   ':before': {
     position: 'absolute',
     content: '""',
-    width: '1rem',
-    height: '1rem',
-    backgroundColor: theme.color('primary', '-6'),
+    width: '1.5rem',
+    height: '1.5rem',
+    backgroundColor: theme.color('neutral', '-6'),
     border: '1px solid #ccc',
-    top: '50%',
-    right: '-1.6em',
+    top: '45%',
+    right: '-1.79em',
     borderRadius: '50%',
     transform: 'translate(-50%, -50%)',
   },
   extend: [
-    theme.mq({ until: 's', }, { ':before': { right: '-1.2em', }, }),
-    theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', ':before': { right: '-1.3em', }, }),
+    theme.mq({ until: 's', }, { ':before': { right: '-1.35em', }, }),
+    theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', ':before': { right: '-1.5em', }, }),
     isFirstItem || isLastItem
       ? {
         position: 'relative',
@@ -143,7 +144,6 @@ function TimeLine({ keyEvents, miscStyles, }) {
                 paddingBlockStart: '5rem',
                 paddingInlineStart: '2rem',
                 paddingInlineEnd: '2rem',
-                // ...theme.mq({ from: 'l', }, { marginTop: '15rem', paddingInlineEnd: '0rem', }),
                 ...theme.mq({ from: 'l', }, { paddingBlockStart: '3rem', paddingInlineEnd: '0rem', }),
               })}
               render={({ className, }) => (
@@ -160,9 +160,7 @@ function TimeLine({ keyEvents, miscStyles, }) {
                             isLastItem={i === keyEvents.length - 1}
                             rule={TimeHeadlineStyle}
                             render={({ className, }) => (
-                              <h2 className={className}>
-                                <Time time={item.pubDate} format="HH:mm" />
-                              </h2>
+                              <Time time={item.pubDate} format="HH:mm" className={className} />
                             )}
                           />
                           <FelaComponent
@@ -171,6 +169,13 @@ function TimeLine({ keyEvents, miscStyles, }) {
                                 { from: 's', until: 'm', },
                                 { display: 'inline', marginInlineStart: '3rem', }
                               ),
+                              color: theme.color('primary', '+1'),
+                              ':hover': {
+                                color: theme.color('primary', '+1'),
+                              },
+                              ':visited': {
+                                color: theme.color('primary', '+1'),
+                              },
                             })}
                             render={({ className, }) => (
                               <a className={className} href={`#${item.cardId}`}>

@@ -166,6 +166,7 @@ Object {
             "viewMode": "FullColumnWithVerticalImage",
           }
         }
+        imgOptions={[Function]}
         miscStyles={
           Object {
             "backgroundColor": Array [

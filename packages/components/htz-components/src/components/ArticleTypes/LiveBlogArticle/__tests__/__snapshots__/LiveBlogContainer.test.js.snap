@@ -13,40 +13,32 @@ Object {
           className="htz-h htz-i htz-j htz-k htz-l htz-m"
         >
           <li
-            className="htz-j htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+            className="htz-j htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq"
           >
-            <h2
-              className="htz-af htz-w htz-as htz-y htz-at htz-s htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"
+            <time
+              className="htz-ae htz-a htz-ar htz-v htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+              dateTime="2018-07-21T10:18:00+03:00"
             >
-              <time
-                className={null}
-                dateTime="2018-07-21T10:18:00+03:00"
-              >
-                10:18
-              </time>
-            </h2>
+              10:18
+            </time>
             <a
-              className="htz-bc htz-bd"
+              className="htz-be htz-bf htz-bg htz-bh htz-bi"
               href="#707650185"
             >
                תקף עמדת חמאס בצפון רצועת עזה
             </a>
           </li>
           <li
-            className="htz-j htz-be htz-o htz-p htz-q htz-r htz-s htz-bf htz-bg htz-bh htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+            className="htz-j htz-bj htz-o htz-p htz-q htz-r htz-bk htz-bl htz-bm htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq"
           >
-            <h2
-              className="htz-af htz-w htz-as htz-y htz-at htz-s htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"
+            <time
+              className="htz-ae htz-a htz-ar htz-v htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+              dateTime="2018-07-21T09:04:00+03:00"
             >
-              <time
-                className={null}
-                dateTime="2018-07-21T09:04:00+03:00"
-              >
-                09:04
-              </time>
-            </h2>
+              09:04
+            </time>
             <a
-              className="htz-bc htz-bd"
+              className="htz-be htz-bf htz-bg htz-bh htz-bi"
               href="#707650136"
             >
               אחרי הודעת חמאס הלילה על הפסקת אש,  הודיע על חזרה לשגרה בעוטף עזה 
@@ -55,18 +47,18 @@ Object {
         </ul>
       </div>
       <div
-        className="htz-bi htz-a htz-bj htz-bk htz-bl htz-bm htz-ag htz-bn htz-bo htz-bp htz-c htz-d htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd"
+        className="htz-bn htz-a htz-n htz-bo htz-bp htz-bq htz-af htz-br htz-bs htz-bt htz-c htz-d htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
       >
         <div
-          className="htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
+          className="htz-ci htz-ar htz-cj htz-ck htz-cl htz-cm htz-cn"
         >
           עדכונים
         </div>
         <div
-          className="htz-cl htz-cm htz-cn htz-co"
+          className="htz-co htz-cp htz-cq htz-cr"
         >
           <label
-            className="htz-cl htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv"
+            className="htz-co htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy"
             htmlFor="0.123456789"
           >
             <input
@@ -80,23 +72,23 @@ Object {
               value="descending"
             />
             <div
-              className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
+              className="htz-ae htz-cz htz-da htz-db htz-dc htz-dd htz-co htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
+                className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-dd htz-du htz-a htz-dv htz-dw htz-dx htz-dy"
               />
               <div
-                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-dz htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
+                className="htz-dp htz-dt htz-dz htz-ea htz-eb htz-dd htz-du htz-ec htz-dh htz-di htz-dj htz-ed htz-ee htz-ef htz-dn htz-do"
               />
             </div>
             <div
-              className="htz-ed"
+              className="htz-eg"
             >
               מהאחרון לראשון
             </div>
           </label>
           <label
-            className="htz-cl htz-cp htz-cr htz-cs htz-ct htz-cu htz-cv"
+            className="htz-co htz-cs htz-cu htz-cv htz-cw htz-cx htz-cy"
             htmlFor="0.123456789"
           >
             <input
@@ -110,17 +102,17 @@ Object {
               value="ascending"
             />
             <div
-              className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
+              className="htz-ae htz-cz htz-da htz-db htz-dc htz-dd htz-co htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
+                className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-dd htz-du htz-a htz-dv htz-dw htz-dx htz-dy"
               />
               <div
-                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-ds htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
+                className="htz-dp htz-dt htz-dz htz-ea htz-eb htz-dd htz-du htz-dv htz-dh htz-di htz-dj htz-ed htz-ee htz-ef htz-dn htz-do"
               />
             </div>
             <div
-              className="htz-ed"
+              className="htz-eg"
             >
               מהראשון לאחרון
             </div>
@@ -128,7 +120,7 @@ Object {
         </div>
       </div>
       <div
-        className="htz-a htz-b htz-c htz-d htz-ee"
+        className="htz-a htz-b htz-c htz-d htz-eh"
       >
         <LiveBlogItem
           bps={
@@ -583,6 +575,16 @@ Object {
                   "variations": Array [
                     Object {
                       "files": Array [
+                        "/static/fonts/OpenSansHebrewLight.woff2",
+                        "/static/fonts/OpenSansHebrewLight.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 200,
+                      },
+                    },
+                    Object {
+                      "files": Array [
                         "/static/fonts/OpenSansHebrewRegular.woff2",
                         "/static/fonts/OpenSansHebrewRegular.woff",
                       ],
@@ -827,6 +829,9 @@ Object {
                 "inpEmailLabelText": "דוא\\"ל",
                 "inpEmailNoteText": "אנא הזינו כתובת אימייל",
                 "successDefaultMessage": "נרשמתך בהצלחה!",
+              },
+              "shareBar": Object {
+                "whatsappTooltip": "שתפו וחבריכם יקראו את הכתבה ללא תשלום",
               },
               "specialPromotionStyle": Object {
                 "primary": Object {
@@ -1444,6 +1449,16 @@ Object {
                   "variations": Array [
                     Object {
                       "files": Array [
+                        "/static/fonts/OpenSansHebrewLight.woff2",
+                        "/static/fonts/OpenSansHebrewLight.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 200,
+                      },
+                    },
+                    Object {
+                      "files": Array [
                         "/static/fonts/OpenSansHebrewRegular.woff2",
                         "/static/fonts/OpenSansHebrewRegular.woff",
                       ],
@@ -1689,6 +1704,9 @@ Object {
                 "inpEmailNoteText": "אנא הזינו כתובת אימייל",
                 "successDefaultMessage": "נרשמתך בהצלחה!",
               },
+              "shareBar": Object {
+                "whatsappTooltip": "שתפו וחבריכם יקראו את הכתבה ללא תשלום",
+              },
               "specialPromotionStyle": Object {
                 "primary": Object {
                   "button": "neutralOpaque",
@@ -1788,7 +1806,7 @@ Object {
       </div>
     </div>
   </div>,
-  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:7rem}.htz-o{color:#006B96}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#ccc}.htz-s:before{background-color:#EBF2F5}.htz-t:before{height:0.5em}.htz-u:before{top:0}.htz-v:before{border-bottom:1px solid #ccc}.htz-w:before{position:absolute}.htz-x:before{content:\\"\\"}.htz-y:before{width:1rem}.htz-z:before{right:-0.6em}.htz-ae:before{transform:translate(-50%,0)}.htz-af{position:relative}.htz-as:before{content:}.htz-at:before{height:1rem}.htz-au:before{border:1px solid #ccc}.htz-av:before{top:50%}.htz-aw:before{right:-1.6em}.htz-ax:before{border-radius:50%}.htz-ay:before{transform:translate(-50%, -50%)}.htz-be{padding-bottom:0}.htz-bf:before{height:calc(100% - 0.5em)}.htz-bg:before{top:0.5em}.htz-bh:before{border-top:1px solid #bbb}.htz-bi{background-color:white}.htz-bj{padding-bottom:4rem}.htz-bk{padding-top:4rem}.htz-ce{color:#A8001C}.htz-cf{font-weight:bold}.htz-cl{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cm{paddin-top:1rem}.htz-cp{align-items:baseline}.htz-cq{margin-left:3rem}.htz-cv{-webkit-box-align:baseline}.htz-cw{top:0.15em}.htz-cx{height:1em}.htz-cy{width:1em}.htz-cz{flex-shrink:0}.htz-da{border-radius:50%}.htz-db{justify-content:center}.htz-dc{align-items:center}.htz-dd{background-color:#FFF}.htz-de{transition-property:all}.htz-df{border-width:1px}.htz-dg{border-style:solid}.htz-dh{border-color:#0B7EB5}.htz-di{-webkit-box-pack:center}.htz-dj{-webkit-box-align:center}.htz-dk{-webkit-transition-property:all}.htz-dl{-moz-transition-property:all}.htz-dm{position:absolute}.htz-dn{height:3.5em}.htz-do{width:3.5em}.htz-dp{left:50%}.htz-dq{top:50%}.htz-dr{background-color:#0B7EB5}.htz-ds{opacity:0}.htz-dt{pointer-events:none}.htz-du{animation-direction:alternate}.htz-dv{animation-duration:0.5s}.htz-dw{transform:translateY(-50%)}.htz-dx{height:80%}.htz-dy{width:80%}.htz-dz{opacity:1}.htz-ea{border-color:white}.htz-eb{transition-duration:.3s}.htz-ec{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ed{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ac:before{right:-0.4em}.htz-ag{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ah{align-items:baseline}.htz-ai{padding-bottom:3rem}.htz-an{-webkit-box-align:baseline}.htz-ba{margin-left:2rem}.htz-bb:before{right:-1.3em}.htz-bn{justify-content:space-between}.htz-bo{margin-right:4rem}.htz-bp{margin-left:4rem}.htz-bq{align-items:center}.htz-br{-webkit-box-pack:justify}.htz-bs{-webkit-box-align:center}.htz-ee{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{padding-block-start:3rem}.htz-m{padding-left:0rem}.htz-bt{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bu{justify-content:space-between}.htz-bv{padding-right:4rem}.htz-bw{padding-left:4rem}.htz-bx{align-items:center}.htz-by{border-top-width:13px}.htz-bz{border-top-style:solid}.htz-ca{border-top-color:#EBF2F5}.htz-cb{padding-top:calc(6rem - 13px)}.htz-cc{-webkit-box-pack:justify}.htz-cd{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ab:before{right:-0.4em}.htz-az:before{right:-1.2em}.htz-bl{padding-right:2rem}.htz-bm{padding-left:2rem}.htz-cg{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-aq{font-size:2rem}.htz-ar{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-bc{display:inline}.htz-bd{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ch{font-size:4rem}.htz-ci{line-height:1.25em}.htz-cr{font-size:2.3333333333333335rem}.htz-cs{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cj{font-size:3.857142857142857rem}.htz-ck{line-height:1.2962962962962963em}.htz-ct{font-size:2.2857142857142856rem}.htz-cu{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cn{justify-content:flex-start}.htz-co{-webkit-box-pack:right}}",
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:4rem}.htz-o{border-right-width:1px}.htz-p{border-right-style:solid}.htz-q{border-right-color:#ccc}.htz-r:before{background-color:#EBF2F5}.htz-s:before{height:0.5em}.htz-t:before{top:0}.htz-u:before{border-bottom:1px solid #ccc}.htz-v:before{position:absolute}.htz-w:before{content:\\"\\"}.htz-x:before{width:1rem}.htz-y:before{right:-0.6em}.htz-ac:before{transform:translate(-50%,0)}.htz-ae{position:relative}.htz-ar{font-weight:bold}.htz-as:before{content:}.htz-at:before{width:1.5rem}.htz-au:before{height:1.5rem}.htz-av:before{background-color:#EBEBEB}.htz-aw:before{border:1px solid #ccc}.htz-ax:before{top:45%}.htz-ay:before{right:-1.79em}.htz-az:before{border-radius:50%}.htz-ba:before{transform:translate(-50%, -50%)}.htz-bg{color:#006B96}.htz-bh:visited{color:#006B96}.htz-bi:hover{color:#006B96}.htz-bj{padding-bottom:0}.htz-bk:before{height:calc(100% - 0.5em)}.htz-bl:before{top:0.5em}.htz-bm:before{border-top:1px solid #bbb}.htz-bn{background-color:white}.htz-bo{padding-top:4rem}.htz-ci{color:#A8001C}.htz-co{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cp{paddin-top:1rem}.htz-cs{align-items:baseline}.htz-ct{margin-left:3rem}.htz-cy{-webkit-box-align:baseline}.htz-cz{top:0.15em}.htz-da{height:1em}.htz-db{width:1em}.htz-dc{flex-shrink:0}.htz-dd{border-radius:50%}.htz-de{justify-content:center}.htz-df{align-items:center}.htz-dg{background-color:#FFF}.htz-dh{transition-property:all}.htz-di{border-width:1px}.htz-dj{border-style:solid}.htz-dk{border-color:#0B7EB5}.htz-dl{-webkit-box-pack:center}.htz-dm{-webkit-box-align:center}.htz-dn{-webkit-transition-property:all}.htz-do{-moz-transition-property:all}.htz-dp{position:absolute}.htz-dq{height:3.5em}.htz-dr{width:3.5em}.htz-ds{left:50%}.htz-dt{top:50%}.htz-du{background-color:#0B7EB5}.htz-dv{opacity:0}.htz-dw{pointer-events:none}.htz-dx{animation-direction:alternate}.htz-dy{animation-duration:0.5s}.htz-dz{transform:translateY(-50%)}.htz-ea{height:80%}.htz-eb{width:80%}.htz-ec{opacity:1}.htz-ed{border-color:white}.htz-ee{transition-duration:.3s}.htz-ef{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-eg{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ab:before{right:-0.4em}.htz-af{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ag{align-items:baseline}.htz-ah{padding-bottom:3rem}.htz-am{-webkit-box-align:baseline}.htz-bc{margin-left:2rem}.htz-bd:before{right:-1.5em}.htz-br{justify-content:space-between}.htz-bs{margin-right:4rem}.htz-bt{margin-left:4rem}.htz-bu{align-items:center}.htz-bv{-webkit-box-pack:justify}.htz-bw{-webkit-box-align:center}.htz-eh{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{padding-block-start:3rem}.htz-m{padding-left:0rem}.htz-bx{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-by{justify-content:space-between}.htz-bz{padding-right:4rem}.htz-ca{padding-left:4rem}.htz-cb{align-items:center}.htz-cc{border-top-width:13px}.htz-cd{border-top-style:solid}.htz-ce{border-top-color:#EBF2F5}.htz-cf{padding-top:calc(6rem - 13px)}.htz-cg{-webkit-box-pack:justify}.htz-ch{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-z:before{right:-0.4em}.htz-bb:before{right:-1.35em}.htz-bp{padding-right:2rem}.htz-bq{padding-left:2rem}.htz-cj{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-ai{font-size:2.3333333333333335rem}.htz-aj{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-ak{font-size:2.2857142857142856rem}.htz-al{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-an{font-size:2rem}.htz-ao{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-ap{font-size:2rem}.htz-aq{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-be{display:inline}.htz-bf{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ck{font-size:4rem}.htz-cl{line-height:1.25em}.htz-cu{font-size:2.3333333333333335rem}.htz-cv{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cm{font-size:3.857142857142857rem}.htz-cn{line-height:1.2962962962962963em}.htz-cw{font-size:2.2857142857142856rem}.htz-cx{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cq{justify-content:flex-start}.htz-cr{-webkit-box-pack:right}}",
 }
 `;
 
@@ -1805,40 +1823,32 @@ Object {
           className="htz-h htz-i htz-j htz-k htz-l htz-m"
         >
           <li
-            className="htz-j htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+            className="htz-j htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq"
           >
-            <h2
-              className="htz-af htz-w htz-as htz-y htz-at htz-s htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"
+            <time
+              className="htz-ae htz-a htz-ar htz-v htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+              dateTime="2018-07-21T10:18:00+03:00"
             >
-              <time
-                className={null}
-                dateTime="2018-07-21T10:18:00+03:00"
-              >
-                10:18
-              </time>
-            </h2>
+              10:18
+            </time>
             <a
-              className="htz-bc htz-bd"
+              className="htz-be htz-bf htz-bg htz-bh htz-bi"
               href="#707650185"
             >
                תקף עמדת חמאס בצפון רצועת עזה
             </a>
           </li>
           <li
-            className="htz-j htz-be htz-o htz-p htz-q htz-r htz-s htz-bf htz-bg htz-bh htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+            className="htz-j htz-bj htz-o htz-p htz-q htz-r htz-bk htz-bl htz-bm htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq"
           >
-            <h2
-              className="htz-af htz-w htz-as htz-y htz-at htz-s htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb"
+            <time
+              className="htz-ae htz-a htz-ar htz-v htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+              dateTime="2018-07-21T09:04:00+03:00"
             >
-              <time
-                className={null}
-                dateTime="2018-07-21T09:04:00+03:00"
-              >
-                09:04
-              </time>
-            </h2>
+              09:04
+            </time>
             <a
-              className="htz-bc htz-bd"
+              className="htz-be htz-bf htz-bg htz-bh htz-bi"
               href="#707650136"
             >
               אחרי הודעת חמאס הלילה על הפסקת אש,  הודיע על חזרה לשגרה בעוטף עזה 
@@ -1847,18 +1857,18 @@ Object {
         </ul>
       </div>
       <div
-        className="htz-bi htz-a htz-bj htz-bk htz-bl htz-bm htz-ag htz-bn htz-bo htz-bp htz-c htz-d htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd"
+        className="htz-bn htz-a htz-n htz-bo htz-bp htz-bq htz-af htz-br htz-bs htz-bt htz-c htz-d htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch"
       >
         <div
-          className="htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck"
+          className="htz-ci htz-ar htz-cj htz-ck htz-cl htz-cm htz-cn"
         >
           עדכונים
         </div>
         <div
-          className="htz-cl htz-cm htz-cn htz-co"
+          className="htz-co htz-cp htz-cq htz-cr"
         >
           <label
-            className="htz-cl htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv"
+            className="htz-co htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy"
             htmlFor="0.123456789"
           >
             <input
@@ -1872,23 +1882,23 @@ Object {
               value="descending"
             />
             <div
-              className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
+              className="htz-ae htz-cz htz-da htz-db htz-dc htz-dd htz-co htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
+                className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-dd htz-du htz-a htz-dv htz-dw htz-dx htz-dy"
               />
               <div
-                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-dz htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
+                className="htz-dp htz-dt htz-dz htz-ea htz-eb htz-dd htz-du htz-ec htz-dh htz-di htz-dj htz-ed htz-ee htz-ef htz-dn htz-do"
               />
             </div>
             <div
-              className="htz-ed"
+              className="htz-eg"
             >
               מהאחרון לראשון
             </div>
           </label>
           <label
-            className="htz-cl htz-cp htz-cr htz-cs htz-ct htz-cu htz-cv"
+            className="htz-co htz-cs htz-cu htz-cv htz-cw htz-cx htz-cy"
             htmlFor="0.123456789"
           >
             <input
@@ -1902,17 +1912,17 @@ Object {
               value="ascending"
             />
             <div
-              className="htz-af htz-cw htz-cx htz-cy htz-cz htz-da htz-cl htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl"
+              className="htz-ae htz-cz htz-da htz-db htz-dc htz-dd htz-co htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do"
             >
               <div
-                className="htz-dm htz-dn htz-do htz-dp htz-dq htz-da htz-dr htz-a htz-ds htz-dt htz-du htz-dv"
+                className="htz-dp htz-dq htz-dr htz-ds htz-dt htz-dd htz-du htz-a htz-dv htz-dw htz-dx htz-dy"
               />
               <div
-                className="htz-dm htz-dq htz-dw htz-dx htz-dy htz-da htz-dr htz-ds htz-de htz-df htz-dg htz-ea htz-eb htz-ec htz-dk htz-dl"
+                className="htz-dp htz-dt htz-dz htz-ea htz-eb htz-dd htz-du htz-dv htz-dh htz-di htz-dj htz-ed htz-ee htz-ef htz-dn htz-do"
               />
             </div>
             <div
-              className="htz-ed"
+              className="htz-eg"
             >
               מהראשון לאחרון
             </div>
@@ -1920,7 +1930,7 @@ Object {
         </div>
       </div>
       <div
-        className="htz-a htz-b htz-c htz-d htz-ee"
+        className="htz-a htz-b htz-c htz-d htz-eh"
       >
         <LiveBlogItem
           bps={
@@ -2375,6 +2385,16 @@ Object {
                   "variations": Array [
                     Object {
                       "files": Array [
+                        "/static/fonts/OpenSansHebrewLight.woff2",
+                        "/static/fonts/OpenSansHebrewLight.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 200,
+                      },
+                    },
+                    Object {
+                      "files": Array [
                         "/static/fonts/OpenSansHebrewRegular.woff2",
                         "/static/fonts/OpenSansHebrewRegular.woff",
                       ],
@@ -2619,6 +2639,9 @@ Object {
                 "inpEmailLabelText": "דוא\\"ל",
                 "inpEmailNoteText": "אנא הזינו כתובת אימייל",
                 "successDefaultMessage": "נרשמתך בהצלחה!",
+              },
+              "shareBar": Object {
+                "whatsappTooltip": "שתפו וחבריכם יקראו את הכתבה ללא תשלום",
               },
               "specialPromotionStyle": Object {
                 "primary": Object {
@@ -3236,6 +3259,16 @@ Object {
                   "variations": Array [
                     Object {
                       "files": Array [
+                        "/static/fonts/OpenSansHebrewLight.woff2",
+                        "/static/fonts/OpenSansHebrewLight.woff",
+                      ],
+                      "properties": Object {
+                        "fontDisplay": "swap",
+                        "fontWeight": 200,
+                      },
+                    },
+                    Object {
+                      "files": Array [
                         "/static/fonts/OpenSansHebrewRegular.woff2",
                         "/static/fonts/OpenSansHebrewRegular.woff",
                       ],
@@ -3481,6 +3514,9 @@ Object {
                 "inpEmailNoteText": "אנא הזינו כתובת אימייל",
                 "successDefaultMessage": "נרשמתך בהצלחה!",
               },
+              "shareBar": Object {
+                "whatsappTooltip": "שתפו וחבריכם יקראו את הכתבה ללא תשלום",
+              },
               "specialPromotionStyle": Object {
                 "primary": Object {
                   "button": "neutralOpaque",
@@ -3580,6 +3616,6 @@ Object {
       </div>
     </div>
   </div>,
-  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:7rem}.htz-o{color:#006B96}.htz-p{border-right-width:1px}.htz-q{border-right-style:solid}.htz-r{border-right-color:#ccc}.htz-s:before{background-color:#EBF2F5}.htz-t:before{height:0.5em}.htz-u:before{top:0}.htz-v:before{border-bottom:1px solid #ccc}.htz-w:before{position:absolute}.htz-x:before{content:\\"\\"}.htz-y:before{width:1rem}.htz-z:before{right:-0.6em}.htz-ae:before{transform:translate(-50%,0)}.htz-af{position:relative}.htz-as:before{content:}.htz-at:before{height:1rem}.htz-au:before{border:1px solid #ccc}.htz-av:before{top:50%}.htz-aw:before{right:-1.6em}.htz-ax:before{border-radius:50%}.htz-ay:before{transform:translate(-50%, -50%)}.htz-be{padding-bottom:0}.htz-bf:before{height:calc(100% - 0.5em)}.htz-bg:before{top:0.5em}.htz-bh:before{border-top:1px solid #bbb}.htz-bi{background-color:white}.htz-bj{padding-bottom:4rem}.htz-bk{padding-top:4rem}.htz-ce{color:#A8001C}.htz-cf{font-weight:bold}.htz-cl{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cm{paddin-top:1rem}.htz-cp{align-items:baseline}.htz-cq{margin-left:3rem}.htz-cv{-webkit-box-align:baseline}.htz-cw{top:0.15em}.htz-cx{height:1em}.htz-cy{width:1em}.htz-cz{flex-shrink:0}.htz-da{border-radius:50%}.htz-db{justify-content:center}.htz-dc{align-items:center}.htz-dd{background-color:#FFF}.htz-de{transition-property:all}.htz-df{border-width:1px}.htz-dg{border-style:solid}.htz-dh{border-color:#0B7EB5}.htz-di{-webkit-box-pack:center}.htz-dj{-webkit-box-align:center}.htz-dk{-webkit-transition-property:all}.htz-dl{-moz-transition-property:all}.htz-dm{position:absolute}.htz-dn{height:3.5em}.htz-do{width:3.5em}.htz-dp{left:50%}.htz-dq{top:50%}.htz-dr{background-color:#0B7EB5}.htz-ds{opacity:0}.htz-dt{pointer-events:none}.htz-du{animation-direction:alternate}.htz-dv{animation-duration:0.5s}.htz-dw{transform:translateY(-50%)}.htz-dx{height:80%}.htz-dy{width:80%}.htz-dz{opacity:1}.htz-ea{border-color:white}.htz-eb{transition-duration:.3s}.htz-ec{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-ed{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ac:before{right:-0.4em}.htz-ag{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ah{align-items:baseline}.htz-ai{padding-bottom:3rem}.htz-an{-webkit-box-align:baseline}.htz-ba{margin-left:2rem}.htz-bb:before{right:-1.3em}.htz-bn{justify-content:space-between}.htz-bo{margin-right:4rem}.htz-bp{margin-left:4rem}.htz-bq{align-items:center}.htz-br{-webkit-box-pack:justify}.htz-bs{-webkit-box-align:center}.htz-ee{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{padding-block-start:3rem}.htz-m{padding-left:0rem}.htz-bt{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bu{justify-content:space-between}.htz-bv{padding-right:4rem}.htz-bw{padding-left:4rem}.htz-bx{align-items:center}.htz-by{border-top-width:13px}.htz-bz{border-top-style:solid}.htz-ca{border-top-color:#EBF2F5}.htz-cb{padding-top:calc(6rem - 13px)}.htz-cc{-webkit-box-pack:justify}.htz-cd{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-ab:before{right:-0.4em}.htz-az:before{right:-1.2em}.htz-bl{padding-right:2rem}.htz-bm{padding-left:2rem}.htz-cg{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-aj{font-size:2.3333333333333335rem}.htz-ak{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-al{font-size:2.2857142857142856rem}.htz-am{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ao{font-size:2rem}.htz-ap{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-aq{font-size:2rem}.htz-ar{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-bc{display:inline}.htz-bd{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ch{font-size:4rem}.htz-ci{line-height:1.25em}.htz-cr{font-size:2.3333333333333335rem}.htz-cs{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cj{font-size:3.857142857142857rem}.htz-ck{line-height:1.2962962962962963em}.htz-ct{font-size:2.2857142857142856rem}.htz-cu{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cn{justify-content:flex-start}.htz-co{-webkit-box-pack:right}}",
+  "styles": ".htz-a{display:block}.htz-b{width:100%}.htz-h{padding-block-end:5rem}.htz-i{padding-block-start:5rem}.htz-j{padding-right:2rem}.htz-k{padding-left:2rem}.htz-n{padding-bottom:4rem}.htz-o{border-right-width:1px}.htz-p{border-right-style:solid}.htz-q{border-right-color:#ccc}.htz-r:before{background-color:#EBF2F5}.htz-s:before{height:0.5em}.htz-t:before{top:0}.htz-u:before{border-bottom:1px solid #ccc}.htz-v:before{position:absolute}.htz-w:before{content:\\"\\"}.htz-x:before{width:1rem}.htz-y:before{right:-0.6em}.htz-ac:before{transform:translate(-50%,0)}.htz-ae{position:relative}.htz-ar{font-weight:bold}.htz-as:before{content:}.htz-at:before{width:1.5rem}.htz-au:before{height:1.5rem}.htz-av:before{background-color:#EBEBEB}.htz-aw:before{border:1px solid #ccc}.htz-ax:before{top:45%}.htz-ay:before{right:-1.79em}.htz-az:before{border-radius:50%}.htz-ba:before{transform:translate(-50%, -50%)}.htz-bg{color:#006B96}.htz-bh:visited{color:#006B96}.htz-bi:hover{color:#006B96}.htz-bj{padding-bottom:0}.htz-bk:before{height:calc(100% - 0.5em)}.htz-bl:before{top:0.5em}.htz-bm:before{border-top:1px solid #bbb}.htz-bn{background-color:white}.htz-bo{padding-top:4rem}.htz-ci{color:#A8001C}.htz-co{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-cp{paddin-top:1rem}.htz-cs{align-items:baseline}.htz-ct{margin-left:3rem}.htz-cy{-webkit-box-align:baseline}.htz-cz{top:0.15em}.htz-da{height:1em}.htz-db{width:1em}.htz-dc{flex-shrink:0}.htz-dd{border-radius:50%}.htz-de{justify-content:center}.htz-df{align-items:center}.htz-dg{background-color:#FFF}.htz-dh{transition-property:all}.htz-di{border-width:1px}.htz-dj{border-style:solid}.htz-dk{border-color:#0B7EB5}.htz-dl{-webkit-box-pack:center}.htz-dm{-webkit-box-align:center}.htz-dn{-webkit-transition-property:all}.htz-do{-moz-transition-property:all}.htz-dp{position:absolute}.htz-dq{height:3.5em}.htz-dr{width:3.5em}.htz-ds{left:50%}.htz-dt{top:50%}.htz-du{background-color:#0B7EB5}.htz-dv{opacity:0}.htz-dw{pointer-events:none}.htz-dx{animation-direction:alternate}.htz-dy{animation-duration:0.5s}.htz-dz{transform:translateY(-50%)}.htz-ea{height:80%}.htz-eb{width:80%}.htz-ec{opacity:1}.htz-ed{border-color:white}.htz-ee{transition-duration:.3s}.htz-ef{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-eg{margin-right:0.3em}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-c{padding-right:4rem}.htz-d{padding-left:4rem}.htz-f{margin-right:6rem}.htz-g{padding-top:3rem}.htz-ab:before{right:-0.4em}.htz-af{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ag{align-items:baseline}.htz-ah{padding-bottom:3rem}.htz-am{-webkit-box-align:baseline}.htz-bc{margin-left:2rem}.htz-bd:before{right:-1.5em}.htz-br{justify-content:space-between}.htz-bs{margin-right:4rem}.htz-bt{margin-left:4rem}.htz-bu{align-items:center}.htz-bv{-webkit-box-pack:justify}.htz-bw{-webkit-box-align:center}.htz-eh{padding-bottom:4rem}}@media (min-width: 64em){.htz-e{display:none}.htz-l{padding-block-start:3rem}.htz-m{padding-left:0rem}.htz-bx{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-by{justify-content:space-between}.htz-bz{padding-right:4rem}.htz-ca{padding-left:4rem}.htz-cb{align-items:center}.htz-cc{border-top-width:13px}.htz-cd{border-top-style:solid}.htz-ce{border-top-color:#EBF2F5}.htz-cf{padding-top:calc(6rem - 13px)}.htz-cg{-webkit-box-pack:justify}.htz-ch{-webkit-box-align:center}}@media (max-width: 37.4375em){.htz-z:before{right:-0.4em}.htz-bb:before{right:-1.35em}.htz-bp{padding-right:2rem}.htz-bq{padding-left:2rem}.htz-cj{margin-bottom:3rem}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-ai{font-size:2.3333333333333335rem}.htz-aj{line-height:1.2857142857142858em}}@media (min-width: 37.5em) and (max-width: 63.9375em) and (min-width: 80em){.htz-ak{font-size:2.2857142857142856rem}.htz-al{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-an{font-size:2rem}.htz-ao{line-height:1.5em}}@media (min-width: 64em) and (min-width: 80em){.htz-ap{font-size:2rem}.htz-aq{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-be{display:inline}.htz-bf{margin-right:3rem}}@media (max-width: 79.9375em){.htz-ck{font-size:4rem}.htz-cl{line-height:1.25em}.htz-cu{font-size:2.3333333333333335rem}.htz-cv{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-cm{font-size:3.857142857142857rem}.htz-cn{line-height:1.2962962962962963em}.htz-cw{font-size:2.2857142857142856rem}.htz-cx{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-cq{justify-content:flex-start}.htz-cr{-webkit-box-pack:right}}",
 }
 `;
