@@ -6,7 +6,7 @@ import type { MqFunc, } from '../mq/createMqFunc';
 import type { Typesetter, } from '../typography/createTypesetter';
 import type { StyleProp, } from './parseStyleProp';
 
-export type StyleProps = { [prop: string]: StyleProp, };
+export type StyleProps = { [prop: string]: StyleProp<*>, };
 
 /**
  * Parse an object of miscellaneous styles into an array of CSS-in-JS

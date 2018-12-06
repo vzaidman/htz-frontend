@@ -7,6 +7,7 @@ import autospace from '../mixins/autospace';
 
 import type { MqFunc, } from '../mq/createMqFunc';
 import type { Typesetter, } from '../typography/createTypesetter';
+import type { ComponentPropResponsiveObject, } from './parseComponentProp';
 
 /**
  * The shape of a SyleProp's responsive object
@@ -19,13 +20,8 @@ import type { Typesetter, } from '../typography/createTypesetter';
  * @prop {object} [options] - Miscellaneous options to be passed to a function parsing the prop,
  *   e.g., the `type` prop, which is parsed by the typesetter function.
  */
-export type StylePropResponsiveObject = {
-  from?: string,
-  until?: string,
-  misc?: string,
-  type?: string,
-  value: string | number | (string | number)[],
-  options?: Object,
+export type StylePropResponsiveObject<T> = ComponentPropResponsiveObject<T> & {
+  options?: ?Object,
 };
 
 /**
@@ -38,10 +34,9 @@ export type StylePropResponsiveObject = {
  *
  * @type {string|number|StylePropResponsiveObject}
  */
-export type StyleProp =
-  | string
-  | number
-  | (string | number | StylePropResponsiveObject)[];
+export type StyleProp<
+  T: string | number | (string | number | StylePropResponsiveObject<*>)[]
+> = T;
 
 /**
  * Parse an object of responsive values into a CSS-in-JS object
@@ -67,7 +62,7 @@ export type StyleProp =
  */
 export default function parseStyleProp(
   prop: string,
-  values: StyleProp,
+  values: StyleProp<*>,
   mq: MqFunc,
   typesetter: Typesetter
 ): Object | void {
