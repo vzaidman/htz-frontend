@@ -11,13 +11,27 @@ import RowItem from '../components/RowItem/RowItem';
 import SortableTable from '../components/SortableTable/SortableTable';
 import TabbedGraph from '../components/TabbedGraph/TabbedGraph';
 
+type Props = {
+  url: {
+    pathname: string,
+    query: {
+      section: string,
+    },
+    asPath: string,
+  },
+};
+
 const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function index(): Node {
+function index({ url: { asPath, }, }: Props): Node {
   return (
-    <MainLayout>
+    <MainLayout
+      title="אתר שוק ההון, מניות ובורסה המוביל בישראל - TheMarker Finance"
+      description="אתר פיננס דה מרקר מספק מידע מורחב ועדכני משוקי ההון בישראל, וול סטריט, אירופה ואסיה אודות מניות, אגרות חוב, קרנות נאמנות, תעודות סל, נגזרים, דולר, שוק המטבעות ובעלי עניין"
+      path={asPath}
+    >
       <FelaTheme
         render={theme => (
           <Fragment>

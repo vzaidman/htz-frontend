@@ -2,7 +2,7 @@ module.exports = {
   service: {
     image: 'https://images.haarets.co.il/image',
   },
-  domain: 'haaretz.co.il',
+  domain: 'themarker.com',
   hostname: process.env.HOSTNAME,
   baseHref: 'https://www.haaretz.co.il',
   logLevel: 'debug',

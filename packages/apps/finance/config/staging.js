@@ -38,7 +38,7 @@ module.exports = {
   d3exposedPort: true,
   // todo: ask tomer if we will add a staging d3-server with different subDomain
   d3SubDomain: 'd3',
-  domain: 'haaretz.co.il',
+  domain: 'themarker.com',
   hostname: process.env.HOSTNAME,
   appPort: process.env.APP_PORT || '2002',
   graphQLPort: process.env.GRAPHQL_PORT || '4004',

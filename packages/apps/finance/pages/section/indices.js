@@ -15,6 +15,7 @@ type Props = {
     query: {
       section: string,
     },
+    asPath: string,
   },
 };
 
@@ -22,9 +23,14 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function indices({ url: { query: { section, }, }, }: Props): Node {
+function indices({ url: { query: { section, }, asPath, }, }: Props): Node {
   return (
-    <MainLayout section={section}>
+    <MainLayout
+      section={section}
+      title="מדדי מניות - TheMarker Finance"
+      description="כל המידע על  מדדים: נתוני מסחר, נתונים בזמן אמת, גרפים חדשות ועוד באתר TheMarker Finance"
+      path={asPath}
+    >
       <FelaTheme
         render={theme => (
           <PageRow>

@@ -63,6 +63,7 @@ type Props = {
       assetId: string,
       section: string,
     },
+    asPath: string,
   },
 };
 
@@ -70,9 +71,8 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
+function bonds({ url: { query: { assetId, section, }, asPath, }, }: Props): Node {
   return (
-    <MainLayout section={section}>
       <Query
         query={BondQuery}
         variables={{ assetId, }}
@@ -101,7 +101,13 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
             },
           } = data;
           return (
-            <FelaTheme
+            <MainLayout
+              section={section}
+              title={`${name} -אג"ח - אגרות חוב - TheMarker Finance`}
+              description={`${name} - למידע עדכני על נתוני אג"ח - אגרות חוב, היכנסו לאתר TheMarker Finance`}
+              path={asPath}
+            >
+              <FelaTheme
               render={theme => (
                 <Fragment>
                   <PageRow lines={2}>
@@ -405,10 +411,10 @@ function bonds({ url: { query: { assetId, section, }, }, }: Props): Node {
                 </Fragment>
               )}
             />
-          );
-        }}
-      </Query>
-    </MainLayout>
+          </MainLayout>
+        );
+      }}
+    </Query>
   );
 }
 

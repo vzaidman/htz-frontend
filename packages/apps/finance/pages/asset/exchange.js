@@ -47,12 +47,13 @@ type Props = {
       assetId: string,
       section: string,
     },
+    asPath: string,
   },
 };
 
-function exchange({ url: { query: { assetId, section, }, }, }: Props): Node {
+function exchange({ url: { query: { assetId, section, }, asPath, }, }: Props): Node {
+  const crypto: boolean = section === 'crypto';
   return (
-    <MainLayout section={section}>
       <Query
         partialRefetch
         query={ExchangeQuery}
@@ -78,7 +79,19 @@ function exchange({ url: { query: { assetId, section, }, }, }: Props): Node {
             },
           } = data;
           return (
-            <FelaTheme
+            <MainLayout
+              section={section}
+              title={crypto
+                ? `${name} - שער ${name} - מטבעות דיגיטלים - TheMarker Finance`
+                : `${name} -מט"ח – נתוני מסחר מטבע חוץ TheMarker Finance`
+              }
+              description={crypto
+                ? `${name} שערים עדכנים והיסטוריים של מטבע ${name} - כל המידע על מטבעות דיגיטליים ומטבעות קריפטוגרפים באתר TheMarker Finance`
+                : `${name} למידע על נתוני מסחר של מטבעות חוץ, שערי מט"ח, אופציות מט"ח, שערים יציגים ועוד , היכנסו לאתר TheMarker Finance`
+              }
+              path={asPath}
+            >
+              <FelaTheme
               render={theme => (
                 <Fragment>
                   <PageRow lines={2}>
@@ -212,10 +225,10 @@ function exchange({ url: { query: { assetId, section, }, }, }: Props): Node {
                 </Fragment>
               )}
             />
-          );
-        }}
-      </Query>
-    </MainLayout>
+          </MainLayout>
+        );
+      }}
+    </Query>
   );
 }
 

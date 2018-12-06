@@ -18,6 +18,7 @@ type Props = {
     query: {
       section: string,
     },
+    asPath: string,
   },
 };
 
@@ -25,9 +26,14 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function stocks({ url: { query: { section, }, }, }: Props): Node {
+function stocks({ url: { query: { section, }, asPath, }, }: Props): Node {
   return (
-    <MainLayout section={section}>
+    <MainLayout
+      section={section}
+      title="מניות - TheMarker Finance"
+      description="כל המידע על  מניות: נתוני מסחר, נתונים בזמן אמת, גרפים חדשות ועוד באתר TheMarker Finance"
+      path={asPath}
+    >
       <FelaTheme
         render={theme => (
           <Fragment>

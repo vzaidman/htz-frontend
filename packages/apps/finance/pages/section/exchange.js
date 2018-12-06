@@ -15,13 +15,25 @@ type Props = {
     query: {
       section: string,
     },
+    asPath: string,
   },
 };
 
-function exchange({ url: { query: { section, }, }, }: Props): Node {
+function exchange({ url: { query: { section, }, asPath, }, }: Props): Node {
   const crypto: boolean = section === 'crypto';
   return (
-    <MainLayout section={section}>
+    <MainLayout
+      section={section}
+      title={crypto
+        ? 'מטבעות דיגיטליים - TheMarker Finance'
+        : 'מט"ח - מטבע חוץ - TheMarker Finance'
+      }
+      description={crypto
+        ? 'כל המידע על  מטבעות דיגיטיליים: ביטקוין, לייטקוין, איתריום, ריפל, מונרו, Qtum  - נתונים בזמן אמת, גרפים חדשות ועוד באתר TheMarker Finance'
+        : 'מטבעות חוץ :כל המידע על  מט"ח נתוני מסחר, נתונים בזמן אמת, גרפים חדשות ועוד באתר TheMarker Finance'
+      }
+      path={asPath}
+    >
       <PageRow
         miscStyles={{ position: 'relative', }}
       >

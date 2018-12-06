@@ -18,6 +18,7 @@ type Props = {
     query: {
       section: string,
     },
+    asPath: string,
   },
 };
 
@@ -25,7 +26,7 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function etf({ url: { query: { section, }, }, }: Props): Node {
+function etf({ url: { query: { section, }, asPath, }, }: Props): Node {
   const subFilters = {
     title: 'בחר פוזיציה:',
     value: 'etfCategoryPosition',
@@ -39,7 +40,12 @@ function etf({ url: { query: { section, }, }, }: Props): Node {
   };
 
   return (
-    <MainLayout section={section}>
+    <MainLayout
+      section={section}
+      title="תעודות סל - TheMarker Finance"
+      description="כל המידע על  תעודות סל: נתוני מסחר, נתונים בזמן אמת, גרפים חדשות ועוד באתר TheMarker Finance"
+      path={asPath}
+    >
       <FelaTheme
         render={theme => (
           <Fragment>

@@ -2,6 +2,7 @@
 import React, { Fragment, } from 'react';
 import type { ChildrenArray, Element, Node, } from 'react';
 import Head from 'next/head';
+import config from 'config';
 import { FelaComponent, } from 'react-fela';
 // import dynamic from 'next/dynamic';
 import {
@@ -27,8 +28,11 @@ const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
 
 type Props = {
   children: ChildrenArray<Element<any>>,
-  section?: ?string,
-  assetId?: ?string,
+  section: ?string,
+  assetId: ?string,
+  title: string,
+  description: string,
+  path: string,
 };
 
 MainLayout.defaultProps = {
@@ -36,12 +40,24 @@ MainLayout.defaultProps = {
   assetId: null,
 };
 
-function MainLayout({ children, section, assetId, }: Props): Node {
+function MainLayout({ children, section, assetId, title, description, path, }: Props): Node {
+  const useSSL: boolean = config.get('useSSL');
+  const hostname: string = config.get('hostname');
+  const domain: string = config.get('domain');
+  const port: ?string = config.get('port');
+  const canonicalUrl: string = `http${useSSL ? 's' : ''}://${hostname}.${domain}${port ? `:${port}` : ''}${path}`;
   return (
     <Fragment>
       <Head>
-        {/* TODO: Make dynamic when we'll have routing */}
-        <title>Finance</title>
+        <title>{title}</title>
+        <meta
+          name="description"
+          content={description}
+        />
+        <link
+          rel="canonical"
+          href={canonicalUrl}
+        />
       </Head>
       <ScrollListener />
       <RouteChangeListener />

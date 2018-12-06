@@ -28,6 +28,7 @@ type Props = {
     query: {
       section: string,
     },
+    asPath: string,
   },
 };
 
@@ -35,9 +36,14 @@ const numToString: number => string = num => (
   num.toLocaleString('he', { minimumFractionDigits: 2, maximumFractionDigits: 2, })
 );
 
-function money({ url: { query: { section, }, }, }: Props): Node {
+function money({ url: { query: { section, }, asPath, }, }: Props): Node {
   return (
-    <MainLayout section={section}>
+    <MainLayout
+      section={section}
+      title="הכסף החם - תנועות הון בבורסה – תעודות סל וקרנות נאמנות שם המותג"
+      description="הכסף החם - למידע עדכני על תנועות ההון בבורסה, גיוסים ופדיונות בקרנות נאמנות ותעודות סל היכנס לאתר TheMarker Finance"
+      path={asPath}
+    >
       <FelaTheme
         render={theme => (
           <Fragment>

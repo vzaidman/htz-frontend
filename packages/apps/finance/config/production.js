@@ -36,7 +36,7 @@ module.exports = {
   d3useSSL: true,
   d3exposedPort: false,
   d3SubDomain: 'graphql',
-  domain: 'haaretz.co.il',
+  domain: 'themarker.com',
   hostname: process.env.HOSTNAME,
   port: process.env.PORT || '2004',
   graphQLPort: process.env.GRAPHQL_PORT || '4004',

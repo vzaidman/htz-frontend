@@ -55,40 +55,47 @@ type Props = {
       assetId: string,
       section: string,
     },
+    asPath: string,
   },
 };
 
 function options({
   url: {
     query: { assetId, section, },
+    asPath,
   },
 }: Props): Node {
   return (
-    <MainLayout section={section}>
-      <Query query={OptionQuery} variables={{ assetId, }}>
-        {({ loading, error, data, }) => {
-          if (error) return null;
-          if (loading) return null;
-          const {
-            asset: {
-              name,
-              value,
-              changePercentage,
-              numeralChange,
-              subType,
-              assetNumber,
-              lastTradeTime,
-              relatedAssets,
-              volume,
-              dailyAvgVolume,
-              weeklyYield,
-              monthlyYield,
-              quarterlyYield,
-              yearlyYield,
-              shareHolders,
-            },
-          } = data;
-          return (
+    <Query query={OptionQuery} variables={{ assetId, }}>
+      {({ loading, error, data, }) => {
+        if (error) return null;
+        if (loading) return null;
+        const {
+          asset: {
+            name,
+            value,
+            changePercentage,
+            numeralChange,
+            subType,
+            assetNumber,
+            lastTradeTime,
+            relatedAssets,
+            volume,
+            dailyAvgVolume,
+            weeklyYield,
+            monthlyYield,
+            quarterlyYield,
+            yearlyYield,
+            shareHolders,
+          },
+        } = data;
+        return (
+          <MainLayout
+            section={section}
+            title={`${name} -אופציות - TheMarker Finance`}
+            description={`${name} למידע עדכני על נתוני אופציות - נגזרים וכתבי אופציות, היכנסו לאתר TheMarker Finance`}
+            path={asPath}
+          >
             <FelaTheme
               render={theme => (
                 <Fragment>
@@ -327,10 +334,10 @@ function options({
                 </Fragment>
               )}
             />
-          );
-        }}
-      </Query>
-    </MainLayout>
+          </MainLayout>
+        );
+      }}
+    </Query>
   );
 }
 

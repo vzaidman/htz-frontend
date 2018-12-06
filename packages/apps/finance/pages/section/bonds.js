@@ -23,6 +23,7 @@ type Props = {
     query: {
       section: string,
     },
+    asPath: string,
   },
 };
 
@@ -72,9 +73,14 @@ class Bonds extends React.Component<Props, State> {
 
   render(): Node {
     const { bonds, assetSubSection, index, } = this.state;
-    const { url: { query: { section, }, }, } = this.props;
+    const { url: { query: { section, }, asPath, }, } = this.props;
     return (
-      <MainLayout section={section}>
+      <MainLayout
+        section={section}
+        title='אג"ח - אגרות חוב - TheMarker Finance'
+        description='אגרות חוב: כל המידע על אג"ח, נתונים בזמן אמת, גרפים חדשות ועוד באתר TheMarker Finance'
+        path={asPath}
+      >
         <FelaTheme
           render={theme => (
             <Fragment>
