@@ -18,6 +18,7 @@ import List from './types/list_type';
 import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
 import HomePage from './types/home_page_type';
+import { GenerateOtp, } from './types/otp_operations_type';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -218,6 +219,17 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parentValue, { type, time, assetId, }, { dataSources, }) {
         return dataSources.FinanceAPI.getGraph(type, time, assetId);
+      },
+    },
+
+    retrieveOtpHash: {
+      type: GenerateOtp,
+      args: {
+        email: { type: GraphQLString, },
+        ssoId: { type: GraphQLString, },
+      },
+      resolve(parentValue, { email, ssoId, }, { dataSources, }) {
+        return dataSources.OtpAPI.retrieveOtpHash(email, ssoId);
       },
     },
   }),

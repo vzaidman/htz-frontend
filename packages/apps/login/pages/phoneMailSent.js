@@ -4,46 +4,36 @@ import { ApolloConsumer, } from 'react-apollo';
 
 import { EventTracker, HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
-import { connectMailWithPhone, getUserData, getEmail, getHostname, getPhoneNum, getDataFromUserInfo, } from './queryutil/userDetailsOperations';
+import OtpForm from '../components/Misc/Forms/OtpForm';
+import {
+  connectMailWithPhone,
+  getUserData,
+  getEmail,
+  getHostname,
+  getPhoneNum,
+  retrieveHash,
+  getUser,
+  saveOtpHash,
+} from './queryutil/userDetailsOperations';
 
-import { Form, TextInput, Button, } from '@haaretz/htz-components';
-import theme from '../theme/index';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import BottomLinks from '../components/Misc/BottomLinks';
 import Preloader from '../components/Misc/Preloader';
-import {
-  LoginContentStyles,
-  LoginMiscLayoutStyles,
-} from '../components/StyleComponents/LoginStyleComponents';
+import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 
 // Styling Components -------
-const { PageWrapper, ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
+const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
 // --------------------------
 
 // Methods -------------------
-const generateSmsCodeError = message => [ { name: 'smscode', order: 1, errorText: message, }, ];
-
-const isValidPhoneNumber = number => {
-  const phoneRegex = /^(\s*|[\+0-9]\d{6,})$/;
-  return phoneRegex.test(number);
-};
-const validatePhoneNumber = ({ smscode, }) =>
-  (!isValidPhoneNumber(smscode) || !smscode || smscode.length < 10
-    ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
-    : []);
-
-const onSubmit = doTransitionFunction => {
-  const route = doTransitionFunction('accept');
-  Router.push(route);
-};
 
 const loginWithPass = (email, flow, eventTrackers) => {
   sendTrackingEvents(eventTrackers, { page: 'Phone validation', flowNumber: flow, label: 'withPassword', })(() => {
-      window.location = `/?params=${btoa(JSON.stringify({ email, }))}&type=reevaluate`;
-    }
-  );
-}
+    // eslint-disable-next-line no-undef
+    window.location = `/?params=${btoa(JSON.stringify({ email, }))}&type=reevaluate`;
+  });
+};
 
 const sendAgain = (client, doTransition) => {
   const userData = getUserData(client);
@@ -69,14 +59,14 @@ class PhoneMailSent extends Component {
 
   state = {
     isLoading: false,
-  }
+  };
 
-  setPreloader = (isLoadingStatus) => {
+  setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus, });
-  }
+  };
 
   render() {
-    return(
+    return (
       <FSMLayout>
         {({ currentState, findRout, doTransition, }) => (
           <ApolloConsumer>
@@ -91,6 +81,13 @@ class PhoneMailSent extends Component {
                           <ItemCenterer>
                             <h5>נשלח אליכם דוא"ל שבאמצעותו ניתן לוודא את מספר הטלפון</h5>
                           </ItemCenterer>
+                          <OtpForm
+                            client={client}
+                            doTransition={doTransition}
+                            findRout={findRout}
+                            message={'יש ללחוץ על כפתור האישור בדוא"ל ולאחר מכן יישלח אליכם קוד SMS. אנא, הזינו אותו כאן:'}
+                            showNumber={false}
+                          />
 
                           <ItemCenterer>
                             <Preloader isLoading={this.state.isLoading} />
@@ -108,8 +105,8 @@ class PhoneMailSent extends Component {
                                 e.preventDefault();
                                 this.setPreloader(true);
                                 sendTrackingEvents({ biAction, gaAction, }, { page: 'Phone validation', flowNumber: flow, label: 'sendAgainPhoneEmail', })(() => {
-                                    sendAgain(client, doTransition);
-                                  }
+                                  sendAgain(client, doTransition);
+                                }
                                 );
                               }}
                             >
