@@ -569,9 +569,9 @@ const Whatsapp = ({
               theme.mq({ until: 's', }, { minWidth: '33rem', }),
               theme.mq({ from: 's', }, { whiteSpace: 'nowrap', }),
             ]}
-            miscStyles={{
+            miscStyles={theme => ({
               extend: [ theme.mq({ until: 'm', }, { paddingTop: '1rem', }), ],
-            }}
+            })}
             openSide="top"
             offsetX={-15}
             hide={shouldMainNavBarDisplay === false}
