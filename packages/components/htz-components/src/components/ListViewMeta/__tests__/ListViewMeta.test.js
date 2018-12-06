@@ -1,29 +1,29 @@
 import React from 'react';
 import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import ListSideBar from '../ListSideBar';
+import ListViewMeta from '../ListViewMeta';
 
-describe('<ListSideBar>', () => {
+describe('<ListViewMeta>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
-      const { component, styles, } = felaSnapshotter(<ListSideBar />);
+      const { component, styles, } = felaSnapshotter(<ListViewMeta />);
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with title prop', () => {
-      const { component, styles, } = felaSnapshotter(<ListSideBar title="test title" />);
+      const { component, styles, } = felaSnapshotter(<ListViewMeta title="test title" />);
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with miscStyles prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListSideBar miscStyles={{ backgroundColor: 'red', }} />
+        <ListViewMeta miscStyles={{ backgroundColor: 'red', }} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with title and  extra links prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListSideBar
+        <ListViewMeta
           title="test title"
           extraLinks={[
             {
@@ -32,30 +32,35 @@ describe('<ListSideBar>', () => {
               inputTemplate: 'com.tm.Link',
               contentId: '1.2790808',
               contentName: 'קצרי רוח',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.2490',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2497760',
               contentName: 'טבלת המבקרים',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.470',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2487028',
               contentName: 'אופנה',
+              linkText: 'קצרי רוח',
             },
             {
               href: '1.628',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2489096',
               contentName: 'בן שלו',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.8286',
               inputTemplate: 'com.tm.Link',
               contentId: '1.3857559',
               contentName: 'סודוקו',
+              linkText: 'קצרי רוח',
             },
           ]}
         />
@@ -63,15 +68,28 @@ describe('<ListSideBar>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with title and  commercialLink prop', () => {
+    it('renders correctly with title and  commercialLinks prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListSideBar
+        <ListViewMeta
           title="test title"
-          commercialLink={{
-            text: 'הצגות ילדים בחסות תיאטרון אורנה פורת',
-            href: 'https://www.haaretz.co.il/1.1111111111',
-            contentId: '1.1111111111',
-          }}
+          commercialLinks={[
+            {
+              contentId: '123331412415235235',
+              contentName: 'dsgsdg',
+              href: 'https://www.haaretz.co.il/1.1111111111',
+              inputTemplate: 'dummy',
+              linkText: 'הצגות ילדים בחסות תיאטרון אורנה פורת',
+              toolTip: 'afafs',
+            },
+            {
+              contentId: '123sdfg235235',
+              contentName: 'dsgsdg',
+              href: 'https://www.haaretz.co.il/1.1111111111',
+              inputTemplate: 'dummy',
+              linkText: 'sdgsdgsdgsdgאטרון אורנה פורת',
+              toolTip: 'afafs',
+            },
+          ]}
         />
       );
       expect(component).toMatchSnapshot();
@@ -79,7 +97,7 @@ describe('<ListSideBar>', () => {
     });
     it('renders correctly with title, extraLinks and  commercialLink prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListSideBar
+        <ListViewMeta
           title="test title"
           extraLinks={[
             {
@@ -88,46 +106,64 @@ describe('<ListSideBar>', () => {
               inputTemplate: 'com.tm.Link',
               contentId: '1.2790808',
               contentName: 'קצרי רוח',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.2490',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2497760',
               contentName: 'טבלת המבקרים',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.470',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2487028',
               contentName: 'אופנה',
+              linkText: 'קצרי רוח',
             },
             {
               href: '1.628',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2489096',
               contentName: 'בן שלו',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.8286',
               inputTemplate: 'com.tm.Link',
               contentId: '1.3857559',
               contentName: 'סודוקו',
+              linkText: 'קצרי רוח',
             },
           ]}
-          commercialLink={{
-            text: 'הצגות ילדים בחסות תיאטרון אורנה פורת',
-            href: 'https://www.haaretz.co.il/1.1111111111',
-            contentId: '1.1111111111',
-          }}
+          commercialLinks={[
+            {
+              contentId: '123331412415235235',
+              contentName: 'dsgsdg',
+              href: 'https://www.haaretz.co.il/1.1111111111',
+              inputTemplate: 'dummy',
+              linkText: 'הצגות ילדים בחסות תיאטרון אורנה פורת',
+              toolTip: 'afafs',
+            },
+            {
+              contentId: '123sdfg235235',
+              contentName: 'dsgsdg',
+              href: 'https://www.haaretz.co.il/1.1111111111',
+              inputTemplate: 'dummy',
+              linkText: 'sdgsdgsdgsdgאטרון אורנה פורת',
+              toolTip: 'afafs',
+            },
+          ]}
         />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
 
-    it('renders correctly with title, extraLinks, commercialLink and marketingTools prop', () => {
+    it('renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListSideBar
+        <ListViewMeta
           title="test title"
           extraLinks={[
             {
@@ -136,51 +172,69 @@ describe('<ListSideBar>', () => {
               inputTemplate: 'com.tm.Link',
               contentId: '1.2790808',
               contentName: 'קצרי רוח',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.2490',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2497760',
               contentName: 'טבלת המבקרים',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.470',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2487028',
               contentName: 'אופנה',
+              linkText: 'קצרי רוח',
             },
             {
               href: '1.628',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2489096',
               contentName: 'בן שלו',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.8286',
               inputTemplate: 'com.tm.Link',
               contentId: '1.3857559',
               contentName: 'סודוקו',
+              linkText: 'קצרי רוח',
             },
           ]}
-          commercialLink={{
-            text: 'הצגות ילדים בחסות תיאטרון אורנה פורת',
-            href: 'https://www.haaretz.co.il/1.1111111111',
-            contentId: '1.1111111111',
-          }}
-          marketingTool={{
+          commercialLinks={[
+            {
+              contentId: '123331412415235235',
+              contentName: 'dsgsdg',
+              href: 'https://www.haaretz.co.il/1.1111111111',
+              inputTemplate: 'dummy',
+              linkText: 'הצגות ילדים בחסות תיאטרון אורנה פורת',
+              toolTip: 'afafs',
+            },
+            {
+              contentId: '123sdfg235235',
+              contentName: 'dsgsdg',
+              href: 'https://www.haaretz.co.il/1.1111111111',
+              inputTemplate: 'dummy',
+              linkText: 'sdgsdgsdgsdgאטרון אורנה פורת',
+              toolTip: 'afafs',
+            },
+          ]}
+          marketingTeaser={{
             title: 'כל התכנים בכל מכשיר',
-            subTitle: 'הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון',
+            subtitle: 'הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון',
             href: 'https://www.haaretz.co.il/1.2222222222',
-            buttonText: 'לרכישה',
+            cta: 'לרכישה',
           }}
         />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
-    it('renders correctly with title, extraLinks and marketingTools prop', () => {
+    it('renders correctly with title, extraLinks and marketingTeaser prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListSideBar
+        <ListViewMeta
           title="test title"
           extraLinks={[
             {
@@ -189,37 +243,42 @@ describe('<ListSideBar>', () => {
               inputTemplate: 'com.tm.Link',
               contentId: '1.2790808',
               contentName: 'קצרי רוח',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.2490',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2497760',
               contentName: 'טבלת המבקרים',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.470',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2487028',
               contentName: 'אופנה',
+              linkText: 'קצרי רוח',
             },
             {
               href: '1.628',
               inputTemplate: 'com.tm.Link',
               contentId: '1.2489096',
               contentName: 'בן שלו',
+              linkText: 'קצרי רוח',
             },
             {
               href: '2.8286',
               inputTemplate: 'com.tm.Link',
               contentId: '1.3857559',
               contentName: 'סודוקו',
+              linkText: 'קצרי רוח',
             },
           ]}
-          marketingTool={{
+          marketingTeaser={{
             title: 'כל התכנים בכל מכשיר',
-            subTitle: 'הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון',
+            subtitle: 'הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון',
             href: 'https://www.haaretz.co.il/1.2222222222',
-            buttonText: 'לרכישה',
+            cta: 'לרכישה',
           }}
         />
       );
