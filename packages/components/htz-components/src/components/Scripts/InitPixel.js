@@ -44,7 +44,6 @@ class InitPixel extends Component {
                           s.parentNode.insertBefore(t,s)}(window, document,'script',
                           'https://connect.facebook.net/en_US/fbevents.js');
                           fbq('init', ${pixelId});
-                          fbq('track', 'Lead');
                         `,
                 }}
               />
@@ -53,7 +52,7 @@ class InitPixel extends Component {
                 dangerouslySetInnerHTML={{
                   __html: `
                           <img height="1" width="1" style="display:none"
-                            src="https://www.facebook.com/tr?pixelId=${pixelId} &ev=Lead&noscript=1"
+                            src="https://www.facebook.com/tr?pixelId=${pixelId}&noscript=1"
                           />
                         `,
                 }}
