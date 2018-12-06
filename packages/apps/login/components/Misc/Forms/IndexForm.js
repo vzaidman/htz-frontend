@@ -317,6 +317,15 @@ class IndexForm extends Component {
           )({ email, phone, }),
           fail => this.showError(fail.message)
         );
+    } else if (type === 'reevaluate') {
+      onSubmit(
+        client,
+        getFlowByData,
+        this.showError,
+        this.hideError,
+        this.setPreloader,
+        eventsTrackers
+      )({ email, phone, });
     }
     if (facebook && facebook.token && facebook.redirect) {
       saveUserData(client)({ userData: { facebook, __typename: 'SsoUser', }, });

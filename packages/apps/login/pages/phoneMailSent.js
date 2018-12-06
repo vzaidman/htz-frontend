@@ -4,7 +4,7 @@ import { ApolloConsumer, } from 'react-apollo';
 
 import { EventTracker, HtzLink, } from '@haaretz/htz-components';
 import FSMLayout from '../layouts/FSMLayout';
-import { connectMailWithPhone, getUserData, getEmail, getHostname, getPhoneNum, } from './queryutil/userDetailsOperations';
+import { connectMailWithPhone, getUserData, getEmail, getHostname, getPhoneNum, getDataFromUserInfo, } from './queryutil/userDetailsOperations';
 
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
 import theme from '../theme/index';
@@ -37,6 +37,13 @@ const onSubmit = doTransitionFunction => {
   const route = doTransitionFunction('accept');
   Router.push(route);
 };
+
+const loginWithPass = (email, flow, eventTrackers) => {
+  sendTrackingEvents(eventTrackers, { page: 'Phone validation', flowNumber: flow, label: 'withPassword', })(() => {
+      window.location = `/?params=${btoa(JSON.stringify({ email, }))}&type=reevaluate`;
+    }
+  );
+}
 
 const sendAgain = (client, doTransition) => {
   const userData = getUserData(client);
@@ -115,14 +122,10 @@ class PhoneMailSent extends Component {
                               href={`${findRout('withPassword')}`}
                               onClick={e => {
                                 e.preventDefault();
-                                const route = doTransition('withPassword');
-                                sendTrackingEvents({ biAction, gaAction, }, { page: 'Phone validation', flowNumber: flow, label: 'withPassword', })(() => {
-                                    Router.push(route);
-                                  }
-                                );
+                                loginWithPass(getEmail(client), flow, { biAction, gaAction, });
                               }}
                             >
-                              להתחברות באמצעות הסיסמה שברשותכם
+                              להתחברות באמצעול הקוד שקיבלתם או באמצעות סיסמה
                             </HtzLink>
                           </BottomLinks>
                         </FormWrapper>
