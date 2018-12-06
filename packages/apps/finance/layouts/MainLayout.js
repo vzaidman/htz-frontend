@@ -8,7 +8,6 @@ import { FelaComponent, } from 'react-fela';
 import {
   AriaLive,
   DeviceTypeInjector,
-  GoogleAnalytics,
   LayoutContainer,
   RouteChangeListener,
   ScrollListener,
@@ -19,6 +18,7 @@ import { tmTheme, } from '@haaretz/tm-theme';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import NavigationBar from '../components/NavigationBar/NavigationBar';
+import GoogleAnalytics from '../components/GoogleAnalytics/GoogleAnalytics';
 /*
 const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
   loading: () => null,
@@ -62,7 +62,7 @@ function MainLayout({ children, section, assetId, title, description, path, }: P
       <ScrollListener />
       <RouteChangeListener />
       {/* <DfpInjector path={path} /> */}
-      <GoogleAnalytics withEC />
+      <GoogleAnalytics />
       <UserInjector />
       <StyleProvider renderer={styleRenderer} theme={tmTheme}>
         <Fragment>
