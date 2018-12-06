@@ -1,18 +1,17 @@
 // @flow
 
-import * as React from 'react';
-
 import type {
   ComponentPropResponsiveObject,
   StyleProps,
 } from '@haaretz/htz-css-tools';
+import * as React from 'react';
 
+import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
+import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import BlockLink from '../BlockLink/BlockLink';
 import Card from '../Card/Card';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
-
-import type { attrFlowType, } from '../../flowTypes/attrTypes';
-import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 
 type TeaserPropTypes = {
   data: TeaserDataType,
@@ -88,16 +87,18 @@ export default function Teaser({
   isRev,
 }: TeaserPropTypes): React.Node {
   return (
-    <Card
-      tagName="article"
-      fillHeight
-      {...{ miscStyles, backgroundColor, isElevated, attrs, }}
-    >
-      <BlockLink href={data.path}>
-        <Grid gutter={gutter} {...(isRev ? { isRev, } : {})}>
-          {children}
-        </Grid>
-      </BlockLink>
-    </Card>
+    <ErrorBoundary>
+      <Card
+        tagName="article"
+        fillHeight
+        {...{ miscStyles, backgroundColor, isElevated, attrs, }}
+      >
+        <BlockLink href={data.path}>
+          <Grid gutter={gutter} {...(isRev ? { isRev, } : {})}>
+            {children}
+          </Grid>
+        </BlockLink>
+      </Card>
+    </ErrorBoundary>
   );
 }
