@@ -98,7 +98,10 @@ function Header({
                             paddingInlineStart: theme.layoutStyle.startColumnPaddingXL,
                           }
                         ),
-                        theme.mq({ until: 's', }, { order: -1, marginTop: '2rem', marginBottom: '3rem', }),
+                        theme.mq(
+                          { until: 's', },
+                          { order: -1, marginTop: '2rem', marginBottom: '3rem', }
+                        ),
                       ],
                     }}
                     render={({ className, }) => (
@@ -127,11 +130,7 @@ function Header({
                     ],
                   }}
                   render={({ className, }) => (
-                    <HeaderText
-                      className={className}
-                      kicker={exclusive}
-                      title={title}
-                    />
+                    <HeaderText className={className} kicker={exclusive} title={title} />
                   )}
                 />
                 <LiveBlogHeaderMeta
@@ -222,30 +221,21 @@ function Header({
                         }`,
                         transforms: [
                           {
-                            width: '1920',
+                            width: '350',
                             aspect,
                             quality: 'auto',
                           },
                           {
-                            width: '1420',
+                            width: '450',
                             aspect,
                             quality: 'auto',
                           },
                           {
-                            width: '1280',
+                            width: '600',
                             aspect,
                             quality: 'auto',
                           },
-                          {
-                            width: '1024',
-                            aspect,
-                            quality: 'auto',
-                          },
-                          {
-                            width: '840',
-                            aspect,
-                            quality: 'auto',
-                          },
+
                           {
                             width: '652',
                             aspect,
@@ -257,17 +247,28 @@ function Header({
                             quality: 'auto',
                           },
                           {
-                            width: '600',
+                            width: '840',
+                            aspect,
+                            quality: 'auto',
+                          },
+
+                          {
+                            width: '1024',
                             aspect,
                             quality: 'auto',
                           },
                           {
-                            width: '450',
+                            width: '1280',
                             aspect,
                             quality: 'auto',
                           },
                           {
-                            width: '350',
+                            width: '1420',
+                            aspect,
+                            quality: 'auto',
+                          },
+                          {
+                            width: '1920',
                             aspect,
                             quality: 'auto',
                           },

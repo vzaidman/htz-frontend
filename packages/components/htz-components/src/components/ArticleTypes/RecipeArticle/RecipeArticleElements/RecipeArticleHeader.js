@@ -160,32 +160,12 @@ function Header({
                 }`,
                 transforms: [
                   {
-                    width: '1920',
+                    width: '375',
                     aspect,
                     quality: 'auto',
                   },
                   {
-                    width: '1420',
-                    aspect,
-                    quality: 'auto',
-                  },
-                  {
-                    width: '1280',
-                    aspect,
-                    quality: 'auto',
-                  },
-                  {
-                    width: '1024',
-                    aspect,
-                    quality: 'auto',
-                  },
-                  {
-                    width: '912',
-                    aspect,
-                    quality: 'auto',
-                  },
-                  {
-                    width: '768',
+                    width: '425',
                     aspect,
                     quality: 'auto',
                   },
@@ -195,12 +175,27 @@ function Header({
                     quality: 'auto',
                   },
                   {
-                    width: '450',
+                    width: '768',
                     aspect,
                     quality: 'auto',
                   },
                   {
-                    width: '350',
+                    width: '1028',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1280',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1440',
+                    aspect,
+                    quality: 'auto',
+                  },
+                  {
+                    width: '1920',
                     aspect,
                     quality: 'auto',
                   },

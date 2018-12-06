@@ -36,27 +36,7 @@ const getSourceOptions = ({ isVariationB, isSquare, }) => {
       : '(min-width:1280px) 910px, (min-width:1024px) 912px, (min-width:768px) 768px,(min-width:600px) 600px, 100vw',
     transforms: [
       {
-        width: '1920',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1280',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1028',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '768',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '600',
+        width: '375',
         aspect,
         quality: 'auto',
       },
@@ -66,7 +46,27 @@ const getSourceOptions = ({ isVariationB, isSquare, }) => {
         quality: 'auto',
       },
       {
-        width: '375',
+        width: '600',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '768',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1028',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1280',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1920',
         aspect,
         quality: 'auto',
       },
