@@ -151,20 +151,21 @@ class LoginForms extends Component {
                                   >
                                     {/* TAB 1 */}
                                     <PhoneForms
-                                      tabname='כניסה עם קוד SMS'
+                                      tabname="כניסה עם קוד SMS"
                                       flow={flow}
+                                      message="להתחברות הזינו את הקוד שנשלח למספר"
                                       doTransition={doTransition}
                                       findRout={findRout}
                                       client={client}
                                       user={user}
-                                      flow={flow}
                                       eventsTrackers={{ biAction, gaAction, }}
                                       label="withSms"
+                                      showNumber
                                     />
 
                                     {/* TAB 2 */}
                                     <PasswordForm
-                                      tabname='כניסה עם סיסמה'
+                                      tabname="כניסה עם סיסמה"
                                       login={login}
                                       theme={theme}
                                       client={client}
@@ -184,8 +185,8 @@ class LoginForms extends Component {
                                         e.preventDefault();
                                         const route = doTransition('registration');
                                         sendTrackingEvents({ biAction, gaAction, }, { page: 'How to login?', flowNumber: flow, label: 'registrationPage', })(() => {
-                                            Router.push(route);
-                                          }
+                                          Router.push(route);
+                                        }
                                         );
                                       }}
                                     >

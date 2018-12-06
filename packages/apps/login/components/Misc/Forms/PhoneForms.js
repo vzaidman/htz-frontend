@@ -45,8 +45,8 @@ class PhoneForms extends React.Component {
           onClick={e => {
             e.preventDefault();
             sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'notMyPhone', });
-              this.changeFormType(0);
-            }}
+            this.changeFormType(0);
+          }}
         >
           לא המספר שלכם?
         </HtzLink>

@@ -7,6 +7,7 @@ import INSPECT_EMAIL, {
   HOSTNAME,
   REFERRER,
   PHONE_EMAIL_CONFIRMATION,
+  RETRIEVE_HASH,
 } from '../queries/UserQueries';
 import {
   GENERATE_HASH,
@@ -16,87 +17,92 @@ import {
   CONFIRM_MAIL,
 } from '../mutations/UserMutations';
 
-const getDataFromUserInfo = client => email =>
-  client
-    .query({
-      query: INSPECT_EMAIL,
-      variables: { email, },
-    })
-    .then(res => res.data);
+const getDataFromUserInfo = client => email => client.query({
+  query: INSPECT_EMAIL,
+  variables: { email, },
+})
+  .then(res => res.data);
 
-const mockDataFromUserInfo = client => email =>
-  Promise.resolve({
-    userByMail: {
-      ssoId: '20023790436',
-      phoneNum: '0548888888',
-      userStatus: {
-        isEmailValidated: false,
-        isMobileValidated: true,
-        isPhoneEmailConn: false,
-      },
-      userCrmStatus: {
-        id: 654654,
-        isActiveTm: true,
-        isActiveHeb: false,
-        isActiveEng: false,
-      },
+const mockDataFromUserInfo = client => email => Promise.resolve({
+  userByMail: {
+    ssoId: '20023790436',
+    phoneNum: '0548888888',
+    userStatus: {
+      isEmailValidated: false,
+      isMobileValidated: true,
+      isPhoneEmailConn: false,
     },
-  });
+    userCrmStatus: {
+      id: 654654,
+      isActiveTm: true,
+      isActiveHeb: false,
+      isActiveEng: false,
+    },
+  },
+});
 
 const getUser = client => client.readQuery({ query: USER, }).userData;
 const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
-const getOtpHash = client => client.readQuery({ query: OTP_HASH, }).otpHash;
+const getOtpHash = client => {
+  try {
+    return client.readQuery({ query: OTP_HASH, }).otpHash;
+  }
+  catch (e) {
+    return null;
+  }
+};
 const getEmail = client => client.readQuery({ query: USER_EMAIL, }).userEmail;
 const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.phoneNum;
 const getHostname = client => client.readQuery({ query: HOSTNAME, }).hostname;
 const getReferrer = client => client.readQuery({ query: REFERRER, }).loginReferrer;
-const getPhoneEmailConfirmation = client =>
-  client.readQuery({ query: PHONE_EMAIL_CONFIRMATION, }).phoneEmailConfirmation;
+const getPhoneEmailConfirmation = client => client.readQuery({
+  query: PHONE_EMAIL_CONFIRMATION,
+}).phoneEmailConfirmation;
 
 const saveUserData = client => userDataObj => {
   client.writeData({ data: userDataObj, });
   return userDataObj;
 };
 
-const generateOtp = client => phoneNumObj =>
-  client.mutate({
-    variables: phoneNumObj,
-    mutation: GENERATE_HASH,
-  });
+const generateOtp = client => phoneNumObj => client.mutate({
+  variables: phoneNumObj,
+  mutation: GENERATE_HASH,
+});
 
-const connectMailWithPhone = client => ({ email, paramString, url, userName, phone, }) =>
-  client.mutate({
-    variables: {
-      email,
-      url,
-      userName,
-      phone,
-      paramString: `${Buffer.from(paramString).toString('base64')}`,
-    },
-    mutation: CONNECT_MAIL_MOBILE,
-  });
+const retrieveHash = client => emailSsoObj => client.query({
+  variables: emailSsoObj,
+  query: RETRIEVE_HASH,
+});
 
-const validateMailWithPhone = client => dataObj =>
-  client.mutate({
-    variables: dataObj,
-    mutation: VALIDATE_MAIL_TO_MOBILE,
-  });
+const connectMailWithPhone = client => ({ email, paramString, url, userName, phone, }) => client.mutate({
+  variables: {
+    email,
+    url,
+    userName,
+    phone,
+    paramString: `${Buffer.from(paramString).toString('base64')}`,
+  },
+  mutation: CONNECT_MAIL_MOBILE,
+});
 
-const sendMailConfirmation = client => ({ email, paramString, url, }) =>
-  client.mutate({
-    variables: {
-      email,
-      url,
-      paramString: `${Buffer.from(paramString).toString('base64')}`,
-    },
-    mutation: SEND_MAIL_CONFIRMATION_REQUEST,
-  });
+const validateMailWithPhone = client => dataObj => client.mutate({
+  variables: dataObj,
+  mutation: VALIDATE_MAIL_TO_MOBILE,
+});
 
-const validateMailConfirmation = client => dataObj =>
-  client.mutate({
-    variables: dataObj,
-    mutation: CONFIRM_MAIL,
-  });
+const sendMailConfirmation = client => ({ email, paramString, url, }) => client.mutate({
+  variables: {
+    email,
+    url,
+    paramString: `${Buffer.from(paramString).toString('base64')}`,
+  },
+  mutation: SEND_MAIL_CONFIRMATION_REQUEST,
+});
+
+const validateMailConfirmation = client => dataObj => client.mutate({
+  variables: dataObj,
+  mutation: CONFIRM_MAIL,
+});
 
 const saveOtpHash = client => otpHashObj => {
   client.writeData({ data: otpHashObj, });
@@ -133,4 +139,5 @@ export {
   validateMailWithPhone,
   sendMailConfirmation,
   validateMailConfirmation,
+  retrieveHash,
 };

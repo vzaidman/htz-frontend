@@ -55,6 +55,16 @@ const USER_DATA = gql`
   }
 `;
 
+const RETRIEVE_HASH = gql`
+ query retrieveHash($email: String!, $ssoId: String!) {
+  retrieveOtpHash(email: $email, ssoId: $ssoId) {
+    success
+    msg
+    hash
+  }
+ }
+`;
+
 const OTP_HASH = gql`
   query getOtpHash {
     otpHash @client
@@ -102,4 +112,5 @@ export {
   HOSTNAME,
   REFERRER,
   PHONE_EMAIL_CONFIRMATION,
+  RETRIEVE_HASH,
 };

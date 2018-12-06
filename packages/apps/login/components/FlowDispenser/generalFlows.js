@@ -32,6 +32,7 @@ export default {
     backToLogin: 'loginFormsPass',
   },
   phoneMailSent: {
+    sendAgain: 'otpValidation2',
     sentAgain: 'phoneMailSent2',
     withPassword: 'loginFormsPass',
     getCustomerService: 'customerService',

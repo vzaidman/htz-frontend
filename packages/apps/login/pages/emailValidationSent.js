@@ -1,10 +1,9 @@
 import React, { Fragment, } from 'react';
 import Router from 'next/router';
 
-import { HtzLink, } from '@haaretz/htz-components';
-import FSMLayout from '../layouts/FSMLayout';
+import { HtzLink, EventTracker, ApolloConsumer, } from '@haaretz/htz-components';
 
-import { EventTracker, ApolloConsumer, } from '@haaretz/htz-components';
+import FSMLayout from '../layouts/FSMLayout';
 import { getEmail, sendMailConfirmation, } from './queryutil/userDetailsOperations';
 import { getHost, } from '../util/requestUtil';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
@@ -26,20 +25,20 @@ const sendEmailAgain = (client, route, showError, hideError, setPreloader) => {
   hideError();
   const email = getEmail(client);
   const prefix = /(https?:\/\/\D*).(haaretz.co.il|themarker.com|haaretz.com).*/.exec(window.location.origin)[1];
-  sendMailConfirmation(client)({ 
+  sendMailConfirmation(client)({
     email,
     url: `${prefix}.${getHost(client)}`,
-    paramString: JSON.stringify({ email, }),
-   }).then(
-    () => {
-      Router.push(route);
-    },
-    error => {
-      setPreloader(false);
-      showError((error.message || 'אירעה שגיאה'));
-    }
-  );
-}
+    paramString: JSON.stringify({ email, }), })
+    .then(
+      () => {
+        Router.push(route);
+      },
+      error => {
+        setPreloader(false);
+        showError((error.message || 'אירעה שגיאה'));
+      }
+    );
+};
 
 class EmailValidationSent extends React.Component {
   state = {
@@ -67,7 +66,7 @@ class EmailValidationSent extends React.Component {
 
   setPreloader = (isLoadingStatus) => {
     this.setState({ isLoading: !!isLoadingStatus, });
-  }
+  };
 
   render() {
     return this.state.firstTime ? (
@@ -107,8 +106,8 @@ class EmailValidationSent extends React.Component {
                               onClick={e => {
                                 e.preventDefault();
                                 sendTrackingEvents({ biAction, gaAction, }, { page: 'Email validation 1', flowNumber: flow, label: 'sendAgainAddressEmail', })(() => {
-                                    sendEmailAgain(client, doTransition('sendAgain'), this.showError, this.hideError, this.setPreloader);
-                                  }
+                                  sendEmailAgain(client, doTransition('sendAgain'), this.showError, this.hideError, this.setPreloader);
+                                }
                                 );
                               }}
                             >
@@ -121,8 +120,8 @@ class EmailValidationSent extends React.Component {
                                 e.preventDefault();
                                 const route = doTransition('notRegistered');
                                 sendTrackingEvents({ biAction, gaAction, }, { page: 'Email validation 1', flowNumber: flow, label: 'registrationPage', })(() => {
-                                    Router.push(route);
-                                  }
+                                  Router.push(route);
+                                }
                                 );
                               }}
                             >

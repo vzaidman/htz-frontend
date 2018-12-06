@@ -21,9 +21,16 @@ services:
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
       - GRAPHQL_SUB_DOMAIN=graphql-prod
-
     networks:
       - production
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 5
+        delay: 30s
+        order: start-first
+      restart_policy:
+        condition: on-failure
 
 networks:
   production:
