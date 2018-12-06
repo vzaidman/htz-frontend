@@ -192,7 +192,7 @@ function LiveBlog({ articleId, slots, }) {
                                           publishDate={header.pubDate}
                                           modifiedDate={header.modDate}
                                           miscStyles={{
-                                            marginBottom: '10rem',
+                                            marginBottom: '2rem',
                                           }}
                                         />
                                       ) : null}
@@ -204,6 +204,7 @@ function LiveBlog({ articleId, slots, }) {
                                               position: 'sticky',
                                               top: isOsakaDisplayed ? '17rem' : '0',
                                               transform: 'translateY(0rem)',
+                                              marginInlineStart: '-2rem',
                                               paddingBottom:
                                                 newsletterProps.length > 0 ? '36rem' : '15rem',
                                               transitionProperty: 'top',
