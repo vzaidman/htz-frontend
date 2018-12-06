@@ -126,9 +126,9 @@ TeaserHeader.defaultProps = {
   offset: 0,
   isH1: false,
   // data props
+  titleMobile: null,
   exclusive: null,
   exclusiveMobile: null,
-  path: null,
   // style props
   typeScale: null,
   color: null,
