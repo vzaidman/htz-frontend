@@ -398,6 +398,20 @@ class OtpAPI extends RESTDataSource {
       () => Promise.resolve({ success: false, msg: 'server error', hash: '', })
     );
   }
+
+  async retrieveOtpHash(email, ssoId) {
+    return fetch(`${this.context.otpService}/retrieve`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, ssoId, }),
+    }).then(
+      success => success.json(),
+      () => Promise.resolve({ success: false, msg: "couldn't find hash", })
+    );
+  }
 }
 
 class NewSsoOperationsAPI extends RESTDataSource {

@@ -4,7 +4,16 @@ import Router from 'next/router';
 import { Form, TextInput, Button, Login, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getReferrer, } from '../../../pages/queryutil/userDetailsOperations';
+import {
+  getUserData,
+  getPhoneNum,
+  getOtpHash,
+  generateOtp,
+  saveOtpHash,
+  getEmail,
+  getReferrer,
+  getUser, retrieveHash,
+} from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import Preloader from '../../Misc/Preloader';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
@@ -26,15 +35,15 @@ const validateSmsCodeInput = ({ smsCode, }) =>
 
 const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
-  return facebookParams ?
+  return (facebookParams ?
     getFacebookLoginUrl(facebookParams) :
-    false;
+    false);
 };
 
-const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
+const login = ({ client, showError, hideError, setPreloader, eventsTrackers, loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
   setPreloader(true);
   hideError();
-  loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, getOtpHash(client))
+  loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, otpHash)
     .then(
       // eslint-disable-next-line no-undef
       () => {
@@ -49,6 +58,26 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
         showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
       }
     );
+};
+
+const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
+  let otpHash = getOtpHash(client);
+  if (typeof otpHash === 'undefined' || otpHash === null) {
+    const { ssoId, } = getUser(client);
+    const email = getEmail(client);
+    retrieveHash(client)({ email, ssoId, })
+      .then(
+        success => {
+          otpHash = success.data.retrieveOtpHash.hash;
+          saveOtpHash(client)({ otpHash, });
+          login({ client, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+        },
+        () => showError('אירעה שגיאה, אנא נסה שנית מאוחר יותר.')
+      );
+  }
+  else {
+    login({ client, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+  }
 };
 
 const handleGenerateOtp = (client, doTransition, setPreloader) => {
@@ -69,7 +98,9 @@ const handleGenerateOtp = (client, doTransition, setPreloader) => {
     });
 };
 
-const hidePhone = phoneNumber => `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`;
+const hidePhone = (phoneNumber, shouldShow) => (shouldShow
+  ? `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`
+  : '');
 
 // --------------------------
 
@@ -118,9 +149,9 @@ class OtpForm extends Component {
       <FormWrapper>
         <ItemCenterer>
           <h5>
-            להתחברות הזינו את הקוד שנשלח למספר
+            {this.props.message}
             <br />
-            <span dir="ltr">{ hidePhone(getUserData(client).phoneNum) }</span>
+            <span dir="ltr">{ hidePhone(getUserData(client).phoneNum, this.props.showNumber) }</span>
           </h5>
         </ItemCenterer>
         <Login
@@ -154,7 +185,7 @@ class OtpForm extends Component {
                           e.preventDefault();
                           sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'sendAgainOtp', })(() => {
                             handleGenerateOtp(client, doTransition, this.setPreloader);
-                            }
+                          }
                           );
                         }}
                       >
