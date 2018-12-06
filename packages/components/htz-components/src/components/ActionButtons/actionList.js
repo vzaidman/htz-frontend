@@ -192,11 +192,16 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
               query: GET_COMMENTS_ID,
             });
             return commentsElementId ? (
-              <Query query={GET_COMMENTS_COUNT} variables={{ path: commentsElementId, }}>
+              <Query
+                query={GET_COMMENTS_COUNT}
+                variables={{ path: commentsElementId, }}
+              >
                 {({ loading, error, data, }) => {
                   if (loading) return null;
                   if (error) return null;
-                  const commentsNumber: number = Number(data.commentsElement.totalHits);
+                  const commentsNumber: number = Number(
+                    data.commentsElement.totalHits
+                  );
                   cache.writeData({
                     data: {
                       isCommentsNumberLoaded: true,
@@ -263,13 +268,19 @@ const Facebook: StatelessFunctionalComponent<FacebookButtonProps> = ({
 
 const FacebookRound = (props: Object) => <Facebook {...props} round />;
 
-class FacebookLogo extends React.Component<FacebookLogoProps, FacebookLogoState> {
+class FacebookLogo extends React.Component<
+  FacebookLogoProps,
+  FacebookLogoState
+> {
   state = {
     host: null,
     facebookCount: 0,
   };
 
-  componentDidUpdate(prevProps: FacebookLogoProps, prevState: FacebookLogoState) {
+  componentDidUpdate(
+    prevProps: FacebookLogoProps,
+    prevState: FacebookLogoState
+  ) {
     const eligibleForFacebookFetch: boolean = prevState.host !== this.state.host;
     if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
@@ -450,7 +461,9 @@ const Messenger: StatelessFunctionalComponent<MessengerButtonProps> = ({
         {...props}
         miscStyles={buttonStyles}
         title="שתפו כתבה במסנג'ר"
-        href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(host)}`}
+        href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(
+          host
+        )}`}
         onClick={() => {
           biAction({
             actionCode: '',
@@ -537,14 +550,14 @@ const Twitter: StatelessFunctionalComponent<TwitterButtonProps> = ({
   />
 );
 
-const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
+const Whatsapp = ({
   buttonStyles,
   size,
   iconStyles,
   elementUrl,
   shouldMainNavBarDisplay,
   ...props
-}): Node => (
+}: WhatsappButtonProps): Node => (
   <ActionButton
     render={({ platform, biAction, biActionMapper, }) => (
       <FelaTheme
@@ -556,9 +569,9 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
               theme.mq({ until: 's', }, { minWidth: '33rem', }),
               theme.mq({ from: 's', }, { whiteSpace: 'nowrap', }),
             ]}
-            miscStyles={theme => ({
+            miscStyles={{
               extend: [ theme.mq({ until: 'm', }, { paddingTop: '1rem', }), ],
-            })}
+            }}
             openSide="top"
             offsetX={-15}
             hide={shouldMainNavBarDisplay === false}
@@ -570,7 +583,9 @@ const Whatsapp: StatelessFunctionalComponent<WhatsappButtonProps> = ({
               onClick={() => {
                 window.open(
                   `${
-                    platform === 'mobile' ? 'whatsapp://' : 'https://web.whatsapp.com/'
+                    platform === 'mobile'
+                      ? 'whatsapp://'
+                      : 'https://web.whatsapp.com/'
                   }send?text=${elementUrl}${encodeURIComponent(
                     '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
                   )}`,
