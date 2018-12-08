@@ -4,8 +4,8 @@ import { rgba, } from 'polished';
 import { tmTheme as theme, } from '@haaretz/tm-theme';
 
 export default (data, {
-  width = 574,
-  height = 308,
+  width = 320,
+  height = 303,
   margin = { top: 34, right: 10, bottom: 15, left: 50, },
 }) => {
   const options = {

@@ -50,7 +50,7 @@ router.post([ '/line', '/scatter', ], (req, res) => {
     .then(response => fetchData({ assetId, time, type, fragment: response[1].default, })
       .then(({ data: { financeGraph, }, }) => {
         const graph = response[0].default;
-        res.end(graph(financeGraph.dataSource, options).svgString());
+        res.end(graph(financeGraph.dataSource, time, options).svgString());
       })
       .catch(err => console.log(err))
     )
@@ -133,12 +133,12 @@ router.post([ '/assetGraphs', ], (req, res) => {
         ];
         const results = {
           line: {
-            daily: lineGraph(daily.dataSource, options).svgString(),
-            weekly: lineGraph(weekly.dataSource, options).svgString(),
-            monthly: lineGraph(monthly.dataSource, options).svgString(),
-            yearly: lineGraph(yearly.dataSource, options).svgString(),
-            tripleYear: lineGraph(tripleYear.dataSource, options).svgString(),
-            max: lineGraph(max.dataSource, options).svgString(),
+            daily: lineGraph(daily.dataSource, 'daily', options).svgString(),
+            weekly: lineGraph(weekly.dataSource, 'weekly', options).svgString(),
+            monthly: lineGraph(monthly.dataSource, 'monthly', options).svgString(),
+            yearly: lineGraph(yearly.dataSource, 'yearly', options).svgString(),
+            tripleYear: lineGraph(tripleYear.dataSource, 'tripleYear', options).svgString(),
+            max: lineGraph(max.dataSource, 'max', options).svgString(),
           },
           yield: yieldGraph(yieldData, options).svgString(),
           volume: volumeGraph(volumeData, options).svgString(),

@@ -27,7 +27,6 @@ export default (data, {
     direction: 'rtl',
     viewBox: `0 0 ${width} ${height}`,
     width: '100%',
-    style: 'padding-left: 14px; padding-right: 14px;',
     'font-family': 'sans-serif',
   });
 
@@ -120,9 +119,9 @@ export default (data, {
 
   /* Select the Y axis group reference */
   const yAxisRef = svg.append('g')
-    .attr('transform', `translate(${width}, 0)`)
+    .attr('transform', `translate(${width - margin.right + 10}, 0)`)
     .attr('fill', theme.color('neutral', '-3'))
-    .attr('style', 'font-size: 14px; font-weight: 700; line-height: 21px')
+    .attr('style', 'font-size: 14px; font-weight: 700; line-height: 21px; text-anchor: end;')
     .call(d3.axisRight().scale(yScale).tickSize(0));
 
   /* Remove the default vertical axis. */

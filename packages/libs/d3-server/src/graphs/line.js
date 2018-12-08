@@ -2,14 +2,23 @@ import D3Node from 'd3-node';
 import * as d3 from 'd3';
 import { tmTheme as theme, } from '@haaretz/tm-theme';
 
-export default (data, {
-  width = 574,
-  height = 308,
+export default (data, time, {
+  width = 320,
+  height = 303,
   margin = { top: 34, right: 10, bottom: 15, left: 50, },
 }) => {
   const options = {
     d3Module: d3,
   };
+
+  const xAxisTickFormats = new Map([
+    [ 'daily', [ '%H:%M', d3.timeHour.every, 1, ], ],
+    [ 'weekly', [ '%a', d3.timeDay.every, 1, ], ],
+    [ 'monthly', [ '%d/%m', d3.timeDay.every, 2, ], ],
+    [ 'yearly', [ '%B', d3.timeMonth.every, 2, ], ],
+    [ 'tripleYear', [ '%b %y', d3.timeMonth.every, 3, ], ],
+    [ 'max', [ '%Y', d3.timeYear.every, 1, ], ],
+  ]);
 
   const d3n = new D3Node(options);
 
@@ -47,10 +56,16 @@ export default (data, {
     .attr('x2', (d, i) => (data[i + 1] ? xScale(data[i + 1].time) : xScale(d.time)))
     .attr('y2', (d, i) => (data[i + 1] ? yScale(data[i + 1].value) : yScale(d.value)));
 
+  const [ timeFormat, timeFunction, every, ] = xAxisTickFormats.get(time);
 
   const xAxisRef = svg.append('g')
     .attr('transform', `translate(0, ${margin.top})`)
-    .call(d3.axisTop().scale(xScale).tickFormat(d3.timeFormat('%H:%M')));
+    .call(
+      d3.axisTop()
+        .scale(xScale)
+        .tickFormat(d3.timeFormat(timeFormat))
+        .ticks(timeFunction(every))
+    );
 
   const yAxisRef = svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)
