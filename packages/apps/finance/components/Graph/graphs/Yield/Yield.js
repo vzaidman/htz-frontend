@@ -212,7 +212,7 @@ class Yield extends React.Component<Props, State> {
   };
 
   render(): Node {
-    const { miscStyles, height, width, } = this.props;
+    const { miscStyles, height, width, margin, } = this.props;
     return (
       <FelaComponent
         style={theme => ({
@@ -240,8 +240,9 @@ class Yield extends React.Component<Props, State> {
             />
             <FelaComponent
               style={{
-                ...theme.type(-1),
+                ...theme.type(-2),
                 fontWeight: '700',
+                textAnchor: 'end', // Todo: BUG!! at the client, this rule will be transcoded as "text-anchor: left;", which is an illegal value
                 fontFamily: theme.fontStacks.enhanced,
               }}
               render={({ className, }) => (
@@ -250,8 +251,9 @@ class Yield extends React.Component<Props, State> {
                   ref={yAxisRef => {
                     this.yAxisRef = yAxisRef;
                   }}
-                  transform={`translate(${width}, 0)`}
+                  transform={`translate(${width - margin.right + 10}, 0)`}
                   fill={theme.color('neutral', '-3')}
+                  style={{ textAnchor: 'end', }}
                 />
               )}
             />

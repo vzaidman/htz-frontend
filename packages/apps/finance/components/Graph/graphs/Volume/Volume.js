@@ -201,6 +201,7 @@ class Volume extends React.Component<Props, State> {
               style={{
                 ...theme.type(-2),
                 fontWeight: '700',
+                textAnchor: 'start', // Todo: BUG!! at the client, this rule will be transcoded as "text-anchor: right;", which is an illegal value
                 fontFamily: theme.fontStacks.enhanced,
               }}
               render={({ className, }) => (
@@ -209,8 +210,9 @@ class Volume extends React.Component<Props, State> {
                   ref={yAxisRef => {
                     this.yAxisRef = yAxisRef;
                   }}
-                  transform={`translate(${width}, 0)`}
+                  transform={`translate(${width - 10}, 0)`}
                   fill={theme.color('neutral', '-3')}
+                  style={{ textAnchor: 'start', }}
                 />
               )}
             />
