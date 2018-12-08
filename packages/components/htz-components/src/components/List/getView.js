@@ -34,6 +34,13 @@ const views = new Map([
     },
   ],
   [
+    'Mom',
+    {
+      view: () => import('./views/Mom/Mom.view.js'),
+      query: () => import('./views/Mom/Mom.query.js'),
+    },
+  ],
+  [
     'Nibbler',
     {
       view: () => import('./views/Nibbler/Nibbler.view.js'),

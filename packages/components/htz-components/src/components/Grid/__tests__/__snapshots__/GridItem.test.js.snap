@@ -185,7 +185,7 @@ exports[`<GridItem /> styles apply correct rule styles when ruleWidth is odd 2`]
 exports[`<GridItem /> styles apply correct width styles (fixed width) 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
     id={null}
   />
 </div>
@@ -200,13 +200,14 @@ exports[`<GridItem /> styles apply correct width styles (fixed width) 2`] = `
 .htz-e{list-style:none}
 .htz-f{padding-left:0rem}
 .htz-g{padding-right:0rem}
-.htz-h{-webkit-box-flex:0}"
+.htz-h{max-width:20rem}
+.htz-i{-webkit-box-flex:0}"
 `;
 
 exports[`<GridItem /> styles apply correct width styles (relative width) 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
     id={null}
   />
 </div>
@@ -221,7 +222,8 @@ exports[`<GridItem /> styles apply correct width styles (relative width) 2`] = `
 .htz-e{list-style:none}
 .htz-f{padding-left:0rem}
 .htz-g{padding-right:0rem}
-.htz-h{-webkit-box-flex:0}"
+.htz-h{max-width:25%}
+.htz-i{-webkit-box-flex:0}"
 `;
 
 exports[`<GridItem /> styles create correct default styels 1`] = `

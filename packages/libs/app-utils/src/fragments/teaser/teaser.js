@@ -56,6 +56,21 @@ export const teaserForBender = gql`
   ${imagesInTeaser}
 `;
 
+export const teaserForMom = gql`
+  fragment TeaserForMom on TeaserInList {
+    ...ImagesInTeaser
+    contentId
+    representedContent
+    exclusive
+    exclusiveMobile
+    title
+    path
+    titleMobile
+    commentsCount
+  }
+  ${imagesInTeaser}
+`;
+
 export default gql`
   fragment Teaser on TeaserInList {
     ...ImagesInTeaser

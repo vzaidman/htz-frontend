@@ -48,7 +48,7 @@ export default function StyleGuideProvider({ children, }) {
     <ApolloProvider client={client}>
       <StyleProvider renderer={styleRenderer} theme={htzTheme}>
         <LevelProvider value={2}>
-          <div>{children}</div>
+          <div style={{ fontFamily: 'Open Sans Hebrew', }}>{children}</div>
         </LevelProvider>
       </StyleProvider>
     </ApolloProvider>

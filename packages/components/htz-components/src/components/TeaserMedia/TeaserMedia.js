@@ -16,6 +16,10 @@ import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 type TeaserMediaPropsType = {
   data: TeaserDataType,
   /**
+   * Should not be passed manually. Handled by the parent `<Grid>` component
+   */
+  gutter: number,
+  /**
    * The width of the underlying `<TeaserMedia />`.
    * The number passed should be (`width` / `columns`).
    * When the number passed to `width` is greater than `1`, it will be
@@ -49,6 +53,7 @@ type TeaserMediaPropsType = {
 };
 
 TeaserMedia.defaultProps = {
+  gutter: 0,
   children: null,
   disableAnchor: false,
   width: null,
@@ -57,13 +62,14 @@ TeaserMedia.defaultProps = {
 
 export default function TeaserMedia({
   data,
+  gutter,
   width,
   children,
   disableAnchor,
   miscStyles,
 }: TeaserMediaPropsType): React.Node {
   return (
-    <GridItem width={width} stretchContent miscStyles={miscStyles}>
+    <GridItem width={width} gutter={gutter} miscStyles={miscStyles}>
       <AboveBlockLink>
         {({ className, }) => (
           <div className={className}>

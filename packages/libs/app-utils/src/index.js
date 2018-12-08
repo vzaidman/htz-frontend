@@ -46,6 +46,7 @@ import tags from './fragments/tags/tags';
 import teaser, {
   teaserForLeftElement,
   teaserForBender,
+  teaserForMom,
 } from './fragments/teaser/teaser';
 import video from './fragments/video/video';
 
@@ -92,6 +93,7 @@ export {
   tags,
   teaser,
   teaserForBender,
+  teaserForMom,
   teaserForLeftElement,
   video,
   switchToDomain,

@@ -94,14 +94,11 @@ class List extends React.Component {
                 history: [ ...readingHistory, ...listDuplicationIds, ],
               }}
             >
-              {({ data: { list, }, loading, error, client, }) => {
+              {({ data: { list, }, loading, error, }) => {
                 if (loading) return null;
                 if (error) return null;
-                const { title, items, } = {
-                  title: list.title,
-                  // eslint-disable-next-line no-prototype-builtins
-                  items: list.items.filter(item => item.hasOwnProperty('contentId')),
-                };
+                const { title, items, ...restList } = list;
+                items.filter(item => item.hasOwnProperty('contentId'));
 
                 const itemsRepresentedContent = items.reduce((accumulator, currentValue) => {
                   if (currentValue && currentValue.representedContent) {
@@ -127,7 +124,7 @@ class List extends React.Component {
                       });
                       return (
                         <ListComponent
-                          list={{ title, items, }}
+                          list={{ items, title, ...restList, }}
                           listId={contentId}
                           gaAction={gaAction}
                           biAction={biAction}

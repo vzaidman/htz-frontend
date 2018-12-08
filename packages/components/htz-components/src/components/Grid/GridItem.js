@@ -198,14 +198,15 @@ function setOffset(prop, offset) {
 function setWidth(prop, width) {
   const widthInRem = `${width}rem`;
   const widthInPercent = `${width * 100}%`;
+  const widthToUse = width > 1
+    ? widthInRem // fixed width in rems
+    : widthInPercent; // relative width in percentage
   return {
     // Keep `<GridItem>`s at their prescribed size
     flexGrow: 0,
     flexShrink: 0,
-    flexBasis:
-      width > 1
-        ? widthInRem // fixed width in rems
-        : widthInPercent, // relative width in percentage
+    flexBasis: widthToUse,
+    maxWidth: widthToUse,
   };
 }
 

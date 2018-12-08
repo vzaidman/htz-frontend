@@ -482,7 +482,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               id={null}
             >
               <div
-                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha"
+                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha htz-hb htz-hc htz-hd"
                 id={null}
               >
                 <div
@@ -490,11 +490,11 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                   id={null}
                 >
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
                     id={null}
                   >
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -507,27 +507,23 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -540,32 +536,28 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
                     id={null}
                   >
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -578,32 +570,28 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
                     id={null}
                   >
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -616,32 +604,28 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
                     id={null}
                   >
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -654,27 +638,23 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -687,32 +667,28 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
                     id={null}
                   >
                     <section
-                      className="htz-he htz-fl"
+                      className="htz-hk htz-fl"
                     >
                       <h2
                         className="htz-bn htz-bo"
@@ -725,22 +701,18 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                         <li
                           className="htz-bn"
                         >
                           <a
                             className="htz-bn"
-                            href="Hello World"
+                            href={null}
                             onClick={null}
-                          >
-                            Hello World
-                          </a>
+                          />
                         </li>
                       </ul>
                     </section>
@@ -748,7 +720,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 </div>
               </div>
               <div
-                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hf htz-gn htz-go htz-gp htz-hg htz-gr htz-gs htz-gt htz-hh htz-gx htz-ha"
+                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hl htz-hm htz-go htz-gp htz-gq htz-hn htz-ho htz-gt htz-gu htz-gv htz-hp htz-hq htz-ha htz-hd"
                 id={null}
               >
                 <ul>
@@ -835,12 +807,12 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           </div>
         </div>
         <div
-          className="htz-hi htz-bq htz-hj htz-hk"
+          className="htz-hr htz-bq htz-hs htz-ht"
         >
           חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל
         </div>
         <div
-          className="htz-hi htz-bq htz-hj htz-hk"
+          className="htz-hr htz-bq htz-hs htz-ht"
         >
           © כל הזכויות שמורות להוצאת עיתון הארץ בע"מ
         </div>
@@ -853,4 +825,4 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
 </div>
 `;
 
-exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-z{margin-bottom:-1rem}.htz-aj{vertical-align:-0.15em}.htz-ak{color:inherit}.htz-al{fill:#FFF}.htz-am{font-size:6rem}.htz-an{border:0}.htz-ao{clip:rect(0 0 0 0)}.htz-ap{-webkit-clip-path:inset(50%)}.htz-aq{clip-path:inset(50%)}.htz-ar{height:1px}.htz-as{margin:-1px}.htz-at{overflow:hidden}.htz-au{padding:0}.htz-av{position:absolute}.htz-aw{width:1px}.htz-ax{white-space:nowrap}.htz-ay{font-size:3rem}.htz-ba{display:inline-block}.htz-bb{margin-left:3rem}.htz-bj{margin-bottom:5rem}.htz-bk{max-width:42rem}.htz-bl{-webkit-column-count:2}.htz-bm{column-count:2}.htz-bn{margin-bottom:1rem}.htz-bo{font-weight:bold}.htz-bt{align-items:center}.htz-bu{-webkit-appearance:none}.htz-bv{-moz-appearance:none}.htz-bw{appearance:none}.htz-bx{cursor:pointer}.htz-by{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bz{font-size:inherit}.htz-ca{justify-content:center}.htz-cb{position:relative}.htz-cc{transform:scale(1)}.htz-cd{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ce{text-decoration:none}.htz-cf::moz-focus-inner{border:0}.htz-cg::moz-focus-inner{padding:0}.htz-ch{border-bottom-width:1px}.htz-ci{border-bottom-style:solid}.htz-cj{padding-bottom:calc(1rem - 1px)}.htz-ck{border-top-width:1px}.htz-cl{border-top-style:solid}.htz-cm{padding-top:calc(1rem - 1px)}.htz-cn{border-right-width:1px}.htz-co{border-right-style:solid}.htz-cp{padding-right:5rem}.htz-cq{border-left-width:1px}.htz-cr{border-left-style:solid}.htz-cs{padding-left:5rem}.htz-ct{border-radius:0}.htz-cu{background-color:transparent}.htz-cv{border-color:#FFF}.htz-cw:visited{color:#FFF}.htz-cx:hover{text-decoration:none}.htz-cy:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cz:hover{background-color:rgba(255,255,255,0.2)}.htz-da:hover{border-color:#FFF}.htz-db:hover{color:#FFF}.htz-dc:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dd:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-de:focus{outline:none}.htz-df:focus{text-decoration:none}.htz-dg:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dh:focus{background-color:rgba(255,255,255,0.1)}.htz-di:focus{border-color:#FFF}.htz-dj:focus{color:#FFF}.htz-dk:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dl:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dm:active{outline:none}.htz-dn:active{text-decoration:none}.htz-do:active{transition-duration:0s}.htz-dp:active{background-color:transparent}.htz-dq:active{border-color:#FFF}.htz-dr:active{color:#FFF}.htz-ds{-webkit-box-align:center}.htz-dt{-webkit-box-pack:center}.htz-du{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dv{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{opacity:1}.htz-dx{transition-property:opacity}.htz-dy{transition-duration:0.16666666666666666s}.htz-dz{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ea{transition-delay:.3s}.htz-eb{-webkit-transition-property:opacity}.htz-ec{-moz-transition-property:opacity}.htz-ed{background-color:rgba(200,200,200, 0.3)}.htz-ee{height:100%}.htz-ef{right:0}.htz-eg{top:0}.htz-eh{transform:scaleX(0)}.htz-ei{transform-origin:right}.htz-ej{animation-direction:alternate}.htz-ek{animation-iteration-count:infinite}.htz-el{animation-duration:1s}.htz-em{animation-delay:0.75s}.htz-en{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eo{margin-top:1rem}.htz-ep{margin-bottom:4rem}.htz-eq{text-align:center}.htz-er{display:block}.htz-ew{flex-wrap:no-wrap}.htz-ex{margin-top:2rem}.htz-fa{-webkit-box-lines:no-wrap}.htz-fb{margin-left:2rem}.htz-fc{margin-left:1rem}.htz-fd:after{content:\\"|\\"}.htz-fe:after{margin-right:1rem}.htz-ff:after{content:\\"\\"}.htz-fg{padding-right:4rem}.htz-fh{padding-left:4rem}.htz-fi{display:none}.htz-fj{align-items:baseline}.htz-fk{padding-bottom:3rem}.htz-fl{margin-bottom:2rem}.htz-fm:after{background-color:#FFF}.htz-fn:after{height:1px}.htz-fo:after{position:absolute}.htz-fp:after{width:100%}.htz-fq:after{bottom:0}.htz-fr:after{right:0}.htz-fs{-webkit-box-align:baseline}.htz-ft{flex-wrap:wrap}.htz-fu{list-style:none}.htz-fv{justify-content:flex-start}.htz-fw{margin-right:-2rem}.htz-fx{margin-left:-2rem}.htz-fy{flex-direction:row}.htz-fz{align-items:stretch}.htz-ga{-webkit-box-lines:multiple}.htz-gb{-webkit-box-pack:right}.htz-gc{-webkit-box-orient:horizontal}.htz-gd{-webkit-box-align:stretch}.htz-ge{box-sizing:border-box}.htz-gf{flex-basis:auto}.htz-gg{flex-grow:1}.htz-gh{flex-shrink:1}.htz-gi{padding-left:2rem}.htz-gj{padding-right:2rem}.htz-ha{-webkit-box-flex:1}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}.htz-gk{flex-grow:0}.htz-gl{flex-shrink:0}.htz-gm{flex-basis:66.66666666666666%}.htz-gn{-webkit-box-flex:0}.htz-hb{flex-basis:50%}.htz-hf{flex-basis:33.33333333333333%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-go{flex-grow:0}.htz-gp{flex-shrink:0}.htz-gq{flex-basis:80%}.htz-gr{-webkit-box-flex:0}.htz-hc{flex-basis:25%}.htz-hg{flex-basis:20%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-br{font-size:2.5714285714285716rem}.htz-bs{line-height:1.5555555555555556em}.htz-eu{font-size:1.7142857142857142rem}.htz-ev{line-height:1.75em}.htz-gs{flex-grow:0}.htz-gt{flex-shrink:0}.htz-gu{flex-basis:83.33333333333334%}.htz-gv{font-size:2.2857142857142856rem}.htz-gw{line-height:1.3125em}.htz-gx{-webkit-box-flex:0}.htz-hd{flex-basis:20%}.htz-he{margin-left:8rem}.htz-hh{flex-basis:16.666666666666664%}.htz-hj{font-size:2rem}.htz-hk{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:13rem}.htz-o{padding-bottom:8rem}.htz-s{border-bottom-width:1px}.htz-t{border-bottom-style:solid}.htz-u{border-bottom-color:#FFF}.htz-v{padding-bottom:calc(2rem - 1px)}.htz-w{align-items:baseline}.htz-x{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-y{-webkit-box-align:baseline}.htz-bi{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:4rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{padding-top:1.5rem}.htz-af{border-bottom-width:1px}.htz-ag{border-bottom-style:solid}.htz-ah{border-bottom-color:#FFF}.htz-ai{padding-bottom:calc(2rem - 1px)}.htz-az{margin-bottom:4rem}.htz-bc{display:inline-block}.htz-bd{margin-top:1.5rem}.htz-be{font-size:3rem}.htz-bf{margin-right:2rem}.htz-bg{font-size:3.5rem}.htz-bh{display:none}}@media (max-width: 79.9375em){.htz-bp{font-size:2.6666666666666665rem}.htz-bq{line-height:1.5em}.htz-es{font-size:1.8333333333333333rem}.htz-et{line-height:1.6363636363636365em}.htz-gy{font-size:2.3333333333333335rem}.htz-gz{line-height:1.2857142857142858em}.htz-hi{font-size:2rem}}@media (max-width: 63.9375em){.htz-ey{align-items:start}.htz-ez{-webkit-box-align:right}}"`;
+exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-z{margin-bottom:-1rem}.htz-aj{vertical-align:-0.15em}.htz-ak{color:inherit}.htz-al{fill:#FFF}.htz-am{font-size:6rem}.htz-an{border:0}.htz-ao{clip:rect(0 0 0 0)}.htz-ap{-webkit-clip-path:inset(50%)}.htz-aq{clip-path:inset(50%)}.htz-ar{height:1px}.htz-as{margin:-1px}.htz-at{overflow:hidden}.htz-au{padding:0}.htz-av{position:absolute}.htz-aw{width:1px}.htz-ax{white-space:nowrap}.htz-ay{font-size:3rem}.htz-ba{display:inline-block}.htz-bb{margin-left:3rem}.htz-bj{margin-bottom:5rem}.htz-bk{max-width:42rem}.htz-bl{-webkit-column-count:2}.htz-bm{column-count:2}.htz-bn{margin-bottom:1rem}.htz-bo{font-weight:bold}.htz-bt{align-items:center}.htz-bu{-webkit-appearance:none}.htz-bv{-moz-appearance:none}.htz-bw{appearance:none}.htz-bx{cursor:pointer}.htz-by{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bz{font-size:inherit}.htz-ca{justify-content:center}.htz-cb{position:relative}.htz-cc{transform:scale(1)}.htz-cd{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ce{text-decoration:none}.htz-cf::moz-focus-inner{border:0}.htz-cg::moz-focus-inner{padding:0}.htz-ch{border-bottom-width:1px}.htz-ci{border-bottom-style:solid}.htz-cj{padding-bottom:calc(1rem - 1px)}.htz-ck{border-top-width:1px}.htz-cl{border-top-style:solid}.htz-cm{padding-top:calc(1rem - 1px)}.htz-cn{border-right-width:1px}.htz-co{border-right-style:solid}.htz-cp{padding-right:5rem}.htz-cq{border-left-width:1px}.htz-cr{border-left-style:solid}.htz-cs{padding-left:5rem}.htz-ct{border-radius:0}.htz-cu{background-color:transparent}.htz-cv{border-color:#FFF}.htz-cw:visited{color:#FFF}.htz-cx:hover{text-decoration:none}.htz-cy:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cz:hover{background-color:rgba(255,255,255,0.2)}.htz-da:hover{border-color:#FFF}.htz-db:hover{color:#FFF}.htz-dc:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dd:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-de:focus{outline:none}.htz-df:focus{text-decoration:none}.htz-dg:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dh:focus{background-color:rgba(255,255,255,0.1)}.htz-di:focus{border-color:#FFF}.htz-dj:focus{color:#FFF}.htz-dk:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dl:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dm:active{outline:none}.htz-dn:active{text-decoration:none}.htz-do:active{transition-duration:0s}.htz-dp:active{background-color:transparent}.htz-dq:active{border-color:#FFF}.htz-dr:active{color:#FFF}.htz-ds{-webkit-box-align:center}.htz-dt{-webkit-box-pack:center}.htz-du{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dv{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{opacity:1}.htz-dx{transition-property:opacity}.htz-dy{transition-duration:0.16666666666666666s}.htz-dz{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ea{transition-delay:.3s}.htz-eb{-webkit-transition-property:opacity}.htz-ec{-moz-transition-property:opacity}.htz-ed{background-color:rgba(200,200,200, 0.3)}.htz-ee{height:100%}.htz-ef{right:0}.htz-eg{top:0}.htz-eh{transform:scaleX(0)}.htz-ei{transform-origin:right}.htz-ej{animation-direction:alternate}.htz-ek{animation-iteration-count:infinite}.htz-el{animation-duration:1s}.htz-em{animation-delay:0.75s}.htz-en{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eo{margin-top:1rem}.htz-ep{margin-bottom:4rem}.htz-eq{text-align:center}.htz-er{display:block}.htz-ew{flex-wrap:no-wrap}.htz-ex{margin-top:2rem}.htz-fa{-webkit-box-lines:no-wrap}.htz-fb{margin-left:2rem}.htz-fc{margin-left:1rem}.htz-fd:after{content:\\"|\\"}.htz-fe:after{margin-right:1rem}.htz-ff:after{content:\\"\\"}.htz-fg{padding-right:4rem}.htz-fh{padding-left:4rem}.htz-fi{display:none}.htz-fj{align-items:baseline}.htz-fk{padding-bottom:3rem}.htz-fl{margin-bottom:2rem}.htz-fm:after{background-color:#FFF}.htz-fn:after{height:1px}.htz-fo:after{position:absolute}.htz-fp:after{width:100%}.htz-fq:after{bottom:0}.htz-fr:after{right:0}.htz-fs{-webkit-box-align:baseline}.htz-ft{flex-wrap:wrap}.htz-fu{list-style:none}.htz-fv{justify-content:flex-start}.htz-fw{margin-right:-2rem}.htz-fx{margin-left:-2rem}.htz-fy{flex-direction:row}.htz-fz{align-items:stretch}.htz-ga{-webkit-box-lines:multiple}.htz-gb{-webkit-box-pack:right}.htz-gc{-webkit-box-orient:horizontal}.htz-gd{-webkit-box-align:stretch}.htz-ge{box-sizing:border-box}.htz-gf{flex-basis:auto}.htz-gg{flex-grow:1}.htz-gh{flex-shrink:1}.htz-gi{padding-left:2rem}.htz-gj{padding-right:2rem}.htz-hd{-webkit-box-flex:1}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}.htz-gk{flex-grow:0}.htz-gl{flex-shrink:0}.htz-gm{flex-basis:66.66666666666666%}.htz-gn{max-width:66.66666666666666%}.htz-go{-webkit-box-flex:0}.htz-he{flex-basis:50%}.htz-hf{max-width:50%}.htz-hl{flex-basis:33.33333333333333%}.htz-hm{max-width:33.33333333333333%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-gp{flex-grow:0}.htz-gq{flex-shrink:0}.htz-gr{flex-basis:80%}.htz-gs{max-width:80%}.htz-gt{-webkit-box-flex:0}.htz-hg{flex-basis:25%}.htz-hh{max-width:25%}.htz-hn{flex-basis:20%}.htz-ho{max-width:20%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-br{font-size:2.5714285714285716rem}.htz-bs{line-height:1.5555555555555556em}.htz-eu{font-size:1.7142857142857142rem}.htz-ev{line-height:1.75em}.htz-gu{flex-grow:0}.htz-gv{flex-shrink:0}.htz-gw{flex-basis:83.33333333333334%}.htz-gx{max-width:83.33333333333334%}.htz-gy{font-size:2.2857142857142856rem}.htz-gz{line-height:1.3125em}.htz-ha{-webkit-box-flex:0}.htz-hi{flex-basis:20%}.htz-hj{max-width:20%}.htz-hk{margin-left:8rem}.htz-hp{flex-basis:16.666666666666664%}.htz-hq{max-width:16.666666666666664%}.htz-hs{font-size:2rem}.htz-ht{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:13rem}.htz-o{padding-bottom:8rem}.htz-s{border-bottom-width:1px}.htz-t{border-bottom-style:solid}.htz-u{border-bottom-color:#FFF}.htz-v{padding-bottom:calc(2rem - 1px)}.htz-w{align-items:baseline}.htz-x{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-y{-webkit-box-align:baseline}.htz-bi{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:4rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{padding-top:1.5rem}.htz-af{border-bottom-width:1px}.htz-ag{border-bottom-style:solid}.htz-ah{border-bottom-color:#FFF}.htz-ai{padding-bottom:calc(2rem - 1px)}.htz-az{margin-bottom:4rem}.htz-bc{display:inline-block}.htz-bd{margin-top:1.5rem}.htz-be{font-size:3rem}.htz-bf{margin-right:2rem}.htz-bg{font-size:3.5rem}.htz-bh{display:none}}@media (max-width: 79.9375em){.htz-bp{font-size:2.6666666666666665rem}.htz-bq{line-height:1.5em}.htz-es{font-size:1.8333333333333333rem}.htz-et{line-height:1.6363636363636365em}.htz-hb{font-size:2.3333333333333335rem}.htz-hc{line-height:1.2857142857142858em}.htz-hr{font-size:2rem}}@media (max-width: 63.9375em){.htz-ey{align-items:start}.htz-ez{-webkit-box-align:right}}"`;
