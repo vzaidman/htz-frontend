@@ -158,35 +158,36 @@ export default function TeaserHeader({
 }: TeaserHeaderProps): React.Node {
   return (
     <AboveBlockLink>
-      {({ className, }) => (
-        <div className={className}>
-          <HtzLink href={path} className={className}>
+      {({ className: AboveBlockLinkClassname, }) => (
+        <div className={AboveBlockLinkClassname}>
+          <HtzLink href={path}>
             {(exclusive || exclusiveMobile) && (
-              <React.Fragment>
-                <Kicker
-                  {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
-                  {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
-                >
-                  <TeaserResponsiveText text={exclusive} mobileText={exclusiveMobile} />
-                </Kicker>
-                <FelaComponent
-                  color={color}
-                  typeScale={typeScale}
-                  miscStyles={miscStyles}
-                  rule={style}
-                  render={({ className, }) => (
-                    <H
-                      className={className}
-                      isH1={isH1}
-                      offset={offset}
-                      {...attrs || {}}
-                    >
-                      <TeaserResponsiveText text={title} mobileText={titleMobile} />
-                    </H>
-                  )}
+              <Kicker
+                {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
+                {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
+              >
+                <TeaserResponsiveText
+                  text={exclusive}
+                  mobileText={exclusiveMobile}
                 />
-              </React.Fragment>
+              </Kicker>
             )}
+            <FelaComponent
+              color={color}
+              typeScale={typeScale}
+              miscStyles={miscStyles}
+              rule={style}
+              render={({ className, }) => (
+                <H
+                  className={className}
+                  isH1={isH1}
+                  offset={offset}
+                  {...attrs || {}}
+                >
+                  <TeaserResponsiveText text={title} mobileText={titleMobile} />
+                </H>
+              )}
+            />
           </HtzLink>
         </div>
       )}
