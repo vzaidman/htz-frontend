@@ -1,11 +1,4 @@
 
-/* *************************************************************** *
- * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
- *
- * If you want to change the List's views map, it is generated
- * from the `listViewsFileTemplate.js` file is this directory.
- * *************************************************************** */
-
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import dynamic from 'next/dynamic';

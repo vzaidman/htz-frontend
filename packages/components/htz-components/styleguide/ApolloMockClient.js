@@ -2,13 +2,11 @@
 import { schema, } from '@haaretz/app-utils';
 import { ApolloLink, } from 'apollo-link';
 import { ApolloClient, } from 'apollo-client';
-import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher, } from 'apollo-cache-inmemory';
 import { withClientState, } from 'apollo-link-state';
 import { SchemaLink, } from 'apollo-link-schema';
 import { addMockFunctionsToSchema, } from 'graphql-tools';
+import gql from 'graphql-tag';
 import mocks from './mocks';
 import mockContext from './mockContext';
 import { userScheme, } from '../src/components/User/UserDispenser';
@@ -56,9 +54,30 @@ const stateLink = withClientState({
     platform: 'web',
     hostname: 'www.haaretz.co.il',
     readingListArray: [],
+    // ids of representedContent already rendered by a list on the page
+    listDuplicationIds: [],
   },
   resolvers: {
     Mutation: {
+      updateListDuplication: (_, variables, { cache, }) => {
+        const query = gql`
+          query {
+            listDuplicationIds @client
+          }
+        `;
+        const response = cache.readQuery({ query, });
+        const ids = [ ...response.listDuplicationIds, ];
+        variables.ids.forEach(id => {
+          // check if item already exists in list and if not push it in
+          if (ids.indexOf(id) === -1) ids.push(id);
+        });
+        const data = {
+          listDuplicationIds: ids,
+        };
+        cache.writeData({ data, });
+        // resolver needs to return something / null https://github.com/apollographql/apollo-link-state/issues/160
+        return { ids, };
+      },
       // eslint-disable-next-line no-shadow
       updateScroll: (_, { x, y, direction, velocity, }, { cache, }) => {
         const data = {

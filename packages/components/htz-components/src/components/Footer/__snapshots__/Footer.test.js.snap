@@ -18,10 +18,839 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
   <div
     className="FI_PH"
   />
+  <footer
+    className="htz-a htz-b htz-c htz-d htz-e"
+    id={null}
+  >
+    <div
+      className="htz-a htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+    >
+      <div
+        className="htz-s htz-t htz-u htz-v htz-w htz-x htz-y"
+      >
+        <div
+          className="htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
+        >
+          <svg
+            className="htz-aj htz-ak htz-al htz-am htz-z htz-ae"
+            height="1em"
+            viewBox="0 0 256 86"
+            width="2.9767441860465116em"
+          >
+              
+            <path
+              d="M38.1 50.4c-2.8 14.8-5.2 25.2-5.3 26.1-.1.9-7.1-24.9-6.8-25.8 5.5-15.4.9-22.7-3.7-22.7H12c0-2.4.5-11-5-19h25c-6.6 17.6 2 31.7 6.1 41.4zM35.1 9c3.7 8.5 2.9 17.6-.2 25.9-.6 1.6.5 6 1.8 5.7C39.5 32.9 40.6 29 47.6 28h9.5c-1-2-5.1-8.5.1-19H35.1zm80.1 12.4c-.2-2.2-.7-8.7-3.4-12.4H62c-4.3 6.5-2.9 14.1.1 19 .1-.1 39.8 0 40 0 6.2.1 8.2 4.5 7.7 12.6-.2 3.6-2.6 9.1-4.5 11.7-.5.7 4.2 15.9 5.6 22.9 0 0 .5 0 .7-.7.9-1.9 3-11.5 3.6-17.8.6-5.6-1.4-12.3-1.7-15.7-.7-7.6 2-16.2 1.7-19.6zm74.3 16.4s-.8 7.5-4.1 15.5c-1 5-.2 8.5.9 13.3.9 4 2 5.7 3 8.5h.9c6.3-14.9 5.6-22.3.1-37.2-.1-.4-.8.1-.8-.1zM129 34.4l54.9 40.1c0-.9-2.7-8.3-3.3-12-.8-4.7-.5-5.9.5-10.4-6.5-4.3-11.6-8.3-19.8-13.8-1.1-.7-2-3.1-1.7-5.1.4-2.6 2.9-5.2 5.1-5.2H181s-5.9-9.5 0-19h-23s-.8 3.2-.6 6.4c.2 3.3 2.3 6 1 10.9-1.1 3.9-2.4 5.6-3.5 6.3C144.3 24.9 122.3 9 122.3 9h-4.4s-.4.1-.3.3c2.3 4.4 3.3 10.2 2.8 15.2-.7 6.8-1.6 7.8-1.6 13.5 0 6.2 2.2 11.4 1.8 17.6-.6 8.9-2.5 15.9-3.3 18.6-.3.9.2.8.2.8h27.1c-4.9-9.4-2.8-16-2.8-16h-9.7c-7.3.1-8-10-7.1-16.8.5-5.2 3.7-7.7 4-7.8zm114.4 6.4c-1.4-5.6-.3-8.3 2.2-13.4 1.1-2.2 1.3-8.5 1.3-9.3 0 0-.1-9.1-4.7-9.1h-55.8s-5.8 8.5.5 19h47c4.2 0 5.1 4.7 5.2 8.5 0 3.8-1.9 9.8-3 13.3-.8 2.6 3.1 15.1 5.2 25.2h.9c.3-.8 4.3-21.9 4-24.9-.2-1.7-1.8-5.2-2.8-9.3z"
+              fill="currentColor"
+            />
+          </svg>
+          <span
+            className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+            id="footerhaaretzLogo"
+          >
+            הארץ
+          </span>
+        </div>
+        <ul
+          className="htz-f htz-ay htz-ab htz-ac htz-az"
+        >
+          <li
+            className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://www.facebook.com/haaretz"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footerfacebookIcon"
+              >
+                facebook
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al htz-bd htz-bg"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M213 31H43.7c-7 0-12.7 5.8-12.7 12.8v168c0 7.2 5.8 13.2 12.9 13.2h93.7v-75.9h-18.2v-28.8h18.2V98.8c0-14.3 5.5-36.1 33.3-36.1h25.3v28.8h-19.4c-3.1 0-6.5 2.4-6.5 9.2v19.6h25.6l-3.2 28.8h-22.4V225h44.1c5.6 0 10.6-3.7 10.6-9.3V43c0-6.6-5.4-12-12-12z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://twitter.com/haaretz"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footertwitterIcon"
+              >
+                Twitter
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al htz-bd htz-bg"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M224 75.9c.1 2.3.2 4.6.2 6.8 0 70.7-49.6 152.3-140.1 152.3-27.9 0-53.7-8.9-75.5-24.1 3.8.5 7.8.7 11.8.7 23.1 0 44.3-8.5 61.1-22.9-21.5-.3-39.7-15.8-46-37.2 3 .7 6 .9 9.2.9 4.5 0 8.9-.6 13-1.8-22.5-5-39.5-26.6-39.5-52.5v-.7c6.6 4 14.2 6.3 22.3 6.7-13.2-9.5-21.9-25.9-21.9-44.5 0-9.8 2.4-19 6.6-26.9C49.5 65 85.8 86.4 126.7 88.5c-.8-3.9-1.2-8-1.2-12.1 0-29.6 22-53.5 49.2-53.5 14.1 0 27 6.5 35.9 17 11.2-2.5 21.8-6.9 31.3-13-3.7 12.5-11.5 22.9-21.7 29.6 10-1.3 19.4-4.1 28.3-8.4-6.5 10.7-14.9 20.1-24.5 27.8z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            className="htz-ba htz-bb htz-bh htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://play.google.com/store/apps/details?id=com.haaretz"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footerandroidIcon"
+              >
+                Android
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M67 174c0 11.3 7.7 21 19 21h8v28.4c0 6.4 4.3 12.2 10.5 13.5 8.7 1.9 15.5-6.5 15.5-14.8V195h13v27.1c0 7.5 8 15.1 14 15.1 7.8 0 13-7.5 13-15.1V195h7c11.3 0 22-8.7 22-20v-74H67v73zm85-136.1l8.7-16.6c.4-.8.1-1.8-.7-2.2-.8-.4-1.9-.2-2.3.7l-8.8 16.9c-6.9-2.7-14.2-4.7-22-4.7-7.8 0-15.4 2-22.3 4.7l-8.8-16.9c-.4-.7-1.2-1-1.9-.7-.9.4-1.6 1.4-1.1 2.3l8.7 16.6C82 46.7 69.5 66 67 88h121.4c-2.4-22-17-41.3-36.4-50.1zm-46.8 36.4c-5.1 0-9.2-4.2-9.2-9.3s4.1-9.3 9.2-9.3 9.2 4.2 9.2 9.3-4.1 9.3-9.2 9.3zm44.9 0c-5.1 0-9.2-4.2-9.2-9.3s4.1-9.3 9.2-9.3 9.2 4.2 9.2 9.3-4.1 9.3-9.2 9.3zM46.7 170h-.3C39 170 33 164 33 156.7V98.3C33 91 39 85 46.3 85h.3C54 85 60 91 60 98.3v58.3c0 7.4-6 13.4-13.3 13.4zm163 0h-.3c-7.3 0-13.3-6-13.3-13.3V98.3c0-7.3 6-13.3 13.3-13.3h.3c7.3 0 13.3 6 13.3 13.3v58.3c0 7.4-6 13.4-13.3 13.4z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            className="htz-ba htz-bb htz-bh htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://itunes.apple.com/us/app/id521559643"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footerappleIcon"
+              >
+                Apple
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M187.1 131c-.3-27.4 22.4-40.5 23.4-41.2-12.7-18.6-32.6-21.1-39.6-21.4-16.9-1.7-32.9 9.9-41.5 9.9-8.5 0-21.8-9.7-35.7-9.4-18.4.2-35.4 10.6-44.8 27.1-19.1 33.1-4.9 82.2 13.7 109 9.1 13.1 20 27.9 34.2 27.4 13.7-.5 18.9-8.9 35.5-8.9s21.2 8.9 35.8 8.6c14.8-.3 24.1-13.4 33.2-26.6 10.4-15.3 14.8-30 15-30.8-.4-.1-28.9-11-29.2-43.7m-27.2-80.4c7.6-9.2 12.7-21.9 11.3-34.6-10.9.4-24.1 7.3-31.9 16.4-7 8.1-13.3 21.4-11.7 33.8 12.1.9 24.7-6.5 32.3-15.6"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://plus.google.com/+haaretzcoil"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footergoogleplus"
+              >
+                Google Plus
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al htz-ay htz-bd htz-bg"
+                height="1em"
+                viewBox="0 0 295 256"
+                width="1.15234375em"
+              >
+                  
+                <path
+                  d="M260.5 139.2v29h-25v-29h-28v-25h28v-28h25v28h27v25h-27zm-68.2-24h-90.8v31h53c-7.9 39.5-61.2 53.4-89.8 27.6-29.4-22.6-28-72.3 2.6-93.3 21.3-17 51.7-12.8 73 1.9 8.4-7.7 16.2-16 23.8-24.6-17.8-14.1-39.5-24.2-62.7-23.1C53 33.1 8.6 75.3 7.8 123.5c-3.1 39.4 22.7 78.5 59.6 91.9 36.6 13.3 83.5 4.2 106.8-28.3 15.1-20.9 18.1-47.4 18.1-71.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            className="htz-ba htz-bb htz-bh htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://www.haaretz.co.il/misc/redemail"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footermail"
+              >
+                Email
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            className="htz-ba htz-bh htz-bd htz-be htz-bf"
+          >
+            <a
+              className={null}
+              href="https://www.haaretz.co.il/misc/rss"
+              onClick={null}
+            >
+              <span
+                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                id="footerrss"
+              >
+                RSS
+              </span>
+              <svg
+                className="htz-aj htz-ak htz-al"
+                height="1em"
+                viewBox="0 0 256 256"
+                width="1em"
+              >
+                  
+                <path
+                  d="M15 59V15c125.4 0 227 101.6 227 227h-44c0-101.1-81.9-183-183-183zm96 179.5c0 1.2 0 2.3-.1 3.5h43v-3.5C154 163.1 92.9 102 17.5 102H15v43h2.5c51.6 0 93.5 41.9 93.5 93.5zM67.9 242c.1-1 .1-2 .1-3 0-27.6-22.4-50-50-50-1 0-2 0-3 .1V242h52.9z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="htz-bi htz-ab htz-ac"
+      >
+        <ul
+          className="htz-bj htz-bk htz-f htz-g htz-bl htz-bm"
+        >
+          <li
+            className="htz-bn"
+          >
+            <a
+              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              href="https://www.haaretz.co.il/promotions-page"
+              onClick={null}
+            >
+              רכשו מנוי
+            </a>
+          </li>
+          <li
+            className="htz-bn"
+          >
+            <a
+              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              href="https://www.haaretz.co.il/blogs"
+              onClick={null}
+            >
+              בלוגים
+            </a>
+          </li>
+          <li
+            className="htz-bn"
+          >
+            <a
+              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              href="https://www.haaretz.co.il/misc/terms-of-use"
+              onClick={null}
+            >
+              תנאי שימוש
+            </a>
+          </li>
+          <li
+            className="htz-bn"
+          >
+            <a
+              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              href="https://www.haaretz.co.il/mobile/contact-us"
+              onClick={null}
+            >
+              צרו קשר
+            </a>
+          </li>
+          <li
+            className="htz-bn"
+          >
+            <a
+              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
+              onClick={null}
+            >
+              פרסמו באתר
+            </a>
+          </li>
+          <li
+            className="htz-bn"
+          >
+            <a
+              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              href="https://www.haaretz.co.il/personal-area/my-account"
+              onClick={null}
+            >
+              שירות למנויים
+            </a>
+          </li>
+        </ul>
+        <a
+          className="htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bo htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-ax htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-c htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv"
+          href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
+          id={null}
+          onClick={null}
+        >
+          <span
+            className="htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec"
+          >
+            להורדת האפליקציה
+          </span>
+          <span
+            className="htz-ed htz-ee htz-ef htz-av htz-eg htz-eh htz-ei htz-b htz-ej htz-ek htz-el htz-em htz-en"
+          />
+        </a>
+        <span
+          className="htz-eo htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev"
+        >
+          © כל הזכויות שמורות
+        </span>
+      </div>
+      <div
+        className="htz-bh"
+      >
+        <div
+          className="htz-l htz-ew htz-bt htz-ex htz-ep htz-ey htz-ez htz-fa htz-ds"
+        >
+          <ul
+            className="htz-fb"
+          >
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/editors"
+                onClick={null}
+              >
+                מערכת
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/management"
+                onClick={null}
+              >
+                הנהלה
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/about-haaretz"
+                onClick={null}
+              >
+                אודות הארץ
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/jobs"
+                onClick={null}
+              >
+                דרושים
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/contact-us"
+                onClick={null}
+              >
+                צור קשר
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/promotions-page"
+                onClick={null}
+              >
+                עשה מנוי
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/contact-us"
+                onClick={null}
+              >
+                ביטול מנוי דיגיטלי
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-fd htz-fe"
+                href="https://www.haaretz.co.il/misc/faq"
+                onClick={null}
+              >
+                שאלות ותשובות
+              </a>
+            </li>
+            <li
+              className="htz-ba"
+            >
+              <a
+                className="htz-fc htz-bo htz-ff htz-fe"
+                href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
+                onClick={null}
+              >
+                פרסם אצלנו
+              </a>
+            </li>
+          </ul>
+          <button
+            aria-expanded="false"
+            className="htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bo htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-ax htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-fg htz-cq htz-cr htz-fh htz-ct htz-cu htz-cv htz-c htz-f htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv"
+            id={null}
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec"
+            >
+              הצג עוד
+            </span>
+            <span
+              className="htz-ed htz-ee htz-ef htz-av htz-eg htz-eh htz-ei htz-b htz-ej htz-ek htz-el htz-em htz-en"
+            />
+          </button>
+        </div>
+        <div
+          tabIndex="-1"
+        >
+          <div
+            className="htz-fi htz-a htz-fj htz-fk htz-fl htz-cb htz-fm htz-ff htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs"
+          >
+            <div
+              className="htz-l htz-ft htz-fu htz-fv htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-r htz-gd"
+              id={null}
+            >
+              <div
+                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha"
+                id={null}
+              >
+                <div
+                  className="htz-l htz-ft htz-fu htz-fv htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-r htz-gd"
+                  id={null}
+                >
+                  <div
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    id={null}
+                  >
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        מדורים
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        Haaretz.com
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    id={null}
+                  >
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        כלים שימושיים
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    id={null}
+                  >
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        עכבר העיר
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    id={null}
+                  >
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        TheMarker
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        Finance
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div
+                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hb htz-gn htz-go htz-gp htz-hc htz-gr htz-gs htz-gt htz-hd htz-gx htz-ha"
+                    id={null}
+                  >
+                    <section
+                      className="htz-he htz-fl"
+                    >
+                      <h2
+                        className="htz-bn htz-bo"
+                      >
+                        שיתופי פעולה
+                      </h2>
+                      <ul>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                        <li
+                          className="htz-bn"
+                        >
+                          <a
+                            className="htz-bn"
+                            href="Hello World"
+                            onClick={null}
+                          >
+                            Hello World
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hf htz-gn htz-go htz-gp htz-hg htz-gr htz-gs htz-gt htz-hh htz-gx htz-ha"
+                id={null}
+              >
+                <ul>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="https://www.haaretz.co.il/misc/entitlement"
+                      onClick={null}
+                    >
+                      חיבור מינוי דיגיטלי
+                    </a>
+                  </li>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="https://www.haaretz.co.il/personal-area/newsletter"
+                      onClick={null}
+                    >
+                      עדכונים במייל
+                    </a>
+                  </li>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="https://www.haaretz.co.il/promotions-page"
+                      onClick={null}
+                    >
+                      קנה מינוי דיגיטלי
+                    </a>
+                  </li>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="https://secure.pulseem.com/clientpages/07092017151238sa6045.html?v=89a6c973-41b3-4181-811c-a459ac50164e_"
+                      onClick={null}
+                    >
+                      קנה מינוי לעיתון
+                    </a>
+                  </li>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
+                      onClick={null}
+                    >
+                      פרסם אצלנו
+                    </a>
+                  </li>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="mailto: moshem@haaretz.co.il"
+                      onClick={null}
+                    >
+                      לפרסום בעיתון
+                    </a>
+                  </li>
+                  <li
+                    className="htz-bn"
+                  >
+                    <a
+                      className="htz-bn htz-bo"
+                      href="https://www.haaretz.co.il/personal-area/my-account"
+                      onClick={null}
+                    >
+                      שירות למנויים
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="htz-hi htz-bq htz-hj htz-hk"
+        >
+          חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל
+        </div>
+        <div
+          className="htz-hi htz-bq htz-hj htz-hk"
+        >
+          © כל הזכויות שמורות להוצאת עיתון הארץ בע"מ
+        </div>
+      </div>
+    </div>
+  </footer>
   <div
     className="FI_PH"
   />
 </div>
 `;
 
-exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `""`;
+exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-z{margin-bottom:-1rem}.htz-aj{vertical-align:-0.15em}.htz-ak{color:inherit}.htz-al{fill:#FFF}.htz-am{font-size:6rem}.htz-an{border:0}.htz-ao{clip:rect(0 0 0 0)}.htz-ap{-webkit-clip-path:inset(50%)}.htz-aq{clip-path:inset(50%)}.htz-ar{height:1px}.htz-as{margin:-1px}.htz-at{overflow:hidden}.htz-au{padding:0}.htz-av{position:absolute}.htz-aw{width:1px}.htz-ax{white-space:nowrap}.htz-ay{font-size:3rem}.htz-ba{display:inline-block}.htz-bb{margin-left:3rem}.htz-bj{margin-bottom:5rem}.htz-bk{max-width:42rem}.htz-bl{-webkit-column-count:2}.htz-bm{column-count:2}.htz-bn{margin-bottom:1rem}.htz-bo{font-weight:bold}.htz-bt{align-items:center}.htz-bu{-webkit-appearance:none}.htz-bv{-moz-appearance:none}.htz-bw{appearance:none}.htz-bx{cursor:pointer}.htz-by{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bz{font-size:inherit}.htz-ca{justify-content:center}.htz-cb{position:relative}.htz-cc{transform:scale(1)}.htz-cd{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ce{text-decoration:none}.htz-cf::moz-focus-inner{border:0}.htz-cg::moz-focus-inner{padding:0}.htz-ch{border-bottom-width:1px}.htz-ci{border-bottom-style:solid}.htz-cj{padding-bottom:calc(1rem - 1px)}.htz-ck{border-top-width:1px}.htz-cl{border-top-style:solid}.htz-cm{padding-top:calc(1rem - 1px)}.htz-cn{border-right-width:1px}.htz-co{border-right-style:solid}.htz-cp{padding-right:5rem}.htz-cq{border-left-width:1px}.htz-cr{border-left-style:solid}.htz-cs{padding-left:5rem}.htz-ct{border-radius:0}.htz-cu{background-color:transparent}.htz-cv{border-color:#FFF}.htz-cw:visited{color:#FFF}.htz-cx:hover{text-decoration:none}.htz-cy:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cz:hover{background-color:rgba(255,255,255,0.2)}.htz-da:hover{border-color:#FFF}.htz-db:hover{color:#FFF}.htz-dc:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dd:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-de:focus{outline:none}.htz-df:focus{text-decoration:none}.htz-dg:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dh:focus{background-color:rgba(255,255,255,0.1)}.htz-di:focus{border-color:#FFF}.htz-dj:focus{color:#FFF}.htz-dk:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dl:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-dm:active{outline:none}.htz-dn:active{text-decoration:none}.htz-do:active{transition-duration:0s}.htz-dp:active{background-color:transparent}.htz-dq:active{border-color:#FFF}.htz-dr:active{color:#FFF}.htz-ds{-webkit-box-align:center}.htz-dt{-webkit-box-pack:center}.htz-du{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dv{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{opacity:1}.htz-dx{transition-property:opacity}.htz-dy{transition-duration:0.16666666666666666s}.htz-dz{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ea{transition-delay:.3s}.htz-eb{-webkit-transition-property:opacity}.htz-ec{-moz-transition-property:opacity}.htz-ed{background-color:rgba(200,200,200, 0.3)}.htz-ee{height:100%}.htz-ef{right:0}.htz-eg{top:0}.htz-eh{transform:scaleX(0)}.htz-ei{transform-origin:right}.htz-ej{animation-direction:alternate}.htz-ek{animation-iteration-count:infinite}.htz-el{animation-duration:1s}.htz-em{animation-delay:0.75s}.htz-en{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eo{margin-top:1rem}.htz-ep{margin-bottom:4rem}.htz-eq{text-align:center}.htz-er{display:block}.htz-ew{flex-wrap:no-wrap}.htz-ex{margin-top:2rem}.htz-fa{-webkit-box-lines:no-wrap}.htz-fb{margin-left:2rem}.htz-fc{margin-left:1rem}.htz-fd:after{content:\\"|\\"}.htz-fe:after{margin-right:1rem}.htz-ff:after{content:\\"\\"}.htz-fg{padding-right:4rem}.htz-fh{padding-left:4rem}.htz-fi{display:none}.htz-fj{align-items:baseline}.htz-fk{padding-bottom:3rem}.htz-fl{margin-bottom:2rem}.htz-fm:after{background-color:#FFF}.htz-fn:after{height:1px}.htz-fo:after{position:absolute}.htz-fp:after{width:100%}.htz-fq:after{bottom:0}.htz-fr:after{right:0}.htz-fs{-webkit-box-align:baseline}.htz-ft{flex-wrap:wrap}.htz-fu{list-style:none}.htz-fv{justify-content:flex-start}.htz-fw{margin-right:-2rem}.htz-fx{margin-left:-2rem}.htz-fy{flex-direction:row}.htz-fz{align-items:stretch}.htz-ga{-webkit-box-lines:multiple}.htz-gb{-webkit-box-pack:right}.htz-gc{-webkit-box-orient:horizontal}.htz-gd{-webkit-box-align:stretch}.htz-ge{box-sizing:border-box}.htz-gf{flex-basis:auto}.htz-gg{flex-grow:1}.htz-gh{flex-shrink:1}.htz-gi{padding-left:2rem}.htz-gj{padding-right:2rem}.htz-ha{-webkit-box-flex:1}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}.htz-gk{flex-grow:0}.htz-gl{flex-shrink:0}.htz-gm{flex-basis:66.66666666666666%}.htz-gn{-webkit-box-flex:0}.htz-hb{flex-basis:50%}.htz-hf{flex-basis:33.33333333333333%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-go{flex-grow:0}.htz-gp{flex-shrink:0}.htz-gq{flex-basis:80%}.htz-gr{-webkit-box-flex:0}.htz-hc{flex-basis:25%}.htz-hg{flex-basis:20%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-br{font-size:2.5714285714285716rem}.htz-bs{line-height:1.5555555555555556em}.htz-eu{font-size:1.7142857142857142rem}.htz-ev{line-height:1.75em}.htz-gs{flex-grow:0}.htz-gt{flex-shrink:0}.htz-gu{flex-basis:83.33333333333334%}.htz-gv{font-size:2.2857142857142856rem}.htz-gw{line-height:1.3125em}.htz-gx{-webkit-box-flex:0}.htz-hd{flex-basis:20%}.htz-he{margin-left:8rem}.htz-hh{flex-basis:16.666666666666664%}.htz-hj{font-size:2rem}.htz-hk{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:13rem}.htz-o{padding-bottom:8rem}.htz-s{border-bottom-width:1px}.htz-t{border-bottom-style:solid}.htz-u{border-bottom-color:#FFF}.htz-v{padding-bottom:calc(2rem - 1px)}.htz-w{align-items:baseline}.htz-x{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-y{-webkit-box-align:baseline}.htz-bi{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:4rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{padding-top:1.5rem}.htz-af{border-bottom-width:1px}.htz-ag{border-bottom-style:solid}.htz-ah{border-bottom-color:#FFF}.htz-ai{padding-bottom:calc(2rem - 1px)}.htz-az{margin-bottom:4rem}.htz-bc{display:inline-block}.htz-bd{margin-top:1.5rem}.htz-be{font-size:3rem}.htz-bf{margin-right:2rem}.htz-bg{font-size:3.5rem}.htz-bh{display:none}}@media (max-width: 79.9375em){.htz-bp{font-size:2.6666666666666665rem}.htz-bq{line-height:1.5em}.htz-es{font-size:1.8333333333333333rem}.htz-et{line-height:1.6363636363636365em}.htz-gy{font-size:2.3333333333333335rem}.htz-gz{line-height:1.2857142857142858em}.htz-hi{font-size:2rem}}@media (max-width: 63.9375em){.htz-ey{align-items:start}.htz-ez{-webkit-box-align:right}}"`;

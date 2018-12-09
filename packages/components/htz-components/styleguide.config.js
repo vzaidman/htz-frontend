@@ -34,8 +34,8 @@ const sectionPatterns = {
   ],
   List: [
     {
-      name: 'List Examples',
-      components: path.join(componentSectionsPath, 'List', 'Lists.js'),
+      name: 'ListSelector',
+      components: path.join(componentSectionsPath, 'List', 'ListSelector.js'),
     },
     {
       name: 'List view-types',
