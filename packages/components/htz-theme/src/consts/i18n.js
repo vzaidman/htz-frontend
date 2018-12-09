@@ -1,3 +1,7 @@
+export const teaserI18n = Object.freeze({
+  ratingDescription: 'כוכבים',
+});
+
 export const alertsI18n = Object.freeze({
   mobileAlertsText: 'התראות',
   desktopAlertsText: 'התראות במייל',
@@ -89,7 +93,9 @@ export const commentFormI18n = Object.freeze({
   buttons: Object.freeze({
     sendBtnTxt: 'שלחו',
     cancelBtnTxt: 'בטלו',
-    toggleUserBtnText: identified => (identified ? 'להוספת תגובה אנונימית לחצו כאן' : 'להוספת תגובה מזוהה לחצו כאן'),
+    toggleUserBtnText: identified => (identified
+      ? 'להוספת תגובה אנונימית לחצו כאן'
+      : 'להוספת תגובה מזוהה לחצו כאן'),
   }),
   labels: Object.freeze({
     nameLabelTxt: 'שם',
@@ -97,7 +103,8 @@ export const commentFormI18n = Object.freeze({
   }),
   notes: Object.freeze({
     nameNoteTxt: 'הזינו שם שיוצג כמחבר התגובה',
-    commentNoteTxt: 'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
+    commentNoteTxt:
+      'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
   }),
   errorNotes: Object.freeze({
     nameErrorNoteTxt: 'חובה להזין שם',
@@ -123,9 +130,11 @@ export const commentSentI18n = Object.freeze({
   texts: Object.freeze({
     commentRecievedBoldText: 'תגובתך נקלטה בהצלחה, ',
     commentRecievedText: 'ותפורסם על פי מדיניות המערכת.',
-    commentRecievedTextSecondRow: 'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
+    commentRecievedTextSecondRow:
+      'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
     commentRecievedBoldTextThankYouPage: 'תודה!',
-    commentRecievedTextThankYouPage: 'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
+    commentRecievedTextThankYouPage:
+      'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
   }),
 });
 export const commentsSectionI18n = Object.freeze({
@@ -167,7 +176,8 @@ export const footerMobileListsI18n = Object.freeze({
     }),
     Object.freeze({
       text: 'פרסמו באתר',
-      link: 'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+      link:
+        'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
     }),
     Object.freeze({
       text: 'שירות למנויים',

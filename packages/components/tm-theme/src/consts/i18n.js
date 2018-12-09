@@ -1,3 +1,7 @@
+export const teaserI18n = Object.freeze({
+  ratingDescription: 'כוכבים',
+});
+
 export const alertsI18n = Object.freeze({
   mobileAlertsText: 'התראות',
   desktopAlertsText: 'התראות במייל',
