@@ -2,7 +2,10 @@
 
 import * as React from 'react';
 
-import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
+import type {
+  ComponentPropResponsiveObject,
+  StyleProps,
+} from '@haaretz/htz-css-tools';
 
 import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import GridItem from '../Grid/GridItem';
@@ -39,12 +42,17 @@ type TeaserMediaPropsType = {
    */
   disableAnchor: boolean,
   children: React.Node,
+  /**
+   * miscellaneous styles on the wrapper `<GridItem />`
+   */
+  miscStyles: ?StyleProps,
 };
 
 TeaserMedia.defaultProps = {
   children: null,
   disableAnchor: false,
   width: null,
+  miscStyles: null,
 };
 
 export default function TeaserMedia({
@@ -52,9 +60,10 @@ export default function TeaserMedia({
   width,
   children,
   disableAnchor,
+  miscStyles,
 }: TeaserMediaPropsType): React.Node {
   return (
-    <GridItem width={width} stretchContent>
+    <GridItem width={width} stretchContent miscStyles={miscStyles}>
       <AboveBlockLink>
         {({ className, }) => (
           <div className={className}>
