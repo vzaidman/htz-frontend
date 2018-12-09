@@ -446,6 +446,7 @@ class Comment extends React.Component {
                   )}
                   {isEditorPick === 'true' ? (
                     <StyledEditorPickTag>
+
 |
                       {editorsPick}
                     </StyledEditorPickTag>
@@ -454,6 +455,7 @@ class Comment extends React.Component {
                   )}
                   {this.isUsersChoice ? (
                     <StyledEditorPickTag>
+
 |
                       {usersPick}
                     </StyledEditorPickTag>
