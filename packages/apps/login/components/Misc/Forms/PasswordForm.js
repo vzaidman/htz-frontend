@@ -7,7 +7,6 @@ import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponent
 import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
 import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getUser, getReferrer, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
-import Preloader from '../../Misc/Preloader';
 import isEmail from 'validator/lib/isEmail';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
@@ -231,8 +230,7 @@ class PasswordForm extends Component {
               </ErrorBox>
 
               <ItemCenterer>
-                <Preloader isLoading={this.state.isLoading} />
-                <Button onClick={handleSubmit}>התחברות</Button>
+                <Button isBusy={this.state.isLoading} onClick={handleSubmit}>התחברות</Button>
               </ItemCenterer>
             </Fragment>
           )}

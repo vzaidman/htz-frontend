@@ -8,7 +8,6 @@ import FSMLayout from '../layouts/FSMLayout';
 import { getUser, getUserData, getPhoneNum, getOtpHash, getEmail, getReferrer, } from './queryutil/userDetailsOperations';
 import theme from '../theme/index';
 import BottomLinks from '../components/Misc/BottomLinks';
-import Preloader from '../components/Misc/Preloader';
 import { getFacebookLoginUrl, getFacebookParams, } from '../util/facebookLoginUtil';
 import {
   LoginContentStyles,
@@ -147,8 +146,7 @@ class OtpValidation2 extends Component {
                                   </ErrorBox>
         
                                   <ItemCenterer>
-                                    <Preloader isLoading={this.state.isLoading} />
-                                    <Button onClick={handleSubmit}>התחברות</Button>
+                                    <Button isBusy={this.state.isLoading} onClick={handleSubmit}>התחברות</Button>
                                   </ItemCenterer>
                                 </Fragment>
                               )}

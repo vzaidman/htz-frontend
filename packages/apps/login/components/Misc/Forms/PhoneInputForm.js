@@ -4,7 +4,6 @@ import Router from 'next/router';
 import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
 
 import theme from '../../../theme';
-import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
 
 import { connectMailWithPhone, getUserData, getEmail, getHostname, saveUserData, } from '../../../pages/queryutil/userDetailsOperations';
@@ -123,8 +122,7 @@ class PhoneInputForm extends React.Component {
                 </ErrorBox>
 
                 <ItemCenterer>
-                  <Preloader isLoading={this.state.isLoading} />
-                  <Button onClick={handleSubmit}>המשך</Button>
+                  <Button isBusy={this.state.isLoading} onClick={handleSubmit}>המשך</Button>
                 </ItemCenterer>
               </Fragment>
             )}
