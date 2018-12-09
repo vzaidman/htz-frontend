@@ -164,7 +164,7 @@ const Fade = ({ isHighlighted, children, }) => (
         height: '14rem',
         position: 'relative',
         top: '-14rem',
-        background: `linear-gradient(transparent, ${theme.color(
+        background: `linear-gradient(rgba(255,255,255, 0), ${theme.color(
           'comments',
           isHighlighted ? 'highlightedCommentBg' : 'bg'
         )})`,
