@@ -63,7 +63,7 @@ Card.defaultProps = {
   attrs: null,
   children: null,
   backgroundColor: null,
-  isElevated: null,
+  isElevated: false,
   fillHeight: false,
   miscStyles: null,
   tagName: 'div',

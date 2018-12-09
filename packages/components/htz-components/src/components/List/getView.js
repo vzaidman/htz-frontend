@@ -90,6 +90,13 @@ const views = new Map([
     },
   ],
   [
+    'Zapp',
+    {
+      view: () => import('./views/Zapp/Zapp.view.js'),
+      query: () => import('./views/Zapp/Zapp.query.js'),
+    },
+  ],
+  [
     'Zoidberg',
     {
       view: () => import('./views/Zoidberg/Zoidberg.view.js'),

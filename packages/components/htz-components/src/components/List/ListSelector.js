@@ -18,7 +18,8 @@ export default class ListSelector extends React.Component {
   };
 
   state = {
-    view: null,
+    view: '',
+
     turnA: true,
   };
 
@@ -39,10 +40,10 @@ export default class ListSelector extends React.Component {
             <select
               name="viewType"
               onChange={this.onSelect}
-              defaultValue="placeHolder"
               className={className}
+              value={this.state.view}
             >
-              <option value="placeHolder" disabled>
+              <option value="" disabled>
                 {'Select a preview'}
               </option>
               <option value="Bender">Bender</option>
@@ -57,6 +58,7 @@ export default class ListSelector extends React.Component {
               <option value="Nibbler">Nibbler</option>
               <option value="Slim">Slim</option>
               <option value="Slugs">Slugs</option>
+              <option value="Zapp">Zapp</option>
               <option value="Zoidberg">Zoidberg</option>
               <option value="Zombie">Zombie</option>
             </select>

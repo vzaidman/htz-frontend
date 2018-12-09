@@ -122,6 +122,14 @@ type TeaserHeaderProps = {
    */
   kickerTypeScale: ?TypographyPropType,
   isCentered: IsCenteredType,
+  /**
+   * pass an `onClick` event to the blockLink.
+   * Useful for bi actions and events
+   *
+   * Should also be passed to underlying links, e.g.,
+   * around the title and image
+   */
+  onClick: ?(evt: SyntheticMouseEvent<HTMLElement>) => void,
 };
 
 TeaserHeader.defaultProps = {
@@ -139,6 +147,7 @@ TeaserHeader.defaultProps = {
   kickerIsBlock: false,
   kickerTypeScale: null,
   isCentered: false,
+  onClick: null,
 };
 
 export default function TeaserHeader({
@@ -158,6 +167,7 @@ export default function TeaserHeader({
   kickerIsBlock,
   kickerTypeScale,
   isCentered,
+  onClick,
 }: TeaserHeaderProps): React.Node {
   return (
     <FelaComponent
@@ -181,7 +191,7 @@ export default function TeaserHeader({
         <AboveBlockLink>
           {({ className: AboveBlockLinkClassName, }) => (
             <div className={`${AboveBlockLinkClassName} ${wrapperClassName}`}>
-              <HtzLink href={path}>
+              <HtzLink href={path} onClick={onClick}>
                 {(exclusive || exclusiveMobile) && (
                   <Kicker
                     {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}

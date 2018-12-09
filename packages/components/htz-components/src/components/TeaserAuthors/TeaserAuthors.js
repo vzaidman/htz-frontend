@@ -58,6 +58,7 @@ const TeaserAuthors = ({
 TeaserAuthors.defaultProps = {
   authors: null,
   limit: 2,
+  miscStyles: null,
 };
 
 export default TeaserAuthors;

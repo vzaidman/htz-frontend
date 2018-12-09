@@ -4,6 +4,7 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLID,
 } from 'graphql';
 
@@ -50,7 +51,7 @@ const TeaserInListType = new GraphQLObjectType({
       }),
     },
     exclusive: { type: GraphQLString, },
-    rank: { type: GraphQLID, },
+    rank: { type: GraphQLFloat, },
     titleMobile: { type: GraphQLString, },
     hash: { type: GraphQLString, },
     authors: { type: new GraphQLList(author), },
