@@ -61,12 +61,18 @@ const sendTrackingEvents = (eventTrackers, dataObj) => callback => {
         }
       },
       error => {
+        if (typeof callback === 'function') {
+          callback();
+        }
         console.warn(`GA Error: ${error}`);
       }
     );
   }
   else {
     console.warn('Could not send event');
+    if (typeof callback === 'function') {
+      callback();
+    }
   }
 };
 
