@@ -1,6 +1,7 @@
 import BeavisMock from './listMocks/BeavisMock';
 import BenderMock from './listMocks/BenderMock';
 import CalculonMock from './listMocks/CalculonMock';
+import BoxyMock from './listMocks/BoxyMock';
 import DefaultMock from './listMocks/DefaultMock';
 import DonbotMock from './listMocks/DonbotMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
@@ -23,6 +24,7 @@ import VogelMock from './listMocks/VogelMock';
 import PazuzuMock from './listMocks/PazuzuMock';
 
 export default (root, { listId, }) => {
+  console.log('args: ', listId);
   switch (listId) {
     case 'Beavis':
     case 'Butthead':
@@ -31,6 +33,8 @@ export default (root, { listId, }) => {
       return BenderMock;
     case 'Calculon':
       return CalculonMock;
+    case 'Boxy':
+      return BoxyMock;
     case 'Farnsworth':
       return FarnsworthMock;
     case 'Donbot':

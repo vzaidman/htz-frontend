@@ -6,8 +6,8 @@ export type HTMLEmbedDataType = {
   embedType?: string,
   kind: 'embed',
   source?: string,
-  inputTemplate?: string,
   settings?: Object,
   viewMode?: string,
   position?: string,
+  inputTemplate?: string,
 };

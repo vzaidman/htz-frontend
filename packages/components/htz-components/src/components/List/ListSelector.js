@@ -43,13 +43,14 @@ export default class ListSelector extends React.Component {
               </option>
               <option value="Beavis">Beavis</option>
               <option value="Bender">Bender</option>
+              <option value="Boxy">Boxy</option>
               <option value="Butthead">Butthead</option>
               <option value="Calculon">Calculon</option>
+              <option value="Conrad">Conrad</option>
               <option value="Donatello">Donatello</option>
               <option value="Donbot">Donbot</option>
-              <option value="Gamal">Gamal</option>
-              <option value="Conrad">Conrad</option>
               <option value="Farnsworth">Farnsworth</option>
+              <option value="Gamal">Gamal</option>
               <option value="Hawking">Hawking</option>
               <option value="Kroker">Kroker</option>
               <option value="Leela">Leela</option>
