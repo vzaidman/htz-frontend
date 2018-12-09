@@ -12,7 +12,6 @@ import { getEmail, getUserData, } from './queryutil/userDetailsOperations';
 import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import BottomLinks from '../components/Misc/BottomLinks';
-import Preloader from '../components/Misc/Preloader';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -369,8 +368,7 @@ class RegisterPage extends Component {
                                       </ErrorBox>
 
                                       <ItemCenterer>
-                                        <Preloader isLoading={this.state.isLoading} />
-                                        <Button onClick={handleSubmit}>הרשמה</Button>
+                                        <Button isBusy={this.state.isLoading} onClick={handleSubmit}>הרשמה</Button>
                                       </ItemCenterer>
                                     </Fragment>
                                   )}

@@ -29,6 +29,14 @@ const Styles = {
         fontSize: '2rem',
         marginTop: '2rem !important',
       },
+      '& input[type="email"]': {
+        direction: 'ltr',
+        textAlign: 'right',
+      },
+      '& input[type="tel"]': {
+        direction: 'ltr',
+        textAlign: 'right',
+      },
       '& h5': {
         fontSize: '2.3rem',
       },
@@ -39,7 +47,7 @@ const Styles = {
           fontSize: '2.7rem',
         },
         '& h5': {
-          width: '70%',
+          width: '100%',
           fontSize: '3rem',
         },
       },

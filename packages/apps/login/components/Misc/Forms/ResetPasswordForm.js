@@ -3,7 +3,6 @@ import config from 'config';
 import { domainToSiteNumber, } from '../../../util/siteUtil';
 
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
-import Preloader from '../Preloader';
 import { getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
@@ -121,8 +120,7 @@ class ResetPasswordForm extends Component {
                 </ErrorBox>
 
                 <ItemCenterer>
-                  <Preloader isLoading={this.state.isLoading} />
-                  <Button onClick={handleSubmit}>המשך</Button>
+                  <Button isBusy={this.state.isLoading} onClick={handleSubmit}>המשך</Button>
                 </ItemCenterer>
               </Fragment>
             )}

@@ -17,7 +17,6 @@ import {
   sendMailConfirmation,
 } from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
-import Preloader from '../../Misc/Preloader';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
@@ -374,8 +373,7 @@ class IndexForm extends Component {
               </ErrorBox>
 
               <ItemCenterer>
-                <Preloader isLoading={this.state.isLoading} />
-                <Button onClick={handleSubmit}>המשך</Button>
+                <Button isBusy={this.state.isLoading} onClick={handleSubmit}>המשך</Button>
               </ItemCenterer>
             </Fragment>
           )}

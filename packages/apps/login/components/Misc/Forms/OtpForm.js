@@ -15,7 +15,6 @@ import {
   getUser, retrieveHash,
 } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
-import Preloader from '../../Misc/Preloader';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
@@ -201,8 +200,7 @@ class OtpForm extends Component {
                   </ErrorBox>
 
                   <ItemCenterer>
-                    <Preloader isLoading={this.state.isLoading} />
-                    <Button onClick={handleSubmit}>התחברות</Button>
+                    <Button isBusy={this.state.isLoading} onClick={handleSubmit}>התחברות</Button>
                   </ItemCenterer>
                 </Fragment>
               )}
