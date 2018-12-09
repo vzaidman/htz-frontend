@@ -19,18 +19,25 @@ const InlineAddress = ({ children, }: { children: React.Node, }): React.Node => 
 const TeaserAuthors = ({
   authors = [],
   limit = 2,
-}: TeaserAuthorsPropTypes): React.Node => (authors && authors.length > 0 ? (
-  <React.Fragment>
-    {authors
-      .slice(0, limit)
-      .map((author, idx) => (
-        <InlineAddress key={author.name}>
-          {author.name}
-          {idx < authors.length - 1 ? ', ' : ''}
-        </InlineAddress>
-      ))
-    }
-  </React.Fragment>
-) : null);
+}: TeaserAuthorsPropTypes): React.Node => {
+  if (!authors || authors.length === 0) return null;
+
+  const commaMaxIndex = Math.min(authors.length, limit) - 1;
+  return (
+    <React.Fragment>
+      {authors
+        .slice(0, limit)
+        .map((author, idx) => (
+          <React.Fragment key={author.name}>
+            <InlineAddress>
+              {author.name}
+            </InlineAddress>
+            {idx < commaMaxIndex ? ', ' : ''}
+          </React.Fragment>
+        ))
+      }
+    </React.Fragment>
+  );
+};
 
 export default TeaserAuthors;
