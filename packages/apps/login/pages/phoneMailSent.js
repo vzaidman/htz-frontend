@@ -85,7 +85,7 @@ class PhoneMailSent extends Component {
                             client={client}
                             doTransition={doTransition}
                             findRout={findRout}
-                            message={'יש ללחוץ על כפתור האישור בדוא"ל ולאחר מכן יישלח אליכם קוד SMS. אנא, הזינו אותו כאן:'}
+                            message={'יש ללחוץ על כפתור האישור בהודעת הדוא"ל שתישלח אליכם ולאחר מכן, יישלח קוד SMS. אנא, הזינו אותו כאן:'}
                             showNumber={false}
                           />
 
