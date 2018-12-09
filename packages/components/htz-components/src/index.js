@@ -77,7 +77,9 @@ import SeriesArticles from './components/RelatedArticles/SeriesArticles';
 import Tags from './components/Tags/Tags';
 import Teaser from './components/Teaser/Teaser';
 import TeaserContent from './components/TeaserContent/TeaserContent';
+import TeaserHeader from './components/TeaserHeader/TeaserHeader';
 import TeaserMedia from './components/TeaserMedia/TeaserMedia';
+import TeaserResponsiveText from './components/TeaserResponsiveText/TeaserResponsiveText';
 import TeaserSubtitle from './components/TeaserSubtitle/TeaserSubtitle';
 import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
@@ -183,7 +185,6 @@ export {
   RecipeArticle,
   ReviewArticle,
   StandardArticle,
-
   // Components
   A11yDialog,
   A11yError,
@@ -251,12 +252,13 @@ export {
   Tags,
   Teaser,
   TeaserContent,
+  TeaserHeader,
   TeaserMedia,
+  TeaserResponsiveText,
   TeaserSubtitle,
   TextInput,
   TextLink,
   Video,
-
   // Icons
   IconAccessibility,
   IconAlef,
@@ -320,11 +322,9 @@ export {
   IconZen,
   IconZoomIn,
   IconZoomOut,
-
   // DFP
   DfpInjector,
   GeneralAdSlot,
-
   // User
   CheckEmailExists,
   Login,
@@ -332,7 +332,6 @@ export {
   Register,
   UserDispenser,
   UserInjector,
-
   // Utils
   appendScript,
   createApp,
@@ -340,11 +339,9 @@ export {
   extractParamFromUrl,
   setColor,
   stylesPropType,
-
   // BI
   BIAction,
   BIRequest,
-
   // Event tracker
   EventTracker,
   pixelEvent,
