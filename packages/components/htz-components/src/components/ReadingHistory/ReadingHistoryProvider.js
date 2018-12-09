@@ -1,7 +1,6 @@
 /* global localStorage */
 import PropTypes from 'prop-types';
 
-
 const ReadingHistoryProvider = ({ children, }) => {
   let readingHistory;
   try {
@@ -11,9 +10,8 @@ const ReadingHistoryProvider = ({ children, }) => {
     console.warn('unable to parse readingHistory from localStorage\n', err);
     readingHistory = null;
   }
-  return children(readingHistory);
+  return children(readingHistory || []);
 };
-
 
 ReadingHistoryProvider.propTypes = {
   children: PropTypes.func.isRequired,

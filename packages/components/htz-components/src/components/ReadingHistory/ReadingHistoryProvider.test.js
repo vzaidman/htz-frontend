@@ -5,15 +5,15 @@ import { felaMount, } from '../../test-helpers/felaEnzymeRenderers';
 
 
 describe('ReadingHistoryProvider', () => {
-  it('should provide null when the readingHistory is not in the localStorage', () => {
+  it('should provide empty array when the readingHistory is not in the localStorage', () => {
     global.localStorage = {
-      getItem: () => null,
+      getItem: () => [],
     };
     felaMount(
       <ReadingHistoryProvider>
         {
           readingHistory => {
-            expect(readingHistory).toEqual(null);
+            expect(readingHistory).toEqual([]);
             return null;
           }
         }
@@ -21,7 +21,7 @@ describe('ReadingHistoryProvider', () => {
     );
   });
 
-  it('should provide null when the readingHistoty is not in json format', () => {
+  it('should provide empty array when the readingHistoty is not in json format', () => {
     mockConsole();
     global.localStorage = {
       getItem: () => 'this is not a json',
@@ -30,7 +30,7 @@ describe('ReadingHistoryProvider', () => {
       <ReadingHistoryProvider>
         {
           readingHistory => {
-            expect(readingHistory).toEqual(null);
+            expect(readingHistory).toEqual([]);
             expect(console.warn).toHaveBeenCalledWith('unable to parse readingHistory from localStorage\n', expect.any(Error));
             return null;
           }
