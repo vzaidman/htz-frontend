@@ -4,11 +4,14 @@ import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
 
 type TextPropTypes = {
-  text: string,
+  text: ?string,
   mobileText: ?string,
 };
 
-TeaserResponsiveText.defaultProps = { mobileText: null, };
+TeaserResponsiveText.defaultProps = {
+  text: null,
+  mobileText: null,
+};
 
 const mobileStyle = ({ theme, }) => ({
   ...theme.mq({ from: 's', }, { display: 'none', }),
@@ -20,7 +23,7 @@ const aboveMobileStyle = ({ theme, }) => ({
 export default function TeaserResponsiveText({
   text,
   mobileText,
-}: TextPropTypes) {
+}: TextPropTypes): React.Node {
   return mobileText && text && text !== mobileText ? (
     <React.Fragment>
       <FelaComponent rule={mobileStyle} render="span">
@@ -31,6 +34,6 @@ export default function TeaserResponsiveText({
       </FelaComponent>
     </React.Fragment>
   ) : (
-    text
+    <React.Fragment>{text || mobileText}</React.Fragment>
   );
 }

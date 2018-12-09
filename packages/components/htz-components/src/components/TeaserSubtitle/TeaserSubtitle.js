@@ -18,9 +18,9 @@ type TeaserSubtitleProps = {
   /**
    * attributes to be passed to the DOM element
    */
-  attrs: attrFlowType,
-  subtitle: string,
-  subtitleMobile: string,
+  attrs: ?attrFlowType,
+  subtitle: ?string,
+  subtitleMobile: ?string,
 
   /**
    * The font-size and line height of the subtitle
@@ -45,7 +45,7 @@ type TeaserSubtitleProps = {
    *     }
    *     ```
    */
-  typeScale: TypographyPropType,
+  typeScale: ?TypographyPropType,
   /**
    * The color of the subtitle
    * Can be:
@@ -65,7 +65,7 @@ type TeaserSubtitleProps = {
    *     ```
    */
   color:
-    | string
+    | ?string
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
@@ -74,7 +74,7 @@ type TeaserSubtitleProps = {
    * trump all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
-  miscStyles: StyleProps,
+  miscStyles: ?StyleProps,
   tagName: string,
 };
 
@@ -102,7 +102,7 @@ export default function TeaserSubtitle({
   miscStyles,
 }: TeaserSubtitleProps): React.Node {
   const Component = tagName;
-  return (
+  return subtitle || subtitleMobile ? (
     <FelaComponent
       color={color}
       typeScale={typeScale}
@@ -114,5 +114,5 @@ export default function TeaserSubtitle({
         </Component>
       )}
     />
-  );
+  ) : null;
 }

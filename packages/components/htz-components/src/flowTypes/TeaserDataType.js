@@ -22,7 +22,7 @@ export type TeaserDataType = {
   lastUpdate?: ?number,
   leadText?: ?string,
   mediaFlags?: { video?: boolean, html_embed?: boolean, gallery?: boolean, },
-  path?: ?string,
+  path: string,
   publishDate?: ?number,
   rank?: ?number,
   relatedArticles?: ?(TeaserDataType[]),

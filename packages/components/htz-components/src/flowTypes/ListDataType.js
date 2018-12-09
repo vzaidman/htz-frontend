@@ -2,6 +2,7 @@
 
 import type { TeaserDataType, } from './TeaserDataType';
 import type { ListExtraLinkType, } from './ListExtraLinkType';
+import type { ListMarketingTeaserType, } from './ListMarketingTeaserType';
 
 export type ListDataType = {
   title?: string,
@@ -11,12 +12,7 @@ export type ListDataType = {
   // sapce, and should therefore be mutually exclusive, with
   // `marketingTeaser` taking precedence. So, if a list have both,
   // only `marketingTeaser` should be placed in the JSON
-  marketingTeaser?: {
-    title: string,
-    href: string,
-    subtitle?: string,
-    cta: string,
-  },
+  marketingTeaser?: ListMarketingTeaserType,
   items: TeaserDataType[],
   contentId: string,
   contentName: string,

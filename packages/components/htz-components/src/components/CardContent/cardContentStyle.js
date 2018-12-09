@@ -44,10 +44,10 @@ type SeperatorOptions = {
   seperatorWidth?: number,
   seperatorStyle?: SeperatorStyleType,
 };
-export type CardContentSeperator = true | SeperatorOptions;
+export type CardContentSeperator = boolean | SeperatorOptions;
 
 export type ColorType =
-  | ?string
+  | string
   | [string, ]
   | [string, string, ]
   | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
@@ -74,14 +74,16 @@ const getSeperatorProps = (
   options: CardContentSeperator,
   themeStyles: Object
 ): SeperatorOptions => [ 'Color', 'Style', 'Width', ].reduce(
-  (result, prop) => ({
-    ...result,
-    [`seperator${prop}`]:
-        options === true
-          ? themeStyles[`cardContentSeperator${prop}`]
-          : options[prop.toLowerCase()]
-            || themeStyles[`cardContentSeperator${prop}`],
-  }),
+  (result, prop) => (options
+    ? {
+      ...result,
+      [`seperator${prop}`]:
+              options === true
+                ? themeStyles[`cardContentSeperator${prop}`]
+                : options[prop.toLowerCase()]
+                  || themeStyles[`cardContentSeperator${prop}`],
+    }
+    : result),
   {}
 );
 
@@ -118,7 +120,7 @@ const getPaddingValues = (
 ] => {
   const paddingArray = getPaddingArray(paddingOpts, themeOpts);
 
-  // The arry type matches the return tuple
+  // The arry type does match the return tuple
   // $FlowFixMe
   return [ 0, 1, 2, 3, ].map(pos => getPaddingSideValue(paddingArray, pos));
 };

@@ -21,10 +21,10 @@ import type {
 type TeaserContentType = {
   data: TeaserDataType,
   // main content block props
-  attrs: attrFlowType,
-  backgroundColor: ColorType,
-  color: ColorType,
-  padding: PaddingType,
+  attrs: ?attrFlowType,
+  backgroundColor: ?ColorType,
+  color: ?ColorType,
+  padding: ?PaddingType,
   /**
    * The width of the underlying `<TeaserContent />`.
    * The number passed should be (`width` / `columns`).
@@ -45,18 +45,18 @@ type TeaserContentType = {
    *   ]}
    * />
    */
-  width: number | ComponentPropResponsiveObject<number>[],
-  miscStyles: StyleProps,
+  width: ?number | ComponentPropResponsiveObject<number>[],
+  miscStyles: ?StyleProps,
   // footer block props
-  footerAttrs: attrFlowType,
-  footerBackgroundColor: ColorType,
-  footerColor: ColorType,
-  footerPadding: PaddingType,
-  footerSeperator: CardContentSeperator,
-  footerMiscStyles: StyleProps,
+  footerAttrs: ?attrFlowType,
+  footerBackgroundColor: ?ColorType,
+  footerColor: ?ColorType,
+  footerPadding: ?PaddingType,
+  footerSeperator: ?CardContentSeperator,
+  footerMiscStyles: ?StyleProps,
   // render props
   renderContent: (data: TeaserDataType) => React.Node,
-  renderFooter: (data: TeaserDataType) => React.Node,
+  renderFooter: ?(data: TeaserDataType) => React.Node,
 };
 
 TeaserContent.defaultProps = {
@@ -74,7 +74,6 @@ TeaserContent.defaultProps = {
   footerSeperator: null,
   footerMiscStyles: null,
   // render props
-  renderContent: null,
   renderFooter: null,
 };
 

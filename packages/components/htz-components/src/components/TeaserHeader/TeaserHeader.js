@@ -22,7 +22,7 @@ type TeaserHeaderProps = {
   /**
    * attributes to be passed to the DOM element
    */
-  attrs: attrFlowType,
+  attrs: ?attrFlowType,
   /**
    * The offSet of the `h` element from the calculated heading level.
    * e.g: the calculated level is 3 and the offSet is 1, the heading level will be 4.
@@ -34,9 +34,9 @@ type TeaserHeaderProps = {
   /** Forces the headline element to be an H1 */
   isH1: boolean,
   title: string,
-  titleMobile: string,
-  exclusive: string,
-  exclusiveMobile: string,
+  titleMobile: ?string,
+  exclusive: ?string,
+  exclusiveMobile: ?string,
   path: string,
 
   /**
@@ -62,7 +62,7 @@ type TeaserHeaderProps = {
    *     }
    *     ```
    */
-  typeScale: TypographyPropType,
+  typeScale: ?TypographyPropType,
   /**
    * The color of the headline
    * Can be:
@@ -82,7 +82,7 @@ type TeaserHeaderProps = {
    *     ```
    */
   color:
-    | string
+    | ?string
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
@@ -91,7 +91,7 @@ type TeaserHeaderProps = {
    * trump all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
-  miscStyles: StyleProps,
+  miscStyles: ?StyleProps,
 
   /** Determines if the kicker element is set as a block element */
   kickerIsBlock: boolean,
@@ -118,7 +118,7 @@ type TeaserHeaderProps = {
    *     }
    *     ```
    */
-  kickerTypeScale?: TypographyPropType,
+  kickerTypeScale: ?TypographyPropType,
 };
 
 TeaserHeader.defaultProps = {
@@ -126,8 +126,6 @@ TeaserHeader.defaultProps = {
   offset: 0,
   isH1: false,
   // data props
-  title: null,
-  titleMobile: null,
   exclusive: null,
   exclusiveMobile: null,
   path: null,

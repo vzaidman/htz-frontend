@@ -10,8 +10,8 @@ import type { CardContentStyleOptions, } from './cardContentStyle.js';
 
 export type CardContentProps = {
   ...CardContentStyleOptions,
-  attrs: attrFlowType,
-  children: Node,
+  attrs: ?attrFlowType,
+  children: ?Node,
   tagName: ElementType,
 };
 
@@ -22,7 +22,7 @@ CardContent.defaultProps = {
   backgroundColor: null,
   color: null,
   padding: null,
-  seperator: null,
+  seperator: false,
   miscStyles: null,
   attrs: null,
   children: null,

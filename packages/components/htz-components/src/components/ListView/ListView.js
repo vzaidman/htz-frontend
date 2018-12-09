@@ -15,8 +15,8 @@ import Section from '../AutoLevels/Section';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
 
 type ListViewWrapperPropTypes = {
-  attrs: attrFlowType,
-  children: React.Node,
+  attrs: ?attrFlowType,
+  children: ?React.Node,
   disableWrapper: boolean,
   innerBackgroundColor:
     | ?string
@@ -28,7 +28,7 @@ type ListViewWrapperPropTypes = {
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
-  marginTop: ?number | ComponentPropResponsiveObject<number>[],
+  marginTop: number | ComponentPropResponsiveObject<number>[],
   miscStyles: ?StyleProps,
 };
 
@@ -51,8 +51,8 @@ type ListViewPropTypes = {
 const defaultProps = {
   attrs: null,
   children: null,
-  disableWrapper: null,
-  innerBackgroundColor: null,
+  disableWrapper: false,
+  innerBackgroundColor: 'transparent',
   outerBackgroundColor: null,
   marginTop: [
     {
