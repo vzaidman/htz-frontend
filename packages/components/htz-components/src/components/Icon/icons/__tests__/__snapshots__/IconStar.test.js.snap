@@ -10,18 +10,18 @@ exports[`<IconStar /> DOM element add "id" attribute to DOM element 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> DOM element add "id" attribute to DOM element 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> DOM element add "onClick" attribute to DOM element 1`] = `
 <div>
@@ -33,18 +33,18 @@ exports[`<IconStar /> DOM element add "onClick" attribute to DOM element 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> DOM element add "onClick" attribute to DOM element 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> DOM element pass attributes defined in the "attrs" prop to the DOM element 1`] = `
 <div>
@@ -56,18 +56,18 @@ exports[`<IconStar /> DOM element pass attributes defined in the "attrs" prop to
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> DOM element pass attributes defined in the "attrs" prop to the DOM element 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> DOM element render correctly when no props are passed 1`] = `
 <div>
@@ -79,18 +79,18 @@ exports[`<IconStar /> DOM element render correctly when no props are passed 1`] 
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> DOM element render correctly when no props are passed 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> DOM element render correctly when no props are passed 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles responsively set misc styles on an icon 1`] = `
 <div>
@@ -102,18 +102,18 @@ exports[`<IconStar /> styles responsively set misc styles on an icon 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles responsively set misc styles on an icon 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> styles responsively set misc styles on an icon 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles set icon's color 1`] = `
 <div>
@@ -125,18 +125,18 @@ exports[`<IconStar /> styles set icon's color 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set icon's color 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> styles set icon's color 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles set icon's color responsively 1`] = `
 <div>
@@ -148,18 +148,18 @@ exports[`<IconStar /> styles set icon's color responsively 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set icon's color responsively 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> styles set icon's color responsively 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles set icon's fill 1`] = `
 <div>
@@ -171,18 +171,18 @@ exports[`<IconStar /> styles set icon's fill 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set icon's fill 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> styles set icon's fill 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles set icon's fill responsively 1`] = `
 <div>
@@ -194,18 +194,18 @@ exports[`<IconStar /> styles set icon's fill responsively 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set icon's fill responsively 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> styles set icon's fill responsively 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles set icon's size 1`] = `
 <div>
@@ -217,18 +217,18 @@ exports[`<IconStar /> styles set icon's size 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set icon's size 2`] = `".htz-a{font-size:6rem}"`;
+exports[`<IconStar /> styles set icon's size 2`] = `".htz-a{font-size:6rem}.htz-b{fill:#0B7EB5}"`;
 
 exports[`<IconStar /> styles set icon's size responsively 1`] = `
 <div>
@@ -240,18 +240,18 @@ exports[`<IconStar /> styles set icon's size responsively 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-c"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-c"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set icon's size responsively 2`] = `"@media (max-width: 79.9375em){.htz-a{font-size:6rem}}@media (min-width: 80em){.htz-b{font-size:7rem}}"`;
+exports[`<IconStar /> styles set icon's size responsively 2`] = `".htz-c{fill:#0B7EB5}@media (max-width: 79.9375em){.htz-a{font-size:6rem}}@media (min-width: 80em){.htz-b{font-size:7rem}}"`;
 
 exports[`<IconStar /> styles set misc styles on an icon 1`] = `
 <div>
@@ -263,15 +263,15 @@ exports[`<IconStar /> styles set misc styles on an icon 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className="htz-b"
       d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
-      fill="#0B7EB5"
     />
     <path
+      className="htz-b"
       d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
-      fill="#0B7EB5"
     />
   </svg>
 </div>
 `;
 
-exports[`<IconStar /> styles set misc styles on an icon 2`] = `".htz-a{font-size:3rem}"`;
+exports[`<IconStar /> styles set misc styles on an icon 2`] = `".htz-a{font-size:3rem}.htz-b{fill:#0B7EB5}"`;
