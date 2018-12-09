@@ -178,7 +178,6 @@ class PasswordForm extends Component {
                 <TextInput
                   type="password"
                   label={theme.passwordInputLabel}
-                  value="test"
                   noteText="אנא הזינו סיסמה"
                   requiredText={{
                     long: theme.passwordInputRequiredLong,
@@ -206,7 +205,7 @@ class PasswordForm extends Component {
               </div>
 
               <TermsWrapper>
-                <div className="testtest">
+                <div>
                 <CheckBox
                   type="checkbox"
                   label="terms"

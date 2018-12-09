@@ -125,7 +125,7 @@ class EmailValidationSent extends React.Component {
                                 );
                               }}
                             >
-                              או הירשם לאתר
+                              או הירשמו לאתר
                             </HtzLink>
                           </BottomLinks>
                         </FormWrapper>
