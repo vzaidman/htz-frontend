@@ -85,13 +85,15 @@ function Youtube({ embedType, settings, source, onLoadCallback, }) {
   const { controls, related, loop, logo, mute, autoplay, startAt, videoImage, } = settings || defaultSettings;
   /* eslint-enable no-unused-vars */
 
+  const playlist = embedType !== 'playlist' && loop === '1' ? `&playlist=${source}` : ''; // must add playlist to enable looping
+
   return (
     <VideoWrapper aspectRatio="16/9">
       <VideoElement
         id={`yt_embed_${source}`}
         width="560"
         height="315"
-        src={`//www.youtube.com/embed/${source}${start}${startAt}&controls=${controls}&loop=${loop}&modestbranding=${logo}&rel=${related}&enablejsapi=1`}
+        src={`//www.youtube.com/embed/${source}${start}${startAt}&controls=${controls}&loop=${loop}&modestbranding=${logo}&rel=${related}&autoplay=${autoplay}&enablejsapi=1&mute=${mute}${playlist}`}
         frameBorder="0"
         allowFullScreen=""
         onLoad={onLoadCallback}
