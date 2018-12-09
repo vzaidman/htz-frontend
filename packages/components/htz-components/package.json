@@ -17,7 +17,7 @@
   "scripts": {
     "build": "htz-scripts build",
     "build:esm": "htz-scripts build:esm",
-    "watch": "htz-scripts build:esm watch",
+    "watch": "htz-scripts build:esm watch",   
     "clean": "htz-scripts clean",
     "embeds": "node scripts/update-embed-files.js",
     "format": "htz-scripts format",

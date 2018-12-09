@@ -6,12 +6,12 @@ import IconClose from '../Icon/icons/IconClose';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 
-const close = (theme, side) => ({  
-  flexBasis: '0 0 auto',    
+const close = (theme, side) => ({
+  flexBasis: '0 0 auto',
   paddingStart: '1.5rem',
   paddingEnd: '1.5rem',
-  order: '1',  
-  cursor: 'pointer',    
+  order: '1',
+  cursor: 'pointer',
   background: theme.color('secondary', 'base'),
   textAlign: 'center',
 });
@@ -26,7 +26,7 @@ const tooltipInner = {
   paddingBottom: '1rem',
   paddingInlineEnd: '2rem',
   paddingInlineStart: '2rem',
-  display: 'inline-block'
+  display: 'inline-block',
 };
 
 class Tooltip extends Component {
@@ -190,10 +190,10 @@ class Tooltip extends Component {
     position: 'absolute',
     zIndex: theme.getZIndex('above'),
     display: hide ? 'none' : 'flex',
-    alignItems: 'stretch',    
+    alignItems: 'stretch',
     backgroundColor: theme.color('primary', 'base'),
     color: theme.color('white'),
-    minWidth: '25rem',  
+    minWidth: '25rem',
     textAlign: 'center',
     ':after': {
       content: "''",
@@ -204,12 +204,10 @@ class Tooltip extends Component {
     extend: [ theme.type(-1), ...tooltipMiscStyles, ],
   });
 
-  b64EncodeUnicode = str =>
-    window.btoa(
-      encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) =>
-        String.fromCharCode(`0x${p1}`)
-      )
-    );
+  b64EncodeUnicode = str => window.btoa(
+    encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode(`0x${p1}`)
+    )
+  );
 
   showTooltip = () => {
     this.setState({ hide: false, });
@@ -218,7 +216,7 @@ class Tooltip extends Component {
   hideTooltip = () => {
     this.setState({ hide: true, });
   };
-  
+
   render() {
     if (!this.id) {
       this.id = `aria${parseInt(Math.random() * 10000000, 10)}`;
@@ -233,15 +231,21 @@ class Tooltip extends Component {
         render="span"
         style={theme => ({ position: 'relative', ...miscStyles(theme), })}
       >
-        <span
-          aria-describedby={this.id}
-          ref={el => {
-            this.targetElement = el;
-          }}
-          {...attrs}
-        >
-          {children}
-        </span>
+        <FelaComponent
+          style={{ display: 'flex', }}
+          render={({ className, }) => (
+            <span
+              aria-describedby={this.id}
+              ref={el => {
+                this.targetElement = el;
+              }}
+              {...attrs}
+              className={className}
+            >
+              {children}
+            </span>
+          )}
+        />
         <FelaComponent
           style={theme => {
             this.theme = theme; // make the theme available trou out the class
@@ -275,9 +279,14 @@ class Tooltip extends Component {
                 />
               )}
 
-            <FelaComponent style={tooltipInner} render={({className,}) =>(
-              <span class={className} id={this.id}>{text}</span>
-            )}/>
+              <FelaComponent
+                style={tooltipInner}
+                render={({ className, }) => (
+                  <span className={className} id={this.id}>
+                    {text}
+                  </span>
+                )}
+              />
             </div>
           )}
         />

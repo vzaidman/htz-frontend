@@ -3,10 +3,10 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import querystring from 'querystring';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 import IconReading from '../Icon/icons/IconReading';
 import { ActionButton, Button, } from './actionList';
-import FelaComponent from 'react-fela/lib/FelaComponent';
 
 const GET_READING_LIST = gql`
   query GetReadingList {
@@ -48,56 +48,61 @@ export default class ActionSave extends React.Component {
                 });
               }
               return (
-                <Button
-                  title="שמירת כתבה"
-                  {...props}
-                  miscStyles={{
-                    ...(!this.state.isArticleSaved
-                      ? {}
-                      : {
-                          color: theme.color('secondary'),
-                        }),
-                    ...buttonStyles.global,
-                    ...buttonStyles.func(isArticleSaved),
-                  }}
-                  onClick={() => {
-                    const bodyReq = {
-                      articleId,
-                      userId,
-                      operation: isArticleSaved ? 'subtract' : 'add',
-                      readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
-                      update: true,
-                      pq: 'reading_pq',
-                    };
-                    fetch('https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager', {
-                      method: 'POST',
-                      cache: 'no-cache',
-                      credentials: 'include',
-                      headers: {
-                        // 'Content-Type': 'application/json; charset=utf-8',
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                      },
-                      body: querystring.stringify(bodyReq),
-                    })
-                      .then(response => response.json())
-                      .then(response => {
-                        cache.writeData({
-                          data: {
-                            readingListArray: response.readinglist.articlesIdsListStr,
-                          },
-                        });
+                <FelaTheme
+                  render={theme => (
+                    <Button
+                      title="שמירת כתבה"
+                      {...props}
+                      miscStyles={{
+                        ...(!this.state.isArticleSaved
+                          ? {}
+                          : {
+                            color: theme.color('secondary'),
+                          }),
+                      }}
+                      onClick={() => {
+                        const bodyReq = {
+                          articleId,
+                          userId,
+                          operation: isArticleSaved ? 'subtract' : 'add',
+                          readingListId: 'Haaretz.Feed.PersonalArea.ReadinglistAsJSON',
+                          update: true,
+                          pq: 'reading_pq',
+                        };
+                        fetch(
+                          'https://www.haaretz.co.il/cmlink/TheMarker.Element.ReadingListManager',
+                          {
+                            method: 'POST',
+                            cache: 'no-cache',
+                            credentials: 'include',
+                            headers: {
+                              // 'Content-Type': 'application/json; charset=utf-8',
+                              'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+                            },
+                            body: querystring.stringify(bodyReq),
+                          }
+                        )
+                          .then(response => response.json())
+                          .then(response => {
+                            cache.writeData({
+                              data: {
+                                readingListArray: response.readinglist.articlesIdsListStr,
+                              },
+                            });
 
-                        this.setState(prevState => ({
-                          isArticleSaved: !prevState.isArticleSaved,
-                        }));
-                      });
-                  }}
-                >
-                  <FelaComponent style={saveLabel} render="span">
-                    {this.state.isArticleSaved ? 'הסר' : 'שמור'}
-                  </FelaComponent>
-                  <IconReading size={size} miscStyles={iconStyles} />
-                </Button>
+                            this.setState(prevState => ({
+                              isArticleSaved: !prevState.isArticleSaved,
+                            }));
+                          });
+                      }}
+                    >
+                      <FelaComponent style={saveLabel} render="span">
+                        {this.state.isArticleSaved ? 'הסר' : 'שמור'}
+                      </FelaComponent>
+                      <IconReading size={size} miscStyles={iconStyles} />
+                    </Button>
+                  )}
+                />
               );
             }}
           </ApolloConsumer>

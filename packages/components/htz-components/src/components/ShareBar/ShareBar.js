@@ -94,7 +94,7 @@ class ShareBar extends React.Component<Props, State> {
                 },
                 'mail',
               ]}
-              size={4}
+              size={3.5}
             />
             <FelaComponent style={{ display: 'flex', }}>
               <Query query={IS_MOUSE_STORY}>
@@ -102,7 +102,7 @@ class ShareBar extends React.Component<Props, State> {
                   const buttons = [ 'zen', ];
                   const hiddenButtons = [ 'print', ];
                   if (!isMouseStory) {
-                    hiddenButtons.push('comments');
+                    buttons.push('comments');
                     if (isCommentsNumberLoaded && !this.barWidth && this.barEl) {
                       this.barWidth = this.barEl.offsetWidth;
                     }
@@ -121,33 +121,16 @@ class ShareBar extends React.Component<Props, State> {
                       <ActionButtons
                         elementName={title}
                         elementUrl={canonicalUrl}
-                        buttons={[
-                          ...buttons,
-                          {
-                            name: 'save',
-                            buttonStyles: isArticleSaved => ({
-                              ...(isArticleSaved
-                                ? {
-                                    color: theme.color('neutral', '-10'),
-                                    backgroundColor: theme.color('primary'),
-                                    ':hover': {
-                                      color: theme.color('neutral', '-10'),
-                                      backgroundColor: theme.color('secondary'),
-                                    },
-                                  }
-                                : {}),
-                            }),
-                          },
-                        ]}
-                        size={4}
+                        buttons={[ ...buttons, ]}
+                        size={3.5}
                       />
                       <FelaComponent
                         style={{
                           ...(!this.barWidth
                             ? {
-                                position: 'absolute',
-                                right: '100%',
-                              }
+                              position: 'absolute',
+                              right: '100%',
+                            }
                             : {}),
                         }}
                         render={({ className, }) => (
@@ -161,19 +144,36 @@ class ShareBar extends React.Component<Props, State> {
                               elementName={title}
                               elementUrl={canonicalUrl}
                               miscStyles={{
-                                width: this.barWidth
+                                maxWidth: this.barWidth
                                   ? isOpen
                                     ? `${this.barWidth}px`
                                     : '0'
                                   : 'auto',
-                                transitionProperty: 'width',
+                                transitionProperty: 'max-width',
                                 ...theme.getDelay('transition', -1),
                                 ...theme.getDuration('transition', -1),
                                 ...theme.getTimingFunction('transition', 'linear'),
                                 overflow: 'hidden',
                               }}
-                              buttons={[ ...hiddenButtons, ]}
-                              size={4}
+                              buttons={[
+                                ...hiddenButtons,
+                                {
+                                  name: 'save',
+                                  buttonStyles: isArticleSaved => ({
+                                    ...(isArticleSaved
+                                      ? {
+                                        color: theme.color('neutral', '-10'),
+                                        backgroundColor: theme.color('primary'),
+                                        ':hover': {
+                                          color: theme.color('neutral', '-10'),
+                                          backgroundColor: theme.color('secondary'),
+                                        },
+                                      }
+                                      : {}),
+                                  }),
+                                },
+                              ]}
+                              size={3.5}
                             />
                           </div>
                         )}
