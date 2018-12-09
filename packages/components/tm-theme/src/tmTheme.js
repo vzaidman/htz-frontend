@@ -1,5 +1,6 @@
 // consts
 import {
+  teaserI18n,
   a11yMenuI18n,
   alertsI18n,
   breadcrumbsI18n,
@@ -74,6 +75,7 @@ const tmTheme = Object.freeze({
   typeConf,
 
   // I18n
+  teaserI18n,
   a11yMenuI18n,
   alertsI18n,
   breadcrumbsI18n,

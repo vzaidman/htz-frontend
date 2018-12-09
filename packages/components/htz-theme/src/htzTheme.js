@@ -16,6 +16,7 @@ import selectStyle from './consts/selectStyle';
 import specialPromotionStyle from './consts/specialPromotionStyle';
 import typeConf from './consts/typeConf';
 import {
+  teaserI18n,
   a11yMenuI18n,
   alertsI18n,
   articleLayoutI18n,
@@ -95,6 +96,7 @@ const htzTheme = Object.freeze({
   typeConf,
 
   // I18n
+  teaserI18n,
   a11yMenuI18n,
   alertsI18n,
   articleLayoutI18n,
