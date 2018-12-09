@@ -6,7 +6,7 @@ A reusable component for list sidebars
 with marketing teaser
 ```jsx
 <div style={{ direction: 'rtl', height: '70rem' }}>
-  <ListViewMeta
+  <ListViewHeader
     title="תרבות"
     miscStyles={{
       paddingRight: [{ until: 's', value: '1rem' }, { from: 's', until: 'l' }],
@@ -63,7 +63,7 @@ With a commercial links
 
 ```jsx
 <div style={{ direction: 'rtl', height: '70rem' }}>
-  <ListViewMeta
+  <ListViewHeader
     title="תרבות"
     miscStyles={{
       paddingRight: [{ until: 's', value: '1rem' }, { from: 's', until: 'l' }],

@@ -1,29 +1,32 @@
 import React from 'react';
-import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
-import ListViewMeta from '../ListViewMeta';
 
-describe('<ListViewMeta>', () => {
+import ListViewHeader from '../ListViewHeader';
+import felaSnapshotter from '../../../test-helpers/felaSnapshotter';
+
+describe('<ListViewHeader>', () => {
   describe('DOM element', () => {
     it('renders correctly with minimal required props', () => {
-      const { component, styles, } = felaSnapshotter(<ListViewMeta />);
+      const { component, styles, } = felaSnapshotter(<ListViewHeader />);
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with title prop', () => {
-      const { component, styles, } = felaSnapshotter(<ListViewMeta title="test title" />);
+      const { component, styles, } = felaSnapshotter(
+        <ListViewHeader title="test title" />
+      );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with miscStyles prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListViewMeta miscStyles={{ backgroundColor: 'red', }} />
+        <ListViewHeader miscStyles={{ backgroundColor: 'red', }} />
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
     it('renders correctly with title and  extra links prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListViewMeta
+        <ListViewHeader
           title="test title"
           extraLinks={[
             {
@@ -70,7 +73,7 @@ describe('<ListViewMeta>', () => {
     });
     it('renders correctly with title and  commercialLinks prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListViewMeta
+        <ListViewHeader
           title="test title"
           commercialLinks={[
             {
@@ -97,7 +100,7 @@ describe('<ListViewMeta>', () => {
     });
     it('renders correctly with title, extraLinks and  commercialLink prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListViewMeta
+        <ListViewHeader
           title="test title"
           extraLinks={[
             {
@@ -163,7 +166,7 @@ describe('<ListViewMeta>', () => {
 
     it('renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListViewMeta
+        <ListViewHeader
           title="test title"
           extraLinks={[
             {
@@ -234,7 +237,7 @@ describe('<ListViewMeta>', () => {
     });
     it('renders correctly with title, extraLinks and marketingTeaser prop', () => {
       const { component, styles, } = felaSnapshotter(
-        <ListViewMeta
+        <ListViewHeader
           title="test title"
           extraLinks={[
             {

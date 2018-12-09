@@ -1,0 +1,567 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListViewHeader> DOM element renders correctly with minimal required props 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  />
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with minimal required props 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with miscStyles prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  />
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with miscStyles prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:red}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title and  commercialLinks prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  >
+    <h2
+      className="htz-s htz-t htz-u htz-v htz-w htz-x"
+    >
+      test title
+    </h2>
+    <div
+      className="htz-y htz-z"
+    >
+      <ul>
+        <li>
+          <a
+            className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+            href="https://www.haaretz.co.il/1.1111111111"
+            onClick={null}
+          >
+            הצגות ילדים בחסות תיאטרון אורנה פורת
+          </a>
+        </li>
+        <li>
+          <a
+            className="htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+            href="https://www.haaretz.co.il/1.1111111111"
+            onClick={null}
+          >
+            sdgsdgsdgsdgאטרון אורנה פורת
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title and  commercialLinks prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}.htz-s{color:#0B7EB5}.htz-t{font-weight:700}.htz-y{margin-top:auto}.htz-ab{border-bottom-color:#0B7EB5}.htz-ac{border-bottom-width:1px}.htz-ae{border-bottom-style:solid}.htz-af{transition-property:all}.htz-ag{transition-duration:.25s}.htz-ah{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-am:visited{color:#2D2D2D}.htz-an:hover{color:#0B7EB5}.htz-ao:hover{border-bottom-color:transparent}.htz-ap:focus{color:#0B7EB5}.htz-aq:focus{border-bottom-color:#0B7EB5}.htz-ar:active{color:#0B7EB5}.htz-as:active{border-bottom-color:#0B7EB5}.htz-at{-webkit-transition-property:all}.htz-au{-moz-transition-property:all}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}.htz-z{display:none}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}}@media (max-width: 79.9375em){.htz-u{font-size:3.5rem}.htz-v{line-height:1.4285714285714286em}.htz-ai{font-size:2.3333333333333335rem}.htz-aj{line-height:3.5rem}}@media (min-width: 80em){.htz-w{font-size:3.4285714285714284rem}.htz-x{line-height:1.1666666666666667em}.htz-ak{font-size:2.2857142857142856rem}.htz-al{line-height:3.5rem}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title and  extra links prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  >
+    <h2
+      className="htz-s htz-t htz-u htz-v htz-w htz-x"
+    >
+      test title
+    </h2>
+    <ul
+      className="htz-y htz-z htz-ab"
+    >
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.7666"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.2490"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.470"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="1.628"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.8286"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+      </li>
+    </ul>
+  </header>
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title and  extra links prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}.htz-s{color:#0B7EB5}.htz-t{font-weight:700}.htz-y{margin-top:1rem}.htz-ac{color:#787878}.htz-aj{display:inline-block}.htz-ak{margin-right:1rem}.htz-al{margin-left:1rem}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}.htz-ab{margin-right:auto}.htz-ai{display:inline-block}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}.htz-am{display:none}}@media (max-width: 79.9375em){.htz-u{font-size:3.5rem}.htz-v{line-height:1.4285714285714286em}.htz-ae{font-size:2.3333333333333335rem}.htz-af{line-height:4rem}}@media (min-width: 80em){.htz-w{font-size:3.4285714285714284rem}.htz-x{line-height:1.1666666666666667em}.htz-ag{font-size:2.2857142857142856rem}.htz-ah{line-height:4rem}}@media (max-width: 47.9375em){.htz-z{display:none}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  >
+    <h2
+      className="htz-s htz-t htz-u htz-v htz-w htz-x"
+    >
+      test title
+    </h2>
+  </header>
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}.htz-s{color:#0B7EB5}.htz-t{font-weight:700}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}}@media (max-width: 79.9375em){.htz-u{font-size:3.5rem}.htz-v{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-w{font-size:3.4285714285714284rem}.htz-x{line-height:1.1666666666666667em}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  >
+    <h2
+      className="htz-s htz-t htz-u htz-v htz-w htz-x"
+    >
+      test title
+    </h2>
+    <ul
+      className="htz-y htz-z htz-ab"
+    >
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.7666"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.2490"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.470"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="1.628"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.8286"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+      </li>
+    </ul>
+    <div
+      className="htz-an htz-ao"
+    >
+      <ul>
+        <li>
+          <a
+            className="htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-ae htz-av htz-ag htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+            href="https://www.haaretz.co.il/1.1111111111"
+            onClick={null}
+          >
+            הצגות ילדים בחסות תיאטרון אורנה פורת
+          </a>
+        </li>
+        <li>
+          <a
+            className="htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-ae htz-av htz-ag htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+            href="https://www.haaretz.co.il/1.1111111111"
+            onClick={null}
+          >
+            sdgsdgsdgsdgאטרון אורנה פורת
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}.htz-s{color:#0B7EB5}.htz-t{font-weight:700}.htz-y{margin-top:1rem}.htz-ac{color:#787878}.htz-aj{display:inline-block}.htz-ak{margin-right:1rem}.htz-al{margin-left:1rem}.htz-an{margin-top:auto}.htz-ap{border-bottom-color:#0B7EB5}.htz-aq{border-bottom-width:1px}.htz-ar{border-bottom-style:solid}.htz-as{transition-property:all}.htz-at{transition-duration:.25s}.htz-au{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ax:visited{color:#2D2D2D}.htz-ay:hover{color:#0B7EB5}.htz-az:hover{border-bottom-color:transparent}.htz-ba:focus{color:#0B7EB5}.htz-bb:focus{border-bottom-color:#0B7EB5}.htz-bc:active{color:#0B7EB5}.htz-bd:active{border-bottom-color:#0B7EB5}.htz-be{-webkit-transition-property:all}.htz-bf{-moz-transition-property:all}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}.htz-ab{margin-right:auto}.htz-ai{display:inline-block}.htz-ao{display:none}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}.htz-am{display:none}}@media (max-width: 79.9375em){.htz-u{font-size:3.5rem}.htz-v{line-height:1.4285714285714286em}.htz-ae{font-size:2.3333333333333335rem}.htz-af{line-height:4rem}.htz-av{line-height:3.5rem}}@media (min-width: 80em){.htz-w{font-size:3.4285714285714284rem}.htz-x{line-height:1.1666666666666667em}.htz-ag{font-size:2.2857142857142856rem}.htz-ah{line-height:4rem}.htz-aw{line-height:3.5rem}}@media (max-width: 47.9375em){.htz-z{display:none}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and marketingTeaser prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  >
+    <h2
+      className="htz-s htz-t htz-u htz-v htz-w htz-x"
+    >
+      test title
+    </h2>
+    <ul
+      className="htz-y htz-z htz-ab"
+    >
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.7666"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.2490"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.470"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="1.628"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.8286"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+      </li>
+    </ul>
+    <div
+      className="htz-an htz-ao"
+    >
+      <section>
+        <svg
+          className="htz-ap htz-aq htz-ar htz-as"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+            
+          <path
+            d="M128 8.5a119.5 119.5 0 1 0 0 239 119.5 119.5 0 0 0 0-239zm69.3 182.1c-.3 0-.5.2-.5.5L90.2 112.6a21.1 21.1 0 0 0-7.9 15.4c-.9 6.8-.7 14.1.7 21.7 1.4 7.7 5.7 11.5 12.9 11.5h19.2c-1 12.4.7 23.4 5.1 32.7h-51c-.7-.6-.8-1.4-.5-2.3a171.7 171.7 0 0 0 6.5-36.9c.3-6-.2-11.6-1.4-17.1a75.1 75.1 0 0 1-1.9-17.5c0-5.6.3-9.7.9-12.4.7-2.7 1.3-7.3 1.9-13.8A53.4 53.4 0 0 0 69.5 64c0-.3.2-.5.5-.5h8.4c6.2 5 15.5 12.1 28 21.3l33.7 25a9 9 0 0 0 3.5-3.7c1.1-1.9 2.3-4.7 3.5-8.4 1.2-4.7 1.2-8.6 0-11.7a23.8 23.8 0 0 1-1.9-9.3c-.3-3.1-.3-5.7.2-7.7s.7-3.8.7-5.4h43.5c-5.6 9-5.4 21.3.5 36.9h-30.9c-2.2 0-4.2.9-6.1 2.8a14.4 14.4 0 0 0-3.7 7c-.3 1.8-.1 3.8.7 5.8.8 2.1 1.7 3.4 2.6 4 8.1 5.7 15 10.6 20.6 15a268 268 0 0 0 17.8 12.6c-.9 4.7-1.4 8.2-1.6 10.5a56.2 56.2 0 0 0 3.6 21.1 86.5 86.5 0 0 0 4.2 11.3z"
+            fill="currentColor"
+          />
+        </svg>
+        <h2
+          className="htz-aq"
+        >
+          כל התכנים בכל מכשיר
+        </h2>
+        <div
+          className="htz-aq htz-ae htz-at htz-ag htz-au"
+        >
+          הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון
+        </div>
+        <a
+          className="htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-ae htz-at htz-ag htz-au htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+          href="https://www.haaretz.co.il/1.2222222222"
+          id={null}
+          onClick={null}
+        >
+          <span
+            className="htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di"
+          >
+            לרכישה
+          </span>
+          <span
+            className="htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv"
+          />
+        </a>
+      </section>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and marketingTeaser prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}.htz-s{color:#0B7EB5}.htz-t{font-weight:700}.htz-y{margin-top:1rem}.htz-ac{color:#787878}.htz-aj{display:inline-block}.htz-ak{margin-right:1rem}.htz-al{margin-left:1rem}.htz-an{margin-top:auto}.htz-ap{vertical-align:-0.15em}.htz-aq{color:#00537A}.htz-ar{fill:#FFF}.htz-as{font-size:3rem}.htz-av{align-items:center}.htz-aw{-webkit-appearance:none}.htz-ax{-moz-appearance:none}.htz-ay{appearance:none}.htz-az{cursor:pointer}.htz-ba{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bb{font-weight:bold}.htz-bc{font-size:inherit}.htz-bd{justify-content:center}.htz-be{position:relative}.htz-bf{transform:scale(1)}.htz-bg{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bh{text-decoration:none}.htz-bi{white-space:nowrap}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl{border-bottom-width:1px}.htz-bm{border-bottom-style:solid}.htz-bn{padding-bottom:calc(0.5rem - 1px)}.htz-bo{border-top-width:1px}.htz-bp{border-top-style:solid}.htz-bq{padding-top:calc(0.5rem - 1px)}.htz-br{border-right-width:1px}.htz-bs{border-right-style:solid}.htz-bt{padding-right:4rem}.htz-bu{border-left-width:1px}.htz-bv{border-left-style:solid}.htz-bw{padding-left:4rem}.htz-bx{border-radius:0}.htz-by{background-color:#FFA500}.htz-bz{border-color:transparent}.htz-ca{color:#2D2D2D}.htz-cb{margin-top:2rem}.htz-cc:visited{color:#2D2D2D}.htz-cd:hover{text-decoration:none}.htz-ce:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cf:hover{background-color:#ED8600}.htz-cg:hover{border-color:transparent}.htz-ch:hover{color:#2D2D2D}.htz-ci:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{outline:none}.htz-cl:focus{text-decoration:none}.htz-cm:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:focus{background-color:#ED8600}.htz-co:focus{border-color:transparent}.htz-cp:focus{color:#2D2D2D}.htz-cq:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:active{outline:none}.htz-ct:active{text-decoration:none}.htz-cu:active{transition-duration:0s}.htz-cv:active{background-color:#FA9600}.htz-cw:active{border-color:transparent}.htz-cx:active{color:#2D2D2D}.htz-cy{-webkit-box-align:center}.htz-cz{-webkit-box-pack:center}.htz-da{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-db{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dc{opacity:1}.htz-dd{transition-property:opacity}.htz-de{transition-duration:0.16666666666666666s}.htz-df{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dg{transition-delay:.3s}.htz-dh{-webkit-transition-property:opacity}.htz-di{-moz-transition-property:opacity}.htz-dj{background-color:rgba(200,200,200, 0.3)}.htz-dk{height:100%}.htz-dl{right:0}.htz-dm{position:absolute}.htz-dn{top:0}.htz-do{transform:scaleX(0)}.htz-dp{transform-origin:right}.htz-dq{width:100%}.htz-dr{animation-direction:alternate}.htz-ds{animation-iteration-count:infinite}.htz-dt{animation-duration:1s}.htz-du{animation-delay:0.75s}.htz-dv{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}.htz-ab{margin-right:auto}.htz-ai{display:inline-block}.htz-ao{display:none}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}.htz-am{display:none}}@media (max-width: 79.9375em){.htz-u{font-size:3.5rem}.htz-v{line-height:1.4285714285714286em}.htz-ae{font-size:2.3333333333333335rem}.htz-af{line-height:4rem}.htz-at{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-w{font-size:3.4285714285714284rem}.htz-x{line-height:1.1666666666666667em}.htz-ag{font-size:2.2857142857142856rem}.htz-ah{line-height:4rem}.htz-au{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-z{display:none}}"`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop 1`] = `
+<div>
+  <header
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r"
+  >
+    <h2
+      className="htz-s htz-t htz-u htz-v htz-w htz-x"
+    >
+      test title
+    </h2>
+    <ul
+      className="htz-y htz-z htz-ab"
+    >
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.7666"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.2490"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.470"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="1.628"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+        <span
+          className="htz-aj htz-ak htz-al htz-am"
+        >
+          |
+        </span>
+      </li>
+      <li
+        className="htz-ac htz-t htz-ae htz-af htz-ag htz-ah htz-ai"
+      >
+        <a
+          className={null}
+          href="2.8286"
+          onClick={null}
+        >
+          קצרי רוח
+        </a>
+      </li>
+    </ul>
+    <div
+      className="htz-an htz-ao"
+    >
+      <section>
+        <svg
+          className="htz-ap htz-aq htz-ar htz-as"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+            
+          <path
+            d="M128 8.5a119.5 119.5 0 1 0 0 239 119.5 119.5 0 0 0 0-239zm69.3 182.1c-.3 0-.5.2-.5.5L90.2 112.6a21.1 21.1 0 0 0-7.9 15.4c-.9 6.8-.7 14.1.7 21.7 1.4 7.7 5.7 11.5 12.9 11.5h19.2c-1 12.4.7 23.4 5.1 32.7h-51c-.7-.6-.8-1.4-.5-2.3a171.7 171.7 0 0 0 6.5-36.9c.3-6-.2-11.6-1.4-17.1a75.1 75.1 0 0 1-1.9-17.5c0-5.6.3-9.7.9-12.4.7-2.7 1.3-7.3 1.9-13.8A53.4 53.4 0 0 0 69.5 64c0-.3.2-.5.5-.5h8.4c6.2 5 15.5 12.1 28 21.3l33.7 25a9 9 0 0 0 3.5-3.7c1.1-1.9 2.3-4.7 3.5-8.4 1.2-4.7 1.2-8.6 0-11.7a23.8 23.8 0 0 1-1.9-9.3c-.3-3.1-.3-5.7.2-7.7s.7-3.8.7-5.4h43.5c-5.6 9-5.4 21.3.5 36.9h-30.9c-2.2 0-4.2.9-6.1 2.8a14.4 14.4 0 0 0-3.7 7c-.3 1.8-.1 3.8.7 5.8.8 2.1 1.7 3.4 2.6 4 8.1 5.7 15 10.6 20.6 15a268 268 0 0 0 17.8 12.6c-.9 4.7-1.4 8.2-1.6 10.5a56.2 56.2 0 0 0 3.6 21.1 86.5 86.5 0 0 0 4.2 11.3z"
+            fill="currentColor"
+          />
+        </svg>
+        <h2
+          className="htz-aq"
+        >
+          כל התכנים בכל מכשיר
+        </h2>
+        <div
+          className="htz-aq htz-ae htz-at htz-ag htz-au"
+        >
+          הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון
+        </div>
+        <a
+          className="htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-ae htz-at htz-ag htz-au htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db"
+          href="https://www.haaretz.co.il/1.2222222222"
+          id={null}
+          onClick={null}
+        >
+          <span
+            className="htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di"
+          >
+            לרכישה
+          </span>
+          <span
+            className="htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv"
+          />
+        </a>
+      </section>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{justify-content:flex-start}.htz-d{background-color:#EBF2F5}.htz-p{-webkit-box-orient:horizontal}.htz-q{-webkit-box-direction:normal}.htz-r{-webkit-box-pack:right}.htz-s{color:#0B7EB5}.htz-t{font-weight:700}.htz-y{margin-top:1rem}.htz-ac{color:#787878}.htz-aj{display:inline-block}.htz-ak{margin-right:1rem}.htz-al{margin-left:1rem}.htz-an{margin-top:auto}.htz-ap{vertical-align:-0.15em}.htz-aq{color:#00537A}.htz-ar{fill:#FFF}.htz-as{font-size:3rem}.htz-av{align-items:center}.htz-aw{-webkit-appearance:none}.htz-ax{-moz-appearance:none}.htz-ay{appearance:none}.htz-az{cursor:pointer}.htz-ba{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bb{font-weight:bold}.htz-bc{font-size:inherit}.htz-bd{justify-content:center}.htz-be{position:relative}.htz-bf{transform:scale(1)}.htz-bg{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-bh{text-decoration:none}.htz-bi{white-space:nowrap}.htz-bj::moz-focus-inner{border:0}.htz-bk::moz-focus-inner{padding:0}.htz-bl{border-bottom-width:1px}.htz-bm{border-bottom-style:solid}.htz-bn{padding-bottom:calc(0.5rem - 1px)}.htz-bo{border-top-width:1px}.htz-bp{border-top-style:solid}.htz-bq{padding-top:calc(0.5rem - 1px)}.htz-br{border-right-width:1px}.htz-bs{border-right-style:solid}.htz-bt{padding-right:4rem}.htz-bu{border-left-width:1px}.htz-bv{border-left-style:solid}.htz-bw{padding-left:4rem}.htz-bx{border-radius:0}.htz-by{background-color:#FFA500}.htz-bz{border-color:transparent}.htz-ca{color:#2D2D2D}.htz-cb{margin-top:2rem}.htz-cc:visited{color:#2D2D2D}.htz-cd:hover{text-decoration:none}.htz-ce:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cf:hover{background-color:#ED8600}.htz-cg:hover{border-color:transparent}.htz-ch:hover{color:#2D2D2D}.htz-ci:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:focus{outline:none}.htz-cl:focus{text-decoration:none}.htz-cm:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:focus{background-color:#ED8600}.htz-co:focus{border-color:transparent}.htz-cp:focus{color:#2D2D2D}.htz-cq:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:active{outline:none}.htz-ct:active{text-decoration:none}.htz-cu:active{transition-duration:0s}.htz-cv:active{background-color:#FA9600}.htz-cw:active{border-color:transparent}.htz-cx:active{color:#2D2D2D}.htz-cy{-webkit-box-align:center}.htz-cz{-webkit-box-pack:center}.htz-da{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-db{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dc{opacity:1}.htz-dd{transition-property:opacity}.htz-de{transition-duration:0.16666666666666666s}.htz-df{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dg{transition-delay:.3s}.htz-dh{-webkit-transition-property:opacity}.htz-di{-moz-transition-property:opacity}.htz-dj{background-color:rgba(200,200,200, 0.3)}.htz-dk{height:100%}.htz-dl{right:0}.htz-dm{position:absolute}.htz-dn{top:0}.htz-do{transform:scaleX(0)}.htz-dp{transform-origin:right}.htz-dq{width:100%}.htz-dr{animation-direction:alternate}.htz-ds{animation-iteration-count:infinite}.htz-dt{animation-duration:1s}.htz-du{animation-delay:0.75s}.htz-dv{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}@media (max-width: 63.9375em){.htz-e{border-top-width:2px}.htz-f{border-top-style:solid}.htz-g{border-top-color:#0B7EB5}.htz-h{padding-top:calc(1rem - 2px)}.htz-ab{margin-right:auto}.htz-ai{display:inline-block}.htz-ao{display:none}}@media (min-width: 64em){.htz-i{border-top-width:5px}.htz-j{border-top-style:solid}.htz-k{border-top-color:#0B7EB5}.htz-l{padding-top:calc(1rem - 5px)}.htz-m{flex-direction:column}.htz-n{-webkit-box-orient:vertical}.htz-o{-webkit-box-direction:normal}.htz-am{display:none}}@media (max-width: 79.9375em){.htz-u{font-size:3.5rem}.htz-v{line-height:1.4285714285714286em}.htz-ae{font-size:2.3333333333333335rem}.htz-af{line-height:4rem}.htz-at{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-w{font-size:3.4285714285714284rem}.htz-x{line-height:1.1666666666666667em}.htz-ag{font-size:2.2857142857142856rem}.htz-ah{line-height:4rem}.htz-au{line-height:1.3125em}}@media (max-width: 47.9375em){.htz-z{display:none}}"`;
