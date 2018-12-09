@@ -296,7 +296,7 @@ structure:
 
 ### **Custom Styling**
 
-Miscellaneous CSS can be applied to a button using the `miscStyles` prop.
+Miscellaneous CSS can be applied to a Card using the `miscStyles` prop.
 
 ```jsx static
 <Card miscStyles={{ textAlign: 'center' }} />
@@ -351,7 +351,7 @@ Additional attributes can be set on the DOM element using the `attrs` prop
 ```jsx static
 <Card
   attrs={{
-    'aria-label': 'A button with custom attributes',
+    'aria-label': 'A card with custom attributes',
     'aria-describedby': 'someDomElement',
   }}
 />
