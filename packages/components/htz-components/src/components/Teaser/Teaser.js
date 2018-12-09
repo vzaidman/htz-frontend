@@ -17,6 +17,14 @@ type TeaserPropTypes = {
   data: TeaserDataType,
   children?: React.Node,
   /**
+   * pass an `onClick` event to the blockLink.
+   * Useful for bi actions and events
+   *
+   * Should also be passed to underlying links, e.g.,
+   * around the title and image
+   */
+  onClick: ?(evt: SyntheticMouseEvent<HTMLElement>) => void,
+  /**
    * attributes to be passed to the DOM element
    */
   attrs: ?attrFlowType,
@@ -64,6 +72,7 @@ type TeaserPropTypes = {
 
 Teaser.defaultProps = {
   children: null,
+  onClick: null,
   attrs: null,
   backgroundColor: null,
   isElevated: false,
@@ -75,6 +84,9 @@ Teaser.defaultProps = {
 export default function Teaser({
   children,
   data,
+
+  // BlockLink props
+  onClick,
 
   // Card props
   attrs,
@@ -93,7 +105,7 @@ export default function Teaser({
         fillHeight
         {...{ miscStyles, backgroundColor, isElevated, attrs, }}
       >
-        <BlockLink href={data.path}>
+        <BlockLink href={data.path} onClick={onClick}>
           <Grid gutter={gutter} {...(isRev ? { isRev, } : {})}>
             {children}
           </Grid>
