@@ -7,11 +7,6 @@ import setColor from '../../utils/setColor';
 import IconComment from '../Icon/icons/IconComment';
 
 type Props = {
-  /**
-   * Can be a the fontSize number in rem's, or a responsive array of values
-   * parsed by parseComponentProp
-   */
-  size: ?number | ComponentPropResponsiveObject<number>[],
   /* pass comments count from polopoly if exists */
   commentsCount?: ?number,
   /* icon and text color */
@@ -31,7 +26,6 @@ type Props = {
 };
 
 CommentsCount.defaultProps = {
-  size: 2,
   commentsCount: null,
   color: [ 'primary', ],
   miscStyles: null,
@@ -48,27 +42,19 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
   ],
 });
 
-const commentCountTextStyle = ({ size, color, theme, textMiscStyles, }) => ({
+const commentCountTextStyle = ({ color, theme, textMiscStyles, }) => ({
   fontWeight: 'bold',
   paddingInlineEnd: '0.5rem',
   extend: [
     color
       ? parseComponentProp('color', color, theme.mq, setColor, theme.color)
       : { color: 'inherit', },
-    parseComponentProp('size', size, theme.mq, setSize),
     // Trump all other styles with those defined in `textMiscStyles`
     ...(textMiscStyles ? parseStyleProps(textMiscStyles, theme.mq, theme.type) : []),
   ],
 });
 
-function setSize(size, value) {
-  return {
-    fontSize: `${value * 0.8455}rem`,
-  };
-}
-
 function CommentsCount({
-  size,
   color,
   commentsCount,
   miscStyles,
@@ -84,13 +70,12 @@ function CommentsCount({
           {commentsCount ? (
             <FelaComponent
               color={color}
-              size={size}
               textMiscStyles={textMiscStyles}
               rule={commentCountTextStyle}
               render={({ theme, className, }) => <div className={className}>{commentsCount}</div>}
             />
           ) : null}
-          <IconComment color={color} size={size} miscStyles={iconMiscStyles} />
+          <IconComment color={color} miscStyles={iconMiscStyles} />
         </span>
       )}
     />
