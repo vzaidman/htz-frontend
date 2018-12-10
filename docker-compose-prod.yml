@@ -39,9 +39,9 @@ services:
       - GRAPHQL_SUB_DOMAIN=graphql-pp2p
 
     networks:
-      - development 
+      - dev03 
 
 networks:
-  development:
+  dev03:
     external: true
 
