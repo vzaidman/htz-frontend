@@ -31,7 +31,7 @@ exports[`<GridItem /> styles apply correct default rule styles 1`] = `
 exports[`<GridItem /> styles apply correct default rule styles 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -52,7 +52,7 @@ exports[`<GridItem /> styles apply correct gutter styles 1`] = `
 exports[`<GridItem /> styles apply correct gutter styles 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -73,7 +73,7 @@ exports[`<GridItem /> styles apply correct offset styles 1`] = `
 exports[`<GridItem /> styles apply correct offset styles 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -95,7 +95,7 @@ exports[`<GridItem /> styles apply correct rule styles when rule color is a stri
 exports[`<GridItem /> styles apply correct rule styles when rule color is a string 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -116,7 +116,7 @@ exports[`<GridItem /> styles apply correct rule styles when ruleWidth is even 1`
 exports[`<GridItem /> styles apply correct rule styles when ruleWidth is even 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -137,7 +137,7 @@ exports[`<GridItem /> styles apply correct rule styles when ruleWidth is odd 1`]
 exports[`<GridItem /> styles apply correct rule styles when ruleWidth is odd 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -200,7 +200,7 @@ exports[`<GridItem /> styles create correct default styels 1`] = `
 exports[`<GridItem /> styles create correct default styels 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}
@@ -221,7 +221,7 @@ exports[`<GridItem /> styles set misc styles correctly 1`] = `
 exports[`<GridItem /> styles set misc styles correctly 2`] = `
 "
 .htz-a{box-sizing:border-box}
-.htz-b{flex-basis:auto}
+.htz-b{flex-basis:0}
 .htz-c{flex-grow:1}
 .htz-d{flex-shrink:1}
 .htz-e{list-style:none}

@@ -157,7 +157,8 @@ const gridItemStyles = ({
   // Include gutter width (padding) in total width calculation
   boxSizing: 'border-box',
   // Allow `<GridItem>`s without a set width to auto-fill the row they are in
-  flexBasis: 'auto',
+  // eslint-disable-next-line eqeqeq
+  flexBasis: width == null ? 0 : 'auto',
   flexGrow: 1,
   flexShrink: 1,
   listStyle: 'none',

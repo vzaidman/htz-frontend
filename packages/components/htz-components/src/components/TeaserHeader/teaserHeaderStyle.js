@@ -15,6 +15,7 @@ import type {
 import setColor from '../../utils/setColor';
 
 type StyleTypes = {
+  isBlock: boolean,
   /**
    * The font-size and line height of the headline
    * Can be:
@@ -72,13 +73,14 @@ type StyleTypes = {
 };
 
 export default function style({
+  isBlock,
   typeScale,
   color,
   theme,
   miscStyles,
 }: StyleTypes): Object {
   return {
-    display: 'inline',
+    display: isBlock ? 'block' : 'inline',
     fontWeight: '700',
     extend: [
       // Set background-color
@@ -89,11 +91,9 @@ export default function style({
       ],
 
       // Set font-size and line-height
-      ...[
-        typeScale ? parseTypographyProp(typeScale, theme.type) : {},
+      ...[ typeScale ? parseTypographyProp(typeScale, theme.type) : {}, ],
         // Trump all other styles with those defined in `miscStyles`
         ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
       ],
-    ],
   };
 }

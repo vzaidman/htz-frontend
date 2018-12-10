@@ -20,6 +20,10 @@ import type {
 
 type TeaserContentType = {
   data: TeaserDataType,
+  /**
+   * Should not be passed manually. Handled by the parent `<Grid>` component
+   */
+  gutter: number,
   gridItemMiscStyles: ?StyleProps,
   // main content block props
   attrs: ?attrFlowType,
@@ -61,6 +65,7 @@ type TeaserContentType = {
 };
 
 TeaserContent.defaultProps = {
+  gutter: 0,
   gridItemMiscStyles: null,
   attrs: null,
   backgroundColor: null,
@@ -81,6 +86,7 @@ TeaserContent.defaultProps = {
 
 export default function TeaserContent({
   data,
+  gutter,
   gridItemMiscStyles,
   // main content block props
   attrs,
@@ -102,7 +108,7 @@ export default function TeaserContent({
 }: TeaserContentType): React.Node {
   return (
     (renderContent || renderFooter) && (
-      <GridItem width={width} stretchContent miscStyle={gridItemMiscStyles}>
+      <GridItem width={width} gutter={gutter} stretchContent miscStyle={gridItemMiscStyles}>
         <CardContent
           {...{ attrs, backgroundColor, color, padding, miscStyles, }}
         >
@@ -117,7 +123,11 @@ export default function TeaserContent({
             color={footerColor}
             padding={footerPadding}
             seperator={footerSeperator}
-            miscStyles={footerMiscStyles}
+            miscStyles={{
+              position: 'absolute',
+              bottom: '0',
+              ...(footerMiscStyles || {}),
+            }}
           >
             {renderFooter(data)}
           </CardFooter>

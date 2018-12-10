@@ -82,14 +82,6 @@ export default function ListView({
   outerBackgroundColor,
   miscStyles,
 }: ListViewPropTypes): React.Node {
-  const hasMarginTop = marginTop != null;
-  const mergedMiscStyles = miscStyles || hasMarginTop
-    ? {
-      ...(marginTop ? { marginTop, } : {}),
-      ...(miscStyles || {}),
-    }
-    : null;
-
   return (
     <ListViewWrapper
       {...{
@@ -97,8 +89,9 @@ export default function ListView({
         disableWrapper,
         innerBackgroundColor,
         outerBackgroundColor,
+        marginTop,
       }}
-      miscStyles={mergedMiscStyles}
+      miscStyles={miscStyles}
     >
       <Grid gutter={gutter}>{children}</Grid>
     </ListViewWrapper>
@@ -120,8 +113,8 @@ function ListViewWrapper({
     <Section {...attrs}>{children}</Section>
   ) : (
     <Section isFragment>
-      <LayoutRow attrs={attrs} tagName="section" bgc={outerBackgroundColor}>
-        <LayoutContainer bgc={innerBackgroundColor}>{children}</LayoutContainer>
+      <LayoutRow attrs={attrs} tagName="section" namedBgc={outerBackgroundColor} miscStyles={{ marginTop, }}>
+        <LayoutContainer namedBgc={innerBackgroundColor} miscStyles={miscStyles}>{children}</LayoutContainer>
       </LayoutRow>
     </Section>
   );
