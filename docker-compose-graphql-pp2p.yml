@@ -10,9 +10,9 @@ services:
     ports:
       - 3204:3204
     deploy:
-            replicas: 5
+            replicas: 2
             update_config:
-              parallelism: 5
+              parallelism: 2
               delay: 30s
               order: start-first
             restart_policy:
