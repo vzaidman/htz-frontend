@@ -12,7 +12,7 @@
 **example with props (commentsCount text included)**
 ```jsx
 <div dir="rtl" style={{ maxWidth: "10rem" }}>
-  <CommentsCount size={2} commentsCount={32} iconColor={["primary", "-1"]} />
+  <CommentsCount size={2} commentsCount={32} color={["primary", "-1"]} />
 </div>
 ```
 
@@ -22,7 +22,7 @@
   <CommentsCount 
     size={3}
     commentsCount={12}
-    iconColor={["quaternary", "+3"]}
+    color={["quaternary", "+3"]}
     miscStyles={{ display: 'block', marginInlineEnd: '5rem', }} 
     textMiscStyles={{ paddingInlineStart: '0.2rem'}}
    />
