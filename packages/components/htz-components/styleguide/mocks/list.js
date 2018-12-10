@@ -4,8 +4,8 @@ import FryMock from './listMocks/FryMock';
 import ZoidbergMock from './listMocks/ZoidbergMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
 
-export default viewName => {
-  switch (viewName) {
+export default (root, { listId, }) => {
+  switch (listId) {
     case 'Bender':
       return BenderMock;
     case 'Farnsworth':
