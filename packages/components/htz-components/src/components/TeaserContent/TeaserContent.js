@@ -108,7 +108,7 @@ export default function TeaserContent({
 }: TeaserContentType): React.Node {
   return (
     (renderContent || renderFooter) && (
-      <GridItem width={width} gutter={gutter} stretchContent miscStyle={gridItemMiscStyles}>
+      <GridItem width={width} gutter={gutter} stretchContent miscStyles={gridItemMiscStyles}>
         <CardContent
           {...{ attrs, backgroundColor, color, padding, miscStyles, }}
         >
