@@ -31,7 +31,7 @@ exports[`<Grid /> passthrough gutter value to children correctly pass gutter val
 </div>
 `;
 
-exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-4rem}.htz-f{margin-left:-4rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:auto}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:4rem}.htz-s{padding-right:4rem}.htz-t{-webkit-box-flex:1}"`;
+exports[`<Grid /> passthrough gutter value to children correctly pass gutter value 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-4rem}.htz-f{margin-left:-4rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:0}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:4rem}.htz-s{padding-right:4rem}.htz-t{-webkit-box-flex:1}"`;
 
 exports[`<Grid /> render children correctly 1`] = `
 <div>
@@ -55,7 +55,7 @@ exports[`<Grid /> render children correctly 1`] = `
 </div>
 `;
 
-exports[`<Grid /> render children correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:auto}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:2rem}.htz-s{padding-right:2rem}.htz-t{-webkit-box-flex:1}"`;
+exports[`<Grid /> render children correctly 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-wrap:wrap}.htz-c{list-style:none}.htz-d{justify-content:flex-start}.htz-e{margin-right:-2rem}.htz-f{margin-left:-2rem}.htz-g{flex-direction:row}.htz-h{align-items:stretch}.htz-i{-webkit-box-lines:multiple}.htz-j{-webkit-box-pack:right}.htz-k{-webkit-box-orient:horizontal}.htz-l{-webkit-box-direction:normal}.htz-m{-webkit-box-align:stretch}.htz-n{box-sizing:border-box}.htz-o{flex-basis:0}.htz-p{flex-grow:1}.htz-q{flex-shrink:1}.htz-r{padding-left:2rem}.htz-s{padding-right:2rem}.htz-t{-webkit-box-flex:1}"`;
 
 exports[`<Grid /> spread the "attrs" prop on the Dom element 1`] = `
 <div>

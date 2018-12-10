@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
-
+import { parseTypographyProp, } from '@haaretz/htz-css-tools';
 import type {
   ComponentPropResponsiveObject,
   StyleProps,
@@ -17,6 +17,7 @@ import Kicker from '../ArticleHeader/Kicker';
 import TeaserResponsiveText from '../TeaserResponsiveText/TeaserResponsiveText';
 
 import style from './teaserHeaderStyle';
+
 
 type TeaserHeaderProps = {
   /**
@@ -155,40 +156,52 @@ export default function TeaserHeader({
   kickerTypeScale,
 }: TeaserHeaderProps): React.Node {
   return (
-    <AboveBlockLink>
-      {({ className: AboveBlockLinkClassname, }) => (
-        <div className={AboveBlockLinkClassname}>
-          <HtzLink href={path}>
-            {(exclusive || exclusiveMobile) && (
-              <Kicker
-                {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
-                {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
-              >
-                <TeaserResponsiveText
-                  text={exclusive}
-                  mobileText={exclusiveMobile}
+    <FelaComponent
+      rule={({theme}) => ({
+        extend: [
+          // Set font-size and line-height
+          ...[ typeScale ? parseTypographyProp(typeScale, theme.type) : {}, ],
+        ]
+      })}
+
+      render={({ className: wrapperClassName}) => (
+        <AboveBlockLink>
+          {({ className: AboveBlockLinkClassName, }) => (
+            <div className={`${AboveBlockLinkClassName} ${wrapperClassName}`}>
+              <HtzLink href={path}>
+                {(exclusive || exclusiveMobile) && (
+                  <Kicker
+                    {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
+                    {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
+                  >
+                    <TeaserResponsiveText
+                      text={exclusive}
+                      mobileText={exclusiveMobile}
+                    />
+                  </Kicker>
+                )}
+                <FelaComponent
+                  isBlock={kickerIsBlock}
+                  color={color}
+                  typeScale={typeScale}
+                  miscStyles={miscStyles}
+                  rule={style}
+                  render={({ className, }) => (
+                    <H
+                      className={className}
+                      isH1={isH1}
+                      offset={offset}
+                      {...attrs || {}}
+                    >
+                      <TeaserResponsiveText text={title} mobileText={titleMobile} />
+                    </H>
+                  )}
                 />
-              </Kicker>
-            )}
-            <FelaComponent
-              color={color}
-              typeScale={typeScale}
-              miscStyles={miscStyles}
-              rule={style}
-              render={({ className, }) => (
-                <H
-                  className={className}
-                  isH1={isH1}
-                  offset={offset}
-                  {...attrs || {}}
-                >
-                  <TeaserResponsiveText text={title} mobileText={titleMobile} />
-                </H>
-              )}
-            />
-          </HtzLink>
-        </div>
+              </HtzLink>
+            </div>
+          )}
+        </AboveBlockLink>
       )}
-    </AboveBlockLink>
+    />
   );
 }

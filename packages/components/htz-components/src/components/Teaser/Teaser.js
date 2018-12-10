@@ -61,6 +61,7 @@ type TeaserPropTypes = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: ?StyleProps,
+  gridMiscStyles: ?StyleProps,
   gutter:
     | number
     | {
@@ -79,6 +80,7 @@ Teaser.defaultProps = {
   miscStyles: null,
   gutter: 0,
   isRev: false,
+  gridMiscStyles: null,
 };
 
 export default function Teaser({
@@ -97,6 +99,7 @@ export default function Teaser({
   // Grid props
   gutter,
   isRev,
+  gridMiscStyles,
 }: TeaserPropTypes): React.Node {
   return (
     <ErrorBoundary>
@@ -105,8 +108,16 @@ export default function Teaser({
         fillHeight
         {...{ miscStyles, backgroundColor, isElevated, attrs, }}
       >
-        <BlockLink href={data.path} onClick={onClick}>
-          <Grid gutter={gutter} {...(isRev ? { isRev, } : {})}>
+        <BlockLink href={data.path} onClick={onClick} tagName="div" miscStyles={{height: '100%'}}>
+          <Grid
+            gutter={gutter}
+            miscStyles={{
+              alignContent: 'flex-start',
+              height: '100%',
+              ...(gridMiscStyles || {})
+            }}
+            {...(isRev ? { isRev, } : {})}
+          >
             {children}
           </Grid>
         </BlockLink>
