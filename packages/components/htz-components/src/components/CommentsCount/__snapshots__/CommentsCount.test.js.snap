@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CommentsCount> DOM element renders correctly with iconColor, size and commentsCount 1`] = `
+exports[`<CommentsCount> DOM element renders correctly with color, size and commentsCount 1`] = `
 <div>
   <span
     className="htz-a htz-b htz-c"
@@ -26,7 +26,7 @@ exports[`<CommentsCount> DOM element renders correctly with iconColor, size and 
 </div>
 `;
 
-exports[`<CommentsCount> DOM element renders correctly with iconColor, size and commentsCount 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{align-items:center}.htz-c{-webkit-box-align:center}.htz-d{font-weight:bold}.htz-e{padding-left:0.5rem}.htz-f{color:#289DD3}.htz-g{font-size:1.691rem}.htz-h{vertical-align:-0.15em}.htz-i{fill:#FFF}.htz-j{font-size:2rem}"`;
+exports[`<CommentsCount> DOM element renders correctly with color, size and commentsCount 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{align-items:center}.htz-c{-webkit-box-align:center}.htz-d{font-weight:bold}.htz-e{padding-left:0.5rem}.htz-f{color:#289DD3}.htz-g{font-size:1.691rem}.htz-h{vertical-align:-0.15em}.htz-i{fill:#FFF}.htz-j{font-size:2rem}"`;
 
 exports[`<CommentsCount> DOM element renders correctly with minimal required props 1`] = `
 <div>

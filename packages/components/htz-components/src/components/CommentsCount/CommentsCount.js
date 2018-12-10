@@ -1,40 +1,43 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
+import type { ComponentPropResponsiveObject, StyleProps, } from '@haaretz/htz-css-tools';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
-import { stylesPropType, } from '../../propTypes/stylesPropType';
 import setColor from '../../utils/setColor';
 import IconComment from '../Icon/icons/IconComment';
 
-CommentsCount.propTypes = {
+type Props = {
   /**
-  * Can be a the fontSize number in rem's, or a responsive array of values
-  * parsed by parseComponentProp
-  */
-  size: PropTypes.oneOfType([ PropTypes.number, PropTypes.array, ]),
-  /* pass commnets count from polopoly if exists */
-  commentsCount: PropTypes.number,
+   * Can be a the fontSize number in rem's, or a responsive array of values
+   * parsed by parseComponentProp
+   */
+  size: ?number | ComponentPropResponsiveObject<number>[],
+  /* pass comments count from polopoly if exists */
+  commentsCount?: ?number,
   /* icon and text color */
-  iconColor: PropTypes.arrayOf(PropTypes.string),
+  color:
+    | ?string
+    | [string, ]
+    | [string, string, ]
+    | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
-  miscStyles: stylesPropType,
-  iconMiscStyles: stylesPropType,
-  textMiscStyles: stylesPropType,
+  miscStyles: ?StyleProps,
+  iconMiscStyles: ?StyleProps,
+  textMiscStyles: ?StyleProps,
 };
 
 CommentsCount.defaultProps = {
   size: 2,
   commentsCount: null,
-  iconColor: [ 'primary', ],
+  color: [ 'primary', ],
   miscStyles: null,
   iconMiscStyles: null,
   textMiscStyles: null,
 };
-
 
 const wrapperStyle = ({ miscStyles, theme, }) => ({
   display: 'inline-flex',
@@ -45,12 +48,12 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
   ],
 });
 
-const commentCountTextStyle = ({ size, iconColor, theme, textMiscStyles, }) => ({
+const commentCountTextStyle = ({ size, color, theme, textMiscStyles, }) => ({
   fontWeight: 'bold',
   paddingInlineEnd: '0.5rem',
   extend: [
-    iconColor
-      ? parseComponentProp('color', iconColor, theme.mq, setColor, theme.color)
+    color
+      ? parseComponentProp('color', color, theme.mq, setColor, theme.color)
       : { color: 'inherit', },
     parseComponentProp('size', size, theme.mq, setSize),
     // Trump all other styles with those defined in `textMiscStyles`
@@ -58,35 +61,36 @@ const commentCountTextStyle = ({ size, iconColor, theme, textMiscStyles, }) => (
   ],
 });
 
-
 function setSize(size, value) {
   return {
     fontSize: `${value * 0.8455}rem`,
   };
 }
 
-function CommentsCount({ size, iconColor, commentsCount, miscStyles, iconMiscStyles, textMiscStyles, }) {
+function CommentsCount({
+  size,
+  color,
+  commentsCount,
+  miscStyles,
+  iconMiscStyles,
+  textMiscStyles,
+}: Props): React.Node {
   return (
     <FelaComponent
       miscStyles={miscStyles}
       rule={wrapperStyle}
       render={({ theme, className, }) => (
         <span className={className}>
-          { commentsCount
-            ? (
-              <FelaComponent
-                iconColor={iconColor}
-                size={size}
-                textMiscStyles={textMiscStyles}
-                rule={commentCountTextStyle}
-                render={({ theme, className, }) => (
-                  <div className={className}>
-                    {commentsCount}
-                  </div>
-                )}
-              />
-            ) : null }
-          <IconComment color={iconColor} size={size} miscStyles={iconMiscStyles} />
+          {commentsCount ? (
+            <FelaComponent
+              color={color}
+              size={size}
+              textMiscStyles={textMiscStyles}
+              rule={commentCountTextStyle}
+              render={({ theme, className, }) => <div className={className}>{commentsCount}</div>}
+            />
+          ) : null}
+          <IconComment color={color} size={size} miscStyles={iconMiscStyles} />
         </span>
       )}
     />
