@@ -36,6 +36,17 @@ const events = {
 };
 
 /**
+ * Check if callback is a function
+ * if so - invoke it
+ */
+const invokeCallback = callback => {
+  if (typeof callback === 'function') {
+    return callback();
+  }
+  console.warn('event callback is not a function');
+};
+
+/**
  * Returns the required object for gaAction
  */
 const getGaObject = ({ page, flowNumber, label, }) =>
@@ -48,6 +59,7 @@ const getGaObject = ({ page, flowNumber, label, }) =>
     : null);
 
 /**
+ * (EXPORT)
  * Returns a function that handles sending gaAction & biAction
  */
 const sendTrackingEvents = (eventTrackers, dataObj) => callback => {
@@ -56,23 +68,17 @@ const sendTrackingEvents = (eventTrackers, dataObj) => callback => {
     eventTrackers.biAction({ actionCode: events[dataObj.label][1], });
     eventTrackers.gaAction(gaObject).then(
       () => {
-        if (typeof callback === 'function') {
-          callback();
-        }
+        invokeCallback(callback);
       },
       error => {
-        if (typeof callback === 'function') {
-          callback();
-        }
+        invokeCallback(callback);
         console.warn(`GA Error: ${error}`);
       }
     );
   }
   else {
     console.warn('Could not send event');
-    if (typeof callback === 'function') {
-      callback();
-    }
+    invokeCallback(callback);
   }
 };
 
