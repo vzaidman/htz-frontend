@@ -364,6 +364,9 @@ class IndexForm extends Component {
                   label: theme.emailInputLabel,
                   type: 'email',
                 })}
+                attrs={{
+                  'name': 'userName',
+                }}
               />
 
               <ErrorBox className={this.state.showError ? '' : 'hidden'}>

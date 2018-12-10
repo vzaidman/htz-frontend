@@ -65,7 +65,7 @@ const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPr
         () => {
           sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
               const referrerUrl = getReferrerUrl(client);
-              window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
+              window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
             }
           );
         },
@@ -171,6 +171,9 @@ class PasswordForm extends Component {
                     label: theme.emailInputLabel,
                     type: 'email',
                   })}
+                  attrs={{
+                    'name': 'userName',
+                  }}
                 />
               </div>
 
@@ -188,6 +191,9 @@ class PasswordForm extends Component {
                     label: theme.passwordInputLabel,
                     type: 'password',
                   })}
+                  attrs={{
+                    'name': 'password',
+                  }}
                 />
                 <InputLinkButton>
                   <button
