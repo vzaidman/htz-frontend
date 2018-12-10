@@ -48,7 +48,7 @@ const login = ({ client, showError, hideError, setPreloader, eventsTrackers, log
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', })(() => {
           const referrerUrl = getReferrerUrl(client);
-          window.location = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
+          window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
         }
         );
       },
