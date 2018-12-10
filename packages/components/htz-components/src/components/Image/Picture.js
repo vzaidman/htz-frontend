@@ -298,7 +298,7 @@ function getImgSources({
     aspects,
   };
 
-  return buildURLs(contentId, imgData, transformsArray);
+  return buildURLs(contentId, imgData, transformsArray, true);
 }
 
 function getMedia({ sources, theme, }) {
