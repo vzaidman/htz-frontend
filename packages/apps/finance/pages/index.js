@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, } from '@haaretz/htz-components';
+import { Grid, GridItem, GeneralAdSlot, } from '@haaretz/htz-components';
 import type { Node, } from 'react';
 import { FelaTheme, } from 'react-fela';
 
@@ -35,12 +35,27 @@ function index({ url: { asPath, }, }: Props): Node {
       <FelaTheme
         render={theme => (
           <Fragment>
-            <PageRow>
+            <PageRow miscStyles={{ marginBottom: '0', }}>
               <RowItem
                 title="מבט לשווקים"
               >
                 <TableGraphConnector
                   assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
+                />
+              </RowItem>
+            </PageRow>
+            <PageRow
+              miscStyles={{
+                paddingTop: '4rem',
+                paddingBottom: '4rem',
+                backgroundColor: theme.color('neutral', '-10'),
+              }}
+            >
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner1"
+                  contentName="Finance.TheMarker.com.Banner1"
+                  audianceTarget="all"
                 />
               </RowItem>
             </PageRow>
@@ -111,7 +126,24 @@ function index({ url: { asPath, }, }: Props): Node {
                     miscStyles={{
                       ...theme.type(0),
                     }}
-                  />
+                  >
+                    <Grid>
+                      <GridItem width={1 / 2}>
+                        <GeneralAdSlot
+                          id="Finance.TheMarker.com.FujiRight"
+                          contentName="Finance.TheMarker.com.FujiRight"
+                          audianceTarget="all"
+                        />
+                      </GridItem>
+                      <GridItem width={1 / 2}>
+                        <GeneralAdSlot
+                          id="Finance.TheMarker.com.FujiLeft"
+                          contentName="Finance.TheMarker.com.FujiLeft"
+                          audianceTarget="all"
+                        />
+                      </GridItem>
+                    </Grid>
+                  </RowItem>
                 </GridItem>
               </Grid>
             </PageRow>
@@ -304,7 +336,24 @@ function index({ url: { asPath, }, }: Props): Node {
                     miscStyles={{
                       ...theme.type(0),
                     }}
-                  />
+                  >
+                    <Grid>
+                      <GridItem width={1 / 2}>
+                        <GeneralAdSlot
+                          id="Finance.TheMarker.com.KodakRight"
+                          contentName="Finance.TheMarker.com.KodakRight"
+                          audianceTarget="all"
+                        />
+                      </GridItem>
+                      <GridItem width={1 / 2}>
+                        <GeneralAdSlot
+                          id="Finance.TheMarker.com.KodakLeft"
+                          contentName="Finance.TheMarker.com.KodakLeft"
+                          audianceTarget="all"
+                        />
+                      </GridItem>
+                    </Grid>
+                  </RowItem>
                 </GridItem>
               </Grid>
             </PageRow>

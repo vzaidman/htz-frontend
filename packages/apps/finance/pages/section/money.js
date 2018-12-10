@@ -2,6 +2,7 @@
 /* global fetch */
 import React, { Fragment, } from 'react';
 import { FelaTheme, } from 'react-fela';
+import { Grid, GridItem, GeneralAdSlot, } from '@haaretz/htz-components';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
@@ -89,7 +90,7 @@ function money({ url: { query: { section, }, asPath, }, }: Props): Node {
                 />
               </RowItem>
             </PageRow>
-            <PageRow>
+            <PageRow miscStyles={{ marginBottom: '0', }}>
               <FeedTabbedGraph
                 part={1}
                 side={2}
@@ -126,6 +127,21 @@ function money({ url: { query: { section, }, asPath, }, }: Props): Node {
                   },
                 ]}
               />
+            </PageRow>
+            <PageRow
+              miscStyles={{
+                paddingTop: '4rem',
+                paddingBottom: '4rem',
+                backgroundColor: theme.color('neutral', '-10'),
+              }}
+            >
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner1"
+                  contentName="Finance.TheMarker.com.Banner1"
+                  audianceTarget="all"
+                />
+              </RowItem>
             </PageRow>
             <PageRow>
               <RowItem
@@ -168,7 +184,7 @@ function money({ url: { query: { section, }, asPath, }, }: Props): Node {
                 />
               </RowItem>
             </PageRow>
-            <PageRow>
+            <PageRow miscStyles={{ marginBottom: '0', }}>
               <FeedTabbedGraph
                 part={2}
                 side={2}
@@ -205,112 +221,154 @@ function money({ url: { query: { section, }, asPath, }, }: Props): Node {
                 ]}
               />
             </PageRow>
-            <PageRow>
-              <RowItem
-                title="ביצועי קרנות הנאמנות מול המדדים"
-              >
-                <TabbedTable
-                  defaultTab={2}
-                  presentation
-                  tabs={[
-                    { control: 'month', tabData: 2, display: 'חודשי', },
-                    { control: 'quarter', tabData: 7, display: 'רבעוני', },
-                    { control: 'year', tabData: 3, display: 'שנתי', },
-                  ]}
-                  panel={({ selectedTab, }) => (
-                    <FetchData
-                      url={`https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoneyBottom?part=1&period=${selectedTab}`}
-                      method="GET"
-                      render={(data: any) => (
-                        <StaticSortableTable
-                          headerMiscStyles={{
-                            backgroundColor: theme.color('neutral', '-10'),
-                            paddingTop: '1rem',
-                            paddingBottom: '1rem',
-                            ...borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
-                          }}
-                          initialSort="indexYield"
-                          data={
-                            data.table.dataSource.map((asset: {
-                              name: string,
-                              indexYield: string,
-                              mtfBeat: string,
-                              mtfYield: string,
-                              id: string,
-                            }) => ({
-                              name: asset[0],
-                              indexYield: asset[1],
-                              mtfBeat: asset[2],
-                              mtfYield: asset[3],
-                              id: asset[4],
-                            }))
-                          }
-                          fields={[
-                            {
-                              name: 'name',
-                              display: 'מדד',
-                              sortingOrder: 'ascend',
-                              style: () => ({
-                                fontWeight: '700',
-                                maxWidth: '17rem',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                              }),
-                              value: ({ name, }) => name,
-                            },
-                            {
-                              name: 'indexYield',
-                              display: '% תשואות המדד',
-                              sortingOrder: 'descend',
-                              style: ({ indexYield, }) => ({
-                                color: indexYield < 0
-                                  ? theme.color('negative')
-                                  : theme.color('positive'),
-                                direction: 'ltr',
-                                fontWeight: '700',
-                                paddingEnd: '2rem',
-                                position: 'relative',
-                                textAlign: 'start',
-                              }),
-                              value: ({ indexYield, }) => `
-                                    ${indexYield > 0 ? '+' : '-'}
-                                    ${numToString(Math.abs(indexYield))}%
-                                  `,
-                            },
-                            {
-                              name: 'mtfBeat',
-                              display: 'קרנות שהיכו',
-                              sortingOrder: 'descend',
-                              value: ({ mtfBeat, }) => mtfBeat,
-                            },
-                            {
-                              name: 'mtfYield',
-                              display: '% תשואה הקרנות',
-                              sortingOrder: 'descend',
-                              style: ({ mtfYield, }) => ({
-                                color: mtfYield < 0
-                                  ? theme.color('negative')
-                                  : theme.color('positive'),
-                                direction: 'ltr',
-                                fontWeight: '700',
-                                paddingEnd: '2rem',
-                                position: 'relative',
-                                textAlign: 'start',
-                              }),
-                              value: ({ mtfYield, }) => `
-                                    ${mtfYield > 0 ? '+' : '-'}
-                                    ${numToString(Math.abs(mtfYield))}%
-                                  `,
-                            },
-                          ]}
-                        />
-                      )}
-                    />
-
-                  )}
+            <PageRow
+              miscStyles={{
+                paddingTop: '4rem',
+                paddingBottom: '4rem',
+                backgroundColor: theme.color('neutral', '-10'),
+              }}
+            >
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner2"
+                  contentName="Finance.TheMarker.com.Banner2"
+                  audianceTarget="all"
                 />
               </RowItem>
+            </PageRow>
+            <PageRow>
+              <Grid gutter={2}>
+                <GridItem width={3 / 5}>
+                  <RowItem
+                    title="ביצועי קרנות הנאמנות מול המדדים"
+                  >
+                    <TabbedTable
+                      defaultTab={2}
+                      presentation
+                      tabs={[
+                        { control: 'month', tabData: 2, display: 'חודשי', },
+                        { control: 'quarter', tabData: 7, display: 'רבעוני', },
+                        { control: 'year', tabData: 3, display: 'שנתי', },
+                      ]}
+                      panel={({ selectedTab, }) => (
+                        <FetchData
+                          url={`https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoneyBottom?part=1&period=${selectedTab}`}
+                          method="GET"
+                          render={(data: any) => (
+                            <StaticSortableTable
+                              headerMiscStyles={{
+                                backgroundColor: theme.color('neutral', '-10'),
+                                paddingTop: '1rem',
+                                paddingBottom: '1rem',
+                                ...borderBottom('2px', 1, 'solid', theme.color('neutral', '-6')),
+                              }}
+                              initialSort="indexYield"
+                              data={
+                                data.table.dataSource.map((asset: {
+                                  name: string,
+                                  indexYield: string,
+                                  mtfBeat: string,
+                                  mtfYield: string,
+                                  id: string,
+                                }) => ({
+                                  name: asset[0],
+                                  indexYield: asset[1],
+                                  mtfBeat: asset[2],
+                                  mtfYield: asset[3],
+                                  id: asset[4],
+                                }))
+                              }
+                              fields={[
+                                {
+                                  name: 'name',
+                                  display: 'מדד',
+                                  sortingOrder: 'ascend',
+                                  style: () => ({
+                                    fontWeight: '700',
+                                    maxWidth: '17rem',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                  }),
+                                  value: ({ name, }) => name,
+                                },
+                                {
+                                  name: 'indexYield',
+                                  display: '% תשואות המדד',
+                                  sortingOrder: 'descend',
+                                  style: ({ indexYield, }) => ({
+                                    color: indexYield < 0
+                                      ? theme.color('negative')
+                                      : theme.color('positive'),
+                                    direction: 'ltr',
+                                    fontWeight: '700',
+                                    paddingEnd: '2rem',
+                                    position: 'relative',
+                                    textAlign: 'start',
+                                  }),
+                                  value: ({ indexYield, }) => `
+                                        ${indexYield > 0 ? '+' : '-'}
+                                        ${numToString(Math.abs(indexYield))}%
+                                      `,
+                                },
+                                {
+                                  name: 'mtfBeat',
+                                  display: 'קרנות שהיכו',
+                                  sortingOrder: 'descend',
+                                  value: ({ mtfBeat, }) => mtfBeat,
+                                },
+                                {
+                                  name: 'mtfYield',
+                                  display: '% תשואה הקרנות',
+                                  sortingOrder: 'descend',
+                                  style: ({ mtfYield, }) => ({
+                                    color: mtfYield < 0
+                                      ? theme.color('negative')
+                                      : theme.color('positive'),
+                                    direction: 'ltr',
+                                    fontWeight: '700',
+                                    paddingEnd: '2rem',
+                                    position: 'relative',
+                                    textAlign: 'start',
+                                  }),
+                                  value: ({ mtfYield, }) => `
+                                        ${mtfYield > 0 ? '+' : '-'}
+                                        ${numToString(Math.abs(mtfYield))}%
+                                      `,
+                                },
+                              ]}
+                            />
+                          )}
+                        />
+
+                      )}
+                    />
+                  </RowItem>
+                </GridItem>
+                <GridItem width={2 / 5}>
+                  <GeneralAdSlot
+                    id="Finance.TheMarker.com.Banner3"
+                    contentName="Finance.TheMarker.com.Banner3"
+                    audianceTarget="all"
+                  />
+                </GridItem>
+              </Grid>
+            </PageRow>
+            <PageRow>
+              <Grid gutter={2}>
+                <GridItem width={3 / 5}>
+                  <RowItem
+                    title="טעויות עקיבה בקרנות מחקות"
+                  />
+                </GridItem>
+                <GridItem width={2 / 5}>
+                  <GeneralAdSlot
+                    id="Finance.TheMarker.com.HalfPage"
+                    contentName="Finance.TheMarker.com.HalfPage"
+                    audianceTarget="all"
+                  />
+                </GridItem>
+              </Grid>
             </PageRow>
           </Fragment>
         )}

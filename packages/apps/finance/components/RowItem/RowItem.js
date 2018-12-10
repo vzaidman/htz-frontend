@@ -6,7 +6,7 @@ import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
 import { H, } from '@haaretz/htz-components';
 
 type Props = {
-  title: string,
+  title?: string,
   miscStyles?: ?Object,
   children?: ?ChildrenArray<Node> | Node,
 };
@@ -24,7 +24,7 @@ const RowItem = ({ title, children, miscStyles, }: Props): Node => (
     })}
     render={({ className, }) => (
       <Fragment>
-        <H className={className}>{title}</H>
+        { title && <H className={className}>{title}</H>}
         {children}
       </Fragment>
     )}

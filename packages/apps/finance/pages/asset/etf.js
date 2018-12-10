@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, Query, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, GeneralAdSlot, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
@@ -288,6 +288,15 @@ function etf({ url: { query: { section, assetId, }, asPath, }, }: Props): Node {
                         />
                       </GridItem>
                     </Grid>
+                  </RowItem>
+                </PageRow>
+                <PageRow>
+                  <RowItem>
+                    <GeneralAdSlot
+                      id="Finance.TheMarker.com.Banner1"
+                      contentName="Finance.TheMarker.com.Banner1"
+                      audianceTarget="all"
+                    />
                   </RowItem>
                 </PageRow>
                 <PageRow>

@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, Query, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, GeneralAdSlot, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
@@ -314,6 +314,15 @@ function indices({ url: { query: { section, assetId, }, asPath, }, }: Props): No
                   </RowItem>
                 </PageRow>
                 <PageRow>
+                  <RowItem>
+                    <GeneralAdSlot
+                      id="Finance.TheMarker.com.Banner1"
+                      contentName="Finance.TheMarker.com.Banner1"
+                      audianceTarget="all"
+                    />
+                  </RowItem>
+                </PageRow>
+                <PageRow>
                   <RowItem
                     title="תעודות סל המשקיעות במדד"
                   >
@@ -520,6 +529,15 @@ function indices({ url: { query: { section, assetId, }, asPath, }, }: Props): No
                       ]}
                       initialSort="value"
                       count={5}
+                    />
+                  </RowItem>
+                </PageRow>
+                <PageRow>
+                  <RowItem>
+                    <GeneralAdSlot
+                      id="Finance.TheMarker.com.Banner2"
+                      contentName="Finance.TheMarker.com.Banner2"
+                      audianceTarget="all"
                     />
                   </RowItem>
                 </PageRow>

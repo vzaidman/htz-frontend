@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, Query, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, GeneralAdSlot, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
@@ -306,7 +306,7 @@ function bonds({ url: { query: { assetId, section, }, asPath, }, }: Props): Node
                       }}
                     >
                       <GridItem
-                        width={2 / 3}
+                        width={65 / 100}
                       >
                         <RowItem
                           title="תחזית אירועים"
@@ -367,8 +367,18 @@ function bonds({ url: { query: { assetId, section, }, asPath, }, }: Props): Node
                         </RowItem>
                       </GridItem>
                       <GridItem
-                        width={1 / 3}
-                      />
+                        width={35 / 100}
+                        miscStyles={{
+                          alignItems: 'center',
+                          display: 'flex',
+                        }}
+                      >
+                        <GeneralAdSlot
+                          id="Finance.TheMarker.com.Banner1"
+                          contentName="Finance.TheMarker.com.Banner1"
+                          audianceTarget="all"
+                        />
+                      </GridItem>
                     </Grid>
                   </PageRow>
                   <PageRow>
@@ -407,6 +417,15 @@ function bonds({ url: { query: { assetId, section, }, asPath, }, }: Props): Node
                         </RowItem>
                       </GridItem>
                     </Grid>
+                  </PageRow>
+                  <PageRow>
+                    <RowItem>
+                      <GeneralAdSlot
+                        id="Finance.TheMarker.com.Banner2"
+                        contentName="Finance.TheMarker.com.Banner2"
+                        audianceTarget="all"
+                      />
+                    </RowItem>
                   </PageRow>
                 </Fragment>
               )}

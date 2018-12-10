@@ -1,7 +1,7 @@
 // @flow
 import React, { Fragment, } from 'react';
 import { FelaTheme, } from 'react-fela';
-import { Grid, GridItem, } from '@haaretz/htz-components';
+import { Grid, GridItem, GeneralAdSlot, } from '@haaretz/htz-components';
 
 import type { Node, } from 'react';
 
@@ -142,6 +142,15 @@ function mtf({ url: { query: { section, }, asPath, }, }: Props): Node {
                     />
                   )}
                 </AssetsFilter>
+              </RowItem>
+            </PageRow>
+            <PageRow>
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner1"
+                  contentName="Finance.TheMarker.com.Banner1"
+                  audianceTarget="all"
+                />
               </RowItem>
             </PageRow>
             <PageRow>
@@ -329,6 +338,15 @@ function mtf({ url: { query: { section, }, asPath, }, }: Props): Node {
                   </RowItem>
                 </GridItem>
               </Grid>
+            </PageRow>
+            <PageRow>
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner2"
+                  contentName="Finance.TheMarker.com.Banner2"
+                  audianceTarget="all"
+                />
+              </RowItem>
             </PageRow>
             <PageRow>
               <Grid>

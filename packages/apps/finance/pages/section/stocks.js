@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, } from '@haaretz/htz-components';
+import { Grid, GridItem, GeneralAdSlot, } from '@haaretz/htz-components';
 import { FelaTheme, } from 'react-fela';
 
 import type { Node, } from 'react';
@@ -40,12 +40,27 @@ function stocks({ url: { query: { section, }, asPath, }, }: Props): Node {
             <PageRow>
               <MarketSummary marketId="3" miscStyles={{ flexGrow: '1', }} />
             </PageRow>
-            <PageRow>
+            <PageRow miscStyles={{ marginBottom: '0', }}>
               <RowItem
                 title="מבט לשווקים"
               >
                 <TableGraphConnector
                   assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
+                />
+              </RowItem>
+            </PageRow>
+            <PageRow
+              miscStyles={{
+                paddingTop: '4rem',
+                paddingBottom: '4rem',
+                backgroundColor: theme.color('neutral', '-10'),
+              }}
+            >
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner1"
+                  contentName="Finance.TheMarker.com.Banner1"
+                  audianceTarget="all"
                 />
               </RowItem>
             </PageRow>
@@ -290,6 +305,15 @@ function stocks({ url: { query: { section, }, asPath, }, }: Props): Node {
               </Grid>
             </PageRow>
             <PageRow>
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner2"
+                  contentName="Finance.TheMarker.com.Banner2"
+                  audianceTarget="all"
+                />
+              </RowItem>
+            </PageRow>
+            <PageRow>
               <Grid>
                 <GridItem width={1 / 2}>
                   <RowItem
@@ -524,7 +548,7 @@ function stocks({ url: { query: { section, }, asPath, }, }: Props): Node {
               </Grid>
             </PageRow>
             <PageRow>
-              <Grid gutter={6}>
+              <Grid gutter={2}>
                 <GridItem width={4 / 5}>
                   <RowItem
                     title="פערי ארביטראז׳"
@@ -598,7 +622,13 @@ function stocks({ url: { query: { section, }, asPath, }, }: Props): Node {
                     />
                   </RowItem>
                 </GridItem>
-                <GridItem width={1 / 5} />
+                <GridItem width={1 / 5} miscStyles={{ alignSelf: 'center', }}>
+                  <GeneralAdSlot
+                    id="Finance.TheMarker.com.Banner3"
+                    contentName="Finance.TheMarker.com.Banner3"
+                    audianceTarget="all"
+                  />
+                </GridItem>
               </Grid>
             </PageRow>
           </Fragment>

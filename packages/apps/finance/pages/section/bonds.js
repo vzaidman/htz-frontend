@@ -16,6 +16,7 @@ import TabList from '../../components/TabList/TabList';
 import TabPanel from '../../components/TabPanel/TabPanel';
 import Tab from '../../components/Tab/Tab';
 import { TabButton, } from '../../components/TabbedGraph/TabbedGraph';
+import GeneralAdSlot from '@haaretz/htz-components/dist/esnext/components/Ads/GeneralAdSlot';
 
 type Props = {
   url: {
@@ -93,6 +94,15 @@ class Bonds extends React.Component<Props, State> {
                 >
                   <TableGraphConnector
                     assetsId={[ '2', '142', '137', '-2000', '164', '143', '167', '145', '149', ]}
+                  />
+                </RowItem>
+              </PageRow>
+              <PageRow>
+                <RowItem>
+                  <GeneralAdSlot
+                    id="Finance.TheMarker.com.Banner1"
+                    contentName="Finance.TheMarker.com.Banner1"
+                    audianceTarget="all"
                   />
                 </RowItem>
               </PageRow>
@@ -269,6 +279,15 @@ class Bonds extends React.Component<Props, State> {
                         </TabPanel>
                       </Tabs>
                     )}
+                  />
+                </RowItem>
+              </PageRow>
+              <PageRow>
+                <RowItem>
+                  <GeneralAdSlot
+                    id="Finance.TheMarker.com.Banner2"
+                    contentName="Finance.TheMarker.com.Banner2"
+                    audianceTarget="all"
                   />
                 </RowItem>
               </PageRow>

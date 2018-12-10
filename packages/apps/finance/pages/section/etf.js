@@ -1,6 +1,7 @@
 // @flow
 import React, { Fragment } from 'react';
 import { FelaTheme, } from 'react-fela';
+import { Grid, GridItem, GeneralAdSlot, } from '@haaretz/htz-components';
 
 import type { Node, } from 'react';
 
@@ -9,8 +10,6 @@ import RowItem from '../../components/RowItem/RowItem';
 import AssetsFilter from '../../components/AssetsFilter/AssetsFilter';
 import SortableTable from '../../components/SortableTable/SortableTable';
 import PageRow from '../../components/PageRow/PageRow';
-import Grid from '@haaretz/htz-components/dist/esnext/components/Grid/Grid';
-import GridItem from '@haaretz/htz-components/dist/esnext/components/Grid/GridItem';
 
 type Props = {
   url: {
@@ -143,6 +142,15 @@ function etf({ url: { query: { section, }, asPath, }, }: Props): Node {
                     />
                   )}
                 </AssetsFilter>
+              </RowItem>
+            </PageRow>
+            <PageRow>
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner1"
+                  contentName="Finance.TheMarker.com.Banner1"
+                  audianceTarget="all"
+                />
               </RowItem>
             </PageRow>
             <PageRow>
@@ -330,6 +338,15 @@ function etf({ url: { query: { section, }, asPath, }, }: Props): Node {
                   </RowItem>
                 </GridItem>
               </Grid>
+            </PageRow>
+            <PageRow>
+              <RowItem>
+                <GeneralAdSlot
+                  id="Finance.TheMarker.com.Banner2"
+                  contentName="Finance.TheMarker.com.Banner2"
+                  audianceTarget="all"
+                />
+              </RowItem>
             </PageRow>
           </Fragment>
         )}

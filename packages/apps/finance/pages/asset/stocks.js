@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, } from 'react';
-import { Grid, GridItem, Query, } from '@haaretz/htz-components';
+import { Grid, GridItem, Query, GeneralAdSlot, Media, } from '@haaretz/htz-components';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 
@@ -267,7 +267,24 @@ function stocks({ url: { query: { assetId, section, }, asPath, }, }: Props): Nod
                             miscStyles={{
                               ...theme.type(0),
                             }}
-                          />
+                          >
+                            <Grid>
+                              <GridItem width={1 / 2}>
+                                <GeneralAdSlot
+                                  id="Finance.TheMarker.com.FujiRight"
+                                  contentName="Finance.TheMarker.com.FujiRight"
+                                  audianceTarget="all"
+                                />
+                              </GridItem>
+                              <GridItem width={1 / 2}>
+                                <GeneralAdSlot
+                                  id="Finance.TheMarker.com.FujiLeft"
+                                  contentName="Finance.TheMarker.com.FujiLeft"
+                                  audianceTarget="all"
+                                />
+                              </GridItem>
+                            </Grid>
+                          </RowItem>
                         </GridItem>
                       </Grid>
                     </PageRow>
@@ -281,7 +298,20 @@ function stocks({ url: { query: { assetId, section, }, asPath, }, }: Props): Nod
                       >
                         <GridItem
                           width={1 / 3}
-                        />
+                        >
+                          <RowItem
+                            title="קשרי משקיעים"
+                            miscStyles={{
+                              ...theme.type(0),
+                            }}
+                          >
+                            <GeneralAdSlot
+                              id="Finance.TheMarker.com.KodakRight"
+                              contentName="Finance.TheMarker.com.KodakRight"
+                              audianceTarget="all"
+                            />
+                          </RowItem>
+                        </GridItem>
                         <GridItem
                           width={2 / 3}
                         >
@@ -293,6 +323,26 @@ function stocks({ url: { query: { assetId, section, }, asPath, }, }: Props): Nod
                         </GridItem>
                       </Grid>
                     </PageRow>
+                    <FelaComponent
+                      style={theme => ({
+                        display: 'block',
+                        extend: [
+                          theme.mq({ from: 'l', }, {
+                            display: 'none',
+                          }),
+                        ],
+                      })}
+                    >
+                      <PageRow>
+                        <RowItem>
+                          <GeneralAdSlot
+                            id="Finance.TheMarker.com.Banner1"
+                            contentName="Finance.TheMarker.com.Banner1"
+                            audianceTarget="all"
+                          />
+                        </RowItem>
+                      </PageRow>
+                    </FelaComponent>
                   </Fragment>
                 )}
               />

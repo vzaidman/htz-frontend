@@ -14,7 +14,7 @@ type Props = {
 const PageRow: StatelessFunctionalComponent<Props> = ({ children, miscStyles, lines, }) => (
   <FelaComponent
     style={theme => ({
-      width: '127rem',
+      maxWidth: '127rem',
       marginBottom: `${lines || 4}rem`,
       extend: [
         ...(miscStyles

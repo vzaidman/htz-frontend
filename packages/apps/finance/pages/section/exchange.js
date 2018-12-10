@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Button, } from '@haaretz/htz-components';
+import { Button, GeneralAdSlot, } from '@haaretz/htz-components';
 
 import type { Node, } from 'react';
 
@@ -68,12 +68,30 @@ function exchange({ url: { query: { section, }, asPath, }, }: Props): Node {
         }
       </PageRow>
       <PageRow>
+        <RowItem>
+          <GeneralAdSlot
+            id="Finance.TheMarker.com.Banner1"
+            contentName="Finance.TheMarker.com.Banner1"
+            audianceTarget="all"
+          />
+        </RowItem>
+      </PageRow>
+      <PageRow>
         <RowItem
           title={crypto ? 'מטבעות מתעוררים' : 'שערים יציגים'}
         >
           <TableGraphConnector
             assetsId={[ '20', '1420', '1370', '-20000', '1640', '1430', '1670', '1450', '1490', ]}
             exchange
+          />
+        </RowItem>
+      </PageRow>
+      <PageRow>
+        <RowItem>
+          <GeneralAdSlot
+            id="Finance.TheMarker.com.Banner2"
+            contentName="Finance.TheMarker.com.Banner2"
+            audianceTarget="all"
           />
         </RowItem>
       </PageRow>
