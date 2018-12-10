@@ -8,7 +8,7 @@ services:
         NEXT_BUILD_ID: ${version:-latest}
     image: 'nexus-ng.themarker.com/htz-graphql:${version:-latest}'
     ports:
-      - 5209:5209
+      - 3204:3204
     deploy:
             replicas: 5
             update_config:
@@ -23,8 +23,8 @@ services:
       - CONNECTION_PRESET=prod
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
-      - PORT=5209
-      - GRAPHQL_PORT=5209
+      - PORT=3204
+      - GRAPHQL_PORT=3204
       - BIND_ADDRESS=react-stage
       - HOSTNAME=react-stage
       - GRAPHQL_USE_SSL=true
