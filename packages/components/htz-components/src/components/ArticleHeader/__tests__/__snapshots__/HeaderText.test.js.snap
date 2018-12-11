@@ -9,7 +9,11 @@ Object {
       <span
         className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
       >
-        פרשנות
+        <span
+          className=""
+        >
+          פרשנות
+        </span>
       </span>
       <h1
         className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
@@ -23,7 +27,7 @@ Object {
       </p>
     </div>
   </div>,
-  "styles": ".htz-a{display:inline}.htz-b{background-color:transparent}.htz-c{color:#A8001C}.htz-d:after{content:\\"|\\"}.htz-e:after{padding-right:1rem}.htz-f:after{padding-left:1rem}.htz-o{font-weight:normal}.htz-p{margin-top:1rem}@media (max-width: 47.9375em){.htz-g{font-size:4rem}.htz-h{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{font-size:4.666666666666667rem}.htz-j{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-k{font-size:5.333333333333333rem}.htz-l{line-height:1.125em}}@media (min-width: 80em){.htz-m{font-size:5.857142857142857rem}.htz-n{line-height:1.1951219512195121em}.htz-s{font-size:3rem}.htz-t{line-height:1.3333333333333333em}}@media (max-width: 79.9375em){.htz-q{font-size:3rem}.htz-r{line-height:1.3333333333333333em}}",
+  "styles": ".htz-a{display:inline}.htz-b{color:#A8001C}.htz-c{background-color:transparent}.htz-d:after{content:\\"|\\"}.htz-e:after{padding-right:1rem}.htz-f:after{padding-left:1rem}.htz-o{font-weight:normal}.htz-p{margin-top:1rem}@media (max-width: 47.9375em){.htz-g{font-size:4rem}.htz-h{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{font-size:4.666666666666667rem}.htz-j{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-k{font-size:5.333333333333333rem}.htz-l{line-height:1.125em}}@media (min-width: 80em){.htz-m{font-size:5.857142857142857rem}.htz-n{line-height:1.1951219512195121em}.htz-s{font-size:3rem}.htz-t{line-height:1.3333333333333333em}}@media (max-width: 79.9375em){.htz-q{font-size:3rem}.htz-r{line-height:1.3333333333333333em}}",
 }
 `;
 
