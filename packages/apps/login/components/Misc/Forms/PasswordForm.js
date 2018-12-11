@@ -44,17 +44,15 @@ const validatePasswordInput = ({ password, }) =>
       ? generatePasswordError('אנא הזינו סיסמה תקינה')
       : []); // email is valid
 
-const getFacebookLogin = (user) => {
+const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
   return facebookParams ?
     getFacebookLoginUrl(facebookParams) :
     false;
-}
+};
 
-const modifyErrorMessage = (message) => {
-  return message === "הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת" ?
-    'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message;
-}
+const modifyErrorMessage = message => (message === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת' ?
+  'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message);
 
 const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, eventsTrackers, }) =>
   ({ email, password, }) => {
@@ -64,9 +62,9 @@ const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPr
       .then(
         () => {
           sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
-              const referrerUrl = getReferrerUrl(client);
-              window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
-            }
+            const referrerUrl = getReferrerUrl(client);
+            window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
+          }
           );
         },
         reason => {
@@ -79,7 +77,6 @@ const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPr
 // --------------------------
 
 class PasswordForm extends Component {
-
   state = {
     showError: false,
     errorMessage: '',
@@ -104,15 +101,15 @@ class PasswordForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
-  showError = (errorMsg) => {
+  showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
 
   hideError = () => {
-    this.setState({ showError: false, errorMessage: "", });
+    this.setState({ showError: false, errorMessage: '', });
   }
 
-  setPreloader = (isLoadingStatus) => {
+  setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus, });
   }
 
@@ -142,7 +139,7 @@ class PasswordForm extends Component {
 
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
 
-  
+
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
     const { client, login, theme, showDialog, user, flow, eventsTrackers, } = this.props;
@@ -152,7 +149,7 @@ class PasswordForm extends Component {
       <FormWrapper>
         <Form
           clearFormAfterSubmit={false}
-          initialValues={ {email: getEmail(client)} }
+          initialValues={{ email: getEmail(client), }}
           validate={this.validateForm}
           onSubmit={onSubmit({ login, host, user, flow, client, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
@@ -172,7 +169,7 @@ class PasswordForm extends Component {
                     type: 'email',
                   })}
                   attrs={{
-                    'name': 'userName',
+                    name: 'userName',
                   }}
                 />
               </div>
@@ -192,12 +189,12 @@ class PasswordForm extends Component {
                     type: 'password',
                   })}
                   attrs={{
-                    'name': 'password',
+                    name: 'password',
                   }}
                 />
                 <InputLinkButton>
                   <button
-                    onClick={(e) => {
+                    onClick={e => {
                       e.preventDefault();
                       sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'forgotPassword', })(() => {
                           showDialog();
@@ -212,24 +209,24 @@ class PasswordForm extends Component {
 
               <TermsWrapper>
                 <div>
-                <CheckBox
-                  type="checkbox"
-                  label="terms"
-                  noteText="יש לאשר את תנאי השימוש באתר"
-                  errorText="יש לאשר את תנאי השימוש באתר"
-                  onClick={this.toggleChecked}
-                  checked={this.state.isChecked}
-                  {...getInputProps({
+                  <CheckBox
+                    type="checkbox"
+                    label="terms"
+                    noteText="יש לאשר את תנאי השימוש באתר"
+                    errorText="יש לאשר את תנאי השימוש באתר"
+                    onClick={this.toggleChecked}
+                    checked={this.state.isChecked}
+                    {...getInputProps({
                     name: 'terms',
                     label: getTermsText(),
                     type: 'checkbox',
                   })}
-                />
+                  />
                 </div>
               </TermsWrapper>
 
-              <ErrorBox className={this.state.showError ? "" : "hidden"}>
-                <span role={this.state.showError ? "alert" : "none"}>
+              <ErrorBox className={this.state.showError ? '' : 'hidden'}>
+                <span role={this.state.showError ? 'alert' : 'none'}>
                   {this.state.errorMessage}
                 </span>
               </ErrorBox>
@@ -244,6 +241,6 @@ class PasswordForm extends Component {
     );
     /* :::::::::::::::::::::::::::::::::::: RENDER } :::::::::::::::::::::::::::::::::::: */
   }
-};
+}
 
 export default PasswordForm;
