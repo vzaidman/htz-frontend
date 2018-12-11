@@ -29,5 +29,14 @@ describe('<CommentsCount>', () => {
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
     });
+    it('should render nothing when commentsCount is smaller than minCount', () => {
+      const { component, } = felaSnapshotter(
+        <CommentsCount
+          minCount={5}
+          commentsCount={4}
+        />
+      );
+      expect(component).toMatchSnapshot();
+    });
   });
 });
