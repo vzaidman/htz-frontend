@@ -4,6 +4,9 @@ import CommentsElement from './mocks/CommentsElement';
 import Footer from './mocks/Footer';
 
 const mocks = {
+  String: () => null,
+  Int: () => null,
+  Float: () => null,
   Date: () => 1542116220149,
   ImageAspects: () => ({
     vertical: {
