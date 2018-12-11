@@ -9,6 +9,14 @@ describe('rgba()', () => {
       expect(rgba('#ccc', '00')).toBe(null);
     });
   });
+  describe('handle already opacified colors', () => {
+    test('return rgba color unchanged', () => {
+      expect(rgba('rgba(2,2,2,0.2)', 0.5)).toBe('rgba(2,2,2,0.2)');
+    });
+    test('return rgba color unchanged', () => {
+      expect(rgba('hsla(2,2,2,0.2)', 0.5)).toBe('hsla(2,2,2,0.2)');
+    });
+  });
   describe('opacity', () => {
     test('correctly apply provided opacity when its between 0 and 1', () => {
       expect(rgba('#000', 0.3)).toBe('rgba(0,0,0,0.3)');

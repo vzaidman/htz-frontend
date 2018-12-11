@@ -21,6 +21,9 @@ export default function rgba(color: string, opacity: number): ?string {
   ) {
     return null;
   }
+
+  if (color.startsWith('rgba(') || color.startsWith('hsla(')) return color;
+
   const alpha = opacity == null ? 1 : Math.max(Math.min(opacity, 1), 0);
   const colorMode = color.startsWith('rgb(')
     ? 'rgb'
