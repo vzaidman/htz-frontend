@@ -22,7 +22,7 @@ exports[`<GridItem /> spread the "attrs" prop on the Dom element 1`] = `
 exports[`<GridItem /> styles apply correct default rule styles 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
     id={null}
   />
 </div>
@@ -37,7 +37,16 @@ exports[`<GridItem /> styles apply correct default rule styles 2`] = `
 .htz-e{list-style:none}
 .htz-f{padding-left:0rem}
 .htz-g{padding-right:0rem}
-.htz-h{-webkit-box-flex:1}"
+.htz-h{position:relative}
+.htz-i:after{background-color:#CCC}
+.htz-j:after{content:\\"\\"}
+.htz-k:after{height:100%}
+.htz-l:after{left:0}
+.htz-m:after{position:absolute}
+.htz-n:after{top:0}
+.htz-o:after{transform:translateX(0px)}
+.htz-p:after{width:1px}
+.htz-q{-webkit-box-flex:1}"
 `;
 
 exports[`<GridItem /> styles apply correct gutter styles 1`] = `
@@ -86,7 +95,7 @@ exports[`<GridItem /> styles apply correct offset styles 2`] = `
 exports[`<GridItem /> styles apply correct rule styles when rule color is a string 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
     id={null}
   />
 </div>
@@ -101,13 +110,22 @@ exports[`<GridItem /> styles apply correct rule styles when rule color is a stri
 .htz-e{list-style:none}
 .htz-f{padding-left:0rem}
 .htz-g{padding-right:0rem}
-.htz-h{-webkit-box-flex:1}"
+.htz-h{position:relative}
+.htz-i:after{background-color:#000}
+.htz-j:after{content:\\"\\"}
+.htz-k:after{height:100%}
+.htz-l:after{left:0}
+.htz-m:after{position:absolute}
+.htz-n:after{top:0}
+.htz-o:after{transform:translateX(-1px)}
+.htz-p:after{width:2px}
+.htz-q{-webkit-box-flex:1}"
 `;
 
 exports[`<GridItem /> styles apply correct rule styles when ruleWidth is even 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
     id={null}
   />
 </div>
@@ -122,13 +140,22 @@ exports[`<GridItem /> styles apply correct rule styles when ruleWidth is even 2`
 .htz-e{list-style:none}
 .htz-f{padding-left:0rem}
 .htz-g{padding-right:0rem}
-.htz-h{-webkit-box-flex:1}"
+.htz-h{position:relative}
+.htz-i:after{background-color:#0B7EB5}
+.htz-j:after{content:\\"\\"}
+.htz-k:after{height:100%}
+.htz-l:after{left:0}
+.htz-m:after{position:absolute}
+.htz-n:after{top:0}
+.htz-o:after{transform:translateX(-1px)}
+.htz-p:after{width:2px}
+.htz-q{-webkit-box-flex:1}"
 `;
 
 exports[`<GridItem /> styles apply correct rule styles when ruleWidth is odd 1`] = `
 <div>
   <div
-    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+    className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
     id={null}
   />
 </div>
@@ -143,7 +170,16 @@ exports[`<GridItem /> styles apply correct rule styles when ruleWidth is odd 2`]
 .htz-e{list-style:none}
 .htz-f{padding-left:0rem}
 .htz-g{padding-right:0rem}
-.htz-h{-webkit-box-flex:1}"
+.htz-h{position:relative}
+.htz-i:after{background-color:#0B7EB5}
+.htz-j:after{content:\\"\\"}
+.htz-k:after{height:100%}
+.htz-l:after{left:0}
+.htz-m:after{position:absolute}
+.htz-n:after{top:0}
+.htz-o:after{transform:translateX(-2px)}
+.htz-p:after{width:5px}
+.htz-q{-webkit-box-flex:1}"
 `;
 
 exports[`<GridItem /> styles apply correct width styles (fixed width) 1`] = `
