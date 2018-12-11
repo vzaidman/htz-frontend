@@ -9,6 +9,10 @@ import IconComment from '../Icon/icons/IconComment';
 type Props = {
   /* pass comments count from polopoly if exists */
   commentsCount?: ?number,
+  /**
+   * minimum number of comments, if commentsCount is less than this nothing will be shown
+   */
+  minCount: number,
   /* icon and text color */
   color:
     | ?string
@@ -27,6 +31,7 @@ type Props = {
 
 CommentsCount.defaultProps = {
   commentsCount: null,
+  minCount: 5,
   color: [ 'primary', ],
   miscStyles: null,
   iconMiscStyles: null,
@@ -55,31 +60,34 @@ const commentCountTextStyle = ({ color, theme, textMiscStyles, }) => ({
 });
 
 function CommentsCount({
-  color,
   commentsCount,
+  minCount,
+  color,
   miscStyles,
   iconMiscStyles,
   textMiscStyles,
 }: Props): React.Node {
-  return (
-    <FelaComponent
-      miscStyles={miscStyles}
-      rule={wrapperStyle}
-      render={({ theme, className, }) => (
-        <span className={className}>
-          {commentsCount ? (
-            <FelaComponent
-              color={color}
-              textMiscStyles={textMiscStyles}
-              rule={commentCountTextStyle}
-              render={({ theme, className, }) => <div className={className}>{commentsCount}</div>}
-            />
-          ) : null}
-          <IconComment color={color} miscStyles={iconMiscStyles} />
-        </span>
-      )}
-    />
-  );
+  return (commentsCount && commentsCount >= minCount)
+    ? (
+      <FelaComponent
+        miscStyles={miscStyles}
+        rule={wrapperStyle}
+        render={({ theme, className, }) => (
+          <span className={className}>
+            {commentsCount ? (
+              <FelaComponent
+                color={color}
+                textMiscStyles={textMiscStyles}
+                rule={commentCountTextStyle}
+                render={({ theme, className, }) => <div className={className}>{commentsCount}</div>}
+              />
+            ) : null}
+            <IconComment color={color} miscStyles={iconMiscStyles} />
+          </span>
+        )}
+      />
+    )
+    : null;
 }
 
 export default CommentsCount;
