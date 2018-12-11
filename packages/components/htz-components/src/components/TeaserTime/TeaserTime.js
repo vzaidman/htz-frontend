@@ -5,6 +5,10 @@ import Time from '../Time/Time';
 
 type TeaserTimePropTypes = {
   /**
+   * className passed on to the Time component
+   */
+  className: ?string,
+  /**
    * The article publish time in unixtime (ms)
    */
   publishDate: ?number,
@@ -14,21 +18,22 @@ type TeaserTimePropTypes = {
   lastUpdate: ?number,
 };
 
-const TeaserTime = ({ publishDate, lastUpdate, }: TeaserTimePropTypes): React.Node => {
+const TeaserTime = ({ className, publishDate, lastUpdate, }: TeaserTimePropTypes): React.Node => {
   const now = Date.now();
   if (publishDate) {
     if (lastUpdate) {
       if (differenceInHours(now, lastUpdate) < 24) {
-        return (<Time time={lastUpdate} format="HH:mm" />);
+        return <Time className={className} time={lastUpdate} format="HH:mm" />;
       }
-      return (<Time time={lastUpdate} format="DD.MM.YYYY" />);
+      return <Time className={className} time={lastUpdate} format="DD.MM.YYYY" />;
     }
-    return (<Time time={publishDate} format="DD.MM.YYYY" />);
+    return <Time className={className} time={publishDate} format="DD.MM.YYYY" />;
   }
   return null;
 };
 
 TeaserTime.defaultProps = {
+  className: null,
   publishDate: null,
   lastUpdate: null,
 };
