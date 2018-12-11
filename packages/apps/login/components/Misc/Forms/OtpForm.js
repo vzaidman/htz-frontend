@@ -79,10 +79,8 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
   }
 };
 
-const translateErrorMsg = (msg) => {
-  return msg == "cannot send sms" ?
-    "לא ניתן לשלוח SMS כרגע, אנא נסה שנית במועד מאוחר יותר" : msg;
-}
+const translateErrorMsg = msg => (msg == 'cannot send sms' ?
+  'לא ניתן לשלוח SMS כרגע, אנא נסה שנית במועד מאוחר יותר' : msg);
 
 const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader) => {
   hideError();
