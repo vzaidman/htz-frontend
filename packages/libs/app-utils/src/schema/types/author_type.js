@@ -12,6 +12,7 @@ import ArticleBody from './article_body_type';
 const AuthorObj = new GraphQLObjectType({
   name: 'AuthorObject',
   fields: {
+    name: { type: GraphQLString, },
     image: { type: ImageType, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
@@ -38,7 +39,7 @@ const CreditObj = new GraphQLObjectType({
 const AuthorType = new GraphQLUnionType({
   name: 'Author',
   types: [ AuthorObj, CreditObj, ],
-  resolveType: value => (value.name ? CreditObj : AuthorObj),
+  resolveType: value => (value.contentId ? AuthorObj : CreditObj),
 });
 
 export default AuthorType;
