@@ -9,12 +9,14 @@ import {
 
 import author from './author_type';
 import ImageType from './image_type';
+import MediaType from './media_type';
 import GraphQLDate from './date_type';
 
 const TeaserInListType = new GraphQLObjectType({
   name: 'TeaserInList',
   fields: () => ({
     image: { type: ImageType, },
+    media: { type: MediaType, },
     firstParagraph: { type: GraphQLString, },
     publishDate: { type: GraphQLDate, },
     contentId: { type: GraphQLID, },
@@ -26,7 +28,7 @@ const TeaserInListType = new GraphQLObjectType({
     subtitleMobile: { type: GraphQLString, },
     isPremiumContent: { type: GraphQLBoolean, },
     lastUpdate: { type: GraphQLDate, },
-    subTitle: { type: GraphQLString, },
+    subtitle: { type: GraphQLString, },
     authorImage: { type: ImageType, },
     mediaFlags: {
       type: new GraphQLObjectType({
