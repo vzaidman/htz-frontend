@@ -229,7 +229,7 @@ class PasswordForm extends Component {
               </TermsWrapper>
 
               <ErrorBox className={this.state.showError ? "" : "hidden"}>
-                <span>
+                <span role={this.state.showError ? "alert" : "none"}>
                   {this.state.errorMessage}
                 </span>
               </ErrorBox>
