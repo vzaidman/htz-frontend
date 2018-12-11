@@ -56,16 +56,11 @@ Kicker.defaultProps = {
 
 const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
   display: isBlock ? 'block' : 'inline',
-  backgroundColor: theme.color(
-    'articleHeader',
-    isBlock ? 'kickerBlockBg' : 'kickerInlineBg'
-  ),
-  color: theme.color(
-    'articleHeader',
-    isBlock ? 'kickerBlockText' : 'kickerInlineText'
-  ),
+
+  color: theme.color('articleHeader', isBlock ? 'kickerBlockText' : 'kickerInlineText'),
   ...(!isBlock
     ? {
+      backgroundColor: theme.color('articleHeader', 'kickerInlineBg'),
       ':after': {
         content: `"${divider}"`,
         paddingInlineStart: '1rem',
@@ -77,6 +72,17 @@ const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
     ...[ fontSize ? parseTypographyProp(fontSize, theme.type) : {}, ],
     ...(miscStyles ? parseStyleProps(miscStyles) : []),
   ],
+});
+
+const innerStyle = ({ isBlock, theme, }) => ({
+  ...(isBlock
+    ? {
+      paddingInlineStart: '1rem',
+      paddingInlineEnd: '1rem',
+      display: 'inline-block',
+      backgroundColor: theme.color('articleHeader', 'kickerBlockBg'),
+    }
+    : {}),
 });
 
 export default function Kicker({
@@ -97,7 +103,9 @@ export default function Kicker({
       miscStyles={miscStyles}
       render={tagName}
     >
-      {text || children}
+      <FelaComponent rule={innerStyle} isBlock={isBlock} render="span">
+        {text || children}
+      </FelaComponent>
     </FelaComponent>
   );
 }
