@@ -79,7 +79,13 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
   }
 };
 
-const handleGenerateOtp = (client, doTransition, setPreloader) => {
+const translateErrorMsg = (msg) => {
+  return msg == "cannot send sms" ?
+    "לא ניתן לשלוח SMS כרגע, אנא נסה שנית במועד מאוחר יותר" : msg;
+}
+
+const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader) => {
+  hideError();
   setPreloader(true);
   generateOtp(client)({ typeId: getUserData(client).phoneNum, })
     .then(data => {
@@ -92,7 +98,7 @@ const handleGenerateOtp = (client, doTransition, setPreloader) => {
       }
       else {
         setPreloader(false);
-        showError((json.msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
+        showError((translateErrorMsg(json.msg) || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
       }
     });
 };
@@ -182,8 +188,8 @@ class OtpForm extends Component {
                         data-role="resend"
                         onClick={e => {
                           e.preventDefault();
-                          sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'sendAgainOtp', })(() => {
-                            handleGenerateOtp(client, doTransition, this.setPreloader);
+                          sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
+                            handleGenerateOtp(client, doTransition, this.showError, this.hideError, this.setPreloader);
                           }
                           );
                         }}

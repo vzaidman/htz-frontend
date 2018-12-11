@@ -44,7 +44,7 @@ class PhoneForms extends React.Component {
           href="/"
           onClick={e => {
             e.preventDefault();
-            sendTrackingEvents(eventsTrackers, { page: 'SMS code', flowNumber: flow, label: 'notMyPhone', });
+            sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'notMyPhone', });
             this.changeFormType(0);
           }}
         >
