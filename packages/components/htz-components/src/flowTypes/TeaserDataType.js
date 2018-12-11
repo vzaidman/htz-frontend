@@ -10,7 +10,7 @@ export type TeaserDataType = {
     name: string,
     url?: ?string,
   }[]),
-  commentsCount?: number,
+  commentsCounts?: number,
   contentId: string,
   exclusive?: ?string,
   exclusiveMobile?: ?string,

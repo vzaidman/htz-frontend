@@ -23,7 +23,7 @@ const TeaserInListType = new GraphQLObjectType({
     representedContent: { type: GraphQLID, },
     exclusiveMobile: { type: GraphQLString, },
     title: { type: GraphQLString, },
-    commentsCount: { type: GraphQLInt, },
+    commentsCounts: { type: GraphQLInt, },
     path: { type: GraphQLString, },
     subtitleMobile: { type: GraphQLString, },
     isPremiumContent: { type: GraphQLBoolean, },
