@@ -39,7 +39,7 @@ const getFacebookLogin = user => {
     false);
 };
 
-const login = ({ client, showError, hideError, setPreloader, eventsTrackers, loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
+const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, otpHash)
@@ -69,13 +69,13 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
         success => {
           otpHash = success.data.retrieveOtpHash.hash;
           saveOtpHash(client)({ otpHash, });
-          login({ client, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+          login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
         },
         () => showError('אירעה שגיאה, אנא נסה שנית מאוחר יותר.')
       );
   }
   else {
-    login({ client, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+    login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
   }
 };
 
