@@ -42,6 +42,12 @@ export default class TabsFrame extends React.Component {
     };
   }
 
+  keyPressHandler = (index, childProps, event) => {
+    if (event.key == 'ArrowRight' || event.key == 'ArrowLeft') {
+      this.changeTab(index, childProps.flow, childProps.eventsTrackers, childProps.label)();
+    }
+  }
+
   setInitTab = () => {
     this.setState({ activeTab: this.props.activeTab || 0, isLink: this.props.isLink, });
   }
@@ -58,6 +64,7 @@ export default class TabsFrame extends React.Component {
               id={`tab${index}`}
               value={`tab${index}`}
               onClick={this.changeTab(index, child.props.flow, child.props.eventsTrackers, child.props.label)}
+              onKeyDown={this.keyPressHandler.bind(this, index, child.props)}
               tabIndex={index === this.state.activeTab ? -1 : 1}
             />
           </label>

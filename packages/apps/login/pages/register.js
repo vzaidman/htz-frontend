@@ -12,6 +12,7 @@ import { getEmail, getUserData, } from './queryutil/userDetailsOperations';
 import { sendTrackingEvents, } from '../util/trackingEventsUtil';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
 import BottomLinks from '../components/Misc/BottomLinks';
+import { isName, isMobile, isPassword, } from '../components/Misc/Forms/fieldsValidators';
 import {
   LoginContentStyles,
   LoginMiscLayoutStyles,
@@ -69,18 +70,6 @@ const generateEmailError = message => generateError('email', 3)(message);
 const generatePasswordError = message => generateError('password', 4)(message);
 const generateMobileError = message => generateError('phone', 4)(message);
 const generateTermsError = message => generateError('terms', 5)(message);
-
-const isPassword = password => password.length > 5; // TODO: write proper password validation
-const isName = name => {
-  const regex = /^[a-zA-Z\u0590-\u05FF\'\- ]{2,30}$/;
-  return regex.test(name.trim());
-};
-
-const isMobile = phone => {
-  phone = phone.replace(/[\s\-]/g, '');
-  const phoneRegex = /(^05\d{8}$)|(^\+\d{8,13}$)/;
-  return phoneRegex.test(phone);
-};
 
 const isChecked = terms => !!terms;
 
@@ -312,6 +301,9 @@ class RegisterPage extends Component {
                                             label: theme.emailInputLabel,
                                             type: 'email',
                                           })}
+                                          attrs={{
+                                            'name': 'userName',
+                                          }}
                                         />
                                       </div>
 
@@ -329,6 +321,9 @@ class RegisterPage extends Component {
                                             label: theme.passwordInputLabel,
                                             type: 'password',
                                           })}
+                                          attrs={{
+                                            'name': 'password',
+                                          }}
                                         />
                                       </div>
 

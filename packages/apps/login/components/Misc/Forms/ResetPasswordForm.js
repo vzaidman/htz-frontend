@@ -76,7 +76,7 @@ class ResetPasswordForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { nextStage, closeModal, CloseButton, host, theme, validateEmailInput, client, flow, eventsTrackers, } = this.props;
+    const { nextStage, CloseButton, host, theme, validateEmailInput, client, flow, eventsTrackers, } = this.props;
 
     return (
       <Fragment>
