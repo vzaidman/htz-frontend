@@ -1,13 +1,14 @@
 import BenderMock from './listMocks/BenderMock';
 import DefaultMock from './listMocks/DefaultMock';
-import HawkingMock from './listMocks/HawkingMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
 import GamalMock from './listMocks/GamalMock';
+import HawkingMock from './listMocks/HawkingMock';
 import LeonardoMock from './listMocks/LeonardoMock';
 import MomMock from './listMocks/MomMock';
 import PanucciMock from './listMocks/PanucciMock';
 import SlimMock from './listMocks/SlimMock';
 import SlugsMock from './listMocks/SlugsMock';
+import WongMock from './listMocks/WongMock';
 import ZappMock from './listMocks/ZappMock';
 import ZoidbergMock from './listMocks/ZoidbergMock';
 import ZombieMock from './listMocks/ZombieMock';
@@ -44,6 +45,10 @@ export default (root, { listId, }) => {
       return ZombieMock;
     case 'Vogel':
       return VogelMock;
+    // Conrad and Wong are almost identical and have the same data
+    case 'Conrad':
+    case 'Wong':
+      return WongMock;
     default:
       return DefaultMock;
   }

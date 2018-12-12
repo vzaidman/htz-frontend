@@ -39,7 +39,6 @@ export default class ListSelector extends React.Component {
             <select
               name="viewType"
               onChange={this.onSelect}
-              defaultValue="Select list view"
               className={className}
               value={this.state.view}
             >
@@ -49,6 +48,7 @@ export default class ListSelector extends React.Component {
               <option value="Bender">Bender</option>
               <option value="Donatello">Donatello</option>
               <option value="Gamal">Gamal</option>
+              <option value="Conrad">Conrad</option>
               <option value="Farnsworth">Farnsworth</option>
               <option value="Hawking">Hawking</option>
               <option value="Leela">Leela</option>
@@ -60,6 +60,7 @@ export default class ListSelector extends React.Component {
               <option value="Slugs">Slugs</option>
               <option value="Zapp">Zapp</option>
               <option value="Vogel">Vogel</option>
+              <option value="Wong">Wong</option>
               <option value="Zoidberg">Zoidberg</option>
               <option value="Zombie">Zombie</option>
             </select>
