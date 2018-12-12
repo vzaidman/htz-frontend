@@ -30,7 +30,7 @@ describe.skip('LiveBLogContainer component', () => {
     );
     expect(snapshot).toMatchSnapshot();
   });
-  it('renders liveBLogContainer correctly with Timeline Text', () => {
+  it.skip('renders liveBLogContainer correctly with Timeline Text', () => {
     const snapshot = felaSnapshotter(
       <FelaTheme
         render={theme => (
