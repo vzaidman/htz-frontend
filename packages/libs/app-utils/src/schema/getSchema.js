@@ -27,7 +27,9 @@ const types = new Map([
   [ 'com.tm.HtmlElement', htmlElement, ],
   [ 'com.tm.Image', image, ],
   [ 'com.tm.BlogImage', image, ],
+  [ 'image', image, ],
   [ 'com.tm.ImageGalleryElement', imageGallery, ],
+  [ 'gallery', imageGallery, ],
   [ 'interactiveElement', interactive, ],
   [ 'com.tm.Link', link, ],
   [ 'com.tm.element.List', list, ],
@@ -40,6 +42,7 @@ const types = new Map([
   [ 'com.htz.MagazineArticleQuote', quote, ],
   [ 'tagsElement', tags, ],
   [ 'com.tm.Video', video, ],
+  [ 'video', video, ],
 ]);
 
 export default inputTemplate => types.get(inputTemplate);
