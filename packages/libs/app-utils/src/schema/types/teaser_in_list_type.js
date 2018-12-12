@@ -6,6 +6,7 @@ import {
   GraphQLInt,
   GraphQLFloat,
   GraphQLID,
+  GraphQLFloat,
 } from 'graphql';
 
 import author from './author_type';
@@ -55,6 +56,7 @@ const TeaserInListType = new GraphQLObjectType({
     titleMobile: { type: GraphQLString, },
     hash: { type: GraphQLString, },
     authors: { type: new GraphQLList(author), },
+    rank: { type: GraphQLFloat, },
     relatedArticles: {
       type: new GraphQLList(relatedArticle),
     },

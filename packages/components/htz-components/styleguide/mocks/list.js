@@ -13,6 +13,7 @@ import ZappMock from './listMocks/ZappMock';
 import ZoidbergMock from './listMocks/ZoidbergMock';
 import ZombieMock from './listMocks/ZombieMock';
 import VogelMock from './listMocks/VogelMock';
+import PazuzuMock from './listMocks/PazuzuMock';
 
 export default (root, { listId, }) => {
   switch (listId) {
@@ -45,6 +46,8 @@ export default (root, { listId, }) => {
       return ZombieMock;
     case 'Vogel':
       return VogelMock;
+    case 'Pazuzu':
+      return PazuzuMock;
     // Conrad and Wong are almost identical and have the same data
     case 'Conrad':
     case 'Wong':
