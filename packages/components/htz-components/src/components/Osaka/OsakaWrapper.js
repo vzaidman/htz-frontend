@@ -102,7 +102,7 @@ class OsakaWrapper extends React.Component {
                       backgroundColor: 'transparent',
                       display: 'none',
                       transform: `translate(50%, ${
-                        shouldDisplay ? '0%' : '-105%'
+                        shouldDisplay ? 'calc(0% + 7rem)' : '-105%'
                       })`,
                       transitionProperty: 'transform',
                       ...theme.getDelay('transition', -1),

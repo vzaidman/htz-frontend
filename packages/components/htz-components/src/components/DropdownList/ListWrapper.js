@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FocusLock from 'react-focus-lock';
 import { FelaComponent, } from 'react-fela';
 import ListItem from './ListItem';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
@@ -37,34 +36,26 @@ ListWrapper.defaultProps = {
   closeList: () => {},
 };
 
-export default function ListWrapper({
-  children,
-  listStyle,
-  itemStyle,
-  attrs,
-  closeList,
-}) {
+export default function ListWrapper({ children, listStyle, itemStyle, attrs, closeList, }) {
   return (
     <FelaComponent
       rule={listStyle}
       render={({ className, }) => (
-        <FocusLock>
-          <ul className={className} {...attrs}>
-            {children.map(child => (
-              <ListItem
-                itemStyle={itemStyle}
-                key={child.key}
-                onBlur={e => {
-                  if (child === children.slice(-1)[0]) {
-                    closeList();
-                  }
-                }}
-              >
-                {child}
-              </ListItem>
-            ))}
-          </ul>
-        </FocusLock>
+        <ul className={className} {...attrs}>
+          {children.map(child => (
+            <ListItem
+              itemStyle={itemStyle}
+              key={child.key}
+              onBlur={e => {
+                if (child === children.slice(-1)[0]) {
+                  closeList();
+                }
+              }}
+            >
+              {child}
+            </ListItem>
+          ))}
+        </ul>
       )}
     />
   );

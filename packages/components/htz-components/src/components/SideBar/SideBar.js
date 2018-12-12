@@ -33,7 +33,7 @@ function SideBar({ content, }) {
           style={theme => ({
             position: 'sticky',
             width: '100%',
-            top: isOsakaDisplayed ? '20rem' : '2rem',
+            top: isOsakaDisplayed ? '27rem' : '2rem',
             zIndex: '1',
             paddingInlineStart: '4rem',
             paddingInlineEnd: '4rem',

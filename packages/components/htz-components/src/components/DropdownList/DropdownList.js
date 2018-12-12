@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // import FocusLock from 'react-focus-lock';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import ListWrapper from './ListWrapper';
-import WrappedScroll from '../Scroll/Scroll';
 
 ThemedDropdownList.propTypes = {
   /**
@@ -45,35 +44,29 @@ ThemedDropdownList.defaultProps = {
 class DropdownList extends React.Component {
   state = { isOpen: false, };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.y === 0 || (nextProps.y > 0 && this.state.isOpen);
+  componentDidMount() {
+    this.curItem = 0;
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.isOpen) {
-      document.addEventListener('click', this.handleOutsideClick);
-      document.addEventListener('keydown', this.handleEscape);
-      document.addEventListener('keydown', this.handleArrowKey);
-    }
-    else {
-      document.removeEventListener('click', this.handleOutsideClick);
-      document.removeEventListener('keydown', this.handleEscape);
-      document.removeEventListener('keydown', this.handleArrowKey);
-      if (prevState.isOpen !== this.state.isOpen) {
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.isOpen !== this.state.isOpen) {
+      if (!prevState.isOpen && this.state.isOpen) {
+        this.itemsSelector = this.wrapper.querySelectorAll('a, button');
+        this.curItem = 0;
+        document.addEventListener('click', this.handleOutsideClick);
+        document.addEventListener('keydown', this.handleEscape);
+        document.addEventListener('keydown', this.handleArrowKey);
+      }
+      else if (prevState.isOpen && !this.state.isOpen) {
+        document.removeEventListener('click', this.handleOutsideClick);
+        document.removeEventListener('keydown', this.handleEscape);
+        document.removeEventListener('keydown', this.handleArrowKey);
         this.props.onClose();
       }
     }
-
-    if (prevProps.y > 0 && this.state.isOpen) {
-      this.toggleState();
-    }
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleOutsideClick);
-    document.removeEventListener('keydown', this.handleEscape);
-    document.removeEventListener('keydown', this.handleArrowKey);
-  }
+  componentWillUnmount() {}
 
   handleOutsideClick = evt => {
     if (this.state.isOpen && !this.wrapper.contains(evt.target)) {
@@ -91,12 +84,37 @@ class DropdownList extends React.Component {
   handleArrowKey = evt => {
     const { direction, } = this.props;
     const key = evt.which || evt.keyCode;
-    if (
-      this.state.isOpen
-      && this.props.isLast
-      && ((direction === 'rtl' && key === 39) || (direction === 'ltr' && key === 37))
-    ) {
-      this.toggleState();
+    if (!this.state.isOpen) return;
+
+    switch (key) {
+      case 39:
+      case 37:
+        if (this.props.isLast && direction === 'rtl') {
+          this.toggleState();
+        }
+        break;
+      case 40:
+      case 38:
+        this.curItem = key === 40 ? this.curItem + 1 : this.curItem - 1;
+        if (this.curItem > this.itemsSelector.length - 1) {
+          this.closeList();
+          break;
+        }
+
+        if (this.curItem < 0) {
+          this.curItem = 0;
+        }
+        this.itemsSelector[this.curItem].focus();
+        evt.preventDefault();
+        break;
+      case 9:
+        this.curItem = evt.shiftKey ? this.curItem - 1 : this.curItem + 1;
+        if (document.activeElement === this.itemsSelector[this.itemsSelector.length - 1]) {
+          this.closeList();
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -152,12 +170,8 @@ class DropdownList extends React.Component {
 
 function ThemedDropdownList(props) {
   return (
-    <WrappedScroll
-      render={({ y, }) => (
-        <FelaTheme
-          render={({ direction, }) => <DropdownList direction={direction} y={y} {...props} />}
-        />
-      )}
+    <FelaTheme
+      render={({ direction, }) => <DropdownList direction={direction} {...props} />}
     />
   );
 }
