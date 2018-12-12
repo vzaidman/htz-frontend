@@ -5,7 +5,7 @@ import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import Caption from '../Caption/Caption';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import getHeadlineElement from './getHeadlinelElement';
+import getMediaComponent from '../../utils/getMediaComponent';
 
 const propTypes = {
   /**
@@ -47,8 +47,7 @@ const defaultProps = {
  * @constructor
  */
 function HeadlineElement({ captionMiscStyles, elementObj, forceAspect, imgOptions, miscStyles, }) {
-  const uniqueId = elementObj.elementType || elementObj.inputTemplate || null;
-  const Element = getHeadlineElement(uniqueId);
+  const Element = getMediaComponent(elementObj.elementType);
 
   // if the Element is an image. credit prefix should set to 'צילום', issue: #1011
   const creditPrefix = elementObj.inputTemplate === 'com.tm.Image' ? 'צילום' : null;

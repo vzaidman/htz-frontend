@@ -7,7 +7,7 @@ import Caption from '../../../Caption/Caption';
 import Picture from '../../../Image/Picture';
 // import FullScreenMedia from '../../../FullScreenMedia/FullScreenMedia';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
-import getHeadlineElement from '../../../HeadlineElement/getHeadlinelElement';
+import getMediaComponent from '../../../../utils/getMediaComponent';
 
 const propTypes = {
   isVariationB: PropTypes.bool,
@@ -77,9 +77,8 @@ const getSourceOptions = ({ isVariationB, isSquare, }) => {
 const ImageElement = props => <Picture {...props} />;
 
 function MagazineHeadlineElement({ elementObj, isVariationB, miscStyles, }) {
-  const uniqueId = elementObj.elementType || elementObj.inputTemplate || null;
-  const Element = getHeadlineElement(uniqueId, ImageElement);
-  const isImage = uniqueId === 'com.tm.BlogImage' || uniqueId === 'com.tm.Image';
+  const Element = getMediaComponent(elementObj.elementType, ImageElement);
+  const isImage = elementObj.elementType === 'image';
 
   // if the Element is an image. credit prefix should set to 'צילום', issue: #1011
   const creditPrefix = elementObj.inputTemplate === 'com.tm.Image' ? 'צילום' : null;
