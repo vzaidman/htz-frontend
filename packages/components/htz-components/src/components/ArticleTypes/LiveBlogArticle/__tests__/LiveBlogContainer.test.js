@@ -11,7 +11,7 @@ jest.mock('../LiveBlogElements/LiveBlogItem', () => 'LiveBlogItem');
 
 Math.random = jest.fn(() => 0.123456789);
 
-describe('LiveBLogContainer component', () => {
+describe.skip('LiveBLogContainer component', () => {
   it('renders liveBLogContainer correctly', () => {
     const snapshot = felaSnapshotter(
       <ApolloProvider client={client}>

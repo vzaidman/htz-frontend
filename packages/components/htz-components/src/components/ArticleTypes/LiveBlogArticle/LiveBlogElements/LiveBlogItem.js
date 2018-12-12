@@ -156,6 +156,7 @@ class LiveBlogItem extends React.Component {
                   />
                   {/* M/L/XL Action Buttons */}
                   <ActionButtons
+                    shouldMainNavBarDisplay={false}
                     elementName={item.title}
                     elementUrl={`${canonicalUrl}#${item.cardId}`}
                     tabIndex={0}
@@ -236,6 +237,7 @@ class LiveBlogItem extends React.Component {
                   render={({ className, }) => (
                     <span className={className}>
                       <ActionButtons
+                        shouldMainNavBarDisplay={false}
                         elementName={item.title}
                         elementUrl={`${canonicalUrl}#${item.cardId}`}
                         tabIndex={0}
