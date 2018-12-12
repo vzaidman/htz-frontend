@@ -27,4 +27,5 @@ export type ImageDataType = {
   imageType?: string,
   imageUrlLinkGroup?: string,
   imageUrlLinkGroupTarget?: string,
+  elementType: 'image',
 };

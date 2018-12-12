@@ -17,6 +17,7 @@ const ImageGalleryType = new GraphQLObjectType({
     showTitle: { type: GraphQLBoolean, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
+    elementType: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
   }),
 });

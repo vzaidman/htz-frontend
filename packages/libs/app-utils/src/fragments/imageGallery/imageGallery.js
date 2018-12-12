@@ -12,6 +12,7 @@ export default gql`
     showTitle
     contentId
     contentName
+    elementType
     inputTemplate
   }
   ${image}

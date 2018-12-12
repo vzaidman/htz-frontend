@@ -12,6 +12,15 @@ import ImageType from './image_type';
 import MediaType from './media_type';
 import GraphQLDate from './date_type';
 
+const relatedArticle = new GraphQLObjectType({
+  name: 'RelatedArticle',
+  fields: {
+    title: { type: GraphQLString, },
+    path: { type: GraphQLString, },
+    contentId: { type: GraphQLID, },
+  },
+});
+
 const TeaserInListType = new GraphQLObjectType({
   name: 'TeaserInList',
   fields: () => ({
@@ -44,6 +53,9 @@ const TeaserInListType = new GraphQLObjectType({
     titleMobile: { type: GraphQLString, },
     hash: { type: GraphQLString, },
     authors: { type: new GraphQLList(author), },
+    relatedArticles: {
+      type: new GraphQLList(relatedArticle),
+    },
   }),
 });
 

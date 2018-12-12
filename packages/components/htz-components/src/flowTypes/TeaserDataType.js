@@ -25,7 +25,7 @@ export type TeaserDataType = {
   path: string,
   publishDate?: ?number,
   rank?: ?number,
-  relatedArticles?: ?(TeaserDataType[]),
+  relatedArticles?: ?({ contentId: string, path: string, title: string, }[]),
   reportingFrom?: ?string,
   representedContent?: ?string,
   subtitle?: ?string,

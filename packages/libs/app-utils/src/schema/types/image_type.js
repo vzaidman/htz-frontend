@@ -27,6 +27,7 @@ const ImageType = new GraphQLObjectType({
       ),
     },
     imageType: { type: GraphQLString, },
+    elementType: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
     contentName: { type: GraphQLString, },
   }),
