@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { rgba, } from 'polished';
+import { rgba, } from '@haaretz/htz-css-tools';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import type { Node, } from 'react';
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
