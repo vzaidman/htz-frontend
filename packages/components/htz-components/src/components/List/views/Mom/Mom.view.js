@@ -1,23 +1,21 @@
 // @flow
-import React from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
+import React, { type StatelessFunctionalComponent, } from 'react';
 
-import type { StatelessFunctionalComponent, } from 'react';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
-
+import Grid from '../../../Grid/Grid';
+import GridItem from '../../../Grid/GridItem';
 import H from '../../../AutoLevels/H';
+import HtzLink from '../../../HtzLink/HtzLink';
+import IconArrow from '../../../Icon/icons/IconArrow';
+import IconBack from '../../../Icon/icons/IconBack';
+import IconComment from '../../../Icon/icons/IconComment';
 import ListView from '../../../ListView/ListView';
+import Picture from '../../../Image/Picture';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
-import Picture from '../../../Image/Picture';
-import IconComment from '../../../Icon/icons/IconComment';
-import IconArrow from '../../../Icon/icons/IconArrow';
-import IconBack from '../../../Icon/icons/IconBack';
-import HtzLink from '../../../HtzLink/HtzLink';
-import Grid from '../../../Grid/Grid';
-import GridItem from '../../../Grid/GridItem';
 import pictureAssetProps from '../../../../utils/getPictureAssets';
 
 type Props = {
@@ -33,21 +31,62 @@ type Props = {
   biAction: ({
     actionCode: number,
     additionalInfo: {
-     ArticleId: string,
-     ListId: string,
-     NoInList: number,
-     ViewName: string,
+      ArticleId: string,
+      ListId: string,
+      NoInList: number,
+      ViewName: string,
     },
   }) => void,
 };
 
-const headerTypo = [
-  { until: 's', value: -1, },
-  { from: 's', value: 0, },
-];
+const headerTypo = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
+const pictureOptions = {
+  defaultImgOptions: {
+    sizes: '108px',
+    aspect: 'regular',
+    widths: [ 108, 216, ],
+  },
+  sources: [
+    {
+      from: 'xl',
+      sizes: '281px',
+      aspect: 'headline',
+      widths: [ 281, ],
+    },
+    {
+      from: 'l',
+      sizes: '314px',
+      aspect: 'headline',
+      widths: [ 314, ],
+    },
+    {
+      from: 'm',
+      sizes: '476px',
+      aspect: 'headline',
+      widths: [ 476, ],
+    },
+    {
+      from: 's',
+      sizes: '364px',
+      aspect: 'headline',
+      widths: [ 364, ],
+    },
+  ],
+};
 
-const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAction, }) => {
-  const clickAction = ({ index, articleId, }: { index: number, articleId: string, }) => {
+const Mom: StatelessFunctionalComponent<Props> = ({
+  list,
+  listId,
+  gaAction,
+  biAction,
+}) => {
+  const clickAction = ({
+    index,
+    articleId,
+  }: {
+    index: number,
+    articleId: string,
+  }) => {
     biAction({
       actionCode: 109,
       additionalInfo: {
@@ -77,18 +116,13 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
       }}
     >
       <GridItem
-        width={[
-          { until: 'l', value: 1, },
-          { from: 'l', value: 2 / 12, },
-        ]}
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
       >
         <FelaComponent
           rule={({ theme, }) => ({
             marginBottom: '2rem',
             display: 'flex',
-            extend: [
-              theme.type(2),
-            ],
+            extend: [ theme.type(2), ],
           })}
           render={({ className, }) => (
             <HtzLink className={className} href={url}>
@@ -141,10 +175,7 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
 
       {/* CONTENT */}
       <GridItem
-        width={[
-          { until: 'l', value: 1, },
-          { from: 'l', value: 10 / 12, },
-        ]}
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
       >
         <Grid gutter={4} miscStyles={{ height: '100%', }}>
           <GridItem
@@ -166,48 +197,39 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
               data={items[0]}
               gutter={2}
               isRev={false}
-              onClick={() => clickAction({ index: 0, articleId: items[0].contentId, })}
+              onClick={() => clickAction({ index: 0, articleId: items[0].contentId, })
+              }
               gridMiscStyles={{
                 flexWrap: [ { until: 'xl', value: 'nowrap', }, ],
               }}
             >
-              {
-                items[0].image ?
-                  <TeaserMedia
-                    data={items[0]}
-                    width={[
-                      { until: 's', value: 20, },
-                      { from: 's', until: 'l', value: 8 / 12, },
-                      { from: 'l', until: 'xl', value: 4 / 6, },
-                      { from: 'xl', value: 1, },
-                    ]}
-                    miscStyles={{
-                      order: [
-                        { from: 's', until: 'xl', value: '1', },
-                      ],
-                    }}
-                  >
-                    <Picture
-                      {...pictureAssetProps(
-                        {
+              {items[0].image ? (
+                <TeaserMedia
+                  data={items[0]}
+                  width={[
+                    { until: 's', value: 20, },
+                    { from: 's', until: 'l', value: 8 / 12, },
+                    { from: 'l', until: 'xl', value: 4 / 6, },
+                    { from: 'xl', value: 1, },
+                  ]}
+                  miscStyles={{
+                    order: [ { from: 's', until: 'xl', value: '1', }, ],
+                  }}
+                >
+                  <FelaTheme
+                    render={theme => (items[0].image ? (
+                      <Picture
+                        {...pictureAssetProps({
+                          bps: theme.bps,
                           imgData: items[0].image,
-                          defaultImgOptions: {
-                            sizes: '108px',
-                            aspect: 'regular',
-                            widths: [ 108, 216, ],
-                          },
-                          sources: [
-                            { from: 'xl', sizes: '281px', aspect: 'headline', widths: [ 281, ], },
-                            { from: 'l', sizes: '314px', aspect: 'headline', widths: [ 314, ], },
-                            { from: 'm', sizes: '476px', aspect: 'headline', widths: [ 476, ], },
-                            { from: 's', sizes: '364px', aspect: 'headline', widths: [ 364, ], },
-                          ],
-                        }
-                      )}
-                    />
-                  </TeaserMedia>
-                  : null
-              }
+                          ...pictureOptions,
+                        })}
+                      />
+                    ) : null)
+                    }
+                  />
+                </TeaserMedia>
+              ) : null}
               <TeaserContent
                 data={items[0]}
                 padding={[
@@ -236,13 +258,11 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                     style={theme => ({
                       color: theme.color('primary'),
                       fontWeight: '700',
-                      extend: [
-                        theme.type(-3),
-                      ],
+                      extend: [ theme.type(-3), ],
                     })}
                     render="span"
                   >
-                    {data.commentsCount}
+                    {data.commentsCounts}
                     <IconComment size={2} />
                   </FelaComponent>
                 )}
@@ -288,7 +308,8 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                   data={items[1]}
                   gutter={2}
                   isRev={false}
-                  onClick={() => clickAction({ index: 1, articleId: items[1].contentId, })}
+                  onClick={() => clickAction({ index: 1, articleId: items[1].contentId, })
+                  }
                 >
                   <TeaserContent
                     data={items[1]}
@@ -305,23 +326,18 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                       { from: 'xl', value: [ 2, 2, 1, 2, ], },
                     ]}
                     renderContent={data => (
-                      <TeaserHeader
-                        {...data}
-                        typeScale={headerTypo}
-                      />
+                      <TeaserHeader {...data} typeScale={headerTypo} />
                     )}
                     renderFooter={data => (
                       <FelaComponent
                         style={theme => ({
                           color: theme.color('primary'),
                           fontWeight: '700',
-                          extend: [
-                            theme.type(-3),
-                          ],
+                          extend: [ theme.type(-3), ],
                         })}
                         render="span"
                       >
-                        {data.commentsCount}
+                        {data.commentsCounts}
                         <IconComment size={2} />
                       </FelaComponent>
                     )}
@@ -340,7 +356,8 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                   data={items[2]}
                   gutter={2}
                   isRev={false}
-                  onClick={() => clickAction({ index: 2, articleId: items[2].contentId, })}
+                  onClick={() => clickAction({ index: 2, articleId: items[2].contentId, })
+                  }
                 >
                   <TeaserContent
                     data={items[2]}
@@ -357,23 +374,18 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                       { from: 'xl', value: [ 2, 2, 1, 2, ], },
                     ]}
                     renderContent={data => (
-                      <TeaserHeader
-                        {...data}
-                        typeScale={headerTypo}
-                      />
+                      <TeaserHeader {...data} typeScale={headerTypo} />
                     )}
                     renderFooter={data => (
                       <FelaComponent
                         style={theme => ({
                           color: theme.color('primary'),
                           fontWeight: '700',
-                          extend: [
-                            theme.type(-3),
-                          ],
+                          extend: [ theme.type(-3), ],
                         })}
                         render="span"
                       >
-                        {data.commentsCount}
+                        {data.commentsCounts}
                         <IconComment size={2} />
                       </FelaComponent>
                     )}
@@ -404,40 +416,33 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
               data={items[3]}
               gutter={2}
               isRev={false}
-              onClick={() => clickAction({ index: 3, articleId: items[3].contentId, })}
-            >
-              {
-                items[3].image ?
-                  <TeaserMedia
-                    data={items[3]}
-                    width={[
-                      { until: 'm', value: 1, },
-                      { from: 'm', until: 'l', value: 8 / 12, },
-                      { from: 'l', until: 'xl', value: 4 / 6, },
-                      { from: 'xl', value: 1, },
-                    ]}
-                  >
-                    <Picture
-                      {...pictureAssetProps(
-                        {
-                          imgData: items[3].image,
-                          defaultImgOptions: {
-                            sizes: '108px',
-                            aspect: 'regular',
-                            widths: [ 108, 216, ],
-                          },
-                          sources: [
-                            { from: 'xl', sizes: '281px', aspect: 'headline', widths: [ 281, ], },
-                            { from: 'l', sizes: '314px', aspect: 'headline', widths: [ 314, ], },
-                            { from: 'm', sizes: '476px', aspect: 'headline', widths: [ 476, ], },
-                            { from: 's', sizes: '364px', aspect: 'headline', widths: [ 364, ], },
-                          ],
-                        }
-                      )}
-                    />
-                  </TeaserMedia>
-                : null
+              onClick={() => clickAction({ index: 3, articleId: items[3].contentId, })
               }
+            >
+              {items[3].image ? (
+                <TeaserMedia
+                  data={items[3]}
+                  width={[
+                    { until: 'm', value: 1, },
+                    { from: 'm', until: 'l', value: 8 / 12, },
+                    { from: 'l', until: 'xl', value: 4 / 6, },
+                    { from: 'xl', value: 1, },
+                  ]}
+                >
+                  <FelaTheme
+                    render={theme => (items[3].image ? (
+                      <Picture
+                        {...pictureAssetProps({
+                          bps: theme.bps,
+                          imgData: items[3].image,
+                          ...pictureOptions,
+                        })}
+                      />
+                    ) : null)
+                    }
+                  />
+                </TeaserMedia>
+              ) : null}
               <TeaserContent
                 data={items[3]}
                 padding={[
@@ -466,13 +471,11 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                     style={theme => ({
                       color: theme.color('primary'),
                       fontWeight: '700',
-                      extend: [
-                        theme.type(-3),
-                      ],
+                      extend: [ theme.type(-3), ],
                     })}
                     render="span"
                   >
-                    {data.commentsCount}
+                    {data.commentsCounts}
                     <IconComment size={2} />
                   </FelaComponent>
                 )}
@@ -500,7 +503,8 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
               data={items[4]}
               gutter={2}
               isRev={false}
-              onClick={() => clickAction({ index: 4, articleId: items[4].contentId, })}
+              onClick={() => clickAction({ index: 4, articleId: items[4].contentId, })
+              }
             >
               <TeaserContent
                 data={items[4]}
@@ -530,13 +534,11 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
                     style={theme => ({
                       color: theme.color('primary'),
                       fontWeight: '700',
-                      extend: [
-                        theme.type(-3),
-                      ],
+                      extend: [ theme.type(-3), ],
                     })}
                     render="span"
                   >
-                    {data.commentsCount}
+                    {data.commentsCounts}
                     <IconComment size={2} />
                   </FelaComponent>
                 )}
@@ -550,9 +552,7 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
         width={1}
         miscStyles={{
           direction: 'ltr',
-          display: [
-            { from: 's', value: 'none', },
-          ],
+          display: [ { from: 's', value: 'none', }, ],
         }}
       >
         <FelaComponent
@@ -570,7 +570,6 @@ const Mom: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAc
           )}
         />
       </GridItem>
-
     </ListView>
   );
 };
