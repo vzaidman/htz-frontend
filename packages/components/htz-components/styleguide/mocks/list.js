@@ -33,6 +33,7 @@ export default (root, { listId, }) => {
     case 'Zombie':
       return ZombieMock;
     case 'Leonardo':
+    case 'Donatello':
       return LeonardoMock;
     default:
       return DefaultMock;

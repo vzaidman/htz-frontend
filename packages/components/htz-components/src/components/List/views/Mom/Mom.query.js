@@ -17,12 +17,6 @@ export default gql`
         ... on TeaserInList {
           ...TeaserForMom
         }
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
-        ... on DfpBanner {
-          ...DfpBanner
-        }
       }
     }
   }

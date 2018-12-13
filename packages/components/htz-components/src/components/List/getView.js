@@ -13,6 +13,13 @@ const views = new Map([
     },
   ],
   [
+    'Donatello',
+    {
+      view: () => import('./views/Donatello/Donatello.view.js'),
+      query: () => import('./views/Donatello/Donatello.query.js'),
+    },
+  ],
+  [
     'Gamal',
     {
       view: () => import('./views/Gamal/Gamal.view.js'),

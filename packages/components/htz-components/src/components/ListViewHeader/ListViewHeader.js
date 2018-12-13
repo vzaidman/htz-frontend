@@ -83,21 +83,25 @@ type Props = {
    * URL that leads to section of list.
    */
   url: ?string,
+  isCommercial: boolean,
 };
 
 ListViewHeader.defaultProps = {
+  isCommercial: false,
   isHorizontal: false,
   hasTitlePadding: false,
   backgroundColor: null,
   commercialLinks: null,
   marketingTeaser: null,
   extraLinks: null,
+  marketingTeaser: null,
   miscStyles: null,
   title: null,
   url: null,
 };
 
 export default function ListViewHeader({
+  isCommercial,
   isHorizontal,
   hasTitlePadding,
   backgroundColor,
@@ -114,13 +118,15 @@ export default function ListViewHeader({
       isHorizontal={isHorizontal}
       hasTitlePadding={hasTitlePadding}
       miscStyles={miscStyles}
+      isCommercial={isCommercial}
       rule={listViewHeaderStyle}
       render={({ className, theme, }) => (
         <header className={className}>
           {title && (
             <FelaComponent
               style={{
-                color: theme.color('primary'),
+                // TODO: add commercial color to base colors
+                color: isCommercial ? theme.color('commercial') : theme.color('primary'),
                 fontWeight: 700,
                 extend: [
                   theme.type(2),
@@ -276,6 +282,7 @@ export default function ListViewHeader({
 
 function listViewHeaderStyle({
   theme,
+  isCommercial,
   backgroundColor,
   isHorizontal,
   miscStyles,
@@ -295,12 +302,12 @@ function listViewHeaderStyle({
       ),
       theme.mq(
         { until: 's', },
-        borderTop('1px', 0, 'solid', theme.color('primary'))
+        borderTop('1px', 0, 'solid', isCommercial ? theme.color('commercial') : theme.color('primary'))
       ),
       theme.mq(
         { from: 's', until: isHorizontal ? null : 'l', },
         {
-          ...borderTop('2px', 0, 'solid', theme.color('primary')),
+          ...borderTop('2px', 0, 'solid', isCommercial ? theme.color('commercial') : theme.color('primary')),
           paddingBottom: '1rem',
         }
       ),
