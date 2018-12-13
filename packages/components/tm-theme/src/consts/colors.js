@@ -5,6 +5,9 @@ const colors = {
   ...baseColors,
 
   // semantic use-cases
+  commercial: {
+    base: '#bd1c87',
+  },
   accent: {
     base: [ 'tertiary', 'base', ],
   },

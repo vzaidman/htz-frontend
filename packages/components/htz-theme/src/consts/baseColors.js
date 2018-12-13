@@ -4,6 +4,7 @@ const baseColors = {
   white: '#FFF',
   neutral: {
     '-10': 'white',
+    '-7': '#F5F5F5',
     '-6': '#EBEBEB',
     '-5': '#CCC',
     '-4': '#B4B4B4',
