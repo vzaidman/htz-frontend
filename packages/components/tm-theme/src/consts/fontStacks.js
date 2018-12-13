@@ -41,6 +41,7 @@ const fontStacks = Object.freeze({
   },
   base: fallbackFont,
   alt: fallbackFont,
+  ariel: 'Arial',
 });
 
 // TODO: test data structure
