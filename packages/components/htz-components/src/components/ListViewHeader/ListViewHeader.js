@@ -8,7 +8,7 @@ import {
   parseStyleProps,
 } from '@haaretz/htz-css-tools';
 import { FelaComponent, } from 'react-fela';
-import React, { type Node, } from 'react';
+import * as React from 'react';
 
 import type { ListExtraLinkType, } from '../../flowTypes/ListExtraLinkType';
 import type { ListMarketingTeaserType, } from '../../flowTypes/ListMarketingTeaserType';
@@ -16,6 +16,7 @@ import Button from '../Button/Button';
 import H from '../AutoLevels/H';
 import HtzLink from '../HtzLink/HtzLink';
 import IconAlefLogoTransparent from '../Icon/icons/IconAlefLogoTransparent';
+import IconBack from '../Icon/icons/IconBack';
 import Section from '../AutoLevels/Section';
 import TextLink from '../TextLink/TextLink';
 import setColor from '../../utils/setColor';
@@ -31,6 +32,10 @@ type Props = {
    * is the list header horizontal on large viewports
    */
   isHorizontal: boolean,
+  /**
+   * Is the list's title padded at its inline start across breakpoints
+   */
+  hasTitlePadding: boolean,
   /**
    * The background color of the <ListViewHeader />.
    * Can be:
@@ -49,7 +54,7 @@ type Props = {
    *     }
    *     ```
    */
-  backgroundColor: ?(BackgroundColorType[]),
+  backgroundColor: ?BackgroundColorType,
   /**
    * A list of links to display.
    */
@@ -74,31 +79,40 @@ type Props = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: ?StyleProps,
+/**
+ * URL that leads to section of list.
+ */
+  url: ?string,
 };
 
 ListViewHeader.defaultProps = {
   isHorizontal: false,
+  hasTitlePadding: false,
   backgroundColor: null,
   commercialLinks: null,
   extraLinks: null,
   marketingTeaser: null,
   miscStyles: null,
   title: null,
+  url: null,
 };
 
 export default function ListViewHeader({
   isHorizontal,
+  hasTitlePadding,
   backgroundColor,
   commercialLinks,
   extraLinks,
   marketingTeaser,
   miscStyles,
   title,
-}: Props): Node {
+  url,
+}: Props): React.Node {
   return (
     <FelaComponent
       backgroundColor={backgroundColor}
       isHorizontal={isHorizontal}
+      hasTitlePadding={hasTitlePadding}
       miscStyles={miscStyles}
       rule={listViewHeaderStyle}
       render={({ className, theme, }) => (
@@ -108,10 +122,48 @@ export default function ListViewHeader({
               style={{
                 color: theme.color('primary'),
                 fontWeight: 700,
-                extend: [ theme.type(2), ],
+                extend: [
+                  theme.type(2),
+                  isHorizontal && hasTitlePadding
+                    ? { paddingInlineStart: '1rem', }
+                    : theme.mq({ until: 's', }, { paddingInlineStart: '1rem', }),
+                  theme.mq(
+                    { until: 's', },
+                    {
+                      display: 'flex',
+                      width: '100%',
+                    }
+                  ),
+                ],
               }}
               render={({ className: headerClass, }) => (
-                <H className={headerClass}>{title}</H>
+                url
+                  ? (
+                    <FelaComponent
+                      style={{
+                        display: 'flex',
+                        width: '100%',
+                      }}
+                      render={({ className, }) => (
+                        <HtzLink className={className} href={url}>
+                          <H className={headerClass}>
+                            {title}
+                            <IconBack
+                              size={6}
+                              miscStyles={{
+                                marginInlineStart: 'auto',
+                                paddingTop: '1rem',
+                                paddingBottom: '1rem',
+                                backgroundColor: theme.color('quaternary'),
+                                ...theme.mq({ from: 's', }, { display: 'none', }),
+                              }}
+                            />
+                          </H>
+                        </HtzLink>
+                      )}
+                    />
+                  )
+                  : (<H className={headerClass}>{title}</H>)
               )}
             />
           )}
@@ -167,7 +219,7 @@ export default function ListViewHeader({
                 extend: [ theme.mq({ until: 'l', }, { display: 'none', }), ],
               }}
             >
-              {marketingTeaser ? (
+              {!isHorizontal && marketingTeaser ? (
                 <Section>
                   <IconAlefLogoTransparent color="secondary" size={3} />
                   <FelaComponent
@@ -197,7 +249,7 @@ export default function ListViewHeader({
                   </Button>
                 </Section>
               ) : (
-                commercialLinks && (
+                !isHorizontal && commercialLinks && (
                   <ul>
                     {commercialLinks.map(commercialLink => (
                       <li key={commercialLink.contentId}>
@@ -242,18 +294,25 @@ function listViewHeaderStyle({
         theme.color
       ),
       theme.mq(
-        { until: 'l', },
-        borderTop('2px', 1, 'solid', theme.color('primary'))
+        { until: 's', },
+        borderTop('1px', 0, 'solid', theme.color('primary'))
       ),
       theme.mq(
-        { from: 'l', },
-        borderTop('5px', 1, 'solid', theme.color('primary'))
+        { from: 's', until: isHorizontal ? null : 'l', },
+        {
+          ...borderTop('2px', 0, 'solid', theme.color('primary')),
+          paddingBottom: '1rem',
+        }
       ),
-      ...[
-        !isHorizontal
-          ? theme.mq({ from: 'l', }, { flexDirection: 'column', })
-          : {},
-      ],
+      ...(isHorizontal
+        ? []
+        : [
+          theme.mq(
+            { from: 'l', },
+            borderTop('5px', 1, 'solid', theme.color('primary'))
+          ),
+          theme.mq({ from: 'l', }, { flexDirection: 'column', }),
+        ]),
       // Trump all other styles with those defined in `miscStyles`
       ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
     ],

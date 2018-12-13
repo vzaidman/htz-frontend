@@ -1,7 +1,7 @@
 // @flow
 
 import type { StyleProps, } from '@haaretz/htz-css-tools';
-import type { ImageDataType } from './ImageDataType';
+import type { ImageDataType, } from './ImageDataType';
 
 type PictureTransformType = {
   aspect?: string,
@@ -15,7 +15,7 @@ type PictureTransformType = {
 
 export type SourceOptionsType = {
   sizes: string,
-  transforms: PictureTransformType | Array<PictureTransformType>
+  transforms: PictureTransformType | Array<PictureTransformType>,
 };
 
 type ImageType = {

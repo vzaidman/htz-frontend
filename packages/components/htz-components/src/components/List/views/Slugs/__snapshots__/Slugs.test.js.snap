@@ -18,40 +18,40 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
           id={null}
         >
           <header
-            className="htz-p htz-v htz-s htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-z htz-ab htz-y"
+            className="htz-p htz-v htz-s htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-z htz-ab htz-y"
           >
             <h2
-              className="htz-ax htz-ay htz-az htz-ba htz-bb htz-bc"
+              className="htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
             >
               בחירת העורכים
             </h2>
           </header>
         </div>
         <div
-          className="htz-ae htz-bd htz-be htz-bf htz-r htz-ai htz-aj htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq"
+          className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc"
           id={null}
         >
           <div
-            className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-br htz-x htz-y htz-z htz-ab htz-ac"
+            className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-cd htz-x htz-y htz-z htz-ab htz-ac"
             id={null}
           >
             <div
-              className="htz-ae htz-bd htz-be htz-bf htz-r htz-ai htz-aj htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-bl htz-bm htz-cc htz-cd htz-bp htz-ce htz-bq"
+              className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-bx htz-by htz-co htz-cp htz-cb htz-cq htz-cc"
               id={null}
             >
               <article
-                className="htz-cf htz-p htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-ab"
+                className="htz-cr htz-p htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-ab"
               >
                 <div
-                  className="htz-p htz-co htz-r htz-s htz-cp htz-cq htz-cg htz-w htz-cr htz-be htz-ci htz-cs htz-y htz-cn htz-ab htz-ac htz-bq"
+                  className="htz-p htz-da htz-r htz-s htz-db htz-dc htz-cs htz-w htz-dd htz-bq htz-cu htz-de htz-y htz-cz htz-ab htz-ac htz-cc"
                   id={null}
                 >
                   <div
-                    className="htz-ae htz-ct htz-ag htz-ah htz-r htz-cu htz-cv htz-al"
+                    className="htz-ae htz-df htz-ag htz-ah htz-r htz-dg htz-dh htz-al"
                     id={null}
                   >
                     <div
-                      className="htz-cj htz-cw"
+                      className="htz-cv htz-di"
                     >
                       <a
                         className={null}
@@ -60,7 +60,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         tabIndex={-1}
                       >
                         <div
-                          className="htz-cx htz-cy htz-cj htz-b htz-cz"
+                          className="htz-dj htz-dk htz-cv htz-b htz-dl"
                         >
                           <div />
                         </div>
@@ -68,14 +68,14 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="htz-ae htz-bd htz-be htz-bf htz-r htz-cu htz-cv htz-p htz-cg htz-da htz-bq htz-cn htz-ab htz-db"
+                    className="htz-ae htz-bp htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-dm htz-cc htz-cz htz-ab htz-dn"
                     id={null}
                   >
                     <div
-                      className="htz-p htz-cg htz-ch htz-dc htz-aj htz-dd htz-ai htz-cn htz-ab"
+                      className="htz-p htz-cs htz-ct htz-do htz-aj htz-dp htz-ai htz-cz htz-ab"
                     >
                       <div
-                        className="htz-cj htz-cw htz-de htz-df htz-dg htz-dh htz-di"
+                        className="htz-cv htz-di htz-dq htz-dr htz-ds htz-dt htz-du"
                       >
                         <a
                           className={null}
@@ -83,7 +83,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           onClick={null}
                         >
                           <h2
-                            className="htz-dj htz-ay htz-df htz-dg htz-dh htz-di"
+                            className="htz-dv htz-bh htz-dr htz-ds htz-dt htz-du"
                             offset={0}
                           >
                             תודה על הכל, סטן לי. היית שחצן, מהפכן וגיבור ילדותי
@@ -92,7 +92,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       </div>
                     </div>
                     <footer
-                      className="htz-dk htz-cg htz-ch htz-dl htz-dm htz-aj htz-dn htz-ai htz-do htz-dp htz-dq htz-dr htz-ds htz-cn htz-ab"
+                      className="htz-dw htz-cs htz-ct htz-dx htz-dy htz-aj htz-dz htz-ai htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                     >
                       <span
                         style={
@@ -102,7 +102,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         }
                       >
                         <address
-                          className="htz-dj htz-dt"
+                          className="htz-dv htz-ef"
                         >
                           אורי פינק
                         </address>
@@ -118,15 +118,15 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </time>
                       </span>
                       <span
-                        className="htz-du htz-da htz-dv htz-dw htz-db"
+                        className="htz-eg htz-dm htz-eh htz-ei htz-dn"
                       >
                         <div
-                          className="htz-dt htz-dx htz-ax"
+                          className="htz-ef htz-ej htz-bg"
                         >
                           320
                         </div>
                         <svg
-                          className="htz-dy htz-ax htz-dz"
+                          className="htz-ek htz-bg htz-el"
                           height="1em"
                           viewBox="0 0 256 256"
                           width="1em"
@@ -139,94 +139,94 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </svg>
                       </span>
                       <span
-                        className="htz-ea htz-dw"
+                        className="htz-em htz-ei"
                       >
                         <span
                           aria-hidden="true"
                         >
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ed"
+                              className="htz-ep"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ed"
+                              className="htz-ep"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                         </span>
                         <span
-                          className="htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ch htz-ek htz-el htz-em htz-ea"
+                          className="htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ct htz-ew htz-ex htz-ey htz-em"
                         >
                           4 כוכבים
                         </span>
@@ -236,7 +236,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                 </div>
                 <a
                   aria-hidden={true}
-                  className="htz-en htz-eo htz-ep htz-el htz-eq htz-er htz-es"
+                  className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                   href="http://pre.haaretz.co.il/gallery/.premium-MAGAZINE-1.6652485"
                   onClick={null}
                   tabIndex="-1"
@@ -244,30 +244,30 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
               </article>
             </div>
             <div
-              className="htz-ae htz-bd htz-be htz-bf htz-r htz-ai htz-aj htz-p htz-cg htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-et htz-eu htz-cb htz-bl htz-bm htz-cc htz-cd htz-bp htz-bq htz-cn htz-ab"
+              className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-p htz-cs htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-ff htz-fg htz-cn htz-bx htz-by htz-co htz-cp htz-cb htz-cc htz-cz htz-ab"
               id={null}
             >
               <div
-                className="htz-p htz-q htz-r htz-s htz-ev htz-ew htz-v htz-ex htz-w htz-ag htz-ey htz-ez htz-x htz-y htz-z htz-ab htz-ac htz-al"
+                className="htz-p htz-q htz-r htz-s htz-fh htz-fi htz-v htz-fj htz-w htz-ag htz-fk htz-fl htz-x htz-y htz-z htz-ab htz-ac htz-al"
                 id={null}
               >
                 <div
-                  className="htz-ae htz-bd htz-be htz-bf htz-r htz-dx htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj htz-fk htz-bq"
+                  className="htz-ae htz-bp htz-bq htz-br htz-r htz-ej htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv htz-fw htz-cc"
                   id={null}
                 >
                   <article
-                    className="htz-cf htz-p htz-cg htz-ch htz-ci htz-cj htz-cn htz-ab"
+                    className="htz-cr htz-p htz-cs htz-ct htz-cu htz-cv htz-cz htz-ab"
                   >
                     <div
-                      className="htz-p htz-q htz-r htz-s htz-cp htz-cq htz-v htz-w htz-cr htz-be htz-ci htz-fl htz-fm htz-fn htz-x htz-y htz-z htz-ab htz-ac htz-bq"
+                      className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-bq htz-cu htz-fx htz-fy htz-fz htz-x htz-y htz-z htz-ab htz-ac htz-cc"
                       id={null}
                     >
                       <div
-                        className="htz-ae htz-bd htz-be htz-bf htz-r htz-cu htz-cv htz-fo htz-fp htz-fq htz-fr htz-fs htz-bx htz-by htz-ft htz-fu htz-cb htz-bl htz-bm htz-fv htz-fw htz-bp htz-bq"
+                        className="htz-ae htz-bp htz-bq htz-br htz-r htz-dg htz-dh htz-ga htz-gb htz-gc htz-gd htz-ge htz-cj htz-ck htz-gf htz-gg htz-cn htz-bx htz-by htz-gh htz-gi htz-cb htz-cc"
                         id={null}
                       >
                         <div
-                          className="htz-cj htz-cw"
+                          className="htz-cv htz-di"
                         >
                           <a
                             className={null}
@@ -276,7 +276,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             tabIndex={-1}
                           >
                             <div
-                              className="htz-cx htz-fx htz-cj htz-b htz-cz"
+                              className="htz-dj htz-gj htz-cv htz-b htz-dl"
                             >
                               <div />
                             </div>
@@ -284,14 +284,14 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </div>
                       </div>
                       <div
-                        className="htz-ae htz-ct htz-be htz-bf htz-r htz-cu htz-cv htz-p htz-cg htz-fy htz-fz htz-ga htz-bq htz-cn htz-ab"
+                        className="htz-ae htz-df htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-gk htz-gl htz-gm htz-cc htz-cz htz-ab"
                         id={null}
                       >
                         <div
-                          className="htz-p htz-cg htz-ch htz-gb htz-gc htz-gd htz-ge htz-gf htz-gg htz-gh htz-gi htz-cn htz-ab"
+                          className="htz-p htz-cs htz-ct htz-gn htz-bm htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-cz htz-ab"
                         >
                           <div
-                            className="htz-cj htz-cw "
+                            className="htz-cv htz-di "
                           >
                             <a
                               className={null}
@@ -299,16 +299,16 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                               onClick={null}
                             >
                               <h2
-                                className="htz-dj htz-ay"
+                                className="htz-dv htz-bh"
                                 offset={0}
                               >
                                 <span
-                                  className="htz-gj"
+                                  className="htz-gu"
                                 >
                                   יותר יעדים ברצועה
                                 </span>
                                 <span
-                                  className="htz-dw"
+                                  className="htz-ei"
                                 >
                                   יותר מ-300 רקטות ופצמ"רים נורו מעזה ליישובי הדרום; צה"ל תקף עשרות יעדים ברצועה
                                 </span>
@@ -317,7 +317,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           </div>
                         </div>
                         <footer
-                          className="htz-dk htz-cg htz-ch htz-dl htz-gk htz-gc htz-gl htz-ge htz-gm htz-gg htz-gn htz-gi htz-do htz-dp htz-dq htz-dr htz-ds htz-cn htz-ab"
+                          className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bm htz-gw htz-gp htz-gx htz-gr htz-bd htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                         >
                           <span
                             style={
@@ -327,7 +327,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             }
                           >
                             <address
-                              className="htz-dj htz-dt"
+                              className="htz-dv htz-ef"
                             >
                               אורי פינק
                             </address>
@@ -343,94 +343,94 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             </time>
                           </span>
                           <span
-                            className="htz-ea htz-dw"
+                            className="htz-em htz-ei"
                           >
                             <span
                               aria-hidden="true"
                             >
                               <svg
-                                className="htz-eb"
+                                className="htz-en"
                                 height="1em"
                                 viewBox="0 0 256 256"
                                 width="1em"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  className="htz-ec"
+                                  className="htz-eo"
                                   d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                                 />
                                 <path
-                                  className="htz-ec"
+                                  className="htz-eo"
                                   d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                                 />
                               </svg>
                               <svg
-                                className="htz-eb"
+                                className="htz-en"
                                 height="1em"
                                 viewBox="0 0 256 256"
                                 width="1em"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  className="htz-ec"
+                                  className="htz-eo"
                                   d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                                 />
                                 <path
-                                  className="htz-ec"
+                                  className="htz-eo"
                                   d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                                 />
                               </svg>
                               <svg
-                                className="htz-eb"
+                                className="htz-en"
                                 height="1em"
                                 viewBox="0 0 256 256"
                                 width="1em"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  className="htz-ec"
+                                  className="htz-eo"
                                   d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                                 />
                                 <path
-                                  className="htz-ec"
+                                  className="htz-eo"
                                   d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                                 />
                               </svg>
                               <svg
-                                className="htz-eb"
+                                className="htz-en"
                                 height="1em"
                                 viewBox="0 0 256 256"
                                 width="1em"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  className="htz-ed"
+                                  className="htz-ep"
                                   d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                                 />
                                 <path
-                                  className="htz-ed"
+                                  className="htz-ep"
                                   d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                                 />
                               </svg>
                               <svg
-                                className="htz-eb"
+                                className="htz-en"
                                 height="1em"
                                 viewBox="0 0 256 256"
                                 width="1em"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  className="htz-ed"
+                                  className="htz-ep"
                                   d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                                 />
                                 <path
-                                  className="htz-ed"
+                                  className="htz-ep"
                                   d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                                 />
                               </svg>
                             </span>
                             <span
-                              className="htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ch htz-ek htz-el htz-em htz-ea"
+                              className="htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ct htz-ew htz-ex htz-ey htz-em"
                             >
                               3 כוכבים
                             </span>
@@ -440,7 +440,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                     </div>
                     <a
                       aria-hidden={true}
-                      className="htz-en htz-eo htz-ep htz-el htz-eq htz-er htz-es"
+                      className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                       href="http://pre.haaretz.co.il/news/politics/1.6652020"
                       onClick={null}
                       tabIndex="-1"
@@ -448,22 +448,22 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                   </article>
                 </div>
                 <div
-                  className="htz-ae htz-bd htz-be htz-bf htz-r htz-dx htz-fa htz-fb htz-fc htz-fd htz-fe htz-ff htz-fg htz-fh htz-fi htz-fj htz-fk htz-bq"
+                  className="htz-ae htz-bp htz-bq htz-br htz-r htz-ej htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv htz-fw htz-cc"
                   id={null}
                 >
                   <article
-                    className="htz-cf htz-p htz-cg htz-ch htz-ci htz-cj htz-cn htz-ab"
+                    className="htz-cr htz-p htz-cs htz-ct htz-cu htz-cv htz-cz htz-ab"
                   >
                     <div
-                      className="htz-p htz-q htz-r htz-s htz-cp htz-cq htz-v htz-w htz-cr htz-be htz-ci htz-fl htz-fm htz-fn htz-x htz-y htz-z htz-ab htz-ac htz-bq"
+                      className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-bq htz-cu htz-fx htz-fy htz-fz htz-x htz-y htz-z htz-ab htz-ac htz-cc"
                       id={null}
                     >
                       <div
-                        className="htz-ae htz-bd htz-be htz-bf htz-r htz-cu htz-cv htz-fo htz-fp htz-fq htz-fr htz-fs htz-bx htz-by htz-ft htz-fu htz-cb htz-bl htz-bm htz-fv htz-fw htz-bp htz-bq"
+                        className="htz-ae htz-bp htz-bq htz-br htz-r htz-dg htz-dh htz-ga htz-gb htz-gc htz-gd htz-ge htz-cj htz-ck htz-gf htz-gg htz-cn htz-bx htz-by htz-gh htz-gi htz-cb htz-cc"
                         id={null}
                       >
                         <div
-                          className="htz-cj htz-cw"
+                          className="htz-cv htz-di"
                         >
                           <a
                             className={null}
@@ -472,7 +472,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             tabIndex={-1}
                           >
                             <div
-                              className="htz-cx htz-go htz-cj htz-b htz-cz"
+                              className="htz-dj htz-gy htz-cv htz-b htz-dl"
                             >
                               <div />
                             </div>
@@ -480,14 +480,14 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </div>
                       </div>
                       <div
-                        className="htz-ae htz-ct htz-be htz-bf htz-r htz-cu htz-cv htz-p htz-cg htz-fy htz-fz htz-ga htz-bq htz-cn htz-ab"
+                        className="htz-ae htz-df htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-gk htz-gl htz-gm htz-cc htz-cz htz-ab"
                         id={null}
                       >
                         <div
-                          className="htz-p htz-cg htz-ch htz-gb htz-gc htz-gd htz-ge htz-gf htz-gg htz-gh htz-gi htz-cn htz-ab"
+                          className="htz-p htz-cs htz-ct htz-gn htz-bm htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-cz htz-ab"
                         >
                           <div
-                            className="htz-cj htz-cw "
+                            className="htz-cv htz-di "
                           >
                             <a
                               className={null}
@@ -495,16 +495,16 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                               onClick={null}
                             >
                               <h2
-                                className="htz-dj htz-ay"
+                                className="htz-dv htz-bh"
                                 offset={0}
                               >
                                 <span
-                                  className="htz-gj"
+                                  className="htz-gu"
                                 >
                                   משלחת של האו"ם נענו לפנייה מצרית להפסקת אש
                                 </span>
                                 <span
-                                  className="htz-dw"
+                                  className="htz-ei"
                                 >
                                   משלחת של האו"ם ומצרים תגיע מחר לעזה; דיווח: הפלסטינים נענו לפנייה מצרית להפסקת אש
                                 </span>
@@ -513,7 +513,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           </div>
                         </div>
                         <footer
-                          className="htz-dk htz-cg htz-ch htz-dl htz-gk htz-gc htz-gl htz-ge htz-gm htz-gg htz-gn htz-gi htz-do htz-dp htz-dq htz-dr htz-ds htz-cn htz-ab"
+                          className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bm htz-gw htz-gp htz-gx htz-gr htz-bd htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                         >
                           <span
                             style={
@@ -523,7 +523,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             }
                           >
                             <address
-                              className="htz-dj htz-dt"
+                              className="htz-dv htz-ef"
                             >
                               אורי פינק
                             </address>
@@ -539,15 +539,15 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             </time>
                           </span>
                           <span
-                            className="htz-du htz-da htz-dv htz-db"
+                            className="htz-eg htz-dm htz-eh htz-dn"
                           >
                             <div
-                              className="htz-dt htz-dx htz-ax"
+                              className="htz-ef htz-ej htz-bg"
                             >
                               78
                             </div>
                             <svg
-                              className="htz-dy htz-ax htz-dz"
+                              className="htz-ek htz-bg htz-el"
                               height="1em"
                               viewBox="0 0 256 256"
                               width="1em"
@@ -564,7 +564,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                     </div>
                     <a
                       aria-hidden={true}
-                      className="htz-en htz-eo htz-ep htz-el htz-eq htz-er htz-es"
+                      className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                       href="http://pre.haaretz.co.il/news/politics/LIVE-1.6651560"
                       onClick={null}
                       tabIndex="-1"
@@ -573,21 +573,21 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                 </div>
               </div>
               <article
-                className="htz-cf htz-p htz-cg htz-ch htz-gp htz-cj htz-w htz-be htz-ey htz-gq htz-cn htz-ab htz-ac htz-bq"
+                className="htz-cr htz-p htz-cs htz-ct htz-gz htz-cv htz-w htz-bq htz-fk htz-ha htz-cz htz-ab htz-ac htz-cc"
               >
                 <div
-                  className="htz-p htz-q htz-r htz-s htz-cp htz-cq htz-v htz-w htz-cr htz-be htz-ci htz-x htz-y htz-z htz-ab htz-ac htz-bq"
+                  className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-bq htz-cu htz-x htz-y htz-z htz-ab htz-ac htz-cc"
                   id={null}
                 >
                   <div
-                    className="htz-ae htz-ct htz-be htz-bf htz-r htz-cu htz-cv htz-p htz-cg htz-bq htz-cn htz-ab"
+                    className="htz-ae htz-df htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-cc htz-cz htz-ab"
                     id={null}
                   >
                     <div
-                      className="htz-p htz-cg htz-ch htz-gb htz-gc htz-gl htz-ge htz-gf htz-gg htz-gn htz-gi htz-cn htz-ab"
+                      className="htz-p htz-cs htz-ct htz-gn htz-bm htz-gw htz-gp htz-gq htz-gr htz-bd htz-gt htz-cz htz-ab"
                     >
                       <div
-                        className="htz-cj htz-cw "
+                        className="htz-cv htz-di "
                       >
                         <a
                           className={null}
@@ -595,16 +595,16 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           onClick={null}
                         >
                           <h2
-                            className="htz-dj htz-ay"
+                            className="htz-dv htz-bh"
                             offset={0}
                           >
                             <span
-                              className="htz-gj"
+                              className="htz-gu"
                             >
                               צ'יבוטה: "כולם שאלו אותי שזה אני"
                             </span>
                             <span
-                              className="htz-dw"
+                              className="htz-ei"
                             >
                               צ'יבוטה: "כולם שאלו למה אני בוכה, אבל מי שבאמת מכיר אותי יודע שזה אני"
                             </span>
@@ -613,7 +613,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       </div>
                     </div>
                     <footer
-                      className="htz-dk htz-cg htz-ch htz-dl htz-gk htz-gc htz-gl htz-ge htz-gr htz-gg htz-gn htz-gi htz-do htz-dp htz-dq htz-dr htz-ds htz-cn htz-ab"
+                      className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bm htz-gw htz-gp htz-hb htz-gr htz-bd htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                     >
                       <span
                         style={
@@ -623,7 +623,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         }
                       >
                         <address
-                          className="htz-dj htz-dt"
+                          className="htz-dv htz-ef"
                         >
                           אורי פינק
                         </address>
@@ -639,94 +639,94 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </time>
                       </span>
                       <span
-                        className="htz-ea htz-dw"
+                        className="htz-em htz-ei"
                       >
                         <span
                           aria-hidden="true"
                         >
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                           <svg
-                            className="htz-eb"
+                            className="htz-en"
                             height="1em"
                             viewBox="0 0 256 256"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M246.8 99.5c-.8-2.6-3.4-4.3-7.7-4.9L167 83.4 135 15c-1-1.8-2.1-3.3-3.3-4.4s-2.5-1.5-3.7-1.5V209.8l64.2 35.3 3.3 1.4c.9.3 1.9.5 2.8.5 2 0 3.7-.9 4.6-2.8.9-1.9 1.2-4.5.9-7.9l-12.6-74.7 52-53c3.2-3.4 4.4-6.5 3.6-9.1z"
                             />
                             <path
-                              className="htz-ec"
+                              className="htz-eo"
                               d="M10.2 99.5c.8-2.6 3.4-4.3 7.7-4.9L90 83.4 122 15c1-1.8 2.1-3.3 3.3-4.4 1.2-1.1 2-1.7 3.7-1.4V209.8l-64.2 35.3-3.3 1.4c-.9.3-1.9.5-2.8.5-2.1 0-3.7-.9-4.6-2.8-.9-1.9-1.2-4.5-.9-7.9l12.6-74.7-52.1-53c-3.1-3.4-4.3-6.5-3.5-9.1z"
                             />
                           </svg>
                         </span>
                         <span
-                          className="htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ch htz-ek htz-el htz-em htz-ea"
+                          className="htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ct htz-ew htz-ex htz-ey htz-em"
                         >
                           5 כוכבים
                         </span>
@@ -736,7 +736,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                 </div>
                 <a
                   aria-hidden={true}
-                  className="htz-en htz-eo htz-ep htz-el htz-eq htz-er htz-es"
+                  className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                   href="http://pre.haaretz.co.il/sport/tapina/.premium-1.6652558"
                   onClick={null}
                   tabIndex="-1"
@@ -746,7 +746,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
           </div>
         </div>
         <div
-          className="htz-ae htz-bd htz-be htz-bf htz-r htz-ai htz-aj htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-gs htz-gt htz-bp htz-gu htz-gv htz-gw htz-gx htz-bq"
+          className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-hc htz-hd htz-cb htz-he htz-hf htz-hg htz-hh htz-cc"
           id={null}
         >
           <div
@@ -765,4 +765,4 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
 </div>
 `;
 
-exports[`<Slugs /> Render picture element correctly 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-e{background-color:rgba(0,0,0,0)}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-p{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-q{flex-wrap:wrap}.htz-r{list-style:none}.htz-s{justify-content:flex-start}.htz-t{margin-right:-2rem}.htz-u{margin-left:-2rem}.htz-v{flex-direction:row}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:multiple}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{flex-basis:100%}.htz-ag{flex-grow:0}.htz-ah{flex-shrink:0}.htz-ai{padding-left:2rem}.htz-aj{padding-right:2rem}.htz-ak{max-width:100%}.htz-al{-webkit-box-flex:0}.htz-ax{color:#0B7EB5}.htz-ay{font-weight:700}.htz-bd{flex-basis:auto}.htz-be{flex-grow:1}.htz-bf{flex-shrink:1}.htz-bq{-webkit-box-flex:1}.htz-br{padding-bottom:3rem}.htz-cf{background-color:#FFF}.htz-cg{flex-direction:column}.htz-ch{overflow:hidden}.htz-ci{height:100%}.htz-cj{position:relative}.htz-cn{-webkit-box-orient:vertical}.htz-co{flex-wrap:nowrap}.htz-cp{margin-right:-0rem}.htz-cq{margin-left:-0rem}.htz-cr{align-content:flex-start}.htz-cs{-webkit-box-lines:nowrap}.htz-ct{flex-basis:0}.htz-cu{padding-left:0rem}.htz-cv{padding-right:0rem}.htz-cw{z-index:1}.htz-cx{height:0}.htz-cy{padding-bottom:100%}.htz-cz{background-color:#EBEBEB}.htz-da{align-items:center}.htz-db{-webkit-box-align:center}.htz-dc{padding-top:1rem}.htz-dd{padding-bottom:0rem}.htz-de{text-align:center}.htz-dj{display:inline}.htz-dk{display:block}.htz-dl{color:#787878}.htz-dm{padding-top:2rem}.htz-dn{padding-bottom:2rem}.htz-do{margin-top:auto}.htz-dt{font-weight:bold}.htz-du{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-dv{margin-left:1rem}.htz-dx{padding-left:0.5rem}.htz-dy{vertical-align:-0.15em}.htz-dz{fill:#FFF}.htz-ea{white-space:nowrap}.htz-eb{font-size:inherit}.htz-ec{fill:#0B7EB5}.htz-ed{fill:#CCC}.htz-ee{border:0}.htz-ef{clip:rect(0 0 0 0)}.htz-eg{-webkit-clip-path:inset(50%)}.htz-eh{clip-path:inset(50%)}.htz-ei{height:1px}.htz-ej{margin:-1px}.htz-ek{padding:0}.htz-el{position:absolute}.htz-em{width:1px}.htz-en{background-color:transparent}.htz-eo{bottom:0}.htz-ep{left:0}.htz-eq{right:0}.htz-er{top:0}.htz-es{z-index:0}.htz-ev{margin-right:-0.5rem}.htz-ew{margin-left:-0.5rem}.htz-fa{padding-right:0.5rem}.htz-fx{padding-bottom:75.05274261603375%}.htz-go{padding-bottom:74.92795389048992%}.htz-gp{height:auto}@media (max-width: 37.4375em){.htz-c{margin-top:4rem}.htz-l{padding-right:2rem}.htz-m{padding-left:2rem}.htz-av{margin-bottom:1rem}.htz-dw{display:none}.htz-ey{margin-top:1rem}.htz-fb{flex-grow:0}.htz-fc{flex-shrink:0}.htz-fd{flex-basis:50%}.htz-fe{max-width:50%}.htz-ff{-webkit-box-flex:0}.htz-fl{flex-direction:column}.htz-fm{-webkit-box-orient:vertical}.htz-fn{-webkit-box-direction:normal}.htz-fy{flex-basis:auto}.htz-fz{flex-grow:1}.htz-ga{-webkit-box-flex:1}.htz-gb{padding-top:1rem}.htz-gc{padding-right:1rem}.htz-gd{padding-bottom:0rem}.htz-ge{padding-left:1rem}.htz-gk{padding-top:2rem}.htz-gl{padding-bottom:1rem}.htz-gu{margin-bottom:2rem}.htz-gv{margin-top:2rem}}@media (min-width: 37.5em){.htz-d{margin-top:8rem}.htz-n{padding-right:4rem}.htz-o{padding-left:4rem}.htz-ex> * + *{margin-top:4rem}.htz-fg{flex-grow:0}.htz-fh{flex-shrink:0}.htz-fi{flex-basis:100%}.htz-fj{max-width:100%}.htz-fk{-webkit-box-flex:0}.htz-gf{padding-top:1rem}.htz-gg{padding-right:2rem}.htz-gh{padding-bottom:0rem}.htz-gi{padding-left:2rem}.htz-gj{display:none}.htz-gm{padding-top:2rem}.htz-gn{padding-bottom:1rem}.htz-gq{margin-top:4rem}.htz-gr{padding-top:3rem}.htz-gw{margin-bottom:4rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-bx{flex-grow:0}.htz-by{flex-shrink:0}.htz-bz{flex-basis:41.66666666666667%}.htz-ca{max-width:41.66666666666667%}.htz-cb{-webkit-box-flex:0}.htz-df{font-size:3.5rem}.htz-dg{line-height:1.4285714285714286em}.htz-et{flex-basis:58.333333333333336%}.htz-eu{max-width:58.333333333333336%}.htz-ft{flex-basis:42.857142857142854%}.htz-fu{max-width:42.857142857142854%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bb{font-size:3.4285714285714284rem}.htz-bc{line-height:1.1666666666666667em}.htz-bl{flex-grow:0}.htz-bm{flex-shrink:0}.htz-bn{flex-basis:83.33333333333334%}.htz-bo{max-width:83.33333333333334%}.htz-bp{-webkit-box-flex:0}.htz-cc{flex-basis:50%}.htz-cd{max-width:50%}.htz-dh{font-size:3.857142857142857rem}.htz-di{line-height:1.2962962962962963em}.htz-dr{font-size:2rem}.htz-ds{line-height:1.5em}.htz-fv{flex-basis:56.25%}.htz-fw{max-width:56.25%}.htz-gs{flex-basis:16.666666666666664%}.htz-gt{max-width:16.666666666666664%}}@media (max-width: 63.9375em){.htz-am{border-top-width:2px}.htz-an{border-top-style:solid}.htz-ao{border-top-color:#0B7EB5}.htz-ap{padding-top:calc(1rem - 2px)}.htz-bs{flex-grow:0}.htz-bt{flex-shrink:0}.htz-bu{flex-basis:100%}.htz-bv{max-width:100%}.htz-bw{-webkit-box-flex:0}}@media (min-width: 64em){.htz-aq{border-top-width:5px}.htz-ar{border-top-style:solid}.htz-as{border-top-color:#0B7EB5}.htz-at{padding-top:calc(1rem - 5px)}.htz-au{margin-bottom:2rem}.htz-ce{order:1}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-aw{margin-bottom:5rem}.htz-ck{margin-left:auto}.htz-cl{margin-right:auto}.htz-cm{max-width:68rem}.htz-ez{margin-top:4rem}.htz-fo{flex-grow:0}.htz-fp{flex-shrink:0}.htz-fq{flex-basis:33.33333333333333%}.htz-fr{max-width:33.33333333333333%}.htz-fs{-webkit-box-flex:0}}@media (max-width: 79.9375em){.htz-az{font-size:3.5rem}.htz-ba{line-height:1.4285714285714286em}.htz-bg{flex-grow:0}.htz-bh{flex-shrink:0}.htz-bi{flex-basis:100%}.htz-bj{max-width:100%}.htz-bk{-webkit-box-flex:0}.htz-dp{font-size:2rem}.htz-dq{line-height:1.5em}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-gx{margin-top:4rem}}"`;
+exports[`<Slugs /> Render picture element correctly 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-e{background-color:rgba(0,0,0,0)}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-p{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-q{flex-wrap:wrap}.htz-r{list-style:none}.htz-s{justify-content:flex-start}.htz-t{margin-right:-2rem}.htz-u{margin-left:-2rem}.htz-v{flex-direction:row}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:multiple}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{flex-basis:100%}.htz-ag{flex-grow:0}.htz-ah{flex-shrink:0}.htz-ai{padding-left:2rem}.htz-aj{padding-right:2rem}.htz-ak{max-width:100%}.htz-al{-webkit-box-flex:0}.htz-bg{color:#0B7EB5}.htz-bh{font-weight:700}.htz-bp{flex-basis:auto}.htz-bq{flex-grow:1}.htz-br{flex-shrink:1}.htz-cc{-webkit-box-flex:1}.htz-cd{padding-bottom:3rem}.htz-cr{background-color:#FFF}.htz-cs{flex-direction:column}.htz-ct{overflow:hidden}.htz-cu{height:100%}.htz-cv{position:relative}.htz-cz{-webkit-box-orient:vertical}.htz-da{flex-wrap:nowrap}.htz-db{margin-right:-0rem}.htz-dc{margin-left:-0rem}.htz-dd{align-content:flex-start}.htz-de{-webkit-box-lines:nowrap}.htz-df{flex-basis:0}.htz-dg{padding-left:0rem}.htz-dh{padding-right:0rem}.htz-di{z-index:1}.htz-dj{height:0}.htz-dk{padding-bottom:100%}.htz-dl{background-color:#EBEBEB}.htz-dm{align-items:center}.htz-dn{-webkit-box-align:center}.htz-do{padding-top:1rem}.htz-dp{padding-bottom:0rem}.htz-dq{text-align:center}.htz-dv{display:inline}.htz-dw{display:block}.htz-dx{color:#787878}.htz-dy{padding-top:2rem}.htz-dz{padding-bottom:2rem}.htz-ea{margin-top:auto}.htz-ef{font-weight:bold}.htz-eg{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-eh{margin-left:1rem}.htz-ej{padding-left:0.5rem}.htz-ek{vertical-align:-0.15em}.htz-el{fill:#FFF}.htz-em{white-space:nowrap}.htz-en{font-size:inherit}.htz-eo{fill:#0B7EB5}.htz-ep{fill:#CCC}.htz-eq{border:0}.htz-er{clip:rect(0 0 0 0)}.htz-es{-webkit-clip-path:inset(50%)}.htz-et{clip-path:inset(50%)}.htz-eu{height:1px}.htz-ev{margin:-1px}.htz-ew{padding:0}.htz-ex{position:absolute}.htz-ey{width:1px}.htz-ez{background-color:transparent}.htz-fa{bottom:0}.htz-fb{left:0}.htz-fc{right:0}.htz-fd{top:0}.htz-fe{z-index:0}.htz-fh{margin-right:-0.5rem}.htz-fi{margin-left:-0.5rem}.htz-fm{padding-right:0.5rem}.htz-gj{padding-bottom:75.05274261603375%}.htz-gy{padding-bottom:74.92795389048992%}.htz-gz{height:auto}@media (max-width: 37.4375em){.htz-c{margin-top:4rem}.htz-l{padding-right:2rem}.htz-m{padding-left:2rem}.htz-am{position:relative}.htz-an:before{background-color:#0B7EB5}.htz-ao:before{content:\\"\\"}.htz-ap:before{height:1px}.htz-aq:before{position:absolute}.htz-ar:before{width:100%}.htz-as:before{right:0}.htz-at:before{top:0}.htz-au{margin-bottom:1rem}.htz-bm{padding-right:1rem}.htz-bn{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bo{width:100%}.htz-ei{display:none}.htz-fk{margin-top:1rem}.htz-fn{flex-grow:0}.htz-fo{flex-shrink:0}.htz-fp{flex-basis:50%}.htz-fq{max-width:50%}.htz-fr{-webkit-box-flex:0}.htz-fx{flex-direction:column}.htz-fy{-webkit-box-orient:vertical}.htz-fz{-webkit-box-direction:normal}.htz-gk{flex-basis:auto}.htz-gl{flex-grow:1}.htz-gm{-webkit-box-flex:1}.htz-gn{padding-top:1rem}.htz-go{padding-bottom:0rem}.htz-gp{padding-left:1rem}.htz-gv{padding-top:2rem}.htz-gw{padding-bottom:1rem}.htz-he{margin-bottom:2rem}.htz-hf{margin-top:2rem}}@media (min-width: 37.5em){.htz-d{margin-top:8rem}.htz-n{padding-right:4rem}.htz-o{padding-left:4rem}.htz-av{position:relative}.htz-aw:before{background-color:#0B7EB5}.htz-ax:before{content:\\"\\"}.htz-ay:before{height:2px}.htz-az:before{position:absolute}.htz-ba:before{width:100%}.htz-bb:before{right:0}.htz-bc:before{top:0}.htz-bd{padding-bottom:1rem}.htz-fj> * + *{margin-top:4rem}.htz-fs{flex-grow:0}.htz-ft{flex-shrink:0}.htz-fu{flex-basis:100%}.htz-fv{max-width:100%}.htz-fw{-webkit-box-flex:0}.htz-gq{padding-top:1rem}.htz-gr{padding-right:2rem}.htz-gs{padding-bottom:0rem}.htz-gt{padding-left:2rem}.htz-gu{display:none}.htz-gx{padding-top:2rem}.htz-ha{margin-top:4rem}.htz-hb{padding-top:3rem}.htz-hg{margin-bottom:4rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-cj{flex-grow:0}.htz-ck{flex-shrink:0}.htz-cl{flex-basis:41.66666666666667%}.htz-cm{max-width:41.66666666666667%}.htz-cn{-webkit-box-flex:0}.htz-dr{font-size:3.5rem}.htz-ds{line-height:1.4285714285714286em}.htz-ff{flex-basis:58.333333333333336%}.htz-fg{max-width:58.333333333333336%}.htz-gf{flex-basis:42.857142857142854%}.htz-gg{max-width:42.857142857142854%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bk{font-size:3.4285714285714284rem}.htz-bl{line-height:1.1666666666666667em}.htz-bx{flex-grow:0}.htz-by{flex-shrink:0}.htz-bz{flex-basis:83.33333333333334%}.htz-ca{max-width:83.33333333333334%}.htz-cb{-webkit-box-flex:0}.htz-co{flex-basis:50%}.htz-cp{max-width:50%}.htz-dt{font-size:3.857142857142857rem}.htz-du{line-height:1.2962962962962963em}.htz-ed{font-size:2rem}.htz-ee{line-height:1.5em}.htz-gh{flex-basis:56.25%}.htz-gi{max-width:56.25%}.htz-hc{flex-basis:16.666666666666664%}.htz-hd{max-width:16.666666666666664%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-be{margin-bottom:5rem}.htz-cw{margin-left:auto}.htz-cx{margin-right:auto}.htz-cy{max-width:68rem}.htz-fl{margin-top:4rem}.htz-ga{flex-grow:0}.htz-gb{flex-shrink:0}.htz-gc{flex-basis:33.33333333333333%}.htz-gd{max-width:33.33333333333333%}.htz-ge{-webkit-box-flex:0}}@media (min-width: 64em){.htz-bf{margin-bottom:2rem}.htz-cq{order:1}}@media (max-width: 79.9375em){.htz-bi{font-size:3.5rem}.htz-bj{line-height:1.4285714285714286em}.htz-bs{flex-grow:0}.htz-bt{flex-shrink:0}.htz-bu{flex-basis:100%}.htz-bv{max-width:100%}.htz-bw{-webkit-box-flex:0}.htz-eb{font-size:2rem}.htz-ec{line-height:1.5em}}@media (max-width: 63.9375em){.htz-ce{flex-grow:0}.htz-cf{flex-shrink:0}.htz-cg{flex-basis:100%}.htz-ch{max-width:100%}.htz-ci{-webkit-box-flex:0}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-hh{margin-top:4rem}}"`;

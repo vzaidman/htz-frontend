@@ -13,6 +13,13 @@ const views = new Map([
     },
   ],
   [
+    'Gamal',
+    {
+      view: () => import('./views/Gamal/Gamal.view.js'),
+      query: () => import('./views/Gamal/Gamal.query.js'),
+    },
+  ],
+  [
     'Farnsworth',
     {
       view: () => import('./views/Farnsworth/Farnsworth.view.js'),
