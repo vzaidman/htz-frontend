@@ -26,6 +26,8 @@ BlockLink.propTypes = {
   onClick: PropTypes.func,
   /** The HTML tag to render the `<BlockLink />` as */
   tagName: PropTypes.string,
+  /** Links target window. */
+  target: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -40,6 +42,7 @@ BlockLink.defaultProps = {
   onClick: null,
   tagName: 'article',
   miscStyles: null,
+  target: null,
 };
 
 const blockLinkStyle = ({ theme, miscStyles, }) => ({
@@ -57,6 +60,7 @@ export default function BlockLink({
   href,
   onClick,
   tagName,
+  target,
   miscStyles,
 }) {
   return (
@@ -84,6 +88,7 @@ export default function BlockLink({
                   className={className}
                   href={href}
                   onClick={onClick}
+                  target={target}
                   attrs={{
                     tabIndex: '-1',
                     'aria-hidden': true,
