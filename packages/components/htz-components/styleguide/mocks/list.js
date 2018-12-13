@@ -11,6 +11,7 @@ import SlugsMock from './listMocks/SlugsMock';
 import ZappMock from './listMocks/ZappMock';
 import ZoidbergMock from './listMocks/ZoidbergMock';
 import ZombieMock from './listMocks/ZombieMock';
+import VogelMock from './listMocks/VogelMock';
 
 export default (root, { listId, }) => {
   switch (listId) {
@@ -41,6 +42,8 @@ export default (root, { listId, }) => {
       return ZoidbergMock;
     case 'Zombie':
       return ZombieMock;
+    case 'Vogel':
+      return VogelMock;
     default:
       return DefaultMock;
   }

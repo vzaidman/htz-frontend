@@ -52,6 +52,9 @@ const Zoidberg = dynamic(() => import('./views/Zoidberg/Zoidberg'), {
 const Zombie = dynamic(() => import('./views/Zombie/Zombie'), {
   loading: () => null,
 });
+const Vogel = dynamic(() => import('./views/Vogel/Vogel'), {
+  loading: () => null,
+});
 
 export default function DynamicListView({ view, ...props }) {
   switch (view) {
@@ -105,6 +108,9 @@ export default function DynamicListView({ view, ...props }) {
     }
     case 'Zombie': {
       return <Zombie {...props} />;
+    }
+    case 'Vogel': {
+      return <Vogel {...props} />;
     }
     default:
       return <div>non supported list</div>;

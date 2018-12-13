@@ -201,7 +201,6 @@ function VerticalListFirstTeaser({
             />
           </TeaserMedia>
           <TeaserContent
-            width={1}
             data={itemData}
             padding={[ 1, 0, ]}
             gridItemMiscStyles={{
