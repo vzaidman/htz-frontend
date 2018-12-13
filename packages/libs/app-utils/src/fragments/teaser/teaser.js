@@ -66,9 +66,22 @@ export const teaserForMom = gql`
     title
     path
     titleMobile
-    commentsCount
+    commentsCounts
   }
   ${imagesInTeaser}
+`;
+
+export const teaserForGamal = gql`
+  fragment TeaserForGamal on TeaserInList {
+    ...ImageInTeaser
+    contentId
+    exclusive
+    exclusiveMobile
+    title
+    titleMobile
+    path
+  }
+  ${imageInTeaser}
 `;
 
 export default gql`
@@ -79,7 +92,7 @@ export default gql`
     contentId
     exclusiveMobile
     title
-    commentsCount
+    commentsCounts
     path
     subtitleMobile
     isPremiumContent

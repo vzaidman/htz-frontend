@@ -48,40 +48,6 @@ Mom.defaultProps = { lazyLoadImages: true, };
 
 const headerTypescale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
 
-const pictureOptions = {
-  defaultImgOptions: {
-    sizes: '108px',
-    aspect: 'regular',
-    widths: [ 108, 216, ],
-  },
-  sources: [
-    {
-      from: 'xl',
-      sizes: '281px',
-      aspect: 'headline',
-      widths: [ 281, ],
-    },
-    {
-      from: 'l',
-      sizes: '314px',
-      aspect: 'headline',
-      widths: [ 314, ],
-    },
-    {
-      from: 'm',
-      sizes: '476px',
-      aspect: 'headline',
-      widths: [ 476, ],
-    },
-    {
-      from: 's',
-      sizes: '364px',
-      aspect: 'headline',
-      widths: [ 364, ],
-    },
-  ],
-};
-
 export default function Mom({
   list,
   listId,
@@ -421,6 +387,8 @@ function TeaserWithImg1({
   );
 }
 
+TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
+
 function TeaserWithImg2({
   data,
   index,
@@ -519,6 +487,7 @@ function TeaserWithImg2({
   );
 }
 
+TextualTeaser.defaultProps = { lazyLoadImages: undefined, };
 function TextualTeaser({
   data,
   index,

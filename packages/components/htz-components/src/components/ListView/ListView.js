@@ -1,18 +1,18 @@
 // @flow
 
 import * as React from 'react';
-
-import type {
-  ComponentPropResponsiveObject,
-  StyleProps,
+import { FelaComponent, } from 'react-fela';
+import {
+  type ComponentPropResponsiveObject,
+  type StyleProps,
+  parseStyleProps,
 } from '@haaretz/htz-css-tools';
 
+import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import Grid from '../Grid/Grid';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import LayoutRow from '../PageLayout/LayoutRow';
 import Section from '../AutoLevels/Section';
-
-import type { attrFlowType, } from '../../flowTypes/attrTypes';
 
 type ListViewWrapperPropTypes = {
   attrs: ?attrFlowType,
@@ -30,10 +30,12 @@ type ListViewWrapperPropTypes = {
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
   marginTop: number | ComponentPropResponsiveObject<number>[],
   miscStyles: ?StyleProps,
+  sectionMiscStyles: ?StyleProps,
 };
 
 type ListViewPropTypes = {
   ...ListViewWrapperPropTypes,
+  gridMiscStyles: ?StyleProps,
   gutter:
     | ?number
     | {
@@ -54,21 +56,14 @@ const defaultProps = {
   disableWrapper: false,
   innerBackgroundColor: 'transparent',
   outerBackgroundColor: null,
-  marginTop: [
-    {
-      until: 's',
-      value: 4,
-    },
-    {
-      from: 's',
-      value: 8,
-    },
-  ],
+  marginTop: [ { until: 's', value: 4, }, { from: 's', value: 8, }, ],
   miscStyles: null,
+  sectionMiscStyles: null,
 };
 
 ListView.defaultProps = {
   ...defaultProps,
+  gridMiscStyles: null,
   gutter: null,
 };
 
@@ -81,6 +76,8 @@ export default function ListView({
   innerBackgroundColor,
   outerBackgroundColor,
   miscStyles,
+  sectionMiscStyles,
+  gridMiscStyles,
 }: ListViewPropTypes): React.Node {
   return (
     <ListViewWrapper
@@ -90,10 +87,13 @@ export default function ListView({
         innerBackgroundColor,
         outerBackgroundColor,
         marginTop,
+        miscStyles,
+        sectionMiscStyles,
       }}
-      miscStyles={miscStyles}
     >
-      <Grid gutter={gutter}>{children}</Grid>
+      <Grid gutter={gutter} miscStyles={gridMiscStyles}>
+        {children}
+      </Grid>
     </ListViewWrapper>
   );
 }
@@ -108,14 +108,63 @@ function ListViewWrapper({
   innerBackgroundColor,
   outerBackgroundColor,
   miscStyles,
+  sectionMiscStyles,
 }: ListViewWrapperPropTypes): React.Node {
   return disableWrapper ? (
-    <Section {...attrs}>{children}</Section>
+    <SectionComponent
+      sectionMiscStyles={sectionMiscStyles}
+      disableWrapper={disableWrapper}
+      attrs={attrs}
+    >
+      {children}
+    </SectionComponent>
   ) : (
-    <Section isFragment>
-      <LayoutRow attrs={attrs} tagName="section" namedBgc={outerBackgroundColor} miscStyles={{ marginTop, }}>
-        <LayoutContainer namedBgc={innerBackgroundColor} miscStyles={miscStyles}>{children}</LayoutContainer>
+    <SectionComponent
+      sectionMiscStyles={sectionMiscStyles}
+      disableWrapper={disableWrapper}
+      attrs={attrs}
+    >
+      <LayoutRow
+        attrs={attrs}
+        tagName="section"
+        namedBgc={outerBackgroundColor}
+        miscStyles={{ marginTop, }}
+      >
+        <LayoutContainer
+          namedBgc={innerBackgroundColor}
+          miscStyles={miscStyles}
+        >
+          {children}
+        </LayoutContainer>
       </LayoutRow>
+    </SectionComponent>
+  );
+}
+
+function SectionComponent({
+  children,
+  sectionMiscStyles,
+  disableWrapper,
+  attrs,
+}) {
+  return sectionMiscStyles ? (
+    <FelaComponent
+      rule={({ theme, }) => ({
+        extend: [
+          ...(sectionMiscStyles
+            ? parseStyleProps(sectionMiscStyles, theme.mq, theme.type)
+            : []),
+        ],
+      })}
+      render={({ className, }) => (
+        <Section isFragment={!disableWrapper} className={className} {...attrs}>
+          {children}
+        </Section>
+      )}
+    />
+  ) : (
+    <Section isFragment={!disableWrapper} {...attrs}>
+      {children}
     </Section>
   );
 }

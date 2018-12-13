@@ -2,6 +2,7 @@
 import { FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
+import type { BiActionType, } from '../../../../flowTypes/BiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
@@ -32,16 +33,6 @@ Slugs.defaultProps = {
   biAction: null,
   lazyLoadImages: true,
 };
-
-type BiActionType = ({
-  actionCode: number,
-  additionalInfo: {
-    ArticleId: string,
-    ListId: string,
-    NoInList: number,
-    ViewName: string,
-  },
-}) => void;
 
 type ClickActionOpts = {
   index: number,
@@ -246,6 +237,7 @@ function MainTeaser({
   );
 }
 
+TwoUpTeaser.defaultProps = { lazyLoadImages: true, };
 function TwoUpTeaser({
   data,
   lazyLoadImages,
@@ -422,10 +414,11 @@ Footer.defaultProps = {
   hasRankOnMobile: false,
 };
 
-function Footer(
-  { data, hasCommentsOnMobile, hasRankOnMobile, },
-  FooterProps
-): React.Node {
+function Footer({
+  data,
+  hasCommentsOnMobile,
+  hasRankOnMobile,
+}: FooterProps): React.Node {
   return (
     <React.Fragment>
       {data.authors ? (

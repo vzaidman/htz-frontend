@@ -97,6 +97,7 @@ class List extends React.Component {
               {({ data: { list, }, loading, error, }) => {
                 if (loading) return null;
                 if (error) return null;
+
                 const { title, items, ...restList } = list;
                 items.filter(item => item.hasOwnProperty('contentId'));
 
