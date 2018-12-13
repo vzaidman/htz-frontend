@@ -13,6 +13,8 @@ export type ListDataType = {
   // `marketingTeaser` taking precedence. So, if a list have both,
   // only `marketingTeaser` should be placed in the JSON
   marketingTeaser?: ListMarketingTeaserType,
+  description?: string,
+  urlDescription?: string,
   items: TeaserDataType[],
   contentId: string,
   contentName: string,

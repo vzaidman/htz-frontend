@@ -54,6 +54,7 @@ export default class ListSelector extends React.Component {
               <option value="Nibbler">Nibbler</option>
               <option value="Slugs">Slugs</option>
               <option value="Zoidberg">Zoidberg</option>
+              <option value="Zombie">Zombie</option>
             </select>
           )}
         />

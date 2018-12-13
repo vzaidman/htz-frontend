@@ -11,4 +11,5 @@ module.exports = {
   hostname: process.env.HOSTNAME,
   baseHref: 'https://www.haaretz.co.il',
   port: process.env.PORT || '6060',
+  appName: 'styleguide',
 };

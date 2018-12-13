@@ -21,11 +21,8 @@ export default gql`
           lastUpdate
           rank
           authors {
-            ... on AuthorObject {
-              name
-            }
-            ... on CreditObject {
-              name
+            ... on Author {
+              contentName
             }
           }
           image {

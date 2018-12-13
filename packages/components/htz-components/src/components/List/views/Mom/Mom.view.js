@@ -2,7 +2,10 @@
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import H from '../../../AutoLevels/H';
@@ -20,37 +23,19 @@ import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 
-type BiActionType = ({
-  actionCode: number,
-  additionalInfo: {
-    ArticleId: string,
-    ListId: string,
-    NoInList: number,
-    ViewName: string,
-  },
-}) => void;
-
 type Props = {
-  list: {
-    title: string,
-    description: string,
-    url: string,
-    urlDescription: string,
-    items: Array<TeaserDataType>,
-  },
-  listId: string,
+  list: ListDataType,
   gaAction: () => void,
-  biAction: BiActionType,
+  biAction: ListBiActionType,
   lazyLoadImages: boolean,
 };
 
 Mom.defaultProps = { lazyLoadImages: true, };
 
-const headerTypescale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
+const headerTypeScale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
 
 export default function Mom({
   list,
-  listId,
   gaAction,
   biAction,
   lazyLoadImages,
@@ -153,7 +138,7 @@ export default function Mom({
             <TeaserWithImg1
               data={items[0]}
               index={0}
-              {...{ biAction, lazyLoadImages, listId, }}
+              {...{ biAction, lazyLoadImages, }}
             />
           </GridItem>
 
@@ -191,19 +176,13 @@ export default function Mom({
                   ],
                 }}
               >
-                <TextualTeaser
-                  data={items[1]}
-                  {...{ biAction, listId, index: 1, }}
-                />
+                <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
               </GridItem>
               <GridItem
                 stretchContent
                 width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
               >
-                <TextualTeaser
-                  data={items[2]}
-                  {...{ biAction, listId, index: 2, }}
-                />
+                <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
               </GridItem>
             </Grid>
           </GridItem>
@@ -222,7 +201,7 @@ export default function Mom({
             <TeaserWithImg2
               data={items[3]}
               index={3}
-              {...{ biAction, lazyLoadImages, listId, }}
+              {...{ biAction, lazyLoadImages, }}
             />
           </GridItem>
           <GridItem
@@ -237,10 +216,7 @@ export default function Mom({
               marginBottom: [ { until: 's', value: '1rem', }, ],
             }}
           >
-            <TextualTeaser
-              data={items[4]}
-              {...{ biAction, listId, index: 4, }}
-            />
+            <TextualTeaser data={items[4]} {...{ biAction, index: 4, }} />
           </GridItem>
         </Grid>
       </GridItem>
@@ -283,8 +259,7 @@ type TeaserProps = {
   data: TeaserDataType,
   index: number,
   lazyLoadImages?: boolean,
-  listId: string,
-  biAction: BiActionType,
+  biAction: ListBiActionType,
 };
 
 TeaserWithImg1.defaultProps = { lazyLoadImages: true, };
@@ -293,7 +268,6 @@ function TeaserWithImg1({
   data,
   index,
   lazyLoadImages,
-  listId,
   biAction,
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
@@ -302,7 +276,7 @@ function TeaserWithImg1({
     <Teaser
       data={data}
       gutter={2}
-      onClick={() => clickAction({ index, articleId, listId, biAction, })}
+      onClick={() => biAction({ index, articleId, })}
       gridMiscStyles={{
         flexDirection: [ { from: 'xl', value: 'column', }, ],
       }}
@@ -367,7 +341,7 @@ function TeaserWithImg1({
           flexGrow: [ { from: 'xl', value: '1', }, ],
         }}
         renderContent={() => (
-          <TeaserHeader typeScale={headerTypescale} {...data} />
+          <TeaserHeader typeScale={headerTypeScale} {...data} />
         )}
         renderFooter={() => (
           <FelaComponent
@@ -393,7 +367,6 @@ function TeaserWithImg2({
   data,
   index,
   lazyLoadImages,
-  listId,
   biAction,
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
@@ -402,7 +375,7 @@ function TeaserWithImg2({
     <Teaser
       data={data}
       gutter={2}
-      onClick={() => clickAction({ index, articleId, listId, biAction, })}
+      onClick={() => biAction({ index, articleId, })}
       gridMiscStyles={{
         flexDirection: [
           { from: 's', until: 'l', value: 'column', },
@@ -467,7 +440,7 @@ function TeaserWithImg2({
           ],
         }}
         renderContent={() => (
-          <TeaserHeader typeScale={headerTypescale} {...data} />
+          <TeaserHeader typeScale={headerTypeScale} {...data} />
         )}
         renderFooter={() => (
           <FelaComponent
@@ -488,18 +461,13 @@ function TeaserWithImg2({
 }
 
 TextualTeaser.defaultProps = { lazyLoadImages: undefined, };
-function TextualTeaser({
-  data,
-  index,
-  listId,
-  biAction,
-}: TeaserProps): React.Node {
+function TextualTeaser({ data, index, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
   return (
     <Teaser
       data={data}
       gutter={2}
-      onClick={() => clickAction({ index, articleId, listId, biAction, })}
+      onClick={() => biAction({ index, articleId, })}
       miscStyles={{ flexGrow: '1', }}
     >
       <TeaserContent
@@ -513,7 +481,7 @@ function TextualTeaser({
           { from: 's', value: [ 2, 1, 1, ], },
         ]}
         renderContent={() => (
-          <TeaserHeader {...data} typeScale={headerTypescale} />
+          <TeaserHeader {...data} typeScale={headerTypeScale} />
         )}
         renderFooter={() => (
           <FelaComponent
@@ -531,32 +499,4 @@ function TextualTeaser({
       />
     </Teaser>
   );
-}
-
-// /////////////////////////////////////////////////////////////////////
-//                               UTILS                                //
-// /////////////////////////////////////////////////////////////////////
-
-type ClickActionOpts = {
-  index: number,
-  articleId: string,
-  listId: string,
-  biAction: BiActionType,
-};
-
-function clickAction({
-  index,
-  articleId,
-  listId,
-  biAction,
-}: ClickActionOpts): void {
-  biAction({
-    actionCode: 109,
-    additionalInfo: {
-      ArticleId: articleId,
-      ListId: listId,
-      NoInList: index + 1,
-      ViewName: 'Mom',
-    },
-  });
 }
