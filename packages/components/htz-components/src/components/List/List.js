@@ -26,7 +26,11 @@ const ListWrapper = props => (
     {(updateListDuplication, data) => (
       <ApolloConsumer>
         {client => (
-          <List client={client} {...props} updateListDuplication={updateListDuplication} />
+          <List
+            client={client}
+            {...props}
+            updateListDuplication={updateListDuplication}
+          />
         )}
       </ApolloConsumer>
     )}
@@ -73,7 +77,7 @@ class List extends React.Component {
   }
 
   render() {
-    const { contentId, } = this.props;
+    const { contentId, view, } = this.props;
     const { selectedView, } = this.state;
     const ListComponent = selectedView
       ? Array.isArray(selectedView)
@@ -82,7 +86,9 @@ class List extends React.Component {
       : null;
 
     if (ListComponent) {
-      const { listDuplicationIds, } = this.props.client.readQuery({ query: GET_LIST_DUPLICATION, });
+      const { listDuplicationIds, } = this.props.client.readQuery({
+        query: GET_LIST_DUPLICATION,
+      });
 
       return selectedView[1] ? (
         <ReadingHistoryProvider>
@@ -94,19 +100,23 @@ class List extends React.Component {
                 history: [ ...readingHistory, ...listDuplicationIds, ],
               }}
             >
-              {({ data: { list, }, loading, error, }) => {
+              {({ data, loading, error, }) => {
                 if (loading) return null;
                 if (error) return null;
 
-                const { title, items, ...restList } = list;
-                items.filter(item => Object.prototype.hasOwnProperty.call(item, 'contentId'));
+                const { title, items, ...restList } = data.list;
+                items.filter(item => Object.prototype.hasOwnProperty.call(item, 'contentId')
+                );
 
-                const itemsRepresentedContent = items.reduce((accumulator, currentValue) => {
-                  if (currentValue && currentValue.representedContent) {
-                    accumulator.push(currentValue.representedContent);
-                  }
-                  return accumulator;
-                }, []);
+                const itemsRepresentedContent = items.reduce(
+                  (accumulator, currentValue) => {
+                    if (currentValue && currentValue.representedContent) {
+                      accumulator.push(currentValue.representedContent);
+                    }
+                    return accumulator;
+                  },
+                  []
+                );
                 // make sure this only runs once
                 if (!this.state.updatedListDuplication) {
                   this.props.updateListDuplication({
@@ -123,12 +133,22 @@ class List extends React.Component {
                         name: title,
                         list: 'List impressions',
                       });
+
+                      const clickAction = ({ index, articleId, }) => biAction({
+                        actionCode: 109,
+                        additionalInfo: {
+                          ArticleId: articleId,
+                          ListId: contentId,
+                          NoInList: index + 1,
+                          ViewName: view,
+                        },
+                      });
+
                       return (
                         <ListComponent
                           list={{ items, title, ...restList, }}
-                          listId={contentId}
                           gaAction={gaAction}
-                          biAction={biAction}
+                          biAction={clickAction}
                         />
                       );
                     }}

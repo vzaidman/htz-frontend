@@ -22,8 +22,6 @@ const List = new GraphQLObjectType({
     title: { type: GraphQLString, },
     contentName: { type: GraphQLString, },
     description: { type: GraphQLString, },
-    url: { type: GraphQLString, },
-    urlDescription: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     inputTemplate: { type: GraphQLString, },
     extraLinks: { type: new GraphQLList(LinkType), },

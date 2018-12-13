@@ -79,9 +79,9 @@ type Props = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: ?StyleProps,
-/**
- * URL that leads to section of list.
- */
+  /**
+   * URL that leads to section of list.
+   */
   url: ?string,
 };
 
@@ -90,8 +90,8 @@ ListViewHeader.defaultProps = {
   hasTitlePadding: false,
   backgroundColor: null,
   commercialLinks: null,
-  extraLinks: null,
   marketingTeaser: null,
+  extraLinks: null,
   miscStyles: null,
   title: null,
   url: null,
@@ -136,35 +136,34 @@ export default function ListViewHeader({
                   ),
                 ],
               }}
-              render={({ className: headerClass, }) => (
-                url
-                  ? (
-                    <FelaComponent
-                      style={{
-                        display: 'flex',
-                        width: '100%',
-                      }}
-                      render={({ className, }) => (
-                        <HtzLink className={className} href={url}>
-                          <H className={headerClass}>
-                            {title}
-                            <IconBack
-                              size={6}
-                              miscStyles={{
-                                marginInlineStart: 'auto',
-                                paddingTop: '1rem',
-                                paddingBottom: '1rem',
-                                backgroundColor: theme.color('quaternary'),
-                                ...theme.mq({ from: 's', }, { display: 'none', }),
-                              }}
-                            />
-                          </H>
-                        </HtzLink>
-                      )}
-                    />
-                  )
-                  : (<H className={headerClass}>{title}</H>)
-              )}
+              render={({ className: headerClass, }) => (url ? (
+                <FelaComponent
+                  style={{
+                    display: 'flex',
+                    width: '100%',
+                  }}
+                  render={({ className, }) => (
+                    <HtzLink className={className} href={url}>
+                      <H className={headerClass}>
+                        {title}
+                        <IconBack
+                          size={6}
+                          miscStyles={{
+                            marginInlineStart: 'auto',
+                            paddingTop: '1rem',
+                            paddingBottom: '1rem',
+                            backgroundColor: theme.color('quaternary'),
+                            ...theme.mq({ from: 's', }, { display: 'none', }),
+                          }}
+                        />
+                      </H>
+                    </HtzLink>
+                  )}
+                />
+              ) : (
+                <H className={headerClass}>{title}</H>
+              ))
+              }
             />
           )}
           {extraLinks && (
@@ -249,7 +248,8 @@ export default function ListViewHeader({
                   </Button>
                 </Section>
               ) : (
-                !isHorizontal && commercialLinks && (
+                !isHorizontal
+                && commercialLinks && (
                   <ul>
                     {commercialLinks.map(commercialLink => (
                       <li key={commercialLink.contentId}>

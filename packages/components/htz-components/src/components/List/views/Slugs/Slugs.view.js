@@ -2,7 +2,7 @@
 import { FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
-import type { BiActionType, } from '../../../../flowTypes/BiActionType';
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
@@ -24,21 +24,13 @@ type Props = {
   list: ListDataType,
   listId: string,
   gaAction: ?() => void,
-  biAction: ?BiActionType,
+  biAction: ListBiActionType,
   lazyLoadImages: boolean,
 };
 
 Slugs.defaultProps = {
   gaAction: null,
-  biAction: null,
   lazyLoadImages: true,
-};
-
-type ClickActionOpts = {
-  index: number,
-  articleId: string,
-  listId: string,
-  biAction: BiActionType,
 };
 
 export default function Slugs({
@@ -159,7 +151,7 @@ type TeaserProps = {
   index: 0 | 1 | 2 | 3,
   lazyLoadImages?: boolean,
   listId: string,
-  biAction: ?BiActionType,
+  biAction: ListBiActionType,
 };
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
@@ -178,11 +170,7 @@ function MainTeaser({
         <Teaser
           data={data}
           gutter={0}
-          onClick={
-            biAction
-              ? () => clickAction({ index: 0, articleId, listId, biAction, })
-              : null
-          }
+          onClick={biAction({ index: 0, articleId, })}
           miscStyles={{
             marginInlineEnd: [ { from: 's', until: 'l', value: 'auto', }, ],
             marginInlineStart: [ { from: 's', until: 'l', value: 'auto', }, ],
@@ -253,11 +241,7 @@ function TwoUpTeaser({
         <Teaser
           data={data}
           gutter={0}
-          onClick={
-            biAction
-              ? () => clickAction({ index, articleId, listId, biAction, })
-              : null
-          }
+          onClick={biAction({ index, articleId, })}
           gridMiscStyles={{ flexDirection: [ { until: 's', value: 'column', }, ], }}
         >
           <TeaserMedia
@@ -320,11 +304,7 @@ function TextualTeaser({ data, listId, biAction, }: TeaserProps): React.Node {
       render={theme => (
         <Teaser
           data={data}
-          onClick={
-            biAction
-              ? () => clickAction({ index: 3, articleId, biAction, listId, })
-              : null
-          }
+          onClick={biAction({ index: 3, articleId, })}
           miscStyles={{
             alignItems: 'stretch',
             display: 'flex',
@@ -362,7 +342,7 @@ type TwoUpProps = {
   data2: TeaserDataType,
   lazyLoadImages: boolean,
   listId: string,
-  biAction: ?BiActionType,
+  biAction: ListBiActionType,
 };
 
 TwoUp.defaultProps = { lazyLoadImages: true, };
@@ -450,25 +430,4 @@ function Footer({
       ) : null}
     </React.Fragment>
   );
-}
-
-// /////////////////////////////////////////////////////////////////////
-//                               UTILS                                //
-// /////////////////////////////////////////////////////////////////////
-
-function clickAction({
-  index,
-  articleId,
-  listId,
-  biAction,
-}: ClickActionOpts): void {
-  biAction({
-    actionCode: 109,
-    additionalInfo: {
-      ArticleId: articleId,
-      ListId: listId,
-      NoInList: index + 1,
-      ViewName: 'Mom',
-    },
-  });
 }

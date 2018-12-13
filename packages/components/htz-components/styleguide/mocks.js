@@ -2,6 +2,7 @@ import AddComment from './mocks/AddComment';
 import List from './mocks/list';
 import CommentsElement from './mocks/CommentsElement';
 import Footer from './mocks/Footer';
+import Asset from './mocks/Asset';
 
 const mocks = {
   String: () => null,
@@ -42,6 +43,7 @@ const mocks = {
   CommentsElement,
   Footer,
   List,
+  Asset,
 };
 
 export default mocks;

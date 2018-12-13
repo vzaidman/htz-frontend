@@ -10,6 +10,11 @@ const mockContext = () => {
           console.log('got to mock context  getCmLink data source');
         },
       },
+      FinanceAPI: {
+        getAssetsList: data => {
+          console.log('got to mock context getAssetsList data source', data);
+        },
+      },
     },
     listsLoader: {
       load: data => {

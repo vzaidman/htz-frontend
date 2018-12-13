@@ -28,7 +28,7 @@ import dfpBanner from './fragments/dfpBanner/dfpBanner';
 import elementGroup from './fragments/elementGroup/elementGroup';
 import embed from './fragments/embed/embed';
 import htmlElement from './fragments/htmlElement/htmlElement';
-import image from './fragments/image/image';
+import image, { imageInTeaser, imagesInTeaser, } from './fragments/image/image';
 import imageGallery from './fragments/imageGallery/imageGallery';
 import interactive from './fragments/interactive/interactive';
 import link from './fragments/link/link';
@@ -46,8 +46,8 @@ import tags from './fragments/tags/tags';
 import teaser, {
   teaserForLeftElement,
   teaserForBender,
-  teaserForMom,
   teaserForGamal,
+  teaserForMom,
 } from './fragments/teaser/teaser';
 import video from './fragments/video/video';
 
@@ -78,6 +78,8 @@ export {
   embed,
   htmlElement,
   image,
+  imageInTeaser,
+  imagesInTeaser,
   imageGallery,
   interactive,
   link,
@@ -94,9 +96,9 @@ export {
   tags,
   teaser,
   teaserForBender,
-  teaserForMom,
   teaserForGamal,
   teaserForLeftElement,
+  teaserForMom,
   video,
   switchToDomain,
   breakUrl,

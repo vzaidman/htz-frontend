@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { GraphQLObjectType, GraphQLString, GraphQLID, } from 'graphql';
 
-const List = new GraphQLObjectType({
+const Link = new GraphQLObjectType({
   name: 'Link',
   fields: () => ({
     href: { type: GraphQLString, },
@@ -13,4 +13,4 @@ const List = new GraphQLObjectType({
   }),
 });
 
-export default List;
+export default Link;
