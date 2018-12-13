@@ -45,9 +45,13 @@ class List extends React.Component {
      * List's view name.
      */
     view: PropTypes.string.isRequired,
+    /** props to pass to the rendered view component */
+    viewProps: PropTypes.shape({}),
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    viewProps: {},
+  };
 
   state = {
     updatedListDuplication: false,

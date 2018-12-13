@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
+import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
 // import ListView from '../../../ListView/ListView';
 import GridItem from '../../../Grid/GridItem';
 import getMediaComponent from '../../../../utils/getMediaComponent';
@@ -140,14 +141,36 @@ type Props = {
   // Conrad actually renders Wong list with isConrad prop that effects the styles
   isConrad: boolean,
   list: ListDataType,
+  /**
+   * The width of the underlying `<TeaserMedia />`.
+   * The number passed should be (`width` / `columns`).
+   * When the number passed to `width` is greater than `1`, it will be
+   * used as an absolute width in rems.
+   *
+   * Can be set responsively.
+   *
+   * @example
+   * // <TeaserMedia /> spans 25% (3 of 12 columns)
+   * <TeaserMedia width={3 / 12} />
+   *
+   * // responsive settings:
+   * <TeaserMedia
+   *   width={[
+   *     { from: 's', until: 'm', misc: 'landscape', value: 3 / 12 },
+   *     { from: 'xl', value: 6 / 12 },
+   *   ]}
+   * />
+   */
+  width: number | ComponentPropResponsiveObject<number>[],
 };
 
 Wong.defaultProps = {
   gutter: null,
   isConrad: false,
+  width: null,
 };
 
-function Wong({ isConrad, gutter, list: { items, }, }: Props): React.Node {
+function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node {
   const item = items[0];
   const media = item && item.media;
   const MediaComponent = getMediaComponent(media && media.elementType, Picture);
@@ -155,7 +178,11 @@ function Wong({ isConrad, gutter, list: { items, }, }: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
-        <GridItem gutter={gutter}>
+        <GridItem
+          gutter={gutter}
+          width={width}
+          rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-3', ], width: 1, }, }, ]}
+        >
           <Teaser
             gutter={0}
             data={item}
@@ -166,7 +193,6 @@ function Wong({ isConrad, gutter, list: { items, }, }: Props): React.Node {
           >
             <TeaserMedia
               data={item}
-              // rule={[ { from: 'xl', value: { color: [ 'neutral', '-3', ], width: 1, }, }, ]}
               width={[
                 { until: 'l', value: 1, },
                 { from: 'l', until: 'xl', value: 7 / 12, },
@@ -189,6 +215,9 @@ function Wong({ isConrad, gutter, list: { items, }, }: Props): React.Node {
                 { from: 'l', until: 'xl', value: [ 0, 4, 0, 0, ], },
                 { from: 'xl', value: [ 0, isConrad ? 4 : 0, 0, isConrad ? 0 : 4, ], },
               ]}
+              miscStyles={{
+                marginTop: [ { until: 's', value: '-5rem', }, ],
+              }}
               renderContent={teaserData => (
                 <React.Fragment>
                   <TeaserHeader
@@ -206,7 +235,7 @@ function Wong({ isConrad, gutter, list: { items, }, }: Props): React.Node {
                       { from: 'l', value: -1, },
                     ]}
                     miscStyles={{
-                      marginTop: [ { from: 's', value: '1rem', }, ],
+                      marginTop: [ { until: 's', value: '3rem', }, ],
                     }}
                   />
                   <TeaserSubtitle

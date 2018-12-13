@@ -114,6 +114,7 @@ export default {
       commentsCounts: 78,
       authors: [
         {
+          name: 'עזמעי',
           image: {
             photographer: 'none',
             viewMode: 'FullColumnWithVerticalImage',
@@ -197,6 +198,7 @@ export default {
           contentName: 'אלמוג בן זכרי',
         },
         {
+          name: 'גדע',
           image: {
             photographer: 'none',
             viewMode: 'FullColumnWithVerticalImage',

@@ -6,6 +6,7 @@ export default {
       publishDate: 1542116220149,
       exclusiveMobile: 'הסלמה בדרום',
       media: {
+        elementType: 'image',
         photographer: 'none',
         viewMode: 'FullColumnWithVerticalImage',
         accessibility: 'כוח צה"ל בגבול רצועת עזה, היום',
