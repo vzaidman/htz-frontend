@@ -62,15 +62,17 @@ const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
     'articleHeader',
     isBlock ? 'kickerBlockText' : 'kickerInlineText'
   ),
-  ...(!isBlock
+  ...(isBlock
     ? {
+      fontWeight: '700',
+    }
+    : {
       wordBreak: 'break-word',
       backgroundColor: theme.color('articleHeader', 'kickerInlineBg'),
       ':after': {
         content: `"${divider}"`,
       },
-    }
-    : {}),
+    }),
   extend: [
     ...[ fontSize ? parseTypographyProp(fontSize, theme.type) : {}, ],
     ...(miscStyles ? parseStyleProps(miscStyles) : []),
