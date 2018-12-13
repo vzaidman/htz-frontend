@@ -12,9 +12,10 @@ import GridItem from '../Grid/GridItem';
 import HtzLink from '../HtzLink/HtzLink';
 
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
+import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
 
 type TeaserMediaPropsType = {
-  data: TeaserDataType,
+  data: TeaserDataType | ClickTrackerBannerType,
   /**
    * Should not be passed manually. Handled by the parent `<Grid>` component
    */
@@ -76,7 +77,11 @@ export default function TeaserMedia({
             {disableAnchor ? (
               children
             ) : (
-              <HtzLink href={data.path} attrs={{ tabIndex: -1, }}>
+              <HtzLink
+                href={data.kind === 'clickTrackerBanner' ? data.link : data.path}
+                target={data.kind === 'clickTrackerBanner' ? data.linkTarget : null}
+                attrs={{ tabIndex: -1, }}
+              >
                 {children}
               </HtzLink>
             )}

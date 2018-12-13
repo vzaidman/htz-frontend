@@ -7,19 +7,21 @@ import type {
   StyleProps,
 } from '@haaretz/htz-css-tools';
 
+import CardContent from '../CardContent/CardContent';
+import CardFooter from '../CardFooter/CardFooter';
+import GridItem from '../Grid/GridItem';
+
+import type { attrFlowType, } from '../../flowTypes/attrTypes';
+import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type {
   ColorType,
   PaddingType,
   CardContentSeperator,
 } from '../CardContent/cardContentStyle';
-import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
-import type { attrFlowType, } from '../../flowTypes/attrTypes';
-import CardContent from '../CardContent/CardContent';
-import CardFooter from '../CardFooter/CardFooter';
-import GridItem from '../Grid/GridItem';
+import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
 
 type TeaserContentType = {
-  data: TeaserDataType,
+  data: TeaserDataType | ClickTrackerBannerType,
   /**
    * Should not be passed manually. Handled by the parent `<Grid>` component
    */
@@ -62,8 +64,8 @@ type TeaserContentType = {
   /** Forces the footer to the bottom using absolute positioning */
   footerIsAbsolute: boolean | ComponentPropResponsiveObject<boolean>[],
   // render props
-  renderContent: (data: TeaserDataType) => React.Node,
-  renderFooter: ?(data: TeaserDataType) => React.Node,
+  renderContent: <T: TeaserDataType | ClickTrackerBannerType>(data: T) => React.Node,
+  renderFooter: ?<T: TeaserDataType | ClickTrackerBannerType>(data: T) => React.Node,
 };
 
 TeaserContent.defaultProps = {
@@ -110,8 +112,8 @@ export default function TeaserContent({
   renderContent,
   renderFooter,
 }: TeaserContentType): React.Node {
-  return (
-    (renderContent || renderFooter) && (
+  if (renderContent || renderFooter) {
+    return (
       <GridItem
         width={width}
         gutter={gutter}
@@ -147,8 +149,10 @@ export default function TeaserContent({
           />
         )}
       </GridItem>
-    )
-  );
+    );
+  }
+
+  return null;
 }
 
 // /////////////////////////////////////////////////////////////////////

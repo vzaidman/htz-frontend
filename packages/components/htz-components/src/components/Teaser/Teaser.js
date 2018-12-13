@@ -9,13 +9,16 @@ import type {
 
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
+import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
+
 import Card from '../Card/Card';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
 import HtzLink from '../HtzLink/HtzLink';
 
+
 type TeaserPropTypes = {
-  data: TeaserDataType,
+  data: TeaserDataType | ClickTrackerBannerType,
   children?: React.Node,
   /**
    * pass an `onClick` event to the blockLink.
@@ -25,6 +28,10 @@ type TeaserPropTypes = {
    * around the title and image
    */
   onClick: ?(evt: SyntheticMouseEvent<HTMLElement>) => void,
+  /**
+   * is the data passed is a clickTracker data.
+   */
+  isClickTracker: ?boolean,
   /**
    * attributes to be passed to the DOM element
    */
@@ -75,6 +82,7 @@ type TeaserPropTypes = {
 Teaser.defaultProps = {
   children: null,
   onClick: null,
+  isClickTracker: false,
   attrs: null,
   backgroundColor: null,
   isElevated: false,
@@ -135,7 +143,8 @@ export default function Teaser({
           render={({ className: linkClassName, }) => (
             <HtzLink
               className={linkClassName}
-              href={data.path}
+              href={data.kind === 'clickTrackerBanner' ? data.link : data.path}
+              target={data.kind === 'clickTrackerBanner' ? data.linkTarget : null}
               onClick={onClick}
               attrs={{
                 tabIndex: '-1',
