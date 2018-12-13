@@ -1,9 +1,10 @@
 // @flow
 
-import type { ImageDataType } from './ImageDataType';
+import type { ImageDataType, } from './ImageDataType';
 
 export type ClickTrackerBannerType = {
   priority: number,
+  text?: string,
   link: string,
   linkTarget: string,
   departments: Array<string>,
@@ -14,7 +15,8 @@ export type ClickTrackerBannerType = {
   minRange: number,
   maxRange: number,
   chance: number,
-  inputTemplate: string,
+  inputTemplate: 'com.polobase.ClickTrackerBannerElement',
   contentId: string,
   contentName: string,
+  kind: 'clickTrackerBanner',
 }

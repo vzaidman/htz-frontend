@@ -34,4 +34,5 @@ export type TeaserDataType = {
   titleMobile?: ?string,
   tixwise?: ?string,
   __typename?: string,
+  kind: 'teaser',
 };
