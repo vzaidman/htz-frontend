@@ -34,13 +34,21 @@ const propTypes = {
    */
   images: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
-   * Should the gallery be rendered as full-screen.
+   * Should the gallery be rendered as full-screen only.
    */
-  isFullScreen: PropTypes.bool,
+  fullScreenOnly: PropTypes.bool,
+  /**
+   * A method that should be executed when closing full-screen.
+   */
+  exitFullScreenAction: PropTypes.func,
   /**
    * Gallery's title/name for display (if enabled).
    */
   name: PropTypes.string.isRequired,
+  /**
+   * A render prop that will trump the default caption and lice(indicator).
+   */
+  renderCaption: PropTypes.func,
   /**
    * Should the gallery's title be displayed on the page.
    */
@@ -59,8 +67,11 @@ const defaultProps = {
   animationDuration: 3,
   enableEnlarge: true,
   forceAspect: null,
+  fullScreenOnly: false,
   isFullScreen: false,
+  renderCaption: null,
   showTitle: true,
+  exitFullScreenAction: null,
 };
 
 const captionWrapperStyle = ({
@@ -70,6 +81,7 @@ const captionWrapperStyle = ({
   direction,
   isFullScreen,
   animationDuration,
+  miscStyles,
 }) => {
   const positionChange = direction === 'next' ? 100 : direction === 'previous' ? -100 : 0;
 
@@ -80,6 +92,7 @@ const captionWrapperStyle = ({
     position: isFullScreen ? 'static' : 'absolute',
     textAlign: 'start',
     top: '1rem',
+    display: 'flex',
     transform: `translateX(${position + positionChange}%)`,
     width: '100%',
     ...(moving
@@ -89,6 +102,10 @@ const captionWrapperStyle = ({
         ...theme.getTimingFunction('transition', 'swiftOut'),
       }
       : {}),
+    extend: [
+      // Trump all other styles with those defined in `miscStyles`
+      ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+    ],
   };
 };
 
@@ -126,7 +143,7 @@ const DotsElement = ({ images, displayItemNum, miscStyles, }) => (
 );
 
 /* eslint-disable react/prop-types */
-const CaptionElement = ({
+export const CaptionElement = ({
   animationDuration,
   caption,
   credit,
@@ -134,9 +151,13 @@ const CaptionElement = ({
   isFullScreen,
   itemsLength,
   size,
+  creditSize,
   position,
   moving,
   direction,
+  wrapperMiscStyles,
+  captionMiscStyles,
+  prefixContent,
 }) => (
   /* eslint-enable react/prop-types */
   <FelaComponent
@@ -145,23 +166,42 @@ const CaptionElement = ({
     direction={direction}
     isFullScreen={isFullScreen}
     animationDuration={animationDuration}
+    miscStyles={wrapperMiscStyles}
     rule={captionWrapperStyle}
     render={({ className, theme, }) => (
       <div className={className}>
+        <FelaComponent
+          style={{
+            ...theme.type(size),
+            color: theme.color('quaternary'),
+            fontWeight: '700',
+            flexShrink: '0',
+            marginEnd: '1rem',
+          }}
+          render="span"
+        >
+          {prefixContent || theme.galleryI18n.captionPrefix(index + 1, itemsLength)}
+        </FelaComponent>
         <Caption
           caption={caption}
           credit={credit}
+          creditprefix="צילום"
           color={[ 'neutral', '-10', ]}
           miscStyles={{
-            maxHeight: '6rem',
             overflow: 'hidden',
-            ':before': {
-              content: theme.galleryI18n.captionPrefix(index + 1, itemsLength),
-              color: theme.color('quaternary'),
-              fontWeight: '700',
-            },
+            display: isFullScreen ? 'static' : 'flex',
+            ...(captionMiscStyles || {}),
           }}
+          captionMiscStyles={!isFullScreen
+            ? {
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+            }
+            : {}
+          }
           typeStyles={size}
+          creditTypeStyles={creditSize}
         />
       </div>
     )}
@@ -175,9 +215,13 @@ const Gallery = ({
   forceAspect,
   images,
   imgOptions,
+  renderCaption,
+  fullScreenOnly,
+  exitFullScreenAction,
   name,
   showTitle,
 }) => {
+  // const renderCaption = false;
   const CarouselElement = () => (
     <FelaComponent
       render={({ theme, }) => (
@@ -208,6 +252,8 @@ const Gallery = ({
             return (
               <FullScreenMedia
                 itemName={image.contentName}
+                fullScreenOnly={fullScreenOnly}
+                exitAction={exitFullScreenAction}
                 itemUrl={buildUrl(
                   image.contentId,
                   { ...image.imgArray[0], aspects: image.aspects, },
@@ -227,7 +273,7 @@ const Gallery = ({
                     itemsLength={images.length}
                     size={-1}
                   />
-)}
+                )}
                 render={({ isFullScreen, toggleFullScreen, }) => {
                   const Image = imageProps => (isFullScreen ? (
                     <ArticleImage
@@ -437,60 +483,77 @@ const Gallery = ({
                                 />
                               ))}
                             </div>
-                          ) : (
-                            <FelaComponent
-                              style={{
-                                backgroundColor: theme.color('neutral'),
-                                display: 'flex',
-                                justifyContent: 'center',
-                                padding: '1rem',
-                                position: 'relative',
-                                height: '13.5rem',
-                              }}
-                            >
-                              <CaptionElement
-                                animationDuration={animationDuration}
-                                caption={previousImage.title}
-                                credit={previousImage.credit}
-                                direction={direction}
-                                index={previousItemIndex}
-                                itemsLength={images.length}
-                                moving={moving}
-                                position={100}
-                                size={-2}
-                              />
-                              <CaptionElement
-                                animationDuration={animationDuration}
-                                caption={image.title}
-                                credit={image.credit}
-                                direction={direction}
-                                index={displayItemNum}
-                                itemsLength={images.length}
-                                moving={moving}
-                                position={0}
-                                size={-2}
-                              />
-                              <CaptionElement
-                                animationDuration={animationDuration}
-                                caption={nextImage.title}
-                                credit={nextImage.credit}
-                                direction={direction}
-                                index={nextItemIndex}
-                                itemsLength={images.length}
-                                moving={moving}
-                                position={-100}
-                                size={-2}
-                              />
-                              <DotsElement
-                                miscStyles={{
-                                  alignSelf: 'flex-end',
-                                  marginBottom: '1rem',
-                                }}
-                                {...{ images, displayItemNum, }}
-                              />
-                            </FelaComponent>
-                          ))
-                          }
+                          )
+                            : renderCaption
+                              ? renderCaption({
+                                isFullScreen,
+                                renderButton,
+                                previousImage,
+                                image,
+                                nextImage,
+                                displayItemNum,
+                                previousItemIndex,
+                                nextItemIndex,
+                                direction,
+                                moving,
+                                animationDuration,
+                                currentDisplaying,
+                                itemsLength: images.length,
+                              })
+                              : (
+                                <FelaComponent
+                                  style={{
+                                    backgroundColor: theme.color('neutral'),
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    padding: '1rem',
+                                    position: 'relative',
+                                    height: '13.5rem',
+                                  }}
+                                >
+                                  <CaptionElement
+                                    animationDuration={animationDuration}
+                                    caption={previousImage.title}
+                                    credit={previousImage.credit}
+                                    direction={direction}
+                                    index={previousItemIndex}
+                                    itemsLength={images.length}
+                                    moving={moving}
+                                    position={100}
+                                    size={-2}
+                                  />
+                                  <CaptionElement
+                                    animationDuration={animationDuration}
+                                    caption={image.title}
+                                    credit={image.credit}
+                                    direction={direction}
+                                    index={displayItemNum}
+                                    itemsLength={images.length}
+                                    moving={moving}
+                                    position={0}
+                                    size={-2}
+                                  />
+                                  <CaptionElement
+                                    animationDuration={animationDuration}
+                                    caption={nextImage.title}
+                                    credit={nextImage.credit}
+                                    direction={direction}
+                                    index={nextItemIndex}
+                                    itemsLength={images.length}
+                                    moving={moving}
+                                    position={-100}
+                                    size={-2}
+                                  />
+                                  <DotsElement
+                                    miscStyles={{
+                                      alignSelf: 'flex-end',
+                                      marginBottom: '1rem',
+                                    }}
+                                    {...{ images, displayItemNum, }}
+                                  />
+                                </FelaComponent>
+                              )
+                          )}
                         />
                       ))}
                     </FelaComponent>

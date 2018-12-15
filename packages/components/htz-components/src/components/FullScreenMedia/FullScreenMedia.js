@@ -23,10 +23,17 @@ const propTypes = {
    * A render prop that passes down `isFullScreen` (Boolean).
    */
   render: PropTypes.func.isRequired,
+  /**
+   * Should the media be displayed as full-screen only.
+   */
+  fullScreenOnly: PropTypes.bool,
+  exitAction: PropTypes.func,
 };
 
 const defaultProps = {
   captionElement: null,
+  fullScreenOnly: false,
+  exitAction: null,
 };
 
 const containerStyle = ({ isFullScreen, theme, }) => ({
@@ -136,7 +143,7 @@ const mediaWrapperStyle = ({ isFullScreen, theme, }) => (isFullScreen
 class FullScreenMedia extends React.Component {
   state = {
     mediaWidth: null,
-    isFullScreen: false,
+    isFullScreen: this.props.fullScreenOnly,
     hide: true,
   };
 
@@ -180,7 +187,7 @@ class FullScreenMedia extends React.Component {
   });
 
   render() {
-    const { render, captionElement, itemName, itemUrl, } = this.props;
+    const { render, captionElement, itemName, itemUrl, exitAction, } = this.props;
     const { isFullScreen, } = this.state;
 
     return (
@@ -218,7 +225,7 @@ class FullScreenMedia extends React.Component {
                     end: '2rem',
                   }}
                 >
-                  <Icon isFullScreen onClick={this.toggleFullScreen} hide={false} />
+                  <Icon isFullScreen onClick={exitAction || this.toggleFullScreen} hide={false} />
                 </FelaComponent>
                 <ToolBar
                   itemName={itemName}

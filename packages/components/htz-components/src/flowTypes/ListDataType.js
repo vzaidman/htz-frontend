@@ -22,4 +22,6 @@ export type ListDataType = {
   inputTemplate: "com.tm.element.List" | "com.tm.ListElement",
   view: string,
   url?: string,
+  description?: string,
+  urlDescription?: string,
 };

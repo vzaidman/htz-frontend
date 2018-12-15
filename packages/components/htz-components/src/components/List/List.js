@@ -134,8 +134,8 @@ class List extends React.Component {
                         list: 'List impressions',
                       });
 
-                      const clickAction = ({ index, articleId, }) => biAction({
-                        actionCode: 109,
+                      const clickAction = ({ index, articleId, actionCode = 109, }) => biAction({
+                        actionCode,
                         additionalInfo: {
                           ArticleId: articleId,
                           ListId: contentId,

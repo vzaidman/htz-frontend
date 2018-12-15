@@ -8,6 +8,7 @@ const captionStyles = Object.freeze({
   captionTypeSettings: -2,
   creditStyles: Object.freeze({
     fontWeight: '300',
+    creditTypeSettings: -2,
   }),
 });
 
