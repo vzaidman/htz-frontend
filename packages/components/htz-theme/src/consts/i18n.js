@@ -20,7 +20,8 @@ export const zoominText = 'הגדל';
 export const zoomoutText = 'הקטן';
 
 export const galleryI18n = Object.freeze({
-  captionPrefix: (current, total) => `"${current} מתוך ${total} | "`,
+  captionPrefix: (current, total) => `${current} מתוך ${total} | `,
+  mobileList: total => `${total} תמונות`,
 });
 
 export const textInputI18n = Object.freeze({

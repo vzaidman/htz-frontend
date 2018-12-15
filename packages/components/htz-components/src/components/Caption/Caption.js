@@ -17,6 +17,7 @@ const captionWrapperStyle = ({
   const typeSettings = typeStyles || captionTypeSettings;
 
   return {
+    display: 'flex',
     fontFamily,
     fontWeight,
     ...(floatCredit ? {} : { paddingInlineStart: '1rem', }),
@@ -64,18 +65,24 @@ const CaptionWrapper = ({
   </FelaComponent>
 );
 
-const creditRule = ({ theme, prefix, floatCredit, }) => {
-  const { fontWeight, } = theme.captionStyles.creditStyles || {};
+const creditRule = ({ theme, prefix, floatCredit, typeStyles, }) => {
+  const { fontWeight, creditTypeSettings, } = theme.captionStyles.creditStyles || {};
+  const typeSettings = typeStyles || creditTypeSettings;
   return {
     display: 'inline',
+    flexShrink: '0',
     fontWeight,
-    extend: [ ...(floatCredit ? [ { float: 'inline-end', }, ] : []), ],
+    extend: [
+      ...(floatCredit ? [ { float: 'inline-end', }, ] : []),
+      // set typographic styles (line height and font-size)
+      ...(typeSettings ? [ parseTypographyProp(typeSettings, theme.type), ] : []),
+    ],
   };
 };
 
 // eslint-disable-next-line react/prop-types
-const Credit = ({ floatCredit, children, }) => (
-  <FelaComponent floatCredit={floatCredit} rule={creditRule} render="span">
+const Credit = ({ floatCredit, children, typeStyles, }) => (
+  <FelaComponent floatCredit={floatCredit} rule={creditRule} typeStyles={typeStyles} render="span">
     {children}
   </FelaComponent>
 );
@@ -88,16 +95,40 @@ const Caption = props => {
   if (!props.caption && !props.credit) {
     return null;
   }
+  const {
+    backgroundColor,
+    color,
+    typeStyles,
+    miscStyles,
+    caption,
+    credit,
+    floatCredit,
+    creditTypeStyles,
+    creditprefix,
+    captionMiscStyles,
+  } = props;
   return (
-    <CaptionWrapper {...props}>
-      <FelaComponent style={{ marginEnd: '1rem', }} render="span">
-        {props.caption}
+    <CaptionWrapper
+      backgroundColor={backgroundColor}
+      color={color}
+      typeStyles={typeStyles}
+      miscStyles={miscStyles}
+    >
+      <FelaComponent
+        style={theme => ({
+          marginEnd: '1rem',
+          extend: [
+            // Trump all other styles with those defined in `miscStyles`
+            ...(captionMiscStyles ? parseStyleProps(captionMiscStyles, theme.mq, theme.type) : []),
+          ],
+        })}
+        render="span"
+      >
+        {caption}
       </FelaComponent>
-      {props.credit ? (
-        <Credit floatCredit={props.floatCredit}>
-          {props.creditprefix}
-:
-          {props.credit}
+      {credit ? (
+        <Credit floatCredit={floatCredit} typeStyles={creditTypeStyles}>
+          {`${creditprefix}: ${credit}`}
         </Credit>
       ) : (
         ''
@@ -136,11 +167,16 @@ Caption.propTypes = {
    */
   typeStyles: PropTypes.oneOfType([ PropTypes.number, PropTypes.array, PropTypes.object, ]),
   /**
+   * The typography of the credit text.
+   */
+  creditTypeStyles: PropTypes.oneOfType([ PropTypes.number, PropTypes.array, PropTypes.object, ]),
+  /**
    * A special property holding miscellaneous CSS values that
    * trumps all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType,
+  captionMiscStyles: stylesPropType,
 };
 
 Caption.defaultProps = {
@@ -151,7 +187,9 @@ Caption.defaultProps = {
   backgroundColor: null,
   color: null,
   typeStyles: null,
+  creditTypeStyles: null,
   miscStyles: null,
+  captionMiscStyles: null,
 };
 
 export default Caption;

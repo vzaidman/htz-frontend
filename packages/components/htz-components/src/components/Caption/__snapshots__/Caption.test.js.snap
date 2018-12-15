@@ -4,30 +4,6 @@ exports[`should correctly render a Caption bar with both credit and caption  1`]
 Object {
   "component": <div>
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
-    >
-      <span
-        className="htz-h"
-      >
-        The Caption
-      </span>
-      <span
-        className="htz-i htz-j"
-      >
-        קרדיט
-        :
-        me
-      </span>
-    </div>
-  </div>,
-  "styles": ".htz-a{font-weight:700}.htz-b{padding-right:1rem}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline}.htz-j{font-weight:300}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
-}
-`;
-
-exports[`should correctly render a Caption bar with only the caption, Left to right, and with dynamic background  1`] = `
-Object {
-  "component": <div>
-    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
     >
       <span
@@ -35,10 +11,32 @@ Object {
       >
         The Caption
       </span>
+      <span
+        className="htz-j htz-k htz-l htz-e htz-f htz-g htz-h"
+      >
+        קרדיט: me
+      </span>
+    </div>
+  </div>,
+  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{font-weight:700}.htz-c{padding-right:1rem}.htz-d{color:#505050}.htz-i{margin-left:1rem}.htz-j{display:inline}.htz-k{flex-shrink:0}.htz-l{font-weight:300}@media (max-width: 79.9375em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+}
+`;
+
+exports[`should correctly render a Caption bar with only the caption, Left to right, and with dynamic background  1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
+    >
+      <span
+        className="htz-j"
+      >
+        The Caption
+      </span>
       
     </div>
   </div>,
-  "styles": ".htz-a{font-weight:700}.htz-b{padding-right:1rem}.htz-i{margin-left:1rem}@media (max-width: 79.9375em){.htz-c{color:#0B7EB5}.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{color:#FFA6A6}.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{font-weight:700}.htz-c{padding-right:1rem}.htz-j{margin-left:1rem}@media (max-width: 79.9375em){.htz-d{color:#0B7EB5}.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{color:#FFA6A6}.htz-h{font-size:2rem}.htz-i{line-height:1.5em}}",
 }
 `;
 
@@ -46,21 +44,19 @@ exports[`should correctly render a Caption bar with only the credit  1`] = `
 Object {
   "component": <div>
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
     >
       <span
-        className="htz-h"
+        className="htz-i"
       />
       <span
-        className="htz-i htz-j"
+        className="htz-j htz-k htz-l htz-e htz-f htz-g htz-h"
       >
-        קרדיט
-        :
-        me
+        קרדיט: me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{font-weight:700}.htz-b{padding-right:1rem}.htz-c{color:#505050}.htz-h{margin-left:1rem}.htz-i{display:inline}.htz-j{font-weight:300}@media (max-width: 79.9375em){.htz-d{font-size:2rem}.htz-e{line-height:1.5em}}@media (min-width: 80em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}",
+  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{font-weight:700}.htz-c{padding-right:1rem}.htz-d{color:#505050}.htz-i{margin-left:1rem}.htz-j{display:inline}.htz-k{flex-shrink:0}.htz-l{font-weight:300}@media (max-width: 79.9375em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
 }
 `;
 
