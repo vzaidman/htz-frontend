@@ -25,7 +25,7 @@ import {
 
 export default gql`
   query StandardArticleContent($path: String!) {
-    page(path: $path) {           
+    page(path: $path) {
       pageType
       ...PageSeoData
       ...PageBreadcrumbs
@@ -49,7 +49,7 @@ export default gql`
               mobileSubtitle
               mobileTitle
               modDate
-              pubDate              
+              pubDate
               reportingFrom
               subtitle
               title
@@ -72,12 +72,7 @@ export default gql`
               }
             }
             authors {
-              ... on CreditObject {
-                ...CreditObj
-              }
-              ... on AuthorObject {
-                ...AuthorObj
-              }
+              ...Author
             }
             body {
               ... on Content {
@@ -143,8 +138,7 @@ export default gql`
       }
     }
   }
-  ${author.authorObj}
-  ${author.creditObj}
+  ${author}
   ${changeableElementGroup}
   ${content}
   ${dfpBanner}

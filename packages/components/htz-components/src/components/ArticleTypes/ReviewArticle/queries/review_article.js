@@ -73,12 +73,7 @@ export default gql`
               ...Image
             }
             authors {
-              ... on CreditObject {
-                ...CreditObj
-              }
-              ... on AuthorObject {
-                ...AuthorObj
-              }
+              ...Author
             }
             body {
               ... on Content {
@@ -147,8 +142,7 @@ export default gql`
       }
     }
   }
-  ${author.authorObj}
-  ${author.creditObj}
+  ${author}
   ${changeableElementGroup}
   ${content}
   ${dfpBanner}

@@ -65,11 +65,15 @@ const wrapperStyle = ({ theme, miscStyles, variationMq, }) => ({
 // mobileTime indicates if this is the mobile location
 const timeStyle = ({ theme, mobileTime, variationMq, }) => ({
   extend: [
-    ...(variationMq.a
-      ? [ theme.mq(variationMq.a, { display: mobileTime ? 'inline-block' : 'none', }), ]
-      : []),
+    ...(variationMq.a ? [ theme.mq(variationMq.a, { display: mobileTime ? 'block' : 'none', }), ] : []),
     ...(variationMq.b
-      ? [ theme.mq(variationMq.b, { marginInlineStart: '1rem', marginInlineEnd: '1rem', }), ]
+      ? [
+        theme.mq(variationMq.b, {
+          marginInlineStart: '1rem',
+          marginInlineEnd: '1rem',
+          ...(mobileTime ? {} : { display: 'none', }),
+        }),
+      ]
       : []),
     ...(variationMq.c
       ? [
@@ -196,224 +200,241 @@ class ArticleHeaderMeta extends React.Component {
       variationMq,
     } = this.props;
     return (
-      <EventTracker>
-        {({ biAction, }) => (
-          <FelaComponent rule={outerStyle} miscStyles={miscStyles}>
-            <Query query={PLATFORM_QUERY}>
-              {({ loading, error, data, client, }) => {
-                if (loading) return null;
-                if (error) console.log(error);
-                const { platform, } = data;
-                return (
-                  <FelaComponent
-                    rule={wrapperStyle}
-                    variationMq={variationMq}
-                    render={({ className, theme, }) => (
-                      <Fragment>
-                        <div className={className}>
-                          <FelaComponent
-                            rule={imageAuthorsAndMobileTimeContStyle}
-                            variationMq={variationMq}
-                          >
-                            {/*  Author image */}
-                            {authors.length > 1 || !authors[0].image ? (
-                              <IconAlefLogo
-                                color="primary"
-                                size={[ { until: 'l', value: 6, }, { from: 'l', value: 10, }, ]}
-                                miscStyles={{
-                                  display: [
-                                    ...(variationMq.a
-                                      ? [ { ...variationMq.a, value: 'inline-block', }, ]
-                                      : []),
-                                    ...(variationMq.b ? [ { ...variationMq.b, value: 'none', }, ] : []),
-                                    ...(variationMq.c
-                                      ? [ { ...variationMq.c, value: 'block', }, ]
-                                      : []),
-                                  ],
-                                  marginInlineEnd: '1rem',
-                                }}
-                              />
-                            ) : (
-                              <Image
-                                data={authors[0].image}
-                                imgOptions={{
-                                  transforms: {
-                                    width: '100',
-                                    aspect: 'square',
-                                    quality: 'auto',
-                                    gravity: 'face',
-                                  },
-                                }}
-                                miscStyles={{
-                                  width: [
-                                    ...(variationMq.a ? [ { ...variationMq.a, value: '6rem', }, ] : []),
-                                    ...(variationMq.b ? [ { ...variationMq.b, value: '6rem', }, ] : []),
-                                    ...(variationMq.c
-                                      ? [ { ...variationMq.c, value: '10rem', }, ]
-                                      : []),
-                                  ],
-                                  height: [
-                                    ...(variationMq.a ? [ { ...variationMq.a, value: '6rem', }, ] : []),
-                                    ...(variationMq.b ? [ { ...variationMq.b, value: '6rem', }, ] : []),
-                                    ...(variationMq.c
-                                      ? [ { ...variationMq.c, value: '10rem', }, ]
-                                      : []),
-                                  ],
-                                  paddingBottom: '6rem',
-                                  borderRadius: '50%',
-                                  overflow: 'hidden',
-                                  display: [
-                                    ...(variationMq.a
-                                      ? [ { ...variationMq.a, value: 'inline-block', }, ]
-                                      : []),
-                                    ...(variationMq.b ? [ { ...variationMq.b, value: 'none', }, ] : []),
-                                    ...(variationMq.c
-                                      ? [ { ...variationMq.c, value: 'block', }, ]
-                                      : []),
-                                  ],
-                                  marginInlineEnd: '1rem',
-                                }}
-                              />
-                            )}
-
-                            {/* Author name and publish-date */}
-                            <FelaComponent rule={authorsAndTimeContStyle} variationMq={variationMq}>
-                              {authors.map((author, idx) => (
-                                <CreditArticle
-                                  key={author.contentId || author.name}
-                                  contentName={author.name || author.contentName}
-                                  url={author.url}
-                                  onClick={() => biAction({
-                                    actionCode: 109,
-                                    additionalInfo: {
-                                      writer_id: author.contentId || author.contentName,
-                                      platform,
-                                    },
-                                  })
-                                  }
+      authors.length > 0 && (
+        <EventTracker>
+          {({ biAction, }) => (
+            <FelaComponent rule={outerStyle} miscStyles={miscStyles}>
+              <Query query={PLATFORM_QUERY}>
+                {({ loading, error, data, client, }) => {
+                  if (loading) return null;
+                  if (error) console.log(error);
+                  const { platform, } = data;
+                  return (
+                    <FelaComponent
+                      rule={wrapperStyle}
+                      variationMq={variationMq}
+                      render={({ className, theme, }) => (
+                        <Fragment>
+                          <div className={className}>
+                            <FelaComponent
+                              rule={imageAuthorsAndMobileTimeContStyle}
+                              variationMq={variationMq}
+                            >
+                              {/*  Author image */}
+                              {authors.length > 1 || !authors[0].image ? (
+                                <IconAlefLogo
+                                  color="primary"
+                                  size={[ { until: 'l', value: 6, }, { from: 'l', value: 10, }, ]}
                                   miscStyles={{
-                                    ':after': {
-                                      content:
-                                        idx === authors.length - 1
-                                          ? null
-                                          : authors.length > 1
-                                            ? authors.length - 2 === idx
-                                              ? '" ו"'
-                                              : '", "'
-                                            : null,
-                                    },
-                                    display: 'inline',
-                                  }}
-                                />
-                              ))}
-                              {reportingFrom ? (
-                                <FelaComponent
-                                  style={{
-                                    color: theme.color('primary'),
-                                    extend: [
-                                      theme.type(-2, { fromBp: 'xl', }),
-                                      theme.type(-1, {
-                                        fromBp: 's',
-                                        untilBp: 'xl',
-                                      }),
-                                      theme.type(-2, { untilBp: 's', }),
+                                    display: [
                                       ...(variationMq.a
-                                        ? [
-                                          theme.mq(variationMq.a, {
-                                            ':before': {
-                                              content: '" | "',
-                                            },
-                                          }),
-                                        ]
+                                        ? [ { ...variationMq.a, value: 'inline-block', }, ]
                                         : []),
                                       ...(variationMq.b
-                                        ? [
-                                          theme.mq(variationMq.b, {
-                                            ':before': {
-                                              content: '" | "',
-                                            },
-                                          }),
-                                        ]
+                                        ? [ { ...variationMq.b, value: 'none', }, ]
                                         : []),
                                       ...(variationMq.c
-                                        ? [ theme.mq(variationMq.c, { display: 'block', }), ]
+                                        ? [ { ...variationMq.c, value: 'block', }, ]
                                         : []),
                                     ],
+                                    marginInlineEnd: '1rem',
                                   }}
-                                  render="span"
-                                >
-                                  {reportingFrom}
-                                </FelaComponent>
-                              ) : null}
+                                />
+                              ) : (
+                                <Image
+                                  data={authors[0].image}
+                                  imgOptions={{
+                                    transforms: {
+                                      width: '100',
+                                      aspect: 'square',
+                                      quality: 'auto',
+                                      gravity: 'face',
+                                    },
+                                  }}
+                                  miscStyles={{
+                                    width: [
+                                      ...(variationMq.a
+                                        ? [ { ...variationMq.a, value: '6rem', }, ]
+                                        : []),
+                                      ...(variationMq.b
+                                        ? [ { ...variationMq.b, value: '6rem', }, ]
+                                        : []),
+                                      ...(variationMq.c
+                                        ? [ { ...variationMq.c, value: '10rem', }, ]
+                                        : []),
+                                    ],
+                                    height: [
+                                      ...(variationMq.a
+                                        ? [ { ...variationMq.a, value: '6rem', }, ]
+                                        : []),
+                                      ...(variationMq.b
+                                        ? [ { ...variationMq.b, value: '6rem', }, ]
+                                        : []),
+                                      ...(variationMq.c
+                                        ? [ { ...variationMq.c, value: '10rem', }, ]
+                                        : []),
+                                    ],
+                                    paddingBottom: '6rem',
+                                    borderRadius: '50%',
+                                    overflow: 'hidden',
+                                    display: [
+                                      ...(variationMq.a
+                                        ? [ { ...variationMq.a, value: 'inline-block', }, ]
+                                        : []),
+                                      ...(variationMq.b
+                                        ? [ { ...variationMq.b, value: 'none', }, ]
+                                        : []),
+                                      ...(variationMq.c
+                                        ? [ { ...variationMq.c, value: 'block', }, ]
+                                        : []),
+                                    ],
+                                    marginInlineEnd: '1rem',
+                                  }}
+                                />
+                              )}
 
+                              {/* Author name and publish-date */}
                               <FelaComponent
-                                rule={timeStyle}
-                                mobileTime
+                                rule={authorsAndTimeContStyle}
                                 variationMq={variationMq}
-                                render={({ className, }) => (
-                                  <Fragment>
-                                    {this.displayDates(
-                                      publishDate,
-                                      modifiedDate,
-                                      className,
-                                      variationMq
-                                    )}
-                                  </Fragment>
-                                )}
-                              />
+                              >
+                                {authors.map((author, idx) => (
+                                  <CreditArticle
+                                    key={author.contentId || author.name}
+                                    contentName={author.name || author.contentName}
+                                    url={author.url}
+                                    onClick={() => biAction({
+                                      actionCode: 109,
+                                      additionalInfo: {
+                                        writer_id: author.contentId || author.contentName,
+                                        platform,
+                                      },
+                                    })
+                                    }
+                                    miscStyles={{
+                                      ':after': {
+                                        content:
+                                          idx === authors.length - 1
+                                            ? null
+                                            : authors.length > 1
+                                              ? authors.length - 2 === idx
+                                                ? '" ו"'
+                                                : '", "'
+                                              : null,
+                                      },
+                                      display: 'inline',
+                                    }}
+                                  />
+                                ))}
+                                {reportingFrom ? (
+                                  <FelaComponent
+                                    style={{
+                                      color: theme.color('primary'),
+                                      extend: [
+                                        theme.type(-2, { fromBp: 'xl', }),
+                                        theme.type(-1, {
+                                          fromBp: 's',
+                                          untilBp: 'xl',
+                                        }),
+                                        theme.type(-2, { untilBp: 's', }),
+                                        ...(variationMq.a
+                                          ? [
+                                            theme.mq(variationMq.a, {
+                                              ':before': {
+                                                content: '" | "',
+                                              },
+                                            }),
+                                          ]
+                                          : []),
+                                        ...(variationMq.b
+                                          ? [
+                                            theme.mq(variationMq.b, {
+                                              ':before': {
+                                                content: '" | "',
+                                              },
+                                            }),
+                                          ]
+                                          : []),
+                                        ...(variationMq.c
+                                          ? [ theme.mq(variationMq.c, { display: 'block', }), ]
+                                          : []),
+                                      ],
+                                    }}
+                                    render="span"
+                                  >
+                                    {reportingFrom}
+                                  </FelaComponent>
+                                ) : null}
+
+                                <FelaComponent
+                                  rule={timeStyle}
+                                  mobileTime
+                                  variationMq={variationMq}
+                                  render={({ className, }) => (
+                                    <Fragment>
+                                      {this.displayDates(
+                                        publishDate,
+                                        modifiedDate,
+                                        className,
+                                        variationMq
+                                      )}
+                                    </Fragment>
+                                  )}
+                                />
+                              </FelaComponent>
                             </FelaComponent>
-                          </FelaComponent>
-                          {/* alerts and desktop time */}
-                          <FelaComponent
-                            rule={alertsAndDesktopTimeContStyle}
-                            variationMq={variationMq}
+                            {/* alerts and desktop time */}
+                            <FelaComponent
+                              rule={alertsAndDesktopTimeContStyle}
+                              variationMq={variationMq}
+                            >
+                              {authors.length === 1 && authors[0].hasEmailAlerts ? (
+                                <Alerts
+                                  author={authors[0]}
+                                  onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                                  ref={this.alertsToggleBtnRef}
+                                />
+                              ) : null}
+                            </FelaComponent>
+                            <FelaComponent
+                              rule={timeStyle}
+                              variationMq={variationMq}
+                              mobileTime={false}
+                              render={({ className, }) => (
+                                <Fragment>
+                                  {this.displayDates(
+                                    publishDate,
+                                    modifiedDate,
+                                    className,
+                                    variationMq
+                                  )}
+                                </Fragment>
+                              )}
+                            />
+                          </div>
+                          <SlideinBox
+                            show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
+                            duration={2}
+                            focus
+                            maxHeight={100}
                           >
-                            {authors.length === 1 && authors[0].hasEmailAlerts ? (
-                              <Alerts
-                                author={authors[0]}
-                                onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
-                                ref={this.alertsToggleBtnRef}
-                              />
-                            ) : null}
-                          </FelaComponent>
-                          <FelaComponent
-                            rule={timeStyle}
-                            variationMq={variationMq}
-                            mobileTime={false}
-                            render={({ className, }) => (
-                              <Fragment>
-                                {this.displayDates(
-                                  publishDate,
-                                  modifiedDate,
-                                  className,
-                                  variationMq
-                                )}
-                              </Fragment>
-                            )}
-                          />
-                        </div>
-                        <SlideinBox
-                          show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
-                          duration={2}
-                          focus
-                          maxHeight={100}
-                        >
-                          <AuthorNotificationsRegistration
-                            author={authors[0]}
-                            platform={platform}
-                            biAction={biAction}
-                            onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
-                          />
-                        </SlideinBox>
-                      </Fragment>
-                    )}
-                  />
-                );
-              }}
-            </Query>
-          </FelaComponent>
-        )}
-      </EventTracker>
+                            <AuthorNotificationsRegistration
+                              author={authors[0]}
+                              platform={platform}
+                              biAction={biAction}
+                              onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                            />
+                          </SlideinBox>
+                        </Fragment>
+                      )}
+                    />
+                  );
+                }}
+              </Query>
+            </FelaComponent>
+          )}
+        </EventTracker>
+      )
     );
   }
 }
@@ -422,7 +443,7 @@ ArticleHeaderMeta.propTypes = {
   /**
    * An array of Article's authors
    */
-  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.object, ])).isRequired,
   /**
    * The publishing date of the article
    */

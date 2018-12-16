@@ -21,7 +21,7 @@ const imageObj = `{
 }`;
 
 export const authorImage = gql`
-    fragment AuthorImage on AuthorObject {
+    fragment AuthorImage on Author {
       image ${imageObj}
     }
   `;
