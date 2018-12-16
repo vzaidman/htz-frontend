@@ -1,7 +1,7 @@
 export default {
   view: 'Slugs',
   hasPagination: false,
-  title: 'Slugs',
+  title: 'בחירת העורכים',
   items: [
     {
       path: 'http://pre.haaretz.co.il/gallery/.premium-MAGAZINE-1.6652485',
@@ -172,7 +172,8 @@ export default {
       },
       representedContent: '1.6652020',
       publishDate: 1542059820867,
-      title: 'יותר מ-300 רקטות ופצמ"רים נורו מעזה ליישובי הדרום; צה"ל תקף עשרות יעדים ברצועה',
+      title:
+        'יותר מ-300 רקטות ופצמ"רים נורו מעזה ליישובי הדרום; צה"ל תקף עשרות יעדים ברצועה',
       titleMobile: 'יותר יעדים ברצועה',
       commentsCounts: 0,
       rank: 3,
@@ -189,7 +190,7 @@ export default {
         accessibility:
           'מאוויס צ\'יבוטה מול מכבי חיפה, העונה. "כשאני נכנס למגרש אני רוצה לנצח בכל מחיר"',
         credit: 'שרון בוקוב',
-        title: 'מאוויס צ\'יבוטה מול מכבי חיפה בכל מחיר"',
+        title: "מאוויס צ'יבוטה מול מכבי חיפה בכל מחיר\"",
         aspects: {
           vertical: {
             x: 258,
@@ -287,7 +288,8 @@ export default {
       },
       representedContent: '1.6651560',
       publishDate: 1542086854181,
-      title: 'משלחת של האו"ם ומצרים תגיע מחר לעזה; דיווח: הפלסטינים נענו לפנייה מצרית להפסקת אש',
+      title:
+        'משלחת של האו"ם ומצרים תגיע מחר לעזה; דיווח: הפלסטינים נענו לפנייה מצרית להפסקת אש',
       titleMobile: 'משלחת של האו"ם נענו לפנייה מצרית להפסקת אש',
       commentsCounts: 78,
       authors: [
@@ -300,7 +302,8 @@ export default {
       path: 'http://pre.haaretz.co.il/sport/tapina/.premium-1.6652558',
       representedContent: '1.6652558',
       publishDate: 1542124800516,
-      title: 'צ\'יבוטה: "כולם שאלו למה אני בוכה, אבל מי שבאמת מכיר אותי יודע שזה אני"',
+      title:
+        'צ\'יבוטה: "כולם שאלו למה אני בוכה, אבל מי שבאמת מכיר אותי יודע שזה אני"',
       titleMobile: 'צ\'יבוטה: "כולם שאלו אותי שזה אני"',
       commentsCounts: 0,
       rank: 5,

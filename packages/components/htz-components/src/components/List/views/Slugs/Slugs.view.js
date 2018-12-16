@@ -1,192 +1,119 @@
 // @flow
-import React, { type StatelessFunctionalComponent, } from 'react';
-import { FelaComponent, FelaTheme, } from 'react-fela';
-import { borderTop, } from '@haaretz/htz-css-tools';
+import { FelaTheme, } from 'react-fela';
+import * as React from 'react';
 
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
-
-import ListView from '../../../ListView/ListView';
+import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
-import Teaser from '../../../Teaser/Teaser';
-import TeaserContent from '../../../TeaserContent/TeaserContent';
-import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
-import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import Image from '../../../Image/Image';
+import ListView from '../../../ListView/ListView';
+import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import Teaser from '../../../Teaser/Teaser';
 import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
-import TeaserTime from '../../../TeaserTime/TeaserTime';
+import TeaserContent from '../../../TeaserContent/TeaserContent';
+import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
+import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
-import CommentsCount from '../../../CommentsCount/CommentsCount';
+import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getImageAssets from '../../../../utils/getImageAssets';
 
 type Props = {
-  list: {
-    items: Array<TeaserDataType>,
-  },
+  list: ListDataType,
   listId: string,
-  gaAction: () => void,
-  biAction: ({
-    actionCode: number,
-    additionalInfo: {
-      ArticleId: string,
-      ListId: string,
-      NoInList: number,
-      ViewName: string,
-    },
-  }) => void,
+  gaAction: ?() => void,
+  biAction: ?BiActionType,
+  lazyLoadImages: boolean,
 };
 
-const Slugs: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, biAction, }) => {
-  const clickAction = ({ index, articleId, }: { index: number, articleId: string, }) => {
-    biAction({
-      actionCode: 109,
-      additionalInfo: {
-        ArticleId: articleId,
-        ListId: listId,
-        NoInList: index + 1,
-        ViewName: 'Mom',
-      },
-    });
-  };
+Slugs.defaultProps = {
+  gaAction: null,
+  biAction: null,
+  lazyLoadImages: true,
+};
+
+type BiActionType = ({
+  actionCode: number,
+  additionalInfo: {
+    ArticleId: string,
+    ListId: string,
+    NoInList: number,
+    ViewName: string,
+  },
+}) => void;
+
+type ClickActionOpts = {
+  index: number,
+  articleId: string,
+  listId: string,
+  biAction: BiActionType,
+};
+
+export default function Slugs({
+  list,
+  listId,
+  gaAction,
+  biAction,
+  lazyLoadImages,
+}: Props): React.Node {
   const { items, } = list;
+  const { extraLinks, title, url, } = list;
   return (
     <FelaTheme
       render={theme => (
         <ListView
-          gutter={0}
-          innerBackgroundColor={[ 'primary', '-6', ]}
-          outerBackgroundColor={[ 'primary', '-6', ]}
+          gutter={4}
+          innerBackgroundColor="transparent"
           miscStyles={{
             paddingInlineStart: [
               { until: 's', value: '2rem', },
-              { from: 's', until: 'xl', value: '4rem', },
+              { from: 's', value: '4rem', },
             ],
             paddingInlineEnd: [
               { until: 's', value: '2rem', },
-              { from: 's', until: 'xl', value: '4rem', },
+              { from: 's', value: '4rem', },
             ],
           }}
         >
           {/* List Meta Title */}
-          <GridItem width={1} miscStyles={{ marginTop: '2rem', }}>
-            <FelaComponent
-              style={theme => ({
-                color: theme.color('primary'),
-                extend: [
-                  borderTop(2, 0, 'solid', theme.color('primary')),
-                  theme.type(2),
-                  theme.mq(
-                    { until: 's', },
-                    {
-                      backgroundColor: 'white',
-                      paddingBottom: '2rem',
-                      paddingInlineStart: '2rem',
-                      marginBottom: '1rem',
-                    }
-                  ),
-                  theme.mq(
-                    {
-                      from: 's',
-                      until: 'l',
-                    },
-                    {
-                      marginBottom: '5rem',
-                    }
-                  ),
-                  theme.mq(
-                    {
-                      from: 'l',
-                    },
-                    {
-                      marginBottom: '3rem',
-                    }
-                  ),
-                  theme.mq({ from: 's', }, { fontWeight: 'bold', }),
+          <GridItem width={1}>
+            <ListViewHeader
+              url={url}
+              title={title}
+              extraLinks={extraLinks}
+              isHorizontal
+              miscStyles={{
+                marginBottom: [
+                  { until: 's', value: '1rem', },
+                  { from: 's', until: 'l', value: '5rem', },
+                  { from: 'l', value: '2rem', },
                 ],
-              })}
-              render={({ className, }) => <div className={className}>בחירת העורכים</div>}
+              }}
             />
           </GridItem>
 
-          {/* Main Elements ListView Grid Items */}
-          <GridItem width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}>
-            {/* Main Elements Grid */}
-            <Grid gutter={0} miscStyles={{ paddingBottom: '3rem', }}>
-              {/* List main/first element */}
+          {/* TEASERS */}
+          <GridItem
+            width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
+          >
+            {/* Main teaser */}
+            <Grid gutter={4} miscStyles={{ paddingBottom: '3rem', }}>
               <GridItem
                 width={[
                   { until: 'l', value: 1, },
                   { from: 'l', until: 'xl', value: 5 / 12, },
                   { from: 'xl', value: 6 / 12, },
                 ]}
-                miscStyles={{
-                  order: [ { until: 'l', value: 0, }, { from: 'l', value: 1, }, ],
-                  paddingInlineStart: [
-                    { from: 's', until: 'l', value: '14rem', },
-                    { from: 'l', value: '3.5rem', },
-                  ],
-                  paddingInlineEnd: [
-                    { from: 's', until: 'l', value: '14rem', },
-                    { from: 'xl', value: '3.5rem', },
-                  ],
-                }}
+                miscStyles={{ order: [ { from: 'l', value: 1, }, ], }}
               >
-                <Teaser data={items[0]} gutter={0} onClick={() => clickAction({ index: 0, articleId: items[0].contentId, })}>
-                  <TeaserMedia data={items[0]} width={1}>
-                    <Image
-                      imgOptions={{
-                        ...getImageAssets({
-                          bps: theme.bps,
-                          aspect: 'square',
-                          sizes: '(max-width: 600px) 250px, 450px',
-                          widths: [ 260, 470, ],
-                        }),
-                      }}
-                      data={items[0].image}
-                    />
-                  </TeaserMedia>
-
-                  <TeaserContent
-                    footerMiscStyles={{ type: -2, }}
-                    gridItemMiscStyles={{
-                      alignItems: 'center',
-                      paddingBottom: [
-                        { until: 's', value: '4rem', },
-                        { from: 's', until: 'l', value: '5rem', },
-                        { from: 'l', value: '4rem', },
-                      ],
-                    }}
-                    footerColor={[ 'neutral', '-3', ]}
-                    data={items[0]}
-                    renderContent={teaserData => (
-                      <TeaserHeader
-                        {...teaserData}
-                        typeScale={[ { from: 'l', until: 'xl', value: 2, }, { from: 'xl', value: 3, }, ]}
-                      />
-                    )}
-                    renderFooter={teaserData => (
-                      <span style={{ marginInlineEnd: '1rem', }}>
-                        {teaserData.authors ? (
-                          <span style={{ marginInlineEnd: '1rem', }}>
-                            <TeaserAuthors
-                              authors={teaserData.authors}
-                              miscStyles={{ fontWeight: 'bold', }}
-                            />
-                            <span> | </span>
-                            <TeaserTime {...teaserData} />
-                          </span>
-                        ) : null}
-                        <CommentsCount
-                          commentsCount={teaserData.commentsCounts}
-                          miscStyles={{ marginInlineEnd: '1rem', }}
-                        />
-                        {teaserData.rank ? <TeaserRank rank={teaserData.rank} /> : null}
-                      </span>
-                    )}
-                  />
-                </Teaser>
+                <MainTeaser
+                  data={items[0]}
+                  {...{ lazyLoadImages, biAction, listId, }}
+                />
               </GridItem>
 
+              {/* Secondary teasers */}
               <GridItem
                 stretchContent
                 width={[
@@ -195,189 +122,17 @@ const Slugs: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, bi
                   { from: 'xl', value: 6 / 12, },
                 ]}
               >
-                <Grid
-                  rowSpacing={[ { from: 's', value: { amount: 3, nUp: 1, }, }, ]}
-                  miscStyles={{
-                    marginTop: [
-                      { until: 's', value: '1.5rem', },
-                      { from: 's', until: 'l', value: '4rem', },
-                    ],
-                  }}
-                  gutter={1}
-                >
-                  {/* List Twins elements */}
-                  <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
-                    <Teaser data={items[1]} gutter={0} onClick={() => clickAction({ index: 1, articleId: items[1].contentId, })}>
-                      <TeaserMedia
-                        data={items[1]}
-                        width={[
-                          { until: 's', value: 1, },
-                          { from: 's', until: 'l', value: 4 / 12, },
-                          { from: 'l', until: 'xl', value: 3 / 7, },
-                          { from: 'xl', value: 3 / 5, },
-                        ]}
-                      >
-                        <Image
-                          imgOptions={{
-                            ...getImageAssets({
-                              bps: theme.bps,
-                              aspect: 'regular',
-                              sizes: '(max-width: 600px) 120px, (max-width: 1200px) 200px, 300px',
-                              widths: [ 120, 200, 300, ],
-                            }),
-                          }}
-                          data={items[1].image}
-                        />
-                      </TeaserMedia>
-                      <TeaserContent
-                        width={[
-                          { until: 's', value: 1, },
-                          { from: 's', until: 'l', value: 8 / 12, },
-                          { from: 'l', until: 'xl', value: 4 / 7, },
-                          { from: 'xl', value: 2 / 5, },
-                        ]}
-                        data={items[1]}
-                        renderContent={teaserData => <TeaserHeader {...teaserData} />}
-                        footerColor={[ 'neutral', '-3', ]}
-                        footerMiscStyles={{ type: -2, }}
-                        gridItemMiscStyles={{
-                          ...theme.mq({ until: 's', }, { paddingBottom: '5rem', }),
-                        }}
-                        renderFooter={teaserData => (
-                          <span style={{ marginInlineEnd: '1rem', }}>
-                            {teaserData.authors ? (
-                              <span style={{ marginInlineEnd: '1rem', }}>
-                                <TeaserAuthors
-                                  authors={teaserData.authors}
-                                  miscStyles={{ fontWeight: 'bold', }}
-                                />
-                                <span> | </span>
-                                <TeaserTime {...teaserData} />
-                              </span>
-                            ) : null}
-                            <CommentsCount
-                              commentsCount={teaserData.commentsCounts}
-                              miscStyles={{
-                                marginInlineEnd: '1rem',
-                                display: [ { until: 's', value: 'none', }, ],
-                              }}
-                            />
-                            {teaserData.rank ? (
-                              <TeaserRank
-                                rank={teaserData.rank}
-                                miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}
-                              />
-                            ) : null}
-                          </span>
-                        )}
-                      />
-                    </Teaser>
-                  </GridItem>
-                  <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
-                    <Teaser data={items[2]} gutter={0} onClick={() => clickAction({ index: 0, articleId: items[2].contentId, })}>
-                      <TeaserMedia
-                        data={items[2]}
-                        width={[
-                          { until: 's', value: 1, },
-                          { from: 's', until: 'l', value: 4 / 12, },
-                          { from: 'l', until: 'xl', value: 3 / 7, },
-                          { from: 'xl', value: 3 / 5, },
-                        ]}
-                      >
-                        <Image
-                          imgOptions={{
-                            ...getImageAssets({
-                              bps: theme.bps,
-                              aspect: 'regular',
-                              sizes: '(max-width: 600px) 120px, (max-width: 1200px) 200px, 300px',
-                              widths: [ 110, 200, 300, ],
-                            }),
-                          }}
-                          data={items[2].image}
-                        />
-                      </TeaserMedia>
-                      <TeaserContent
-                        width={[
-                          { until: 's', value: 1, },
-                          { from: 's', until: 'l', value: 8 / 12, },
-                          { from: 'l', until: 'xl', value: 4 / 7, },
-                          { from: 'xl', value: 2 / 5, },
-                        ]}
-                        data={items[2]}
-                        renderContent={teaserData => <TeaserHeader {...teaserData} />}
-                        footerColor={[ 'neutral', '-3', ]}
-                        footerMiscStyles={{ type: -2, }}
-                        gridItemMiscStyles={{
-                          ...theme.mq({ until: 's', }, { paddingBottom: '6rem', }),
-                        }}
-                        renderFooter={teaserData => (
-                          <span>
-                            {teaserData.authors ? (
-                              <span style={{ marginInlineEnd: '1rem', }}>
-                                <TeaserAuthors
-                                  authors={teaserData.authors}
-                                  miscStyles={{ fontWeight: 'bold', }}
-                                />
-                                <span> | </span>
-                                <TeaserTime {...teaserData} />
-                              </span>
-                            ) : null}
-                            <CommentsCount
-                              commentsCount={teaserData.commentsCounts}
-                              miscStyles={{
-                                marginInlineEnd: '1rem',
-                                display: [ { until: 's', value: 'none', }, ],
-                              }}
-                            />
-                            {teaserData.rank ? (
-                              <TeaserRank
-                                rank={teaserData.rank}
-                                miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}
-                              />
-                            ) : null}
-                          </span>
-                        )}
-                      />
-                    </Teaser>
-                  </GridItem>
-                  {/* END of List Twins elements  */}
-                  {/* Last List Element (No Picture) */}
-                  <GridItem width={1} miscStyles={{ marginTop: '3rem', }}>
-                    <Teaser data={items[3]} onClick={() => clickAction({ index: 0, articleId: items[3].contentId, })}>
-                      <TeaserContent
-                        data={items[3]}
-                        gridItemMiscStyles={{
-                          paddingBottom: [
-                            { until: 'm', value: '3rem', },
-                            { from: 'm', value: '7rem', },
-                          ],
-                        }}
-                        renderContent={teaserData => <TeaserHeader {...teaserData} />}
-                        footerMiscStyles={{ type: -2, marginTop: '1rem', }}
-                        footerColor={[ 'neutral', '-3', ]}
-                        renderFooter={teaserData => (
-                          <span>
-                            {teaserData.authors ? (
-                              <span style={{ marginInlineEnd: '1rem', }}>
-                                <TeaserAuthors
-                                  authors={teaserData.authors}
-                                  miscStyles={{ fontWeight: 'bold', }}
-                                />
-                                <span> | </span>
-                                <TeaserTime {...teaserData} />
-                              </span>
-                            ) : null}
-                            <CommentsCount
-                              commentsCount={teaserData.commentsCounts}
-                              miscStyles={{ marginInlineEnd: '1rem', }}
-                            />
-                            {teaserData.rank ? <TeaserRank rank={teaserData.rank} /> : null}
-                          </span>
-                        )}
-                      />
-                    </Teaser>
-                  </GridItem>
-                </Grid>
+                <TwoUp
+                  data1={items[1]}
+                  data2={items[2]}
+                  {...{ lazyLoadImages, biAction, listId, }}
+                />
+
+                {/* Textual Teaser */}
+                <TextualTeaser
+                  data={items[3]}
+                  {...{ lazyLoadImages, biAction, listId, }}
+                />
               </GridItem>
             </Grid>
           </GridItem>
@@ -386,18 +141,341 @@ const Slugs: StatelessFunctionalComponent<Props> = ({ list, listId, gaAction, bi
           <GridItem
             width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
             miscStyles={{
-              marginBottom: '7rem',
-              marginTop: '4rem',
-              backgroundColor: 'yellow',
+              marginBottom: [
+                { until: 's', value: '2rem', },
+                { from: 's', value: '4rem', },
+              ],
+              marginTop: [
+                { until: 's', value: '2rem', },
+                { from: 's', until: 'xl', value: '4rem', },
+              ],
             }}
           >
-            <div>DFP! WIP!</div>
-            <div>DFP! WIP!</div>
+            <div style={{ backgroundColor: 'yellow', }}>DFP! WIP!</div>
           </GridItem>
         </ListView>
       )}
     />
   );
+}
+
+// /////////////////////////////////////////////////////////////////////
+//                              TEASERS                               //
+// /////////////////////////////////////////////////////////////////////
+
+type TeaserProps = {
+  data: TeaserDataType,
+  index: 0 | 1 | 2 | 3,
+  lazyLoadImages?: boolean,
+  listId: string,
+  biAction: ?BiActionType,
 };
 
-export default Slugs;
+MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
+
+function MainTeaser({
+  data,
+  lazyLoadImages,
+  listId,
+  biAction,
+}: TeaserProps): React.Node {
+  const articleId = data.contentId;
+
+  return (
+    <FelaTheme
+      render={theme => (
+        <Teaser
+          data={data}
+          gutter={0}
+          onClick={
+            biAction
+              ? () => clickAction({ index: 0, articleId, listId, biAction, })
+              : null
+          }
+          miscStyles={{
+            marginInlineEnd: [ { from: 's', until: 'l', value: 'auto', }, ],
+            marginInlineStart: [ { from: 's', until: 'l', value: 'auto', }, ],
+            maxWidth: [ { from: 's', until: 'l', value: '68rem', }, ],
+          }}
+          gridMiscStyles={{ flexDirection: 'column', flexWrap: 'nowrap', }}
+        >
+          <TeaserMedia
+            data={data}
+            miscStyles={{ flexGrow: '0', flexShrink: '0', }}
+          >
+            <Image
+              lazyLoad={lazyLoadImages}
+              imgOptions={getImageAssets({
+                bps: theme.bps,
+                aspect: 'square',
+                sizes: [
+                  { from: 'xl', size: '487px', },
+                  { from: 'l', size: '393px', },
+                  { from: 's', size: '408px', },
+                  { size: 'calc(100vw - 4rem)', },
+                ],
+                widths: [ 680, 600, 487, 293, 408, ],
+              })}
+              data={data.image}
+            />
+          </TeaserMedia>
+
+          <TeaserContent
+            data={data}
+            padding={[ 1, 2, 0, ]}
+            footerColor={[ 'neutral', '-3', ]}
+            gridItemMiscStyles={{ alignItems: 'center', flexBasis: 'auto', }}
+            footerMiscStyles={{ type: -2, }}
+            renderContent={() => (
+              <TeaserHeader
+                {...data}
+                isCentered
+                typeScale={[
+                  { from: 'l', until: 'xl', value: 2, },
+                  { from: 'xl', value: 3, },
+                ]}
+              />
+            )}
+            renderFooter={() => (
+              <Footer data={data} hasCommentsOnMobile hasRankOnMobile />
+            )}
+          />
+        </Teaser>
+      )}
+    />
+  );
+}
+
+function TwoUpTeaser({
+  data,
+  lazyLoadImages,
+  listId,
+  biAction,
+  index,
+}: TeaserProps): React.Node {
+  const articleId = data.contentId;
+
+  return (
+    <FelaTheme
+      render={theme => (
+        <Teaser
+          data={data}
+          gutter={0}
+          onClick={
+            biAction
+              ? () => clickAction({ index, articleId, listId, biAction, })
+              : null
+          }
+          gridMiscStyles={{ flexDirection: [ { until: 's', value: 'column', }, ], }}
+        >
+          <TeaserMedia
+            data={data}
+            width={[
+              { from: 's', until: 'l', value: 4 / 12, },
+              { from: 'l', until: 'xl', value: 3 / 7, },
+              { from: 'xl', value: 9 / 16, },
+            ]}
+          >
+            <Image
+              lazyLoad={lazyLoadImages}
+              imgOptions={{
+                ...getImageAssets({
+                  bps: theme.bps,
+                  aspect: 'regular',
+                  sizes: [
+                    { from: 'xl', size: '274px', },
+                    { from: 'm', size: '240px', },
+                    { from: 's', size: '184px', },
+                    { size: 'calc(50vw - 2.5rem)', },
+                  ],
+                  widths: [ 650, 600, 500, 400, 274, 240, 184, ],
+                }),
+              }}
+              data={data.image}
+            />
+          </TeaserMedia>
+          <TeaserContent
+            data={data}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: [ 1, 2, 0, ], },
+            ]}
+            gridItemMiscStyles={{
+              flexBasis: [ { until: 's', value: 'auto', }, ],
+              flexGrow: [ { until: 's', value: '1', }, ],
+            }}
+            footerPadding={[
+              { until: 's', value: [ 2, 1, 1, ], },
+              { from: 's', value: [ 2, 2, 1, ], },
+            ]}
+            footerColor={[ 'neutral', '-3', ]}
+            footerMiscStyles={{ type: -2, }}
+            renderContent={() => <TeaserHeader {...data} />}
+            renderFooter={() => <Footer data={data} />}
+          />
+        </Teaser>
+      )}
+    />
+  );
+}
+
+TextualTeaser.defaultProps = { lazyLoadImages: true, index: 3, };
+function TextualTeaser({ data, listId, biAction, }: TeaserProps): React.Node {
+  const articleId = data.contentId;
+
+  return (
+    <FelaTheme
+      render={theme => (
+        <Teaser
+          data={data}
+          onClick={
+            biAction
+              ? () => clickAction({ index: 3, articleId, biAction, listId, })
+              : null
+          }
+          miscStyles={{
+            alignItems: 'stretch',
+            display: 'flex',
+            flexGrow: '1',
+            height: 'auto',
+            marginTop: [
+              { until: 's', value: '1rem', },
+              { from: 's', value: '4rem', },
+            ],
+          }}
+        >
+          <TeaserContent
+            data={data}
+            padding={[
+              { until: 's', value: [ 1, 1, ], },
+              { from: 's', value: [ 1, 2, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: [ 2, 1, 1, ], },
+              { from: 's', value: [ 3, 2, 1, ], },
+            ]}
+            footerColor={[ 'neutral', '-3', ]}
+            footerMiscStyles={{ type: -2, }}
+            renderContent={() => <TeaserHeader {...data} />}
+            renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
+          />
+        </Teaser>
+      )}
+    />
+  );
+}
+
+type TwoUpProps = {
+  data1: TeaserDataType,
+  data2: TeaserDataType,
+  lazyLoadImages: boolean,
+  listId: string,
+  biAction: ?BiActionType,
+};
+
+TwoUp.defaultProps = { lazyLoadImages: true, };
+function TwoUp({
+  data1,
+  data2,
+  lazyLoadImages,
+  listId,
+  biAction,
+}: TwoUpProps): React.Node {
+  return (
+    <Grid
+      rowSpacing={[ { from: 's', value: { amount: 4, }, }, ]}
+      gutter={1}
+      miscStyles={{
+        flexGrow: '0',
+        marginTop: [
+          { until: 's', value: '1rem', },
+          { from: 's', until: 'l', value: '4rem', },
+        ],
+      }}
+    >
+      <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
+        <TwoUpTeaser
+          data={data1}
+          index={1}
+          {...{ lazyLoadImages, listId, biAction, }}
+        />
+      </GridItem>
+      <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
+        <TwoUpTeaser
+          data={data2}
+          index={2}
+          {...{ lazyLoadImages, listId, biAction, }}
+        />
+      </GridItem>
+    </Grid>
+  );
+}
+
+type FooterProps = {
+  data: TeaserDataType,
+  hasCommentsOnMobile: boolean,
+  hasRankOnMobile: boolean,
+};
+
+Footer.defaultProps = {
+  hasCommentsOnMobile: false,
+  hasRankOnMobile: false,
+};
+
+function Footer(
+  { data, hasCommentsOnMobile, hasRankOnMobile, },
+  FooterProps
+): React.Node {
+  return (
+    <React.Fragment>
+      {data.authors ? (
+        <span style={{ marginInlineEnd: '1rem', }}>
+          <TeaserAuthors
+            authors={data.authors}
+            miscStyles={{ fontWeight: 'bold', }}
+          />
+          <span> | </span>
+          <TeaserTime {...data} />
+        </span>
+      ) : null}
+      <CommentsCount
+        commentsCount={data.commentsCounts}
+        miscStyles={{
+          marginInlineEnd: '1rem',
+          ...(hasCommentsOnMobile
+            ? { display: [ { until: 's', value: 'none', }, ], }
+            : {}),
+        }}
+      />
+      {data.rank ? (
+        <TeaserRank
+          rank={data.rank}
+          miscStyles={{
+            display: [ { until: 's', value: 'none', }, ],
+          }}
+        />
+      ) : null}
+    </React.Fragment>
+  );
+}
+
+// /////////////////////////////////////////////////////////////////////
+//                               UTILS                                //
+// /////////////////////////////////////////////////////////////////////
+
+function clickAction({
+  index,
+  articleId,
+  listId,
+  biAction,
+}: ClickActionOpts): void {
+  biAction({
+    actionCode: 109,
+    additionalInfo: {
+      ArticleId: articleId,
+      ListId: listId,
+      NoInList: index + 1,
+      ViewName: 'Mom',
+    },
+  });
+}
