@@ -57,6 +57,8 @@ export default function TeaserRank({
   size,
   miscStyles,
 }: TeaserRankPropsType): React.Node {
+  if (typeof rank !== 'number') return null;
+
   const flooredRank = Math.floor(rank);
   const hasHalfRank = flooredRank < rank;
   const stars = Array(maxRank)
