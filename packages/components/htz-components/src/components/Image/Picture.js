@@ -11,15 +11,30 @@ import ImgSource from './elements/ImgSource';
 import { aspectRatios, } from './Image';
 import setColor from '../../utils/setColor';
 
-const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
+const PictureWrapperStyle = ({
+  sources,
+  theme,
+  defaultImg,
+  bgc,
+  miscStyles,
+}) => ({
   height: '0',
   width: '100%',
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
-    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
+    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq(
+      { from, until, misc, type, },
+      { paddingBottom: getDimensions(restOfImgData), }
+    )
     ),
-    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
+    parseComponentProp(
+      'backgroundColor',
+      bgc || [ 'image', 'bgc', ],
+      theme.mq,
+      setColor,
+      theme.color
+    ),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -188,13 +203,17 @@ function Picture(props) {
               tagName="source"
               type="image/webp"
               srcSet={getSources(props, index, true)}
-              {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+              {...(img.sourceOptions.sizes
+                ? { sizes: img.sourceOptions.sizes, }
+                : {})}
             />
             <ImgSource
               {...(media[index] ? { media: media[index], } : [])}
               tagName="source"
               srcSet={getSources(props, index, false)}
-              {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+              {...(img.sourceOptions.sizes
+                ? { sizes: img.sourceOptions.sizes, }
+                : {})}
             />
           </Fragment>
         ) : (
@@ -205,7 +224,9 @@ function Picture(props) {
             tagName="source"
             {...(img.mimeType ? { type: img.mimeType, } : {})}
             srcSet={getSources(props, index, false)}
-            {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+            {...(img.sourceOptions.sizes
+              ? { sizes: img.sourceOptions.sizes, }
+              : {})}
           />
         ))
       )}
@@ -236,12 +257,18 @@ function Picture(props) {
         defaultImg={defaultImg}
         bgc={bgcolor}
       >
-        <Observer triggerOnce rootMargin={lazyLoad}>
+        <Observer
+          triggerOnce
+          rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
+        >
           {inView => (inView ? Element : null)}
         </Observer>
       </StyledPictureWrapper>
     ) : (
-      <Observer triggerOnce rootMargin={lazyLoad}>
+      <Observer
+        triggerOnce
+        rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
+      >
         {inView => (inView ? Element : null)}
       </Observer>
     );
@@ -275,7 +302,9 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 
   const imageNameFromData = imgCore.imgName;
   const imgVersion = imgCore.version;
-  const imgName = isAnimatedGif ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
+  const imgName = isAnimatedGif
+    ? `${imageNameFromData.split('.')[0]}.webp`
+    : imageNameFromData;
 
   const imgData = { imgName, version: imgVersion, aspects: imgCore.aspects, };
 
@@ -307,7 +336,9 @@ function getMedia({ sources, theme, }) {
     const imgHasMedia = [ from, until, misc, type, ]
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
-    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true, true) : undefined;
+    return imgHasMedia
+      ? theme.getMqString({ from, until, misc, type, }, true, true)
+      : undefined;
   });
   return finalMedia;
 }
