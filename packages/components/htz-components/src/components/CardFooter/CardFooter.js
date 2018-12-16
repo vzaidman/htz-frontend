@@ -29,10 +29,13 @@ export default function CardFooter({
   children,
   tagName,
 }: CardContentProps): Node {
-  const sendToBottom = { marginTop: 'auto', };
+  const footerStyle = {
+    marginTop: 'auto',
+    display: 'block',
+  };
   const extendedMiscStyles = miscStyles
-    ? Object.assign({}, sendToBottom, miscStyles)
-    : sendToBottom;
+    ? Object.assign({}, footerStyle, miscStyles)
+    : footerStyle;
 
   return (
     <CardContent
