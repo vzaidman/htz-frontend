@@ -18,7 +18,7 @@ const Instructions = new GraphQLList(
         type: new GraphQLList(new GraphQLUnionType({
           name: 'InstructionsBody',
           types: [ content, embed, image, paragraph, ],
-          resolveType: value => getSchema(value.tag ? 'paragraph' : value.elementType || value.inputTemplate)
+          resolveType: value => getSchema(value.tag ? 'paragraph' : value.kind || value.inputTemplate)
             || content,
         })),
       },

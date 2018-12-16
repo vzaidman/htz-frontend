@@ -11,7 +11,7 @@
 ```jsx
 <div style={{ direction: 'rtl', }}>
   <LinksBlock
-    elementType="LinksBlock"
+    kind="LinksBlock"
     seriesTitle="50 שנה לששת הימים"
     articlePositionInTheSeries="2"
     usePagination="true"

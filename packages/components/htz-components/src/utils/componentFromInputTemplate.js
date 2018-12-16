@@ -51,7 +51,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.FooterElement', Footer, ],
 
   /* ArticleBody components */
-  [ 'embedElement', Embed, ],
+  [ 'embed', Embed, ],
   [ 'interactiveElement', Interactive, ],
   [ 'p', Paragraph, ],
   [ 'h3', Paragraph, ],

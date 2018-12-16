@@ -4,7 +4,7 @@ export type HTMLEmbedDataType = {
   caption?: string,
   credit?: string,
   embedType?: string,
-  elementType: 'embedElement',
+  kind: 'embed',
   source?: string,
   inputTemplate?: string,
   settings?: Object,

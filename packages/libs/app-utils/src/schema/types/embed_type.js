@@ -8,7 +8,7 @@ const EmbedType = new GraphQLObjectType({
     caption: { type: GraphQLString, },
     credit: { type: GraphQLString, },
     embedType: { type: GraphQLString, },
-    elementType: { type: GraphQLString, },
+    kind: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },

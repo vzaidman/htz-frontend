@@ -8,16 +8,10 @@ export const teaserForRelatedArticles = gql`
     title
     path
     authors {
-      ... on CreditObject {
-        ...CreditObj
-      }
-      ... on AuthorObject {
-        ...AuthorObj
-      }
+      ...Author
     }
   }
-  ${author.authorObj}
-  ${author.creditObj}
+  ${author}
 `;
 
 export const teaserForLeftElement = gql`
@@ -43,16 +37,10 @@ export const teaserForBender = gql`
     titleMobile
     hash
     authors {
-      ... on CreditObject {
-        ...CreditObj
-      }
-      ... on AuthorObject {
-        ...AuthorObj
-      }
+      ...Author
     }
   }
-  ${author.authorObj}
-  ${author.creditObj}
+  ${author}
   ${imagesInTeaser}
 `;
 
@@ -108,17 +96,11 @@ export default gql`
     titleMobile
     hash
     authors {
-      ... on CreditObject {
-        ...CreditObj
-      }
-      ... on AuthorObject {
-        ...AuthorObj
-      }
+      ...Author
     }
     ...Image
   }
-  ${author.authorObj}
-  ${author.creditObj}
+  ${author}
   ${imageInTeaser}
   ${imagesInTeaser}
   ${image}

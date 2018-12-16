@@ -220,7 +220,7 @@ export default class Embed extends React.Component {
       return (
         <div style={{ position: 'relative', }}>
           <MenuList
-            name="elementType"
+            name="kind"
             onChange={this.onSelectEmbed}
             defaultValue="placeHolder"
           >

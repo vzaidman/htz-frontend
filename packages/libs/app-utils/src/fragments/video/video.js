@@ -9,6 +9,6 @@ export default gql`
     contentId
     videoContent
     inputTemplate
-    elementType
+    kind
   }
 `;

@@ -4,8 +4,8 @@ import Embed from '../components/Embed/Embed';
 // import ImageGallery from '../ImageGallery/ImageGallery';
 import Video from '../components/Video/Video';
 
-export default (elementType, ImageComponent = ArticleImage) => {
-  switch (elementType) {
+export default (kind, ImageComponent = ArticleImage) => {
+  switch (kind) {
     case 'image':
       return ImageComponent;
     case 'gallery':
@@ -13,7 +13,7 @@ export default (elementType, ImageComponent = ArticleImage) => {
       return () => <p>ImageGallery</p>;
     case 'video':
       return Video;
-    case 'embedElement':
+    case 'embed':
       return Embed;
     default:
       return null;

@@ -10,7 +10,7 @@ it('BandCamp album ', () => {
       caption="bandCamp - track"
       credit="bandCamp - track"
       embedType="album"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         tracklist: 'false',
         artworkSize: 'large',

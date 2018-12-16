@@ -1,11 +1,13 @@
 export default {
   title: '60 שנות מייקל ג׳קסון',
-  description: 'כתבי "גלריה" נכנסו לגרוב ויצאו לפצח את דמותה רבת הפנים וההשפעה, שניכרת גם היום – שלושה עשורים אחרי שפרצה לתודעה. על השירים, הריקודים, הקליפים, הסרטים, האאוטפיטים, הפמיניזם והגאווה של מדונה. אשה, תופעה, שחוגגת 60',
+  description:
+    'כתבי "גלריה" נכנסו לגרוב ויצאו לפצח את דמותה רבת הפנים וההשפעה, שניכרת גם היום – שלושה עשורים אחרי שפרצה לתודעה. על השירים, הריקודים, הקליפים, הסרטים, האאוטפיטים, הפמיניזם והגאווה של מדונה. אשה, תופעה, שחוגגת 60',
   url: 'www.haaretz.co.il',
   urlDescription: 'Go to Section',
   items: [
     {
       image: {
+        kind: 'image',
         inputTemplate: 'com.tm.Image',
         viewMode: null,
         accessibility: 'אסף (משמאל) לצד שתי מגישות ההצעה הנוספות',
@@ -37,18 +39,21 @@ export default {
       contentId: '7.7871808',
       representedContent: '1.6724526',
       exclusive: 'AAAAAAA',
-      title: 'ביוזמת ישראלית, מועצת הסטודנטים באונ\' ניו יורק הצביעה בעד הצעת BDS1',
+      title: "ביוזמת ישראלית, מועצת הסטודנטים באונ' ניו יורק הצביעה בעד הצעת BDS1",
       path: 'https://www.haaretz.co.il/news/politics/.premium-1.6724526',
-      titleMobile: 'ביוזמת ישראלית, מועצת הסטודנטים באונ\' ניו יורק הצביעה בעד הצעת BDS',
+      titleMobile: "ביוזמת ישראלית, מועצת הסטודנטים באונ' ניו יורק הצביעה בעד הצעת BDS",
       hash: 'A2CD2663600E560DEF070DA8735691B3',
       commentsCounts: 66,
     },
     {
       image: {
+        kind: 'image',
         inputTemplate: 'com.tm.Image',
         viewMode: null,
-        accessibility: 'הלוויית ג\'ורג\' בוש האב. מימין: ג\'ימי קרטר, הילרי וביל קלינטון, מישל וברק אובמה, מלניה ודונלד טראמפ',
-        title: 'הלוויית ג\'ורג\' בוש האב. מימין: ג\'ימי קרטר, הילרי וביל קלינטון, מישל וברק אובמה, מלניה ודונלד טראמפ',
+        accessibility:
+          "הלוויית ג'ורג' בוש האב. מימין: ג'ימי קרטר, הילרי וביל קלינטון, מישל וברק אובמה, מלניה ודונלד טראמפ",
+        title:
+          "הלוויית ג'ורג' בוש האב. מימין: ג'ימי קרטר, הילרי וביל קלינטון, מישל וברק אובמה, מלניה ודונלד טראמפ",
         credit: 'Carolyn Kaster/אי־פי ',
         aspects: {
           vertical: {
@@ -143,7 +148,8 @@ export default {
           },
         ],
         imageType: 'image',
-        contentName: 'הלוויית ג\'ורג\' בוש האב. מימין: ג\'ימי קרטר, הילרי וביל קלינטון, מישל וברק אובמה, מלניה ודונלד טראמפ',
+        contentName:
+          "הלוויית ג'ורג' בוש האב. מימין: ג'ימי קרטר, הילרי וביל קלינטון, מישל וברק אובמה, מלניה ודונלד טראמפ",
       },
       contentId: '7.7871816',
       representedContent: '1.6723848',
@@ -155,6 +161,7 @@ export default {
     },
     {
       image: {
+        kind: 'image',
         inputTemplate: 'com.tm.Image',
         viewMode: null,
         accessibility: 'קובי אשרת',
@@ -217,6 +224,7 @@ export default {
     },
     {
       image: {
+        kind: 'image',
         inputTemplate: 'com.tm.Image',
         viewMode: null,
         accessibility: 'גור. טריילר מלך האריות',
@@ -291,6 +299,7 @@ export default {
     },
     {
       image: {
+        kind: 'image',
         inputTemplate: 'com.tm.Image',
         viewMode: null,
         accessibility: 'קובי אשרת',
@@ -352,5 +361,4 @@ export default {
       commentsCounts: 66,
     },
   ],
-
 };

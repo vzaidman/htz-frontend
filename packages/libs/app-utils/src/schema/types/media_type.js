@@ -7,6 +7,6 @@ import imageGallery from './image_gallery_type';
 const Media = new GraphQLUnionType({
   name: 'Media',
   types: [ image, embed, imageGallery, ],
-  resolveType: value => getSchema(value.elementType || value.inputTemplate),
+  resolveType: value => getSchema(value.kind || value.inputTemplate),
 });
 export default Media;

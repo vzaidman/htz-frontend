@@ -5,7 +5,7 @@ import GraphQLJSON from 'graphql-type-json';
 const InteractiveType = new GraphQLObjectType({
   name: 'Interactive',
   fields: () => ({
-    elementType: { type: GraphQLString, },
+    kind: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
@@ -17,7 +17,7 @@ const InteractiveType = new GraphQLObjectType({
           contentId,
           contentName,
           inputTemplate,
-          elementType,
+          kind,
           ...properties
         } = parentValue;
         return properties;

@@ -20,7 +20,7 @@ const seriesOrBlockArticlesType = new GraphQLObjectType({
     inputTemplate: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
-    elementType: { type: GraphQLString, },
+    kind: { type: GraphQLString, },
   }),
 });
 

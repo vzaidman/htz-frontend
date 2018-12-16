@@ -1,5 +1,5 @@
 const BeforeAndAfter = {
-  elementType: 'interactiveElement',
+  kind: 'interactiveElement',
   contentId: '7.7434',
   contentName: 'before/after',
   inputTemplate: 'com.interactive.beforeafter',

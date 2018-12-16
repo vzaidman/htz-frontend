@@ -40,9 +40,9 @@ const Figure = ({ lastItem, children, }) => (
 );
 
 const buildComponent = (context, index, isLastItem, magazineLayout) => {
-  const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
+  const uniqueId = context.kind || context.inputTemplate || context.tag || null;
 
-  if ([ 'com.tm.Image', 'com.tm.BlogImage', ].includes(uniqueId)) {
+  if (uniqueId === 'image') {
     return (
       <MagazineContentWrapper component={context} magazineLayout={magazineLayout}>
         <ArticleImage
@@ -58,7 +58,7 @@ const buildComponent = (context, index, isLastItem, magazineLayout) => {
 
   const Component = getComponent(uniqueId);
   switch (uniqueId) {
-    case 'embedElement':
+    case 'embed':
       return (
         <MagazineContentWrapper component={context} magazineLayout={magazineLayout}>
           <Figure key={context.contentId} lastItem={isLastItem}>

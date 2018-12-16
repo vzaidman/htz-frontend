@@ -10,7 +10,7 @@ it('Facebook post ', () => {
       caption="hkj"
       credit="hjk"
       embedType="post"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         showText: 'false',
         width: '0',
@@ -31,7 +31,7 @@ it('Facebook video ', () => {
       caption="aa"
       credit="aa"
       embedType="video"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         showText: 'false',
         width: '560',
@@ -52,7 +52,7 @@ it('Facebook comment ', () => {
       caption="comment"
       credit="comment"
       embedType="comments"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         showText: 'false',
         width: '0',

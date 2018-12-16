@@ -9,7 +9,7 @@ const VideoType = new GraphQLObjectType({
     contentId: { type: GraphQLID, },
     videoContent: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
-    elementType: { type: GraphQLString, },
+    kind: { type: GraphQLString, },
   }),
 });
 

@@ -14,7 +14,7 @@ export default gql`
     inputTemplate
     contentId
     contentName
-    elementType
+    kind
   }
   ${teaserForRelatedArticles}
 `;

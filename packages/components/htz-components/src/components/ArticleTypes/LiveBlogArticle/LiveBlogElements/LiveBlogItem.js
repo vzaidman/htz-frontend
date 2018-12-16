@@ -94,7 +94,7 @@ class LiveBlogItem extends React.Component {
   render() {
     // Check when item includes embed element.
     if (this.isEmbedInclude === undefined) {
-      this.isEmbedInclude = this.props.item.body.filter(v => v.elementType === 'embedElement').length > 0;
+      this.isEmbedInclude = this.props.item.body.filter(v => v.kind === 'embed').length > 0;
     }
     const { canonicalUrl, item, } = this.props;
 

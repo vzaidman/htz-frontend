@@ -6,5 +6,5 @@ export type GalleryDataType = {
   showTitle?: boolean,
   accessibility?: string,
   images?: ImageDataType[],
-  elementType: 'gallery',
+  kind: 'gallery',
 };
