@@ -81,6 +81,7 @@ ListViewHeader.defaultProps = {
   backgroundColor: null,
   commercialLinks: null,
   extraLinks: null,
+  marketingTeaser: null,
   miscStyles: null,
   title: null,
 };
