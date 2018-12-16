@@ -1,17 +1,18 @@
 // @flow
 
+import * as React from 'react';
+import { FelaComponent, } from 'react-fela';
 import type {
   ComponentPropResponsiveObject,
   StyleProps,
 } from '@haaretz/htz-css-tools';
-import * as React from 'react';
 
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
-import BlockLink from '../BlockLink/BlockLink';
 import Card from '../Card/Card';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
+import HtzLink from '../HtzLink/HtzLink';
 
 type TeaserPropTypes = {
   data: TeaserDataType,
@@ -106,21 +107,43 @@ export default function Teaser({
       <Card
         tagName="article"
         fillHeight
-        {...{ miscStyles, backgroundColor, isElevated, attrs, }}
+        miscStyles={{ position: 'relative', ...(miscStyles || {}), }}
+        {...{ backgroundColor, isElevated, attrs, }}
       >
-        <BlockLink href={data.path} onClick={onClick} tagName="div" miscStyles={{height: '100%'}}>
-          <Grid
-            gutter={gutter}
-            miscStyles={{
-              alignContent: 'flex-start',
-              height: '100%',
-              ...(gridMiscStyles || {})
-            }}
-            {...(isRev ? { isRev, } : {})}
-          >
-            {children}
-          </Grid>
-        </BlockLink>
+        <Grid
+          gutter={gutter}
+          miscStyles={{
+            alignContent: 'flex-start',
+            flexGrow: '1',
+            height: '100%',
+            ...(gridMiscStyles || {}),
+          }}
+          {...(isRev ? { isRev, } : {})}
+        >
+          {children}
+        </Grid>
+        <FelaComponent
+          style={{
+            backgroundColor: 'transparent',
+            bottom: '0',
+            left: '0',
+            position: 'absolute',
+            right: '0',
+            top: '0',
+            zIndex: '0',
+          }}
+          render={({ className: linkClassName, }) => (
+            <HtzLink
+              className={linkClassName}
+              href={data.path}
+              onClick={onClick}
+              attrs={{
+                tabIndex: '-1',
+                'aria-hidden': true,
+              }}
+            />
+          )}
+        />
       </Card>
     </ErrorBoundary>
   );
