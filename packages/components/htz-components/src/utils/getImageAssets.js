@@ -27,7 +27,7 @@ export default function getImageAssets({
             sizeOpts.size
           }`
           : sizeOpts.size
-      }${i === sizes.length - 1 ? ',' : ''}`,
+      }${i === sizes.length - 1 ? '' : ','}`,
       ''
     );
 
