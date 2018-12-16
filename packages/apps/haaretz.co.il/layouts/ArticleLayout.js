@@ -151,7 +151,6 @@ class ArticleLayout extends React.Component {
               <ScrollListener />
               <RouteChangeListener />
               <UserInjector />
-              <DfpInjector path={url.query.path} />
               <GoogleAnalytics withEC />
               <StyleProvider renderer={styleRenderer} theme={htzTheme}>
                 <Fragment>
@@ -166,11 +165,11 @@ class ArticleLayout extends React.Component {
                   >
                     {render({ articleId: this.props.url.query.path, slots, pageType, })}
                   </FelaComponent>
-                  <WelcomePage />
                 </Fragment>
               </StyleProvider>
               <div id="welcomePageModal" />
               {jsonld ? <PageSchema jsonld={jsonld} /> : null}
+              <DfpInjector path={url.query.path} />
             </Fragment>
           );
         }}

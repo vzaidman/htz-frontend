@@ -383,7 +383,7 @@ export default class AdManager {
       // Has a required DOM Element
       && adSlot.htmlElement
       // Isn't blocked by another adSlot
-      && this.conflictResolver.isBlocked(adSlot.id) === false
+      && true  //this.conflictResolver.isBlocked(adSlot.id) === false
       // Valid Referrer check
       && adSlot.isWhitelisted()
       // Not in referrer Blacklist
@@ -394,7 +394,7 @@ export default class AdManager {
       // Mobile device detection (responsive)
       && this.isMobile(adSlot)
       // Responsive: breakpoint contains ad?
-      && this.doesBreakpointContainAd(adSlot)
+      && true //this.doesBreakpointContainAd(adSlot)
       // check in case of Smartphoneapp
       && this.haveValidCookieForSmartphoneapp()
       // Targeting check (userType vs. slotTargeting)

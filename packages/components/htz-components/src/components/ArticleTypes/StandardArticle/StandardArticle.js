@@ -1,3 +1,4 @@
+/* global window */
 import React, { Fragment, } from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import PropTypes from 'prop-types';
@@ -42,7 +43,10 @@ function StandardArticle({ articleId, slots, }) {
               obTitle,
             },
           } = data.page;
-
+          
+          console.log(`Article JS REndering`);
+          if (typeof (window) !== 'undefined'){
+          console.log(`TEST  - ${window.document.getElementById('haaretz.co.il.web.side.halfpage.1')}`);}
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
@@ -208,6 +212,9 @@ function StandardArticle({ articleId, slots, }) {
                         );
                       }
                       const Element = getComponent(element.inputTemplate);
+                      console.log(`Article JS REndering V2`);
+                      if (typeof (window) !== 'undefined'){
+                      console.log(`TEST V2  - ${window.document.getElementById('haaretz.co.il.web.side.halfpage.1')}`);}
                       const { properties, ...elementWithoutProperties } = element;
                       if (
                         element.inputTemplate === 'com.polobase.OutbrainElement'
