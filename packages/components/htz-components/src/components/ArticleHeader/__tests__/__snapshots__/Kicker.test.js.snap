@@ -21,7 +21,7 @@ exports[`Kicker component renders correctly a span tag for kicker 1`] = `
 Object {
   "component": <div>
     <span
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
     >
       <span
         className=""
@@ -30,6 +30,6 @@ Object {
       </span>
     </span>
   </div>,
-  "styles": ".htz-a{display:inline}.htz-b{color:#A8001C}.htz-c{background-color:transparent}.htz-d:after{content:\\"|\\"}.htz-e:after{padding-right:1rem}.htz-f:after{padding-left:1rem}@media (max-width: 47.9375em){.htz-g{font-size:4rem}.htz-h{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{font-size:4.666666666666667rem}.htz-j{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-k{font-size:5.333333333333333rem}.htz-l{line-height:1.125em}}@media (min-width: 80em){.htz-m{font-size:5.142857142857143rem}.htz-n{line-height:1.1666666666666667em}}",
+  "styles": ".htz-a{display:inline}.htz-b{color:#A8001C}.htz-c{word-break:break-word}.htz-d{background-color:rgba(0,0,0,0)}.htz-e:after{content:\\"\\\\a0|\\\\20\\"}@media (max-width: 47.9375em){.htz-f{font-size:4rem}.htz-g{line-height:1.25em}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{font-size:4.666666666666667rem}.htz-i{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{font-size:5.333333333333333rem}.htz-k{line-height:1.125em}}@media (min-width: 80em){.htz-l{font-size:5.142857142857143rem}.htz-m{line-height:1.1666666666666667em}}",
 }
 `;

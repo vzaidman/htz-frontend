@@ -41,7 +41,7 @@ export default {
       path: 'https://www.haaretz.co.il/news/politics/.premium-1.6724526',
       titleMobile: 'ביוזמת ישראלית, מועצת הסטודנטים באונ\' ניו יורק הצביעה בעד הצעת BDS',
       hash: 'A2CD2663600E560DEF070DA8735691B3',
-      commentsCount: 66,
+      commentsCounts: 66,
     },
     {
       image: {
@@ -151,7 +151,7 @@ export default {
       path: 'https://www.haaretz.co.il/news/world/america/.premium-1.6723848',
       titleMobile: 'מהקונספירציות חובקות העולם של טראמפ אפילו מנהיגים מתים לא חומקים',
       hash: '759DEE56C720A5B28C9DBB481DF76341',
-      commentsCount: 66,
+      commentsCounts: 66,
     },
     {
       image: {
@@ -213,7 +213,7 @@ export default {
       path: 'https://www.haaretz.co.il/magazine/panim/1.6722139',
       titleMobile: '"הגעתי לגיל שבו אבא שלי נפטר. אני לא יכול להתחמק מהמחשבות"',
       hash: '7B7C0E76D94DC4290B579A1B354ECB43',
-      commentsCount: 66,
+      commentsCounts: 66,
     },
     {
       image: {
@@ -287,7 +287,7 @@ export default {
       path: 'https://www.haaretz.co.il/gallery/cinema/.premium-MAGAZINE-1.6720474',
       titleMobile: 'המלך יוצג לראווה בשנה הבאה: למה כל העולם ממתין לסרט שהוא כבר ראה',
       hash: 'BF7F8D1905644F89B35C364FB7E06520',
-      commentsCount: 66,
+      commentsCounts: 66,
     },
     {
       image: {
@@ -349,7 +349,7 @@ export default {
       path: 'https://www.haaretz.co.il/magazine/panim/1.6722139',
       titleMobile: '"הגעתי לגיל שבו אבא שלי נפטר. אני לא יכול להתחמק מהמחשבות"',
       hash: '7B7C0E76D94DC4290B579A1B354ECB43',
-      commentsCount: 66,
+      commentsCounts: 66,
     },
   ],
 

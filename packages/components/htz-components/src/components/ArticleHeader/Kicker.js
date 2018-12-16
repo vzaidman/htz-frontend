@@ -50,21 +50,24 @@ Kicker.defaultProps = {
   isBlock: false,
   miscStyles: null,
   tagName: 'span',
-  divider: '|',
+  // Non breaking space at the beginning and a regular space at the end
+  divider: '\\a0|\\20',
   children: null,
 };
 
 const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
   display: isBlock ? 'block' : 'inline',
 
-  color: theme.color('articleHeader', isBlock ? 'kickerBlockText' : 'kickerInlineText'),
+  color: theme.color(
+    'articleHeader',
+    isBlock ? 'kickerBlockText' : 'kickerInlineText'
+  ),
   ...(!isBlock
     ? {
+      wordBreak: 'break-word',
       backgroundColor: theme.color('articleHeader', 'kickerInlineBg'),
       ':after': {
         content: `"${divider}"`,
-        paddingInlineStart: '1rem',
-        paddingInlineEnd: '1rem',
       },
     }
     : {}),
