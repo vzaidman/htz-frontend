@@ -1,15 +1,22 @@
 // @flow
 
 import * as React from 'react';
-import type { ComponentPropResponsiveObject, StyleProps, } from '@haaretz/htz-css-tools';
+import { FelaTheme, } from 'react-fela';
+import type {
+  ComponentPropResponsiveObject,
+  StyleProps,
+} from '@haaretz/htz-css-tools';
 
+import type {
+  ColorType,
+  PaddingType,
+  CardContentSeperator,
+} from '../CardContent/cardContentStyle';
+import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
+import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import CardContent from '../CardContent/CardContent';
 import CardFooter from '../CardFooter/CardFooter';
 import GridItem from '../Grid/GridItem';
-
-import type { attrFlowType, } from '../../flowTypes/attrTypes';
-import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
-import type { ColorType, PaddingType, CardContentSeperator, } from '../CardContent/cardContentStyle';
 
 type TeaserContentType = {
   data: TeaserDataType,
@@ -52,6 +59,8 @@ type TeaserContentType = {
   footerPadding: ?PaddingType,
   footerSeperator: ?CardContentSeperator,
   footerMiscStyles: ?StyleProps,
+  /** Forces the footer to the bottom using absolute positioning */
+  footerIsAbsolute: boolean | ComponentPropResponsiveObject<boolean>[],
   // render props
   renderContent: (data: TeaserDataType) => React.Node,
   renderFooter: ?(data: TeaserDataType) => React.Node,
@@ -73,6 +82,7 @@ TeaserContent.defaultProps = {
   footerPadding: null,
   footerSeperator: null,
   footerMiscStyles: null,
+  footerIsAbsolute: false,
   // render props
   renderFooter: null,
 };
@@ -95,13 +105,19 @@ export default function TeaserContent({
   footerPadding,
   footerSeperator,
   footerMiscStyles,
+  footerIsAbsolute,
   // render props
   renderContent,
   renderFooter,
 }: TeaserContentType): React.Node {
   return (
     (renderContent || renderFooter) && (
-      <GridItem width={width} gutter={gutter} stretchContent miscStyles={gridItemMiscStyles}>
+      <GridItem
+        width={width}
+        gutter={gutter}
+        stretchContent
+        miscStyles={gridItemMiscStyles}
+      >
         <CardContent
           {...{ attrs, backgroundColor, color, padding, miscStyles, }}
         >
@@ -109,23 +125,88 @@ export default function TeaserContent({
         </CardContent>
 
         {renderFooter && (
-          <CardFooter
-            tagName="footer"
-            attrs={footerAttrs}
-            backgroundColor={footerBackgroundColor}
-            color={footerColor}
-            padding={footerPadding}
-            seperator={footerSeperator}
-            miscStyles={{
-              position: 'absolute',
-              bottom: '0',
-              ...(footerMiscStyles || {}),
-            }}
-          >
-            {renderFooter(data)}
-          </CardFooter>
+          <FelaTheme
+            render={theme => (
+              <CardFooter
+                tagName="footer"
+                attrs={footerAttrs}
+                backgroundColor={footerBackgroundColor}
+                color={footerColor}
+                padding={footerPadding}
+                seperator={footerSeperator}
+                miscStyles={{
+                  ...(footerIsAbsolute
+                    ? setFooterPosition(footerIsAbsolute)
+                    : {}),
+                  ...(footerMiscStyles || {}),
+                }}
+              >
+                {renderFooter(data)}
+              </CardFooter>
+            )}
+          />
         )}
       </GridItem>
     )
   );
+}
+
+// /////////////////////////////////////////////////////////////////////
+//                               Utils                                //
+// /////////////////////////////////////////////////////////////////////
+
+type FooterPositionValue = { position: "absolute", bottom: "0", };
+
+type BpOpts = {
+  from?: string,
+  until?: string,
+  misc?: string,
+  type?: string,
+};
+
+type FooterPositionBpOpts = {
+  ...BpOpts,
+  value: boolean,
+};
+
+type FooterPositionBpValue<T: "absolute" | "0"> = {
+  ...BpOpts,
+  value: T,
+};
+
+type RetObjType = {
+  position: Array<FooterPositionBpValue<"absolute">>,
+  bottom: Array<FooterPositionBpValue<"0">>,
+};
+
+function setFooterPosition(
+  value: boolean | Array<FooterPositionBpOpts>
+): FooterPositionValue | RetObjType {
+  if (Array.isArray(value)) {
+    return value.reduce(
+      (result, item) => {
+        result.position.push({
+          from: item.from,
+          until: item.until,
+          misc: item.misc,
+          type: item.type,
+          value: 'absolute',
+        });
+        result.bottom.push({
+          from: item.from,
+          until: item.until,
+          misc: item.misc,
+          type: item.type,
+          value: '0',
+        });
+
+        return result;
+      },
+      { position: [], bottom: [], }
+    );
+  }
+  return {
+    position: 'absolute',
+    bottom: '0',
+  };
 }
