@@ -1,23 +1,24 @@
 // @flow
 
-import * as React from 'react';
-import { FelaComponent, } from 'react-fela';
-import { parseTypographyProp, } from '@haaretz/htz-css-tools';
-import type {
-  ComponentPropResponsiveObject,
-  StyleProps,
-  TypographyPropType,
+import {
+  type ComponentPropResponsiveObject,
+  type StyleProps,
+  type TypographyPropType,
+  parseComponentProp,
+  parseTypographyProp,
 } from '@haaretz/htz-css-tools';
+import { FelaComponent, } from 'react-fela';
+import * as React from 'react';
 
-import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
+import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import H from '../AutoLevels/H';
 import HtzLink from '../HtzLink/HtzLink';
 import Kicker from '../ArticleHeader/Kicker';
 import TeaserResponsiveText from '../TeaserResponsiveText/TeaserResponsiveText';
-
 import style from './teaserHeaderStyle';
 
+type IsCenteredType = boolean | Array<ComponentPropResponsiveObject<boolean>>;
 
 type TeaserHeaderProps = {
   /**
@@ -120,6 +121,7 @@ type TeaserHeaderProps = {
    *     ```
    */
   kickerTypeScale: ?TypographyPropType,
+  isCentered: IsCenteredType,
 };
 
 TeaserHeader.defaultProps = {
@@ -136,6 +138,7 @@ TeaserHeader.defaultProps = {
   miscStyles: null,
   kickerIsBlock: false,
   kickerTypeScale: null,
+  isCentered: false,
 };
 
 export default function TeaserHeader({
@@ -154,17 +157,27 @@ export default function TeaserHeader({
   miscStyles,
   kickerIsBlock,
   kickerTypeScale,
+  isCentered,
 }: TeaserHeaderProps): React.Node {
   return (
     <FelaComponent
-      rule={({theme}) => ({
+      rule={({ theme, }) => ({
         extend: [
+          ...[
+            isCentered
+              ? parseComponentProp<IsCenteredType>( // eslint-disable-line space-infix-ops, no-mixed-operators
+                'textAlign',
+                isCentered,
+                theme.mq,
+                centerText
+              )
+              : {},
+          ],
           // Set font-size and line-height
           ...[ typeScale ? parseTypographyProp(typeScale, theme.type) : {}, ],
-        ]
+        ],
       })}
-
-      render={({ className: wrapperClassName}) => (
+      render={({ className: wrapperClassName, }) => (
         <AboveBlockLink>
           {({ className: AboveBlockLinkClassName, }) => (
             <div className={`${AboveBlockLinkClassName} ${wrapperClassName}`}>
@@ -193,7 +206,10 @@ export default function TeaserHeader({
                       offset={offset}
                       {...attrs || {}}
                     >
-                      <TeaserResponsiveText text={title} mobileText={titleMobile} />
+                      <TeaserResponsiveText
+                        text={title}
+                        mobileText={titleMobile}
+                      />
                     </H>
                   )}
                 />
@@ -204,4 +220,8 @@ export default function TeaserHeader({
       )}
     />
   );
+}
+
+function centerText(prop: string, isCentered: boolean) {
+  return isCentered ? { textAlign: 'center', } : {};
 }
