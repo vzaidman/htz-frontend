@@ -16,7 +16,7 @@ const imageObj = `{
     aspects
   }
   imageType
-  elementType
+  kind
   contentName
 }`;
 

@@ -7,7 +7,7 @@ export default gql`
     caption
     credit
     embedType
-    elementType
+    kind
     contentId
     contentName
     inputTemplate

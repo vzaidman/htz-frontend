@@ -11,7 +11,7 @@
 ```jsx
 <div style={{ direction: 'rtl', }}>
   <SeriesArticles
-    elementType="relatedArticleSeries"
+    kind="relatedArticleSeries"
     seriesTitle="סדרה"
     articlePositionInTheSeries="2"
     usePagination="true"

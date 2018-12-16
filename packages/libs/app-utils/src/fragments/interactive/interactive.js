@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 
 export default gql`
   fragment Interactive on Interactive {
-    elementType
+    kind
     contentId
     contentName
     inputTemplate

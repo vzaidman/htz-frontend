@@ -10,7 +10,7 @@ it('Google-Maps static ', () => {
       caption="static - satellite - eng"
       credit="static - satellite - eng"
       embedType="static"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         language: 'en',
         satellite: 'true',
@@ -30,7 +30,7 @@ it('Google-Maps directions ', () => {
       caption="shoken 21 tel aviv ---> tony vespa habima tel aviv"
       credit="directions - noSatellite - eng"
       embedType="directions"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         mode: 'walking',
         destination: 'tony vespa habima tel aviv',
@@ -54,7 +54,7 @@ it('Google-Maps search ', () => {
       caption="קופיקס בתל אביב"
       credit="search- satellite - eng"
       embedType="search"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         language: 'en',
         satellite: 'true',
@@ -74,7 +74,7 @@ it('Google-Maps street view ', () => {
       caption="street view"
       credit="street view"
       embedType="streetView"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         heading: 'none',
         coordinates: '32.05216,34.772368',

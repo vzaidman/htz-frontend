@@ -19,7 +19,7 @@ const TagsType = new GraphQLObjectType({
   name: 'Tags',
   fields: () => ({
     tagsList: { type: new GraphQLList(tag), },
-    elementType: { type: GraphQLString, },
+    kind: { type: GraphQLString, },
   }),
 });
 

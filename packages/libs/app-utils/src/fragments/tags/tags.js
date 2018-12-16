@@ -4,7 +4,7 @@ import tag from '../tag/tag';
 
 export default gql`
   fragment Tags on Tags {
-    elementType
+    kind
     tagsList {
       ...Tag
     }

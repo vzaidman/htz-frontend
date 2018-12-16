@@ -11,7 +11,7 @@ it('Arti-Media ', () => {
       caption="artimedia"
       credit="artimedia"
       embedType="arti-media"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         publisherId: "'5'",
         sitekey: "'TheMarker'",

@@ -77,8 +77,8 @@ const getSourceOptions = ({ isVariationB, isSquare, }) => {
 const ImageElement = props => <Picture {...props} />;
 
 function MagazineHeadlineElement({ elementObj, isVariationB, miscStyles, }) {
-  const Element = getMediaComponent(elementObj.elementType, ImageElement);
-  const isImage = elementObj.elementType === 'image';
+  const Element = getMediaComponent(elementObj.kind, ImageElement);
+  const isImage = elementObj.kind === 'image';
 
   // if the Element is an image. credit prefix should set to 'צילום', issue: #1011
   const creditPrefix = elementObj.inputTemplate === 'com.tm.Image' ? 'צילום' : null;

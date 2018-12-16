@@ -22,7 +22,7 @@ const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
   [ 'com.polobase.DfpBannerElement', dfpBanner, ],
   [ 'com.tm.ElementGroup', elementGroup, ],
-  [ 'embedElement', embed, ],
+  [ 'embed', embed, ],
   [ 'com.tm.GridElementGroup', gridElementGroup, ],
   [ 'com.tm.HtmlElement', htmlElement, ],
   [ 'com.tm.Image', image, ],

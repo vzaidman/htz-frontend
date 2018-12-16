@@ -10,7 +10,7 @@ it('Youtube Video ', () => {
       caption="youtube headline"
       credit="youtube headline"
       embedType="video"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         controls: '1',
         related: '0',
@@ -36,7 +36,7 @@ it('Youtube playlist ', () => {
       caption="conan playlist"
       credit="conan playlist"
       embedType="playlist"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         controls: '1',
         related: '1',

@@ -43,7 +43,7 @@ const ArticleBody = new GraphQLList(
       video,
     ],
     resolveType: value => getSchema(
-      value.tag ? 'paragraph' : value.elementType || value.inputTemplate
+      value.tag ? 'paragraph' : value.kind || value.inputTemplate
     ) || content,
   })
 );

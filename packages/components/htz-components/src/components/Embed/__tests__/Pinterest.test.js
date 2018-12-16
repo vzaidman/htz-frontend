@@ -10,7 +10,7 @@ it('Pinterest board ', () => {
       caption="pinterest - board"
       credit="pinterest - board"
       embedType="board"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         showCaption: 'false',
       }}
@@ -29,7 +29,7 @@ it('Pinterest profile ', () => {
       caption="pinterest - profile"
       credit="pinterest - profile"
       embedType="profile"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         showCaption: 'false',
       }}
@@ -48,7 +48,7 @@ it('Pinterest pin ', () => {
       caption="pinterest - pin"
       credit="pinterest - pin"
       embedType="pin"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         showCaption: 'false',
       }}

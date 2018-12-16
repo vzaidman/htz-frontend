@@ -69,7 +69,7 @@ const ArticleData = new GraphQLObjectType({
       type: new GraphQLUnionType({
         name: 'HeadlineElement',
         types: [ embed, htmlElement, image, imageGallery, video, ],
-        resolveType: value => getSchema(value.elementType || value.inputTemplate),
+        resolveType: value => getSchema(value.kind || value.inputTemplate),
       }),
     },
     tags: { type: new GraphQLList(

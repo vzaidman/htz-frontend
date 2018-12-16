@@ -10,7 +10,7 @@ it('Giphy ', () => {
       caption="giphy"
       credit="giphy"
       embedType="giphy"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         src: 'https://giphy.com/embed/I5xVnGJRHZZf2',
         width: '480',

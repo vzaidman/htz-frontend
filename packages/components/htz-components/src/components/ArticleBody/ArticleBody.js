@@ -162,8 +162,8 @@ const buildImgOptions = (aspect, isFullScreen) => ({
 });
 
 const buildComponent = (context, index, isLastItem, showNewsletter) => {
-  const uniqueId = context.elementType || context.inputTemplate || context.tag || null;
-  if ([ 'com.tm.Image', 'com.tm.BlogImage', ].includes(uniqueId)) {
+  const uniqueId = context.kind || context.inputTemplate || context.tag || null;
+  if (uniqueId === 'image') {
     return (
       <ArticleImage
         key={context.contentId}
@@ -177,7 +177,7 @@ const buildComponent = (context, index, isLastItem, showNewsletter) => {
 
   const Component = getComponent(uniqueId);
   switch (uniqueId) {
-    case 'embedElement':
+    case 'embed':
       return (
         <Figure key={context.contentId} lastItem={isLastItem}>
           <Component {...context} />

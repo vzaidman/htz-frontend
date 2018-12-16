@@ -12,7 +12,7 @@
 ```jsx
 <div style={{ direction: 'rtl' }}>
   <RelatedArticles
-    elementType={'relatedArticles'}
+    kind={'relatedArticles'}
     articles={[
       {
         authors: null,

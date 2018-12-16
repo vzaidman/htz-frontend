@@ -47,7 +47,7 @@ const defaultProps = {
  * @constructor
  */
 function HeadlineElement({ captionMiscStyles, elementObj, forceAspect, imgOptions, miscStyles, }) {
-  const Element = getMediaComponent(elementObj.elementType);
+  const Element = getMediaComponent(elementObj.kind);
 
   // if the Element is an image. credit prefix should set to 'צילום', issue: #1011
   const creditPrefix = elementObj.inputTemplate === 'com.tm.Image' ? 'צילום' : null;

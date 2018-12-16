@@ -10,7 +10,7 @@ it('Waze ', () => {
       caption="Waze"
       credit="Waze"
       embedType="waze"
-      elementType="embedElement"
+      kind="embed"
       settings={{
         pin: 'true',
         coordinates: [ '?zoom=15', 'lat=32.06408', 'lon=34.77688', ],
