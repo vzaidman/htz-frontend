@@ -39,7 +39,7 @@ type TeaserMediaPropsType = {
    *   ]}
    * />
    */
-  width: number | ComponentPropResponsiveObject<number>[],
+  width: ?number | ComponentPropResponsiveObject<number>[],
   /**
    * Don't wrap the media element with an `<a>` element.
    * Useful for interactive  content.
