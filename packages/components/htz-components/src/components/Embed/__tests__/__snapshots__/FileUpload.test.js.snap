@@ -38,6 +38,6 @@ Object {
       </span>
     </a>
   </div>,
-  "styles": ".htz-a{color:#0B7EB5}.htz-b{text-decoration:none}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom:1px solid}.htz-e:hover{padding-bottom:.06em}.htz-f:hover{outline:0}.htz-g{vertical-align:-0.15em}.htz-h{color:inherit}.htz-i{fill:#FFF}.htz-j{font-size:5.5rem}.htz-k{margin-right:1rem}",
+  "styles": ".htz-a{color:#0B7EB5}.htz-b{text-decoration:none}.htz-g{vertical-align:-0.15em}.htz-h{color:inherit}.htz-i{fill:#FFF}.htz-j{font-size:5.5rem}.htz-k{margin-right:1rem}.htz-c:hover{color:#0B7EB5}.htz-d:hover{border-bottom:1px solid}.htz-e:hover{padding-bottom:.06em}.htz-f:hover{outline:0}",
 }
 `;

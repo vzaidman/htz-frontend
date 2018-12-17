@@ -92,8 +92,8 @@ export default function style({
 
       // Set font-size and line-height
       ...[ typeScale ? parseTypographyProp(typeScale, theme.type) : {}, ],
-        // Trump all other styles with those defined in `miscStyles`
-        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-      ],
+      // Trump all other styles with those defined in `miscStyles`
+      ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+    ],
   };
 }

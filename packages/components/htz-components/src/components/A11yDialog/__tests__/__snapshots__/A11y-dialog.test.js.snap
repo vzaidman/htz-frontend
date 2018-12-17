@@ -47,62 +47,63 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                   style="display: none;"
                 >
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                   <div
                     data-focus-lock-disabled="disabled"
                   >
-                    <div>
+                    <div
+                      class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                      tabindex="-1"
+                    />
+                    <div
+                      aria-hidden="true"
+                      class="htz-e htz-k htz-l htz-m htz-n"
+                      role="dialog"
+                      tabindex="0"
+                    >
                       <div
-                        class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                        tabindex="-1"
-                      />
-                      <div
-                        aria-hidden="true"
-                        class="htz-e htz-k htz-l htz-m htz-n"
-                        role="dialog"
-                        tabindex="0"
+                        role="document"
                       >
                         <div
-                          role="document"
+                          class="htz-o htz-p"
                         >
-                          <div
-                            class="htz-o htz-p"
+                          <div>
+                             this is Dialog content component 
+                          </div>
+                          <button
+                            type="button"
                           >
-                            <div>
-                               this is Dialog content component 
-                            </div>
+                             
+                            Close Content
+                             
+                          </button>
+                          <div>
                             <button
                               type="button"
                             >
                                
-                              Close Content
+                              Button
                                
                             </button>
-                            <div>
-                              <button
-                                type="button"
-                              >
-                                 
-                                Button
-                                 
-                              </button>
-                              <h3>
-                                 No Focus trap!
-                              </h3>
-                            </div>
+                            <h3>
+                               No Focus trap!
+                            </h3>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                 </div>
@@ -129,37 +130,41 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                   }
                 >
                   <FocusLock
+                    as="div"
                     autoFocus={false}
                     disabled={true}
+                    lockProps={Object {}}
                     noFocusGuards={false}
                     persistentFocus={false}
                     returnFocus={false}
                   >
                     <div
+                      data-focus-guard={true}
                       key="guard-first"
                       style={
                         Object {
                           "height": "0px",
-                          "left": 0,
+                          "left": "1px",
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "fixed",
-                          "top": 0,
+                          "top": "1px",
                           "width": "1px",
                         }
                       }
                       tabIndex={-1}
                     />
                     <div
+                      data-focus-guard={true}
                       key="guard-nearest"
                       style={
                         Object {
                           "height": "0px",
-                          "left": 0,
+                          "left": "1px",
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "fixed",
-                          "top": 0,
+                          "top": "1px",
                           "width": "1px",
                         }
                       }
@@ -167,15 +172,70 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                     />
                     <div
                       data-focus-lock-disabled="disabled"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
                     >
-                      <SideEffect(FocusTrap)
+                      <SideEffect(FocusWatcher)
                         autoFocus={false}
                         disabled={true}
                         observed={
                           <div
                             data-focus-lock-disabled="disabled"
                           >
-                            <div>
+                            <div
+                              class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                              tabindex="-1"
+                            />
+                            <div
+                              aria-hidden="true"
+                              class="htz-e htz-k htz-l htz-m htz-n"
+                              role="dialog"
+                              tabindex="0"
+                            >
+                              <div
+                                role="document"
+                              >
+                                <div
+                                  class="htz-o htz-p"
+                                >
+                                  <div>
+                                     this is Dialog content component 
+                                  </div>
+                                  <button
+                                    type="button"
+                                  >
+                                     
+                                    Close Content
+                                     
+                                  </button>
+                                  <div>
+                                    <button
+                                      type="button"
+                                    >
+                                       
+                                      Button
+                                       
+                                    </button>
+                                    <h3>
+                                       No Focus trap!
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                        onActivation={[Function]}
+                        onDeactivation={[Function]}
+                        persistentFocus={false}
+                      >
+                        <FocusWatcher
+                          autoFocus={false}
+                          disabled={true}
+                          observed={
+                            <div
+                              data-focus-lock-disabled="disabled"
+                            >
                               <div
                                 class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
                                 tabindex="-1"
@@ -218,152 +278,92 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        }
-                        onActivation={[Function]}
-                        persistentFocus={false}
+                          }
+                          onActivation={[Function]}
+                          onDeactivation={[Function]}
+                          persistentFocus={false}
+                        />
+                      </SideEffect(FocusWatcher)>
+                      <div
+                        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                        onClick={[Function]}
+                        tabIndex="-1"
+                      />
+                      <FelaComponent
+                        containerMiscStyles={null}
+                        isModal={false}
+                        render={[Function]}
+                        rule={[Function]}
                       >
-                        <FocusTrap
-                          autoFocus={false}
-                          disabled={true}
-                          observed={
+                        <FelaTheme
+                          render={[Function]}
+                        >
+                          <div
+                            aria-hidden="true"
+                            className="htz-e htz-k htz-l htz-m htz-n"
+                            role="dialog"
+                            tabIndex="0"
+                          >
                             <div
-                              data-focus-lock-disabled="disabled"
+                              role="document"
                             >
-                              <div>
-                                <div
-                                  class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                                  tabindex="-1"
-                                />
-                                <div
-                                  aria-hidden="true"
-                                  class="htz-e htz-k htz-l htz-m htz-n"
-                                  role="dialog"
-                                  tabindex="0"
+                              <FelaComponent
+                                render={[Function]}
+                                style={
+                                  Object {
+                                    "backgroundColor": "lightgreen",
+                                    "padding": "10rem",
+                                  }
+                                }
+                              >
+                                <FelaTheme
+                                  render={[Function]}
                                 >
                                   <div
-                                    role="document"
+                                    className="htz-o htz-p"
                                   >
-                                    <div
-                                      class="htz-o htz-p"
+                                    <div>
+                                       this is Dialog content component 
+                                    </div>
+                                    <button
+                                      onClick={[Function]}
+                                      type="button"
                                     >
-                                      <div>
-                                         this is Dialog content component 
-                                      </div>
+                                       
+                                      Close Content
+                                       
+                                    </button>
+                                    <div>
                                       <button
+                                        onClick={[Function]}
                                         type="button"
                                       >
                                          
-                                        Close Content
+                                        Button
                                          
                                       </button>
-                                      <div>
-                                        <button
-                                          type="button"
-                                        >
-                                           
-                                          Button
-                                           
-                                        </button>
-                                        <h3>
-                                           No Focus trap!
-                                        </h3>
-                                      </div>
+                                      <h3>
+                                         No Focus trap!
+                                      </h3>
                                     </div>
                                   </div>
-                                </div>
-                              </div>
+                                </FelaTheme>
+                              </FelaComponent>
                             </div>
-                          }
-                          onActivation={[Function]}
-                          persistentFocus={false}
-                        >
-                          <div
-                            onBlur={[Function]}
-                            onFocus={[Function]}
-                          >
-                            <div
-                              className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                              onClick={[Function]}
-                              tabIndex="-1"
-                            />
-                            <FelaComponent
-                              containerMiscStyles={null}
-                              isModal={false}
-                              render={[Function]}
-                              rule={[Function]}
-                            >
-                              <FelaTheme
-                                render={[Function]}
-                              >
-                                <div
-                                  aria-hidden="true"
-                                  className="htz-e htz-k htz-l htz-m htz-n"
-                                  role="dialog"
-                                  tabIndex="0"
-                                >
-                                  <div
-                                    role="document"
-                                  >
-                                    <FelaComponent
-                                      render={[Function]}
-                                      style={
-                                        Object {
-                                          "backgroundColor": "lightgreen",
-                                          "padding": "10rem",
-                                        }
-                                      }
-                                    >
-                                      <FelaTheme
-                                        render={[Function]}
-                                      >
-                                        <div
-                                          className="htz-o htz-p"
-                                        >
-                                          <div>
-                                             this is Dialog content component 
-                                          </div>
-                                          <button
-                                            onClick={[Function]}
-                                            type="button"
-                                          >
-                                             
-                                            Close Content
-                                             
-                                          </button>
-                                          <div>
-                                            <button
-                                              onClick={[Function]}
-                                              type="button"
-                                            >
-                                               
-                                              Button
-                                               
-                                            </button>
-                                            <h3>
-                                               No Focus trap!
-                                            </h3>
-                                          </div>
-                                        </div>
-                                      </FelaTheme>
-                                    </FelaComponent>
-                                  </div>
-                                </div>
-                              </FelaTheme>
-                            </FelaComponent>
                           </div>
-                        </FocusTrap>
-                      </SideEffect(FocusTrap)>
+                        </FelaTheme>
+                      </FelaComponent>
                     </div>
                     <div
+                      data-focus-guard={true}
                       style={
                         Object {
                           "height": "0px",
-                          "left": 0,
+                          "left": "1px",
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "fixed",
-                          "top": 0,
+                          "top": "1px",
                           "width": "1px",
                         }
                       }
@@ -431,62 +431,63 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                   style="display: none;"
                 >
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                   <div
                     data-focus-lock-disabled="disabled"
                   >
-                    <div>
+                    <div
+                      class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                      tabindex="-1"
+                    />
+                    <div
+                      aria-hidden="true"
+                      class="htz-e htz-k htz-l htz-m htz-n"
+                      role="dialog"
+                      tabindex="0"
+                    >
                       <div
-                        class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                        tabindex="-1"
-                      />
-                      <div
-                        aria-hidden="true"
-                        class="htz-e htz-k htz-l htz-m htz-n"
-                        role="dialog"
-                        tabindex="0"
+                        role="document"
                       >
                         <div
-                          role="document"
+                          class="htz-o htz-p"
                         >
-                          <div
-                            class="htz-o htz-p"
+                          <div>
+                             this is Dialog content component 
+                          </div>
+                          <button
+                            type="button"
                           >
-                            <div>
-                               this is Dialog content component 
-                            </div>
+                             
+                            Close Content
+                             
+                          </button>
+                          <div>
                             <button
                               type="button"
                             >
                                
-                              Close Content
+                              Button
                                
                             </button>
-                            <div>
-                              <button
-                                type="button"
-                              >
-                                 
-                                Button
-                                 
-                              </button>
-                              <h3>
-                                 No Focus trap!
-                              </h3>
-                            </div>
+                            <h3>
+                               No Focus trap!
+                            </h3>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                 </div>
@@ -494,61 +495,62 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                   style="display: block;"
                 >
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                   <div
                     data-focus-lock-disabled="disabled"
                   >
-                    <div>
+                    <div
+                      class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                      tabindex="-1"
+                    />
+                    <div
+                      class="htz-e htz-k htz-l htz-m htz-n"
+                      role="dialog"
+                      tabindex="0"
+                    >
                       <div
-                        class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                        tabindex="-1"
-                      />
-                      <div
-                        class="htz-e htz-k htz-l htz-m htz-n"
-                        role="dialog"
-                        tabindex="0"
+                        role="document"
                       >
                         <div
-                          role="document"
+                          class="htz-o htz-p"
                         >
-                          <div
-                            class="htz-o htz-p"
+                          <div>
+                             this is Dialog content component 
+                          </div>
+                          <button
+                            type="button"
                           >
-                            <div>
-                               this is Dialog content component 
-                            </div>
+                             
+                            Close Content
+                             
+                          </button>
+                          <div>
                             <button
                               type="button"
                             >
                                
-                              Close Content
+                              Button
                                
                             </button>
-                            <div>
-                              <button
-                                type="button"
-                              >
-                                 
-                                Button
-                                 
-                              </button>
-                              <h3>
-                                 No Focus trap!
-                              </h3>
-                            </div>
+                            <h3>
+                               No Focus trap!
+                            </h3>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div
-                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 0px; left: 0px;"
+                    data-focus-guard="true"
+                    style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
                     tabindex="-1"
                   />
                 </div>
@@ -575,37 +577,41 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                   }
                 >
                   <FocusLock
+                    as="div"
                     autoFocus={false}
                     disabled={true}
+                    lockProps={Object {}}
                     noFocusGuards={false}
                     persistentFocus={false}
                     returnFocus={false}
                   >
                     <div
+                      data-focus-guard={true}
                       key="guard-first"
                       style={
                         Object {
                           "height": "0px",
-                          "left": 0,
+                          "left": "1px",
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "fixed",
-                          "top": 0,
+                          "top": "1px",
                           "width": "1px",
                         }
                       }
                       tabIndex={-1}
                     />
                     <div
+                      data-focus-guard={true}
                       key="guard-nearest"
                       style={
                         Object {
                           "height": "0px",
-                          "left": 0,
+                          "left": "1px",
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "fixed",
-                          "top": 0,
+                          "top": "1px",
                           "width": "1px",
                         }
                       }
@@ -613,15 +619,69 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                     />
                     <div
                       data-focus-lock-disabled="disabled"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
                     >
-                      <SideEffect(FocusTrap)
+                      <SideEffect(FocusWatcher)
                         autoFocus={false}
                         disabled={true}
                         observed={
                           <div
                             data-focus-lock-disabled="disabled"
                           >
-                            <div>
+                            <div
+                              class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                              tabindex="-1"
+                            />
+                            <div
+                              class="htz-e htz-k htz-l htz-m htz-n"
+                              role="dialog"
+                              tabindex="0"
+                            >
+                              <div
+                                role="document"
+                              >
+                                <div
+                                  class="htz-o htz-p"
+                                >
+                                  <div>
+                                     this is Dialog content component 
+                                  </div>
+                                  <button
+                                    type="button"
+                                  >
+                                     
+                                    Close Content
+                                     
+                                  </button>
+                                  <div>
+                                    <button
+                                      type="button"
+                                    >
+                                       
+                                      Button
+                                       
+                                    </button>
+                                    <h3>
+                                       No Focus trap!
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                        onActivation={[Function]}
+                        onDeactivation={[Function]}
+                        persistentFocus={false}
+                      >
+                        <FocusWatcher
+                          autoFocus={false}
+                          disabled={true}
+                          observed={
+                            <div
+                              data-focus-lock-disabled="disabled"
+                            >
                               <div
                                 class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
                                 tabindex="-1"
@@ -663,150 +723,91 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        }
-                        onActivation={[Function]}
-                        persistentFocus={false}
+                          }
+                          onActivation={[Function]}
+                          onDeactivation={[Function]}
+                          persistentFocus={false}
+                        />
+                      </SideEffect(FocusWatcher)>
+                      <div
+                        className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+                        onClick={[Function]}
+                        tabIndex="-1"
+                      />
+                      <FelaComponent
+                        containerMiscStyles={null}
+                        isModal={false}
+                        render={[Function]}
+                        rule={[Function]}
                       >
-                        <FocusTrap
-                          autoFocus={false}
-                          disabled={true}
-                          observed={
+                        <FelaTheme
+                          render={[Function]}
+                        >
+                          <div
+                            className="htz-e htz-k htz-l htz-m htz-n"
+                            role="dialog"
+                            tabIndex="0"
+                          >
                             <div
-                              data-focus-lock-disabled="disabled"
+                              role="document"
                             >
-                              <div>
-                                <div
-                                  class="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                                  tabindex="-1"
-                                />
-                                <div
-                                  class="htz-e htz-k htz-l htz-m htz-n"
-                                  role="dialog"
-                                  tabindex="0"
+                              <FelaComponent
+                                render={[Function]}
+                                style={
+                                  Object {
+                                    "backgroundColor": "lightgreen",
+                                    "padding": "10rem",
+                                  }
+                                }
+                              >
+                                <FelaTheme
+                                  render={[Function]}
                                 >
                                   <div
-                                    role="document"
+                                    className="htz-o htz-p"
                                   >
-                                    <div
-                                      class="htz-o htz-p"
+                                    <div>
+                                       this is Dialog content component 
+                                    </div>
+                                    <button
+                                      onClick={[Function]}
+                                      type="button"
                                     >
-                                      <div>
-                                         this is Dialog content component 
-                                      </div>
+                                       
+                                      Close Content
+                                       
+                                    </button>
+                                    <div>
                                       <button
+                                        onClick={[Function]}
                                         type="button"
                                       >
                                          
-                                        Close Content
+                                        Button
                                          
                                       </button>
-                                      <div>
-                                        <button
-                                          type="button"
-                                        >
-                                           
-                                          Button
-                                           
-                                        </button>
-                                        <h3>
-                                           No Focus trap!
-                                        </h3>
-                                      </div>
+                                      <h3>
+                                         No Focus trap!
+                                      </h3>
                                     </div>
                                   </div>
-                                </div>
-                              </div>
+                                </FelaTheme>
+                              </FelaComponent>
                             </div>
-                          }
-                          onActivation={[Function]}
-                          persistentFocus={false}
-                        >
-                          <div
-                            onBlur={[Function]}
-                            onFocus={[Function]}
-                          >
-                            <div
-                              className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
-                              onClick={[Function]}
-                              tabIndex="-1"
-                            />
-                            <FelaComponent
-                              containerMiscStyles={null}
-                              isModal={false}
-                              render={[Function]}
-                              rule={[Function]}
-                            >
-                              <FelaTheme
-                                render={[Function]}
-                              >
-                                <div
-                                  className="htz-e htz-k htz-l htz-m htz-n"
-                                  role="dialog"
-                                  tabIndex="0"
-                                >
-                                  <div
-                                    role="document"
-                                  >
-                                    <FelaComponent
-                                      render={[Function]}
-                                      style={
-                                        Object {
-                                          "backgroundColor": "lightgreen",
-                                          "padding": "10rem",
-                                        }
-                                      }
-                                    >
-                                      <FelaTheme
-                                        render={[Function]}
-                                      >
-                                        <div
-                                          className="htz-o htz-p"
-                                        >
-                                          <div>
-                                             this is Dialog content component 
-                                          </div>
-                                          <button
-                                            onClick={[Function]}
-                                            type="button"
-                                          >
-                                             
-                                            Close Content
-                                             
-                                          </button>
-                                          <div>
-                                            <button
-                                              onClick={[Function]}
-                                              type="button"
-                                            >
-                                               
-                                              Button
-                                               
-                                            </button>
-                                            <h3>
-                                               No Focus trap!
-                                            </h3>
-                                          </div>
-                                        </div>
-                                      </FelaTheme>
-                                    </FelaComponent>
-                                  </div>
-                                </div>
-                              </FelaTheme>
-                            </FelaComponent>
                           </div>
-                        </FocusTrap>
-                      </SideEffect(FocusTrap)>
+                        </FelaTheme>
+                      </FelaComponent>
                     </div>
                     <div
+                      data-focus-guard={true}
                       style={
                         Object {
                           "height": "0px",
-                          "left": 0,
+                          "left": "1px",
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "fixed",
-                          "top": 0,
+                          "top": "1px",
                           "width": "1px",
                         }
                       }

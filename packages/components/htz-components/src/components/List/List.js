@@ -99,7 +99,7 @@ class List extends React.Component {
                 if (error) return null;
 
                 const { title, items, ...restList } = list;
-                items.filter(item => item.hasOwnProperty('contentId'));
+                items.filter(item => Object.prototype.hasOwnProperty.call(item, 'contentId'));
 
                 const itemsRepresentedContent = items.reduce((accumulator, currentValue) => {
                   if (currentValue && currentValue.representedContent) {

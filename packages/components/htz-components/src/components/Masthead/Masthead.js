@@ -94,13 +94,13 @@ class Masthead extends Component {
                 miscStyles={{
                   ...(mastheadFullWidthBorder
                     ? {
-                        borderBottom: [
-                          '1px',
-                          0,
-                          'solid',
-                          theme.color('mastheadBorder', 'borderColor'),
-                        ],
-                      }
+                      borderBottom: [
+                        '1px',
+                        0,
+                        'solid',
+                        theme.color('mastheadBorder', 'borderColor'),
+                      ],
+                    }
                     : {}),
                   transitionProperty: 'transform',
                   ...theme.getDelay('transition', -1),

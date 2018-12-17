@@ -21,7 +21,7 @@ const imageTransformProptype = PropTypes.shape({
    * The width, in pixels, of the image the generated url points to.
    * This describes the number of pixels in the file (not rendered size!).
    */
-  width: PropTypes.oneOf([PropTypes.string, PropTypes.number]).isRequired,
+  width: PropTypes.oneOf([ PropTypes.string, PropTypes.number, ]).isRequired,
 });
 
 export const imageOptionsType = PropTypes.shape({

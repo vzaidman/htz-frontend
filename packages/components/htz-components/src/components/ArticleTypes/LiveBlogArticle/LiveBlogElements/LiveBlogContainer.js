@@ -123,6 +123,7 @@ class LiveBlogContainer extends React.Component {
      */
     miscStyles: stylesPropType,
   };
+
   static defaultProps = {
     showTimeLineText: false,
     keyEvents: null,
