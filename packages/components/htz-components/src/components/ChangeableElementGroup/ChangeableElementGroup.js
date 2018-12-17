@@ -73,8 +73,7 @@ class ChangeableElementGroup extends React.Component<PropTypes, StateTypes> {
           // The reason it is just for lists is because the dfp wont work if its not loaded at once.
           // We should remove this once we fix the client side dfp problems,
           // and rewrite the List component in a way that might allow a better solution.
-          const delayRender : boolean =
-            element.inputTemplate === 'com.tm.element.List' && maxIndex < index - 1;
+          const delayRender: boolean = element.inputTemplate === 'com.tm.element.List' && maxIndex < index - 1;
           return (
             <FelaComponent
               key={element.contentId}

@@ -80,15 +80,15 @@ const LiveBlogLayoutRow = ({
             style={theme => ({
               ...(isCommentsSection
                 ? {
-                    ...theme.mq(
-                      { until: 's', },
-                      { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }
-                    ),
-                    ...theme.mq(
-                      { from: 's', until: 'l', },
-                      { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
-                    ),
-                  }
+                  ...theme.mq(
+                    { until: 's', },
+                    { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }
+                  ),
+                  ...theme.mq(
+                    { from: 's', until: 'l', },
+                    { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
+                  ),
+                }
                 : {}),
               extend: [
                 theme.mq({ from: 'l', }, { marginInlineStart: '8rem', }),

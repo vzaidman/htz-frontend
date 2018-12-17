@@ -5,7 +5,7 @@ import { borderTop, parseStyleProps, } from '@haaretz/htz-css-tools';
 import Section from '../AutoLevels/Section';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const WideArticleLayoutRow = ({ children, hideDivider, miscStyles, showBorderTop}) => (
+const WideArticleLayoutRow = ({ children, hideDivider, miscStyles, showBorderTop, }) => (
   <FelaComponent
     style={theme => ({
       marginTop: '3rem',

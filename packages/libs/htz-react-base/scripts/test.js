@@ -10,6 +10,7 @@ const packageInfo = require(path.join(process.cwd(), 'package.json'));
 const configFile = resolveFrom.silent(process.cwd(), './jest.config.js');
 const argv = process.argv.slice(2);
 const defaultConfig = {
+  testURL: 'http://localhost/',
   cacheDirectory: '.jest',
   setupFiles: [
     `${__dirname}/jestRAFPolyfill.js`,

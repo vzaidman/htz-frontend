@@ -17,7 +17,6 @@ const buttonPropType = PropTypes.oneOfType([
   PropTypes.string.isRequired,
 ]);
 
-/* eslint-disable no-trailing-spaces */
 const propTypes = {
   /**
    * Each button can be a string (e.g. 'facebook') or an object with additional attributes
@@ -42,8 +41,14 @@ const propTypes = {
     buttonPropType,
     PropTypes.arrayOf(buttonPropType),
     PropTypes.shape({
-      start: PropTypes.oneOfType([ buttonPropType, PropTypes.arrayOf(buttonPropType), ]),
-      end: PropTypes.oneOfType([ buttonPropType, PropTypes.arrayOf(buttonPropType), ]),
+      start: PropTypes.oneOfType([
+        buttonPropType,
+        PropTypes.arrayOf(buttonPropType),
+      ]),
+      end: PropTypes.oneOfType([
+        buttonPropType,
+        PropTypes.arrayOf(buttonPropType),
+      ]),
     }),
   ]).isRequired,
   /**
@@ -72,6 +77,7 @@ const propTypes = {
    * The size of the buttons Icons (according to the [`Icon`](./#icon) component)
    */
   size: PropTypes.number,
+  tabIndex: PropTypes.number,
   /**
    * Should the icon's bar be vertical or horizontal (default).
    */
@@ -85,6 +91,7 @@ const defaultProps = {
   globalButtonsStyles: null,
   globalIconsStyles: null,
   miscStyles: null,
+  tabIndex: null,
   vertical: false,
   size: 2,
   shouldMainNavBarDisplay: true,
@@ -99,7 +106,9 @@ const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
       height: '100%',
     }
     : {}),
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+  extend: [
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+  ],
 });
 const ActionWrapper = createComponent(wrapperStyle);
 

@@ -68,8 +68,8 @@ const ColoredLink = ({ crumb, }) => (
   <FelaComponent
     key={crumb.contentId}
     style={theme => ({
-      ...commonStyle(theme),      
-      ':hover': {        
+      ...commonStyle(theme),
+      ':hover': {
         textDecoration: 'underline',
         underlineSkip: 'ink',
       },

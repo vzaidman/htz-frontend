@@ -157,64 +157,18 @@ export default (aspect, isFullScreen, viewMode, position) => {
           aspect,
           quality: 'auto',
         },
-          {
-            width: '600',
-            aspect,
-            quality: 'auto',
-          },
-          {
-            width: '726',
-            aspect,
-            quality: 'auto',
-          },
-          {
-            width: '918',
-            aspect,
-            quality: 'auto',
-          },
-          {
-            width: '1028',
-            aspect,
-            quality: 'auto',
-          },
-          {
-            width: '1280',
-            aspect,
-            quality: 'auto',
-          },
-          {
-            width: '1440',
-            aspect,
-            quality: 'auto',
-          },
-          {
-          width: '1920',
-          aspect,
-          quality: 'auto',
-        },
-      ],
-    };
-  }
-  return {
-    sizes: '100vw',
-    transforms: [
-        {
-          width: '375',
-          aspect,
-          quality: 'auto',
-        },
-        {
-          width: '425',
-          aspect,
-          quality: 'auto',
-        },
         {
           width: '600',
           aspect,
           quality: 'auto',
         },
         {
-          width: '768',
+          width: '726',
+          aspect,
+          quality: 'auto',
+        },
+        {
+          width: '918',
           aspect,
           quality: 'auto',
         },
@@ -238,6 +192,52 @@ export default (aspect, isFullScreen, viewMode, position) => {
           aspect,
           quality: 'auto',
         },
+      ],
+    };
+  }
+  return {
+    sizes: '100vw',
+    transforms: [
+      {
+        width: '375',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '425',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '600',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '768',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1028',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1280',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1440',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1920',
+        aspect,
+        quality: 'auto',
+      },
     ],
   };
 };

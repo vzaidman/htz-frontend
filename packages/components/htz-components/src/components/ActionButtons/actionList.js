@@ -28,7 +28,6 @@ import Mutation from '../ApolloBoundary/Mutation';
 import Query from '../ApolloBoundary/Query';
 import EventTracker from '../../utils/EventTracker';
 import Save from './ActionSave';
-
 import IconComment from '../Icon/icons/IconComment';
 import IconFacebook from '../Icon/icons/IconFacebook';
 import IconFacebookLogo from '../Icon/icons/IconFacebookLogo';
@@ -43,11 +42,7 @@ import IconZen from '../Icon/icons/IconZen';
 import AriaDescription from '../AriaDescription/AriaDescription';
 import Tooltip from '../Tooltip/Tooltip';
 import Media from '../Media/Media';
-
 import ClickArea from '../ClickArea/ClickArea';
-
-
-import setColor from '../../utils/setColor';
 
 
 const GET_COMMENTS_ID: Object = gql`
