@@ -17,6 +17,8 @@ import seriesOrBlockArticles from './types/series_or_block_articles_type';
 import quote from './types/quote_type';
 import tags from './types/tags_type';
 import video from './types/video_type';
+import MainBlock from './types/main_block_type';
+import TabViewElement from './types/tab_view_element_type';
 
 const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
@@ -43,6 +45,8 @@ const types = new Map([
   [ 'tagsElement', tags, ],
   [ 'com.tm.Video', video, ],
   [ 'video', video, ],
+  [ 'com.htz.PageMainBlockElement', MainBlock, ],
+  [ 'com.tm.TabViewElement', TabViewElement, ],
 ]);
 
 export default inputTemplate => types.get(inputTemplate);
