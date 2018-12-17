@@ -139,7 +139,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </svg>
                       </span>
                       <span
-                        className="htz-em htz-ei"
+                        className="htz-em"
                       >
                         <span
                           aria-hidden="true"
@@ -343,7 +343,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             </time>
                           </span>
                           <span
-                            className="htz-em htz-ei"
+                            className="htz-em"
                           >
                             <span
                               aria-hidden="true"
@@ -639,7 +639,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </time>
                       </span>
                       <span
-                        className="htz-em htz-ei"
+                        className="htz-em"
                       >
                         <span
                           aria-hidden="true"
