@@ -8,7 +8,7 @@ import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAu
 import LayoutRow from './LayoutRow'; // eslint-disable-line import/no-named-as-default
 import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/no-named-as-default
 import getComponent from '../../utils/componentFromInputTemplate';
-import Masthead from './slots/Masthead';
+import Masthead from './slots/Header';
 import ArticleBIQuery from './queries/article_bi';
 import UserDispenser from '../User/UserDispenser';
 

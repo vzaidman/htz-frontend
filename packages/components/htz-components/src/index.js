@@ -41,6 +41,7 @@ import GoogleAnalytics from './components/GoogleAnalytics/GoogleAnalytics';
 import Grid from './components/Grid/Grid';
 import GridItem from './components/Grid/GridItem';
 import H from './components/AutoLevels/H';
+import HeaderSlot from './components/PageLayout/slots/Header';
 import HeadlineElement from './components/HeadlineElement/HeadlineElement';
 import HtmlElement from './components/Interactive/components/HtmlElement';
 import HtzLink from './components/HtzLink/HtzLink';
@@ -171,6 +172,7 @@ import createDocument from './createDocument';
 import extractParamFromUrl from './components/BI/extractParamFromUrl';
 import setColor from './utils/setColor';
 import { stylesPropType, } from './propTypes/stylesPropType';
+import componentFromInputTemplate from './utils/componentFromInputTemplate';
 
 // BI
 import BIAction from './components/BI/BIAction';
@@ -217,6 +219,7 @@ export {
   Grid,
   GridItem,
   H,
+  HeaderSlot,
   HeadlineElement,
   HtmlElement,
   HtzLink,
@@ -339,6 +342,7 @@ export {
   createApp,
   createDocument,
   extractParamFromUrl,
+  componentFromInputTemplate,
   setColor,
   stylesPropType,
   // BI
