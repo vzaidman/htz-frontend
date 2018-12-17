@@ -22,7 +22,6 @@ import getImageAssets from '../../../../utils/getImageAssets';
 
 type Props = {
   list: ListDataType,
-  listId: string,
   gaAction: ?() => void,
   biAction: ListBiActionType,
   lazyLoadImages: boolean,
@@ -35,7 +34,6 @@ Slugs.defaultProps = {
 
 export default function Slugs({
   list,
-  listId,
   gaAction,
   biAction,
   lazyLoadImages,
@@ -90,10 +88,7 @@ export default function Slugs({
                 ]}
                 miscStyles={{ order: [ { from: 'l', value: 1, }, ], }}
               >
-                <MainTeaser
-                  data={items[0]}
-                  {...{ lazyLoadImages, biAction, listId, }}
-                />
+                <MainTeaser data={items[0]} {...{ lazyLoadImages, biAction, }} />
               </GridItem>
 
               {/* Secondary teasers */}
@@ -108,13 +103,13 @@ export default function Slugs({
                 <TwoUp
                   data1={items[1]}
                   data2={items[2]}
-                  {...{ lazyLoadImages, biAction, listId, }}
+                  {...{ lazyLoadImages, biAction, }}
                 />
 
                 {/* Textual Teaser */}
                 <TextualTeaser
                   data={items[3]}
-                  {...{ lazyLoadImages, biAction, listId, }}
+                  {...{ lazyLoadImages, biAction, }}
                 />
               </GridItem>
             </Grid>
@@ -150,7 +145,6 @@ type TeaserProps = {
   data: TeaserDataType,
   index: 0 | 1 | 2 | 3,
   lazyLoadImages?: boolean,
-  listId: string,
   biAction: ListBiActionType,
 };
 
@@ -159,7 +153,6 @@ MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
 function MainTeaser({
   data,
   lazyLoadImages,
-  listId,
   biAction,
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
@@ -215,9 +208,7 @@ function MainTeaser({
                 ]}
               />
             )}
-            renderFooter={() => (
-              <Footer data={data} hasCommentsOnMobile hasRankOnMobile />
-            )}
+            renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
           />
         </Teaser>
       )}
@@ -229,7 +220,6 @@ TwoUpTeaser.defaultProps = { lazyLoadImages: true, };
 function TwoUpTeaser({
   data,
   lazyLoadImages,
-  listId,
   biAction,
   index,
 }: TeaserProps): React.Node {
@@ -296,7 +286,7 @@ function TwoUpTeaser({
 }
 
 TextualTeaser.defaultProps = { lazyLoadImages: true, index: 3, };
-function TextualTeaser({ data, listId, biAction, }: TeaserProps): React.Node {
+function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return (
@@ -341,7 +331,6 @@ type TwoUpProps = {
   data1: TeaserDataType,
   data2: TeaserDataType,
   lazyLoadImages: boolean,
-  listId: string,
   biAction: ListBiActionType,
 };
 
@@ -350,7 +339,6 @@ function TwoUp({
   data1,
   data2,
   lazyLoadImages,
-  listId,
   biAction,
 }: TwoUpProps): React.Node {
   return (
@@ -366,18 +354,10 @@ function TwoUp({
       }}
     >
       <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
-        <TwoUpTeaser
-          data={data1}
-          index={1}
-          {...{ lazyLoadImages, listId, biAction, }}
-        />
+        <TwoUpTeaser data={data1} index={1} {...{ lazyLoadImages, biAction, }} />
       </GridItem>
       <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
-        <TwoUpTeaser
-          data={data2}
-          index={2}
-          {...{ lazyLoadImages, listId, biAction, }}
-        />
+        <TwoUpTeaser data={data2} index={2} {...{ lazyLoadImages, biAction, }} />
       </GridItem>
     </Grid>
   );
@@ -415,16 +395,18 @@ function Footer({
         commentsCount={data.commentsCounts}
         miscStyles={{
           marginInlineEnd: '1rem',
-          ...(hasCommentsOnMobile
-            ? { display: [ { until: 's', value: 'none', }, ], }
-            : {}),
+          display: hasCommentsOnMobile
+            ? [ { until: 's', value: 'none', }, ]
+            : undefined,
         }}
       />
       {data.rank ? (
         <TeaserRank
           rank={data.rank}
           miscStyles={{
-            display: [ { until: 's', value: 'none', }, ],
+            display: hasRankOnMobile
+              ? [ { until: 's', value: 'none', }, ]
+              : undefined,
           }}
         />
       ) : null}
