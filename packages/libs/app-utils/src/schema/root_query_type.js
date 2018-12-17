@@ -17,6 +17,7 @@ import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
 import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
+import HomePage from './types/home_page_type';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -85,6 +86,12 @@ const RootQuery = new GraphQLObjectType({
       args: { path: { type: new GraphQLNonNull(GraphQLString), }, },
       resolve(parentValue, { path, }, { dataSources, }) {
         return dataSources.PageAPI.getPage(path);
+      },
+    },
+    homePage: {
+      type: HomePage,
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PageAPI.getPage('/');
       },
     },
 
