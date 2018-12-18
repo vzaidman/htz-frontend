@@ -11,6 +11,10 @@ const GET_HOST_USER = gql`
     user @client {
       type
     }
+    googleAnalyticsId @client {
+      htzUa
+      tmUa
+    }
   }
 `;
 
@@ -33,16 +37,20 @@ function GoogleAnalytics({ withEC, withPageView, }) {
         data: {
           hostname,
           user: { type, },
+          googleAnalyticsId,
         },
       }) => {
         const host = hostname.match(/^(?:.*?\.)?(.*)/)[1];
-
+        // GaHost has defaults with test env id's, and get the production id's from ENV variables
+        // see createClient in app-utils for implementation
+        const GaHost = googleAnalyticsId[host === 'themarker.com' ? 'tmUa' : 'htzUa'];
         if (!host || !type) {
           return null;
         }
 
         return (
           <GoogleAnalyticsInit
+            GaHost={GaHost}
             host={host}
             userType={type}
             withEC={withEC}

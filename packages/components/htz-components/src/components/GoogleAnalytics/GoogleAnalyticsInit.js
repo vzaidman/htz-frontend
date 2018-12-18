@@ -5,7 +5,9 @@ import ReactGA from 'react-ga';
 
 class GoogleAnalyticsInit extends React.Component {
   static propTypes = {
-    // Host url string passed to set GaHost ID
+    // GaHost ID
+    GaHost: PropTypes.string,
+    // Host url string
     host: PropTypes.string,
     // User type
     userType: PropTypes.string,
@@ -16,6 +18,7 @@ class GoogleAnalyticsInit extends React.Component {
   };
 
   static defaultProps = {
+    GaHost: null,
     host: null,
     userType: null,
     withEC: false,
@@ -24,15 +27,13 @@ class GoogleAnalyticsInit extends React.Component {
 
   componentDidMount() {
     if (window && !window.GA_INITIALIZED) {
-      this.initGA(this.props.host, this.props.userType, this.props.withEC);
+      this.initGA(this.props.host, this.props.userType, this.props.withEC, this.props.GaHost);
       window.GA_INITIALIZED = true;
     }
     trackPage(window.location.pathname + window.location.search, this.props.withPageView);
   }
 
-  initGA = (host, userType, withEC) => {
-    const GaHost = this.props.host === 'themarker.com' ? 'UA-3574867-1' : 'UA-589309-3';
-
+  initGA = (host, userType, withEC, GaHost) => {
     // todo: remove this if the autolinker works correctly in production.
     // let clientTrackerId;
     // ReactGA.ga(tracker => {
