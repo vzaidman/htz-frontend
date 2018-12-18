@@ -38,7 +38,7 @@ function buildCreditGuardSrc(paymentData, approveDebtClaim, thankYouEmailTemplat
     throw new Error('Tried creating a config with no window.location.hostname context!');
   }
 
-  return `${paymentService}/creditGuard/CreditGuardBridgeServlet?productID=${
+  return `${paymentService}/cgPayment?productID=${
     paymentData.productID
   }&saleCode=${paymentData.saleCode}&promotionNumber=${
     paymentData.promotionNumber
