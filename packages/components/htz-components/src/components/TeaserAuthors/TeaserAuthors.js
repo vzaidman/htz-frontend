@@ -10,7 +10,7 @@ type TeaserAuthorsPropTypes = {
     url?: ?string,
   }[]),
   limit: number,
-  miscStyles: ?StyleProps,
+  miscStyles?: ?StyleProps,
 };
 
 const InlineAddress = ({
