@@ -176,7 +176,7 @@ export default function ListViewHeader({
                 marginTop: '1rem',
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
-                  theme.mq({ until: 'm', }, { display: 'none', }),
+                  theme.mq({ until: 's', }, { display: 'none', }),
                   isHorizontal
                     ? undefined
                     : theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }),
@@ -197,7 +197,7 @@ export default function ListViewHeader({
                   render="li"
                   key={item.contentId}
                 >
-                  <HtzLink href={item.href}>{item.linkText}</HtzLink>
+                  <HtzLink href={item.href}>{item.linkText || item.contentName}</HtzLink>
                   {idx !== extraLinks.length - 1 && (
                     <FelaComponent
                       style={{
