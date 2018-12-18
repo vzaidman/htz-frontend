@@ -479,24 +479,32 @@ export default class Zombie extends React.Component<Props, State> {
                       ]}
                       miscStyles={{
                         marginTop: [ { until: 's', value: '1rem', }, ],
+                        display: 'flex',
                       }}
-                      stretchContent
                     >
-                      <TextualTeaser
-                        data={items[1]}
-                        index={1}
-                        biAction={biAction}
-                      />
-                      <TextualTeaser
-                        data={items[2]}
-                        index={2}
-                        biAction={biAction}
-                      />
-                      <TextualTeaser
-                        data={items[3]}
-                        index={3}
-                        biAction={biAction}
-                      />
+                      <Grid
+                        gutter={0}
+                        rowSpacing={[
+                          { until: 's', value: { amount: 1, }, },
+                          { from: 's', value: { amount: 4, }, },
+                        ]}
+                      >
+                        <TextualTeaser
+                          data={items[1]}
+                          index={1}
+                          biAction={biAction}
+                        />
+                        <TextualTeaser
+                          data={items[2]}
+                          index={2}
+                          biAction={biAction}
+                        />
+                        <TextualTeaser
+                          data={items[3]}
+                          index={3}
+                          biAction={biAction}
+                        />
+                      </Grid>
                     </GridItem>
                   </Grid>
                 </GridItem>
@@ -636,26 +644,24 @@ TextualTeaser.defaultProps = { lazyLoadImages: false, };
 function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
   const articleId = data.contentId;
   return (
-    <Teaser
-      data={data}
-      onClick={() => biAction({ index, articleId, })}
-      miscStyles={{
-        flexGrow: '1',
-        marginTop:
-          index === 1
-            ? 0
-            : [ { until: 's', value: '1rem', }, { from: 's', value: '4rem', }, ],
-      }}
-    >
-      <TeaserContent
+    <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
+      <Teaser
         data={data}
-        padding={[ 1, 1, 0, ]}
-        footerPadding={[ 2, 1, 1, ]}
-        footerMiscStyles={{ type: -2, }}
-        renderContent={() => <TeaserHeader {...data} typeScale={headerTypo} />}
-        renderFooter={() => <Footer data={data} />}
-      />
-    </Teaser>
+        onClick={() => biAction({ index, articleId, })}
+        miscStyles={{ flexGrow: '1', }}
+      >
+        <TeaserContent
+          data={data}
+          padding={[ 1, 1, 0, ]}
+          footerPadding={[ 2, 1, 1, ]}
+          footerMiscStyles={{ type: -2, }}
+          renderContent={() => (
+            <TeaserHeader {...data} typeScale={headerTypo} />
+          )}
+          renderFooter={() => <Footer data={data} />}
+        />
+      </Teaser>
+    </GridItem>
   );
 }
 

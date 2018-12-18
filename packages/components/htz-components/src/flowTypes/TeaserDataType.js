@@ -7,7 +7,7 @@ import type { GalleryDataType, } from './GalleryDataType';
 export type TeaserDataType = {
   authorImage?: ?ImageDataType,
   authors?: ?({
-    name: string,
+    contentName: string,
     url?: ?string,
   }[]),
   commentsCounts?: number,
