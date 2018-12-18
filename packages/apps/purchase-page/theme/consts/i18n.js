@@ -2,13 +2,13 @@ export const seo = Object.freeze({
   'haaretz.co.il': Object.freeze({
     title: 'מינוי לאתר הארץ',
     description:
-      'רכשו מינוי לאתר הארץ וקבלו את כל תכני הארץ במחשב ובאפליקציה, פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+      'רכשו מינוי לאתר הארץ וקבלו את כל תכני הארץ במחשב ובאפליקציה, פחות פרסומות, פודקאסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
     googleSiteVerification: 's8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY',
   }),
   'themarker.com': Object.freeze({
     title: 'מינוי לאתר TheMarker – מנוי לדה מרקר',
     description:
-      'מינוי לאתר TheMarker: רכשו מנוי לדה מרקר וקבלו את כל תכני דהמרקר במחשב ובאפליקציה , פחות פרסומות, פודקסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
+      'מינוי לאתר TheMarker: רכשו מנוי לדה מרקר וקבלו את כל תכני דהמרקר במחשב ובאפליקציה , פחות פרסומות, פודקאסט שבועי ועדכונים שוטפים לכל מכשיר שתרצו.',
     googleSiteVerification: '-3Rs25_Tuwid8njQF72cVtAcYAxGbYhXewg5Y4ppV_4',
   }),
 });
@@ -159,7 +159,7 @@ export const stage1 = Object.freeze({
         TM: true,
       }),
       Object.freeze({
-        description: 'פודקסט שבועי',
+        description: 'פודקאסט שבועי',
         HTZ: true,
         BOTH: true,
         TM: false,
