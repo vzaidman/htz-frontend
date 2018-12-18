@@ -18,6 +18,7 @@ import {
 } from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
+import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
 import { getHost, } from '../../../util/requestUtil';
@@ -28,10 +29,24 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods ----------------------------
-const checkIfLoggedin = client => {
-  const host = getHost(client);
-  return CookieUtils.getCookie('tmsso') ?
-    window.location = (getReferrerUrl(client) || `https://www.${host}`) : false;
+const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
+  if(isLoggedIn) {
+    const host = getHost(client);
+    const { facebook, } = getUrlParams();
+    const facebookUser = {
+      facebook,
+      subscription: user.type,
+      ssoId: user.id,
+    };
+    return window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
+  }
+};
+
+const getFacebookLogin = user => {
+  const facebookParams = getFacebookParams(user);
+  return facebookParams ?
+    getFacebookLoginUrl(facebookParams) :
+    false;
 };
 
 const b64DecodeUnicode = str => (str
@@ -262,7 +277,7 @@ class IndexForm extends Component {
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
     this.setReferrer(this.props.client);
-    checkIfLoggedin(this.props.client);
+    checkIfLoggedin(this.props.client, this.props.userDispenser);
     this.autoSubmit(this.props);
   }
 
@@ -338,7 +353,7 @@ class IndexForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, getFlowByData, theme, gaAction, biAction, } = this.props;
+    const { client, getFlowByData, theme, gaAction, biAction, userDispenser, } = this.props;
     const eventsTrackers = { gaAction, biAction, };
     return (
       <FormWrapper>
