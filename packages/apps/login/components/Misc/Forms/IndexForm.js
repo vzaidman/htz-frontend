@@ -30,7 +30,7 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 
 // Methods ----------------------------
 const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
-  if(isLoggedIn) {
+  if (isLoggedIn) {
     const host = getHost(client);
     const { facebook, } = getUrlParams();
     const facebookUser = {
@@ -331,7 +331,8 @@ class IndexForm extends Component {
           )({ email, phone, }),
           fail => this.showError(fail.message)
         );
-    } else if (type === 'reevaluate') {
+    }
+    else if (type === 'reevaluate') {
       onSubmit(
         client,
         getFlowByData,
@@ -380,7 +381,7 @@ class IndexForm extends Component {
                   type: 'email',
                 })}
                 attrs={{
-                  'name': 'userName',
+                  name: 'userName',
                 }}
               />
 
