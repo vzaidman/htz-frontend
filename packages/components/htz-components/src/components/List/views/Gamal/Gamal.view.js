@@ -84,11 +84,7 @@ type FirstTeaserProps = {
 
 GamalFirstTeaser.defaultProps = { lazyLoadImages: true, };
 
-function GamalFirstTeaser({
-  lazyLoadImages,
-  itemData,
-  biAction,
-}: FirstTeaserProps) {
+function GamalFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserProps) {
   return (
     <Teaser
       data={itemData}
@@ -102,7 +98,7 @@ function GamalFirstTeaser({
             <Image
               lazyLoad={lazyLoadImages}
               data={itemData.image}
-              imageOptions={getImageAssets({
+              imgOptions={getImageAssets({
                 aspect: 'headline',
                 bps: theme.bps,
                 sizes: [
@@ -134,12 +130,7 @@ function GamalFirstTeaser({
               borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
             }}
             renderContent={data => (
-              <TeaserHeader
-                {...data}
-                offset={1}
-                typeScale={-1}
-                kickerTypeScale={-1}
-              />
+              <TeaserHeader {...data} offset={1} typeScale={-1} kickerTypeScale={-1} />
             )}
           />
         )}
@@ -183,12 +174,7 @@ function GamalTeaser({ itemData, biAction, index, isLast, }: GamalTeaserProps) {
               ...(isLast
                 ? {}
                 : {
-                  borderBottom: [
-                    '1px',
-                    1,
-                    'solid',
-                    theme.color('neutral', '-5'),
-                  ],
+                  borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
                 }),
             }}
             renderContent={data => (
