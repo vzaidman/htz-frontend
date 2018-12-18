@@ -22,9 +22,7 @@ export default gql`
           rank
           inputTemplate
           authors {
-            ... on Author {
               contentName
-            }
           }
           image {
             ...Image
