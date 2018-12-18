@@ -94,6 +94,12 @@ type TeaserHeaderProps = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: ?StyleProps,
+  /**
+   * A special property holding miscellaneous CSS values for the kicker that
+   * trump all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+   */
+  kickerMiscStyles: ?StyleProps,
 
   /** Determines if the kicker element is set as a block element */
   kickerIsBlock: boolean,
@@ -144,6 +150,7 @@ TeaserHeader.defaultProps = {
   typeScale: null,
   color: null,
   miscStyles: null,
+  kickerMiscStyles: null,
   kickerIsBlock: false,
   kickerTypeScale: null,
   isCentered: false,
@@ -164,6 +171,7 @@ export default function TeaserHeader({
   typeScale,
   color,
   miscStyles,
+  kickerMiscStyles,
   kickerIsBlock,
   kickerTypeScale,
   isCentered,
@@ -196,6 +204,7 @@ export default function TeaserHeader({
                   <Kicker
                     {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
                     {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
+                    {...(kickerMiscStyles ? { miscStyles: kickerMiscStyles, } : {})}
                   >
                     <TeaserResponsiveText
                       text={exclusive}
