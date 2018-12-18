@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import gql from 'graphql-tag';
-import { teaserForGamal, } from '@haaretz/app-utils';
+import { teaserForGamal, clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 
 export default gql`
   query GamalQuery($listId: String!, $history: [ID]) {
@@ -19,4 +19,5 @@ export default gql`
     }
   }
   ${teaserForGamal}
+  ${clickTrackerBannersWrapper}
 `;
