@@ -15,6 +15,7 @@ import Card from '../Card/Card';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
 import HtzLink from '../HtzLink/HtzLink';
+import { isClickTracker } from '../List/utils/validateTeaser';
 
 
 type TeaserPropTypes = {
@@ -143,8 +144,8 @@ export default function Teaser({
           render={({ className: linkClassName, }) => (
             <HtzLink
               className={linkClassName}
-              href={data.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? data.link : data.path}
-              target={data.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? data.linkTarget : null}
+              href={isClickTracker(data) ? data.link : data.path}
+              target={isClickTracker(data) ? data.linkTarget : null}
               onClick={onClick}
               attrs={{
                 tabIndex: '-1',

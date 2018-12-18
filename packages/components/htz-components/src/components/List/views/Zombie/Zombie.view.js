@@ -9,7 +9,6 @@ import {
 import * as React from 'react';
 import config from 'config';
 
-import type { DfpBannerType, } from '../../../../flowTypes/DfpBannerType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, ListItemType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
@@ -46,7 +45,7 @@ type StocksType = {
 };
 
 type Props = {
-  list: ListDataType & { dfp: Array<DfpBannerType>, },
+  list: ListDataType & { dfp: Array<ListItemType>, },
   gaAction: () => void,
   biAction: ListBiActionType,
   lazyLoadImages: boolean,

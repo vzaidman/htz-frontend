@@ -7,7 +7,7 @@ import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 
 import VerticalList from '../commonViews/VerticalList';
-import { isClickTracker, } from '../../utils/validateTeaser';
+import { isClickTrackerWrapper, } from '../../utils/validateTeaser';
 
 type Props = {
   list: ListDataType,
@@ -23,7 +23,7 @@ function Michelangelo({ list, ...props }: Props): Node {
   // https://github.com/facebook/flow/issues/1414
   // $FlowFixMe
   const items: Array<ClickTrackerBannerWrapperType> = list.items
-    .filter(item => isClickTracker(item))
+    .filter(item => isClickTrackerWrapper(item))
     .slice(0, 3);
 
   return items.length > 0

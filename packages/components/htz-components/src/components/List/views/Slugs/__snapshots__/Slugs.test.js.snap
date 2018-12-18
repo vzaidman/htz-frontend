@@ -18,17 +18,17 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
           id={null}
         >
           <header
-            className="htz-p htz-v htz-s htz-a htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-z htz-ab htz-y"
+            className="htz-p htz-v htz-am htz-s htz-a htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd htz-be htz-bf htz-bg htz-z htz-ab htz-bh htz-y"
           >
             <h2
-              className="htz-bg htz-bh htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo"
+              className="htz-bi htz-bj htz-bk htz-bl htz-bm htz-bn htz-bo htz-bp htz-bq"
             >
               בחירת העורכים
             </h2>
           </header>
         </div>
         <div
-          className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc"
+          className="htz-ae htz-br htz-am htz-bs htz-r htz-ai htz-aj htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-bh"
           id={null}
         >
           <div
@@ -36,14 +36,14 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
             id={null}
           >
             <div
-              className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-bx htz-by htz-co htz-cp htz-cb htz-cq htz-cc"
+              className="htz-ae htz-br htz-am htz-bs htz-r htz-ai htz-aj htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-by htz-bz htz-co htz-cp htz-cc htz-cq htz-bh"
               id={null}
             >
               <article
                 className="htz-cr htz-p htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-ab"
               >
                 <div
-                  className="htz-p htz-da htz-r htz-s htz-db htz-dc htz-cs htz-w htz-dd htz-bq htz-cu htz-de htz-y htz-cz htz-ab htz-ac htz-cc"
+                  className="htz-p htz-da htz-r htz-s htz-db htz-dc htz-cs htz-w htz-dd htz-am htz-cu htz-de htz-y htz-cz htz-ab htz-ac htz-bh"
                   id={null}
                 >
                   <div
@@ -68,7 +68,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="htz-ae htz-bp htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-dm htz-cc htz-cz htz-ab htz-dn"
+                    className="htz-ae htz-br htz-am htz-bs htz-r htz-dg htz-dh htz-p htz-cs htz-dm htz-bh htz-cz htz-ab htz-dn"
                     id={null}
                   >
                     <div
@@ -83,7 +83,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           onClick={null}
                         >
                           <h2
-                            className="htz-dv htz-bh htz-dr htz-ds htz-dt htz-du"
+                            className="htz-dv htz-bj htz-dr htz-ds htz-dt htz-du"
                             offset={0}
                           >
                             תודה על הכל, סטן לי. היית שחצן, מהפכן וגיבור ילדותי
@@ -121,12 +121,12 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         className="htz-eg htz-dm htz-eh htz-ei htz-dn"
                       >
                         <div
-                          className="htz-ef htz-ej htz-bg"
+                          className="htz-ef htz-ej htz-bi"
                         >
                           320
                         </div>
                         <svg
-                          className="htz-ek htz-bg htz-el"
+                          className="htz-ek htz-bi htz-el"
                           height="1em"
                           viewBox="0 0 256 256"
                           width="1em"
@@ -244,7 +244,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
               </article>
             </div>
             <div
-              className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-p htz-cs htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-ff htz-fg htz-cn htz-bx htz-by htz-co htz-cp htz-cb htz-cc htz-cz htz-ab"
+              className="htz-ae htz-br htz-am htz-bs htz-r htz-ai htz-aj htz-p htz-cs htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-ff htz-fg htz-cn htz-by htz-bz htz-co htz-cp htz-cc htz-bh htz-cz htz-ab"
               id={null}
             >
               <div
@@ -252,18 +252,18 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                 id={null}
               >
                 <div
-                  className="htz-ae htz-bp htz-bq htz-br htz-r htz-ej htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv htz-fw htz-cc"
+                  className="htz-ae htz-br htz-am htz-bs htz-r htz-ej htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv htz-fw htz-bh"
                   id={null}
                 >
                   <article
                     className="htz-cr htz-p htz-cs htz-ct htz-cu htz-cv htz-cz htz-ab"
                   >
                     <div
-                      className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-bq htz-cu htz-fx htz-fy htz-fz htz-x htz-y htz-z htz-ab htz-ac htz-cc"
+                      className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-am htz-cu htz-fx htz-fy htz-fz htz-x htz-y htz-z htz-ab htz-ac htz-bh"
                       id={null}
                     >
                       <div
-                        className="htz-ae htz-bp htz-bq htz-br htz-r htz-dg htz-dh htz-ga htz-gb htz-gc htz-gd htz-ge htz-cj htz-ck htz-gf htz-gg htz-cn htz-bx htz-by htz-gh htz-gi htz-cb htz-cc"
+                        className="htz-ae htz-br htz-am htz-bs htz-r htz-dg htz-dh htz-ga htz-gb htz-gc htz-gd htz-ge htz-cj htz-ck htz-gf htz-gg htz-cn htz-by htz-bz htz-gh htz-gi htz-cc htz-bh"
                         id={null}
                       >
                         <div
@@ -284,11 +284,11 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </div>
                       </div>
                       <div
-                        className="htz-ae htz-df htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-gk htz-gl htz-gm htz-cc htz-cz htz-ab"
+                        className="htz-ae htz-df htz-am htz-bs htz-r htz-dg htz-dh htz-p htz-cs htz-gk htz-gl htz-gm htz-bh htz-cz htz-ab"
                         id={null}
                       >
                         <div
-                          className="htz-p htz-cs htz-ct htz-gn htz-bm htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-cz htz-ab"
+                          className="htz-p htz-cs htz-ct htz-gn htz-bo htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-cz htz-ab"
                         >
                           <div
                             className="htz-cv htz-di "
@@ -299,7 +299,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                               onClick={null}
                             >
                               <h2
-                                className="htz-dv htz-bh"
+                                className="htz-dv htz-bj"
                                 offset={0}
                               >
                                 <span
@@ -317,7 +317,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           </div>
                         </div>
                         <footer
-                          className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bm htz-gw htz-gp htz-gx htz-gr htz-bd htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
+                          className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bo htz-gw htz-gp htz-gx htz-gr htz-be htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                         >
                           <span
                             style={
@@ -448,18 +448,18 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                   </article>
                 </div>
                 <div
-                  className="htz-ae htz-bp htz-bq htz-br htz-r htz-ej htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv htz-fw htz-cc"
+                  className="htz-ae htz-br htz-am htz-bs htz-r htz-ej htz-fm htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft htz-fu htz-fv htz-fw htz-bh"
                   id={null}
                 >
                   <article
                     className="htz-cr htz-p htz-cs htz-ct htz-cu htz-cv htz-cz htz-ab"
                   >
                     <div
-                      className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-bq htz-cu htz-fx htz-fy htz-fz htz-x htz-y htz-z htz-ab htz-ac htz-cc"
+                      className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-am htz-cu htz-fx htz-fy htz-fz htz-x htz-y htz-z htz-ab htz-ac htz-bh"
                       id={null}
                     >
                       <div
-                        className="htz-ae htz-bp htz-bq htz-br htz-r htz-dg htz-dh htz-ga htz-gb htz-gc htz-gd htz-ge htz-cj htz-ck htz-gf htz-gg htz-cn htz-bx htz-by htz-gh htz-gi htz-cb htz-cc"
+                        className="htz-ae htz-br htz-am htz-bs htz-r htz-dg htz-dh htz-ga htz-gb htz-gc htz-gd htz-ge htz-cj htz-ck htz-gf htz-gg htz-cn htz-by htz-bz htz-gh htz-gi htz-cc htz-bh"
                         id={null}
                       >
                         <div
@@ -480,11 +480,11 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                         </div>
                       </div>
                       <div
-                        className="htz-ae htz-df htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-gk htz-gl htz-gm htz-cc htz-cz htz-ab"
+                        className="htz-ae htz-df htz-am htz-bs htz-r htz-dg htz-dh htz-p htz-cs htz-gk htz-gl htz-gm htz-bh htz-cz htz-ab"
                         id={null}
                       >
                         <div
-                          className="htz-p htz-cs htz-ct htz-gn htz-bm htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-cz htz-ab"
+                          className="htz-p htz-cs htz-ct htz-gn htz-bo htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-cz htz-ab"
                         >
                           <div
                             className="htz-cv htz-di "
@@ -495,7 +495,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                               onClick={null}
                             >
                               <h2
-                                className="htz-dv htz-bh"
+                                className="htz-dv htz-bj"
                                 offset={0}
                               >
                                 <span
@@ -513,7 +513,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           </div>
                         </div>
                         <footer
-                          className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bm htz-gw htz-gp htz-gx htz-gr htz-bd htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
+                          className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bo htz-gw htz-gp htz-gx htz-gr htz-be htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                         >
                           <span
                             style={
@@ -542,12 +542,12 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                             className="htz-eg htz-dm htz-eh htz-dn"
                           >
                             <div
-                              className="htz-ef htz-ej htz-bg"
+                              className="htz-ef htz-ej htz-bi"
                             >
                               78
                             </div>
                             <svg
-                              className="htz-ek htz-bg htz-el"
+                              className="htz-ek htz-bi htz-el"
                               height="1em"
                               viewBox="0 0 256 256"
                               width="1em"
@@ -573,18 +573,18 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                 </div>
               </div>
               <article
-                className="htz-cr htz-p htz-cs htz-ct htz-gz htz-cv htz-w htz-bq htz-fk htz-ha htz-cz htz-ab htz-ac htz-cc"
+                className="htz-cr htz-p htz-cs htz-ct htz-gz htz-cv htz-w htz-am htz-fk htz-ha htz-cz htz-ab htz-ac htz-bh"
               >
                 <div
-                  className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-bq htz-cu htz-x htz-y htz-z htz-ab htz-ac htz-cc"
+                  className="htz-p htz-q htz-r htz-s htz-db htz-dc htz-v htz-w htz-dd htz-am htz-cu htz-x htz-y htz-z htz-ab htz-ac htz-bh"
                   id={null}
                 >
                   <div
-                    className="htz-ae htz-df htz-bq htz-br htz-r htz-dg htz-dh htz-p htz-cs htz-cc htz-cz htz-ab"
+                    className="htz-ae htz-df htz-am htz-bs htz-r htz-dg htz-dh htz-p htz-cs htz-bh htz-cz htz-ab"
                     id={null}
                   >
                     <div
-                      className="htz-p htz-cs htz-ct htz-gn htz-bm htz-gw htz-gp htz-gq htz-gr htz-bd htz-gt htz-cz htz-ab"
+                      className="htz-p htz-cs htz-ct htz-gn htz-bo htz-gw htz-gp htz-gq htz-gr htz-be htz-gt htz-cz htz-ab"
                     >
                       <div
                         className="htz-cv htz-di "
@@ -595,7 +595,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           onClick={null}
                         >
                           <h2
-                            className="htz-dv htz-bh"
+                            className="htz-dv htz-bj"
                             offset={0}
                           >
                             <span
@@ -613,7 +613,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       </div>
                     </div>
                     <footer
-                      className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bm htz-gw htz-gp htz-hb htz-gr htz-bd htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
+                      className="htz-dw htz-cs htz-ct htz-dx htz-gv htz-bo htz-gw htz-gp htz-hb htz-gr htz-be htz-gt htz-ea htz-eb htz-ec htz-ed htz-ee htz-cz htz-ab"
                     >
                       <span
                         style={
@@ -746,7 +746,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
           </div>
         </div>
         <div
-          className="htz-ae htz-bp htz-bq htz-br htz-r htz-ai htz-aj htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-hc htz-hd htz-cb htz-he htz-hf htz-hg htz-hh htz-cc"
+          className="htz-ae htz-br htz-am htz-bs htz-r htz-ai htz-aj htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-hc htz-hd htz-cc htz-he htz-hf htz-hg htz-hh htz-bh"
           id={null}
         >
           <div
@@ -765,4 +765,4 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
 </div>
 `;
 
-exports[`<Slugs /> Render picture element correctly 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-e{background-color:rgba(0,0,0,0)}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-p{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-q{flex-wrap:wrap}.htz-r{list-style:none}.htz-s{justify-content:flex-start}.htz-t{margin-right:-2rem}.htz-u{margin-left:-2rem}.htz-v{flex-direction:row}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:multiple}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{flex-basis:100%}.htz-ag{flex-grow:0}.htz-ah{flex-shrink:0}.htz-ai{padding-left:2rem}.htz-aj{padding-right:2rem}.htz-ak{max-width:100%}.htz-al{-webkit-box-flex:0}.htz-bg{color:#0B7EB5}.htz-bh{font-weight:700}.htz-bp{flex-basis:auto}.htz-bq{flex-grow:1}.htz-br{flex-shrink:1}.htz-cc{-webkit-box-flex:1}.htz-cd{padding-bottom:3rem}.htz-cr{background-color:#FFF}.htz-cs{flex-direction:column}.htz-ct{overflow:hidden}.htz-cu{height:100%}.htz-cv{position:relative}.htz-cz{-webkit-box-orient:vertical}.htz-da{flex-wrap:nowrap}.htz-db{margin-right:-0rem}.htz-dc{margin-left:-0rem}.htz-dd{align-content:flex-start}.htz-de{-webkit-box-lines:nowrap}.htz-df{flex-basis:0}.htz-dg{padding-left:0rem}.htz-dh{padding-right:0rem}.htz-di{z-index:1}.htz-dj{height:0}.htz-dk{padding-bottom:100%}.htz-dl{background-color:#EBEBEB}.htz-dm{align-items:center}.htz-dn{-webkit-box-align:center}.htz-do{padding-top:1rem}.htz-dp{padding-bottom:0rem}.htz-dq{text-align:center}.htz-dv{display:inline}.htz-dw{display:block}.htz-dx{color:#787878}.htz-dy{padding-top:2rem}.htz-dz{padding-bottom:2rem}.htz-ea{margin-top:auto}.htz-ef{font-weight:bold}.htz-eg{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-eh{margin-left:1rem}.htz-ej{padding-left:0.5rem}.htz-ek{vertical-align:-0.15em}.htz-el{fill:#FFF}.htz-em{white-space:nowrap}.htz-en{font-size:inherit}.htz-eo{fill:#0B7EB5}.htz-ep{fill:#CCC}.htz-eq{border:0}.htz-er{clip:rect(0 0 0 0)}.htz-es{-webkit-clip-path:inset(50%)}.htz-et{clip-path:inset(50%)}.htz-eu{height:1px}.htz-ev{margin:-1px}.htz-ew{padding:0}.htz-ex{position:absolute}.htz-ey{width:1px}.htz-ez{background-color:transparent}.htz-fa{bottom:0}.htz-fb{left:0}.htz-fc{right:0}.htz-fd{top:0}.htz-fe{z-index:0}.htz-fh{margin-right:-0.5rem}.htz-fi{margin-left:-0.5rem}.htz-fm{padding-right:0.5rem}.htz-gj{padding-bottom:75.05274261603375%}.htz-gy{padding-bottom:74.92795389048992%}.htz-gz{height:auto}@media (max-width: 37.4375em){.htz-c{margin-top:4rem}.htz-l{padding-right:2rem}.htz-m{padding-left:2rem}.htz-am{position:relative}.htz-an:before{background-color:#0B7EB5}.htz-ao:before{content:\\"\\"}.htz-ap:before{height:1px}.htz-aq:before{position:absolute}.htz-ar:before{width:100%}.htz-as:before{right:0}.htz-at:before{top:0}.htz-au{margin-bottom:1rem}.htz-bm{padding-right:1rem}.htz-bn{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bo{width:100%}.htz-ei{display:none}.htz-fk{margin-top:1rem}.htz-fn{flex-grow:0}.htz-fo{flex-shrink:0}.htz-fp{flex-basis:50%}.htz-fq{max-width:50%}.htz-fr{-webkit-box-flex:0}.htz-fx{flex-direction:column}.htz-fy{-webkit-box-orient:vertical}.htz-fz{-webkit-box-direction:normal}.htz-gk{flex-basis:auto}.htz-gl{flex-grow:1}.htz-gm{-webkit-box-flex:1}.htz-gn{padding-top:1rem}.htz-go{padding-bottom:0rem}.htz-gp{padding-left:1rem}.htz-gv{padding-top:2rem}.htz-gw{padding-bottom:1rem}.htz-he{margin-bottom:2rem}.htz-hf{margin-top:2rem}}@media (min-width: 37.5em){.htz-d{margin-top:8rem}.htz-n{padding-right:4rem}.htz-o{padding-left:4rem}.htz-av{position:relative}.htz-aw:before{background-color:#0B7EB5}.htz-ax:before{content:\\"\\"}.htz-ay:before{height:2px}.htz-az:before{position:absolute}.htz-ba:before{width:100%}.htz-bb:before{right:0}.htz-bc:before{top:0}.htz-bd{padding-bottom:1rem}.htz-fj> * + *{margin-top:4rem}.htz-fs{flex-grow:0}.htz-ft{flex-shrink:0}.htz-fu{flex-basis:100%}.htz-fv{max-width:100%}.htz-fw{-webkit-box-flex:0}.htz-gq{padding-top:1rem}.htz-gr{padding-right:2rem}.htz-gs{padding-bottom:0rem}.htz-gt{padding-left:2rem}.htz-gu{display:none}.htz-gx{padding-top:2rem}.htz-ha{margin-top:4rem}.htz-hb{padding-top:3rem}.htz-hg{margin-bottom:4rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-cj{flex-grow:0}.htz-ck{flex-shrink:0}.htz-cl{flex-basis:41.66666666666667%}.htz-cm{max-width:41.66666666666667%}.htz-cn{-webkit-box-flex:0}.htz-dr{font-size:3.5rem}.htz-ds{line-height:1.4285714285714286em}.htz-ff{flex-basis:58.333333333333336%}.htz-fg{max-width:58.333333333333336%}.htz-gf{flex-basis:42.857142857142854%}.htz-gg{max-width:42.857142857142854%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bk{font-size:3.4285714285714284rem}.htz-bl{line-height:1.1666666666666667em}.htz-bx{flex-grow:0}.htz-by{flex-shrink:0}.htz-bz{flex-basis:83.33333333333334%}.htz-ca{max-width:83.33333333333334%}.htz-cb{-webkit-box-flex:0}.htz-co{flex-basis:50%}.htz-cp{max-width:50%}.htz-dt{font-size:3.857142857142857rem}.htz-du{line-height:1.2962962962962963em}.htz-ed{font-size:2rem}.htz-ee{line-height:1.5em}.htz-gh{flex-basis:56.25%}.htz-gi{max-width:56.25%}.htz-hc{flex-basis:16.666666666666664%}.htz-hd{max-width:16.666666666666664%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-be{margin-bottom:5rem}.htz-cw{margin-left:auto}.htz-cx{margin-right:auto}.htz-cy{max-width:68rem}.htz-fl{margin-top:4rem}.htz-ga{flex-grow:0}.htz-gb{flex-shrink:0}.htz-gc{flex-basis:33.33333333333333%}.htz-gd{max-width:33.33333333333333%}.htz-ge{-webkit-box-flex:0}}@media (min-width: 64em){.htz-bf{margin-bottom:2rem}.htz-cq{order:1}}@media (max-width: 79.9375em){.htz-bi{font-size:3.5rem}.htz-bj{line-height:1.4285714285714286em}.htz-bs{flex-grow:0}.htz-bt{flex-shrink:0}.htz-bu{flex-basis:100%}.htz-bv{max-width:100%}.htz-bw{-webkit-box-flex:0}.htz-eb{font-size:2rem}.htz-ec{line-height:1.5em}}@media (max-width: 63.9375em){.htz-ce{flex-grow:0}.htz-cf{flex-shrink:0}.htz-cg{flex-basis:100%}.htz-ch{max-width:100%}.htz-ci{-webkit-box-flex:0}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-hh{margin-top:4rem}}"`;
+exports[`<Slugs /> Render picture element correctly 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-e{background-color:rgba(0,0,0,0)}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-p{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-q{flex-wrap:wrap}.htz-r{list-style:none}.htz-s{justify-content:flex-start}.htz-t{margin-right:-2rem}.htz-u{margin-left:-2rem}.htz-v{flex-direction:row}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:multiple}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{flex-basis:100%}.htz-ag{flex-grow:0}.htz-ah{flex-shrink:0}.htz-ai{padding-left:2rem}.htz-aj{padding-right:2rem}.htz-ak{max-width:100%}.htz-al{-webkit-box-flex:0}.htz-am{flex-grow:1}.htz-bh{-webkit-box-flex:1}.htz-bi{color:#0B7EB5}.htz-bj{font-weight:700}.htz-br{flex-basis:auto}.htz-bs{flex-shrink:1}.htz-cd{padding-bottom:3rem}.htz-cr{background-color:#FFF}.htz-cs{flex-direction:column}.htz-ct{overflow:hidden}.htz-cu{height:100%}.htz-cv{position:relative}.htz-cz{-webkit-box-orient:vertical}.htz-da{flex-wrap:nowrap}.htz-db{margin-right:-0rem}.htz-dc{margin-left:-0rem}.htz-dd{align-content:flex-start}.htz-de{-webkit-box-lines:nowrap}.htz-df{flex-basis:0}.htz-dg{padding-left:0rem}.htz-dh{padding-right:0rem}.htz-di{z-index:1}.htz-dj{height:0}.htz-dk{padding-bottom:100%}.htz-dl{background-color:#EBEBEB}.htz-dm{align-items:center}.htz-dn{-webkit-box-align:center}.htz-do{padding-top:1rem}.htz-dp{padding-bottom:0rem}.htz-dq{text-align:center}.htz-dv{display:inline}.htz-dw{display:block}.htz-dx{color:#787878}.htz-dy{padding-top:2rem}.htz-dz{padding-bottom:2rem}.htz-ea{margin-top:auto}.htz-ef{font-weight:bold}.htz-eg{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-eh{margin-left:1rem}.htz-ej{padding-left:0.5rem}.htz-ek{vertical-align:-0.15em}.htz-el{fill:#FFF}.htz-em{white-space:nowrap}.htz-en{font-size:inherit}.htz-eo{fill:#0B7EB5}.htz-ep{fill:#CCC}.htz-eq{border:0}.htz-er{clip:rect(0 0 0 0)}.htz-es{-webkit-clip-path:inset(50%)}.htz-et{clip-path:inset(50%)}.htz-eu{height:1px}.htz-ev{margin:-1px}.htz-ew{padding:0}.htz-ex{position:absolute}.htz-ey{width:1px}.htz-ez{background-color:transparent}.htz-fa{bottom:0}.htz-fb{left:0}.htz-fc{right:0}.htz-fd{top:0}.htz-fe{z-index:0}.htz-fh{margin-right:-0.5rem}.htz-fi{margin-left:-0.5rem}.htz-fm{padding-right:0.5rem}.htz-gj{padding-bottom:75.05274261603375%}.htz-gy{padding-bottom:74.92795389048992%}.htz-gz{height:auto}@media (max-width: 37.4375em){.htz-c{margin-top:4rem}.htz-l{padding-right:2rem}.htz-m{padding-left:2rem}.htz-an{position:relative}.htz-ao:before{background-color:#0B7EB5}.htz-ap:before{content:\\"\\"}.htz-aq:before{height:1px}.htz-ar:before{position:absolute}.htz-as:before{width:100%}.htz-at:before{right:0}.htz-au:before{top:0}.htz-av{margin-bottom:1rem}.htz-bo{padding-right:1rem}.htz-bp{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-bq{width:100%}.htz-ei{display:none}.htz-fk{margin-top:1rem}.htz-fn{flex-grow:0}.htz-fo{flex-shrink:0}.htz-fp{flex-basis:50%}.htz-fq{max-width:50%}.htz-fr{-webkit-box-flex:0}.htz-fx{flex-direction:column}.htz-fy{-webkit-box-orient:vertical}.htz-fz{-webkit-box-direction:normal}.htz-gk{flex-basis:auto}.htz-gl{flex-grow:1}.htz-gm{-webkit-box-flex:1}.htz-gn{padding-top:1rem}.htz-go{padding-bottom:0rem}.htz-gp{padding-left:1rem}.htz-gv{padding-top:2rem}.htz-gw{padding-bottom:1rem}.htz-he{margin-bottom:2rem}.htz-hf{margin-top:2rem}}@media (min-width: 37.5em){.htz-d{margin-top:8rem}.htz-n{padding-right:4rem}.htz-o{padding-left:4rem}.htz-aw{position:relative}.htz-ax:before{background-color:#0B7EB5}.htz-ay:before{content:\\"\\"}.htz-az:before{height:2px}.htz-ba:before{position:absolute}.htz-bb:before{width:100%}.htz-bc:before{right:0}.htz-bd:before{top:0}.htz-be{padding-bottom:1rem}.htz-fj> * + *{margin-top:4rem}.htz-fs{flex-grow:0}.htz-ft{flex-shrink:0}.htz-fu{flex-basis:100%}.htz-fv{max-width:100%}.htz-fw{-webkit-box-flex:0}.htz-gq{padding-top:1rem}.htz-gr{padding-right:2rem}.htz-gs{padding-bottom:0rem}.htz-gt{padding-left:2rem}.htz-gu{display:none}.htz-gx{padding-top:2rem}.htz-ha{margin-top:4rem}.htz-hb{padding-top:3rem}.htz-hg{margin-bottom:4rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-cj{flex-grow:0}.htz-ck{flex-shrink:0}.htz-cl{flex-basis:41.66666666666667%}.htz-cm{max-width:41.66666666666667%}.htz-cn{-webkit-box-flex:0}.htz-dr{font-size:3.5rem}.htz-ds{line-height:1.4285714285714286em}.htz-ff{flex-basis:58.333333333333336%}.htz-fg{max-width:58.333333333333336%}.htz-gf{flex-basis:42.857142857142854%}.htz-gg{max-width:42.857142857142854%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bm{font-size:3.4285714285714284rem}.htz-bn{line-height:1.1666666666666667em}.htz-by{flex-grow:0}.htz-bz{flex-shrink:0}.htz-ca{flex-basis:83.33333333333334%}.htz-cb{max-width:83.33333333333334%}.htz-cc{-webkit-box-flex:0}.htz-co{flex-basis:50%}.htz-cp{max-width:50%}.htz-dt{font-size:3.857142857142857rem}.htz-du{line-height:1.2962962962962963em}.htz-ed{font-size:2rem}.htz-ee{line-height:1.5em}.htz-gh{flex-basis:56.25%}.htz-gi{max-width:56.25%}.htz-hc{flex-basis:16.666666666666664%}.htz-hd{max-width:16.666666666666664%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-bf{margin-bottom:5rem}.htz-cw{margin-left:auto}.htz-cx{margin-right:auto}.htz-cy{max-width:68rem}.htz-fl{margin-top:4rem}.htz-ga{flex-grow:0}.htz-gb{flex-shrink:0}.htz-gc{flex-basis:33.33333333333333%}.htz-gd{max-width:33.33333333333333%}.htz-ge{-webkit-box-flex:0}}@media (min-width: 64em){.htz-bg{margin-bottom:2rem}.htz-cq{order:1}}@media (max-width: 79.9375em){.htz-bk{font-size:3.5rem}.htz-bl{line-height:1.4285714285714286em}.htz-bt{flex-grow:0}.htz-bu{flex-shrink:0}.htz-bv{flex-basis:100%}.htz-bw{max-width:100%}.htz-bx{-webkit-box-flex:0}.htz-eb{font-size:2rem}.htz-ec{line-height:1.5em}}@media (max-width: 63.9375em){.htz-ce{flex-grow:0}.htz-cf{flex-shrink:0}.htz-cg{flex-basis:100%}.htz-ch{max-width:100%}.htz-ci{-webkit-box-flex:0}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-hh{margin-top:4rem}}"`;

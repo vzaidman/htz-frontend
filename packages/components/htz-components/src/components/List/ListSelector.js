@@ -18,7 +18,7 @@ export default class ListSelector extends React.Component {
   };
 
   state = {
-    view: null,
+    view: 'Hawking',
     turnA: true,
   };
 
@@ -51,6 +51,7 @@ export default class ListSelector extends React.Component {
               <option value="Gamal">Gamal</option>
               <option value="Farnsworth">Farnsworth</option>
               <option value="Fry">Fry</option>
+              <option value="Hawking">Hawking</option>
               <option value="Leela">Leela</option>
               <option value="Leonardo">Leonardo</option>
               <option value="Michelangelo">Michelangelo</option>

@@ -125,7 +125,9 @@ export default function ListViewHeader({
           {title && (
             <FelaComponent
               style={{
-                color: isCommercial ? theme.color('commercial') : theme.color('primary'),
+                color: isCommercial
+                  ? theme.color('commercial')
+                  : theme.color('primary'),
                 fontWeight: 700,
                 extend: [
                   theme.type(2),
@@ -144,7 +146,12 @@ export default function ListViewHeader({
               render={({ className: headerClass, }) => (url ? (
                 <FelaComponent
                   style={{
-                    extend: [ theme.mq({ until: 's', }, {  display: 'flex', width: '100%', }) ],
+                    extend: [
+                      theme.mq(
+                        { until: 's', },
+                        { display: 'flex', width: '100%', }
+                      ),
+                    ],
                   }}
                   render={({ className, }) => (
                     <HtzLink className={className} href={url}>
@@ -197,7 +204,9 @@ export default function ListViewHeader({
                   render="li"
                   key={item.contentId}
                 >
-                  <HtzLink href={item.href}>{item.linkText || item.contentName}</HtzLink>
+                  <HtzLink href={item.href}>
+                    {item.linkText || item.contentName}
+                  </HtzLink>
                   {idx !== extraLinks.length - 1 && (
                     <FelaComponent
                       style={{
@@ -288,6 +297,7 @@ function listViewHeaderStyle({
   return {
     display: 'flex',
     flexDirection: 'row',
+    flexGrow: '1',
     justifyContent: 'flex-start',
     extend: [
       // eslint-disable-next-line space-infix-ops, no-mixed-operators
@@ -300,12 +310,22 @@ function listViewHeaderStyle({
       ),
       theme.mq(
         { until: 's', },
-        borderTop('1px', 0, 'solid', isCommercial ? theme.color('commercial') : theme.color('primary'))
+        borderTop(
+          '1px',
+          0,
+          'solid',
+          isCommercial ? theme.color('commercial') : theme.color('primary')
+        )
       ),
       theme.mq(
         { from: 's', until: isHorizontal ? null : 'l', },
         {
-          ...borderTop('2px', 0, 'solid', isCommercial ? theme.color('commercial') : theme.color('primary')),
+          ...borderTop(
+            '2px',
+            0,
+            'solid',
+            isCommercial ? theme.color('commercial') : theme.color('primary')
+          ),
           paddingBottom: '1rem',
         }
       ),

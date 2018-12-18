@@ -40,6 +40,13 @@ const views = new Map([
     },
   ],
   [
+    'Hawking',
+    {
+      view: () => import('./views/Hawking/Hawking.view.js'),
+      query: () => import('./views/Hawking/Hawking.query.js'),
+    },
+  ],
+  [
     'Leela',
     {
       view: () => import('./views/Leela/Leela.view.js'),
@@ -119,9 +126,7 @@ const views = new Map([
 ]);
 
 // eslint-disable-next-line react/prop-types
-const DefaultComponent = ({ view, }) => (
-  <Debug>{`There is no template for ${view} yet`}</Debug>
-);
+const DefaultComponent = ({ view, }) => <Debug>{`There is no template for ${view} yet`}</Debug>;
 
 const getViews = viewType => {
   const { view: viewPath, query: queryPath, } = views.get(viewType) || {

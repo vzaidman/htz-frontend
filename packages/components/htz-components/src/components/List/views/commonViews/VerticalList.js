@@ -18,21 +18,34 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
-import { isClickTracker, isClickTrackerWrapper, isTeaser, } from '../../utils/validateTeaser';
+import {
+  isClickTracker,
+  isClickTrackerWrapper,
+  isTeaser,
+} from '../../utils/validateTeaser';
 
 type Props = {
   list: ?ListDataType,
-  gaAction: () => void,
-  biAction: ListBiActionType,
+  gaAction: ?() => void,
+  biAction: ?ListBiActionType,
   banners: ?Array<ClickTrackerBannerWrapperType>,
+  title: ?string,
 };
 
 VerticalList.defaultProps = {
   banners: null,
   list: null,
+  title: null,
+  biAction: null,
 };
 
-export default function VerticalList({ list, gaAction, biAction, banners, }: Props) {
+export default function VerticalList({
+  list,
+  gaAction,
+  biAction,
+  banners,
+  title,
+}: Props) {
   const isCommercial: boolean = !!banners;
   const firstItem = banners
     ? banners[0]
@@ -46,86 +59,84 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
       render={theme => (
         <ListView
           disableWrapper
-          miscStyles={isCommercial ? { fontFamily: theme.fontStacks.commercial, } : {}}
+          {...(title ? { marginTop: 0, } : {})}
+          miscStyles={{
+            ...(isCommercial ? { fontFamily: theme.fontStacks.commercial, } : {}),
+          }}
           gridMiscStyles={{ flexDirection: 'column', }}
           sectionMiscStyles={{ display: 'flex', }}
         >
           <GridItem miscStyles={{ flexGrow: '0', }}>
-            {
-              list
-                ? (
-                  <ListViewHeader
-                    url={list.url}
-                    hasTitlePadding
-                    isHorizontal
-                    title={list.title}
-                    backgroundColor={[ 'white', ]}
-                  />
-                )
-                : null
-            }
+            {list || title ? (
+              <ListViewHeader
+                url={list ? list.url : null}
+                hasTitlePadding
+                isHorizontal
+                title={title || (list ? list.title : '')}
+                backgroundColor={[ 'white', ]}
+                isCommercial={isCommercial}
+                miscStyles={{
+                  ...theme.type(0),
+                }}
+              />
+            ) : null}
           </GridItem>
-          <GridItem miscStyles={{ flexGrow: '1', flexBasis: 'auto', }} stretchContent>
-            {firstItem
-              ? isClickTrackerWrapper(firstItem)
-                ? (
-                  <ClickTracker
-                    {...firstItem}
-                    render={(banner: ClickTrackerBannerType) => {
-                      const { contentId, } = banner;
-                      return (
-                        <VerticalListFirstTeaser
-                          key={contentId}
-                          itemData={banner}
-                          biAction={biAction}
-                          lazyLoadImages
-                        />
-                      );
-                    }}
-                  />
-                ) : isTeaser(firstItem)
-                  ? (
-                    <VerticalListFirstTeaser
-                      key={firstItem.contentId}
-                      itemData={firstItem}
-                      biAction={biAction}
-                      lazyLoadImages
-                    />
-                  )
-                  : null
-              : null
-            }
+          <GridItem
+            miscStyles={{ flexGrow: '1', flexBasis: 'auto', }}
+            stretchContent
+          >
+            {firstItem ? (
+              isClickTrackerWrapper(firstItem) ? (
+                <ClickTracker
+                  {...firstItem}
+                  render={(banner: ClickTrackerBannerType) => {
+                    const { contentId, } = banner;
+                    return (
+                      <VerticalListFirstTeaser
+                        key={contentId}
+                        itemData={banner}
+                        biAction={biAction}
+                        lazyLoadImages
+                      />
+                    );
+                  }}
+                />
+              ) : isTeaser(firstItem) ? (
+                <VerticalListFirstTeaser
+                  key={firstItem.contentId}
+                  itemData={firstItem}
+                  biAction={biAction}
+                  lazyLoadImages
+                />
+              ) : null
+            ) : null}
             {items
-              ? items.map((itemData, index) => (
-                isClickTrackerWrapper(itemData)
-                  ? (
-                    <ClickTracker
-                      {...itemData}
-                      render={(banner: ClickTrackerBannerType) => {
-                        const { contentId, } = banner;
-                        return (
-                          <VerticalListTeaser
-                            key={contentId}
-                            itemData={banner}
-                            biAction={biAction}
-                            index={index}
-                            isLast={index >= items.length - 1}
-                          />
-                        );
-                      }}
-                    />
-                  ) : isTeaser(itemData)
-                    ? (
+              ? items.map((itemData, index) => (isClickTrackerWrapper(itemData) ? (
+                <ClickTracker
+                  {...itemData}
+                  render={(banner: ClickTrackerBannerType) => {
+                    const { contentId, } = banner;
+                    return (
                       <VerticalListTeaser
-                        key={itemData.contentId}
-                        itemData={itemData}
+                        key={contentId}
+                        itemData={banner}
                         biAction={biAction}
                         index={index}
                         isLast={index >= items.length - 1}
                       />
-                    )
-                    : null
-              ))
+                    );
+                  }}
+                />
+              ) : isTeaser(itemData) ? (
+                <VerticalListTeaser
+                  key={itemData.contentId}
+                  itemData={itemData}
+                  biAction={biAction}
+                  index={index}
+                  isLast={index >= items.length - 1}
+                />
+              ) : null)
+              )
               : null}
           </GridItem>
         </ListView>
@@ -141,19 +152,27 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
 type FirstTeaserProps = {
   lazyLoadImages: boolean,
   itemData: TeaserDataType | ClickTrackerBannerType,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 VerticalListFirstTeaser.defaultProps = { lazyLoadImages: true, };
 
-function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserProps) {
+function VerticalListFirstTeaser({
+  lazyLoadImages,
+  itemData,
+  biAction,
+}: FirstTeaserProps) {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={itemData}
-          onClick={() => biAction({ index: 0, articleId: itemData.contentId, })}
-          miscStyles={{ flexGrow: '1', }}
+          onClick={
+            biAction
+              ? () => biAction({ index: 0, articleId: itemData.contentId, })
+              : null
+          }
+          miscStyles={{ flexGrow: '1', flexShrink: '0', }}
           gridMiscStyles={{ flexDirection: 'column', }}
           isClickTracker={isClickTracker(itemData)}
         >
@@ -165,7 +184,11 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
           >
             <Image
               lazyLoad={lazyLoadImages}
-              data={isClickTracker(itemData) ? itemData.clicktrackerimage : itemData.image}
+              data={
+                isClickTracker(itemData)
+                  ? itemData.clicktrackerimage
+                  : itemData.image
+              }
               imgOptions={getImageAssets({
                 aspect: 'headline',
                 bps: theme.bps,
@@ -196,7 +219,11 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
             }}
             renderContent={() => (
               <TeaserHeader
-                title={isClickTracker(itemData) ? (itemData.text || '') : itemData.title}
+                title={
+                  isClickTracker(itemData)
+                    ? itemData.text || ''
+                    : itemData.title
+                }
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
                 typeScale={-1}
@@ -221,12 +248,21 @@ VerticalListTeaser.defaultProps = {
   lazyLoadImages: true,
 };
 
-function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalListTeaserProps) {
+function VerticalListTeaser({
+  itemData,
+  biAction,
+  index,
+  isLast,
+}: VerticalListTeaserProps) {
   return (
     <Teaser
       data={itemData}
-      onClick={() => biAction({ index, articleId: itemData.contentId, })}
-      miscStyles={{ flexGrow: '1', }}
+      onClick={
+        biAction
+          ? () => biAction({ index, articleId: itemData.contentId, })
+          : null
+      }
+      miscStyles={{ flexGrow: '1', flexShrink: '0', }}
       gridMiscStyles={{ flexDirection: 'column', }}
       isClickTracker={isClickTracker(itemData)}
     >
@@ -246,12 +282,21 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
               ...(isLast
                 ? {}
                 : {
-                  borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
+                  borderBottom: [
+                    '1px',
+                    1,
+                    'solid',
+                    theme.color('neutral', '-5'),
+                  ],
                 }),
             }}
             renderContent={() => (
               <TeaserHeader
-                title={isClickTracker(itemData) ? (itemData.text || '') : itemData.title}
+                title={
+                  isClickTracker(itemData)
+                    ? itemData.text || ''
+                    : itemData.title
+                }
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
                 typeScale={-1}
