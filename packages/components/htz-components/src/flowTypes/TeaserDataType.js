@@ -17,6 +17,7 @@ export type TeaserDataType = {
   firstParagraph?: ?string,
   hash?: ?string,
   image?: ?ImageDataType,
+  inputTemplate?: string,
   media?: ?ImageDataType | HTMLEmbedDataType | GalleryDataType,
   isPremiumContent?: ?boolean,
   lastUpdate?: ?number,
