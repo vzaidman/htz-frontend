@@ -36,6 +36,8 @@ services:
       - HOSTNAME=www
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
+      - HTZ_GOOGLE_ANALYTICS_ID=UA-589309-3
+      - TM_GOOGLE_ANALYTICS_ID=UA-3574867-1
 
     networks:
       - production

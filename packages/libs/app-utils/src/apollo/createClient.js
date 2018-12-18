@@ -1,9 +1,6 @@
 import { ApolloLink, } from 'apollo-link';
 import { ApolloClient, } from 'apollo-client';
-import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher, } from 'apollo-cache-inmemory';
 import { onError, } from 'apollo-link-error';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
@@ -63,12 +60,16 @@ if (!process.browser) {
 
 function create(initialState, appDefaultState, req) {
   // const graphqlPort = process.env.NODE_ENV === 'production' ? '' : `:${port}`;
-  const hostname = initialState.ROOT_QUERY !== undefined
-    ? initialState.ROOT_QUERY.hostname
-    : req.hostname;
-  const referer = initialState.ROOT_QUERY !== undefined
-    ? initialState.ROOT_QUERY.referer
-    : req.headers.referer;
+  const hostname = initialState.ROOT_QUERY !== undefined ? initialState.ROOT_QUERY.hostname : req.hostname;
+  const referer = initialState.ROOT_QUERY !== undefined ? initialState.ROOT_QUERY.referer : req.headers.referer;
+  // 'UA-39927280-1' and 'UA-589309-8' are the test Google Analytics Ids,
+  // production apps should pass the production id as ENV variable
+  const tmUa = initialState.ROOT_QUERY !== undefined
+    ? initialState.ROOT_QUERY.googleAnalyticsId.tmUa
+    : process.env.TM_GOOGLE_ANALYTICS_ID || 'UA-39927280-1';
+  const htzUa = initialState.ROOT_QUERY !== undefined
+    ? initialState.ROOT_QUERY.googleAnalyticsId.htzUa
+    : process.env.HTZ_GOOGLE_ANALYTICS_ID || 'UA-589309-8';
   const graphqlLink = switchToDomain(hostname, config.get('service.graphql'));
   console.log('the graphql link is: ', graphqlLink);
   const link = new HttpLink({
@@ -88,25 +89,21 @@ function create(initialState, appDefaultState, req) {
     includeExtensions: true,
   });
 
-  const errorLink = onError(
-    ({ response, operation, graphQLErrors, networkError, }) => {
-      if (graphQLErrors) {
-        console.log(
-          `${'[GraphQL error]:'} Operation Name: ${operation.operationName}`
-        );
-        graphQLErrors.map(({ message, locations, path, }) => console.log(
-          `${'[GraphQL error]:'} Message: ${message}, Location: ${locations.map(
-            ({ line, column, }) => `{ line: ${line}, column: ${column} }`
-          )}, Path: ${path}`
-        )
-        );
-      }
-      if (networkError) {
-        console.log(`${'[Network error]:'} ${networkError}`);
-      }
-      if (response) response.errors = null;
+  const errorLink = onError(({ response, operation, graphQLErrors, networkError, }) => {
+    if (graphQLErrors) {
+      console.log(`${'[GraphQL error]:'} Operation Name: ${operation.operationName}`);
+      graphQLErrors.map(({ message, locations, path, }) => console.log(
+        `${'[GraphQL error]:'} Message: ${message}, Location: ${locations.map(
+          ({ line, column, }) => `{ line: ${line}, column: ${column} }`
+        )}, Path: ${path}`
+      )
+      );
     }
-  );
+    if (networkError) {
+      console.log(`${'[Network error]:'} ${networkError}`);
+    }
+    if (response) response.errors = null;
+  });
 
   const inMemoryCache = new InMemoryCache({
     fragmentMatcher: customFragmentMatcher,
@@ -144,6 +141,12 @@ function create(initialState, appDefaultState, req) {
       user,
       // ids of representedContent already rendered by a list on the page
       listDuplicationIds: [],
+
+      googleAnalyticsId: {
+        tmUa,
+        htzUa,
+        __typename: 'GoogleAnalyticsId',
+      },
     },
     resolvers: {
       Mutation: {
