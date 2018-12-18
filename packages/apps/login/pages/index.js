@@ -2,7 +2,7 @@
 
 import React, { Fragment, } from 'react';
 import { ApolloConsumer, } from 'react-apollo';
-import { GoogleAnalytics, EventTracker, Footer, } from '@haaretz/htz-components';
+import { GoogleAnalytics, EventTracker, Footer, UserDispenser, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { FelaTheme, } from 'react-fela';
 import Header from '../layouts/Header';
@@ -33,28 +33,35 @@ const Index = () => (
             <FelaTheme
               render={theme => (
                 <Fragment>
-                  <EventTracker>
-                    {({ biAction, gaAction, gaMapper, }) => (
-                      <PageWrapper>
-                        <Header />
-                        <ContentWrapper>
-                          <FlowDispenser
-                            render={({ getFlowByData, }) => (
-                              <IndexForm
-                                client={client}
-                                getFlowByData={getFlowByData}
-                                theme={theme}
-                                biAction={biAction}
-                                gaAction={gaAction}
+                  
+                  <UserDispenser
+                    render={({ isLoggedIn, user, }) => (
+                      <EventTracker>
+                        {({ biAction, gaAction, gaMapper, }) => (
+                          <PageWrapper>
+                            <Header />
+                            <ContentWrapper>
+                              <FlowDispenser
+                                render={({ getFlowByData, }) => (
+                                  <IndexForm
+                                    client={client}
+                                    getFlowByData={getFlowByData}
+                                    theme={theme}
+                                    biAction={biAction}
+                                    gaAction={gaAction}
+                                    userDispenser={{ isLoggedIn, user, }}
+                                  />
+                                )}
                               />
-                            )}
-                          />
-                        </ContentWrapper>
-                        <MobileFooterSpacer />
-                        <Footer contentId="7.1283189" />
-                      </PageWrapper>
+                            </ContentWrapper>
+                            <MobileFooterSpacer />
+                            <Footer contentId="7.1283189" />
+                          </PageWrapper>
+                        )}
+                      </EventTracker>
                     )}
-                  </EventTracker>
+                  />
+                  
                 </Fragment>
               )}
             />
