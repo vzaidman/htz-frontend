@@ -103,9 +103,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       >
                         <address
                           className="htz-dv htz-ef"
-                        >
-                          אורי פינק
-                        </address>
+                        />
                         
                         <span>
                            | 
@@ -328,9 +326,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           >
                             <address
                               className="htz-dv htz-ef"
-                            >
-                              אורי פינק
-                            </address>
+                            />
                             
                             <span>
                                | 
@@ -524,9 +520,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                           >
                             <address
                               className="htz-dv htz-ef"
-                            >
-                              אורי פינק
-                            </address>
+                            />
                             
                             <span>
                                | 
@@ -624,9 +618,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       >
                         <address
                           className="htz-dv htz-ef"
-                        >
-                          אורי פינק
-                        </address>
+                        />
                         
                         <span>
                            | 

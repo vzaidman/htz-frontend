@@ -14,6 +14,11 @@ import LayoutContainer from '../PageLayout/LayoutContainer';
 import LayoutRow from '../PageLayout/LayoutRow';
 import Section from '../AutoLevels/Section';
 
+type RowSpacingOpts = { amount: number, nUp?: number, };
+type RowSpacingProp =
+  | RowSpacingOpts
+  | ComponentPropResponsiveObject<RowSpacingOpts>[];
+
 type ListViewWrapperPropTypes = {
   attrs: ?attrFlowType,
   children: ?React.Node,
@@ -35,6 +40,7 @@ type ListViewWrapperPropTypes = {
 
 type ListViewPropTypes = {
   ...ListViewWrapperPropTypes,
+  rowSpacing: ?RowSpacingProp,
   gridMiscStyles: ?StyleProps,
   gutter:
     | ?number
@@ -63,6 +69,7 @@ const defaultProps = {
 
 ListView.defaultProps = {
   ...defaultProps,
+  rowSpacing: null,
   gridMiscStyles: null,
   gutter: null,
 };
@@ -76,6 +83,7 @@ export default function ListView({
   innerBackgroundColor,
   outerBackgroundColor,
   miscStyles,
+  rowSpacing,
   sectionMiscStyles,
   gridMiscStyles,
 }: ListViewPropTypes): React.Node {
@@ -91,7 +99,7 @@ export default function ListView({
         sectionMiscStyles,
       }}
     >
-      <Grid gutter={gutter} miscStyles={gridMiscStyles}>
+      <Grid gutter={gutter} rowSpacing={rowSpacing} miscStyles={gridMiscStyles}>
         {children}
       </Grid>
     </ListViewWrapper>
@@ -112,7 +120,10 @@ function ListViewWrapper({
 }: ListViewWrapperPropTypes): React.Node {
   return disableWrapper ? (
     <SectionComponent
-      sectionMiscStyles={sectionMiscStyles}
+      sectionMiscStyles={{
+        ...(sectionMiscStyles || {}),
+        ...(marginTop ? { marginTop, } : {}),
+      }}
       disableWrapper={disableWrapper}
       attrs={attrs}
     >
