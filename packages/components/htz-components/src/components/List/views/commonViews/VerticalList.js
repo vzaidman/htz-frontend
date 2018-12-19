@@ -20,8 +20,7 @@ import getImageAssets from '../../../../utils/getImageAssets';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 
 type Props = {
-  list: ListDataType,
-  listId: string,
+  list: ?ListDataType,
   gaAction: () => void,
   biAction: ListBiActionType,
   banners: ?Array<ClickTrackerBannerWrapperType>,
@@ -29,16 +28,17 @@ type Props = {
 
 VerticalList.defaultProps = {
   banners: null,
+  list: null,
 };
 
-export default function VerticalList({ list, listId, gaAction, biAction, banners, }: Props) {
+export default function VerticalList({ list, gaAction, biAction, banners, }: Props) {
   const isCommercial: boolean = !!banners;
   const firstItem = banners
     ? banners[0]
-    : list.items && list.items.length > 0 && list.items[0];
+    : list && list.items && list.items.length > 0 && list.items[0];
   const items = banners
     ? banners.slice(1)
-    : list.items && list.items.length > 1 && list.items.slice(1);
+    : list && list.items && list.items.length > 1 && list.items.slice(1);
 
   return (
     <FelaTheme
@@ -50,13 +50,19 @@ export default function VerticalList({ list, listId, gaAction, biAction, banners
           sectionMiscStyles={{ display: 'flex', }}
         >
           <GridItem miscStyles={{ flexGrow: '0', }}>
-            <ListViewHeader
-              url={list.url}
-              hasTitlePadding
-              isHorizontal
-              title={list.title}
-              backgroundColor={[ 'white', ]}
-            />
+            {
+              list
+                ? (
+                  <ListViewHeader
+                    url={list.url}
+                    hasTitlePadding
+                    isHorizontal
+                    title={list.title}
+                    backgroundColor={[ 'white', ]}
+                  />
+                )
+                : null
+            }
           </GridItem>
           <GridItem miscStyles={{ flexGrow: '1', flexBasis: 'auto', }} stretchContent>
             {firstItem
