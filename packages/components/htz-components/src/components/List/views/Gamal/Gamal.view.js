@@ -1,19 +1,10 @@
 // @flow
-import { FelaTheme, } from 'react-fela';
-import * as React from 'react';
+import React from 'react';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
-import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
-import GridItem from '../../../Grid/GridItem';
-import Image from '../../../Image/Image';
-import ListView from '../../../ListView/ListView.js';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
-import Teaser from '../../../Teaser/Teaser';
-import TeaserContent from '../../../TeaserContent/TeaserContent';
-import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
-import getImageAssets from '../../../../utils/getImageAssets';
+
+import VerticalList from '../commonViews/VerticalList';
 
 type Props = {
   list: ListDataType,
@@ -22,165 +13,8 @@ type Props = {
   biAction: ListBiActionType,
 };
 
-export default function Gamal({ list, listId, gaAction, biAction, }: Props) {
-  const firstItem = list.items && list.items.length > 0 && list.items[0];
-  const items = list.items && list.items.length > 1 && list.items.slice(1);
-  // const isCommercial = firstItem && firstItem.inputTemplate === 'com.polobase.ClickTrackerBannerElement';
-
+export default function Gamal(props: Props) {
   return (
-    <ListView
-      disableWrapper
-      gridMiscStyles={{ flexDirection: 'column', }}
-      sectionMiscStyles={{ display: 'flex', }}
-    >
-      <GridItem miscStyles={{ flexGrow: '0', }}>
-        <ListViewHeader
-          url={list.url}
-          hasTitlePadding
-          isHorizontal
-          title={list.title}
-          backgroundColor={[ 'white', ]}
-        />
-      </GridItem>
-      <GridItem miscStyles={{ flexGrow: '1', flexBasis: 'auto', }} stretchContent>
-        {firstItem ? (
-          <GamalFirstTeaser
-            key={firstItem.contentId}
-            itemData={firstItem}
-            biAction={biAction}
-            lazyLoadImages
-          />
-        ) : null}
-        {items
-          ? items.map((itemData, index) => (
-            <GamalTeaser
-              key={itemData.contentId}
-              itemData={itemData}
-              biAction={biAction}
-              index={index}
-              isLast={index >= items.length - 1}
-            />
-          ))
-          : null}
-      </GridItem>
-    </ListView>
-  );
-}
-
-// /////////////////////////////////////////////////////////////////////
-//                              TEASERS                               //
-// /////////////////////////////////////////////////////////////////////
-
-type FirstTeaserProps = {
-  lazyLoadImages: boolean,
-  itemData: TeaserDataType,
-  biAction: ListBiActionType,
-};
-
-GamalFirstTeaser.defaultProps = { lazyLoadImages: true, };
-
-function GamalFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserProps) {
-  return (
-    <FelaTheme
-      render={theme => (
-        <Teaser
-          data={itemData}
-          onClick={() => biAction({ index: 0, articleId: itemData.contentId, })}
-          miscStyles={{ flexGrow: '1', }}
-          gridMiscStyles={{ flexDirection: 'column', }}
-        >
-          <TeaserMedia data={itemData} width={1} miscStyle={{ flexShrink: '0', width: '100%', }}>
-            <Image
-              lazyLoad={lazyLoadImages}
-              data={itemData.image}
-              imgOptions={getImageAssets({
-                aspect: 'headline',
-                bps: theme.bps,
-                sizes: [
-                  { from: 'xl', size: '295px', },
-                  { from: 'l', size: '238', },
-                  { from: 'm', size: '372', },
-                  { from: 's', size: '288', },
-                  { size: 'calc(100vw - 24px)', },
-                ],
-                widths: [ 744, 372, 295, 288, 238, ],
-              })}
-            />
-          </TeaserMedia>
-          <TeaserContent
-            width={1}
-            data={itemData}
-            padding={[ 1, 0, ]}
-            gridItemMiscStyles={{
-              flexBasis: 'auto',
-              flexGrow: 1,
-              paddingInlineEnd: '1rem',
-              paddingInlineStart: '1rem',
-            }}
-            miscStyles={{
-              flexGrow: 1,
-              borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
-            }}
-            renderContent={data => (
-              <TeaserHeader {...data} offset={1} typeScale={-1} kickerTypeScale={-1} />
-            )}
-          />
-        </Teaser>
-      )}
-    />
-  );
-}
-
-type GamalTeaserProps = FirstTeaserProps & {
-  index: number,
-  isLast: boolean,
-};
-
-GamalTeaser.defaultProps = {
-  isLast: false,
-  isStrong: false,
-  lazyLoadImages: false,
-};
-
-function GamalTeaser({ itemData, biAction, index, isLast, }: GamalTeaserProps) {
-  return (
-    <Teaser
-      data={itemData}
-      onClick={() => biAction({ index, articleId: itemData.contentId, })}
-      miscStyles={{ flexGrow: '1', }}
-      gridMiscStyles={{ flexDirection: 'column', }}
-    >
-      <FelaTheme
-        render={theme => (
-          <TeaserContent
-            data={itemData}
-            padding={[ 1, 0, ]}
-            gridItemMiscStyles={{
-              flexBasis: 'auto',
-              flexGrow: 1,
-              paddingInlineEnd: '1rem',
-              paddingInlineStart: '1rem',
-            }}
-            miscStyles={{
-              flexGrow: 1,
-              ...(isLast
-                ? {}
-                : {
-                  borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
-                }),
-            }}
-            renderContent={data => (
-              <TeaserHeader
-                {...data}
-                offset={1}
-                typeScale={-1}
-                kickerTypeScale={-1}
-                miscStyles={{ fontWeight: '400', }}
-              />
-            )}
-          />
-        )}
-      />
-    </Teaser>
+    <VerticalList {...props} />
   );
 }

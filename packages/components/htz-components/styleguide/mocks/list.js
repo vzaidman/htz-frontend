@@ -34,6 +34,7 @@ export default (root, { listId, }) => {
       return ZombieMock;
     case 'Leonardo':
     case 'Donatello':
+    case 'Michelangelo':
       return LeonardoMock;
     default:
       return DefaultMock;
