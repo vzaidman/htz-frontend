@@ -81,6 +81,7 @@ export default {
         contentName: 'איור של סטן לי ',
       },
       representedContent: '1.6652485',
+      inputTemplate: 'com.tm.TeaserData',
       publishDate: 1542118855325,
       title: 'תודה על הכל, סטן לי. היית שחצן, מהפכן וגיבור ילדותי',
       titleMobile: 'תודה על הכל, סטן לי. היית שחצן, מהפכן וגיבור ילדותי',
@@ -88,7 +89,7 @@ export default {
       rank: 4,
       authors: [
         {
-          name: 'אורי פינק',
+          contentName: 'אורי פינק',
         },
       ],
     },
@@ -171,6 +172,7 @@ export default {
         contentName: 'אוטובוס נ"ט',
       },
       representedContent: '1.6652020',
+      inputTemplate: 'com.tm.TeaserData',
       publishDate: 1542059820867,
       title:
         'יותר מ-300 רקטות ופצמ"רים נורו מעזה ליישובי הדרום; צה"ל תקף עשרות יעדים ברצועה',
@@ -179,7 +181,7 @@ export default {
       rank: 3,
       authors: [
         {
-          name: 'אורי פינק',
+          contentName: 'אורי פינק',
         },
       ],
     },
@@ -287,6 +289,7 @@ export default {
         contentName: "מאוויס צ'יבוטה",
       },
       representedContent: '1.6651560',
+      inputTemplate: 'com.tm.TeaserData',
       publishDate: 1542086854181,
       title:
         'משלחת של האו"ם ומצרים תגיע מחר לעזה; דיווח: הפלסטינים נענו לפנייה מצרית להפסקת אש',
@@ -294,13 +297,14 @@ export default {
       commentsCounts: 78,
       authors: [
         {
-          name: 'אורי פינק',
+          contentName: 'אורי פינק',
         },
       ],
     },
     {
       path: 'http://pre.haaretz.co.il/sport/tapina/.premium-1.6652558',
       representedContent: '1.6652558',
+      inputTemplate: 'com.tm.TeaserData',
       publishDate: 1542124800516,
       title:
         'צ\'יבוטה: "כולם שאלו למה אני בוכה, אבל מי שבאמת מכיר אותי יודע שזה אני"',
@@ -309,7 +313,7 @@ export default {
       rank: 5,
       authors: [
         {
-          name: 'אורי פינק',
+          contentName: 'אורי פינק',
         },
       ],
     },

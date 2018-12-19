@@ -12,6 +12,5 @@ export type AuthorDataType = {
   gplus?: string,
   image?: ImageDataType,
   hasEmailAlerts?: boolean,
-  name: string,
   url?: string,
 };

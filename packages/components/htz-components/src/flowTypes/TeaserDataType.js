@@ -21,6 +21,7 @@ export type TeaserDataType = {
   isPremiumContent?: ?boolean,
   lastUpdate?: ?number,
   leadText?: ?string,
+  inputTemplate: 'com.tm.TeaserData',
   mediaFlags?: { video?: boolean, html_embed?: boolean, gallery?: boolean, },
   path: string,
   publishDate?: ?number,
@@ -34,5 +35,4 @@ export type TeaserDataType = {
   titleMobile?: ?string,
   tixwise?: ?string,
   __typename?: string,
-  kind: 'teaser',
 };

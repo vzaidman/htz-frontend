@@ -135,11 +135,17 @@ export default function Mom({
               ],
             }}
           >
-            <TeaserWithImg1
-              data={items[0]}
-              index={0}
-              {...{ biAction, lazyLoadImages, }}
-            />
+            {
+              items[0].inputTemplate === 'com.tm.TeaserData'
+                ? (
+                  <TeaserWithImg1
+                    data={items[0]}
+                    index={0}
+                    {...{ biAction, lazyLoadImages, }}
+                  />
+                )
+                : null
+            }
           </GridItem>
 
           <GridItem
@@ -176,13 +182,25 @@ export default function Mom({
                   ],
                 }}
               >
-                <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
+                {
+                  items[1].inputTemplate === 'com.tm.TeaserData'
+                    ? (
+                      <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
+                    )
+                    : null
+                }
               </GridItem>
               <GridItem
                 stretchContent
                 width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
               >
-                <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
+                {
+                  items[2].inputTemplate === 'com.tm.TeaserData'
+                    ? (
+                      <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
+                    )
+                    : null
+                }
               </GridItem>
             </Grid>
           </GridItem>
@@ -198,11 +216,17 @@ export default function Mom({
               order: [ { from: 'l', until: 'xl', value: 1, }, ],
             }}
           >
-            <TeaserWithImg2
-              data={items[3]}
-              index={3}
-              {...{ biAction, lazyLoadImages, }}
-            />
+            {
+              items[3].inputTemplate === 'com.tm.TeaserData'
+                ? (
+                  <TeaserWithImg2
+                    data={items[3]}
+                    index={3}
+                    {...{ biAction, lazyLoadImages, }}
+                  />
+                )
+                : null
+            }
           </GridItem>
           <GridItem
             stretchContent
@@ -216,7 +240,13 @@ export default function Mom({
               marginBottom: [ { until: 's', value: '1rem', }, ],
             }}
           >
-            <TextualTeaser data={items[4]} {...{ biAction, index: 4, }} />
+            {
+              items[4].inputTemplate === 'com.tm.TeaserData'
+                ? (
+                  <TextualTeaser data={items[4]} {...{ biAction, index: 4, }} />
+                )
+                : null
+            }
           </GridItem>
         </Grid>
       </GridItem>

@@ -1,6 +1,6 @@
 /* eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved */
 import gql from 'graphql-tag';
-import { dfpBanner, imagesInTeaser, author, } from '@haaretz/app-utils';
+import { dfpBanner, imagesInTeaser, } from '@haaretz/app-utils';
 
 export default gql`
   query ZombieQuery($listId: String!, $history: [ID]) {
@@ -27,9 +27,10 @@ export default gql`
           titleMobile
           commentsCounts
           lastUpdate
+          inputTemplate
           authors {
-            ... on AuthorObject {
-              name
+            ... on Author {
+              contentName
             }
           }
         }
@@ -41,7 +42,6 @@ export default gql`
       }
     }
   }
-  ${author}
   ${imagesInTeaser}
   ${dfpBanner}
 `;

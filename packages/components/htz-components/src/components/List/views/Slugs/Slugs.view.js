@@ -88,7 +88,13 @@ export default function Slugs({
                 ]}
                 miscStyles={{ order: [ { from: 'l', value: 1, }, ], }}
               >
-                <MainTeaser data={items[0]} {...{ lazyLoadImages, biAction, }} />
+                {
+                  items[0].inputTemplate === 'com.tm.TeaserData'
+                    ? (
+                      <MainTeaser data={items[0]} {...{ lazyLoadImages, biAction, }} />
+                    )
+                    : null
+                }
               </GridItem>
 
               {/* Secondary teasers */}
@@ -100,17 +106,29 @@ export default function Slugs({
                   { from: 'xl', value: 6 / 12, },
                 ]}
               >
-                <TwoUp
-                  data1={items[1]}
-                  data2={items[2]}
-                  {...{ lazyLoadImages, biAction, }}
-                />
+                {
+                  items[1].inputTemplate === 'com.tm.TeaserData' && items[2].inputTemplate === 'com.tm.TeaserData'
+                    ? (
+                      <TwoUp
+                        data1={items[1]}
+                        data2={items[2]}
+                        {...{ lazyLoadImages, biAction, }}
+                      />
+                    )
+                    : null
+                }
 
                 {/* Textual Teaser */}
-                <TextualTeaser
-                  data={items[3]}
-                  {...{ lazyLoadImages, biAction, }}
-                />
+                {
+                  items[3].inputTemplate === 'com.tm.TeaserData'
+                    ? (
+                      <TextualTeaser
+                        data={items[3]}
+                        {...{ lazyLoadImages, biAction, }}
+                      />
+                    )
+                    : null
+                }
               </GridItem>
             </Grid>
           </GridItem>

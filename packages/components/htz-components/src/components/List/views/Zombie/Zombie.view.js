@@ -9,7 +9,7 @@ import {
 import * as React from 'react';
 import config from 'config';
 
-import type { DfpDataType, } from '../../../../flowTypes/DfpDataType';
+import type { DfpBannerType, } from '../../../../flowTypes/DfpBannerType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
@@ -43,7 +43,7 @@ type StocksType = {
 };
 
 type Props = {
-  list: ListDataType & { dfp: Array<DfpDataType>, },
+  list: ListDataType & { dfp: Array<DfpBannerType>, },
   gaAction: () => void,
   biAction: ListBiActionType,
   lazyLoadImages: boolean,
@@ -140,11 +140,15 @@ export default class Zombie extends React.Component<Props, State> {
     let dfp;
 
     if (config.has('appName') && config.get('appName') === 'styleguide') {
-      // eslint-disable-next-line  no-underscore-dangle
-      items = list.items.filter(item => item.__typename === 'TeaserInList');
-      /* eslint-disable  no-underscore-dangle */
+      items = list.items.filter(item => (
+        // eslint-disable-next-line  no-underscore-dangle
+        item.inputTemplate === 'com.tm.TeaserData' && item.__typename === 'TeaserInList'
+      ));
       dfp = list.dfp
-        ? list.dfp.filter(item => item.__typename === 'DfpBanner')
+        ? list.dfp.filter(item => (
+          /* eslint-disable  no-underscore-dangle */
+          item.inputTemplate === 'com.polobase.DfpBannerElement' && item.__typename === 'DfpBanner'
+        ))
         : null;
       /* eslint-enable  no-underscore-dangle */
     }
@@ -464,11 +468,17 @@ export default class Zombie extends React.Component<Props, State> {
                         { from: 'xl', value: 3 / 6, },
                       ]}
                     >
-                      <MainTeaser
-                        data={items[0]}
-                        biAction={biAction}
-                        lazyLoadImages={lazyLoadImages}
-                      />
+                      {
+                        items[0].inputTemplate === 'com.tm.TeaserData'
+                          ? (
+                            <MainTeaser
+                              data={items[0]}
+                              biAction={biAction}
+                              lazyLoadImages={lazyLoadImages}
+                            />
+                          )
+                          : null
+                      }
                     </GridItem>
                     <GridItem
                       width={[
@@ -489,21 +499,39 @@ export default class Zombie extends React.Component<Props, State> {
                           { from: 's', value: { amount: 4, }, },
                         ]}
                       >
-                        <TextualTeaser
-                          data={items[1]}
-                          index={1}
-                          biAction={biAction}
-                        />
-                        <TextualTeaser
-                          data={items[2]}
-                          index={2}
-                          biAction={biAction}
-                        />
-                        <TextualTeaser
-                          data={items[3]}
-                          index={3}
-                          biAction={biAction}
-                        />
+                        {
+                          items[1].inputTemplate === 'com.tm.TeaserData'
+                            ? (
+                              <TextualTeaser
+                                data={items[1]}
+                                index={1}
+                                biAction={biAction}
+                              />
+                            )
+                            : null
+                        }
+                        {
+                          items[2].inputTemplate === 'com.tm.TeaserData'
+                            ? (
+                              <TextualTeaser
+                                data={items[2]}
+                                index={2}
+                                biAction={biAction}
+                              />
+                            )
+                            : null
+                        }
+                        {
+                          items[3].inputTemplate === 'com.tm.TeaserData'
+                            ? (
+                              <TextualTeaser
+                                data={items[3]}
+                                index={3}
+                                biAction={biAction}
+                              />
+                            )
+                            : null
+                        }
                       </Grid>
                     </GridItem>
                   </Grid>
@@ -526,7 +554,13 @@ export default class Zombie extends React.Component<Props, State> {
                       height: [ { until: 's', value: '250px', }, ],
                     }}
                   >
-                    <GeneralAdSlot {...dfp[0]} />
+                    {
+                      dfp[0].inputTemplate === 'com.polobase.DfpBannerElement'
+                        ? (
+                          <GeneralAdSlot {...dfp[0]} />
+                        )
+                        : null
+                    }
                   </GridItem>
                 ) : null}
               </Grid>
@@ -542,7 +576,13 @@ export default class Zombie extends React.Component<Props, State> {
                   ],
                 }}
               >
-                <GeneralAdSlot {...dfp[0]} />
+                {
+                  dfp[0].inputTemplate === 'com.polobase.DfpBannerElement'
+                    ? (
+                      <GeneralAdSlot {...dfp[0]} />
+                    )
+                    : null
+                }
               </GridItem>
             ) : null}
           </ListView>

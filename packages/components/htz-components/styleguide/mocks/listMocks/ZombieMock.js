@@ -68,6 +68,7 @@ export default {
       },
       contentId: '7.7871808',
       representedContent: '1.6724526',
+      inputTemplate: 'com.tm.TeaserData',
       title: 'במקום הגנת סייבר: "מריונטה של השב"כ" ב-200 מיליון שקל',
       path: 'https://www.haaretz.co.il/news/politics/.premium-1.6724526',
       titleMobile:
@@ -276,6 +277,7 @@ export default {
       },
       contentId: '7.7871816',
       representedContent: '1.6723848',
+      inputTemplate: 'com.tm.TeaserData',
       title:
         'מהקונספירציות חובקות העולם של טראמפ אפילו מנהיגים מתים לא חומקים2',
       path: 'https://www.haaretz.co.il/news/world/america/.premium-1.6723848',
@@ -437,6 +439,7 @@ export default {
       },
       contentId: '7.7871765',
       representedContent: '1.6722139',
+      inputTemplate: 'com.tm.TeaserData',
       exclusive: 'AAAAAAA',
       title: '"הגעתי לגיל שבו אבא שלי נפטר. אני לא יכול להתחמק מהמחשבות"3',
       path: 'https://www.haaretz.co.il/magazine/panim/1.6722139',
@@ -519,6 +522,7 @@ export default {
       },
       contentId: '7.7871789',
       representedContent: '1.6720474',
+      inputTemplate: 'com.tm.TeaserData',
       title:
         'המלך יוצג לראווה בשנה הבאה: למה כל העולם ממתין לסרט שהוא כבר ראה4',
       path:
@@ -590,6 +594,7 @@ export default {
       },
       contentId: '7.7871765',
       representedContent: '1.6722139',
+      inputTemplate: 'com.tm.TeaserData',
       title: '"הגעתי לגיל שבו אבא שלי נפטר. אני לא יכול להתחמק מהמחשבו"5',
       path: 'https://www.haaretz.co.il/magazine/panim/1.6722139',
       titleMobile: '"הגעתי לגיל שבו אבא שלי נפטר. אני לא יכול להתחמק מהמחשבות"',

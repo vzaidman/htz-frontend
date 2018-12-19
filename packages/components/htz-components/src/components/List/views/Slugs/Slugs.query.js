@@ -20,6 +20,7 @@ export default gql`
           publishDate
           lastUpdate
           rank
+          inputTemplate
           authors {
             ... on Author {
               contentName

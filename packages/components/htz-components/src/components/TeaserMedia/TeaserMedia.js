@@ -78,8 +78,8 @@ export default function TeaserMedia({
               children
             ) : (
               <HtzLink
-                href={data.kind === 'clickTrackerBanner' ? data.link : data.path}
-                target={data.kind === 'clickTrackerBanner' ? data.linkTarget : null}
+                href={data.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? data.link : data.path}
+                target={data.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? data.linkTarget : null}
                 attrs={{ tabIndex: -1, }}
               >
                 {children}

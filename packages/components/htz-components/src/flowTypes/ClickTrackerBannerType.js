@@ -18,5 +18,4 @@ export type ClickTrackerBannerType = {
   inputTemplate: 'com.polobase.ClickTrackerBannerElement',
   contentId: string,
   contentName: string,
-  kind: 'clickTrackerBanner',
 }

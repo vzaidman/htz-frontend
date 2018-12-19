@@ -1,9 +1,9 @@
 // @flow
 
-import type { ClickTrackerBannerType } from './ClickTrackerBannerType';
+import type { ClickTrackerBannerType, } from './ClickTrackerBannerType';
 
 export type ClickTrackerBannerWrapperType = {
-  inputTemplate: string,
+  inputTemplate: 'com.polobase.ClickTrackerBannersWrapper',
   contentName: string,
   contentId: string,
   totalPercentage: number,

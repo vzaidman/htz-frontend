@@ -87,6 +87,7 @@ export default {
           'Jerusalem district police commander Maj. Gen. Yoram Halevy on his way to the the Western Wall',
       },
       representedContent: '1.6651460',
+      inputTemplate: 'com.tm.TeaserData',
       contentId: '1.6651460',
       title:
         'Senior police officials foiled appointment of potential new chief, Israeli top cop says',
@@ -97,6 +98,7 @@ export default {
       path:
         'http://pre.haaretz.com/israel-news/.premium-israeli-health-ministry-allows-pharmacies-doctors-to-access-cannabis-market-1.6651450',
       representedContent: '1.6651450',
+      inputTemplate: 'com.tm.TeaserData',
       contentId: '1.6651450',
       title: 'Israeli Health Ministry allows pharmacies, doctors to access cannabis market',
       titleMobile: 'Israeli Health Ministry allows pharmacies, doctors to access cannabis market',
@@ -104,6 +106,7 @@ export default {
     {
       path: '/science/biology/.premium-1.6651436',
       representedContent: '1.6651436',
+      inputTemplate: 'com.tm.TeaserData',
       contentId: '1.6651436',
       title: 'חוקרים גילו מתי נטשו הנמלים את הבשר לטובת דיאטה צמחונית',
       titleMobile: 'חוקרים גילו מתי נטשו הנמלים את הבשר לטובת דיאטה צמחונית',
