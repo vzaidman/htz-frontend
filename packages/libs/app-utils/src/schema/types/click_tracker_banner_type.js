@@ -29,10 +29,6 @@ const ClickTrackerBanner = new GraphQLObjectType({
     minRange: { type: GraphQLInt, },
     maxRange: { type: GraphQLInt, },
     chance: { type: GraphQLFloat, },
-    kind: {
-      type: GraphQLString,
-      resolve: () => 'clickTrackerBanner',
-    },
   }),
 });
 

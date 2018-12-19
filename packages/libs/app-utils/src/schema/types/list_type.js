@@ -14,7 +14,12 @@ import TeaserInListType from './teaser_in_list_type';
 import ClickTrackerWrapperType from './click_tracker_banner_wrapper_type';
 import LinkType from './link_type';
 import MarketingTeaserType from './marketing_teaser_type';
-import getSchema from '../getSchema';
+
+const types = new Map([
+  [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapperType, ],
+  [ 'com.polobase.DfpBannerElement', DfpBanner, ],
+  [ 'com.tm.TeaserData', TeaserInListType, ],
+]);
 
 const List = new GraphQLObjectType({
   name: 'List',
@@ -40,10 +45,8 @@ const List = new GraphQLObjectType({
             ClickTrackerWrapperType,
             DfpBanner,
           ],
-          resolveType: value => (value.inputTemplate
-            ? getSchema(value.inputTemplate) || Content
-            : TeaserInListType),
-        })
+          resolveType: value => types.get(value.inputTemplate) || Content,
+        }),
       ),
     },
   }),

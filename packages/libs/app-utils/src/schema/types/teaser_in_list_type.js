@@ -57,9 +57,9 @@ const TeaserInListType = new GraphQLObjectType({
     relatedArticles: {
       type: new GraphQLList(relatedArticle),
     },
-    kind: {
+    inputTemplate: {
       type: GraphQLString,
-      resolve: () => 'teaser',
+      resolve: () => 'com.tm.TeaserData',
     },
   }),
 });

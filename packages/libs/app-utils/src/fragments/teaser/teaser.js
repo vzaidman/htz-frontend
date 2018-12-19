@@ -55,7 +55,7 @@ export const teaserForMom = gql`
     path
     titleMobile
     commentsCounts
-    kind
+    inputTemplate
   }
   ${imagesInTeaser}
 `;
@@ -69,6 +69,7 @@ export const teaserForGamal = gql`
     title
     titleMobile
     path
+    inputTemplate
   }
   ${imageInTeaser}
 `;
@@ -100,7 +101,7 @@ export default gql`
       ...Author
     }
     ...Image
-    kind
+    inputTemplate
   }
   ${author}
   ${imageInTeaser}

@@ -19,7 +19,6 @@ export default gql`
     minRange
     maxRange
     chance
-    kind
   }
   ${clicktrackerImage}
 `;
