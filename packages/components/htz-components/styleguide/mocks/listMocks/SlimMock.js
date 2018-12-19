@@ -341,6 +341,7 @@ export default {
       path: 'https://www.haaretz.co.il/news/politics/.premium-1.6724526',
       titleMobile: 'פסטיבל חובבי הווספות השנתי באינדונזיה',
       media: gallery,
+      inputTemplate: 'com.tm.TeaserData',
     },
     {
       image: {
@@ -449,6 +450,7 @@ export default {
       path: 'https://www.haaretz.co.il/news/world/america/.premium-1.6723848',
       titleMobile: 'מהקונספירציות חובקות העולם של טראמפ אפילו מנהיגים מתים לא חומקים',
       media: gallery,
+      inputTemplate: 'com.tm.TeaserData',
     },
     {
       image: {
@@ -509,6 +511,7 @@ export default {
       path: 'https://www.haaretz.co.il/magazine/panim/1.6722139',
       titleMobile: '"הגעתי לגיל שבו אבא שלי נפטר. אני לא יכול להתחמק מהמחשבות"',
       media: gallery,
+      inputTemplate: 'com.tm.TeaserData',
     },
     {
       image: {
@@ -581,6 +584,7 @@ export default {
       path: 'https://www.haaretz.co.il/gallery/cinema/.premium-MAGAZINE-1.6720474',
       titleMobile: 'המלך יוצג לראווה בשנה הבאה: למה כל העולם ממתין לסרט שהוא כבר ראה',
       media: gallery,
+      inputTemplate: 'com.tm.TeaserData',
     },
   ],
 

@@ -20,6 +20,7 @@ export default gql`
           title
           path
           titleMobile
+          inputTemplate
         }
       }
     }

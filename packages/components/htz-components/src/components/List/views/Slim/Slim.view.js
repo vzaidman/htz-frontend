@@ -49,14 +49,20 @@ const Slim: StatelessFunctionalComponent<Props> = ({
                     paddingTop: '1rem',
                   }}
                 >
-                  <TeaserHeader
-                    {...items[0]}
-                    typeScale={0}
-                    color={[ 'neutral', '-10', ]}
-                    miscStyles={{
-                      paddingStart: [ { until: 'xl', value: '4rem', }, ],
-                    }}
-                  />
+                  {
+                    items[0].inputTemplate === 'com.tm.TeaserData'
+                      ? (
+                        <TeaserHeader
+                          {...items[0]}
+                          typeScale={0}
+                          color={[ 'neutral', '-10', ]}
+                          miscStyles={{
+                            paddingStart: [ { until: 'xl', value: '4rem', }, ],
+                          }}
+                        />
+                      )
+                      : null
+                  }
                 </GridItem>
                 {/* Main Gallery */}
                 <GridItem
@@ -70,7 +76,13 @@ const Slim: StatelessFunctionalComponent<Props> = ({
                     ],
                   }}
                 >
-                  <MainGallery item={items[0]} />
+                  {
+                    items[0].inputTemplate === 'com.tm.TeaserData'
+                      ? (
+                        <MainGallery item={items[0]} />
+                      )
+                      : null
+                  }
                 </GridItem>
                 {/* Related Galleries */}
                 <GridItem
@@ -91,24 +103,46 @@ const Slim: StatelessFunctionalComponent<Props> = ({
                       padding: [ { until: 'xl', value: '4rem', }, ],
                     }}
                   >
-                    <RelatedGallery item={items[1]} biAction={biAction} />
-                    <RelatedGallery item={items[2]} biAction={biAction} />
-                    <RelatedGallery
-                      item={items[3]}
-                      biAction={biAction}
-                      miscStyles={{
-                        display: [
-                          { until: 'l', value: 'none', },
-                          { from: 'xl', value: 'none', },
-                        ],
-                      }}
-                    />
+                    {
+                      items[1].inputTemplate === 'com.tm.TeaserData'
+                        ? (
+                          <RelatedGallery item={items[1]} biAction={biAction} />
+                        )
+                        : null
+                    }
+                    {
+                      items[2].inputTemplate === 'com.tm.TeaserData'
+                        ? (
+                          <RelatedGallery item={items[2]} biAction={biAction} />
+                        )
+                        : null
+                    }
+                    {
+                      items[3].inputTemplate === 'com.tm.TeaserData'
+                        ? (
+                          <RelatedGallery
+                            item={items[3]}
+                            biAction={biAction}
+                            miscStyles={{
+                              display: [
+                                { until: 'l', value: 'none', },
+                                { from: 'xl', value: 'none', },
+                              ],
+                            }}
+                          />
+                        )
+                        : null
+                    }
                   </Grid>
                 </GridItem>
               </ListView>
             )
             : (
-              <MobileGalleryTeaser item={items[0]} biAction={biAction} />
+              items[0].inputTemplate === 'com.tm.TeaserData'
+                ? (
+                  <MobileGalleryTeaser item={items[0]} biAction={biAction} />
+                )
+                : null
             ))
           }
         </Media>
