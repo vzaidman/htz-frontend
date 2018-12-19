@@ -30,15 +30,10 @@ export default function Gamal({ list, listId, gaAction, biAction, }: Props) {
   return (
     <ListView
       disableWrapper
-      innerBackgroundColor="white"
-      sectionMiscStyles={{ display: 'flex', flexDirection: 'column', }}
-      gridMiscStyles={{
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: '1',
-      }}
+      gridMiscStyles={{ flexDirection: 'column', }}
+      sectionMiscStyles={{ display: 'flex', }}
     >
-      <GridItem width={1} miscStyles={{ flexGrow: '0', }}>
+      <GridItem miscStyles={{ flexGrow: '0', }}>
         <ListViewHeader
           url={list.url}
           hasTitlePadding
@@ -47,7 +42,7 @@ export default function Gamal({ list, listId, gaAction, biAction, }: Props) {
           backgroundColor={[ 'white', ]}
         />
       </GridItem>
-      <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
+      <GridItem miscStyles={{ flexGrow: '1', flexBasis: 'auto', }} stretchContent>
         {firstItem ? (
           <GamalFirstTeaser
             key={firstItem.contentId}
@@ -86,15 +81,15 @@ GamalFirstTeaser.defaultProps = { lazyLoadImages: true, };
 
 function GamalFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserProps) {
   return (
-    <Teaser
-      data={itemData}
-      onClick={biAction({ index: 0, articleId: itemData.contentId, })}
-      miscStyles={{ flexGrow: '1', }}
-      gridMiscStyles={{ flexDirection: 'column', }}
-    >
-      <TeaserMedia data={itemData} width={1} miscStyle={{ flexShrink: '0', }}>
-        <FelaTheme
-          render={theme => (
+    <FelaTheme
+      render={theme => (
+        <Teaser
+          data={itemData}
+          onClick={() => biAction({ index: 0, articleId: itemData.contentId, })}
+          miscStyles={{ flexGrow: '1', }}
+          gridMiscStyles={{ flexDirection: 'column', }}
+        >
+          <TeaserMedia data={itemData} width={1} miscStyle={{ flexShrink: '0', width: '100%', }}>
             <Image
               lazyLoad={lazyLoadImages}
               data={itemData.image}
@@ -111,12 +106,9 @@ function GamalFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserPr
                 widths: [ 744, 372, 295, 288, 238, ],
               })}
             />
-          )}
-        />
-      </TeaserMedia>
-      <FelaTheme
-        render={theme => (
+          </TeaserMedia>
           <TeaserContent
+            width={1}
             data={itemData}
             padding={[ 1, 0, ]}
             gridItemMiscStyles={{
@@ -133,9 +125,9 @@ function GamalFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserPr
               <TeaserHeader {...data} offset={1} typeScale={-1} kickerTypeScale={-1} />
             )}
           />
-        )}
-      />
-    </Teaser>
+        </Teaser>
+      )}
+    />
   );
 }
 
@@ -154,7 +146,7 @@ function GamalTeaser({ itemData, biAction, index, isLast, }: GamalTeaserProps) {
   return (
     <Teaser
       data={itemData}
-      onClick={biAction({ index, articleId: itemData.contentId, })}
+      onClick={() => biAction({ index, articleId: itemData.contentId, })}
       miscStyles={{ flexGrow: '1', }}
       gridMiscStyles={{ flexDirection: 'column', }}
     >
