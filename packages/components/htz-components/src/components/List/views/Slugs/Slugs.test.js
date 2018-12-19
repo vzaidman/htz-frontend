@@ -1,7 +1,7 @@
 import React from 'react';
 import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
 // import { felaMount, felaShallow, } from '../../test-helpers/felaEnzymeRenderers';
-import Slugs from './Slugs.view.js';
+import Slugs from './SlugsView.js';
 import list from '../../../../../styleguide/mocks/listMocks/SlugsMock';
 
 describe('<Slugs />', () => {

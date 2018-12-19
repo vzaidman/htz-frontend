@@ -181,9 +181,13 @@ export default function ListViewHeader({
             <FelaComponent
               style={{
                 marginTop: '1rem',
+                color: theme.color('neutral', '-3'),
+                fontWeight: 700,
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
+                  theme.type(-1, { until: 'xl', }),
+                  theme.type(-2, { from: 'xl', }),
                   isHorizontal
                     ? undefined
                     : theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }),
@@ -194,10 +198,7 @@ export default function ListViewHeader({
               {extraLinks.map((item, idx) => (
                 <FelaComponent
                   style={{
-                    color: theme.color('neutral', '-3'),
-                    fontWeight: 700,
                     extend: [
-                      theme.type(-1, { lines: 4, }),
                       theme.mq({ until: 'l', }, { display: 'inline-block', }),
                     ],
                   }}
@@ -264,17 +265,31 @@ export default function ListViewHeader({
                 !isHorizontal
                 && commercialLinks && (
                   <ul>
-                    {commercialLinks.map(commercialLink => (
-                      <li key={commercialLink.contentId}>
-                        <TextLink
-                          href={commercialLink.href}
-                          miscStyles={{
-                            type: [ { value: -1, options: { lines: 3.5, }, }, ],
-                          }}
-                        >
-                          {commercialLink.linkText}
-                        </TextLink>
-                      </li>
+                    {commercialLinks.map((commercialLink, idx) => (
+                      <FelaComponent
+                        style={theme => ({
+                          color: theme.color('commercial'),
+                          fontFamily: theme.fontStacks
+                            ? theme.fontStacks.commercial
+                            : undefined,
+                          marginBottom:
+                            idx < commercialLinks.length - 1 ? '1rem' : '0',
+
+                          '&:hover': { textDecoration: 'underline', },
+                          '&:focus': { textDecoration: 'underline', },
+
+                          extend: [
+                            theme.type(-1, { until: 'xl', }),
+                            theme.type(-2, { from: 'xl', }),
+                          ],
+                        })}
+                        key={commercialLink.contentId}
+                        render="li"
+                      >
+                        <HtzLink href={commercialLink.href}>
+                          {commercialLink.contentName}
+                        </HtzLink>
+                      </FelaComponent>
                     ))}
                   </ul>
                 )

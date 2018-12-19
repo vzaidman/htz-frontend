@@ -238,7 +238,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                   aria-hidden={true}
                   className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                   href="http://pre.haaretz.co.il/gallery/.premium-MAGAZINE-1.6652485"
-                  onClick={null}
+                  onClick={[Function]}
                   tabIndex="-1"
                 />
               </article>
@@ -442,7 +442,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       aria-hidden={true}
                       className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                       href="http://pre.haaretz.co.il/news/politics/1.6652020"
-                      onClick={null}
+                      onClick={[Function]}
                       tabIndex="-1"
                     />
                   </article>
@@ -566,7 +566,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                       aria-hidden={true}
                       className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                       href="http://pre.haaretz.co.il/news/politics/LIVE-1.6651560"
-                      onClick={null}
+                      onClick={[Function]}
                       tabIndex="-1"
                     />
                   </article>
@@ -738,7 +738,7 @@ exports[`<Slugs /> Render picture element correctly 1`] = `
                   aria-hidden={true}
                   className="htz-ez htz-fa htz-fb htz-ex htz-fc htz-fd htz-fe"
                   href="http://pre.haaretz.co.il/sport/tapina/.premium-1.6652558"
-                  onClick={null}
+                  onClick={[Function]}
                   tabIndex="-1"
                 />
               </article>

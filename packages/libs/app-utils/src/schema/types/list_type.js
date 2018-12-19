@@ -30,6 +30,7 @@ const List = new GraphQLObjectType({
     contentId: { type: GraphQLID, },
     inputTemplate: { type: GraphQLString, },
     extraLinks: { type: new GraphQLList(LinkType), },
+    commercialLinks: { type: new GraphQLList(LinkType), },
     marketingTeaser: { type: MarketingTeaserType, },
     hasPagination: { type: GraphQLBoolean, },
     view: { type: GraphQLString, },
