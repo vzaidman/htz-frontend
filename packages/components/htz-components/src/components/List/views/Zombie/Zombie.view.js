@@ -619,7 +619,7 @@ function MainTeaser({
         <Teaser
           data={data}
           gutter={0}
-          onClick={biAction({ index, articleId, })}
+          onClick={() => biAction({ index, articleId, })}
           gridMiscStyles={{ flexDirection: 'column', }}
         >
           {data.image ? (

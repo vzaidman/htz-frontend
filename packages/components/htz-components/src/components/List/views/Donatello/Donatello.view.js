@@ -5,6 +5,8 @@ import { FelaTheme, } from 'react-fela';
 import type { StatelessFunctionalComponent, } from 'react';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import ListView from '../../../ListView/ListView';
 import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
@@ -18,31 +20,27 @@ import Debug from '../../../Debug/Debug';
 import BlockLink from '../../../BlockLink/BlockLink';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
+import { isClickTracker, } from '../Michelangelo/Michelangelo.view';
 
 type Props = {
-  list: {
-    title: string,
-    items: Array<ClickTrackerBannerWrapperType>,
-  },
-  listId: string,
-  biAction: ({
-   actionCode: number,
-   additionalInfo: {
-     ArticleId: string,
-     ListId: string,
-     NoInList: number,
-     ViewName: string,
-   },
- }) => void,
+  list: ListDataType,
+  biAction: ListBiActionType,
+  lazyLoadImages: boolean,
 };
 
 type ItemProps = {
   item: ClickTrackerBannerWrapperType,
   index: number,
-  clickAction: ({ index: number, articleId: string, }) => void,
+  biAction: ListBiActionType,
+  lazyLoadImages: boolean,
 }
 
-const Item: StatelessFunctionalComponent<ItemProps> = ({ item, clickAction, index, }) => (
+const Item: StatelessFunctionalComponent<ItemProps> = ({
+  item,
+  biAction,
+  index,
+  lazyLoadImages,
+}) => (
   <ClickTracker
     {...item}
     render={(banner: ClickTrackerBannerType) => {
@@ -56,7 +54,7 @@ const Item: StatelessFunctionalComponent<ItemProps> = ({ item, clickAction, inde
                 border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
               }}
               href={link}
-              onClick={() => clickAction({ index, articleId: contentId, })}
+              onClick={() => biAction({ index, articleId: contentId, })}
               target={linkTarget}
             >
               <Teaser
@@ -65,7 +63,7 @@ const Item: StatelessFunctionalComponent<ItemProps> = ({ item, clickAction, inde
                 backgroundColor={[ 'neutral', '-7', ]}
                 gutter={2}
                 isRev={false}
-                onClick={() => clickAction({ index, articleId: contentId, })}
+                onClick={() => biAction({ index, articleId: contentId, })}
                 miscStyles={{
                   height: '100%',
                 }}
@@ -79,6 +77,7 @@ const Item: StatelessFunctionalComponent<ItemProps> = ({ item, clickAction, inde
                     >
                       <Image
                         data={clicktrackerimage}
+                        lazyLoad={lazyLoadImages}
                         imgOptions={{
                           transforms: {
                             width: '180',
@@ -110,22 +109,20 @@ const Item: StatelessFunctionalComponent<ItemProps> = ({ item, clickAction, inde
   />
 );
 
-const Leonardo: StatelessFunctionalComponent<Props> = ({ list, biAction, listId, }) => {
-  const clickAction = ({ index, articleId, }: { index: number, articleId: string, }) => {
-    biAction({
-      actionCode: 109,
-      additionalInfo: {
-        ArticleId: articleId,
-        ListId: listId,
-        NoInList: index + 1,
-        ViewName: 'Mom',
-      },
-    });
-  };
 
-  const items: ?Array<ClickTrackerBannerWrapperType> = list.items.length > 4
-    ? list.items.slice(0, 5)
-    : null;
+const Leonardo: StatelessFunctionalComponent<Props> = ({
+  list,
+  biAction,
+  lazyLoadImages = false,
+}) => {
+  // The `isClickTracker` predicate checks the type and
+  // filters out non `ClickTrackerBannerWrapperType` elements,
+  // but flow does not understand predicates in `filter` yet:
+  // https://github.com/facebook/flow/issues/1414
+  // $FlowFixMe
+  const items: Array<ClickTrackerBannerWrapperType> = list.items
+    .filter(isClickTracker)
+    .slice(0, 5);
   return items
     ? (
       <FelaTheme
@@ -133,7 +130,7 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({ list, biAction, listId,
           <ListView
             innerBackgroundColor="transparent"
             miscStyles={{
-              fontFamily: theme.fontStacks.ariel,
+              fontFamily: theme.fontStacks.Arial,
               display: [ { until: 's', value: 'none', }, ],
             }}
           >
@@ -171,7 +168,12 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({ list, biAction, listId,
                             : 'block',
                         }}
                       >
-                        <Item item={item} clickAction={clickAction} index={index} />
+                        <Item
+                          item={item}
+                          biAction={biAction}
+                          index={index}
+                          lazyLoadImages={lazyLoadImages}
+                        />
                       </GridItem>
                     );
                   })
