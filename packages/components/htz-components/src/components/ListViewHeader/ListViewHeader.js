@@ -144,8 +144,7 @@ export default function ListViewHeader({
               render={({ className: headerClass, }) => (url ? (
                 <FelaComponent
                   style={{
-                    display: 'flex',
-                    width: '100%',
+                    extend: [ theme.mq({ until: 's', }, {  display: 'flex', width: '100%', }) ],
                   }}
                   render={({ className, }) => (
                     <HtzLink className={className} href={url}>

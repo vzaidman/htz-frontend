@@ -3,8 +3,8 @@ import { FelaComponent, } from 'react-fela';
 import List from './List';
 
 /*
-  * A list Selector to view different lists.
-  */
+ * A list Selector to view different lists.
+ */
 export default class ListSelector extends React.Component {
   static propTypes = {
     /**
@@ -18,8 +18,7 @@ export default class ListSelector extends React.Component {
   };
 
   state = {
-    view: '',
-
+    view: null,
     turnA: true,
   };
 
@@ -40,11 +39,12 @@ export default class ListSelector extends React.Component {
             <select
               name="viewType"
               onChange={this.onSelect}
+              defaultValue="Select list view"
               className={className}
               value={this.state.view}
             >
-              <option value="" disabled>
-                {'Select a preview'}
+              <option value="Select list view" disabled>
+                {'Select list view'}
               </option>
               <option value="Bender">Bender</option>
               <option value="Donatello">Donatello</option>
@@ -56,6 +56,7 @@ export default class ListSelector extends React.Component {
               <option value="Michelangelo">Michelangelo</option>
               <option value="Mom">Mom</option>
               <option value="Nibbler">Nibbler</option>
+              <option value="Panucci">Panucci</option>
               <option value="Slim">Slim</option>
               <option value="Slugs">Slugs</option>
               <option value="Zapp">Zapp</option>

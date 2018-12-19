@@ -5,6 +5,7 @@ import FryMock from './listMocks/FryMock';
 import GamalMock from './listMocks/GamalMock';
 import LeonardoMock from './listMocks/LeonardoMock';
 import MomMock from './listMocks/MomMock';
+import PanucciMock from './listMocks/PanucciMock';
 import SlimMock from './listMocks/SlimMock';
 import SlugsMock from './listMocks/SlugsMock';
 import ZappMock from './listMocks/ZappMock';
@@ -27,6 +28,8 @@ export default (root, { listId, }) => {
       return LeonardoMock;
     case 'Mom':
       return MomMock;
+    case 'Panucci':
+      return PanucciMock;
     case 'Slim':
       return SlimMock;
     case 'Slugs':

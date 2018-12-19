@@ -11,8 +11,8 @@ import {
 import Content from './content_type';
 import DfpBanner from './dfp_banner_type';
 import TeaserInListType from './teaser_in_list_type';
-import ClickTrackerWrapperType from './click_tracker_banner_wrapper_type';
 import LinkType from './link_type';
+import ClickTrackerWrapperType from './click_tracker_banner_wrapper_type';
 import MarketingTeaserType from './marketing_teaser_type';
 
 const types = new Map([
@@ -35,6 +35,7 @@ const List = new GraphQLObjectType({
     view: { type: GraphQLString, },
     url: { type: GraphQLString, },
     urlDescription: { type: GraphQLString, },
+    extraLinks: { type: new GraphQLList(LinkType), },
     items: {
       type: new GraphQLList(
         new GraphQLUnionType({

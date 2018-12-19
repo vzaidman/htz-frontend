@@ -1,4 +1,3 @@
-
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import dynamic from 'next/dynamic';
@@ -73,6 +72,13 @@ const views = new Map([
     {
       view: () => import('./views/Nibbler/Nibbler.view.js'),
       query: () => import('./views/Nibbler/Nibbler.query.js'),
+    },
+  ],
+  [
+    'Panucci',
+    {
+      view: () => import('./views/Panucci/Panucci.view.js'),
+      query: () => import('./views/Panucci/Panucci.query.js'),
     },
   ],
   [

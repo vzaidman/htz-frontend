@@ -74,6 +74,27 @@ export const teaserForGamal = gql`
   ${imageInTeaser}
 `;
 
+export const teaserForPanucci = gql`
+  fragment TeaserForPanucci on TeaserInList {
+    ...ImagesInTeaser
+    inputTemplate
+    contentId
+    representedContent
+    exclusive
+    exclusiveMobile
+    title
+    titleMobile
+    path
+    publishDate
+    commentsCounts
+    authors {
+        ...Author
+    }
+  }
+  ${imagesInTeaser}
+  ${author}
+`;
+
 export default gql`
   fragment Teaser on TeaserInList {
     ...ImagesInTeaser

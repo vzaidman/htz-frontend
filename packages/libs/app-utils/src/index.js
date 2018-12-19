@@ -48,6 +48,7 @@ import teaser, {
   teaserForBender,
   teaserForGamal,
   teaserForMom,
+  teaserForPanucci,
 } from './fragments/teaser/teaser';
 import video from './fragments/video/video';
 
@@ -97,8 +98,9 @@ export {
   teaser,
   teaserForBender,
   teaserForGamal,
-  teaserForLeftElement,
   teaserForMom,
+  teaserForPanucci,
+  teaserForLeftElement,
   video,
   switchToDomain,
   breakUrl,
