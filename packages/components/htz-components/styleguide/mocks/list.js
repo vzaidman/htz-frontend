@@ -6,6 +6,7 @@ import GamalMock from './listMocks/GamalMock';
 import HawkingMock from './listMocks/HawkingMock';
 import LeonardoMock from './listMocks/LeonardoMock';
 import MomMock from './listMocks/MomMock';
+import MousepadMock from './listMocks/MousepadMock';
 import PanucciMock from './listMocks/PanucciMock';
 import SlimMock from './listMocks/SlimMock';
 import SlugsMock from './listMocks/SlugsMock';
@@ -35,6 +36,8 @@ export default (root, { listId, }) => {
       return LeonardoMock;
     case 'Mom':
       return MomMock;
+    case 'Mousepad':
+      return MousepadMock;
     case 'Panucci':
       return PanucciMock;
     case 'Slim':
