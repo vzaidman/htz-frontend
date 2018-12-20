@@ -31,9 +31,7 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
       q.initGoogleTag().then(() => {
         DEBUG
           && logger.info(
-            `4. Display slots - calling for display for all ${
-              adPriorities.high
-            } priority slots`
+            `4. Display slots - calling for display for all ${adPriorities.high} priority slots`
           );
         q.adManager.showAllSlots(adPriorities.high);
       });
@@ -43,9 +41,7 @@ const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
       q.initGoogleTag().then(() => {
         DEBUG
           && logger.info(
-            `4. Display slots - calling for display for all ${
-              adPriorities.normal
-            } priority slots`
+            `4. Display slots - calling for display for all ${adPriorities.normal} priority slots`
           );
         q.adManager.showAllSlots(adPriorities.normal);
       });
@@ -97,6 +93,12 @@ export const GET_AD_MANAGER = gql`
     }
   }
 `;
+const RENDERED_ARTICLE_ID = gql`
+  query getLastRenderedArticleBodyId {
+    articleBodyFinsishedRenderingId @client
+    articleId @client
+  }
+`;
 
 const propTypes = {
   /** Indicates data loading state */
@@ -139,23 +141,12 @@ class DfpInjector extends Component {
       this.setState({ shouldRender: true, });
       const { dfpConfig, } = this.props;
       try {
-        if (window.tomer) {
-          console.log('Client Navigation BLa Bla BLa');
-        }
         instance.dfp = initDfpScript(dfpConfig, DEBUG);
-        window.tomer = true;
       }
       catch (e) {
         logger.error(e);
       }
     }
-  }
-
-  componentWillUnmount() {
-    console.log('Destroy Slots');
-    // eslint-disable-next-line no-undef
-    googletag.destroySlots();
-    // this.setState()
   }
 
   render() {
@@ -186,11 +177,23 @@ function DfpInjectorWrapper(pathObject) {
           if (error) logger.error(error);
           const { dfpConfig, lineage, } = data.page;
           const [ section, subSection, ] = getSectionPairFromLineage(lineage);
-          return (
-            <DfpInjector
-              dfpConfig={{ ...dfpConfig, section, subSection, }}
-              path={pathObject.path}
-            />
+          return window === 'undefined' ? (
+            <Query query={RENDERED_ARTICLE_ID}>
+              {({ data: { articleBodyFinsishedRenderingId, articleId, }, }) => {
+                console.log(
+                  '!@!@ data from render las article body',
+                  articleBodyFinsishedRenderingId
+                );
+                return (
+                  <DfpInjector
+                    dfpConfig={{ ...dfpConfig, section, subSection, }}
+                    path={pathObject.path}
+                  />
+                );
+              }}
+            </Query>
+          ) : (
+            <DfpInjector dfpConfig={{ ...dfpConfig, section, subSection, }} path={pathObject.path} />
           );
         }}
       </Query>

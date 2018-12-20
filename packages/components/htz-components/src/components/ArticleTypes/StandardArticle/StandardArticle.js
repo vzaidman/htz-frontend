@@ -43,10 +43,7 @@ function StandardArticle({ articleId, slots, }) {
               obTitle,
             },
           } = data.page;
-          
-          console.log(`Article JS REndering`);
-          if (typeof (window) !== 'undefined'){
-          console.log(`TEST  - ${window.document.getElementById('haaretz.co.il.web.side.halfpage.1')}`);}
+
           const { contentId, imgArray, aspects, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
@@ -167,7 +164,6 @@ function StandardArticle({ articleId, slots, }) {
 
                           mouseDisclaimer = (
                             <FelaComponent style={disclaimerStyle}>
-
                               * התוכן נכתב על ידי מחלקת שיתופי הפעולה של הארץ/עכבר העיר, עבור עיריית
                               {` ${lineage[1].name}`}
                             </FelaComponent>
@@ -199,22 +195,23 @@ function StandardArticle({ articleId, slots, }) {
                                           modifiedDate={header.modDate}
                                         />
                                       ) : null}
-                                    </Fragment>
-)}
+                                    </Fragment>)}
                                 >
                                   <ArticleBody body={body} tagsList={tags} />
                                   {mouseDisclaimer}
                                   {bloggerInfo}
+                                  {cache.writeData({
+                                    data: {
+                                      articleBodyFinsishedRenderingId: articleId,
+                                    },
+                                  })}
                                 </ArticleLayoutRow>
                               );
                             }}
                           </ApolloConsumer>
                         );
                       }
-                      const Element = getComponent(element.inputTemplate);
-                      console.log(`Article JS REndering V2`);
-                      if (typeof (window) !== 'undefined'){
-                      console.log(`TEST V2  - ${window.document.getElementById('haaretz.co.il.web.side.halfpage.1')}`);}
+                      const Element = getComponent(element.inputTemplate);                    
                       const { properties, ...elementWithoutProperties } = element;
                       if (
                         element.inputTemplate === 'com.polobase.OutbrainElement'
