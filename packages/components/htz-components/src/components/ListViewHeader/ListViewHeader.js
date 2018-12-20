@@ -125,7 +125,6 @@ export default function ListViewHeader({
           {title && (
             <FelaComponent
               style={{
-                // TODO: add commercial color to base colors
                 color: isCommercial ? theme.color('commercial') : theme.color('primary'),
                 fontWeight: 700,
                 extend: [

@@ -5,10 +5,9 @@ import type { Node, } from 'react';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
-import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
-import type { DfpBannerType, } from '../../../../flowTypes/DfpBannerType';
 
 import VerticalList from '../commonViews/VerticalList';
+import { isClickTracker, } from '../../utils/validateTeaser';
 
 type Props = {
   list: ListDataType,
@@ -24,7 +23,7 @@ function Michelangelo({ list, ...props }: Props): Node {
   // https://github.com/facebook/flow/issues/1414
   // $FlowFixMe
   const items: Array<ClickTrackerBannerWrapperType> = list.items
-    .filter(isClickTracker)
+    .filter(item => isClickTracker(item))
     .slice(0, 3);
 
   return items.length > 0
@@ -33,12 +32,3 @@ function Michelangelo({ list, ...props }: Props): Node {
 }
 
 export default Michelangelo;
-
-export function isClickTracker(
-  item:
-    | ClickTrackerBannerWrapperType
-    | TeaserDataType
-    | DfpBannerType
-): %checks {
-  return item.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper';
-}

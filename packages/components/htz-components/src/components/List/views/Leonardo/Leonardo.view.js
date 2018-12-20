@@ -3,7 +3,7 @@ import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
 
-import type { StatelessFunctionalComponent, } from 'react';
+import type { Node, } from 'react';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
 
@@ -16,13 +16,10 @@ import Debug from '../../../Debug/Debug';
 import BlockLink from '../../../BlockLink/BlockLink';
 
 type Props = {
-  list: {
-    items: Array<ClickTrackerBannerWrapperType>,
-  },
-  listId: string,
+  list: { items: Array<ClickTrackerBannerWrapperType>, },
 };
 
-const Leonardo: StatelessFunctionalComponent<Props> = ({ list, }) => {
+function Leonardo({ list, }: Props): Node {
   const items: ?Array<ClickTrackerBannerWrapperType> = list.items.length > 3
     ? list.items.slice(0, 4)
     : null;
@@ -32,7 +29,6 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({ list, }) => {
         render={theme => (
           <ListView
             innerBackgroundColor={[ 'neutral', '-10', ]}
-            outerBackgroundColor={[ 'neutral', '-10', ]}
             miscStyles={{
               display: [ { until: 's', value: 'none', }, ],
             }}
@@ -44,13 +40,11 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({ list, }) => {
                 gutter={4}
                 miscStyles={{
                   paddingInlineStart: [
-                    { until: 'l', value: '12rem', },
-                    { from: 'l', until: 'xl', value: '12rem', },
+                    { until: 'xl', value: '12rem', },
                     { from: 'xl', value: '20rem', },
                   ],
                   paddingInlineEnd: [
-                    { until: 'l', value: '12rem', },
-                    { from: 'l', until: 'xl', value: '12rem', },
+                    { until: 'xl', value: '12rem', },
                     { from: 'xl', value: '20rem', },
                   ],
                 }}
@@ -104,6 +98,6 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({ list, }) => {
     : (
       <Debug>There is not enough items to render this list view</Debug>
     );
-};
+}
 
 export default Leonardo;

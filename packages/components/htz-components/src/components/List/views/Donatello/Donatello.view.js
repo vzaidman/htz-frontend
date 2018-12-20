@@ -2,7 +2,7 @@
 import React from 'react';
 import { FelaTheme, } from 'react-fela';
 
-import type { StatelessFunctionalComponent, } from 'react';
+import type { Node, } from 'react';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -20,7 +20,7 @@ import Debug from '../../../Debug/Debug';
 import BlockLink from '../../../BlockLink/BlockLink';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import { isClickTracker, } from '../Michelangelo/Michelangelo.view';
+import { isClickTracker, } from '../../utils/validateTeaser';
 
 type Props = {
   list: ListDataType,
@@ -35,93 +35,86 @@ type ItemProps = {
   lazyLoadImages: boolean,
 }
 
-const Item: StatelessFunctionalComponent<ItemProps> = ({
-  item,
-  biAction,
-  index,
-  lazyLoadImages,
-}) => (
-  <ClickTracker
-    {...item}
-    render={(banner: ClickTrackerBannerType) => {
-      const { clicktrackerimage, link, contentId, text, linkTarget, } = banner;
-      return (
-        <FelaTheme
-          render={theme => (
-            <BlockLink
-              miscStyles={{
-                height: '100%',
-                border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
-              }}
-              href={link}
-              onClick={() => biAction({ index, articleId: contentId, })}
-              target={linkTarget}
-            >
-              <Teaser
-                data={banner}
-                isClickTracker
-                backgroundColor={[ 'neutral', '-7', ]}
-                gutter={2}
-                isRev={false}
-                onClick={() => biAction({ index, articleId: contentId, })}
+function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
+  return (
+    <ClickTracker
+      {...item}
+      render={(banner: ClickTrackerBannerType) => {
+        const { clicktrackerimage, link, contentId, text, linkTarget, } = banner;
+        return (
+          <FelaTheme
+            render={theme => (
+              <BlockLink
                 miscStyles={{
                   height: '100%',
+                  border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
                 }}
+                href={link}
+                onClick={() => biAction({ index, articleId: contentId, })}
+                target={linkTarget}
               >
-                {clicktrackerimage
-                  ? (
-                    <TeaserMedia
-                      data={banner}
-                      width={1}
-                      isClickTracker
-                    >
-                      <Image
-                        data={clicktrackerimage}
-                        lazyLoad={lazyLoadImages}
-                        imgOptions={{
-                          transforms: {
-                            width: '180',
-                            aspect: 'regular',
-                            quality: 'auto',
-                          },
-                        }}
-                      />
-                    </TeaserMedia>
-                  ) : null
-                }
-                <TeaserContent
+                <Teaser
                   data={banner}
-                  padding={[ 1, 2, 2, 2, ]}
-                  renderContent={() => (
-                    <TeaserHeader
-                      title={text || ''}
-                      path={link}
-                      typeScale={-1}
-                    />
-                  )}
-                />
-              </Teaser>
-            </BlockLink>
-          )}
-        />
-      );
-    }}
-  />
-);
+                  isClickTracker
+                  backgroundColor={[ 'neutral', '-7', ]}
+                  gutter={2}
+                  isRev={false}
+                  onClick={() => biAction({ index, articleId: contentId, })}
+                  miscStyles={{
+                    height: '100%',
+                  }}
+                >
+                  {clicktrackerimage
+                    ? (
+                      <TeaserMedia
+                        data={banner}
+                        width={1}
+                        isClickTracker
+                      >
+                        <Image
+                          data={clicktrackerimage}
+                          lazyLoad={lazyLoadImages}
+                          imgOptions={{
+                            transforms: {
+                              width: '180',
+                              aspect: 'regular',
+                              quality: 'auto',
+                            },
+                          }}
+                        />
+                      </TeaserMedia>
+                    ) : null
+                  }
+                  <TeaserContent
+                    data={banner}
+                    padding={[ 1, 2, 2, 2, ]}
+                    renderContent={() => (
+                      <TeaserHeader
+                        title={text || ''}
+                        path={link}
+                        typeScale={-1}
+                      />
+                    )}
+                  />
+                </Teaser>
+              </BlockLink>
+            )}
+          />
+        );
+      }}
+    />
+  );
+}
 
 
-const Leonardo: StatelessFunctionalComponent<Props> = ({
-  list,
-  biAction,
-  lazyLoadImages = false,
-}) => {
+function Leonardo({ list, biAction, lazyLoadImages = true, }: Props): Node {
   // The `isClickTracker` predicate checks the type and
   // filters out non `ClickTrackerBannerWrapperType` elements,
   // but flow does not understand predicates in `filter` yet:
   // https://github.com/facebook/flow/issues/1414
   // $FlowFixMe
   const items: Array<ClickTrackerBannerWrapperType> = list.items
-    .filter(isClickTracker)
+    .filter(item => isClickTracker(item))
     .slice(0, 5);
   return items
     ? (
@@ -130,7 +123,7 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({
           <ListView
             innerBackgroundColor="transparent"
             miscStyles={{
-              fontFamily: theme.fontStacks.Arial,
+              fontFamily: theme.fontStacks.commercial,
               display: [ { until: 's', value: 'none', }, ],
             }}
           >
@@ -187,6 +180,6 @@ const Leonardo: StatelessFunctionalComponent<Props> = ({
     : (
       <Debug>There is not enough items to render this list view</Debug>
     );
-};
+}
 
 export default Leonardo;

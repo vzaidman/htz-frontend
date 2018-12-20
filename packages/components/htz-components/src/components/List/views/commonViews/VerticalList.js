@@ -18,6 +18,7 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
+import { isClickTracker, isClickTrackerWrapper, isTeaser, } from '../../utils/validateTeaser';
 
 type Props = {
   list: ?ListDataType,
@@ -45,7 +46,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
       render={theme => (
         <ListView
           disableWrapper
-          miscStyles={isCommercial ? { fontFamily: theme.fontStacks.Arial, } : {}}
+          miscStyles={isCommercial ? { fontFamily: theme.fontStacks.commercial, } : {}}
           gridMiscStyles={{ flexDirection: 'column', }}
           sectionMiscStyles={{ display: 'flex', }}
         >
@@ -66,7 +67,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
           </GridItem>
           <GridItem miscStyles={{ flexGrow: '1', flexBasis: 'auto', }} stretchContent>
             {firstItem
-              ? firstItem.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+              ? isClickTrackerWrapper(firstItem)
                 ? (
                   <ClickTracker
                     {...firstItem}
@@ -82,7 +83,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
                       );
                     }}
                   />
-                ) : firstItem.inputTemplate === 'com.tm.TeaserData'
+                ) : isTeaser(firstItem)
                   ? (
                     <VerticalListFirstTeaser
                       key={firstItem.contentId}
@@ -96,7 +97,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
             }
             {items
               ? items.map((itemData, index) => (
-                itemData.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                isClickTrackerWrapper(itemData)
                   ? (
                     <ClickTracker
                       {...itemData}
@@ -113,7 +114,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, }: Pro
                         );
                       }}
                     />
-                  ) : itemData.inputTemplate === 'com.tm.TeaserData'
+                  ) : isTeaser(itemData)
                     ? (
                       <VerticalListTeaser
                         key={itemData.contentId}
@@ -146,7 +147,6 @@ type FirstTeaserProps = {
 VerticalListFirstTeaser.defaultProps = { lazyLoadImages: true, };
 
 function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserProps) {
-  console.log(itemData);
   return (
     <FelaTheme
       render={theme => (
@@ -155,17 +155,17 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
           onClick={() => biAction({ index: 0, articleId: itemData.contentId, })}
           miscStyles={{ flexGrow: '1', }}
           gridMiscStyles={{ flexDirection: 'column', }}
-          isClickTracker={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement'}
+          isClickTracker={isClickTracker(itemData)}
         >
           <TeaserMedia
             data={itemData}
             width={1}
-            isClickTracker={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement'}
+            isClickTracker={isClickTracker(itemData)}
             miscStyles={{ flexShrink: '0', width: '100%', }}
           >
             <Image
               lazyLoad={lazyLoadImages}
-              data={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? itemData.clicktrackerimage : itemData.image}
+              data={isClickTracker(itemData) ? itemData.clicktrackerimage : itemData.image}
               imgOptions={getImageAssets({
                 aspect: 'headline',
                 bps: theme.bps,
@@ -196,8 +196,8 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
             }}
             renderContent={() => (
               <TeaserHeader
-                title={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? (itemData.text || '') : itemData.title}
-                path={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? itemData.link : itemData.path}
+                title={isClickTracker(itemData) ? (itemData.text || '') : itemData.title}
+                path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
                 typeScale={-1}
                 kickerTypeScale={-1}
@@ -218,7 +218,7 @@ type VerticalListTeaserProps = FirstTeaserProps & {
 VerticalListTeaser.defaultProps = {
   isLast: false,
   isStrong: false,
-  lazyLoadImages: false,
+  lazyLoadImages: true,
 };
 
 function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalListTeaserProps) {
@@ -228,7 +228,7 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
       onClick={() => biAction({ index, articleId: itemData.contentId, })}
       miscStyles={{ flexGrow: '1', }}
       gridMiscStyles={{ flexDirection: 'column', }}
-      isClickTracker={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement'}
+      isClickTracker={isClickTracker(itemData)}
     >
       <FelaTheme
         render={theme => (
@@ -251,8 +251,8 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
             }}
             renderContent={() => (
               <TeaserHeader
-                title={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? (itemData.text || '') : itemData.title}
-                path={itemData.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? itemData.link : itemData.path}
+                title={isClickTracker(itemData) ? (itemData.text || '') : itemData.title}
+                path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
                 typeScale={-1}
                 kickerTypeScale={-1}

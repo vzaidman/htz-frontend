@@ -51,7 +51,7 @@ const fontStacks = Object.freeze({
   },
   base: fallbackFont,
   alt: fallbackFont,
-  ariel: 'Arial',
+  commercial: '"Helvetica Neue",Helvetica,Arial,sans-serif',
 });
 
 // TODO: test data structure
