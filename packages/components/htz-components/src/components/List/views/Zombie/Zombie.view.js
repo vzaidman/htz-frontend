@@ -367,7 +367,7 @@ export default class Zombie extends React.Component<Props, State> {
                           miscStyles={stockWrapperStyle(theme)}
                           width={stockWidth}
                         >
-                          <FelaComponent style={stockStyle(theme)}>
+                          <FelaComponent style={stockStyle(theme, false, true)}>
                             <FelaComponent
                               style={{ ...theme.type(-2), fontWeight: '700', }}
                             >
@@ -719,17 +719,16 @@ function numToHebrewString(num: number): string {
 
 function stockWrapperStyle(theme: Object, hideOnM: boolean = false): Object {
   return {
-    extend: [
-      theme.type(-1),
-      hideOnM
-        ? {
-          display: [
-            { until: 'l', value: 'none', },
-            { from: 'l', value: 'block', },
-          ],
-        }
-        : {},
-    ],
+    ...theme.type(-1),
+    ...(hideOnM
+      ? {
+        display: [
+          { until: 'l', value: 'none', },
+          { from: 'l', value: 'block', },
+        ],
+      }
+      : {}),
+
   };
 }
 
