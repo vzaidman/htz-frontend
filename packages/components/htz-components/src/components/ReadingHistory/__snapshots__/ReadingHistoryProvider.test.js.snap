@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadingHistoryProvider renders correctly with child component and returns an empty array  1`] = `
+<div>
+  <div>
+    test child
+  </div>
+</div>
+`;
+
+exports[`ReadingHistoryProvider renders correctly with child component and returns an empty array  2`] = `""`;

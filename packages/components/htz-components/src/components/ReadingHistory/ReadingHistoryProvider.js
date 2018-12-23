@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 const ReadingHistoryProvider = ({ children, }) => {
   let readingHistory;
-  try {
-    readingHistory = JSON.parse(localStorage.getItem('readingHistory'));
-  }
-  catch (err) {
-    console.warn('unable to parse readingHistory from localStorage\n', err);
-    readingHistory = null;
+  if (process.browser) {
+    try {
+      readingHistory = JSON.parse(localStorage.getItem('readingHistory'));
+    }
+    catch (err) {
+      console.warn('unable to parse readingHistory from localStorage\n', err);
+      readingHistory = null;
+    }
   }
   return children(readingHistory || []);
 };

@@ -23,7 +23,7 @@ import { isTeaser, } from '../../utils/validateTeaser';
 
 type Props = {
   list: ListDataType,
-  gaAction: ?() => void,
+  gaAction: () => void,
   biAction: ListBiActionType,
   lazyLoadImages: boolean,
 };

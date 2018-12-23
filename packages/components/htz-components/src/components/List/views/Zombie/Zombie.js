@@ -1,8 +1,11 @@
-/* eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved */
+// @flow
+import * as React from 'react';
 import gql from 'graphql-tag';
 import { dfpBanner, imagesInTeaser, } from '@haaretz/app-utils';
+import ZombieView from './ZombieView.js';
+import ListDataGetter from '../../ListDataGetter';
 
-export default gql`
+const ZombieQuery = gql`
   query ZombieQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
@@ -45,3 +48,32 @@ export default gql`
   ${imagesInTeaser}
   ${dfpBanner}
 `;
+
+type ZombieProps = {
+  contentId: string,
+  updateListDuplication: Function,
+  variables: {},
+  lazyLoadImages: boolean,
+};
+
+export default function Zombie({
+  contentId,
+  updateListDuplication,
+  variables,
+  lazyLoadImages,
+}: ZombieProps): React.Node {
+  return (
+    <ListDataGetter
+      query={ZombieQuery}
+      view="Zombie"
+      {...{
+        contentId,
+        updateListDuplication,
+        variables,
+        lazyLoadImages,
+      }}
+    >
+      {props => <ZombieView {...props} />}
+    </ListDataGetter>
+  );
+}

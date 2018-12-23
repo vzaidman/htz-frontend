@@ -7,7 +7,7 @@ import ListItem from '../../elements/ListItem';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 import Image from '../../../Image/Image';
-import { PromotedItem, } from '../Leela/Leela.view';
+import { PromotedItem, } from '../Leela/LeelaView';
 import BlockLink from '../../../BlockLink/BlockLink';
 import H from '../../../AutoLevels/H';
 import HtzLink from '../../../HtzLink/HtzLink';

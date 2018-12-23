@@ -57,9 +57,6 @@ export type CardProps = {
 };
 
 Card.defaultProps = {
-  // Disabling eslint here, because it doesn't understand how
-  // flow wroks with default props and required props
-  /* eslint-disable react/default-props-match-prop-types */
   attrs: null,
   children: null,
   backgroundColor: null,
@@ -67,7 +64,6 @@ Card.defaultProps = {
   fillHeight: false,
   miscStyles: null,
   tagName: 'div',
-  /* eslint-enable react/default-props-match-prop-types */
 };
 
 export default function Card({

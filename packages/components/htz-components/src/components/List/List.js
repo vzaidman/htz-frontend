@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import Query from '../ApolloBoundary/Query';
 import Mutation from '../ApolloBoundary/Mutation';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
-import getView from './getView';
-import EventTracker from '../../utils/EventTracker';
+import DynamicListView from './DynamicListView';
 import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
 
 const UPDATE_LIST_DUPLICATION = gql`
@@ -26,11 +24,7 @@ const ListWrapper = props => (
     {(updateListDuplication, data) => (
       <ApolloConsumer>
         {client => (
-          <List
-            client={client}
-            {...props}
-            updateListDuplication={updateListDuplication}
-          />
+          <List client={client} {...props} updateListDuplication={updateListDuplication} />
         )}
       </ApolloConsumer>
     )}
@@ -56,113 +50,56 @@ class List extends React.Component {
   static defaultProps = {};
 
   state = {
-    selectedView: null,
     updatedListDuplication: false,
+    listDuplicationIds: [],
   };
 
   componentDidMount() {
-    const { view, } = this.props;
-    getView(view)
-      .then(response => {
-        this.setState({
-          selectedView: response,
-        });
-      })
-      .catch(err => console.log(err));
+    // we want this to run just once at component mount,
+    // This makes this whole component only usable for client side lists,
+    // Once we make add ssr capabilities we need to make sure the listDuplicationIds
+    // wont cause the list to re-query data and re render,
+    const { listDuplicationIds, } = this.props.client.readQuery({
+      query: GET_LIST_DUPLICATION,
+    });
+    this.setState({ listDuplicationIds, });
   }
 
-  shouldComponentUpdate(prevProps, nextState) {
-    if (nextState.selectedView !== this.state.selectedView) return true;
-    return false;
-  }
+  updateListDuplication = items => {
+    if (!this.state.updatedListDuplication) {
+      const itemsRepresentedContent = items.reduce((accumulator, currentValue) => {
+        if (currentValue && currentValue.representedContent) {
+          accumulator.push(currentValue.representedContent);
+        }
+        return accumulator;
+      }, []);
+
+      this.props.updateListDuplication({
+        variables: { ids: itemsRepresentedContent, },
+      });
+      this.setState({ updatedListDuplication: true, });
+    }
+  };
 
   render() {
     const { contentId, view, } = this.props;
-    const { selectedView, } = this.state;
-    const ListComponent = selectedView
-      ? Array.isArray(selectedView)
-        ? selectedView[0].default
-        : selectedView
-      : null;
+    const { listDuplicationIds, } = this.state;
 
-    if (ListComponent) {
-      const { listDuplicationIds, } = this.props.client.readQuery({
-        query: GET_LIST_DUPLICATION,
-      });
-
-      return selectedView[1] ? (
-        <ReadingHistoryProvider>
-          {readingHistory => (
-            <Query
-              query={selectedView[1].default}
-              variables={{
-                listId: contentId,
-                history: [ ...readingHistory, ...listDuplicationIds, ],
-              }}
-            >
-              {({ data, loading, error, }) => {
-                if (loading) return null;
-                if (error) return null;
-
-                const { title, items, ...restList } = data.list;
-                items.filter(item => Object.prototype.hasOwnProperty.call(item, 'contentId')
-                );
-
-                const itemsRepresentedContent = items.reduce(
-                  (accumulator, currentValue) => {
-                    if (currentValue && currentValue.representedContent) {
-                      accumulator.push(currentValue.representedContent);
-                    }
-                    return accumulator;
-                  },
-                  []
-                );
-                // make sure this only runs once
-                if (!this.state.updatedListDuplication) {
-                  this.props.updateListDuplication({
-                    variables: { ids: itemsRepresentedContent, },
-                  });
-                  this.setState({ updatedListDuplication: true, });
-                }
-
-                return (
-                  <EventTracker>
-                    {({ biAction, gaAction, HtzReactGA, }) => {
-                      HtzReactGA.ga('ec:addImpression', {
-                        id: contentId,
-                        name: title,
-                        list: 'List impressions',
-                      });
-
-                      const clickAction = ({ index, articleId, actionCode = 109, }) => biAction({
-                        actionCode,
-                        additionalInfo: {
-                          ArticleId: articleId,
-                          ListId: contentId,
-                          NoInList: index + 1,
-                          ViewName: view,
-                        },
-                      });
-
-                      return (
-                        <ListComponent
-                          list={{ items, title, ...restList, }}
-                          gaAction={gaAction}
-                          biAction={clickAction}
-                        />
-                      );
-                    }}
-                  </EventTracker>
-                );
-              }}
-            </Query>
-          )}
-        </ReadingHistoryProvider>
-      ) : (
-        <ListComponent />
-      );
-    }
-    return null;
+    return (
+      <ReadingHistoryProvider>
+        {readingHistory => (
+          <DynamicListView
+            view={view}
+            contentId={contentId}
+            updateListDuplication={this.updateListDuplication}
+            variables={{
+              listId: contentId,
+              history: [ ...readingHistory, ...listDuplicationIds, ],
+            }}
+          />
+        )}
+      </ReadingHistoryProvider>
+    );
   }
 }
 

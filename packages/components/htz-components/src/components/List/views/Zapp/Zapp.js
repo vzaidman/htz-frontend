@@ -1,8 +1,11 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+// @flow
+import * as React from 'react';
 import gql from 'graphql-tag';
 import { image, clickTrackerBannersWrapper, } from '@haaretz/app-utils';
+import ZappView from './ZappView.js';
+import ListDataGetter from '../../ListDataGetter';
 
-export default gql`
+const ZappQuery = gql`
   query ZappQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       items {
@@ -36,3 +39,32 @@ export default gql`
   ${image}
   ${clickTrackerBannersWrapper}
 `;
+
+type Props = {
+  contentId: string,
+  updateListDuplication: Function,
+  variables: {},
+  lazyLoadImages: boolean,
+};
+
+export default function Zapp({
+  contentId,
+  updateListDuplication,
+  variables,
+  lazyLoadImages,
+}: Props): React.Node {
+  return (
+    <ListDataGetter
+      query={ZappQuery}
+      view="Zapp"
+      {...{
+        contentId,
+        updateListDuplication,
+        variables,
+        lazyLoadImages,
+      }}
+    >
+      {props => <ZappView {...props} />}
+    </ListDataGetter>
+  );
+}
