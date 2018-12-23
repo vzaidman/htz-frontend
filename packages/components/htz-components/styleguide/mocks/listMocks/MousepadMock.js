@@ -6,6 +6,7 @@ export default {
     {
       path: 'http://pre.haaretz.co.il/news/politics/LIVE-1.6651560',
       kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       representedContent: '1.6651560',
       contentId: '1.6651560',
       title: 'משלחת של האו"ם ומצרים תגיע מחר לעזה; דיווח: הפלסטינים נענו לפנייה מצרית להפסקת אש',
@@ -18,6 +19,7 @@ export default {
     {
       path: 'http://pre.haaretz.co.il/news/politics/.premium-1.6652171',
       kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       representedContent: '1.6652171',
       contentId: '1.6652171',
       exclusive: 'פרשנות',
@@ -29,6 +31,7 @@ export default {
     {
       path: 'http://pre.haaretz.co.il/gallery/television/1.6652661',
       kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       representedContent: '1.6652661',
       contentId: '1.6652661',
       title: 'בעקבות ראיון עם המחבל יצחק גבאי: הליך הפרה ייפתח נגד ערוץ 20',
@@ -38,6 +41,7 @@ export default {
     {
       path: 'http://pre.haaretz.co.il/news/local/.premium-1.6652098',
       kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       representedContent: '1.6652098',
       contentId: '1.6652098',
       exclusive: 'האזינו',
@@ -49,6 +53,7 @@ export default {
     {
       path: 'http://pre.haaretz.co.il/news/law/.premium-MAGAZINE-1.5762713',
       kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       representedContent: '1.5762713',
       contentId: '1.5762713',
       title: 'ניצב רוני ריטמן, שנחשד בהטרדה, ביקש מהמפכ"ל לעבור מתפקיד מפקד להב 433',
@@ -58,6 +63,7 @@ export default {
     {
       path: 'http://pre.haaretz.co.il/food/restaurants-reviews/.premium-MAGAZINE-1.6640537',
       kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       representedContent: '1.6640537',
       contentId: '1.6640537',
       title: 'ארבע עסקיות צהריים מומלצות בלונדון',

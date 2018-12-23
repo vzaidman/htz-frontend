@@ -14,6 +14,7 @@ export default gql`
           exclusiveMobile
           title
           titleMobile
+          inputTemplate
         }
       }
     }
