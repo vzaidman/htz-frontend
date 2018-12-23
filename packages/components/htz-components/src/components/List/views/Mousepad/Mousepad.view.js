@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { FelaTheme, } from 'react-fela';
 
 import ListView from '../../../ListView/ListView.js';
 import Grid from '../../../Grid/Grid';
@@ -38,6 +37,7 @@ export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: 
 
             return (
               <GridItem
+                key={item.contentId}
                 width={[ { until: 's', value: 1, }, { from: 's', value: 1 / 2, }, ]}
                 miscStyles={{
                   order: [
@@ -48,7 +48,7 @@ export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: 
                   ],
                 }}
               >
-                <MousepadTeaser itemData={item} index={count} biAction={biAction}/>
+                <MousepadTeaser itemData={item} index={count} biAction={biAction} />
               </GridItem>
             );
           })}
