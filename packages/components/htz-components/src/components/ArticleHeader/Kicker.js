@@ -42,6 +42,7 @@ Kicker.propTypes = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: stylesPropType,
+  innerMiscStyles: stylesPropType,
   tagName: PropTypes.string,
 };
 Kicker.defaultProps = {
@@ -49,6 +50,7 @@ Kicker.defaultProps = {
   fontSize: null,
   isBlock: false,
   miscStyles: null,
+  innerMiscStyles: null,
   tagName: 'span',
   // Non breaking space at the beginning and a regular space at the end
   divider: '\\a0|\\20',
@@ -58,10 +60,7 @@ Kicker.defaultProps = {
 const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
   display: isBlock ? 'block' : 'inline',
 
-  color: theme.color(
-    'articleHeader',
-    isBlock ? 'kickerBlockText' : 'kickerInlineText'
-  ),
+  color: theme.color('articleHeader', isBlock ? 'kickerBlockText' : 'kickerInlineText'),
   ...(isBlock
     ? {
       fontWeight: '700',
@@ -75,11 +74,11 @@ const style = ({ isBlock, fontSize, divider, miscStyles, theme, }) => ({
     }),
   extend: [
     ...[ fontSize ? parseTypographyProp(fontSize, theme.type) : {}, ],
-    ...(miscStyles ? parseStyleProps(miscStyles) : []),
+    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
 });
 
-const innerStyle = ({ isBlock, theme, }) => ({
+const innerStyle = ({ isBlock, theme, innerMiscStyles, }) => ({
   ...(isBlock
     ? {
       paddingInlineStart: '1rem',
@@ -88,6 +87,7 @@ const innerStyle = ({ isBlock, theme, }) => ({
       backgroundColor: theme.color('articleHeader', 'kickerBlockBg'),
     }
     : {}),
+  extend: [ ...(innerMiscStyles ? parseStyleProps(innerMiscStyles, theme.mq, theme.type) : []), ],
 });
 
 export default function Kicker({
@@ -96,6 +96,7 @@ export default function Kicker({
   text,
   divider,
   miscStyles,
+  innerMiscStyles,
   tagName,
   children,
 }) {
@@ -108,7 +109,12 @@ export default function Kicker({
       miscStyles={miscStyles}
       render={tagName}
     >
-      <FelaComponent rule={innerStyle} isBlock={isBlock} render="span">
+      <FelaComponent
+        rule={innerStyle}
+        isBlock={isBlock}
+        innerMiscStyles={innerMiscStyles}
+        render="span"
+      >
         {text || children}
       </FelaComponent>
     </FelaComponent>

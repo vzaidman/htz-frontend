@@ -100,6 +100,7 @@ type TeaserHeaderProps = {
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   kickerMiscStyles: ?StyleProps,
+  kickerInnerMiscStyles: ?StyleProps,
 
   /** Determines if the kicker element is set as a block element */
   kickerIsBlock: boolean,
@@ -151,6 +152,7 @@ TeaserHeader.defaultProps = {
   color: null,
   miscStyles: null,
   kickerMiscStyles: null,
+  kickerInnerMiscStyles: null,
   kickerIsBlock: false,
   kickerTypeScale: null,
   isCentered: false,
@@ -172,6 +174,7 @@ export default function TeaserHeader({
   color,
   miscStyles,
   kickerMiscStyles,
+  kickerInnerMiscStyles,
   kickerIsBlock,
   kickerTypeScale,
   isCentered,
@@ -183,12 +186,7 @@ export default function TeaserHeader({
         extend: [
           ...[
             isCentered
-              ? parseComponentProp<IsCenteredType>( // eslint-disable-line space-infix-ops, no-mixed-operators
-                'textAlign',
-                isCentered,
-                theme.mq,
-                centerText
-              )
+              ? parseComponentProp<IsCenteredType>('textAlign', isCentered, theme.mq, centerText) // eslint-disable-line space-infix-ops, no-mixed-operators
               : {},
           ],
           // Set font-size and line-height
@@ -205,11 +203,9 @@ export default function TeaserHeader({
                     {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
                     {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}
                     {...(kickerMiscStyles ? { miscStyles: kickerMiscStyles, } : {})}
+                    {...(kickerInnerMiscStyles ? { innerMiscStyles: kickerInnerMiscStyles, } : {})}
                   >
-                    <TeaserResponsiveText
-                      text={exclusive}
-                      mobileText={exclusiveMobile}
-                    />
+                    <TeaserResponsiveText text={exclusive} mobileText={exclusiveMobile} />
                   </Kicker>
                 )}
                 <FelaComponent
@@ -219,16 +215,8 @@ export default function TeaserHeader({
                   miscStyles={miscStyles}
                   rule={style}
                   render={({ className, }) => (
-                    <H
-                      className={className}
-                      isH1={isH1}
-                      offset={offset}
-                      {...attrs || {}}
-                    >
-                      <TeaserResponsiveText
-                        text={title}
-                        mobileText={titleMobile}
-                      />
+                    <H className={className} isH1={isH1} offset={offset} {...attrs || {}}>
+                      <TeaserResponsiveText text={title} mobileText={titleMobile} />
                     </H>
                   )}
                 />
