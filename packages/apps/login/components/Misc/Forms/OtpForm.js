@@ -39,14 +39,14 @@ const getFacebookLogin = user => {
     false);
 };
 
-const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
+const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, otpHash)
     .then(
       // eslint-disable-next-line no-undef
       () => {
-        sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', })(() => {
+        sendTrackingEvents(eventsTrackers, { page: eventCategory, flowNumber: flow, label: 'connectSMS', })(() => {
           const referrerUrl = getReferrerUrl(client);
           window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
         }
@@ -59,7 +59,7 @@ const login = ({ client, host, showError, hideError, setPreloader, eventsTracker
     );
 };
 
-const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, }) => ({ smsCode, termsChk, }) => {
+const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, eventCategory, }) => ({ smsCode, termsChk, }) => {
   let otpHash = getOtpHash(client);
   if (typeof otpHash === 'undefined' || otpHash === null) {
     const { ssoId, } = getUser(client);
@@ -69,7 +69,7 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
         success => {
           otpHash = success.data.retrieveOtpHash.hash;
           saveOtpHash(client)({ otpHash, });
-          login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+          login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, eventCategory, })({ smsCode, termsChk, otpHash, user, flow, });
         },
         () => showError('אירעה שגיאה, אנא נסה שנית מאוחר יותר.')
       );
@@ -145,7 +145,7 @@ class OtpForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, findRout, doTransition, user, eventsTrackers, flow, } = this.props;
+    const { client, findRout, doTransition, user, eventsTrackers, flow, eventCategory } = this.props;
     const host = getHost(client);
 
     return (
@@ -163,7 +163,7 @@ class OtpForm extends Component {
               clearFormAfterSubmit={false}
               // initialValues={{ email: 'insert email' }}
               validate={validateSmsCodeInput}
-              onSubmit={onSubmit({ host, client, user, flow, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
+              onSubmit={onSubmit({ host, client, user, flow, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, eventCategory, })}
               render={({ getInputProps, handleSubmit, clearForm, }) => (
                 <Fragment>
                   <div>

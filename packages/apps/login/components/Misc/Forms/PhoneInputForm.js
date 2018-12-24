@@ -1,39 +1,58 @@
-import React, { Fragment, } from 'react';
-import Router from 'next/router';
+import React, { Fragment } from "react";
+import Router from "next/router";
 
-import { Form, TextInput, Button, HtzLink, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, HtzLink } from "@haaretz/htz-components";
 
-import theme from '../../../theme';
-import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../../components/StyleComponents/LoginStyleComponents';
+import theme from "../../../theme";
+import {
+  LoginContentStyles,
+  LoginMiscLayoutStyles
+} from "../../../components/StyleComponents/LoginStyleComponents";
 
-import { connectMailWithPhone, getUserData, getEmail, getHostname, saveUserData, } from '../../../pages/queryutil/userDetailsOperations';
-import { getFlowNumber, } from '../../../components/FlowDispenser/flowStorage';
-import { isName, isMobile, isPassword, } from './fieldsValidators';
-import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
+import {
+  connectMailWithPhone,
+  getUserData,
+  getEmail,
+  getHostname,
+  saveUserData
+} from "../../../pages/queryutil/userDetailsOperations";
+import { getFlowNumber } from "../../../components/FlowDispenser/flowStorage";
+import { isName, isMobile, isPassword } from "./fieldsValidators";
+import { sendTrackingEvents } from "../../../util/trackingEventsUtil";
 
 // Styling Components -------
-const { ContentWrapper, FormWrapper, ItemCenterer, } = LoginContentStyles;
-const { ErrorBox, } = LoginMiscLayoutStyles;
+const { ContentWrapper, FormWrapper, ItemCenterer } = LoginContentStyles;
+const { ErrorBox } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
-const generateSmsCodeError = message => [ { name: 'smscode', order: 1, errorText: message, }, ];
+const generateSmsCodeError = message => [
+  { name: "smscode", order: 1, errorText: message }
+];
 
-const validatePhoneNumber = ({ phoneNumber, }) =>
-  (!isMobile(phoneNumber) || !phoneNumber || phoneNumber.length < 10
-    ? generateSmsCodeError('אנא הזינו מספר טלפון נייד')
-    : []);
+const validatePhoneNumber = ({ phoneNumber }) =>
+  !isMobile(phoneNumber) || !phoneNumber || phoneNumber.length < 10
+    ? generateSmsCodeError("אנא הזינו מספר טלפון נייד")
+    : [];
 
-const getEmailUrl = (hostname) => {
-  return (hostname.includes("login-dev.") || hostname.includes("login.")) ?
-    `https://${hostname}` : `http://${hostname}:3000`;
-}
+const getEmailUrl = hostname => {
+  return hostname.includes("login-dev.") || hostname.includes("login.")
+    ? `https://${hostname}`
+    : `http://${hostname}:3000`;
+};
 
 const cleanPhoneNumber = phoneNumber => {
-  return phoneNumber ? phoneNumber.replace(/[\s\-]/g, '') : phoneNumber;
-}
+  return phoneNumber ? phoneNumber.replace(/[\s\-]/g, "") : phoneNumber;
+};
 
-const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, eventsTrackers, }) => ({ phoneNumber, }) => {
+const onSubmit = ({
+  doTransition,
+  client,
+  showError,
+  hideError,
+  setPreloader,
+  eventsTrackers
+}) => ({ phoneNumber }) => {
   setPreloader(true);
   hideError();
   const userData = getUserData(client);
@@ -44,18 +63,25 @@ const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, ev
     email,
     userName: userData.firstName || email,
     phone: phoneNumber,
-    paramString: JSON.stringify({ email, phone: phoneNumber, }),
-    url: getEmailUrl(getHostname(client)),
+    paramString: JSON.stringify({ email, phone: phoneNumber }),
+    url: getEmailUrl(getHostname(client))
   }).then(
     () => {
-      saveUserData(client)({ userData: { phoneNum: phoneNumber, __typename: "SsoUser", }, });
-      const route = doTransition('accept');
-      sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'connectSMS', });
-      Router.push(route);
+      saveUserData(client)({
+        userData: { phoneNum: phoneNumber, __typename: "SsoUser" }
+      });
+      const route = doTransition("accept");
+      sendTrackingEvents(eventsTrackers, {
+        page: "How to login? Valid phone",
+        flowNumber: flow,
+        label: "updatePhone"
+      })(() => {
+        Router.push(route);
+      });
     },
     error => {
       setPreloader(false);
-      showError(error.message)
+      showError(error.message);
     }
   );
 };
@@ -63,24 +89,24 @@ const onSubmit = ({ doTransition, client, showError, hideError, setPreloader, ev
 class PhoneInputForm extends React.Component {
   state = {
     showError: false,
-    errorMessage: '',
-    isLoading: false,
+    errorMessage: "",
+    isLoading: false
   };
 
   showError = errorMsg => {
-    this.setState({ showError: true, errorMessage: errorMsg, });
+    this.setState({ showError: true, errorMessage: errorMsg });
   };
 
   hideError = () => {
-    this.setState({ showError: false, errorMessage: '', });
+    this.setState({ showError: false, errorMessage: "" });
   };
 
   setPreloader = isLoadingStatus => {
-    this.setState({ isLoading: !!isLoadingStatus, });
+    this.setState({ isLoading: !!isLoadingStatus });
   };
 
   render() {
-    const { client, findRout, doTransition, eventsTrackers, } = this.props;
+    const { client, findRout, doTransition, eventsTrackers } = this.props;
     return (
       <ContentWrapper>
         <FormWrapper>
@@ -94,9 +120,9 @@ class PhoneInputForm extends React.Component {
               showError: this.showError,
               hideError: this.hideError,
               setPreloader: this.setPreloader,
-              eventsTrackers,
+              eventsTrackers
             })}
-            render={({ getInputProps, handleSubmit, clearForm, }) => (
+            render={({ getInputProps, handleSubmit, clearForm }) => (
               <Fragment>
                 <div>
                   <TextInput
@@ -104,25 +130,25 @@ class PhoneInputForm extends React.Component {
                     label={theme.emailInputLabel}
                     noteText="אנא הזינו מספר טלפון נייד"
                     requiredText={{
-                      long: 'אנא הזינו מספר טלפון נייד',
-                      short: '*',
+                      long: "אנא הזינו מספר טלפון נייד",
+                      short: "*"
                     }}
                     {...getInputProps({
-                      name: 'phoneNumber',
-                      label: 'מספר טלפון נייד',
-                      type: 'tel',
+                      name: "phoneNumber",
+                      label: "מספר טלפון נייד",
+                      type: "tel"
                     })}
                   />
                 </div>
 
-                <ErrorBox className={this.state.showError ? '' : 'hidden'}>
-                  <span>
-                    {this.state.errorMessage}
-                  </span>
+                <ErrorBox className={this.state.showError ? "" : "hidden"}>
+                  <span>{this.state.errorMessage}</span>
                 </ErrorBox>
 
                 <ItemCenterer>
-                  <Button isBusy={this.state.isLoading} onClick={handleSubmit}>המשך</Button>
+                  <Button isBusy={this.state.isLoading} onClick={handleSubmit}>
+                    המשך
+                  </Button>
                 </ItemCenterer>
               </Fragment>
             )}
@@ -133,4 +159,4 @@ class PhoneInputForm extends React.Component {
   }
 }
 
-export { PhoneInputForm, };
+export { PhoneInputForm };
