@@ -3,6 +3,8 @@ export default {
   hasPagination: false,
   items: [
     {
+      kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       path: 'http://pre.haaretz.co.il/news/politics/LIVE-1.6651560',
       image: {
         photographer: 'אילן אסייג',
@@ -544,6 +546,8 @@ export default {
       ],
     },
     {
+      kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       path: 'http://pre.haaretz.co.il/news/politics/.premium-1.6652171',
       image: {
         photographer: 'none',
@@ -645,7 +649,7 @@ export default {
       rank: 3,
       authors: [
         {
-          name: 'עמוס הראל // פרשנות',
+          contentName: 'עמוס הראל // פרשנות',
         },
       ],
     },

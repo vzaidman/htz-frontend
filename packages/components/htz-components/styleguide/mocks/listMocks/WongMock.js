@@ -3,10 +3,12 @@ export default {
   hasPagination: false,
   items: [
     {
+      kind: 'teaser',
+      inputTemplate: 'com.tm.TeaserData',
       publishDate: 1542116220149,
       exclusiveMobile: 'הסלמה בדרום',
       media: {
-        elementType: 'image',
+        kind: 'image',
         photographer: 'none',
         viewMode: 'FullColumnWithVerticalImage',
         accessibility: 'כוח צה"ל בגבול רצועת עזה, היום',

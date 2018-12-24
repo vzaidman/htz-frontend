@@ -28,20 +28,14 @@ type Props = {
    */
   list: ListDataType,
   /**
-   * Determine if the component should be lazyloaded. Defaults to `false`.
-   * If lazyloaded, indicates how many pixels before entering the screen
-   * should the image be loaded.
-   * For example, when `{lazyLoad: true}`, the image will be
-   * lazyloaded as soon as it enters the screen. When `{lazyLoad: '400px'}`
-   * the image will be lazyloaded 400px before entering the screen.
-   * Strings should be in css length units.
+   * Determine if the component should be lazyload images
    */
-  lazyLoad: boolean,
+  lazyLoadImages: boolean,
 };
 
 function Farnsworth({
   list,
-  lazyLoad,
+  lazyLoadImages,
   gaAction,
   biAction,
 }: Props): Node {
@@ -76,7 +70,7 @@ function Farnsworth({
                   <Image
                     data={item.image}
                     imgOptions={imgOptions}
-                    lazyLoad={lazyLoad}
+                    lazyLoad={lazyLoadImages}
                   />
                   <FelaComponent
                     style={theme => ({

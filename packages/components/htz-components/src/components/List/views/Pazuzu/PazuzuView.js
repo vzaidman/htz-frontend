@@ -1,11 +1,8 @@
 // @flow
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
-import type {
-  ComponentPropResponsiveObject,
-  // StyleProps,
-} from '@haaretz/htz-css-tools';
-// import ListView from '../../../ListView/ListView';
+import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
+import { isTeaser, } from '../../utils/validateTeaser.js';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
 import Teaser from '../../../Teaser/Teaser';
@@ -19,8 +16,6 @@ import Image from '../../../Image/Image';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
-
-// import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 
 const getImageOptions = () => {
   const aspect = 'headline';
@@ -89,7 +84,7 @@ type Props = {
    *   ]}
    * />
    */
-  width: number | ComponentPropResponsiveObject<number>[],
+  width: ?(number | ComponentPropResponsiveObject<number>[]),
   list: ListDataType,
 };
 
@@ -133,9 +128,9 @@ function PazuzuTeaser({
                 { until: 'xl', value: [ 0, 1, 7, 1, ], },
                 { from: 'xl', value: [ 0, isConradView ? 0 : 2, 2, 2, ], },
               ]}
-              renderContent={teaserData => (
+              renderContent={() => (
                 <TeaserHeader
-                  {...teaserData}
+                  {...item}
                   typeScale={[
                     { until: 's', value: -1, },
                     { from: 's', until: 'xl', value: 2, },
@@ -158,11 +153,11 @@ function PazuzuTeaser({
                 { until: 'xl', value: [ 0, 1, 1, 1, ], },
                 { from: 'xl', value: [ 0, isConradView ? 0 : 2, 1, 2, ], },
               ]}
-              renderFooter={footerData => (
+              renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors authors={footerData.authors} miscStyles={{ fontWeight: 'bold', }} />
+                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                   {' | '}
-                  <TeaserTime {...footerData} />
+                  <TeaserTime {...item} />
                   {' '}
                   <CommentsCount
                     miscStyles={{
@@ -215,8 +210,12 @@ function Pazuzu({ isConradView, gutter, width, list: { items, }, }: Props): Reac
           }}
         >
           <ListView disableWrapper gutter={0}>
-            <PazuzuTeaser isConradView={isConradView} isSecondItem={false} item={items[0]} />
-            <PazuzuTeaser isConradView={isConradView} isSecondItem item={items[1]} />
+            {isTeaser(items[0]) && (
+              <PazuzuTeaser isConradView={isConradView} isSecondItem={false} item={items[0]} />
+            )}
+            {isTeaser(items[1]) && (
+              <PazuzuTeaser isConradView={isConradView} isSecondItem item={items[1]} />
+            )}
           </ListView>
         </GridItem>
       )}

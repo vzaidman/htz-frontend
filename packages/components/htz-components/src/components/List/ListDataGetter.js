@@ -20,9 +20,13 @@ export type ListDataGetterProps = {
   updateListDuplication: Function,
   variables: {},
   view: string,
+  viewProps?: Object,
   lazyLoadImages: boolean,
 };
 
+ListDataGetter.defaultProps = {
+  viewProps: {},
+};
 export default function ListDataGetter({
   children,
   contentId,
@@ -30,6 +34,7 @@ export default function ListDataGetter({
   updateListDuplication,
   variables,
   view,
+  viewProps,
   lazyLoadImages,
 }: ListDataGetterProps): React.Node {
   return (
@@ -62,6 +67,7 @@ export default function ListDataGetter({
                 gaAction,
                 biAction: clickAction,
                 lazyLoadImages,
+                ...viewProps,
               });
             }}
           </EventTracker>

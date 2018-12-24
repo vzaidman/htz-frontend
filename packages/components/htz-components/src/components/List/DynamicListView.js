@@ -4,6 +4,9 @@ import dynamic from 'next/dynamic';
 const Bender = dynamic(() => import('./views/Bender/Bender'), {
   loading: () => null,
 });
+const Conrad = dynamic(() => import('./views/Conrad/Conrad'), {
+  loading: () => null,
+});
 const Donatello = dynamic(() => import('./views/Donatello/Donatello'), {
   loading: () => null,
 });
@@ -37,10 +40,16 @@ const Nibbler = dynamic(() => import('./views/Nibbler/Nibbler'), {
 const Panucci = dynamic(() => import('./views/Panucci/Panucci'), {
   loading: () => null,
 });
+const Pazuzu = dynamic(() => import('./views/Pazuzu/Pazuzu'), {
+  loading: () => null,
+});
 const Slim = dynamic(() => import('./views/Slim/Slim'), {
   loading: () => null,
 });
 const Slugs = dynamic(() => import('./views/Slugs/Slugs'), {
+  loading: () => null,
+});
+const Wong = dynamic(() => import('./views/Wong/Wong'), {
   loading: () => null,
 });
 const Zapp = dynamic(() => import('./views/Zapp/Zapp'), {
@@ -60,6 +69,9 @@ export default function DynamicListView({ view, ...props }) {
   switch (view) {
     case 'Bender': {
       return <Bender {...props} />;
+    }
+    case 'Conrad': {
+      return <Conrad {...props} />;
     }
     case 'Donatello': {
       return <Donatello {...props} />;
@@ -94,11 +106,17 @@ export default function DynamicListView({ view, ...props }) {
     case 'Panucci': {
       return <Panucci {...props} />;
     }
+    case 'Pazuzu': {
+      return <Pazuzu {...props} />;
+    }
     case 'Slim': {
       return <Slim {...props} />;
     }
     case 'Slugs': {
       return <Slugs {...props} />;
+    }
+    case 'Wong': {
+      return <Wong {...props} />;
     }
     case 'Zapp': {
       return <Zapp {...props} />;

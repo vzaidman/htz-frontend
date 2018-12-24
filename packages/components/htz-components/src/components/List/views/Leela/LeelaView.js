@@ -100,19 +100,13 @@ type Props = {
    */
   list: ListDataType,
   /**
-   * Determine if the component should be lazyloaded. Defaults to `false`.
-   * If lazyloaded, indicates how many pixels before entering the screen
-   * should the image be loaded.
-   * For example, when `{lazyLoad: true}`, the image will be
-   * lazyloaded as soon as it enters the screen. When `{lazyLoad: '400px'}`
-   * the image will be lazyloaded 400px before entering the screen.
-   * Strings should be in css length units.
+   * Determine if the images should be lazyloaded.
    */
-  lazyLoad: boolean,
+  lazyLoadImages: boolean,
 };
 
 // eslint-disable-next-line react/prop-types
-function Leela({ list, lazyLoad, gaAction, biAction, }: Props): Node {
+function Leela({ list, lazyLoadImages, gaAction, biAction, }: Props): Node {
   return (
     <FelaComponent
       style={{
@@ -132,50 +126,34 @@ function Leela({ list, lazyLoad, gaAction, biAction, }: Props): Node {
         render={({ className, }) => <H className={className}>{list.title}</H>}
       />
       <Section>
-        {list.items.map((item, index) => (isClickTrackerWrapper
-          ? (
-            <ListItem key={item.contentId}>
-              <ClickTracker
-                {...item}
-                render={(banner: ClickTrackerBannerType) => {
-                  const { text, link, clicktrackerimage, } = banner;
-                  return (
-                    <FelaTheme
-                      render={theme => (
-                        <BlockLink
-                          miscStyles={{
+        {list.items.map((item, index) => (isClickTrackerWrapper ? (
+          <ListItem key={item.contentId}>
+            <ClickTracker
+              {...item}
+              render={(banner: ClickTrackerBannerType) => {
+                const { text, link, clicktrackerimage, } = banner;
+                return (
+                  <FelaTheme
+                    render={theme => (
+                      <BlockLink
+                        miscStyles={{
                             display: 'flex',
                             marginBottom: '2rem',
-                            border: [
-                              '1px',
-                              0,
-                              'solid',
-                              theme.color('neutral', '-4'),
-                            ],
-                            borderEnd: [
-                              '4px',
-                              0,
-                              'solid',
-                              theme.color('neutral', '-4'),
-                            ],
+                            border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
+                            borderEnd: [ '4px', 0, 'solid', theme.color('neutral', '-4'), ],
                           }}
-                          href={link}
-                          onClick={() => biAction({ index, articleId: item.contentId, })}
-                        >
-                          <PromotedItem
-                            title={text}
-                            image={clicktrackerimage}
-                            path={link}
-                          />
-                        </BlockLink>
-                      )}
-                    />
-                  );
-                }}
-              />
-            </ListItem>
-          )
-          : null)
+                        href={link}
+                        onClick={() => biAction({ index, articleId: item.contentId, })}
+                      >
+                        <PromotedItem title={text} image={clicktrackerimage} path={link} />
+                      </BlockLink>
+                    )}
+                  />
+                );
+              }}
+            />
+          </ListItem>
+        ) : null)
         )}
       </Section>
     </FelaComponent>

@@ -1,5 +1,5 @@
 import React from 'react';
-import WongView from '../Wong/Wong.view.js';
+import WongView from '../Wong/WongView.js';
 
 function Conrad(props) {
   return <WongView isConrad {...props} />;

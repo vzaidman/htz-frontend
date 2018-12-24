@@ -86,7 +86,7 @@ class List extends React.Component {
   };
 
   render() {
-    const { contentId, view, } = this.props;
+    const { contentId, view, viewProps, } = this.props;
     const { listDuplicationIds, } = this.state;
 
     return (
@@ -94,6 +94,7 @@ class List extends React.Component {
         {readingHistory => (
           <DynamicListView
             view={view}
+            viewProps={viewProps}
             contentId={contentId}
             updateListDuplication={this.updateListDuplication}
             variables={{

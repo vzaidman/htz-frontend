@@ -4,7 +4,6 @@ import gql from 'graphql-tag';
 import { teaserForLeftElement, } from '@haaretz/app-utils';
 import FarnsworthView from './FarnsworthView.js';
 import ListDataGetter from '../../ListDataGetter';
-import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 const FarnsworthQuery = gql`
   query FarnsworthQuery($listId: String!, $history: [ID]) {

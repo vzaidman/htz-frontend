@@ -1,12 +1,16 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+// @flow
+import * as React from 'react';
 import gql from 'graphql-tag';
 import { image, embed, imageGallery, } from '@haaretz/app-utils';
+import WongView from './WongView.js';
+import ListDataGetter from '../../ListDataGetter';
 
-export default gql`
+export const WongQuery = gql`
   query WongQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       items {
         ... on TeaserInList {
+          inputTemplate
           commentsCounts
           contentId
           title
@@ -24,12 +28,7 @@ export default gql`
             contentId
           }
           authors {
-            ... on AuthorObject {
-              name
-            }
-            ... on CreditObject {
-              name
-            }
+            contentName
           }
           media {
             ... on Image {
@@ -50,3 +49,35 @@ export default gql`
   ${image}
   ${imageGallery}
 `;
+
+type Props = {
+  contentId: string,
+  updateListDuplication: Function,
+  variables: {},
+  lazyLoadImages: boolean,
+  viewProps: Object,
+};
+
+export default function Wong({
+  contentId,
+  updateListDuplication,
+  variables,
+  lazyLoadImages,
+  viewProps,
+}: Props): React.Node {
+  return (
+    <ListDataGetter
+      query={WongQuery}
+      view="Wong"
+      {...{
+        contentId,
+        updateListDuplication,
+        variables,
+        lazyLoadImages,
+        viewProps,
+      }}
+    >
+      {props => <WongView {...props} />}
+    </ListDataGetter>
+  );
+}
