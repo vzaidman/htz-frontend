@@ -1,16 +1,16 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
+
+import type { ChildrenArray, Node, } from 'react';
 
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
+type Props = {
+  children: ChildrenArray<Node> | Node,
 };
 
-function ListItem({ children, }) {
+function ListItem({ children, }: Props): Node {
   return <ErrorBoundary>{children}</ErrorBoundary>;
 }
-
-ListItem.propTypes = propTypes;
 
 export default ListItem;

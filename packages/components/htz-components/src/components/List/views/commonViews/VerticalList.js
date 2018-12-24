@@ -113,19 +113,16 @@ export default function VerticalList({
             {items
               ? items.map((itemData, index) => (isClickTrackerWrapper(itemData) ? (
                 <ClickTracker
+                  key={itemData.contentId}
                   {...itemData}
-                  render={(banner: ClickTrackerBannerType) => {
-                    const { contentId, } = banner;
-                    return (
-                      <VerticalListTeaser
-                        key={contentId}
-                        itemData={banner}
-                        biAction={biAction}
-                        index={index}
-                        isLast={index >= items.length - 1}
-                      />
-                    );
-                  }}
+                  render={(banner: ClickTrackerBannerType) => (
+                    <VerticalListTeaser
+                      itemData={banner}
+                      biAction={biAction}
+                      index={index}
+                      isLast={index >= items.length - 1}
+                    />
+                  )}
                 />
               ) : isTeaser(itemData) ? (
                 <VerticalListTeaser

@@ -10,6 +10,9 @@ const Donatello = dynamic(() => import('./views/Donatello/Donatello'), {
 const Farnsworth = dynamic(() => import('./views/Farnsworth/Farnsworth'), {
   loading: () => null,
 });
+const Hawking = dynamic(() => import('./views/Hawking/Hawking'), {
+  loading: () => null,
+});
 const Fry = dynamic(() => import('./views/Fry/Fry'), {
   loading: () => null,
 });
@@ -29,6 +32,9 @@ const Mom = dynamic(() => import('./views/Mom/Mom'), {
   loading: () => null,
 });
 const Nibbler = dynamic(() => import('./views/Nibbler/Nibbler'), {
+  loading: () => null,
+});
+const Panucci = dynamic(() => import('./views/Panucci/Panucci'), {
   loading: () => null,
 });
 const Slim = dynamic(() => import('./views/Slim/Slim'), {
@@ -61,6 +67,9 @@ export default function DynamicListView({ view, ...props }) {
     case 'Farnsworth': {
       return <Farnsworth {...props} />;
     }
+    case 'Hawking': {
+      return <Hawking {...props} />;
+    }
     case 'Fry': {
       return <Fry {...props} />;
     }
@@ -78,6 +87,9 @@ export default function DynamicListView({ view, ...props }) {
     }
     case 'Nibbler': {
       return <Nibbler {...props} />;
+    }
+    case 'Panucci': {
+      return <Panucci {...props} />;
     }
     case 'Slim': {
       return <Slim {...props} />;

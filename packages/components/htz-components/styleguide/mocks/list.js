@@ -2,7 +2,6 @@ import BenderMock from './listMocks/BenderMock';
 import DefaultMock from './listMocks/DefaultMock';
 import HawkingMock from './listMocks/HawkingMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
-import FryMock from './listMocks/FryMock';
 import GamalMock from './listMocks/GamalMock';
 import LeonardoMock from './listMocks/LeonardoMock';
 import MomMock from './listMocks/MomMock';
@@ -19,16 +18,11 @@ export default (root, { listId, }) => {
       return BenderMock;
     case 'Farnsworth':
       return FarnsworthMock;
-    case 'Fry':
-      return FryMock;
     case 'Gamal':
       return GamalMock;
     case 'Hawking':
       return HawkingMock;
-    case 'Nibbler':
     case 'Leela':
-    case 'Zoidberg':
-      return ZoidbergMock;
     case 'Leonardo':
     case 'Donatello':
     case 'Michelangelo':
@@ -43,6 +37,8 @@ export default (root, { listId, }) => {
       return SlugsMock;
     case 'Zapp':
       return ZappMock;
+    case 'Zoidberg':
+      return ZoidbergMock;
     case 'Zombie':
       return ZombieMock;
     default:

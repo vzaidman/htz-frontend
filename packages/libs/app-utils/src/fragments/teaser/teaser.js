@@ -7,6 +7,7 @@ export const teaserForRelatedArticles = gql`
   fragment TeaserForRelatedArticles on TeaserInList {
     title
     path
+    inputTemplate
     authors {
       ...Author
     }
@@ -21,6 +22,7 @@ export const teaserForLeftElement = gql`
     representedContent
     title
     path
+    inputTemplate
     titleMobile
     hash
   }
@@ -34,6 +36,7 @@ export const teaserForBender = gql`
     representedContent
     title
     path
+    inputTemplate
     titleMobile
     hash
     authors {

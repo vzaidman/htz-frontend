@@ -165,7 +165,7 @@ function MainTeaser({
           <Teaser
             data={data}
             gutter={0}
-            onClick={biAction({ index: 0, articleId, })}
+            onClick={() => biAction({ index: 0, articleId, })}
             miscStyles={{
               marginInlineEnd: [ { from: 's', until: 'l', value: 'auto', }, ],
               marginInlineStart: [ { from: 's', until: 'l', value: 'auto', }, ],
@@ -235,7 +235,7 @@ function TwoUpTeaser({
           <Teaser
             data={data}
             gutter={0}
-            onClick={biAction({ index, articleId, })}
+            onClick={() => biAction({ index, articleId, })}
             gridMiscStyles={{ flexDirection: [ { until: 's', value: 'column', }, ], }}
           >
             <TeaserMedia
@@ -298,7 +298,7 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
     ? (
       <Teaser
         data={data}
-        onClick={biAction({ index: 3, articleId, })}
+        onClick={() => biAction({ index: 3, articleId, })}
         miscStyles={{
           alignItems: 'stretch',
           display: 'flex',

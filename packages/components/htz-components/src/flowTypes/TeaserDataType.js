@@ -29,7 +29,7 @@ export type TeaserDataType = {
   rank?: ?number,
   relatedArticles?: ?({ contentId: string, path: string, title: string, }[]),
   reportingFrom?: ?string,
-  representedContent?: ?string,
+  representedContent: string,
   subtitle?: ?string,
   subtitleMobile?: ?string,
   title: string,

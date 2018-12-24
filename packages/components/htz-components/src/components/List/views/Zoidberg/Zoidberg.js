@@ -13,9 +13,13 @@ const ZoidbergQuery = gql`
         ... on TeaserInList {
           ...TeaserForLeftElement
         }
+      }
+      clickTrackers: items {
         ... on ClickTrackerBannersWrapper {
           ...ClickTrackerBannersWrapper
         }
+      }
+      dfp: items {
         ... on DfpBanner {
           ...DfpBanner
         }
