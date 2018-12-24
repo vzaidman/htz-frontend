@@ -27,16 +27,15 @@ const { InputLinkButton, ErrorBox, } = LoginMiscLayoutStyles;
 // Methods -------------------
 const generateSmsCodeError = message => [ { name: 'smsCode', order: 1, errorText: message, }, ];
 const isNumeric = number => Number(number).toString() !== 'NaN';
-const validateSmsCodeInput = ({ smsCode, }) =>
-  (!isNumeric(smsCode) || !smsCode || smsCode.length !== 5
-    ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
-    : []);
+const validateSmsCodeInput = ({ smsCode, }) => (!isNumeric(smsCode) || !smsCode || smsCode.length !== 5
+  ? generateSmsCodeError('אנא הזינו את הקוד שנשלח אליכם')
+  : []);
 
 const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
-  return (facebookParams ?
-    getFacebookLoginUrl(facebookParams) :
-    false);
+  return (facebookParams
+    ? getFacebookLoginUrl(facebookParams)
+    : false);
 };
 
 const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
@@ -79,8 +78,8 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
   }
 };
 
-const translateErrorMsg = msg => (msg == 'cannot send sms' ?
-  'לא ניתן לשלוח SMS כרגע, אנא נסה שנית במועד מאוחר יותר' : msg);
+const translateErrorMsg = msg => (msg == 'cannot send sms'
+  ? 'לא ניתן לשלוח SMS כרגע, אנא נסה שנית במועד מאוחר יותר' : msg);
 
 const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader) => {
   hideError();
@@ -145,7 +144,7 @@ class OtpForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, findRout, doTransition, user, eventsTrackers, flow, eventCategory } = this.props;
+    const { client, findRout, doTransition, user, eventsTrackers, flow, eventCategory, } = this.props;
     const host = getHost(client);
 
     return (
