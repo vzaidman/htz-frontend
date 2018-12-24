@@ -19,7 +19,12 @@ import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import HtzLink from '../../../HtzLink/HtzLink';
 import { isTeaser, } from '../../utils/validateTeaser.js';
-import { isImage, isEmbed, isGallery, } from '../../utils/validateMediaKind.js';
+import {
+  isImage,
+  isEmbed,
+  //  isGallery,
+} from '../../utils/validateMediaKind.js';
+import IconBack from '../../../Icon/icons/IconBack';
 
 const getSourceOptions = (aspect: string) => ({
   sizes: '(min-width:1280px) 1280px, 100vw',
@@ -176,6 +181,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
         <GridItem
           gutter={gutter}
           width={width}
+          // todo: which color should the rule be? its #979797 is not on the palette
           rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-3', ], width: 1, }, }, ]}
         >
           {isTeaser(item) && (
@@ -212,7 +218,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                   { from: 'xl', value: [ 0, isConrad ? 4 : 0, 0, isConrad ? 0 : 4, ], },
                 ]}
                 miscStyles={{
-                  marginTop: [ { until: 's', value: '-5rem', }, ],
+                  marginTop: [ { until: 's', value: '-3rem', }, ],
                 }}
                 renderContent={() => (
                   <React.Fragment>
@@ -226,12 +232,16 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                         { from: 'l', until: 'xl', value: 6, },
                         { from: 'xl', value: 5, },
                       ]}
-                      kickerTypeScale={[
-                        { from: 's', until: 'l', value: -1, },
-                        { from: 'l', value: -1, },
-                      ]}
+                      kickerTypeScale={-1}
                       miscStyles={{
-                        marginTop: [ { until: 's', value: '3rem', }, ],
+                        marginTop: '1rem',
+                      }}
+                      kickerMiscStyles={{
+                        marginInlineStart: [ { until: 's', value: '-2rem', }, ],
+                      }}
+                      kickerInnerMiscStyles={{
+                        paddingInlineStart: [ { until: 's', value: '2rem', }, ],
+                        paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
                       }}
                     />
                     <TeaserSubtitle
@@ -266,10 +276,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 }}
                 renderFooter={() => (
                   <React.Fragment>
-                    <TeaserAuthors
-                      authors={item.authors}
-                      miscStyles={{ fontWeight: 'bold', }}
-                    />
+                    <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                     {' | '}
                     <TeaserTime {...item} />
                     {' '}
@@ -302,11 +309,15 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                                       { until: 'xl', },
                                       idx === 2 ? { display: 'none', } : {}
                                     ),
+                                    theme.type(-1),
                                   ],
                                 }}
                                 render={({ className, }) => (
                                   <HtzLink href={article.path} className={className}>
-                                    {'> '}
+                                    <IconBack
+                                      size={2}
+                                      miscStyles={{ marginInlineEnd: '0.5rem', }}
+                                    />
                                     {article.title}
                                   </HtzLink>
                                 )}

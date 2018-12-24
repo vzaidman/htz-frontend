@@ -125,9 +125,15 @@ function PazuzuTeaser({
               width={[ { until: 'xl', value: 1, }, { from: 'xl', value: isConradView ? 1 : 1 / 2, }, ]}
               data={item}
               padding={[
-                { until: 'xl', value: [ 0, 1, 7, 1, ], },
+                { until: 'xl', value: [ 0, 1, 0, 1, ], },
                 { from: 'xl', value: [ 0, isConradView ? 0 : 2, 2, 2, ], },
               ]}
+              miscStyles={{
+                marginTop: [
+                  { until: 's', value: '2rem', },
+                  { from: 's', until: 'xl', value: '1rem', },
+                ],
+              }}
               renderContent={() => (
                 <TeaserHeader
                   {...item}
@@ -139,9 +145,15 @@ function PazuzuTeaser({
                 />
               )}
               footerMiscStyles={{
-                display: 'block',
+                display: 'flex',
+                flexWrap: 'wrap',
+                flexDirection: [ { until: 's', value: 'column', }, { from: 's', value: 'row', }, ],
                 color: theme.color('neutral', '-3'),
-                marginTop: [ { from: 'xl', value: '0', }, ],
+                marginTop: [
+                  { until: 'l', value: '1rem', },
+                  { from: 'l', until: 'xl', value: '1rem', },
+                  { from: 'xl', value: '0', },
+                ],
                 position: [ { from: 'xl', value: 'initial', }, ],
                 type: [
                   { until: 's', value: -3, },
@@ -155,25 +167,25 @@ function PazuzuTeaser({
               ]}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
-                  {' | '}
-                  <TeaserTime {...item} />
-                  {' '}
-                  <CommentsCount
-                    miscStyles={{
-                      display: [ { until: 's', value: 'none', }, ],
-                      marginInlineEnd: '1rem',
-                    }}
-                    commentsCount={item.commentsCounts}
-                    // size={[ { from: 's', until: 'l', value: 2, }, ]}
-                  />
-                  {/* todo: pass actual rank */}
+                  <div>
+                    <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                    {' | '}
+                    <TeaserTime {...item} />
+                    {' '}
+                    <CommentsCount
+                      miscStyles={{
+                        marginInlineEnd: '1rem',
+                      }}
+                      commentsCount={item.commentsCounts}
+                      // size={[ { from: 's', until: 'l', value: 2, }, ]}
+                    />
+                  </div>
                   {item.rank && (
                     <TeaserRank
                       maxRank={5}
                       rank={item.rank}
                       miscStyles={{
-                        display: [ { until: 's', value: 'none', }, ],
+                        order: [ { until: 's', value: -1, }, ],
                       }}
                     />
                   )}
@@ -209,7 +221,7 @@ function Pazuzu({ isConradView, gutter, width, list: { items, }, }: Props): Reac
             ],
           }}
         >
-          <ListView disableWrapper gutter={0}>
+          <ListView disableWrapper gutter={0} marginTop={0}>
             {isTeaser(items[0]) && (
               <PazuzuTeaser isConradView={isConradView} isSecondItem={false} item={items[0]} />
             )}
