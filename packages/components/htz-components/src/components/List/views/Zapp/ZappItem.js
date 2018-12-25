@@ -42,22 +42,25 @@ export default function ZappItem({
     <Teaser
       data={data}
       onClick={() => biAction({ index, articleId: data.contentId, })}
+      gridMiscStyles={{
+        flexWrap: 'nowrap',
+        flexDirection: [ { from: 'l', value: 'column', }, ],
+      }}
     >
       {data.image ? (
         <TeaserMedia
           width={[
             { until: 's', value: 4 / 12, },
             { from: 's', until: 'l', value: 5 / 12, },
-            { from: 'l', value: 1, },
           ]}
           data={data}
-          {...(hideImageOnMobile
-            ? {
-              miscStyles: {
-                display: [ { until: 's', value: 'none', }, ],
-              },
-            }
-            : {})}
+          miscStyles={{
+            flexBasis: [ { from: 'l', value: 'auto', }, ],
+            flexGrow: [ { from: 'l', value: '0', }, ],
+            ...(hideImageOnMobile
+              ? { display: [ { until: 's', value: 'none', }, ], }
+              : {}),
+          }}
         >
           <FelaTheme
             render={theme => (data.image ? (
@@ -99,6 +102,8 @@ export default function ZappItem({
         gridItemMiscStyles={{
           display: [ { from: 's', until: 'l', value: 'block', }, ],
           flexBasis: [ { from: 'l', value: 'auto', }, ],
+          flexGrow: [ { from: 'l', value: '1', }, ],
+          flexShrink: [ { from: 'l', value: '0', }, ],
         }}
         renderContent={() => (
           <TeaserHeader
@@ -121,14 +126,14 @@ export default function ZappItem({
             />
             {data.authors ? ' | ' : null}
             <TeaserTime {...data} />
+            {data.commentsCounts ? ' ' : null}
+            <CommentsCount commentsCount={data.commentsCounts} />
             {data.rank != null ? (
               <React.Fragment>
                 {' '}
                 <TeaserRank rank={data.rank} />
               </React.Fragment>
             ) : null}
-            {data.commentsCounts ? ' ' : null}
-            <CommentsCount commentsCount={data.commentsCounts} />
           </GridItem>
         )}
         footerColor={[ 'neutral', '-3', ]}
