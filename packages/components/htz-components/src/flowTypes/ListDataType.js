@@ -22,6 +22,8 @@ export type ListDataType = {
   // `marketingTeaser` taking precedence. So, if a list have both,
   // only `marketingTeaser` should be placed in the JSON
   marketingTeaser?: ListMarketingTeaserType,
+  isLazyloadImages: boolean,
+  loadPriority: "ssr" | "client" | "lazy",
   description?: string,
   urlDescription?: string,
   items: Array<ListItemType>,
