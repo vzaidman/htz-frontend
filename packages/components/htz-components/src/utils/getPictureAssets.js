@@ -8,7 +8,8 @@ import type { ImageDataType, } from '../flowTypes/ImageDataType';
 import type { AssetOptions, } from './getImageAssets';
 
 type SourceType = AssetOptions & {
-  from: "s" | "m" | "l" | "xl",
+  from?: "s" | "m" | "l" | "xl",
+  until?: "s" | "m" | "l" | "xl",
 };
 
 type PictureAssetPropsType = {
@@ -42,6 +43,7 @@ export default function pictureAssetProps({
         widths: source.widths,
       }),
       from: source.from,
+      until: source.until,
     })),
   };
 }
