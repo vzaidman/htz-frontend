@@ -9,6 +9,8 @@ import {
   AriaLive,
   DeviceTypeInjector,
   GoogleAnalytics,
+  GaDimensions,
+  UserDispenser,
   ScrollListener,
   RouteChangeListener,
   UserInjector,
@@ -50,6 +52,17 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
             <UserInjector />
             {/* <DfpInjector path={url.query.path} /> */}
             <GoogleAnalytics withEC />
+            <UserDispenser
+              render={({ user, }) => (
+                <GaDimensions
+                  pageType="Homepage"
+                  authors="Homepage"
+                  userType={user.type}
+                  articlePaywallMode={100}
+                />
+              )
+            }
+            />
             <StyleProvider renderer={styleRenderer} theme={htzTheme}>
               <React.Fragment>
                 <AriaLive />
