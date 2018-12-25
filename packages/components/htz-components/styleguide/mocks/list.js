@@ -1,4 +1,5 @@
 import BenderMock from './listMocks/BenderMock';
+import CalculonMock from './listMocks/CalculonMock';
 import DefaultMock from './listMocks/DefaultMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
 import GamalMock from './listMocks/GamalMock';
@@ -19,6 +20,8 @@ export default (root, { listId, }) => {
   switch (listId) {
     case 'Bender':
       return BenderMock;
+    case 'Calculon':
+      return CalculonMock;
     case 'Farnsworth':
       return FarnsworthMock;
     case 'Gamal':

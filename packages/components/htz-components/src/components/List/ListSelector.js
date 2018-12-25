@@ -46,6 +46,7 @@ export default class ListSelector extends React.Component {
                 {'Select list view'}
               </option>
               <option value="Bender">Bender</option>
+              <option value="Calculon">Calculon</option>
               <option value="Donatello">Donatello</option>
               <option value="Gamal">Gamal</option>
               <option value="Conrad">Conrad</option>

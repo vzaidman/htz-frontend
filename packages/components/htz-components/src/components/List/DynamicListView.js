@@ -4,6 +4,9 @@ import dynamic from 'next/dynamic';
 const Bender = dynamic(() => import('./views/Bender/Bender'), {
   loading: () => null,
 });
+const Calculon = dynamic(() => import('./views/Calculon/Calculon'), {
+  loading: () => null,
+});
 const Conrad = dynamic(() => import('./views/Conrad/Conrad'), {
   loading: () => null,
 });
@@ -69,6 +72,9 @@ export default function DynamicListView({ view, ...props }) {
   switch (view) {
     case 'Bender': {
       return <Bender {...props} />;
+    }
+    case 'Calculon': {
+      return <Calculon {...props} />;
     }
     case 'Conrad': {
       return <Conrad {...props} />;
