@@ -181,8 +181,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
         <GridItem
           gutter={gutter}
           width={width}
-          // todo: which color should the rule be? its #979797 is not on the palette
-          rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-3', ], width: 1, }, }, ]}
+          rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]}
         >
           {isTeaser(item) && (
             <Teaser
@@ -198,7 +197,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 width={[
                   { until: 'l', value: 1, },
                   { from: 'l', until: 'xl', value: 7 / 12, },
-                  { from: 'xl', value: isConrad ? 1 / 2 : 6 / 10, },
+                  { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
                 ]}
                 miscStyles={{ paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '4rem', }, ], }}
               >
@@ -208,12 +207,12 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 width={[
                   { until: 'l', value: 1, },
                   { from: 'l', until: 'xl', value: 5 / 12, },
-                  { from: 'xl', value: isConrad ? 1 / 2 : 4 / 10, },
+                  { from: 'xl', value: isConrad ? 1 / 2 : 3 / 7, },
                 ]}
                 data={item}
                 padding={[
                   { until: 's', value: [ 0, 2, 0, 0, ], },
-                  { from: 's', until: 'l', value: [ 3, 2, 0, 0, ], },
+                  { from: 's', until: 'l', value: [ 3, 0, 0, 0, ], },
                   { from: 'l', until: 'xl', value: [ 0, 4, 0, 0, ], },
                   { from: 'xl', value: [ 0, isConrad ? 4 : 0, 0, isConrad ? 0 : 4, ], },
                 ]}
@@ -229,7 +228,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                       typeScale={[
                         { until: 's', value: 1, },
                         { from: 's', until: 'l', value: 6, },
-                        { from: 'l', until: 'xl', value: 6, },
+                        { from: 'l', until: 'xl', value: 5, },
                         { from: 'xl', value: 5, },
                       ]}
                       kickerTypeScale={-1}
@@ -257,11 +256,11 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 )}
                 footerPadding={[
                   { until: 's', value: [ 1, 2, ], },
-                  { from: 's', until: 'l', value: [ 1, 2, ], },
-                  { from: 'l', until: 'xl', value: [ 1, 4, 1, 0, ], },
+                  { from: 's', until: 'l', value: [ 1, 0, ], },
+                  { from: 'l', until: 'xl', value: [ 1, 4, 0, 0, ], },
                   isConrad
-                    ? { from: 'xl', value: [ 3, 4, 0, 0, ], }
-                    : { from: 'xl', value: [ 2, 0, 0, 0, ], },
+                    ? { from: 'xl', value: [ 1, 4, 0, 0, ], }
+                    : { from: 'xl', value: [ 1, 0, 0, 4, ], },
                 ]}
                 footerMiscStyles={{
                   display: 'block',
@@ -290,6 +289,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                           marginTop: '1rem',
                           extend: [
                             theme.mq({ until: 's', }, { display: 'none', }),
+                            theme.mq({ from: 'l', }, { marginTop: '2rem', }),
                             // theme.mq({ from: 'xl', }, { display: 'none', }),
                           ],
                         }}
@@ -309,13 +309,14 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                                       { until: 'xl', },
                                       idx === 2 ? { display: 'none', } : {}
                                     ),
-                                    theme.type(-1),
+                                    theme.type(-1, { untilBp: 'xl', }),
+                                    theme.type(-2, { fromBp: 'xl', }),
                                   ],
                                 }}
                                 render={({ className, }) => (
                                   <HtzLink href={article.path} className={className}>
                                     <IconBack
-                                      size={2}
+                                      size={[ { until: 'xl', value: 2, }, { from: 'xl', value: 1.5, }, ]}
                                       miscStyles={{ marginInlineEnd: '0.5rem', }}
                                     />
                                     {article.title}

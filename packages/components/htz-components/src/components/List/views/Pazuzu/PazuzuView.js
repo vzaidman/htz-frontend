@@ -12,54 +12,11 @@ import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
-import Image from '../../../Image/Image';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
-
-const getImageOptions = () => {
-  const aspect = 'headline';
-  return {
-    sizes: '(max-width: 600px) 145px, (max-width: 1024px) 264px, (max-width: 1280px) 308px, 315px',
-    transforms: [
-      {
-        width: '375',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '425',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '600',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '768',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1028',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1280',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1920',
-        aspect,
-        quality: 'auto',
-      },
-    ],
-  };
-};
+import Picture from '../../../Image/Picture';
+import getPictureAssets from '../../../../utils/getPictureAssets';
 
 type Props = {
   isConradView: boolean,
@@ -119,20 +76,37 @@ function PazuzuTeaser({
               data={item}
               width={[ { until: 'xl', value: 1, }, { from: 'xl', value: isConradView ? 1 : 1 / 2, }, ]}
             >
-              <Image data={item.image} imgOptions={getImageOptions()} />
+              {item.image && (
+                <Picture
+                  {...getPictureAssets({
+                    bps: theme.bps,
+                    imgData: item.image,
+                    defaultImgOptions: {
+                      sizes: '375px',
+                      aspect: 'headline',
+                      widths: [ 375, 425, 600, 768, 1028, 1280, 1920, ],
+                    },
+                    sources: [
+                      {
+                        aspect: isConradView ? 'landscape' : 'headline',
+                        from: 'xl',
+                        sizes: [ { from: 'xl', size: '388px', }, ],
+                        widths: [ 388, 776, 1024, ],
+                      },
+                    ],
+                  })}
+                />
+              )}
             </TeaserMedia>
             <TeaserContent
               width={[ { until: 'xl', value: 1, }, { from: 'xl', value: isConradView ? 1 : 1 / 2, }, ]}
               data={item}
               padding={[
                 { until: 'xl', value: [ 0, 1, 0, 1, ], },
-                { from: 'xl', value: [ 0, isConradView ? 0 : 2, 2, 2, ], },
+                { from: 'xl', value: [ isConradView ? 1 : 0, isConradView ? 0 : 2, 1, 2, ], },
               ]}
               miscStyles={{
-                marginTop: [
-                  { until: 's', value: '2rem', },
-                  { from: 's', until: 'xl', value: '1rem', },
-                ],
+                marginTop: [ { until: 'xl', value: '1rem', }, ],
               }}
               renderContent={() => (
                 <TeaserHeader
@@ -145,9 +119,6 @@ function PazuzuTeaser({
                 />
               )}
               footerMiscStyles={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                flexDirection: [ { until: 's', value: 'column', }, { from: 's', value: 'row', }, ],
                 color: theme.color('neutral', '-3'),
                 marginTop: [
                   { until: 'l', value: '1rem', },
@@ -167,25 +138,25 @@ function PazuzuTeaser({
               ]}
               renderFooter={() => (
                 <React.Fragment>
-                  <div>
-                    <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
-                    {' | '}
-                    <TeaserTime {...item} />
-                    {' '}
-                    <CommentsCount
-                      miscStyles={{
-                        marginInlineEnd: '1rem',
-                      }}
-                      commentsCount={item.commentsCounts}
-                      // size={[ { from: 's', until: 'l', value: 2, }, ]}
-                    />
-                  </div>
+                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                  {' | '}
+                  <TeaserTime {...item} />
+                  {' '}
+                  <CommentsCount
+                    miscStyles={{
+                      marginInlineEnd: '1rem',
+                      display: [ { until: 's', value: 'none', }, ],
+                    }}
+                    commentsCount={item.commentsCounts}
+                    // size={[ { from: 's', until: 'l', value: 2, }, ]}
+                  />
                   {item.rank && (
                     <TeaserRank
                       maxRank={5}
                       rank={item.rank}
                       miscStyles={{
                         order: [ { until: 's', value: -1, }, ],
+                        display: [ { until: 's', value: 'none', }, ],
                       }}
                     />
                   )}
@@ -212,7 +183,7 @@ function Pazuzu({ isConradView, gutter, width, list: { items, }, }: Props): Reac
             marginTop: [
               {
                 until: 's',
-                value: 2,
+                value: 1,
               },
               {
                 from: 's',

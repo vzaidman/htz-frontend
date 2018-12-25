@@ -105,12 +105,12 @@ export default {
       relatedArticles: [
         {
           contentId: '1.6652632',
-          title: 'צה"ל תוקף בלב עזה, אך מנסה שלא לפגוע באזרחים כדי להימנע ממלחמה',
+          title: 'צה"ל תוקף בלב עזה, אי להימנע ממלחמה',
           path: 'http://prgsdge.hasdgsdgaretz.csdgo.isdgl/nesdgws/polisdgtics/1.665228gfhfghfgj4',
         },
         {
           contentId: '1.6652375',
-          title: 'ההסלמה חשפה את פערי המיגון, ובאשקלון דורשים מהממשלה להתערב',
+          title: 'ההסלמה חשפה רשים מהממשלה להתערב',
           path: 'http://pre.haaretz.co.il/news/politics/1.6651839',
         },
       ],
