@@ -98,6 +98,7 @@ class PhoneMailSent extends Component {
                             }
                             showNumber={false}
                             eventCategory="Phone Mail Sent"
+                            eventsTrackers={{ biAction, gaAction, }}
                           />
 
                           <ItemCenterer>
