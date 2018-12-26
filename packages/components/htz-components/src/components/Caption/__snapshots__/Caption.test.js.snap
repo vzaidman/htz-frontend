@@ -4,28 +4,6 @@ exports[`should correctly render a Caption bar with both credit and caption  1`]
 Object {
   "component": <div>
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
-    >
-      <span
-        className="htz-i"
-      >
-        The Caption
-      </span>
-      <span
-        className="htz-j htz-k htz-l htz-e htz-f htz-g htz-h"
-      >
-        קרדיט: me
-      </span>
-    </div>
-  </div>,
-  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{font-weight:700}.htz-c{padding-right:1rem}.htz-d{color:#505050}.htz-i{margin-left:1rem}.htz-j{display:inline}.htz-k{flex-shrink:0}.htz-l{font-weight:300}@media (max-width: 79.9375em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
-}
-`;
-
-exports[`should correctly render a Caption bar with only the caption, Left to right, and with dynamic background  1`] = `
-Object {
-  "component": <div>
-    <div
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
     >
       <span
@@ -33,10 +11,32 @@ Object {
       >
         The Caption
       </span>
+      <span
+        className="htz-k htz-l htz-m htz-f htz-g htz-h htz-i"
+      >
+        קרדיט: me
+      </span>
+    </div>
+  </div>,
+  "styles": ".htz-a{word-break:break-word}.htz-b{overflow-x:hidden}.htz-c{font-weight:700}.htz-d{padding-right:1rem}.htz-e{color:#505050}.htz-j{margin-left:1rem}.htz-k{display:inline}.htz-l{flex-shrink:0}.htz-m{font-weight:300}@media (max-width: 79.9375em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}@media (min-width: 80em){.htz-h{font-size:2rem}.htz-i{line-height:1.5em}}",
+}
+`;
+
+exports[`should correctly render a Caption bar with only the caption, Left to right, and with dynamic background  1`] = `
+Object {
+  "component": <div>
+    <div
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j"
+    >
+      <span
+        className="htz-k"
+      >
+        The Caption
+      </span>
       
     </div>
   </div>,
-  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{font-weight:700}.htz-c{padding-right:1rem}.htz-j{margin-left:1rem}@media (max-width: 79.9375em){.htz-d{color:#0B7EB5}.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{color:#FFA6A6}.htz-h{font-size:2rem}.htz-i{line-height:1.5em}}",
+  "styles": ".htz-a{word-break:break-word}.htz-b{overflow-x:hidden}.htz-c{font-weight:700}.htz-d{padding-right:1rem}.htz-k{margin-left:1rem}@media (max-width: 79.9375em){.htz-e{color:#0B7EB5}.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}@media (min-width: 80em){.htz-h{color:#FFA6A6}.htz-i{font-size:2rem}.htz-j{line-height:1.5em}}",
 }
 `;
 
@@ -44,19 +44,19 @@ exports[`should correctly render a Caption bar with only the credit  1`] = `
 Object {
   "component": <div>
     <div
-      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
     >
       <span
-        className="htz-i"
+        className="htz-j"
       />
       <span
-        className="htz-j htz-k htz-l htz-e htz-f htz-g htz-h"
+        className="htz-k htz-l htz-m htz-f htz-g htz-h htz-i"
       >
         קרדיט: me
       </span>
     </div>
   </div>,
-  "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{font-weight:700}.htz-c{padding-right:1rem}.htz-d{color:#505050}.htz-i{margin-left:1rem}.htz-j{display:inline}.htz-k{flex-shrink:0}.htz-l{font-weight:300}@media (max-width: 79.9375em){.htz-e{font-size:2rem}.htz-f{line-height:1.5em}}@media (min-width: 80em){.htz-g{font-size:2rem}.htz-h{line-height:1.5em}}",
+  "styles": ".htz-a{word-break:break-word}.htz-b{overflow-x:hidden}.htz-c{font-weight:700}.htz-d{padding-right:1rem}.htz-e{color:#505050}.htz-j{margin-left:1rem}.htz-k{display:inline}.htz-l{flex-shrink:0}.htz-m{font-weight:300}@media (max-width: 79.9375em){.htz-f{font-size:2rem}.htz-g{line-height:1.5em}}@media (min-width: 80em){.htz-h{font-size:2rem}.htz-i{line-height:1.5em}}",
 }
 `;
 
