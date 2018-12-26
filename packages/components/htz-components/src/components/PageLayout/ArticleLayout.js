@@ -98,7 +98,7 @@ const ArticlePageLayout = ({
       </LayoutRow>
       {postMain ? (
         <LayoutRow bgc={rowBgc} miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
-          <Observer triggerOnce rootMargin="2000px">
+          <Observer triggerOnce rootMargin="1500px">
             {inView => (inView ? <Fragment>{getElements(postMain)}</Fragment> : null)}
           </Observer>
         </LayoutRow>
