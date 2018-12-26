@@ -4,6 +4,7 @@ import type { DocumentNode, } from 'graphql/language/ast';
 import Query from '../ApolloBoundary/Query';
 import EventTracker from '../../utils/EventTracker';
 import type { ListBiActionType, } from '../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../flowTypes/ListDataType';
 
 type ListComponentProps = {
   // generalized this to avoid complexity of dfp/teaser/clicktracker
@@ -15,43 +16,40 @@ type ListComponentProps = {
 };
 export type ListDataGetterProps = {
   children: ListComponentProps => React.Node,
-  contentId: string,
   query: DocumentNode,
   updateListDuplication: Function,
   variables: {},
   view: string,
   viewProps?: Object,
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
 ListDataGetter.defaultProps = {
   viewProps: {},
 };
+
 export default function ListDataGetter({
   children,
-  contentId,
   query,
   updateListDuplication,
   variables,
   view,
   viewProps,
-  lazyLoadImages,
+  listData,
 }: ListDataGetterProps): React.Node {
+  const isSsr = listData && listData.loadPriority === 'ssr';
   return (
-    <Query query={query} variables={variables}>
+    <Query query={query} variables={variables} skip={isSsr}>
       {({ data, loading, error, }) => {
         if (loading) return null;
         if (error) return null;
-        const { title, items, ...restList } = data.list;
+        const { title, items, lazyLoadImages, contentId, ...restList } = isSsr
+          ? listData
+          : data.list;
         updateListDuplication(items);
         return (
           <EventTracker>
             {({ biAction, gaAction, HtzReactGA, }) => {
-              HtzReactGA.ga('ec:addImpression', {
-                id: contentId,
-                name: title,
-                list: 'List impressions',
-              });
               const clickAction = ({ index, articleId, }) => biAction({
                 actionCode: 109,
                 additionalInfo: {

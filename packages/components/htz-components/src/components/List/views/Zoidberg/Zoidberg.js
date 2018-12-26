@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { clickTrackerBannersWrapper, dfpBanner, teaserForLeftElement, } from '@haaretz/app-utils';
 import ZoidbergView from './ZoidbergView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const ZoidbergQuery = gql`
   query ZoidbergQuery($listId: String!, $history: [ID]) {
@@ -32,30 +33,19 @@ const ZoidbergQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Zoidberg({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Zoidberg(props: Props): React.Node {
   return (
     <ListDataGetter
       query={ZoidbergQuery}
       view="Zoidberg"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
+      {...props}
     >
-      {props => <ZoidbergView {...props} />}
+      {dataProps => <ZoidbergView {...dataProps} />}
     </ListDataGetter>
   );
 }

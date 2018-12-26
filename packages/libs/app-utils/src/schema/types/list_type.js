@@ -36,21 +36,17 @@ const List = new GraphQLObjectType({
     view: { type: GraphQLString, },
     url: { type: GraphQLString, },
     urlDescription: { type: GraphQLString, },
-    extraLinks: { type: new GraphQLList(LinkType), },
     items: {
       type: new GraphQLList(
         new GraphQLUnionType({
           name: 'ListItems',
-          types: [
-            Content,
-            TeaserInListType,
-            ClickTrackerWrapperType,
-            DfpBanner,
-          ],
+          types: [ Content, TeaserInListType, ClickTrackerWrapperType, DfpBanner, ],
           resolveType: value => types.get(value.inputTemplate) || Content,
-        }),
+        })
       ),
     },
+    loadPriority: { type: GraphQLString, },
+    isLazyloadImages: { type: GraphQLBoolean, },
   }),
 });
 

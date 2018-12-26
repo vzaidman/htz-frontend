@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import gql from 'graphql-tag';
 import Mutation from '../ApolloBoundary/Mutation';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 import DynamicListView from './DynamicListView';
 import ReadingHistoryProvider from '../ReadingHistory/ReadingHistoryProvider';
+import type { ListDataType, } from '../../flowTypes/ListDataType';
 
 const UPDATE_LIST_DUPLICATION = gql`
   mutation UpdateDuplicationList($ids: [String]) {
@@ -19,7 +20,8 @@ const GET_LIST_DUPLICATION = gql`
   }
 `;
 
-const ListWrapper = props => (
+// eslint-disable-next-line react/require-default-props
+const ListWrapper = (props: { listData: Object, viewProps?: Object, }) => (
   <Mutation mutation={UPDATE_LIST_DUPLICATION}>
     {(updateListDuplication, data) => (
       <ApolloConsumer>
@@ -31,24 +33,23 @@ const ListWrapper = props => (
   </Mutation>
 );
 
-class List extends React.Component {
-  static propTypes = {
-    /** the apollo client instance allowing us to preform a query from the store directly */
-    client: PropTypes.shape({ readQuery: PropTypes.func, }).isRequired,
-    /**
-     * List's contentId.
-     */
-    contentId: PropTypes.string.isRequired,
-    /** A function that updates the apollo store with the itemsRepresentedContent ids  */
-    updateListDuplication: PropTypes.func.isRequired,
-    /**
-     * List's view name.
-     */
-    view: PropTypes.string.isRequired,
-    /** props to pass to the rendered view component */
-    viewProps: PropTypes.shape({}),
-  };
+type ListProps = {
+  /** the apollo client instance allowing us to preform a query from the store directly */
+  client: {
+    readQuery: Function,
+  },
+  listData: ListDataType,
+  /** A function that updates the apollo store with the itemsRepresentedContent ids  */
+  updateListDuplication: Function,
+  viewProps?: Object,
+};
 
+type State = {
+  updatedListDuplication: boolean,
+  listDuplicationIds: string[],
+};
+
+class List extends React.Component<ListProps, State> {
   static defaultProps = {
     viewProps: {},
   };
@@ -63,10 +64,12 @@ class List extends React.Component {
     // This makes this whole component only usable for client side lists,
     // Once we make add ssr capabilities we need to make sure the listDuplicationIds
     // wont cause the list to re-query data and re render,
-    const { listDuplicationIds, } = this.props.client.readQuery({
-      query: GET_LIST_DUPLICATION,
-    });
-    this.setState({ listDuplicationIds, });
+    if (this.props.listData.loadPriority !== 'ssr') {
+      const { listDuplicationIds, } = this.props.client.readQuery({
+        query: GET_LIST_DUPLICATION,
+      });
+      this.setState({ listDuplicationIds, });
+    }
   }
 
   updateListDuplication = items => {
@@ -86,19 +89,17 @@ class List extends React.Component {
   };
 
   render() {
-    const { contentId, view, viewProps, } = this.props;
+    const { listData, viewProps, } = this.props;
     const { listDuplicationIds, } = this.state;
-
     return (
       <ReadingHistoryProvider>
         {readingHistory => (
           <DynamicListView
-            view={view}
+            listData={listData}
             viewProps={viewProps}
-            contentId={contentId}
             updateListDuplication={this.updateListDuplication}
             variables={{
-              listId: contentId,
+              listId: listData.contentId,
               history: [ ...readingHistory, ...listDuplicationIds, ],
             }}
           />

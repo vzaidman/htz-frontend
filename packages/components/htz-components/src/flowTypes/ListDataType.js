@@ -32,9 +32,11 @@ export type ListDataType = {
   contentId: string,
   contentName: string,
   hasPagination: boolean,
-  inputTemplate: "com.tm.element.List" | "com.tm.ListElement",
+  inputTemplate: 'com.tm.element.List' | 'com.tm.ListElement',
   view: string,
   url?: string,
   description?: string,
   urlDescription?: string,
+  lazyLoadImages: boolean,
+  loadPriority?: 'ssr' | 'client' | 'lazy',
 };

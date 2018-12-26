@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { imageInTeaser, imageGallery, image, } from '@haaretz/app-utils';
 import SlimView from './SlimView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const SlimQuery = gql`
   query SlimQuery($listId: String!, $history: [ID]) {
@@ -31,30 +32,15 @@ const SlimQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Slim({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Slim(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={SlimQuery}
-      view="Slim"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <SlimView {...props} />}
+    <ListDataGetter query={SlimQuery} view="Slim" {...props}>
+      {dataProps => <SlimView {...dataProps} />}
     </ListDataGetter>
   );
 }

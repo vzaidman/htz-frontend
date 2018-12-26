@@ -40,8 +40,10 @@ export default function MainBlock({
       }}
     >
       <List
-        contentId={slotA.contentId}
-        view={slotA.view}
+        listData={{
+          contentId: slotA.contentId,
+          view: slotA.view,
+        }}
         viewProps={{
           width: [
             { from: 's', until: 'l', value: 1, },
@@ -94,8 +96,10 @@ export default function MainBlock({
         />
       </GridItem>
       <List
-        contentId={slotC.contentId}
-        view={slotC.contentId}
+        listData={{
+          contentId: slotC.contentId,
+          view: slotC.view,
+        }}
         viewProps={{
           isStackedOnXl: isWideMain,
           width: [

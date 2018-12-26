@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { image, } from '@haaretz/app-utils';
 import ListDataGetter from '../../ListDataGetter';
 import VogelView from './VogelView';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const VogelQuery = gql`
   query VogelQuery($listId: String!, $history: [ID]) {
@@ -29,33 +30,16 @@ const VogelQuery = gql`
   ${image}
 `;
 
-
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-
-export default function Vogel({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Vogel(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={VogelQuery}
-      view="Vogel"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => (<VogelView {...props} />)}
+    <ListDataGetter query={VogelQuery} view="Vogel" {...props}>
+      {dataProps => <VogelView {...dataProps} />}
     </ListDataGetter>
   );
 }

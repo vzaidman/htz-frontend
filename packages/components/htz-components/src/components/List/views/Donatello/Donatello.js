@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 import DonatelloView from './DonatelloView.js';
 import ListDataGetter from '../../ListDataGetter';
-import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const DonatelloQuery = gql`
   query DonatelloQuery($listId: String!, $history: [ID]) {
@@ -21,30 +21,15 @@ const DonatelloQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Donatello({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Donatello(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={DonatelloQuery}
-      view="Donatello"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <DonatelloView {...props} />}
+    <ListDataGetter query={DonatelloQuery} view="Donatello" {...props}>
+      {dataProps => <DonatelloView {...dataProps} />}
     </ListDataGetter>
   );
 }

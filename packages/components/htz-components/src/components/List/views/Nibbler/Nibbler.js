@@ -3,6 +3,7 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import NibblerView from './NibblerView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const NibblerQuery = gql`
   query NibblerQuery($path: String!) {
@@ -43,30 +44,15 @@ const NibblerQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Nibbler({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Nibbler(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={NibblerQuery}
-      view="Nibbler"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <NibblerView {...props} />}
+    <ListDataGetter query={NibblerQuery} view="Nibbler" {...props}>
+      {dataProps => <NibblerView {...dataProps} />}
     </ListDataGetter>
   );
 }

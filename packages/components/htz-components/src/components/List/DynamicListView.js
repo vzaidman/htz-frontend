@@ -68,7 +68,8 @@ const Vogel = dynamic(() => import('./views/Vogel/Vogel'), {
   loading: () => null,
 });
 
-export default function DynamicListView({ view, ...props }) {
+export default function DynamicListView(props) {
+  const view = props.listData.view;
   switch (view) {
     case 'Bender': {
       return <Bender {...props} />;

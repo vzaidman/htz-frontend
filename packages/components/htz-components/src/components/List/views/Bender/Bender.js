@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { teaserForBender, } from '@haaretz/app-utils';
 import BenderView from './BenderView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const BenderQuery = gql`
   query BenderQuery($listId: String!, $history: [ID]) {
@@ -20,30 +21,15 @@ const BenderQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Bender({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Bender(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={BenderQuery}
-      view="Bender"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <BenderView {...props} />}
+    <ListDataGetter query={BenderQuery} view="Bender" {...props}>
+      {dataProps => <BenderView {...dataProps} />}
     </ListDataGetter>
   );
 }

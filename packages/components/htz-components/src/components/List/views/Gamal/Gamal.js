@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { teaserForGamal, clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 import GamalView from './GamalView.js';
 import ListDataGetter from '../../ListDataGetter';
-import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const GamalQuery = gql`
   query GamalQuery($listId: String!, $history: [ID]) {
@@ -27,30 +27,15 @@ const GamalQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Gamal({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Gamal(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={GamalQuery}
-      view="Gamal"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <GamalView {...props} />}
+    <ListDataGetter query={GamalQuery} view="Gamal" {...props}>
+      {dataProps => <GamalView {...dataProps} />}
     </ListDataGetter>
   );
 }

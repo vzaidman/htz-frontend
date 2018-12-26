@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { image, clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 import ZappView from './ZappView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const ZappQuery = gql`
   query ZappQuery($listId: String!, $history: [ID]) {
@@ -41,30 +42,15 @@ const ZappQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Zapp({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Zapp(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={ZappQuery}
-      view="Zapp"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <ZappView {...props} />}
+    <ListDataGetter query={ZappQuery} view="Zapp" {...props}>
+      {dataProps => <ZappView {...dataProps} />}
     </ListDataGetter>
   );
 }

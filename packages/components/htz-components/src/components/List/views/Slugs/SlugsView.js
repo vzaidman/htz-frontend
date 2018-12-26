@@ -35,6 +35,7 @@ Slugs.defaultProps = {
 
 export default function Slugs({
   list,
+  loadPriority,
   gaAction,
   biAction,
   lazyLoadImages,

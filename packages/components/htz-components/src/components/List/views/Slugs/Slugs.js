@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { image, } from '@haaretz/app-utils';
 import SlugsView from './SlugsView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const SlugsQuery = gql`
   query SlugsQuery($listId: String!, $history: [ID]) {
@@ -36,30 +37,19 @@ const SlugsQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Slugs({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Slugs(props: Props): React.Node {
   return (
     <ListDataGetter
       query={SlugsQuery}
       view="Slugs"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
+      {...props}
     >
-      {props => <SlugsView {...props} />}
+      {dataProps => <SlugsView {...dataProps} />}
     </ListDataGetter>
   );
 }

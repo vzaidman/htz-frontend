@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 import LeonardoView from './LeonardoView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const LeonardoQuery = gql`
   query LeonardoQuery($listId: String!, $history: [ID]) {
@@ -19,30 +20,15 @@ const LeonardoQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Leonardo({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Leonardo(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={LeonardoQuery}
-      view="Leonardo"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <LeonardoView {...props} />}
+    <ListDataGetter query={LeonardoQuery} view="Leonardo" {...props}>
+      {dataProps => <LeonardoView {...dataProps} />}
     </ListDataGetter>
   );
 }

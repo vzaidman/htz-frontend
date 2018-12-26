@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { dfpBanner, imagesInTeaser, } from '@haaretz/app-utils';
 import ZombieView from './ZombieView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const ZombieQuery = gql`
   query ZombieQuery($listId: String!, $history: [ID]) {
@@ -49,31 +50,16 @@ const ZombieQuery = gql`
   ${dfpBanner}
 `;
 
-type ZombieProps = {
-  contentId: string,
+type Props = {
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Zombie({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: ZombieProps): React.Node {
+export default function Zombie(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={ZombieQuery}
-      view="Zombie"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <ZombieView {...props} />}
+    <ListDataGetter query={ZombieQuery} view="Zombie" {...props}>
+      {dataProps => <ZombieView {...dataProps} />}
     </ListDataGetter>
   );
 }

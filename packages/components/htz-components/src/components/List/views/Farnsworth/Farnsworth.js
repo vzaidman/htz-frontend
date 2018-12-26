@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { teaserForLeftElement, } from '@haaretz/app-utils';
 import FarnsworthView from './FarnsworthView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const FarnsworthQuery = gql`
   query FarnsworthQuery($listId: String!, $history: [ID]) {
@@ -20,30 +21,15 @@ const FarnsworthQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Farnsworth({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Farnsworth(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={FarnsworthQuery}
-      view="Farnsworth"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <FarnsworthView {...props} />}
+    <ListDataGetter query={FarnsworthQuery} view="Farnsworth" {...props}>
+      {dataProps => <FarnsworthView {...dataProps} />}
     </ListDataGetter>
   );
 }

@@ -3,7 +3,7 @@ import { GraphQLList, GraphQLUnionType, } from 'graphql';
 
 import getSchema from '../getSchema';
 import MainBlock from './main_block_type';
-import ListInit from './list_init_type';
+import List from './list_type';
 import GridElementGroup from './grid_element_group_type';
 import ElementGroup from './element_group_type';
 import TabViewElement from './tab_view_element_type';
@@ -15,7 +15,7 @@ const Article = new GraphQLList(
     name: 'HomePageRow',
     types: [
       MainBlock,
-      ListInit,
+      List,
       GridElementGroup,
       ElementGroup,
       TabViewElement,
@@ -23,7 +23,8 @@ const Article = new GraphQLList(
       clickTrackerBannersWrapper,
     ],
     resolveType: value => {
-      if (value.inputTemplate === 'com.tm.element.List') return ListInit;
+      // wierd bug where get schema does not return the list type but works with the other types
+      if (value.inputTemplate === 'com.tm.element.List') return List;
       return getSchema(value.inputTemplate);
     },
   })

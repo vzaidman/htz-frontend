@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { image, embed, imageGallery, } from '@haaretz/app-utils';
 import WongView from './WongView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 export const WongQuery = gql`
   query WongQuery($listId: String!, $history: [ID]) {
@@ -51,33 +52,16 @@ export const WongQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
   viewProps: Object,
 };
 
-export default function Wong({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-  viewProps,
-}: Props): React.Node {
+export default function Wong(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={WongQuery}
-      view="Wong"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-        viewProps,
-      }}
-    >
-      {props => <WongView {...props} />}
+    <ListDataGetter query={WongQuery} view="Wong" {...props}>
+      {dataProps => <WongView {...dataProps} />}
     </ListDataGetter>
   );
 }

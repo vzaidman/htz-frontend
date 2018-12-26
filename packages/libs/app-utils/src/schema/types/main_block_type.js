@@ -1,7 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, } from 'graphql';
 
 import ElementGroup from './element_group_type';
-import ListInit from './list_init_type';
+import List from './list_type';
 
 const MainBlock = new GraphQLObjectType({
   name: 'HomePageMainBlock',
@@ -9,9 +9,9 @@ const MainBlock = new GraphQLObjectType({
     contentName: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     inputTemplate: { type: GraphQLString, },
-    slotA: { type: ListInit, },
+    slotA: { type: List, },
     slotB: { type: ElementGroup, },
-    slotC: { type: ListInit, },
+    slotC: { type: List, },
   }),
 });
 

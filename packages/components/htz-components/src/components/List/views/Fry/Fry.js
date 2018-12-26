@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { teaserForLeftElement, } from '@haaretz/app-utils';
 import FryView from './FryView.js';
 import ListDataGetter from '../../ListDataGetter';
-import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const FryQuery = gql`
   query FryQuery($listId: String!, $history: [ID]) {
@@ -21,30 +21,15 @@ const FryQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Fry({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Fry(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={FryQuery}
-      view="Fry"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <FryView {...props} />}
+    <ListDataGetter query={FryQuery} view="Fry" {...props}>
+      {dataProps => <FryView {...dataProps} />}
     </ListDataGetter>
   );
 }

@@ -4,35 +4,18 @@ import ConradView from './ConradView.js';
 import ListDataGetter from '../../ListDataGetter';
 // Conrad and Wong use the exact same query
 import { WongQuery as ConradQuery, } from '../Wong/Wong';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
-  viewProps: Object,
+  listData: ListDataType,
 };
 
-export default function Conrad({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-  viewProps,
-}: Props): React.Node {
+export default function Conrad(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={ConradQuery}
-      view="Conrad"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-        viewProps,
-      }}
-    >
-      {props => <ConradView {...props} />}
+    <ListDataGetter query={ConradQuery} view="Conrad" {...props}>
+      {dataProps => <ConradView {...dataProps} />}
     </ListDataGetter>
   );
 }

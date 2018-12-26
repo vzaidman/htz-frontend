@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { image, } from '@haaretz/app-utils';
 import PazuzuView from './PazuzuView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const PazuzuQuery = gql`
   query PazuzuQuery($listId: String!, $history: [ID]) {
@@ -33,33 +34,15 @@ const PazuzuQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
-  viewProps: Object,
+  listData: ListDataType,
 };
 
-export default function Pazuzu({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-  viewProps,
-}: Props): React.Node {
+export default function Pazuzu(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={PazuzuQuery}
-      view="Pazuzu"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-        viewProps,
-      }}
-    >
-      {props => <PazuzuView {...props} />}
+    <ListDataGetter query={PazuzuQuery} view="Pazuzu" {...props}>
+      {dataProps => <PazuzuView {...dataProps} />}
     </ListDataGetter>
   );
 }

@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable import/no-named-as-default, import/no-unresolved */
 
 /** *************************************** *
@@ -182,6 +183,34 @@ import BIRequest from './components/BI/BIRequest';
 import EventTracker from './utils/EventTracker';
 import pixelEvent from './utils/pixelEvent';
 
+// temp for ssr lists because of this bug with nextjs: https://github.com/zeit/next.js/issues/5511
+
+import ReadingHistoryProvider from './components/ReadingHistory/ReadingHistoryProvider';
+import Bender from './components/List/views/Bender/Bender';
+import Conrad from './components/List/views/Conrad/Conrad';
+import Donatello from './components/List/views/Donatello/Donatello';
+import Farnsworth from './components/List/views/Farnsworth/Farnsworth';
+import Fry from './components/List/views/Fry/Fry';
+import Gamal from './components/List/views/Gamal/Gamal';
+import Hawking from './components/List/views/Hawking/Hawking';
+import Leela from './components/List/views/Leela/Leela';
+import Leonardo from './components/List/views/Leonardo/Leonardo';
+import Michelangelo from './components/List/views/Michelangelo/Michelangelo';
+import Mom from './components/List/views/Mom/Mom';
+import Nibbler from './components/List/views/Nibbler/Nibbler';
+import Panucci from './components/List/views/Panucci/Panucci';
+// import Raphael from './components/List/views/Raphael/Raphael';
+import Slim from './components/List/views/Slim/Slim';
+import Slugs from './components/List/views/Slugs/Slugs';
+import Vogel from './components/List/views/Vogel/Vogel';
+import Wong from './components/List/views/Wong/Wong';
+import Zapp from './components/List/views/Zapp/Zapp';
+import Zoidberg from './components/List/views/Zoidberg/Zoidberg';
+import Zombie from './components/List/views/Zombie/Zombie';
+
+// FlowTypes
+export type { ListDataType, } from './flowTypes/ListDataType';
+
 export {
   // ArticleTypes
   MagazineArticle,
@@ -351,4 +380,27 @@ export {
   // Event tracker
   EventTracker,
   pixelEvent,
+  // temp for ssr lists because of this bug with nextjs: https://github.com/zeit/next.js/issues/5511
+  ReadingHistoryProvider,
+  Bender,
+  Conrad,
+  Donatello,
+  Farnsworth,
+  Fry,
+  Gamal,
+  Hawking,
+  Leela,
+  Leonardo,
+  Michelangelo,
+  Mom,
+  Nibbler,
+  Panucci,
+  // Raphael,
+  Slim,
+  Slugs,
+  Vogel,
+  Wong,
+  Zapp,
+  Zoidberg,
+  Zombie,
 };

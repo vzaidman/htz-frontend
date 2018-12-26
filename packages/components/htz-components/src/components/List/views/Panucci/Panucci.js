@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { teaserForPanucci, link, } from '@haaretz/app-utils';
 import PanucciView from './PanucciView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const PanucciQuery = gql`
   query PanucciQuery($listId: String!, $history: [ID]) {
@@ -25,30 +26,15 @@ const PanucciQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Panucci({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Panucci(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={PanucciQuery}
-      view="Panucci"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <PanucciView {...props} />}
+    <ListDataGetter query={PanucciQuery} view="Panucci" {...props}>
+      {dataProps => <PanucciView {...dataProps} />}
     </ListDataGetter>
   );
 }
