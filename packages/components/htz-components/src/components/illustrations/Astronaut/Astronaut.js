@@ -16,7 +16,11 @@ function setSize(size, value) {
 
 class Astronaut extends React.Component {
   static propTypes = {
-    size: PropTypes.oneOfType([ PropTypes.string, PropTypes.array, ]).isRequired,
+    size: PropTypes.oneOfType([ PropTypes.string, PropTypes.array, ]),
+  };
+
+  static defaultProps = {
+    size: null,
   };
 
   // TODO missing isomorphic ID solution is missing: https://github.com/reactjs/rfcs/pull/32
