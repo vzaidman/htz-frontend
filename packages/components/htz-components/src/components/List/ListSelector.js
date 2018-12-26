@@ -49,6 +49,7 @@ export default class ListSelector extends React.Component {
               <option value="Conrad">Conrad</option>
               <option value="Farnsworth">Farnsworth</option>
               <option value="Hawking">Hawking</option>
+              <option value="Kroker">Kroker</option>
               <option value="Leela">Leela</option>
               <option value="Leonardo">Leonardo</option>
               <option value="Michelangelo">Michelangelo</option>
@@ -67,7 +68,8 @@ export default class ListSelector extends React.Component {
             </select>
           )}
         />
-        {/* turnA is an ugly hack to cause the list to completely unmount an remount since List component has important stuff happening in componentDidMount */}
+        {/* turnA is an ugly hack to cause the list to completely unmount an remount
+            since List component has important stuff happening in componentDidMount */}
         {this.state.view && this.state.turnA ? (
           <List contentId={this.state.view} view={this.state.view} />
         ) : null}

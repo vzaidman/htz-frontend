@@ -11,8 +11,8 @@ import getImageAssets from '../../../../utils/getImageAssets';
 
 import TeaserFooter from './TeaserFooter';
 
-import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 type Props = {
   itemData: TeaserDataType,
@@ -25,24 +25,23 @@ MainTeaser.defaultProps = {
   biAction: null,
 };
 
-const headerType = [ { until: 'xl', value: 1, }, { from: 'xl', value: 2, }, ];
+const headerType = [
+  { until: 's', value: -1, },
+  { from: 's', until: 'xl', value: 0, },
+  { from: 'xl', value: -1, },
+];
 
-export default function MainTeaser({
-  itemData,
-  lazyLoadImages,
-  biAction,
-}: Props): React.Node {
+export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={itemData}
           gridMiscStyles={{ flexDirection: 'column', }}
-          onClick={
-            biAction
-              ? () => biAction({ index: 0, articleId: itemData.contentId, })
-              : null
-          }
+          miscStyles={{
+            borderBottom: [ { from: 's', value: [ '1px', 1, 'solid', theme.color('neutral', '-6'), ], }, ],
+          }}
+          onClick={biAction ? () => biAction({ index: 0, articleId: itemData.contentId, }) : null}
         >
           <TeaserMedia data={itemData}>
             <Image
@@ -68,13 +67,9 @@ export default function MainTeaser({
             footerPadding={[ 2, 1, 1, ]}
             gridItemMiscStyles={{ flexBasis: 'auto', }}
             renderContent={() => (
-              <TeaserHeader
-                {...itemData}
-                typeScale={headerType}
-                kickerTypeScale={headerType}
-              />
+              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
             )}
-            footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
+            footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderFooter={() => (
               <TeaserFooter
                 data={itemData}

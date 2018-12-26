@@ -1,3 +1,5 @@
+import brekingNewsStrip from './i18n/breakingNewsStripConsts';
+
 export const teaserI18n = Object.freeze({
   ratingDescription: 'כוכבים',
 });
@@ -311,3 +313,5 @@ export const mobileReadingList = Object.freeze({
 export const selectAriaLabel = Object.freeze({
   text: 'פתח תפריט',
 });
+
+export { brekingNewsStrip, };

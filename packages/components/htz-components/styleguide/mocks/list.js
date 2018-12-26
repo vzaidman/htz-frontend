@@ -5,6 +5,7 @@ import DonbotMock from './listMocks/DonbotMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
 import GamalMock from './listMocks/GamalMock';
 import HawkingMock from './listMocks/HawkingMock';
+import KrokerMock from './listMocks/KrokerMock';
 import LeonardoMock from './listMocks/LeonardoMock';
 import MomMock from './listMocks/MomMock';
 import MorboMock from './listMocks/MorboMock';
@@ -33,6 +34,8 @@ export default (root, { listId, }) => {
       return GamalMock;
     case 'Hawking':
       return HawkingMock;
+    case 'Kroker':
+      return KrokerMock;
     case 'Leela':
     case 'Leonardo':
     case 'Donatello':

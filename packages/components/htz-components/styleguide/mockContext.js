@@ -6,6 +6,9 @@ const mockContext = () => {
         getList: data => {
           console.log('got to mock context data source getList');
         },
+        getContent: data => {
+          console.log('got to mock context data source getContent', data);
+        },
         getCmLink: data => {
           console.log('got to mock context  getCmLink data source');
         },

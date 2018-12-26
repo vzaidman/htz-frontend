@@ -37,6 +37,13 @@ class PapiAPI extends RESTDataSource {
     });
   }
 
+  async getContent({ cid, }) {
+    const fetchPath = `papi/cmlink${
+      cid.startsWith('/') ? '' : '/'
+    }${cid}?exploded=true`;
+    return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
+  }
+
   async getList({ listId, history, }) {
     const fetchPath = `papi/cmlink${
       listId.startsWith('/') ? '' : '/'

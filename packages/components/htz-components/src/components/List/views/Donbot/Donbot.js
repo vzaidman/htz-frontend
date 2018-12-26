@@ -10,6 +10,8 @@ import gql from 'graphql-tag';
 import DonbotView from './DonbotView';
 import ListDataGetter from '../../ListDataGetter';
 
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+
 const DonbotQuery = gql`
   query DonbotQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
@@ -53,28 +55,17 @@ const DonbotQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Donbot({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Donbot(props: Props): React.Node {
   return (
     <ListDataGetter
       query={DonbotQuery}
       view="Donbot"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
+      {...props}
     >
       {props => <DonbotView {...props} />}
     </ListDataGetter>

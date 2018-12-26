@@ -361,3 +361,11 @@ export const liveBlogI18n = Object.freeze({
 export const articleLayoutI18n = Object.freeze({
   commentSectionTitle: 'תגובות',
 });
+
+export const breakingNewsStrip = Object.freeze({
+  title: 'מבזקים',
+  pause: 'עצור',
+  play: 'הפעל',
+  toPrevItem: 'למבזק קודם',
+  toNextItem: 'למבזק הבא',
+});

@@ -15,6 +15,7 @@ import FinanceAsset from './types/finance/finance_asset_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
 import List from './types/list_type';
+import BreakingNewsBox from './types/breaking_news_box_type';
 import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
 import HomePage from './types/home_page_type';
@@ -59,10 +60,20 @@ const RootQuery = new GraphQLObjectType({
         return dataSources.PapiAPI.getList(args);
       },
     },
+    breakingNewsBox: {
+      type: BreakingNewsBox,
+      args: {
+        cid: { type: new GraphQLNonNull(GraphQLString), },
+      },
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.PapiAPI.getContent(args);
+      },
+    },
     navMenu: {
       type: NavMenu,
       args: { listId: { type: new GraphQLNonNull(GraphQLString), }, },
       resolve(parentValue, args, { dataSources, }) {
+        console.log(args, dataSources.PapiAPI.getList(args));
         return dataSources.PapiAPI.getList(args);
       },
     },
@@ -110,14 +121,14 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: new GraphQLNonNull(GraphQLString), }, },
       type: new GraphQLObjectType({
         name: 'ArticleLinkData',
-        fields: () => ({
+        fields: {
           title: {
             type: GraphQLString,
           },
           url: {
             type: GraphQLString,
           },
-        }),
+        },
       }),
       resolve(parentValue, { id, }, { dataSources, }) {
         return dataSources.PurchasePageAPI.getArticleLinkData(id);

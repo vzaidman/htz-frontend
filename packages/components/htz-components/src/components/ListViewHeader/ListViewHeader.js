@@ -94,7 +94,6 @@ ListViewHeader.defaultProps = {
   commercialLinks: null,
   marketingTeaser: null,
   extraLinks: null,
-  marketingTeaser: null,
   miscStyles: null,
   title: null,
   url: null,
@@ -125,9 +124,7 @@ export default function ListViewHeader({
           {title && (
             <FelaComponent
               style={{
-                color: isCommercial
-                  ? theme.color('commercial')
-                  : theme.color('primary'),
+                color: isCommercial ? theme.color('commercial') : theme.color('primary'),
                 fontWeight: 700,
                 extend: [
                   theme.type(2),
@@ -146,15 +143,10 @@ export default function ListViewHeader({
               render={({ className: headerClass, }) => (url ? (
                 <FelaComponent
                   style={{
-                    extend: [
-                      theme.mq(
-                        { until: 's', },
-                        { display: 'flex', width: '100%', }
-                      ),
-                    ],
+                    extend: [ theme.mq({ until: 's', }, { display: 'flex', width: '100%', }), ],
                   }}
-                  render={({ className, }) => (
-                    <HtzLink className={className} href={url}>
+                  render={({ clazzName, }) => (
+                    <HtzLink className={clazzName} href={url}>
                       <H className={headerClass}>
                         {title}
                         <IconBack
@@ -205,9 +197,7 @@ export default function ListViewHeader({
                   render="li"
                   key={item.contentId}
                 >
-                  <HtzLink href={item.href}>
-                    {item.linkText || item.contentName}
-                  </HtzLink>
+                  <HtzLink href={item.href}>{item.linkText || item.contentName}</HtzLink>
                   {idx !== extraLinks.length - 1 && (
                     <FelaComponent
                       style={{
@@ -238,9 +228,7 @@ export default function ListViewHeader({
                   <FelaComponent
                     style={{ color: theme.color('secondary'), }}
                     render={({ className: marketingHeaderClassName, }) => (
-                      <H className={marketingHeaderClassName}>
-                        {marketingTeaser.title}
-                      </H>
+                      <H className={marketingHeaderClassName}>{marketingTeaser.title}</H>
                     )}
                   />
 
@@ -302,13 +290,7 @@ export default function ListViewHeader({
   );
 }
 
-function listViewHeaderStyle({
-  theme,
-  isCommercial,
-  backgroundColor,
-  isHorizontal,
-  miscStyles,
-}) {
+function listViewHeaderStyle({ theme, isCommercial, backgroundColor, isHorizontal, miscStyles, }) {
   return {
     display: 'flex',
     flexDirection: 'row',
@@ -316,13 +298,17 @@ function listViewHeaderStyle({
     justifyContent: 'flex-start',
     extend: [
       // eslint-disable-next-line space-infix-ops, no-mixed-operators
-      parseComponentProp<BackgroundColorType>(
-        'backgroundColor',
-        backgroundColor || 'bg',
-        theme.mq,
-        setColor,
-        theme.color
-      ),
+      ...(backgroundColor
+        ? [
+          parseComponentProp<BackgroundColorType>(
+            'backgroundColor',
+            backgroundColor,
+            theme.mq,
+            setColor,
+            theme.color
+          ),
+        ]
+        : []),
       theme.mq(
         { until: 's', },
         borderTop(
@@ -347,10 +333,7 @@ function listViewHeaderStyle({
       ...(isHorizontal
         ? []
         : [
-          theme.mq(
-            { from: 'l', },
-            borderTop('5px', 1, 'solid', theme.color('primary'))
-          ),
+          theme.mq({ from: 'l', }, borderTop('5px', 1, 'solid', theme.color('primary'))),
           theme.mq({ from: 'l', }, { flexDirection: 'column', }),
         ]),
       // Trump all other styles with those defined in `miscStyles`
