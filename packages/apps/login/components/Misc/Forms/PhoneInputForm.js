@@ -14,7 +14,8 @@ import {
   getUserData,
   getEmail,
   getHostname,
-  saveUserData
+  saveUserData,
+  saveOtpHash
 } from "../../../pages/queryutil/userDetailsOperations";
 import { getFlowNumber } from "../../../components/FlowDispenser/flowStorage";
 import { isName, isMobile, isPassword } from "./fieldsValidators";
@@ -76,6 +77,7 @@ const onSubmit = ({
         flowNumber: flow,
         label: "updatePhone"
       })(() => {
+        saveOtpHash(client)({ otpHash: null, });
         Router.push(route);
       });
     },
