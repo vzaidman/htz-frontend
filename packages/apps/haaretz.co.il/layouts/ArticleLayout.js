@@ -21,7 +21,7 @@ import {
   pixelEvent,
   PaywallDbgController,
   PaywallDbgProvider,
-  PaywallBottomRuler,
+  PaywallBottom,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -184,7 +184,7 @@ class ArticleLayout extends React.Component {
                     <PaywallDbgProvider>
                       {paywallData => (
                         paywallData.slotLocation === 'bot-persist'
-                          ? <PaywallBottomRuler {...paywallData} />
+                          ? <PaywallBottom {...paywallData} />
                           : null
                       )}
                     </PaywallDbgProvider>

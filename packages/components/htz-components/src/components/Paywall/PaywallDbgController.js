@@ -5,7 +5,7 @@ import PaywallDataProvider from './PaywallDataProvider';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 
 class PaywallDbgController extends React.Component {
-  propTypes = {
+  static propTypes = {
     initialData: PropTypes.shape({
       slotLocation: PropTypes.string,
       title: PropTypes.string,
@@ -14,7 +14,7 @@ class PaywallDbgController extends React.Component {
         text: PropTypes.string,
         url: PropTypes.string,
       }),
-    }),
+    }).isRequired,
   }
 
   state = {

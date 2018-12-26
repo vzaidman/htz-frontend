@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import Section from '../../AutoLevels/Section';
-import H from '../../AutoLevels/H';
-import Button from '../../Button/Button';
+import Section from '../../../AutoLevels/Section';
+import H from '../../../AutoLevels/H';
+import Button from '../../../Button/Button';
 import PaywallTopContainer from './PaywallTopContainer';
-import PaywallTopAstronaut from './PaywallTopAstronaut';
+import PaywallAstronaut from '../PaywallAstronaut';
 
 const PaywallTop = ({ title, text, confirm, }) => (
   <PaywallTopContainer>
-    <PaywallTopAstronaut
+    <PaywallAstronaut
       style={[
         {
           mq: { until: 's', },
@@ -36,7 +36,7 @@ const PaywallTop = ({ title, text, confirm, }) => (
       })}
       render={
         ({ className, }) => (
-          <div className={className} >
+          <div className={className}>
             <Section>
               <H>{title}</H>
               <p>{text}</p>
@@ -44,7 +44,8 @@ const PaywallTop = ({ title, text, confirm, }) => (
                 href={confirm.url}
                 variant="salesOpaque"
                 miscStyles={{ marginTop: '1rem', }}
-              >{confirm.text}
+              >
+                {confirm.text}
               </Button>
             </Section>
           </div>

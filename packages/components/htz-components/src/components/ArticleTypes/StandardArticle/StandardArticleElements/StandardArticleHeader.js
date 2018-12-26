@@ -9,7 +9,7 @@ import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
 import ShareBar from '../../../ShareBar/ShareBar';
 import PaywallDbgProvider from '../../../Paywall/PaywallDbgProvider';
-import PaywallTop from '../../../Paywall/PaywallTop/PaywallTop';
+import PaywallTop from '../../../Paywall/Layout/PaywallTop/PaywallTop';
 
 Header.propTypes = {
   /**
