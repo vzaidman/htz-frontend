@@ -8,8 +8,8 @@ import ListView from '../ListView/ListView';
 type Props = {
   data: {
     slotA: {
-      view: 'Wong' | 'Conrad',
-      inputTemplate: 'com.tm.element.List',
+      view: "Wong" | "Conrad",
+      inputTemplate: "com.tm.element.List",
       contentId: string,
       contentName: string,
     },
@@ -18,16 +18,18 @@ type Props = {
       contentLists: {},
     }[],
     slotC: {
-      view: 'Pazuzu',
-      inputTemplate: 'com.tm.element.List',
+      view: "Pazuzu",
+      inputTemplate: "com.tm.element.List",
       contentId: string,
       contentName: string,
     },
   },
 };
 
-export default function MainBlock({ data: { slotA, slotB, slotC, }, }: Props): React.Node {
-  const isConradView = slotA.view === 'Conrad';
+export default function MainBlock({
+  data: { slotA, slotB, slotC, },
+}: Props): React.Node {
+  const isWideMain = slotA.view === 'Conrad';
   return (
     <ListView
       gutter={0}
@@ -44,7 +46,7 @@ export default function MainBlock({ data: { slotA, slotB, slotC, }, }: Props): R
           width: [
             { from: 's', until: 'l', value: 1, },
             { from: 'l', until: 'xl', value: 1, },
-            { from: 'xl', value: isConradView ? 1 : 7 / 10, },
+            { from: 'xl', value: isWideMain ? 1 : 7 / 10, },
           ],
         }}
       />
@@ -53,7 +55,7 @@ export default function MainBlock({ data: { slotA, slotB, slotC, }, }: Props): R
         width={[
           { from: 's', until: 'l', value: 1, },
           { from: 'l', until: 'xl', value: 4 / 12, },
-          { from: 'xl', value: isConradView ? 4 / 12 : 3 / 10, },
+          { from: 'xl', value: isWideMain ? 4 / 12 : 3 / 10, },
         ]}
         miscStyles={{
           marginTop: [
@@ -76,7 +78,7 @@ export default function MainBlock({ data: { slotA, slotB, slotC, }, }: Props): R
           ],
           order: [
             { from: 'l', until: 'xl', value: 5, },
-            ...(isConradView ? [ { from: 'xl', value: 5, }, ] : []),
+            ...(isWideMain ? [ { from: 'xl', value: 5, }, ] : []),
           ],
           display: [ { until: 's', value: 'none', }, ],
         }}
@@ -95,11 +97,11 @@ export default function MainBlock({ data: { slotA, slotB, slotC, }, }: Props): R
         contentId={slotC.contentId}
         view={slotC.contentId}
         viewProps={{
-          isConradView,
+          isStackedOnXl: isWideMain,
           width: [
             { from: 's', until: 'l', value: 1, },
             { from: 'l', until: 'xl', value: 8 / 12, },
-            { from: 'xl', value: isConradView ? 8 / 12 : 1, },
+            { from: 'xl', value: isWideMain ? 8 / 12 : 1, },
           ],
         }}
       />

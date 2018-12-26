@@ -147,11 +147,7 @@ export default class Zombie extends React.Component<Props, State> {
     if (config.has('appName') && config.get('appName') === 'styleguide') {
       items = filterList(list.items, 'inputTemplate', 'com.tm.TeaserData');
       dfp = list.dfp
-        ? filterList(
-          list.dfp,
-          'inputTemplate',
-          'com.polobase.DfpBannerElement'
-        )
+        ? filterList(list.dfp, 'inputTemplate', 'com.polobase.DfpBannerElement')
         : null;
     }
     else {
@@ -183,6 +179,7 @@ export default class Zombie extends React.Component<Props, State> {
                   { from: 's', until: 'l', value: '2rem', },
                 ],
               }}
+              stretchContent
             >
               <ListViewHeader title={title} extraLinks={extraLinks} />
             </GridItem>
@@ -579,100 +576,96 @@ function MainTeaser({
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data)
-    ? (
-      <FelaTheme
-        render={theme => (
-          <Teaser
-            data={data}
-            gutter={0}
-            onClick={() => biAction({ index, articleId, })}
-            gridMiscStyles={{ flexDirection: 'column', }}
-          >
-            {data.image ? (
-              <TeaserMedia
-                data={data}
-                miscStyles={{ flexGrow: '0', flexShrink: '0', }}
-              >
-                <Picture
-                  lazyLoad={lazyLoadImages}
-                  {...pictureAssetProps({
-                    bps: theme.bps,
-                    imgData: data.image,
-                    defaultImgOptions: {
-                      sizes: '108px',
-                      aspect: 'headline',
-                      widths: [ 108, 216, ],
-                    },
-                    sources: [
-                      {
-                        from: 's',
-                        aspect: 'regular',
-                        sizes: [
-                          { from: 'xl', size: '280px', },
-                          { from: 'l', size: '292px', },
-                          { from: 'm', size: '350px', },
-                          { from: 's', size: '364px', },
-                        ],
-                        widths: [ 280, 292, 350, 364, ],
-                      },
-                    ],
-                  })}
-                />
-              </TeaserMedia>
-            ) : null}
-
-            <TeaserContent
+  return isTeaser(data) ? (
+    <FelaTheme
+      render={theme => (
+        <Teaser
+          data={data}
+          gutter={0}
+          onClick={() => biAction({ index, articleId, })}
+          gridMiscStyles={{ flexDirection: 'column', }}
+        >
+          {data.image ? (
+            <TeaserMedia
               data={data}
-              padding={[ 1, 1, 0, ]}
-              gridItemMiscStyles={{ flexBasis: 'auto', }}
-              footerColor={[ 'neutral', '-3', ]}
-              footerPadding={[
-                { until: 's', value: 1, },
-                { from: 's', value: [ 2, 1, 1, ], },
-              ]}
-              footerMiscStyles={{ type: -2, }}
-              renderContent={() => (
-                <TeaserHeader
-                  typeScale={[ { until: 's', value: 1, }, { from: 's', value: 2, }, ]}
-                  {...data}
-                />
-              )}
-              renderFooter={() => <Footer data={data} showAuthors />}
-            />
-          </Teaser>
-        )}
-      />
-    )
-    : null;
+              miscStyles={{ flexGrow: '0', flexShrink: '0', }}
+            >
+              <Picture
+                lazyLoad={lazyLoadImages}
+                {...pictureAssetProps({
+                  bps: theme.bps,
+                  imgData: data.image,
+                  defaultImgOptions: {
+                    sizes: '108px',
+                    aspect: 'headline',
+                    widths: [ 108, 216, ],
+                  },
+                  sources: [
+                    {
+                      from: 's',
+                      aspect: 'regular',
+                      sizes: [
+                        { from: 'xl', size: '280px', },
+                        { from: 'l', size: '292px', },
+                        { from: 'm', size: '350px', },
+                        { from: 's', size: '364px', },
+                      ],
+                      widths: [ 280, 292, 350, 364, ],
+                    },
+                  ],
+                })}
+              />
+            </TeaserMedia>
+          ) : null}
+
+          <TeaserContent
+            data={data}
+            padding={[ 1, 1, 0, ]}
+            gridItemMiscStyles={{ flexBasis: 'auto', }}
+            footerColor={[ 'neutral', '-3', ]}
+            footerPadding={[
+              { until: 's', value: 1, },
+              { from: 's', value: [ 2, 1, 1, ], },
+            ]}
+            footerMiscStyles={{ type: -2, }}
+            renderContent={() => (
+              <TeaserHeader
+                typeScale={[ { until: 's', value: 1, }, { from: 's', value: 2, }, ]}
+                {...data}
+              />
+            )}
+            renderFooter={() => <Footer data={data} showAuthors />}
+          />
+        </Teaser>
+      )}
+    />
+  ) : null;
 }
 
 TextualTeaser.defaultProps = { lazyLoadImages: false, };
 
 function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
   const articleId = data.contentId;
-  return isTeaser(data)
-    ? (
-      <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
-        <Teaser
+  return isTeaser(data) ? (
+    <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
+      <Teaser
+        data={data}
+        onClick={() => biAction({ index, articleId, })}
+        miscStyles={{ flexGrow: '1', }}
+      >
+        <TeaserContent
           data={data}
-          onClick={() => biAction({ index, articleId, })}
-          miscStyles={{ flexGrow: '1', }}
-        >
-          <TeaserContent
-            data={data}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
-            footerMiscStyles={{ type: -2, }}
-            renderContent={() => (
-              <TeaserHeader {...data} typeScale={headerTypo} />
-            )}
-            renderFooter={() => <Footer data={data} />}
-          />
-        </Teaser>
-      </GridItem>
-    )
-    : null;
+          padding={[ 1, 1, 0, ]}
+          footerPadding={[ 2, 1, 1, ]}
+          footerMiscStyles={{ type: -2, }}
+          renderContent={() => (
+            <TeaserHeader {...data} typeScale={headerTypo} />
+          )}
+          renderFooter={() => <Footer data={data} />}
+        />
+      </Teaser>
+    </GridItem>
+  ) : null;
 }
 
 type FooterProps = { data: TeaserDataType, showAuthors: boolean, };

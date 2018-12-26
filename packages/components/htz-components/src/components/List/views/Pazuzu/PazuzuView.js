@@ -1,4 +1,5 @@
 // @flow
+
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
@@ -19,8 +20,9 @@ import Picture from '../../../Image/Picture';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 
 type Props = {
-  isConradView: boolean,
   gutter: ?number,
+  lazyLoadImages: boolean,
+  isStackedOnXl: boolean,
   /**
    * The width of the underlying Component.
    * The number passed should be (`width` / `columns`).
@@ -46,24 +48,32 @@ type Props = {
 };
 
 Pazuzu.defaultProps = {
-  isConradView: false,
   gutter: null,
+  isStackedOnXl: false,
+  lazyLoadImages: true,
   width: null,
 };
 
 function PazuzuTeaser({
   item,
-  isConradView,
+  isStackedOnXl,
   isSecondItem,
+  lazyLoadImages,
 }: {
   item: TeaserDataType,
-  isConradView: boolean,
+  isStackedOnXl: boolean,
   isSecondItem: boolean,
+  lazyLoadImages: boolean,
 }): React.Node {
+  const stackingSettings = isStackedOnXl
+    ? true
+    : [ { until: 'xl', value: true, }, { from: 'xl', value: false, }, ];
+
   return (
     <FelaTheme
       render={theme => (
         <GridItem
+          gutter={0}
           miscStyles={{
             [isSecondItem ? 'paddingInlineStart' : 'paddingInlineEnd']: [
               { until: 's', value: '0.5rem', },
@@ -71,13 +81,18 @@ function PazuzuTeaser({
             ],
           }}
         >
-          <Teaser data={item}>
+          <Teaser data={item} gutter={1} isStacked={stackingSettings}>
             <TeaserMedia
               data={item}
-              width={[ { until: 'xl', value: 1, }, { from: 'xl', value: isConradView ? 1 : 1 / 2, }, ]}
+              isStacked={stackingSettings}
+              width={[
+                { until: 'xl', value: 1, },
+                ...(isStackedOnXl ? [] : [ { from: 'xl', value: 1 / 2, }, ]),
+              ]}
             >
               {item.image && (
                 <Picture
+                  lazyLoad={lazyLoadImages}
                   {...getPictureAssets({
                     bps: theme.bps,
                     imgData: item.image,
@@ -88,7 +103,7 @@ function PazuzuTeaser({
                     },
                     sources: [
                       {
-                        aspect: isConradView ? 'landscape' : 'headline',
+                        aspect: isStackedOnXl ? 'landscape' : 'headline',
                         from: 'xl',
                         sizes: [ { from: 'xl', size: '388px', }, ],
                         widths: [ 388, 776, 1024, ],
@@ -99,15 +114,12 @@ function PazuzuTeaser({
               )}
             </TeaserMedia>
             <TeaserContent
-              width={[ { until: 'xl', value: 1, }, { from: 'xl', value: isConradView ? 1 : 1 / 2, }, ]}
-              data={item}
-              padding={[
-                { until: 'xl', value: [ 0, 1, 0, 1, ], },
-                { from: 'xl', value: [ isConradView ? 1 : 0, isConradView ? 0 : 2, 1, 2, ], },
+              isStacked={stackingSettings}
+              width={[
+                { until: 'xl', value: 1, },
+                ...(isStackedOnXl ? [] : [ { from: 'xl', value: 1 / 2, }, ]),
               ]}
-              miscStyles={{
-                marginTop: [ { until: 'xl', value: '1rem', }, ],
-              }}
+              data={item}
               renderContent={() => (
                 <TeaserHeader
                   {...item}
@@ -120,25 +132,35 @@ function PazuzuTeaser({
               )}
               footerMiscStyles={{
                 color: theme.color('neutral', '-3'),
-                marginTop: [
-                  { until: 'l', value: '1rem', },
-                  { from: 'l', until: 'xl', value: '1rem', },
-                  { from: 'xl', value: '0', },
-                ],
-                position: [ { from: 'xl', value: 'initial', }, ],
+                ...(isStackedOnXl
+                  ? {}
+                  : {
+                    marginTop: [
+                      { until: 'xl', value: 'auto', },
+                      { from: 'xl', value: '0', },
+                    ],
+                  }),
                 type: [
                   { until: 's', value: -3, },
                   { from: 's', until: 'xl', value: -2, },
                   { from: 'xl', value: -3, },
                 ],
               }}
+              padding={[
+                { until: 's', value: [ 1, 1, 0, ], },
+                { from: 's', until: 'xl', value: [ 1, 0, 0, ], },
+                { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : 0, },
+              ]}
               footerPadding={[
-                { until: 'xl', value: [ 0, 1, 1, 1, ], },
-                { from: 'xl', value: [ 0, isConradView ? 0 : 2, 1, 2, ], },
+                { until: 'xl', value: 1, },
+                { from: 'xl', value: [ 1, 0, ], },
               ]}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                  <TeaserAuthors
+                    authors={item.authors}
+                    miscStyles={{ fontWeight: 'bold', }}
+                  />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}
@@ -148,7 +170,6 @@ function PazuzuTeaser({
                       display: [ { until: 's', value: 'none', }, ],
                     }}
                     commentsCount={item.commentsCounts}
-                    // size={[ { from: 's', until: 'l', value: 2, }, ]}
                   />
                   {item.rank && (
                     <TeaserRank
@@ -170,7 +191,13 @@ function PazuzuTeaser({
   );
 }
 
-function Pazuzu({ isConradView, gutter, width, list: { items, }, }: Props): React.Node {
+function Pazuzu({
+  isStackedOnXl,
+  gutter,
+  width,
+  list: { items, },
+  lazyLoadImages,
+}: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
@@ -180,24 +207,25 @@ function Pazuzu({ isConradView, gutter, width, list: { items, }, }: Props): Reac
           miscStyles={{
             paddingInlineStart: [ { until: 's', value: '2rem', }, ],
             paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
-            marginTop: [
-              {
-                until: 's',
-                value: 1,
-              },
-              {
-                from: 's',
-                value: 4,
-              },
-            ],
+            marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
           }}
         >
           <ListView disableWrapper gutter={0} marginTop={0}>
             {isTeaser(items[0]) && (
-              <PazuzuTeaser isConradView={isConradView} isSecondItem={false} item={items[0]} />
+              <PazuzuTeaser
+                lazyLoadImages={lazyLoadImages}
+                isStackedOnXl={isStackedOnXl}
+                isSecondItem={false}
+                item={items[0]}
+              />
             )}
             {isTeaser(items[1]) && (
-              <PazuzuTeaser isConradView={isConradView} isSecondItem item={items[1]} />
+              <PazuzuTeaser
+                lazyLoadImages={lazyLoadImages}
+                isStackedOnXl={isStackedOnXl}
+                isSecondItem
+                item={items[1]}
+              />
             )}
           </ListView>
         </GridItem>
