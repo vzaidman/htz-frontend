@@ -11,8 +11,9 @@ import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import GridItem from '../Grid/GridItem';
 import HtzLink from '../HtzLink/HtzLink';
 
-import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
+import type { IsStackedType, } from '../Teaser/Teaser';
+import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 
 type TeaserMediaPropsType = {
   data: TeaserDataType | ClickTrackerBannerType,
@@ -46,6 +47,7 @@ type TeaserMediaPropsType = {
    * Useful for interactive  content.
    */
   disableAnchor: boolean,
+  isStacked: IsStackedType,
   children: React.Node,
   /**
    * miscellaneous styles on the wrapper `<GridItem />`
@@ -57,6 +59,7 @@ TeaserMedia.defaultProps = {
   gutter: 0,
   children: null,
   disableAnchor: false,
+  isStacked: false,
   width: null,
   miscStyles: null,
 };
@@ -67,10 +70,18 @@ export default function TeaserMedia({
   width,
   children,
   disableAnchor,
+  isStacked,
   miscStyles,
 }: TeaserMediaPropsType): React.Node {
   return (
-    <GridItem width={width} gutter={gutter} miscStyles={miscStyles}>
+    <GridItem
+      width={width}
+      gutter={gutter}
+      miscStyles={{
+        ...setStacking(isStacked),
+        ...(miscStyles || {}),
+      }}
+    >
       <AboveBlockLink>
         {({ className, }) => (
           <div className={className}>
@@ -78,8 +89,18 @@ export default function TeaserMedia({
               children
             ) : (
               <HtzLink
-                href={data.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? data.link : data.path}
-                target={data.inputTemplate === 'com.polobase.ClickTrackerBannerElement' ? data.linkTarget : null}
+                href={
+                  data.inputTemplate
+                  === 'com.polobase.ClickTrackerBannerElement'
+                    ? data.link
+                    : data.path
+                }
+                target={
+                  data.inputTemplate
+                  === 'com.polobase.ClickTrackerBannerElement'
+                    ? data.linkTarget
+                    : null
+                }
                 attrs={{ tabIndex: -1, }}
               >
                 {children}
@@ -90,4 +111,48 @@ export default function TeaserMedia({
       </AboveBlockLink>
     </GridItem>
   );
+}
+
+// /////////////////////////////////////////////////////////////////////
+//                               UTILS                                //
+// /////////////////////////////////////////////////////////////////////
+
+type BpOptions = Array<{ from: ?string, until: ?string, value: ?string, }>;
+
+type StackingSettings = {
+  flexBasis?: ?string | BpOptions,
+  flexGrow?: ?string | BpOptions,
+  flexShrink?: ?string | BpOptions,
+};
+
+function setStacking(options: IsStackedType): StackingSettings {
+  if (isBoolean(options)) {
+    return options
+      ? {
+        flexBasis: 'auto',
+        flexGrow: '0',
+        flexShrink: '0',
+      }
+      : {};
+  }
+
+  const shrinkGrow = setValue(options, '0');
+  return {
+    flexBasis: setValue(options, 'auto'),
+    flexGrow: shrinkGrow,
+    flexShrink: shrinkGrow,
+  };
+}
+
+function setValue(options: IsStackedType, valueToSet: string): ?BpOptions {
+  if (isBoolean(options)) return undefined;
+  return options.map(({ from, until, value, }) => ({
+    from,
+    until,
+    value: value ? valueToSet : undefined,
+  }));
+}
+
+function isBoolean(candidate): boolean %checks {
+  return typeof candidate === 'boolean';
 }

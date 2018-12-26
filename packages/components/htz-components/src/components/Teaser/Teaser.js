@@ -15,8 +15,9 @@ import Card from '../Card/Card';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
 import HtzLink from '../HtzLink/HtzLink';
-import { isClickTracker } from '../List/utils/validateTeaser';
+import { isClickTracker, } from '../List/utils/validateTeaser';
 
+export type IsStackedType = boolean | ComponentPropResponsiveObject<boolean>[];
 
 type TeaserPropTypes = {
   data: TeaserDataType | ClickTrackerBannerType,
@@ -64,6 +65,7 @@ type TeaserPropTypes = {
    * indicates if the card is elevated.
    */
   isElevated: boolean,
+  isStacked: IsStackedType,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -87,6 +89,7 @@ Teaser.defaultProps = {
   attrs: null,
   backgroundColor: null,
   isElevated: false,
+  isStacked: false,
   miscStyles: null,
   gutter: 0,
   isRev: false,
@@ -104,6 +107,7 @@ export default function Teaser({
   attrs,
   backgroundColor,
   isElevated,
+  isStacked,
   miscStyles,
 
   // Grid props
@@ -125,6 +129,7 @@ export default function Teaser({
             alignContent: 'flex-start',
             flexGrow: '1',
             height: '100%',
+            ...setStacking(isStacked),
             ...(gridMiscStyles || {}),
           }}
           {...(isRev ? { isRev, } : {})}
@@ -157,4 +162,26 @@ export default function Teaser({
       </Card>
     </ErrorBoundary>
   );
+}
+
+// /////////////////////////////////////////////////////////////////////
+//                               UTILS                                //
+// /////////////////////////////////////////////////////////////////////
+
+type StackingOpts = "column" | "row";
+type StackingSettings = {
+  flexDirection:
+    | StackingOpts
+    | Array<{ from: ?string, until: ?string, value: StackingOpts, }>,
+};
+
+function setStacking(options: IsStackedType): StackingSettings {
+  if (typeof options === 'boolean') return { flexDirection: options ? 'column' : 'row', };
+  return {
+    flexDirection: options.map(({ from, until, value, }) => ({
+      from,
+      until,
+      value: value ? 'column' : 'row',
+    })),
+  };
 }

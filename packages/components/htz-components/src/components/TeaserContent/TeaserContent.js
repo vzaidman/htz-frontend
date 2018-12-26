@@ -12,6 +12,7 @@ import CardFooter from '../CardFooter/CardFooter';
 import GridItem from '../Grid/GridItem';
 
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
+import type { IsStackedType, } from '../Teaser/Teaser';
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type {
   ColorType,
@@ -22,6 +23,7 @@ import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBanner
 
 type TeaserContentType = {
   data: TeaserDataType | ClickTrackerBannerType,
+  isStacked: IsStackedType,
   /**
    * Should not be passed manually. Handled by the parent `<Grid>` component
    */
@@ -64,11 +66,16 @@ type TeaserContentType = {
   /** Forces the footer to the bottom using absolute positioning */
   footerIsAbsolute: boolean | ComponentPropResponsiveObject<boolean>[],
   // render props
-  renderContent: <T: TeaserDataType | ClickTrackerBannerType>(data: T) => React.Node,
-  renderFooter: ?<T: TeaserDataType | ClickTrackerBannerType>(data: T) => React.Node,
+  renderContent: <T: TeaserDataType | ClickTrackerBannerType>(
+    data: T
+  ) => React.Node,
+  renderFooter: ?<T: TeaserDataType | ClickTrackerBannerType>(
+    data: T
+  ) => React.Node,
 };
 
 TeaserContent.defaultProps = {
+  isStacked: false,
   gutter: 0,
   gridItemMiscStyles: null,
   attrs: null,
@@ -91,6 +98,7 @@ TeaserContent.defaultProps = {
 
 export default function TeaserContent({
   data,
+  isStacked,
   gutter,
   gridItemMiscStyles,
   // main content block props
@@ -118,7 +126,10 @@ export default function TeaserContent({
         width={width}
         gutter={gutter}
         stretchContent
-        miscStyles={gridItemMiscStyles}
+        miscStyles={{
+          ...setStacking(isStacked),
+          ...(gridItemMiscStyles || {}),
+        }}
       >
         <CardContent
           {...{ attrs, backgroundColor, color, padding, miscStyles, }}
@@ -213,4 +224,42 @@ function setFooterPosition(
     position: 'absolute',
     bottom: '0',
   };
+}
+
+type BpOptions = Array<{ from: ?string, until: ?string, value: ?string, }>;
+
+type StackingSettings = {
+  flexBasis?: ?string | BpOptions,
+  flexGrow?: ?string | BpOptions,
+  flexShrink?: ?string | BpOptions,
+};
+
+function setStacking(options: IsStackedType): StackingSettings {
+  if (isBoolean(options)) {
+    return options
+      ? {
+        flexBasis: 'auto',
+        flexGrow: '1',
+        flexShrink: '0',
+      }
+      : {};
+  }
+  return {
+    flexBasis: setValue(options, 'auto'),
+    flexGrow: setValue(options, '1'),
+    flexShrink: setValue(options, '0'),
+  };
+}
+
+function setValue(options: IsStackedType, valueToSet: string): ?BpOptions {
+  if (isBoolean(options)) return undefined;
+  return options.map(({ from, until, value, }) => ({
+    from,
+    until,
+    value: value ? valueToSet : undefined,
+  }));
+}
+
+function isBoolean(candidate): boolean %checks {
+  return typeof candidate === 'boolean';
 }
