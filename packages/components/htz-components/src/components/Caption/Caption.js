@@ -17,7 +17,8 @@ const captionWrapperStyle = ({
   const typeSettings = typeStyles || captionTypeSettings;
 
   return {
-    display: 'flex',
+    wordBreak: 'break-word',
+    overflowX: 'hidden',
     fontFamily,
     fontWeight,
     ...(floatCredit ? {} : { paddingInlineStart: '1rem', }),
