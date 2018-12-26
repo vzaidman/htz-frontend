@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { image, link, } from '@haaretz/app-utils';
 import CalculonView from './CalculonView.js';
 import ListDataGetter from '../../ListDataGetter';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const CalculonQuery = gql`
   query CalculonQuery($listId: String!, $history: [ID]) {
@@ -46,30 +47,15 @@ const CalculonQuery = gql`
 `;
 
 type Props = {
-  contentId: string,
   updateListDuplication: Function,
   variables: {},
-  lazyLoadImages: boolean,
+  listData: ListDataType,
 };
 
-export default function Calculon({
-  contentId,
-  updateListDuplication,
-  variables,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Calculon(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={CalculonQuery}
-      view="Calculon"
-      {...{
-        contentId,
-        updateListDuplication,
-        variables,
-        lazyLoadImages,
-      }}
-    >
-      {props => <CalculonView {...props} />}
+    <ListDataGetter query={CalculonQuery} view="Calculon" {...props}>
+      {dataProps => <CalculonView {...dataProps} />}
     </ListDataGetter>
   );
 }

@@ -188,6 +188,7 @@ import pixelEvent from './utils/pixelEvent';
 import ReadingHistoryProvider from './components/ReadingHistory/ReadingHistoryProvider';
 import Bender from './components/List/views/Bender/Bender';
 import Conrad from './components/List/views/Conrad/Conrad';
+import Calculon from './components/List/views/Calculon/Calculon';
 import Donatello from './components/List/views/Donatello/Donatello';
 import Farnsworth from './components/List/views/Farnsworth/Farnsworth';
 import Fry from './components/List/views/Fry/Fry';
@@ -199,6 +200,7 @@ import Michelangelo from './components/List/views/Michelangelo/Michelangelo';
 import Mom from './components/List/views/Mom/Mom';
 import Nibbler from './components/List/views/Nibbler/Nibbler';
 import Panucci from './components/List/views/Panucci/Panucci';
+import Pazuzu from './components/List/views/Pazuzu/Pazuzu';
 // import Raphael from './components/List/views/Raphael/Raphael';
 import Slim from './components/List/views/Slim/Slim';
 import Slugs from './components/List/views/Slugs/Slugs';
@@ -384,6 +386,7 @@ export {
   ReadingHistoryProvider,
   Bender,
   Conrad,
+  Calculon,
   Donatello,
   Farnsworth,
   Fry,
@@ -395,6 +398,7 @@ export {
   Mom,
   Nibbler,
   Panucci,
+  Pazuzu,
   // Raphael,
   Slim,
   Slugs,
