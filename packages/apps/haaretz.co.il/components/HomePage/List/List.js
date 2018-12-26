@@ -19,12 +19,17 @@ const GET_LIST_DUPLICATION = gql`
 `;
 
 // eslint-disable-next-line react/require-default-props
-const ListWrapper = (props: { listData: Object, viewProps?: Object, }) => (
+const ListWrapper = ({ viewProps, ...listData }: Object) => (
   <Mutation mutation={UPDATE_LIST_DUPLICATION}>
     {(updateListDuplication, data) => (
       <ApolloConsumer>
         {client => (
-          <List client={client} {...props} updateListDuplication={updateListDuplication} />
+          <List
+            client={client}
+            viewProps={viewProps}
+            listData={listData}
+            updateListDuplication={updateListDuplication}
+          />
         )}
       </ApolloConsumer>
     )}
@@ -39,7 +44,7 @@ type ListProps = {
   listData: ListDataType,
   /** A function that updates the apollo store with the itemsRepresentedContent ids  */
   updateListDuplication: Function,
-  viewProps?: Object,
+  viewProps: ?Object,
 };
 
 type State = {
@@ -62,7 +67,7 @@ class List extends React.Component<ListProps, State> {
     // This makes this whole component only usable for client side lists,
     // Once we make add ssr capabilities we need to make sure the listDuplicationIds
     // wont cause the list to re-query data and re render,
-    if (this.props.listData.loadPriority !== 'ssr') {
+    if (this.props.listData && this.props.listData.loadPriority !== 'ssr') {
       const { listDuplicationIds, } = this.props.client.readQuery({
         query: GET_LIST_DUPLICATION,
       });

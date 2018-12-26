@@ -70,10 +70,10 @@ export default class ListSelector extends React.Component {
         />
         {/* turnA is an ugly hack to cause the list to completely unmount an remount since List component has important stuff happening in componentDidMount */}
         {this.state.view && this.state.turnA ? (
-          <List listData={{ contentId: this.state.view, view: this.state.view, }} />
+          <List contentId={this.state.view} view={this.state.view} />
         ) : null}
         {this.state.view && !this.state.turnA ? (
-          <List listData={{ contentId: this.state.view, view: this.state.view, }} />
+          <List contentId={this.state.view} view={this.state.view} />
         ) : null}
       </div>
     );
