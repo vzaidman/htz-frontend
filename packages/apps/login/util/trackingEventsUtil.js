@@ -74,6 +74,7 @@ const sendTrackingEvents = (eventTrackers, dataObj) => callback => {
     eventTrackers.biAction({ actionCode: events[dataObj.label][1] });
     eventTrackers.gaAction(gaObject).then(
       () => {
+        console.warn("Event sent...");
         invokeCallback(callback);
       },
       error => {
