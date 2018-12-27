@@ -27,6 +27,7 @@ function Zapp({
   gaAction,
   biAction,
 }: ZappPropTypes): React.Node {
+  // marginTop={[ { until: 's', value: 1, }, { from: 's', value: 4, }, ]}
   return (
     <ListView
       gutter={4}
@@ -34,7 +35,8 @@ function Zapp({
         { until: 's', value: 'transparent', },
         { from: 's', value: 'white', },
       ]}
-      marginTop={[ { until: 's', value: 1, }, { from: 's', value: 4, }, ]}
+      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 4, 4, 0, ], }, ]}
+      marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
       rowSpacing={[
         { until: 's', value: { amount: 1, }, },
         { from: 's', until: 'l', value: { amount: 4, }, },
