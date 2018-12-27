@@ -30,19 +30,23 @@ const quoteStyle = ({ theme, quoteType, }) => ({
   ':after': {
     content: "''",
   },
-  ...theme.mq({ until: 'm', }, { ...theme.type(1), }),
-  ...theme.mq({ from: 'm', until: 'l', }, { ...theme.type(0), }),
-  ...theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(1), }),
-  ...theme.mq({ from: 'xl', }, { ...theme.type(2), }),
   ...getStyleObj(quoteType),
+  extend: [
+    theme.mq({ until: 'm', }, { ...theme.type(1), }),
+    theme.mq({ from: 'm', until: 'l', }, { ...theme.type(0), }),
+    theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(1), }),
+    theme.mq({ from: 'xl', }, { ...theme.type(2), }),
+  ],
 });
 const QuoteElement = createComponent(quoteStyle, 'p');
 
 const citeStyle = ({ theme, }) => ({
-  ...theme.mq({ until: 'm', }, { ...theme.type(-1), }),
-  ...theme.mq({ from: 'm', until: 'l', }, { ...theme.type(-2), }),
-  ...theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(0), }),
-  ...theme.mq({ from: 'xl', }, { ...theme.type(-1), }),
+  extend: [
+    theme.mq({ until: 'm', }, { ...theme.type(-1), }),
+    theme.mq({ from: 'm', until: 'l', }, { ...theme.type(-2), }),
+    theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(0), }),
+    theme.mq({ from: 'xl', }, { ...theme.type(-1), }),
+  ],
 });
 const Cite = createComponent(citeStyle, 'span');
 
@@ -62,6 +66,9 @@ function getStyleObj(quoteType) {
     case 'image':
       return {
         ':before': {
+          content: "'\"'",
+        },
+        ':after': {
           content: "'\"'",
         },
       };
@@ -120,11 +127,7 @@ function Quote({ text, credit, imagesList, }) {
             }}
           />
         ) : quoteType === 'quote' ? (
-          <IconQuote
-            size={6.5}
-            color="primary"
-            miscStyles={{ marginBottom: '2rem', }}
-          />
+          <IconQuote size={6.5} color="primary" miscStyles={{ marginBottom: '2rem', }} />
         ) : (
           <TopBorder />
         )}
