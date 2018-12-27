@@ -13,21 +13,6 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { appendScript, } from '../../../utils/scriptTools';
 
-// eslint-disable-next-line react/prop-types
-const InstagramWrapper = ({ children, }) => (
-  <FelaComponent
-    style={{
-      clear: 'both',
-      overflow: 'hidden',
-      position: 'relative',
-      margin: '0 auto',
-      marginBottom: '-12px',
-    }}
-  >
-    {children}
-  </FelaComponent>
-);
-
 const updateScript = () => {
   window.instgrm.Embeds.process();
 };
@@ -60,9 +45,17 @@ export default class Instagram extends React.Component {
 
   render() {
     return (
-      <InstagramWrapper>
-        <div dangerouslySetInnerHTML={{ __html: this.props.source, }} />
-      </InstagramWrapper>
+      <FelaComponent
+        style={{
+          clear: 'both',
+          overflow: 'hidden',
+          position: 'relative',
+          marginBottom: '-12px',
+        }}
+        render={({ className, }) => (
+          <div className={className} dangerouslySetInnerHTML={{ __html: this.props.source, }} />
+        )}
+      />
     );
   }
 }

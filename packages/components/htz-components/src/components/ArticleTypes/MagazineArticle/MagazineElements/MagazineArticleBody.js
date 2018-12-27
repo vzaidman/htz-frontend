@@ -20,19 +20,27 @@ const defaultProps = {};
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
 // eslint-disable-next-line react/prop-types
-const Figure = ({ lastItem, children, }) => (
+const Figure = ({ lastItem, children, notFullWidth, }) => (
   <FelaComponent
-    style={theme => (!lastItem
-      ? {
-        ...parseComponentProp(
-          'marginBottom',
-          theme.articleStyle.body.marginBottom,
-          theme.mq,
-          mediaQueryCallback
-        ),
-      }
-      : {})
-    }
+    style={theme => ({
+      ...(notFullWidth
+        ? {
+          marginRight: 'auto',
+          marginLeft: 'auto',
+          width: 'fit-content',
+        }
+        : {}),
+      ...(!lastItem
+        ? {
+          ...parseComponentProp(
+            'marginBottom',
+            theme.articleStyle.body.marginBottom,
+            theme.mq,
+            mediaQueryCallback
+          ),
+        }
+        : {}),
+    })}
     render="figure"
   >
     {children}
@@ -61,7 +69,11 @@ const buildComponent = (context, index, isLastItem, magazineLayout) => {
     case 'embed':
       return (
         <MagazineContentWrapper component={context} magazineLayout={magazineLayout}>
-          <Figure key={context.contentId} lastItem={isLastItem}>
+          <Figure
+            key={context.contentId}
+            lastItem={isLastItem}
+            notFullWidth={context.embedType === 'instagram'}
+          >
             <Component {...context} />
           </Figure>
         </MagazineContentWrapper>
