@@ -28,7 +28,7 @@
     "update-scripts": "htz-scripts update-scripts"
   },
   "devDependencies": {
-    "@haaretz/htz-react-base": "^1.0.0",
+    "@haaretz/htz-react-base": "^1.1.0",
     "jest-environment-jsdom-global": "^1.0.2",
     "rimraf": "^2.6.2"
   },

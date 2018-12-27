@@ -53,7 +53,7 @@
     "react-test-renderer": "^16.4.2"
   },
   "devDependencies": {
-    "@haaretz/htz-react-base": "^1.0.0",
+    "@haaretz/htz-react-base": "^1.1.0",
     "babel-loader": "^8.0.0-beta.4",
     "documentation": "^8.1.2",
     "fela": "^6.1.7",

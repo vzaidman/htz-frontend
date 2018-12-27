@@ -31,7 +31,7 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "@haaretz/htz-react-base": "^1.0.0",
+    "@haaretz/htz-react-base": "^1.1.0",
     "gpt-mock": "^1.0.2",
     "jest-matcher-one-of": "^0.1.2",
     "rimraf": "^2.6.2"

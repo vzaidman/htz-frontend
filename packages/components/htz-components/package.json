@@ -17,7 +17,7 @@
   "scripts": {
     "build": "htz-scripts build",
     "build:esm": "htz-scripts build:esm",
-    "watch": "htz-scripts build:esm watch",   
+    "watch": "htz-scripts build:esm watch",
     "clean": "htz-scripts clean",
     "embeds": "node scripts/update-embed-files.js",
     "format": "htz-scripts format",
@@ -77,7 +77,7 @@
     "validator": "^9.1.2"
   },
   "devDependencies": {
-    "@haaretz/htz-react-base": "^1.0.0",
+    "@haaretz/htz-react-base": "^1.1.0",
     "@haaretz/htz-react-server": "^0.0.0",
     "@haaretz/htz-theme": "^0.1.0",
     "apollo-cache-inmemory": "^1.2.7",
