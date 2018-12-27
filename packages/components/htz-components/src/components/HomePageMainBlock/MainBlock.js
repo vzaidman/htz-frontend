@@ -1,34 +1,28 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import List from '../List/List';
+import type { Node, ComponentType, } from 'react';
 import GridItem from '../Grid/GridItem';
 import ListView from '../ListView/ListView';
 
+import type { ListDataType, } from '../../flowTypes/ListDataType';
+
 type Props = {
+  List: ComponentType<any>,
   data: {
-    slotA: {
-      view: "Wong" | "Conrad",
-      inputTemplate: "com.tm.element.List",
-      contentId: string,
-      contentName: string,
-    },
+    slotA: ListDataType,
     // TODO: replace Dfp placeholder, and add typing
     slotB: {
       contentLists: {},
     }[],
-    slotC: {
-      view: "Pazuzu",
-      inputTemplate: "com.tm.element.List",
-      contentId: string,
-      contentName: string,
-    },
+    slotC: ListDataType,
   },
 };
 
 export default function MainBlock({
   data: { slotA, slotB, slotC, },
-}: Props): React.Node {
+  List,
+}: Props): Node {
   const isWideMain = slotA.view === 'Conrad';
   return (
     <ListView
@@ -40,10 +34,7 @@ export default function MainBlock({
       }}
     >
       <List
-        listData={{
-          contentId: slotA.contentId,
-          view: slotA.view,
-        }}
+        {...slotA}
         viewProps={{
           width: [
             { from: 's', until: 'l', value: 1, },
@@ -86,20 +77,17 @@ export default function MainBlock({
         }}
       >
         <FelaComponent
-          style={theme => ({
+          style={{
             backgroundColor: 'orange',
             height: '273px',
             width: '300px',
             marginRight: 'auto',
             marginLeft: 'auto',
-          })}
+          }}
         />
       </GridItem>
       <List
-        listData={{
-          contentId: slotC.contentId,
-          view: slotC.view,
-        }}
+        {...slotC}
         viewProps={{
           isStackedOnXl: isWideMain,
           width: [

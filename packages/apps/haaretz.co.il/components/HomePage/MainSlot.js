@@ -1,13 +1,19 @@
 // @flow
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
-import { GeneralAdSlot, ClickTracker, validateType, Debug, } from '@haaretz/htz-components';
+import {
+  GeneralAdSlot,
+  MainBlock,
+  ClickTracker,
+  validateType,
+  Debug,
+} from '@haaretz/htz-components';
 
 import type { MainSlotType, } from '../../flowTypes/MainSlotType';
 
 import List from './List/List';
 
-const { isClickTrackerWrapper, isDfp, isList, } = validateType;
+const { isClickTrackerWrapper, isDfp, isList, isMainBlock, } = validateType;
 
 type Props = {
   main: MainSlotType,
@@ -22,23 +28,27 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
     >
       {main.map(
         element => (
-          isList(element)
+          isMainBlock(element)
             ? (
-              <List key={element.contentId} {...element} />
+              <MainBlock key={element.contentId} List={List} data={element} />
             )
-            : isClickTrackerWrapper(element)
+            : isList(element)
               ? (
-                <ClickTracker key={element.contentId} {...element} />
+                <List key={element.contentId} {...element} />
               )
-              : isDfp(element)
+              : isClickTrackerWrapper(element)
                 ? (
-                  <GeneralAdSlot key={element.contentId} {...element} />
+                  <ClickTracker key={element.contentId} {...element} />
                 )
-                : (
-                  <Debug key={element.contentId}>
-                    {`Element of type '${element.kind || element.imputTemplate}' is not supported in HomePage`}
-                  </Debug>
-                )
+                : isDfp(element)
+                  ? (
+                    <GeneralAdSlot key={element.contentId} {...element} />
+                  )
+                  : (
+                    <Debug key={element.contentId}>
+                      {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
+                    </Debug>
+                  )
         )
       )}
     </FelaComponent>

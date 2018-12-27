@@ -9,6 +9,44 @@ import {
   imageGallery,
 } from '@haaretz/app-utils';
 
+const itemsObj = `
+{
+  contentId
+  title
+  titleMobile
+  subtitle
+  subtitleMobile
+  exclusive
+  exclusiveMobile
+  path
+  commentsCounts
+  publishDate
+  lastUpdate
+  rank
+  inputTemplate
+  ...ImageInTeaser
+  authors {
+    contentName
+  }
+  relatedArticles {
+    title
+    path
+    contentId
+  }
+  media {
+    ... on Image {
+      ...Image
+    }
+    ... on Embed {
+      ...Embed
+    }
+    ... on ImageGallery {
+      ...ImageGallery
+    }
+  }
+}
+`;
+
 export default gql`
   query HomePageLayout {
     homePage {
@@ -25,6 +63,28 @@ export default gql`
         postMain
         footer
         main {
+          ... on HomePageMainBlock {
+            contentId
+            inputTemplate
+            slotA {
+              view
+              inputTemplate
+              loadPriority
+              isLazyloadImages
+              title
+              contentId
+              items ${itemsObj}
+            }
+            slotC {
+              view
+              inputTemplate
+              loadPriority
+              isLazyloadImages
+              title
+              contentId
+              items ${itemsObj}
+            }
+          }
           ... on List {
             view
             inputTemplate
@@ -43,32 +103,7 @@ export default gql`
               href
               cta
             }
-            items {
-              contentId
-              title
-              titleMobile
-              exclusive
-              exclusiveMobile
-              path
-              commentsCounts
-              publishDate
-              inputTemplate
-              ...ImageInTeaser
-              authors {
-                contentName
-              }
-              media {
-                ... on Image {
-                  ...Image
-                }
-                ... on Embed {
-                  ...Embed
-                }
-                ... on ImageGallery {
-                  ...ImageGallery
-                }
-              }
-            }
+            items ${itemsObj}
             clickTrackers {
               ...ClickTrackerBannersWrapper
             }

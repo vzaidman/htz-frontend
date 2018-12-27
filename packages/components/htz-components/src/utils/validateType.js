@@ -19,6 +19,10 @@ export function isList(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.element.List';
 }
 
+export function isMainBlock(item: TestObject): %checks {
+  return item.inputTemplate === 'com.htz.PageMainBlockElement';
+}
+
 export function isTeaser(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.TeaserData';
 }
@@ -40,6 +44,7 @@ export default {
   isClickTrackerWrapper,
   isDfp,
   isList,
+  isMainBlock,
   isTeaser,
   isImage,
   isEmbed,

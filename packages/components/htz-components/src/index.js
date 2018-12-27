@@ -55,6 +55,7 @@ import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
 import LinksBlock from './components/RelatedArticles/LinksBlock';
 import List from './components/List/List';
+import MainBlock from './components/HomePageMainBlock/MainBlock.js';
 import Masthead from './components/Masthead/Masthead';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
@@ -269,6 +270,7 @@ export {
   LayoutRow,
   LinksBlock,
   List,
+  MainBlock,
   Masthead,
   Media,
   MobileQuickRegistration,
