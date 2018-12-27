@@ -310,8 +310,6 @@ function setPadding(paddingOptions: PaddingType): ?PaddingCssObj {
     if (length === 0) return null;
     // Flow does not understand the refinement in `isResponsiveOptions`
     // $FlowFixMe
-    if (length === 1) return paddingOptionsReducer(null, paddingOptions[0]);
-    // $FlowFixMe
     return paddingOptions.reduce(paddingOptionsReducer, null);
   }
 

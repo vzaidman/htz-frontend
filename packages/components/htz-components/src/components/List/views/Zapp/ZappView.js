@@ -35,7 +35,7 @@ function Zapp({
         { until: 's', value: 'transparent', },
         { from: 's', value: 'white', },
       ]}
-      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 4, 4, 0, ], }, ]}
+      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
       marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
       rowSpacing={[
         { until: 's', value: { amount: 1, }, },
