@@ -23,12 +23,10 @@ type Props = {
     footer: { inputTemplate: string, contentId: string, properties: {}, }[],
     main: { inputTemplate: string, contentId: string, properties: {}, }[],
   },
-  children: React.Node,
 };
 
 function HomePageSlotsLayout({
   slots: { preHeader, header, postHeader, postMain, footer, main, },
-  children,
 }: Props): React.Node {
   const getElements = slot => slot.map(element => {
     const Element = componentFromInputTemplate(element.inputTemplate);

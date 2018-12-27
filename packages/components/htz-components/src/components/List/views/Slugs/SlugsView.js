@@ -3,8 +3,9 @@ import { FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { ListDataType, ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -19,7 +20,8 @@ import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getImageAssets from '../../../../utils/getImageAssets';
-import { isTeaser, } from '../../utils/validateTeaser';
+import { isTeaser, } from '../../../../utils/validateType';
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 type Props = {
   list: ListDataType,
@@ -40,102 +42,100 @@ export default function Slugs({
   biAction,
   lazyLoadImages,
 }: Props): React.Node {
-  const { items, } = list;
+  const { items, dfp, } = list;
   const { extraLinks, title, url, } = list;
   return (
-    <FelaTheme
-      render={theme => (
-        <ListView
-          gutter={4}
-          innerBackgroundColor="transparent"
+    <ListView
+      gutter={4}
+      innerBackgroundColor="transparent"
+      miscStyles={{
+        paddingInlineStart: [
+          { until: 's', value: '2rem', },
+          { from: 's', value: '4rem', },
+        ],
+        paddingInlineEnd: [
+          { until: 's', value: '2rem', },
+          { from: 's', value: '4rem', },
+        ],
+      }}
+    >
+      {/* List Meta Title */}
+      <GridItem width={1}>
+        <ListViewHeader
+          url={url}
+          title={title}
+          extraLinks={extraLinks}
+          isHorizontal
           miscStyles={{
-            paddingInlineStart: [
+            marginBottom: [
+              { until: 's', value: '1rem', },
+              { from: 's', until: 'l', value: '5rem', },
+              { from: 'l', value: '2rem', },
+            ],
+          }}
+        />
+      </GridItem>
+
+      {/* TEASERS */}
+      <GridItem
+        width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
+      >
+        {/* Main teaser */}
+        <Grid gutter={4} miscStyles={{ paddingBottom: '3rem', }}>
+          <GridItem
+            width={[
+              { until: 'l', value: 1, },
+              { from: 'l', until: 'xl', value: 5 / 12, },
+              { from: 'xl', value: 6 / 12, },
+            ]}
+            miscStyles={{ order: [ { from: 'l', value: 1, }, ], }}
+          >
+            <MainTeaser data={items[0]} {...{ lazyLoadImages, biAction, }} />
+          </GridItem>
+
+          {/* Secondary teasers */}
+          <GridItem
+            stretchContent
+            width={[
+              { until: 'l', value: 1, },
+              { from: 'l', until: 'xl', value: 7 / 12, },
+              { from: 'xl', value: 6 / 12, },
+            ]}
+          >
+            <TwoUp
+              data1={items[1]}
+              data2={items[2]}
+              {...{ lazyLoadImages, biAction, }}
+            />
+
+            {/* Textual Teaser */}
+            <TextualTeaser
+              data={items[3]}
+              {...{ lazyLoadImages, biAction, }}
+            />
+          </GridItem>
+        </Grid>
+      </GridItem>
+
+      {/* DFP ! */}
+      {dfp && dfp.length > 0 ? (
+        <GridItem
+          width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
+          miscStyles={{
+            marginBottom: [
               { until: 's', value: '2rem', },
               { from: 's', value: '4rem', },
             ],
-            paddingInlineEnd: [
+            marginTop: [
               { until: 's', value: '2rem', },
-              { from: 's', value: '4rem', },
+              { from: 's', until: 'xl', value: '4rem', },
             ],
           }}
         >
-          {/* List Meta Title */}
-          <GridItem width={1}>
-            <ListViewHeader
-              url={url}
-              title={title}
-              extraLinks={extraLinks}
-              isHorizontal
-              miscStyles={{
-                marginBottom: [
-                  { until: 's', value: '1rem', },
-                  { from: 's', until: 'l', value: '5rem', },
-                  { from: 'l', value: '2rem', },
-                ],
-              }}
-            />
-          </GridItem>
-
-          {/* TEASERS */}
-          <GridItem
-            width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
-          >
-            {/* Main teaser */}
-            <Grid gutter={4} miscStyles={{ paddingBottom: '3rem', }}>
-              <GridItem
-                width={[
-                  { until: 'l', value: 1, },
-                  { from: 'l', until: 'xl', value: 5 / 12, },
-                  { from: 'xl', value: 6 / 12, },
-                ]}
-                miscStyles={{ order: [ { from: 'l', value: 1, }, ], }}
-              >
-                <MainTeaser data={items[0]} {...{ lazyLoadImages, biAction, }} />
-              </GridItem>
-
-              {/* Secondary teasers */}
-              <GridItem
-                stretchContent
-                width={[
-                  { until: 'l', value: 1, },
-                  { from: 'l', until: 'xl', value: 7 / 12, },
-                  { from: 'xl', value: 6 / 12, },
-                ]}
-              >
-                <TwoUp
-                  data1={items[1]}
-                  data2={items[2]}
-                  {...{ lazyLoadImages, biAction, }}
-                />
-
-                {/* Textual Teaser */}
-                <TextualTeaser
-                  data={items[3]}
-                  {...{ lazyLoadImages, biAction, }}
-                />
-              </GridItem>
-            </Grid>
-          </GridItem>
-
-          {/* DFP ! */}
-          <GridItem
-            width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
-            miscStyles={{
-              marginBottom: [
-                { until: 's', value: '2rem', },
-                { from: 's', value: '4rem', },
-              ],
-              marginTop: [
-                { until: 's', value: '2rem', },
-                { from: 's', until: 'xl', value: '4rem', },
-              ],
-            }}
-          >
-            <div style={{ backgroundColor: 'yellow', }}>DFP! WIP!</div>
-          </GridItem>
-        </ListView>
-      )}
-    />
+          <GeneralAdSlot {...dfp[0]} />
+        </GridItem>
+      ) : null}
+    </ListView>
   );
 }
 
@@ -144,7 +144,7 @@ export default function Slugs({
 // /////////////////////////////////////////////////////////////////////
 
 type TeaserProps = {
-  data: ListItemType,
+  data: TeaserDataType,
   index: 0 | 1 | 2 | 3,
   lazyLoadImages?: boolean,
   biAction: ListBiActionType,
@@ -332,8 +332,8 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
 }
 
 type TwoUpProps = {
-  data1: ListItemType,
-  data2: ListItemType,
+  data1: TeaserDataType,
+  data2: TeaserDataType,
   lazyLoadImages: boolean,
   biAction: ListBiActionType,
 };

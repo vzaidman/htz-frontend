@@ -1,12 +1,11 @@
 // @flow
 import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import config from 'config';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { ListDataType, ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
@@ -20,8 +19,7 @@ import BlockLink from '../../../BlockLink/BlockLink';
 import H from '../../../AutoLevels/H';
 import HtzLink from '../../../HtzLink/HtzLink';
 import Section from '../../../AutoLevels/Section';
-import filterList from '../../utils/filterList';
-import { isClickTrackerWrapper, isDfp, isTeaser, } from '../../utils/validateTeaser';
+import { isClickTrackerWrapper, isDfp, isTeaser, } from '../../../../utils/validateType';
 
 const listItemStyle = {
   alignItems: 'flex-start',
@@ -153,10 +151,7 @@ type Props = {
   /**
    * data object from polopoly
    */
-  list: ListDataType & {
-    dfp: Array<ListItemType>,
-    clickTrackers: Array<ListItemType>,
-  },
+  list: ListDataType,
   /**
    * Determine if the component should be lazyloaded. Defaults to `false`.
    * If lazyloaded, indicates how many pixels before entering the screen
@@ -171,25 +166,7 @@ type Props = {
 
 // eslint-disable-next-line react/prop-types
 function Zoidberg({ list, lazyLoadImages, biAction, }: Props): Node {
-  const { title, } = list;
-  let items;
-  let clickTrackers;
-  let dfp;
-
-  if (config.has('appName') && config.get('appName') === 'styleguide') {
-    items = filterList(list.items, 'inputTemplate', 'com.tm.TeaserData');
-    clickTrackers = list.clickTrackers
-      ? filterList(list.clickTrackers, 'inputTemplate', 'com.polobase.ClickTrackerBannersWrapper')
-      : null;
-    dfp = list.dfp
-      ? filterList(list.dfp, 'inputTemplate', 'com.polobase.DfpBannerElement')
-      : null;
-  }
-  else {
-    items = list.items;
-    clickTrackers = list.clickTrackers;
-    dfp = list.dfp;
-  }
+  const { title, items, clickTrackers, dfp, } = list;
 
   const stdItemsLength: number = items.length;
 

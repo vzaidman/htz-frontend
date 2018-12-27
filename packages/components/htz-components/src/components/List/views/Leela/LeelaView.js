@@ -15,7 +15,7 @@ import BlockLink from '../../../BlockLink/BlockLink';
 import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
 import Image from '../../../Image/Image';
-import { isClickTrackerWrapper, } from '../../utils/validateTeaser';
+import { isClickTrackerWrapper, } from '../../../../utils/validateType';
 
 type PromotedItemProps = {
   path: string,

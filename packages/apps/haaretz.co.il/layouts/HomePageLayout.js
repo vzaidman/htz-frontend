@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { StyleProvider, } from '@haaretz/fela-utils';
+import dynamic from 'next/dynamic';
 import { htzTheme, } from '@haaretz/htz-theme';
 import { createLogger, } from '@haaretz/app-utils';
 import Head from 'next/head';
@@ -19,6 +20,11 @@ import styleRenderer from '../components/styleRenderer/styleRenderer';
 import HOMEPAGE_LAYOUT from './queries/homepage_layout';
 
 const logger = createLogger();
+
+const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
+  loading: () => null,
+  ssr: false,
+});
 
 function HomePageLayout({ render, }: { render: Function, }): React.Node {
   return (
@@ -48,7 +54,7 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
             <ScrollListener />
             <RouteChangeListener />
             <UserInjector />
-            {/* <DfpInjector path={url.query.path} /> */}
+            <DfpInjector path="/" />
             <GoogleAnalytics withEC />
             <StyleProvider renderer={styleRenderer} theme={htzTheme}>
               <React.Fragment>

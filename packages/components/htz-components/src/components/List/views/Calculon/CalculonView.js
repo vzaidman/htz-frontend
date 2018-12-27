@@ -4,13 +4,10 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type {
-  ListDataType,
-  ListItemType,
-} from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
-import { isTeaser, } from '../../utils/validateTeaser';
+import { isTeaser, } from '../../../../utils/validateType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -150,7 +147,7 @@ export default function Calculon({
 // /////////////////////////////////////////////////////////////////////
 
 type TeaserPropsType = {
-  data: ListItemType,
+  data: TeaserDataType,
   lazyLoadImages?: boolean,
   biAction: ?ListBiActionType,
 };

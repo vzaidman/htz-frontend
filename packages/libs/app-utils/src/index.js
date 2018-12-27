@@ -27,6 +27,7 @@ import content from './fragments/content/content';
 import dfpBanner from './fragments/dfpBanner/dfpBanner';
 import elementGroup from './fragments/elementGroup/elementGroup';
 import embed from './fragments/embed/embed';
+import gridElementGroup from './fragments/gridElementGroup/gridElementGroup';
 import htmlElement from './fragments/htmlElement/htmlElement';
 import image, { imageInTeaser, imagesInTeaser, } from './fragments/image/image';
 import imageGallery from './fragments/imageGallery/imageGallery';
@@ -77,6 +78,7 @@ export {
   dfpBanner,
   elementGroup,
   embed,
+  gridElementGroup,
   htmlElement,
   image,
   imageInTeaser,

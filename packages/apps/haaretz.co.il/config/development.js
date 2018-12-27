@@ -22,7 +22,7 @@ module.exports = {
     return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `pre.${this.domain}`;
+    return `${this.subDomain || 'pre'}.${this.domain}`;
   }),
   useSSL: false,
   graphQLuseSSL: false,
@@ -35,4 +35,5 @@ module.exports = {
   logLevel: 'debug',
   assetPrefix: '',
   enableHttpLogging: false,
+  subDomain: process.env.SUBDOMAIN,
 };

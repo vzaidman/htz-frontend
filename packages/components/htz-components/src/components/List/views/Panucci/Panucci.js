@@ -15,9 +15,7 @@ const PanucciQuery = gql`
         ...Link
       }
       items {
-        ... on TeaserInList {
-          ...TeaserForPanucci
-        }
+        ...TeaserForPanucci
       }
     }
   }

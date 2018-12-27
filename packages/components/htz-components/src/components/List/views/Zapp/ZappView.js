@@ -54,16 +54,22 @@ function Zapp({
           display: [ { from: 's', value: 'none', }, ],
         }}
       >
-        <ZappPromotedContent
-          data={list.items[1]}
-          lazyLoadImages={lazyLoadImages}
-          index={1}
-          biAction={biAction}
-        />
+        {
+          list.clickTrackers
+            ? (
+              <ZappPromotedContent
+                data={list.clickTrackers[0]}
+                lazyLoadImages={lazyLoadImages}
+                index={1}
+                biAction={biAction}
+              />
+            )
+            : null
+        }
       </GridItem>
       <GridItem width={width}>
         <ZappItem
-          data={list.items[2]}
+          data={list.items[1]}
           lazyLoadImages={lazyLoadImages}
           index={2}
           biAction={biAction}
@@ -71,7 +77,7 @@ function Zapp({
       </GridItem>
       <GridItem width={width}>
         <ZappItem
-          data={list.items[3]}
+          data={list.items[2]}
           lazyLoadImages={lazyLoadImages}
           index={3}
           biAction={biAction}
@@ -79,7 +85,7 @@ function Zapp({
       </GridItem>
       <GridItem width={width}>
         <ZappItem
-          data={list.items[4]}
+          data={list.items[3]}
           lazyLoadImages={lazyLoadImages}
           hideImageOnMobile
           index={4}

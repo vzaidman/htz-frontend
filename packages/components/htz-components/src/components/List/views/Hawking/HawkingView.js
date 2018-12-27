@@ -1,13 +1,10 @@
 // @flow
 import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import config from 'config';
 
 import type { Node, } from 'react';
-import type {
-  ListDataType,
-  ListItemType,
-} from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import Image from '../../../Image/Image';
@@ -23,8 +20,6 @@ import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import getImageAssets from '../../../../utils/getImageAssets';
-import { isDfp, isTeaser, } from '../../utils/validateTeaser';
-import filterList from '../../utils/filterList';
 import Raphael from '../Raphael/Raphael';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
@@ -47,31 +42,12 @@ export default function HawkingList({
   gaAction,
   lazyLoadImages,
 }: Props): Node {
-  const isStyleguide = config.has('appName') && config.get('appName') === 'styleguide';
-  const teasers = isStyleguide
-    ? filterList(list.items, 'inputTemplate', 'com.tm.TeaserData')
-    : list.items;
+  const { items, clickTrackers, dfp, } = list;
 
-  const dfpBanners = isStyleguide
-    ? list.dfp
-      ? filterList(list.dfp, 'inputTemplate', 'com.polobase.DfpBannerElement')
-      : null
-    : list.dfp;
-
-  const clickTrackerBanners = isStyleguide
-    ? list.clickTrackers
-      ? filterList(
-        list.clickTrackers,
-        'inputTemplate',
-        'com.polobase.ClickTrackerBannersWrapper'
-      )
-      : null
-    : list.clickTrackers;
-
-  const mainTeaser = teasers && teasers.length > 0 && teasers[0];
-  const teaser1 = teasers && teasers.length > 1 && teasers[1];
-  const teaser2 = teasers && teasers.length > 2 && teasers[2];
-  const teaser3 = teasers && teasers.length > 3 && teasers[3];
+  const mainTeaser = items && items.length > 0 && items[0];
+  const teaser1 = items && items.length > 1 && items[1];
+  const teaser2 = items && items.length > 2 && items[2];
+  const teaser3 = items && items.length > 3 && items[3];
 
   return (
     <ListView gutter={4}>
@@ -167,10 +143,10 @@ export default function HawkingList({
               { from: 'xl', value: 3 / 10, },
             ]}
           >
-            {clickTrackerBanners ? (
+            {clickTrackers ? (
               <Raphael
                 title="תוכן מקודם"
-                items={clickTrackerBanners}
+                items={clickTrackers}
                 biAction={biAction}
                 gaAction={gaAction}
               />
@@ -206,8 +182,8 @@ export default function HawkingList({
             ],
           })}
         >
-          {dfpBanners && isDfp(dfpBanners[0]) ? (
-            <GeneralAdSlot {...dfpBanners[0]} />
+          {dfp ? (
+            <GeneralAdSlot {...dfp[0]} />
           ) : null}
         </FelaComponent>
       </GridItem>
@@ -220,7 +196,7 @@ export default function HawkingList({
 // /////////////////////////////////////////////////////////////////////
 
 type TeaserProps = {
-  item: ListItemType,
+  item: TeaserDataType,
   lazyLoadImages?: boolean,
   biAction: ?ListBiActionType,
   index: number,
@@ -240,7 +216,7 @@ function HawkingMainTeaser({
 }: TeaserProps): Node {
   return (
     <FelaTheme
-      render={theme => (isTeaser(item) ? (
+      render={theme => (
         <Teaser
           onClick={
               biAction
@@ -335,8 +311,7 @@ function HawkingMainTeaser({
             )}
           />
         </Teaser>
-      ) : null)
-      }
+      )}
     />
   );
 }
@@ -346,7 +321,7 @@ HawkingTeaser.defaultProps = {
 };
 
 function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
-  return isTeaser(item) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -382,5 +357,5 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }

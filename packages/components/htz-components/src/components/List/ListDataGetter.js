@@ -46,7 +46,7 @@ export default function ListDataGetter({
         const { title, items, lazyLoadImages, contentId, ...restList } = isSsr
           ? listData
           : data.list;
-        updateListDuplication(items);
+        items && updateListDuplication(items);
         return (
           <EventTracker>
             {({ biAction, gaAction, HtzReactGA, }) => {

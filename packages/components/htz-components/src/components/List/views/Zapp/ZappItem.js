@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
-import { isTeaser, } from '../../utils/validateTeaser';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import GridItem from '../../../Grid/GridItem';
 import Picture from '../../../Image/Picture';
@@ -16,10 +15,10 @@ import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 type ZappItemProps = {
-  data: ListItemType,
+  data: TeaserDataType,
   lazyLoadImages: boolean,
   hideImageOnMobile: boolean,
   index: number,
@@ -38,7 +37,7 @@ export default function ZappItem({
   index,
   biAction,
 }: ZappItemProps): React.Node {
-  return isTeaser(data) ? (
+  return (
     <Teaser
       data={data}
       onClick={() => biAction({ index, articleId: data.contentId, })}
@@ -146,5 +145,5 @@ export default function ZappItem({
         }}
       />
     </Teaser>
-  ) : null;
+  );
 }

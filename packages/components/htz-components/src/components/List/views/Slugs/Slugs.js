@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { image, } from '@haaretz/app-utils';
+import { image, dfpBanner, } from '@haaretz/app-utils';
 import SlugsView from './SlugsView.js';
 import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -11,29 +11,31 @@ const SlugsQuery = gql`
     list(listId: $listId, history: $history) {
       title
       items {
-        ... on TeaserInList {
-          commentsCounts
-          contentId
-          title
-          titleMobile
-          exclusive
-          exclusiveMobile
-          path
-          publishDate
-          lastUpdate
-          rank
-          inputTemplate
-          authors {
-            contentName
-          }
-          image {
-            ...Image
-          }
+        commentsCounts
+        contentId
+        title
+        titleMobile
+        exclusive
+        exclusiveMobile
+        path
+        publishDate
+        lastUpdate
+        rank
+        inputTemplate
+        authors {
+          contentName
         }
+        image {
+          ...Image
+        }
+      }
+      dfp {
+        ...DfpBanner
       }
     }
   }
   ${image}
+  ${dfpBanner}
 `;
 
 type Props = {

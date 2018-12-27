@@ -5,13 +5,6 @@ import type { ListExtraLinkType, } from './ListExtraLinkType';
 import type { ListMarketingTeaserType, } from './ListMarketingTeaserType';
 import type { ClickTrackerBannerWrapperType, } from './ClickTrackerBannerWrapperType';
 import type { DfpBannerType, } from './DfpBannerType';
-import type { ClickTrackerBannerType, } from './ClickTrackerBannerType';
-
-export type ListItemType =
-  | TeaserDataType
-  | ClickTrackerBannerType
-  | ClickTrackerBannerWrapperType
-  | DfpBannerType;
 
 export type ListDataType = {
   title?: string,
@@ -26,9 +19,9 @@ export type ListDataType = {
   loadPriority: "ssr" | "client" | "lazy",
   description?: string,
   urlDescription?: string,
-  items: Array<ListItemType>,
-  dfp?: Array<ListItemType>,
-  clickTrackers?: Array<ListItemType>,
+  items: Array<TeaserDataType>,
+  dfp?: Array<DfpBannerType>,
+  clickTrackers?: Array<ClickTrackerBannerWrapperType>,
   contentId: string,
   contentName: string,
   hasPagination: boolean,

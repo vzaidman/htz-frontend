@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { clickTrackerBannersWrapper, dfpBanner, teaserForMom, } from '@haaretz/app-utils';
+import { teaserForMom, } from '@haaretz/app-utils';
 import MomView from './MomView.js';
 import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -20,8 +20,6 @@ const MomQuery = gql`
       }
     }
   }
-  ${clickTrackerBannersWrapper}
-  ${dfpBanner}
   ${teaserForMom}
 `;
 

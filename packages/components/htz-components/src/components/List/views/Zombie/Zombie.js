@@ -20,29 +20,25 @@ const ZombieQuery = gql`
         toolTip
       }
       items {
-        ... on TeaserInList {
-          ...ImagesInTeaser
-          contentId
-          representedContent
-          exclusive
-          exclusiveMobile
-          title
-          path
-          titleMobile
-          commentsCounts
-          lastUpdate
-          inputTemplate
-          authors {
-            ... on Author {
-              contentName
-            }
+        ...ImagesInTeaser
+        contentId
+        representedContent
+        exclusive
+        exclusiveMobile
+        title
+        path
+        titleMobile
+        commentsCounts
+        publishDate
+        inputTemplate
+        authors {
+          ... on Author {
+            contentName
           }
         }
       }
-      dfp: items {
-        ... on DfpBanner {
-          ...DfpBanner
-        }
+      dfp {
+        ...DfpBanner
       }
     }
   }

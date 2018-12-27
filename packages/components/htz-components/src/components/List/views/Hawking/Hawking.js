@@ -23,31 +23,25 @@ const HawkingQuery = gql`
         cta
       }
       items {
-        ... on TeaserInList {
-          contentId
-          title
-          titleMobile
-          exclusive
-          exclusiveMobile
-          path
-          commentsCounts
-          publishDate
-          inputTemplate
-          ...ImageInTeaser
-          authors {
-            contentName
-          }
+        contentId
+        title
+        titleMobile
+        exclusive
+        exclusiveMobile
+        path
+        commentsCounts
+        publishDate
+        inputTemplate
+        ...ImageInTeaser
+        authors {
+          contentName
         }
       }
-      clickTrackers: items {
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
-      dfp: items {
-        ... on DfpBanner {
-          ...DfpBanner
-        }
+      dfp {
+        ...DfpBanner
       }
     }
   }

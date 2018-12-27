@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
-import { isTeaser, } from '../../utils/validateTeaser.js';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
 import Teaser from '../../../Teaser/Teaser';
@@ -211,22 +210,18 @@ function Pazuzu({
           }}
         >
           <ListView disableWrapper gutter={0} marginTop={0}>
-            {isTeaser(items[0]) && (
-              <PazuzuTeaser
-                lazyLoadImages={lazyLoadImages}
-                isStackedOnXl={isStackedOnXl}
-                isSecondItem={false}
-                item={items[0]}
-              />
-            )}
-            {isTeaser(items[1]) && (
-              <PazuzuTeaser
-                lazyLoadImages={lazyLoadImages}
-                isStackedOnXl={isStackedOnXl}
-                isSecondItem
-                item={items[1]}
-              />
-            )}
+            <PazuzuTeaser
+              lazyLoadImages={lazyLoadImages}
+              isStackedOnXl={isStackedOnXl}
+              isSecondItem={false}
+              item={items[0]}
+            />
+            <PazuzuTeaser
+              lazyLoadImages={lazyLoadImages}
+              isStackedOnXl={isStackedOnXl}
+              isSecondItem
+              item={items[1]}
+            />
           </ListView>
         </GridItem>
       )}

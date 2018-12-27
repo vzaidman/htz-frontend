@@ -15,7 +15,7 @@ import Card from '../Card/Card';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
 import HtzLink from '../HtzLink/HtzLink';
-import { isClickTracker, } from '../List/utils/validateTeaser';
+import { isClickTracker, } from '../../utils/validateType';
 
 export type IsStackedType = boolean | ComponentPropResponsiveObject<boolean>[];
 

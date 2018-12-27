@@ -22,7 +22,7 @@ import {
   isClickTracker,
   isClickTrackerWrapper,
   isTeaser,
-} from '../../utils/validateTeaser';
+} from '../../../../utils/validateType';
 
 type Props = {
   list: ?ListDataType,

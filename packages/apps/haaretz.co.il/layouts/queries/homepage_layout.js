@@ -1,5 +1,13 @@
 import gql from 'graphql-tag';
-import { imageInTeaser, clickTrackerBannersWrapper, dfpBanner, } from '@haaretz/app-utils';
+import {
+  imageInTeaser,
+  clickTrackerBannersWrapper,
+  dfpBanner,
+  elementGroup,
+  embed,
+  image,
+  imageGallery,
+} from '@haaretz/app-utils';
 
 export default gql`
   query HomePageLayout {
@@ -9,7 +17,6 @@ export default gql`
         name
         pathSegment
         url
-        __typename
       }
       slots {
         preHeader
@@ -18,18 +25,6 @@ export default gql`
         postMain
         footer
         main {
-          # ... on HomePageMainBlock {
-          #   contentId
-          #   contentName
-          #   slotA {
-          #     view
-          #     contentId
-          #   }
-          #   slotC {
-          #     view
-          #     contentId
-          #   }
-          # }
           ... on List {
             view
             inputTemplate
@@ -49,59 +44,59 @@ export default gql`
               cta
             }
             items {
-              ... on TeaserInList {
-                contentId
-                title
-                titleMobile
-                exclusive
-                exclusiveMobile
-                path
-                commentsCounts
-                publishDate
-                inputTemplate
-                ...ImageInTeaser
-                authors {
-                  contentName
+              contentId
+              title
+              titleMobile
+              exclusive
+              exclusiveMobile
+              path
+              commentsCounts
+              publishDate
+              inputTemplate
+              ...ImageInTeaser
+              authors {
+                contentName
+              }
+              media {
+                ... on Image {
+                  ...Image
+                }
+                ... on Embed {
+                  ...Embed
+                }
+                ... on ImageGallery {
+                  ...ImageGallery
                 }
               }
             }
-            # clickTrackers: items {
-            #   ... on ClickTrackerBannersWrapper {
-            #     contentId
-            #   }
-            # }
-            # dfp: items {
-            #   ... on DfpBanner {
-            #     ...DfpBanner
-            #   }
-            # }
-          }
-          ... on GridElementGroup {
-            contentId
-            items {
-              ... on ClickTrackerBannersWrapper {
-                contentId
-                totalPercentage
-              }
+            clickTrackers {
+              ...ClickTrackerBannersWrapper
+            }
+            dfp {
+              ...DfpBanner
             }
           }
+          ... on DfpBanner {
+            ...DfpBanner
+          }
           ... on ElementGroup {
-            contentId
+            ...ElementGroup
           }
           ... on TabViewElements {
             contentId
           }
-          ... on DfpBanner {
-            contentId
-          }
           ... on ClickTrackerBannersWrapper {
-            contentId
+            ...ClickTrackerBannersWrapper
           }
         }
       }
     }
   }
+  ${clickTrackerBannersWrapper}
+  ${dfpBanner}
+  ${elementGroup}
   ${imageInTeaser}
+  ${embed}
+  ${image}
+  ${imageGallery}
 `;
-// # ${dfpBanner}
-// # ${clickTrackerBannersWrapper}

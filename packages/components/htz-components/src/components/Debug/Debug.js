@@ -1,13 +1,18 @@
-/* global window */
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 
-class Debug extends React.Component {
-  static propTypes = {
-    children: PropTypes.arrayOf(PropTypes.node).isRequired,
-  };
+import type { ChildrenArray, Node, } from 'react';
 
+type Props = {
+  children: ChildrenArray<Node> | Node,
+}
+
+type State = {
+  window: boolean,
+}
+
+class Debug extends React.Component<Props, State> {
   state = {
     window: false,
   };

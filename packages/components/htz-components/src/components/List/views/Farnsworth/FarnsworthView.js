@@ -11,7 +11,7 @@ import ListItem from '../../elements/ListItem';
 import BlockLink from '../../../BlockLink/BlockLink';
 import H from '../../../AutoLevels/H';
 import Image from '../../../Image/Image';
-import { isTeaser, } from '../../utils/validateTeaser';
+import { isTeaser, } from '../../../../utils/validateType';
 
 const imgOptions: Object = {
   transforms: {

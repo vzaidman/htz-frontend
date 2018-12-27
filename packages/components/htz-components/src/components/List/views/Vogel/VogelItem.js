@@ -7,12 +7,13 @@ import Teaser from '../../../Teaser/Teaser';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import type { ListItemType, } from '../../../../flowTypes/ListDataType';
+import { isTeaser, } from '../../../../utils/validateType';
+
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import { isTeaser, } from '../../utils/validateTeaser';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 type VogelItemPropTypes = {
-  data: ListItemType,
+  data: TeaserDataType,
   lazyLoadImages: boolean,
   hideImage: boolean,
   hideImageOnMobile: boolean,

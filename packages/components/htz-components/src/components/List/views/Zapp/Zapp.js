@@ -10,30 +10,28 @@ const ZappQuery = gql`
   query ZappQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       items {
-        ... on TeaserInList {
-          inputTemplate
-          commentsCounts
-          contentId
-          title
-          titleMobile
-          subtitle
-          subtitleMobile
-          exclusive
-          exclusiveMobile
-          path
-          publishDate
-          lastUpdate
-          rank
-          authors {
-            contentName
-          }
-          image {
-            ...Image
-          }
+        inputTemplate
+        commentsCounts
+        contentId
+        title
+        titleMobile
+        subtitle
+        subtitleMobile
+        exclusive
+        exclusiveMobile
+        path
+        publishDate
+        lastUpdate
+        rank
+        authors {
+          contentName
         }
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
+        image {
+          ...Image
         }
+      } 
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
     }
   }

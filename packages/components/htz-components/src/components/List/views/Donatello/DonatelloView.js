@@ -20,7 +20,7 @@ import Debug from '../../../Debug/Debug';
 import BlockLink from '../../../BlockLink/BlockLink';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import { isClickTrackerWrapper, } from '../../utils/validateTeaser';
+import { isClickTrackerWrapper, } from '../../../../utils/validateType';
 
 type Props = {
   list: ListDataType,

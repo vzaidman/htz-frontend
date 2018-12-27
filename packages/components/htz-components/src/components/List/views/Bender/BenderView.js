@@ -4,7 +4,8 @@ import { FelaComponent, } from 'react-fela';
 import { parseTypographyProp, borderTop, } from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
-import type { ListDataType, ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import ListItem from '../../elements/ListItem';
@@ -17,7 +18,6 @@ import BlockLink from '../../../BlockLink/BlockLink';
 import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import H from '../../../AutoLevels/H';
 import Section from '../../../AutoLevels/Section';
-import { isTeaser, } from '../../utils/validateTeaser';
 
 const benderWrapperRules: ({ theme: Object, }) => Object = ({ theme, }) => ({
   width: '100%',
@@ -75,88 +75,83 @@ export default function Bender({
   };
 
   const BenderItem: (
-    item: ListItemType,
+    item: TeaserDataType,
     i: number,
     itemsToRender: number
   ) => Node = (item, i, itemsToRender) => (
     <GridItem width={1 / itemsToRender} key={item.contentId}>
-      {isTeaser(item)
-        ? (
-          <ListItem>
-            <BlockLink
-              href={item.path}
-              miscStyles={itemRule}
-              onClick={() => biAction({ index: i, articleId: item.representedContent, })}
-            >
-              <Section isFragment>
-                <FelaComponent
-                  render={({ className, theme, }) => {
-                    // eslint-disable-next-line no-unused-vars
-                    const { title, } = theme.benderStyle;
-                    return (
-                      <div className={className}>
-                        <Image
-                          data={item.image}
-                          imgOptions={imgOptions}
-                          lazyLoad={lazyLoadImages}
-                        />
-                        <FelaComponent
-                          style={{
-                            fontWeight: 'bold',
-                            color: theme.color('neutral'),
-                            marginBottom: '1rem',
-                            marginTop: '1rem',
-                            extend: [
-                              parseTypographyProp(title.fontSize, theme.type),
-                            ],
-                          }}
-                          render={({ className, }) => (
-                            <H className={className}>
-                              <HtzLink href={item.path}>{item.title}</HtzLink>
-                            </H>
-                          )}
-                        />
-                      </div>
-                    );
-                  }}
-                />
-                <FelaComponent
-                  rule={authorRule}
-                  render={({ className, }) => (
-                    <footer className={className}>
-                      <AboveBlockLink>
-                        {({ className, }) => (
-                          <span className={className}>
-                            {item.authors
-                              ? item.authors.map(author => {
-                                if (author.url) {
-                                  return (
-                                    <HtzLink
-                                      href={author.url}
-                                      content={author.contentName}
-                                    />
-                                  );
-                                }
-                                return (
-                                  <span key={author.contentName}>
-                                    {author.contentName}
-                                  </span>
-                                );
-                              })
-                              : null
+      <ListItem>
+        <BlockLink
+          href={item.path}
+          miscStyles={itemRule}
+          onClick={() => biAction({ index: i, articleId: item.representedContent, })}
+        >
+          <Section isFragment>
+            <FelaComponent
+              render={({ className, theme, }) => {
+                // eslint-disable-next-line no-unused-vars
+                const { title, } = theme.benderStyle;
+                return (
+                  <div className={className}>
+                    <Image
+                      data={item.image}
+                      imgOptions={imgOptions}
+                      lazyLoad={lazyLoadImages}
+                    />
+                    <FelaComponent
+                      style={{
+                        fontWeight: 'bold',
+                        color: theme.color('neutral'),
+                        marginBottom: '1rem',
+                        marginTop: '1rem',
+                        extend: [
+                          parseTypographyProp(title.fontSize, theme.type),
+                        ],
+                      }}
+                      render={({ className, }) => (
+                        <H className={className}>
+                          <HtzLink href={item.path}>{item.title}</HtzLink>
+                        </H>
+                      )}
+                    />
+                  </div>
+                );
+              }}
+            />
+            <FelaComponent
+              rule={authorRule}
+              render={({ className, }) => (
+                <footer className={className}>
+                  <AboveBlockLink>
+                    {({ className, }) => (
+                      <span className={className}>
+                        {item.authors
+                          ? item.authors.map(author => {
+                            if (author.url) {
+                              return (
+                                <HtzLink
+                                  href={author.url}
+                                  content={author.contentName}
+                                />
+                              );
                             }
-                          </span>
-                        )}
-                      </AboveBlockLink>
-                    </footer>
-                  )}
-                />
-              </Section>
-            </BlockLink>
-          </ListItem>
-        )
-        : null
-      }
+                            return (
+                              <span key={author.contentName}>
+                                {author.contentName}
+                              </span>
+                            );
+                          })
+                          : null
+                        }
+                      </span>
+                    )}
+                  </AboveBlockLink>
+                </footer>
+              )}
+            />
+          </Section>
+        </BlockLink>
+      </ListItem>
     </GridItem>
   );
 

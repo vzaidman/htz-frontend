@@ -10,22 +10,20 @@ const PazuzuQuery = gql`
   query PazuzuQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       items {
-        ... on TeaserInList {
-          inputTemplate
-          rank
-          commentsCounts
-          contentId
-          title
-          titleMobile
-          path
-          publishDate
-          lastUpdate
-          authors {
-            contentName
-          }
-          image {
-            ...Image
-          }
+        inputTemplate
+        rank
+        commentsCounts
+        contentId
+        title
+        titleMobile
+        path
+        publishDate
+        lastUpdate
+        authors {
+          contentName
+        }
+        image {
+          ...Image
         }
       }
     }

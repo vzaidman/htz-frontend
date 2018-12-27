@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 
-import { isClickTrackerWrapper, } from '../../utils/validateTeaser';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
 import GridItem from '../../../Grid/GridItem';
 import Section from '../../../AutoLevels/Section';
@@ -16,10 +15,10 @@ import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import HtzLink from '../../../HtzLink/HtzLink';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 
 type ZappPromotedContentProps = {
-  data: ListItemType,
+  data: ClickTrackerBannerWrapperType,
   lazyLoadImages: boolean,
   index: number,
   biAction: ListBiActionType,
@@ -35,7 +34,7 @@ export default function ZappPromotedContent({
   index,
   biAction,
 }: ZappPromotedContentProps): React.Node {
-  return isClickTrackerWrapper(data) ? (
+  return (
     <FelaTheme
       render={theme => (
         <ClickTracker
@@ -116,5 +115,5 @@ export default function ZappPromotedContent({
         />
       )}
     />
-  ) : null;
+  );
 }

@@ -2,7 +2,6 @@
 import { FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
-import { isTeaser, } from '../../utils/validateTeaser.js';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
@@ -12,11 +11,11 @@ import getImageAssets from '../../../../utils/getImageAssets';
 
 import TeaserFooter from './TeaserFooter';
 
-import type { ListItemType, } from '../../../../flowTypes/ListDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { TeaserDataType } from '../../../../flowTypes/TeaserDataType';
 
 type Props = {
-  itemData: ListItemType,
+  itemData: TeaserDataType,
   lazyLoadImages: boolean,
   biAction: ?ListBiActionType,
 };
@@ -33,7 +32,7 @@ export default function MainTeaser({
   lazyLoadImages,
   biAction,
 }: Props): React.Node {
-  return isTeaser(itemData) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -90,5 +89,5 @@ export default function MainTeaser({
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }

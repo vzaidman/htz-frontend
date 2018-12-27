@@ -1,5 +1,5 @@
 // @flow
-import React, { type StatelessFunctionalComponent, } from 'react';
+import React, { Fragment, type StatelessFunctionalComponent, } from 'react';
 import { FelaTheme, } from 'react-fela';
 
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -29,9 +29,10 @@ const Slim: StatelessFunctionalComponent<Props> = ({
     <FelaTheme
       render={theme => (
         <Media
-          query={{ from: 's', }}
+          matchOnServer
+          query={{ until: 's', }}
         >
-          {matches => (matches
+          {matches => (!matches
             ? (
               <ListView
                 innerBackgroundColor={[ 'neutral', ]}
@@ -41,43 +42,45 @@ const Slim: StatelessFunctionalComponent<Props> = ({
                   paddingEnd: [ { from: 'xl', value: '4rem', }, ],
                 }}
               >
-                { /* Gallery Title */}
-                <GridItem
-                  width={1}
-                  miscStyles={{
-                    paddingBottom: '1rem',
-                    paddingTop: '1rem',
-                  }}
-                >
-                  {
-                    items[0].inputTemplate === 'com.tm.TeaserData'
-                      ? (
-                        <TeaserHeader
-                          {...items[0]}
-                          typeScale={0}
-                          color={[ 'neutral', '-10', ]}
+                {
+                  items && items[0]
+                    ? (
+                      <Fragment>
+                        {/* Gallery Title */}
+                        <GridItem
+                          width={1}
                           miscStyles={{
-                            paddingStart: [ { until: 'xl', value: '4rem', }, ],
+                            paddingBottom: '1rem',
+                            paddingTop: '1rem',
                           }}
-                        />
-                      )
-                      : null
-                  }
-                </GridItem>
-                {/* Main Gallery */}
-                <GridItem
-                  width={[
-                    { until: 'xl', value: 1, },
-                    { from: 'xl', value: 9 / 12, },
-                  ]}
-                  miscStyles={{
-                    paddingBottom: [
-                      { until: 'xl', value: '2rem', },
-                    ],
-                  }}
-                >
-                  <MainGallery item={items[0]} />
-                </GridItem>
+                        >
+                          <TeaserHeader
+                            {...items[0]}
+                            typeScale={0}
+                            color={[ 'neutral', '-10', ]}
+                            miscStyles={{
+                              paddingStart: [ { until: 'xl', value: '4rem', }, ],
+                            }}
+                          />
+                        </GridItem>
+                        {/* Main Gallery */}
+                        <GridItem
+                          width={[
+                            { until: 'xl', value: 1, },
+                            { from: 'xl', value: 9 / 12, },
+                          ]}
+                          miscStyles={{
+                            paddingBottom: [
+                              { until: 'xl', value: '2rem', },
+                            ],
+                          }}
+                        >
+                          <MainGallery item={items[0]} />
+                        </GridItem>
+                      </Fragment>
+                    )
+                    : null
+                }
                 {/* Related Galleries */}
                 <GridItem
                   width={[

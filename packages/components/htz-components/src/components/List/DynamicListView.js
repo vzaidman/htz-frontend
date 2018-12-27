@@ -1,5 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Debug from '../Debug/Debug';
 
 const Bender = dynamic(() => import('./views/Bender/Bender'), {
   loading: () => null,
@@ -19,9 +20,6 @@ const Farnsworth = dynamic(() => import('./views/Farnsworth/Farnsworth'), {
 const Hawking = dynamic(() => import('./views/Hawking/Hawking'), {
   loading: () => null,
 });
-const Fry = dynamic(() => import('./views/Fry/Fry'), {
-  loading: () => null,
-});
 const Gamal = dynamic(() => import('./views/Gamal/Gamal'), {
   loading: () => null,
 });
@@ -35,9 +33,6 @@ const Michelangelo = dynamic(() => import('./views/Michelangelo/Michelangelo'), 
   loading: () => null,
 });
 const Mom = dynamic(() => import('./views/Mom/Mom'), {
-  loading: () => null,
-});
-const Nibbler = dynamic(() => import('./views/Nibbler/Nibbler'), {
   loading: () => null,
 });
 const Panucci = dynamic(() => import('./views/Panucci/Panucci'), {
@@ -92,9 +87,6 @@ export default function DynamicListView(props) {
     case 'Hawking': {
       return <Hawking {...props} />;
     }
-    case 'Fry': {
-      return <Fry {...props} />;
-    }
     case 'Leela': {
       return <Leela {...props} />;
     }
@@ -106,9 +98,6 @@ export default function DynamicListView(props) {
     }
     case 'Mom': {
       return <Mom {...props} />;
-    }
-    case 'Nibbler': {
-      return <Nibbler {...props} />;
     }
     case 'Panucci': {
       return <Panucci {...props} />;
@@ -138,6 +127,6 @@ export default function DynamicListView(props) {
       return <Vogel {...props} />;
     }
     default:
-      return <div>non supported list</div>;
+      return <Debug>{`${view} is not supported view`}</Debug>;
   }
 }

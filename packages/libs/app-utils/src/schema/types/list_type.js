@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
   GraphQLObjectType,
-  GraphQLUnionType,
   GraphQLBoolean,
   GraphQLString,
   GraphQLList,
@@ -15,10 +14,10 @@ import LinkType from './link_type';
 import ClickTrackerWrapperType from './click_tracker_banner_wrapper_type';
 import MarketingTeaserType from './marketing_teaser_type';
 
-const types = new Map([
-  [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapperType, ],
-  [ 'com.polobase.DfpBannerElement', DfpBanner, ],
-  [ 'com.tm.TeaserData', TeaserInListType, ],
+const type = new Map([
+  [ 'com.polobase.ClickTrackerBannersWrapper', 'clickTracker', ],
+  [ 'com.polobase.DfpBannerElement', 'dfp', ],
+  [ 'com.tm.TeaserData', 'teaser', ],
 ]);
 
 const List = new GraphQLObjectType({
@@ -37,12 +36,47 @@ const List = new GraphQLObjectType({
     url: { type: GraphQLString, },
     urlDescription: { type: GraphQLString, },
     items: {
-      type: new GraphQLList(
-        new GraphQLUnionType({
-          name: 'ListItems',
-          types: [ Content, TeaserInListType, ClickTrackerWrapperType, DfpBanner, ],
-          resolveType: value => types.get(value.inputTemplate) || Content,
-        })
+      type: new GraphQLList(TeaserInListType),
+      resolve: parentValue => (
+        parentValue.items.reduce((results, item) => {
+          if (type.get(item.inputTemplate) === 'teaser') {
+            results.push(item);
+          }
+          return results;
+        }, [])
+      ),
+    },
+    clickTrackers: {
+      type: new GraphQLList(ClickTrackerWrapperType),
+      resolve: parentValue => (
+        parentValue.items.reduce((results, item) => {
+          if (type.get(item.inputTemplate) === 'clickTracker') {
+            results.push(item);
+          }
+          return results;
+        }, [])
+      ),
+    },
+    dfp: {
+      type: new GraphQLList(DfpBanner),
+      resolve: parentValue => (
+        parentValue.items.reduce((results, item) => {
+          if (type.get(item.inputTemplate) === 'dfp') {
+            results.push(item);
+          }
+          return results;
+        }, [])
+      ),
+    },
+    content: {
+      type: new GraphQLList(Content),
+      resolve: parentValue => (
+        parentValue.items.reduce((results, item) => {
+          if (!type.get(item.inputTemplate)) {
+            results.push(item);
+          }
+          return results;
+        }, [])
       ),
     },
     loadPriority: { type: GraphQLString, },

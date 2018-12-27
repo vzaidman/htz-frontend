@@ -5,7 +5,7 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import type { Node, } from 'react';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 import ImageGallery, { CaptionElement, } from '../../../ImageGallery/ImageGallery';
 import GridItem from '../../../Grid/GridItem';
@@ -15,10 +15,10 @@ import Image from '../../../Image/Image';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import IconCamera from '../../../Icon/icons/IconCamera';
-import { isTeaser, } from '../../utils/validateTeaser';
+import { isGallery, } from '../../../../utils/validateType';
 
 type MainGalleryProps = {
-  item: ListItemType,
+  item: TeaserDataType,
 };
 
 type MobileGalleryTeaserProps = MainGalleryProps & {
@@ -30,7 +30,7 @@ type RelatedGalleryProps = MobileGalleryTeaserProps & {
 };
 
 export function MainGallery({ item, }: MainGalleryProps): Node {
-  if (isTeaser(item) && item.media && item.media.kind === 'gallery') {
+  if (item.media && isGallery(item.media)) {
     return (
       <ImageGallery
         forceAspect="headline"
@@ -108,70 +108,68 @@ export function MainGallery({ item, }: MainGalleryProps): Node {
 
 // eslint-disable-next-line operator-linebreak
 export function RelatedGallery({ item, miscStyles, biAction, }: RelatedGalleryProps): Node {
-  return isTeaser(item)
-    ? (
-      <GridItem
-        width={[
-          { until: 'l', value: 1 / 2, },
-          { from: 'l', until: 'xl', value: 1 / 3, },
-          { from: 'xl', value: 1, },
-        ]}
-        miscStyles={{
-          marginBottom: [ { from: 'xl', value: '4rem', }, ],
-          ...(miscStyles || {}),
-        }}
+  return (
+    <GridItem
+      width={[
+        { until: 'l', value: 1 / 2, },
+        { from: 'l', until: 'xl', value: 1 / 3, },
+        { from: 'xl', value: 1, },
+      ]}
+      miscStyles={{
+        marginBottom: [ { from: 'xl', value: '4rem', }, ],
+        ...(miscStyles || {}),
+      }}
+    >
+      <Teaser
+        data={item}
+        gutter={2}
+        isRev={false}
+        backgroundColor={[ 'transparent', ]}
+        onClick={() => biAction({ index: 0, articleId: item.contentId, })}
       >
-        <Teaser
-          data={item}
-          gutter={2}
-          isRev={false}
-          backgroundColor={[ 'transparent', ]}
-          onClick={() => biAction({ index: 0, articleId: item.contentId, })}
-        >
-          {item.image ? (
-            <TeaserMedia
-              data={item}
-              width={[
-                { until: 's', value: 20, },
-                { from: 's', until: 'xl', value: 2 / 4, },
-                { from: 'xl', value: 1, },
-              ]}
-            >
-              <Image
-                data={item.image}
-                imgOptions={{
-                  transforms: {
-                    width: '285',
-                    aspect: 'headline',
-                    quality: 'auto',
-                  },
-                }}
-              />
-            </TeaserMedia>
-          ) : null}
-          <TeaserContent
+        {item.image ? (
+          <TeaserMedia
             data={item}
-            padding={[
-              { until: 's', value: [ 0.5, 0, 4, 1, ], },
-              { from: 's', until: 'xl', value: 0, },
-              { from: 'xl', value: [ 2, 0, ], },
+            width={[
+              { until: 's', value: 20, },
+              { from: 's', until: 'xl', value: 2 / 4, },
+              { from: 'xl', value: 1, },
             ]}
-            backgroundColor={[ 'transparent', ]}
-            color={[ 'neutral', '-10', ]}
-            renderContent={() => (
-              <TeaserHeader
-                {...item}
-                typeScale={0}
-                miscStyles={{
-                  paddingBottom: '4rem',
-                }}
-              />
-            )}
-          />
-        </Teaser>
-      </GridItem>
-    )
-    : null;
+          >
+            <Image
+              data={item.image}
+              imgOptions={{
+                transforms: {
+                  width: '285',
+                  aspect: 'headline',
+                  quality: 'auto',
+                },
+              }}
+            />
+          </TeaserMedia>
+        ) : null}
+        <TeaserContent
+          data={item}
+          padding={[
+            { until: 's', value: [ 0.5, 0, 4, 1, ], },
+            { from: 's', until: 'xl', value: 0, },
+            { from: 'xl', value: [ 2, 0, ], },
+          ]}
+          backgroundColor={[ 'transparent', ]}
+          color={[ 'neutral', '-10', ]}
+          renderContent={() => (
+            <TeaserHeader
+              {...item}
+              typeScale={0}
+              miscStyles={{
+                paddingBottom: '4rem',
+              }}
+            />
+          )}
+        />
+      </Teaser>
+    </GridItem>
+  );
 }
 
 type State = {
@@ -186,114 +184,115 @@ export class MobileGalleryTeaser extends React.Component<MobileGalleryTeaserProp
   render() {
     const { item, biAction, } = this.props;
     const { showGallery, } = this.state;
-    return isTeaser(item)
-      ? (
-        item.media && item.media.kind === 'gallery'
-          ? !showGallery
-            ? (
-              <FelaTheme
-                render={theme => (
-                  <Teaser
+    return (
+      item.media && isGallery(item.media)
+        ? !showGallery
+          ? (
+            <FelaTheme
+              render={theme => (
+                <Teaser
+                  data={item}
+                  gutter={2}
+                  isRev={false}
+                  backgroundColor={[ 'neutral', ]}
+                  onClick={event => {
+                    event.preventDefault();
+                    biAction({ index: 0, articleId: item.contentId, actionCode: 128, });
+                    this.setState({
+                      showGallery: true,
+                    });
+                  }}
+                  miscStyles={{
+                    display: [ { from: 's', value: 'none', }, ],
+                  }}
+                >
+                  <TeaserMedia
                     data={item}
-                    gutter={2}
-                    isRev={false}
-                    backgroundColor={[ 'neutral', ]}
-                    onClick={event => {
-                      event.preventDefault();
-                      biAction({ index: 0, articleId: item.contentId, actionCode: 128, });
-                      this.setState({
-                        showGallery: true,
-                      });
-                    }}
+                    width={1}
                   >
-                    <TeaserMedia
-                      data={item}
-                      width={1}
-                    >
-                      {
-                        item.media && item.media.kind === 'gallery' && item.media.images
-                          ? (
-                            <Image
-                              data={item.media.images[0]}
-                              imgOptions={{
-                                transforms: {
-                                  width: '560',
-                                  aspect: 'headline',
-                                  quality: 'auto',
-                                },
-                              }}
-                            />
-                          )
-                          : null
-                      }
-                    </TeaserMedia>
-                    <TeaserContent
-                      data={item}
-                      padding={[ 4, 2, 0, ]}
-                      color={[ 'neutral', '-10', ]}
-                      miscStyles={{
-                        position: 'relative',
-                        overflow: 'visible',
-                      }}
-                      footerPadding={[ 0, 2, 2, ]}
-                      footerColor={[ 'quaternary', ]}
-                      footerMiscStyles={{
-                        ...theme.type(-2),
-                        textAlign: 'center',
-                      }}
-                      renderContent={() => (
-                        <Fragment>
-                          <FelaComponent
-                            style={{
-                              position: 'absolute',
-                              top: '0',
-                              start: '50%',
-                              backgroundColor: theme.color('quaternary'),
-                              paddingStart: '1.5rem',
-                              paddingEnd: '1.5rem',
-                              paddingTop: '1rem',
-                              paddingBottom: '1rem',
-                              borderRadius: '50%',
-                              transform: 'translate(50%, -50%)',
-                              zIndex: 6,
+                    {
+                      item.media && isGallery(item.media) && item.media.images
+                        ? (
+                          <Image
+                            data={item.media.images[0]}
+                            imgOptions={{
+                              transforms: {
+                                width: '560',
+                                aspect: 'headline',
+                                quality: 'auto',
+                              },
                             }}
-                          >
-                            <IconCamera
-                              color={[ 'neutral', ]}
-                              size={4}
-                            />
-                          </FelaComponent>
-                          <TeaserHeader
-                            {...item}
-                            typeScale={-1}
-                            isCentered
                           />
-                        </Fragment>
-                      )}
-                      renderFooter={() => (
-                        item.media && item.media.kind === 'gallery' && item.media.images
-                          ? theme.galleryI18n.mobileList(item.media.images.length)
-                          : null
-                      )}
-                    />
-                  </Teaser>
-                )}
-              />
-            )
-            : (
-              <ImageGallery
-                forceAspect="headline"
-                fullScreenOnly
-                exitFullScreenAction={() => (
-                  this.setState({
-                    showGallery: false,
-                  })
-                )}
-                {...item.media}
-              />
-            )
-          : null
-      )
-      : null;
+                        )
+                        : null
+                    }
+                  </TeaserMedia>
+                  <TeaserContent
+                    data={item}
+                    padding={[ 4, 2, 0, ]}
+                    color={[ 'neutral', '-10', ]}
+                    miscStyles={{
+                      position: 'relative',
+                      overflow: 'visible',
+                    }}
+                    footerPadding={[ 0, 2, 2, ]}
+                    footerColor={[ 'quaternary', ]}
+                    footerMiscStyles={{
+                      ...theme.type(-2),
+                      textAlign: 'center',
+                    }}
+                    renderContent={() => (
+                      <Fragment>
+                        <FelaComponent
+                          style={{
+                            position: 'absolute',
+                            top: '0',
+                            start: '50%',
+                            backgroundColor: theme.color('quaternary'),
+                            paddingStart: '1.5rem',
+                            paddingEnd: '1.5rem',
+                            paddingTop: '1rem',
+                            paddingBottom: '1rem',
+                            borderRadius: '50%',
+                            transform: 'translate(50%, -50%)',
+                            zIndex: 6,
+                          }}
+                        >
+                          <IconCamera
+                            color={[ 'neutral', ]}
+                            size={4}
+                          />
+                        </FelaComponent>
+                        <TeaserHeader
+                          {...item}
+                          typeScale={-1}
+                          isCentered
+                        />
+                      </Fragment>
+                    )}
+                    renderFooter={() => (
+                      item.media && isGallery(item.media) && item.media.images
+                        ? theme.galleryI18n.mobileList(item.media.images.length)
+                        : null
+                    )}
+                  />
+                </Teaser>
+              )}
+            />
+          )
+          : (
+            <ImageGallery
+              forceAspect="headline"
+              fullScreenOnly
+              exitFullScreenAction={() => (
+                this.setState({
+                  showGallery: false,
+                })
+              )}
+              {...item.media}
+            />
+          )
+        : null
+    );
   }
 }

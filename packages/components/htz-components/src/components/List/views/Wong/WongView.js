@@ -18,12 +18,12 @@ import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType
 import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import HtzLink from '../../../HtzLink/HtzLink';
-import { isTeaser, } from '../../utils/validateTeaser.js';
 import {
+  isTeaser,
   isImage,
   isEmbed,
   //  isGallery,
-} from '../../utils/validateMediaKind.js';
+} from '../../../../utils/validateType.js';
 import IconBack from '../../../Icon/icons/IconBack';
 
 const getSourceOptions = (aspect: string) => ({

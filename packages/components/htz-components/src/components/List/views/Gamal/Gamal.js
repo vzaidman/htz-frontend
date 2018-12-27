@@ -13,12 +13,10 @@ const GamalQuery = gql`
       url
       urlDescription
       items {
-        ... on TeaserInList {
-          ...TeaserForGamal
-        }
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+        ...TeaserForGamal
+      }
+      clickTrackers{
+        ...ClickTrackerBannersWrapper
       }
     }
   }

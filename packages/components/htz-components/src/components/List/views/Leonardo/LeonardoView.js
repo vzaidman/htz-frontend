@@ -6,6 +6,7 @@ import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
+import type { ListDataType, } from '../../../..';
 
 import ListView from '../../../ListView/ListView';
 import GridItem from '../../../Grid/GridItem';
@@ -16,13 +17,14 @@ import Debug from '../../../Debug/Debug';
 import BlockLink from '../../../BlockLink/BlockLink';
 
 type Props = {
-  list: { items: Array<ClickTrackerBannerWrapperType>, },
+  list: ListDataType,
 };
 
 function Leonardo({ list, }: Props): Node {
-  const items: ?Array<ClickTrackerBannerWrapperType> = list.items.length > 3
-    ? list.items.slice(0, 4)
-    : null;
+  const items: ?Array<ClickTrackerBannerWrapperType> =
+    list.clickTrackers && list.clickTrackers.length > 3
+      ? list.clickTrackers.slice(0, 4)
+      : null;
   return items
     ? (
       <FelaTheme

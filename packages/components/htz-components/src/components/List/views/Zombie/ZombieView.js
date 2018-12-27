@@ -7,13 +7,9 @@ import {
   parseComponentProp,
 } from '@haaretz/htz-css-tools';
 import * as React from 'react';
-import config from 'config';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type {
-  ListDataType,
-  ListItemType,
-} from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 import CommentsCount from '../../../CommentsCount/CommentsCount';
@@ -30,8 +26,6 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 import pictureAssetProps from '../../../../utils/getPictureAssets';
-import filterList from '../../utils/filterList';
-import { isDfp, isTeaser, } from '../../utils/validateTeaser';
 
 type StockType = {
   name: string,
@@ -48,7 +42,7 @@ type StocksType = {
 };
 
 export type Props = {
-  list: ListDataType & { dfp: Array<ListItemType>, },
+  list: ListDataType,
   gaAction: () => void,
   biAction: ListBiActionType,
   lazyLoadImages: boolean,
@@ -86,7 +80,7 @@ export default class Zombie extends React.Component<Props, State> {
   fetchStocks = () => {
     global
       .fetch(
-        'https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/GetIndexes',
+        'http://apifinance.themarker.com/TheMarkerApi/GetIndexes',
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json', },
@@ -139,21 +133,7 @@ export default class Zombie extends React.Component<Props, State> {
   render() {
     const { list, biAction, lazyLoadImages, } = this.props;
     const { stocks, } = this.state;
-    const { title, extraLinks, } = list;
-
-    let items;
-    let dfp;
-
-    if (config.has('appName') && config.get('appName') === 'styleguide') {
-      items = filterList(list.items, 'inputTemplate', 'com.tm.TeaserData');
-      dfp = list.dfp
-        ? filterList(list.dfp, 'inputTemplate', 'com.polobase.DfpBannerElement')
-        : null;
-    }
-    else {
-      items = list.items;
-      dfp = list.dfp;
-    }
+    const { title, extraLinks, items, dfp, } = list;
 
     return (
       <FelaTheme
@@ -529,7 +509,7 @@ export default class Zombie extends React.Component<Props, State> {
                       height: [ { until: 's', value: '250px', }, ],
                     }}
                   >
-                    {isDfp(dfp[0]) ? <GeneralAdSlot {...dfp[0]} /> : null}
+                    <GeneralAdSlot {...dfp[0]} />
                   </GridItem>
                 ) : null}
               </Grid>
@@ -545,7 +525,7 @@ export default class Zombie extends React.Component<Props, State> {
                   ],
                 }}
               >
-                {isDfp(dfp[0]) ? <GeneralAdSlot {...dfp[0]} /> : null}
+                <GeneralAdSlot {...dfp[0]} />
               </GridItem>
             ) : null}
           </ListView>
@@ -561,7 +541,7 @@ export default class Zombie extends React.Component<Props, State> {
 
 type TeaserProps = {
   biAction: ListBiActionType,
-  data: ListItemType,
+  data: TeaserDataType,
   index: 0 | 1 | 2 | 3,
   lazyLoadImages: ?boolean,
 };
@@ -576,7 +556,7 @@ function MainTeaser({
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -639,14 +619,14 @@ function MainTeaser({
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }
 
 TextualTeaser.defaultProps = { lazyLoadImages: false, };
 
 function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
   const articleId = data.contentId;
-  return isTeaser(data) ? (
+  return (
     <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
       <Teaser
         data={data}
@@ -665,7 +645,7 @@ function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
         />
       </Teaser>
     </GridItem>
-  ) : null;
+  );
 }
 
 type FooterProps = { data: TeaserDataType, showAuthors: boolean, };

@@ -7,7 +7,7 @@ import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 
 import VerticalList from '../commonViews/VerticalList';
-import { isClickTrackerWrapper, } from '../../utils/validateTeaser';
+import { isClickTrackerWrapper, } from '../../../../utils/validateType';
 
 type Props = {
   list: ListDataType,

@@ -4,15 +4,14 @@ import gql from 'graphql-tag';
 import { clickTrackerBannersWrapper, } from '@haaretz/app-utils';
 import LeonardoView from './LeonardoView.js';
 import ListDataGetter from '../../ListDataGetter';
+
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const LeonardoQuery = gql`
   query LeonardoQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
-      items {
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
     }
   }

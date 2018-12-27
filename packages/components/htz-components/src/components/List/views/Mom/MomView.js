@@ -3,7 +3,8 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import * as React from 'react';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { ListDataType, ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -21,7 +22,7 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import getPictureAssets from '../../../../utils/getPictureAssets';
-import { isTeaser, } from '../../utils/validateTeaser';
+import { isTeaser, } from '../../../../utils/validateType';
 
 type Props = {
   list: ListDataType,
@@ -256,7 +257,7 @@ export default function Mom({
 // /////////////////////////////////////////////////////////////////////
 
 type TeaserProps = {
-  data: ListItemType,
+  data: TeaserDataType,
   index: number,
   lazyLoadImages?: boolean,
   biAction: ListBiActionType,

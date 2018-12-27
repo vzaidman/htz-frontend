@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
-import { isTeaser, } from '../../utils/validateTeaser.js';
+import { isTeaser, } from '../../../../utils/validateType.js';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
@@ -10,11 +10,11 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserFooter from './TeaserFooter';
 
 import type { DisplayFlagsType, } from './TeaserFooter';
-import type { ListItemType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 type Props = {
-  itemData: ListItemType,
+  itemData: TeaserDataType,
   displayFlags: DisplayFlagsType,
   biAction: ?ListBiActionType,
 };
