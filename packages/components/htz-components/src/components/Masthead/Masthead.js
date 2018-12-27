@@ -122,7 +122,21 @@ class Masthead extends Component {
                   zIndex: theme.getZIndex('modal', 1),
                 }}
               >
-                <LayoutContainer>
+                <LayoutContainer
+                  {...(mastheadFullWidthBorder
+                    ? {
+                      miscStyles: {
+                        // need to override all mq
+                        maxWidth: [
+                          { from: 's', until: 'm', value: '100%', },
+                          { from: 'm', until: 'l', value: '100%', },
+                          { from: 'l', until: 'xl', value: '100%', },
+                          { from: 'xl', value: '100%', },
+                        ],
+                      },
+                    }
+                    : {})}
+                >
                   <FelaComponent
                     style={() => {
                       const mobileStyles = {
