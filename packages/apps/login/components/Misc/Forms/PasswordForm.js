@@ -2,12 +2,12 @@ import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { Form, TextInput, Button, Login, HtzLink, CheckBox, } from '@haaretz/htz-components';
+import isEmail from 'validator/lib/isEmail';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
 import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getUser, getReferrer, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
-import isEmail from 'validator/lib/isEmail';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isName, isMobile, isPassword, } from './fieldsValidators';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
@@ -30,63 +30,60 @@ const generateEmailError = message => generateError('email', 1)(message);
 const generatePasswordError = message => generateError('password', 2)(message);
 const generateTermsError = message => generateError('terms', 3)(message);
 
-const validateEmailInput = ({ email, }) =>
-  (!email
-    ? generateEmailError('אנא הזינו כתובת דוא”ל')
-    : !isEmail(email)
-      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
-      : []); // email is valid
+const validateEmailInput = ({ email, }) => (!email
+  ? generateEmailError('אנא הזינו כתובת דוא”ל')
+  : !isEmail(email)
+    ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
+    : []); // email is valid
 
-const validatePasswordInput = ({ password, }) =>
-  (!password
-    ? generatePasswordError('אנא הזינו סיסמה')
-    : !isPassword(password)
-      ? generatePasswordError('אנא הזינו סיסמה תקינה')
-      : []); // email is valid
+const validatePasswordInput = ({ password, }) => (!password
+  ? generatePasswordError('אנא הזינו סיסמה')
+  : !isPassword(password)
+    ? generatePasswordError('אנא הזינו סיסמה תקינה')
+    : []); // email is valid
 
 const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
-  return facebookParams ?
-    getFacebookLoginUrl(facebookParams) :
-    false;
+  return facebookParams
+    ? getFacebookLoginUrl(facebookParams)
+    : false;
 };
 
 const getUserTermsStatus = (userData = '', site) => {
   const userTermsStatus = userData.userLegalBySite || [];
   let termsStatus = false;
 
-  for(var i = 0; i < userTermsStatus.length; i++) {
-    if(userTermsStatus[i].termsAgreedSite == site) {
+  for (let i = 0; i < userTermsStatus.length; i++) {
+    if (userTermsStatus[i].termsAgreedSite == site) {
       termsStatus = true;
       break;
     }
   }
 
   return termsStatus;
-}
+};
 
-const modifyErrorMessage = message => (message === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת' ?
-  'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message);
+const modifyErrorMessage = message => (message === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת'
+  ? 'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message);
 
-const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, eventsTrackers, }) =>
-  ({ email, password, }) => {
-    setPreloader(true);
-    hideError();
-    login(email, password)
-      .then(
-        () => {
-          sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
-            const referrerUrl = getReferrerUrl(client);
-            window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
-          }
-          );
-        },
-        reason => {
-          setPreloader(false);
-          showError(modifyErrorMessage(reason.message));
+const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, eventsTrackers, }) => ({ email, password, }) => {
+  setPreloader(true);
+  hideError();
+  login(email, password)
+    .then(
+      () => {
+        sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
+          const referrerUrl = getReferrerUrl(client);
+          window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
         }
-      );
-  };
+        );
+      },
+      reason => {
+        setPreloader(false);
+        showError(modifyErrorMessage(reason.message));
+      }
+    );
+};
 
 // --------------------------
 
@@ -133,8 +130,8 @@ class PasswordForm extends Component {
   }
 
   initiateTremsStatus = () => {
-    if(getUserTermsStatus(getUserData(this.props.client), 80)) {
-      this.setState({ termsConfirmed: true });
+    if (getUserTermsStatus(getUserData(this.props.client), 80)) {
+      this.setState({ termsConfirmed: true, });
     }
   }
 
@@ -144,8 +141,7 @@ class PasswordForm extends Component {
     ? generateTermsError('יש לאשר את תנאי השימוש באתר')
     : []);
 
-  toggleChecked = () =>
-    this.setState({ isChecked: !this.state.isChecked, isFirstTime: false, });
+  toggleChecked = () => this.setState({ isChecked: !this.state.isChecked, isFirstTime: false, });
 
   validateForm = ({ email, password, terms, }) => {
     let errors = [];
@@ -171,7 +167,7 @@ class PasswordForm extends Component {
     const host = getHost(client);
 
     const { InputLinkButton, TermsWrapper, } = LoginMiscLayoutStylesThemed(host);
-    let displayCheckbox = { display: this.state.termsConfirmed ? 'none' : 'block', };
+    const displayCheckbox = { display: this.state.termsConfirmed ? 'none' : 'block', };
 
     return (
       <FormWrapper>
@@ -225,8 +221,8 @@ class PasswordForm extends Component {
                     onClick={e => {
                       e.preventDefault();
                       sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'forgotPassword', })(() => {
-                          showDialog();
-                        }
+                        showDialog();
+                      }
                       );
                     }}
                   >
@@ -245,10 +241,10 @@ class PasswordForm extends Component {
                     onClick={this.toggleChecked}
                     checked={this.state.isChecked}
                     {...getInputProps({
-                    name: 'terms',
-                    label: getTermsText(),
-                    type: 'checkbox',
-                  })}
+                      name: 'terms',
+                      label: getTermsText(),
+                      type: 'checkbox',
+                    })}
                   />
                 </div>
               </TermsWrapper>
