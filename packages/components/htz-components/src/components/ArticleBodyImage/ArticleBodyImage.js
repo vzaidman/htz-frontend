@@ -308,7 +308,14 @@ const UnwrappedImage = ({
           isFullScreen={isFullScreen}
         />
         {showCaption && !isFullScreen ? (
-          <Caption caption={title} credit={credit} creditprefix={imageCreditPrefix} />
+          <Caption
+            caption={title}
+            credit={credit}
+            creditprefix={imageCreditPrefix}
+            miscStyles={{ paddingInlineStart: 0, }}
+            typeStyles={{ step: -2, lines: 5, }}
+            creditTypeStyles={{ step: -2, lines: 5, }}
+          />
         ) : null}
       </figure>
     )}

@@ -24,7 +24,6 @@ const Fade = ({ children, fadeText, }) => (
       margin: 'auto',
       backgroundImage:
         'linear-gradient(0deg,#fff,#fff 0%,hsla(0,0%,100%,.8) 25%,hsla(0,0%,100%,0))',
-      extend: [ { marginBottom: '0.4rem', }, ],
     })}
     render="span"
   >
@@ -107,6 +106,7 @@ class LiveBlogItem extends React.Component {
                 tagName="article"
                 attrs={{ itemid: `${canonicalUrl}#${item.cardId}`, }}
                 id={item.cardId}
+                gutter={2}
                 miscStyles={{
                   marginBottom: '2rem',
                   marginTop: '2rem',
@@ -208,9 +208,14 @@ class LiveBlogItem extends React.Component {
                   // eslint-disable-next-line no-return-assign
                   attrs={{ ref: mainContainerEl => (this.mainContainerEl = mainContainerEl), }}
                 >
-                  <H style={{ fontSize: '3rem', marginBottom: '2rem', }}>
-                    <a href={`#${item.cardId}`}>{item.title}</a>
-                  </H>
+                  <FelaComponent
+                    style={{ marginBottom: '2rem', extend: [ theme.type(2), ], }}
+                    render={({ className, }) => (
+                      <H className={className}>
+                        <a href={`#${item.cardId}`}>{item.title}</a>
+                      </H>
+                    )}
+                  />
 
                   <ArticleBody body={item.body} />
                   {this.state.fadeText === true ? <Fade fadeText={this.state.fadeText} /> : null}

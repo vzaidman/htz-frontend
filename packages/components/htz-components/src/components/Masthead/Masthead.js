@@ -83,7 +83,7 @@ class Masthead extends Component {
         render={theme => {
           const borderBottomMasthead = borderBottom(
             '1px',
-            2,
+            0,
             'solid',
             theme.color('mastheadBorder', 'borderColor')
           );

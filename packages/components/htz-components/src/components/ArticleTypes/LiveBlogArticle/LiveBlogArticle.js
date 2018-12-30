@@ -219,7 +219,11 @@ function LiveBlog({ articleId, slots, }) {
 )}
                                 >
                                   <ArticleBody
-                                    body={body}
+                                    // todo: quick registration doesnt render but ruins the test if the article body should render at all, decide what logic to add here
+                                    body={body.filter(
+                                      item => item.inputTemplate
+                                        !== 'com.polobase.quickNewsletterRegistration'
+                                    )}
                                     showNewsletter={false}
                                     miscStyles={{
                                       paddingBlockEnd: '1rem',

@@ -13,9 +13,7 @@ const propTypes = {
   /**
    * The elements composing the article’s body.
    */
-  body: PropTypes.arrayOf(
-    PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])
-  ).isRequired,
+  body: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.object, ])).isRequired,
   /**
    * Display newsletter in article body.
    */
@@ -169,8 +167,7 @@ const buildComponent = (context, index, isLastItem, showNewsletter) => {
         key={context.contentId}
         lastItem={isLastItem}
         {...context}
-        imgOptions={(aspect, isFullScreen) => buildImgOptions(aspect, isFullScreen)
-        }
+        imgOptions={(aspect, isFullScreen) => buildImgOptions(aspect, isFullScreen)}
       />
     );
   }
@@ -188,14 +185,10 @@ const buildComponent = (context, index, isLastItem, showNewsletter) => {
         <Figure key={context.contentId} lastItem={isLastItem}>
           <Component
             {...context}
-            imgOptions={(aspect, isFullScreen) => buildImgOptions(aspect, isFullScreen)
-            }
+            imgOptions={(aspect, isFullScreen) => buildImgOptions(aspect, isFullScreen)}
           />
           {context.title || context.caption || context.credit ? (
-            <Caption
-              caption={context.title || context.caption}
-              credit={context.credit}
-            />
+            <Caption caption={context.title || context.caption} credit={context.credit} />
           ) : null}
         </Figure>
       );
@@ -205,10 +198,7 @@ const buildComponent = (context, index, isLastItem, showNewsletter) => {
         <Figure key={context.contentId} lastItem={isLastItem}>
           <Component {...context} />
           {context.title || context.caption || context.credit ? (
-            <Caption
-              caption={context.title || context.caption}
-              credit={context.credit}
-            />
+            <Caption caption={context.title || context.caption} credit={context.credit} />
           ) : null}
         </Figure>
       );
@@ -219,21 +209,12 @@ const buildComponent = (context, index, isLastItem, showNewsletter) => {
         </Aside>
       );
     case 'com.polobase.DfpBannerElement':
-      return (
-        <Component
-          key={context.contentId}
-          {...context}
-          {...context.properties}
-        />
-      );
+      return <Component key={context.contentId} {...context} {...context.properties} />;
     case 'com.tm.newsLetterQuickRegistrationRespAuto':
       if (showNewsletter) {
         return (
           <NoSSR key={context.contentId}>
-            <Component
-              {...context}
-              miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }}
-            />
+            <Component {...context} miscStyles={{ marginTop: '4rem', marginBottom: '4rem', }} />
           </NoSSR>
         );
       }
@@ -271,19 +252,17 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
   maxWidth: theme.articleStyle.body.maxWidth,
   marginRight: 'auto',
   marginLeft: 'auto',
-  extend: [
-    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-  ],
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 
 function ArticleBody({ body, miscStyles, tagsList, showNewsletter, }) {
-  return (
+  return body && body.length > 0 ? (
     <FelaComponent miscStyles={miscStyles} rule={wrapperStyle}>
       {body.map((component, i) => buildComponent(component, i, i === body.length - 1, showNewsletter)
       )}
       {tagsList && tagsList.length ? <Tags tagsList={tagsList} /> : null}
     </FelaComponent>
-  );
+  ) : null;
 }
 
 ArticleBody.propTypes = propTypes;
