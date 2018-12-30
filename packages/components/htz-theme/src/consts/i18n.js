@@ -181,7 +181,7 @@ export const footerMobileListsI18n = Object.freeze({
     Object.freeze({
       text: 'פרסמו באתר',
       link:
-        'https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html',
+        'mailto:advertisinghaaretz@haaretz.co.il',
     }),
     Object.freeze({
       text: 'שירות למנויים',
