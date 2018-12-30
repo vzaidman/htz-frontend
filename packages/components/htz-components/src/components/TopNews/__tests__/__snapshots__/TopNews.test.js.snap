@@ -3,127 +3,31 @@
 exports[`<TopNews> DOM element renders correctly with minimal required props 1`] = `
 <div>
   <div
-    className={null}
+    className="htz-a htz-b htz-c"
   >
     <span
-      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+      className="htz-d htz-e htz-f htz-g htz-h htz-i"
     >
-      בראש החדשות:
        
     </span>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6651560"
-      onClick={null}
-    >
-      הסלמה בדרום
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6652256"
-      onClick={null}
-    >
-      בחירות מקומיות - סיבוב שני
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6652098"
-      onClick={null}
-    >
-      משה ליאון
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6651765"
-      onClick={null}
-    >
-      סטן לי
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6633616"
-      onClick={null}
-    >
-      יום הרווקים הסיני 
-       | 
-    </a>
-    <a
-      className="htz-b htz-h htz-c htz-d htz-e htz-f"
-      href="1.6652100"
-      onClick={null}
-    >
-      הפודקאסט השבועי
-    </a>
   </div>
 </div>
 `;
 
-exports[`<TopNews> DOM element renders correctly with minimal required props 2`] = `".htz-a{color:#A8001C}.htz-b{font-weight:700}.htz-g{color:#222}.htz-h{color:#006B96}@media (max-width: 79.9375em){.htz-c{font-size:2.3333333333333335rem}.htz-d{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-e{font-size:2.2857142857142856rem}.htz-f{line-height:1.3125em}}"`;
+exports[`<TopNews> DOM element renders correctly with minimal required props 2`] = `".htz-a{padding-right:4rem}.htz-b{padding-left:4rem}.htz-d{color:#A8001C}.htz-e{font-weight:700}@media (max-width: 63.9375em){.htz-c{display:none}}@media (max-width: 79.9375em){.htz-f{font-size:2.3333333333333335rem}.htz-g{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-h{font-size:2.2857142857142856rem}.htz-i{line-height:1.3125em}}"`;
 
 exports[`<TopNews> DOM element renders correctly with minimal required props 3`] = `
 <div>
   <div
-    className="htz-a"
+    className="htz-a htz-b htz-c"
   >
     <span
-      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+      className="htz-d htz-e htz-f htz-g htz-h htz-i"
     >
-      בראש החדשות:
        
     </span>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6651560"
-      onClick={null}
-    >
-      הסלמה בדרום
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6652256"
-      onClick={null}
-    >
-      בחירות מקומיות - סיבוב שני
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6652098"
-      onClick={null}
-    >
-      משה ליאון
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6651765"
-      onClick={null}
-    >
-      סטן לי
-       | 
-    </a>
-    <a
-      className="htz-b htz-g htz-c htz-d htz-e htz-f"
-      href="1.6633616"
-      onClick={null}
-    >
-      יום הרווקים הסיני 
-       | 
-    </a>
-    <a
-      className="htz-b htz-h htz-c htz-d htz-e htz-f"
-      href="1.6652100"
-      onClick={null}
-    >
-      הפודקאסט השבועי
-    </a>
   </div>
 </div>
 `;
 
-exports[`<TopNews> DOM element renders correctly with minimal required props 4`] = `".htz-a{color:#A8001C}.htz-b{font-weight:700}.htz-g{color:#222}.htz-h{color:#006B96}@media (max-width: 79.9375em){.htz-c{font-size:2.3333333333333335rem}.htz-d{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-e{font-size:2.2857142857142856rem}.htz-f{line-height:1.3125em}}"`;
+exports[`<TopNews> DOM element renders correctly with minimal required props 4`] = `".htz-a{padding-right:4rem}.htz-b{padding-left:4rem}.htz-d{color:#A8001C}.htz-e{font-weight:700}@media (max-width: 63.9375em){.htz-c{display:none}}@media (max-width: 79.9375em){.htz-f{font-size:2.3333333333333335rem}.htz-g{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-h{font-size:2.2857142857142856rem}.htz-i{line-height:1.3125em}}"`;

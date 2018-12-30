@@ -2,7 +2,8 @@ WongList Component
 
 ```jsx
 <TopNews
-  links={[
+  contentName="בראש החדשות"
+  contentLists={[
     {
       href: '1.6651560',
       toolTip: 'הסלמה בדרום',

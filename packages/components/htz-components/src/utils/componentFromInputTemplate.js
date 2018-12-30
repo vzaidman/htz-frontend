@@ -29,6 +29,7 @@ import RelatedArticles from '../components/RelatedArticles/RelatedArticles';
 import SeriesArticles from '../components/RelatedArticles/SeriesArticles';
 import SpecialPromotions from '../components/SpecialPromotions/SpecialPromotions';
 import Tags from '../components/Tags/Tags';
+import TopNews from '../components/TopNews/TopNews';
 import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
 import withDfpSideEffect from '../components/Dfp/withDfpSideEffect';
@@ -97,6 +98,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.element.List', List, ],
   [ 'com.polobase.whtzMobileSiteListsWrapper', MobileListWrapper, ],
   [ 'com.tm.element.group', ChangeableElementGroup, ],
+  [ 'com.tm.HeaderNewsGroup', TopNews, ],
   [ 'com.tm.ElementGroup', ElementGroup, ],
   [ 'com.polobase.DfpBannerElement', GeneralAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],

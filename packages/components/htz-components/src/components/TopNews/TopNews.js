@@ -1,42 +1,45 @@
 // @flow
 import * as React from 'react';
-import { FelaComponent, FelaTheme, } from 'react-fela';
+import { FelaComponent, } from 'react-fela';
 import HtzLink from '../HtzLink/HtzLink';
 
 type Props = {
-  className: ?string,
-  links: [
+  contentLists: [
     {
-      contentId: string,
-      contentName: string,
-      inputTemplate: string,
       href: string,
       toolTip: string,
+      inputTemplate: string,
+      contentId: string,
+      contentName: string,
     },
   ],
+  // contentId: string,
+  contentName: string,
 };
 
-TopNews.defaultProps = {
-  className: null,
-};
-
-function TopNews({ links, className, }: Props): React.Node {
+function TopNews({ contentLists, contentName, }: Props): React.Node {
   return (
-    <FelaTheme
-      render={theme => (
+    <FelaComponent
+      style={theme => ({
+        paddingRight: '4rem',
+        paddingLeft: '4rem',
+        extend: [ theme.mq({ until: 'l', }, { display: 'none', }), ],
+      })}
+      render={({ theme, className, }) => (
         <div className={className}>
           <FelaComponent
             style={{ color: theme.color('tertiary'), fontWeight: 700, extend: [ theme.type(-1), ], }}
             render="span"
           >
-            {theme.topNewsI18n.title}
+            {contentName}
             {' '}
           </FelaComponent>
-          {links
-            && links.map((link, idx) => {
-              const isLast = idx === links.length - 1;
+          {contentLists
+            && contentLists.map((link, idx) => {
+              const isLast = idx === contentLists.length - 1;
               return (
                 <FelaComponent
+                  key={link.contentName}
                   style={{
                     fontWeight: '700',
                     color: theme.color(...(isLast ? [ 'primary', '+1', ] : [ 'neutral', ])),
