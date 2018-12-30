@@ -26,7 +26,7 @@ services:
 
     environment:
       - NODE_ENV=production
-      - CONNECTION_PRESET=prod
+      - CONNECTION_PRESET=pre-prod
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=2000
