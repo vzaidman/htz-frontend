@@ -83,6 +83,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.Image', Image, ],
   [ 'com.tm.BlogImage', Image, ],
   [ 'com.tm.ImageGalleryElement', ImageGallery, ],
+  [ 'gallery', ImageGallery, ],
   [ 'com.tm.Video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
@@ -117,6 +118,7 @@ const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
       <p>
         {inputTemplate}
         {' '}
+
 is currently not supported
       </p>
     </Debug>
