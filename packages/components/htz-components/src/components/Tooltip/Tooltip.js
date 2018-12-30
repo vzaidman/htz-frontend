@@ -2,6 +2,7 @@
 import React, { Component, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import IconClose from '../Icon/icons/IconClose';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
@@ -48,7 +49,7 @@ class Tooltip extends Component {
     /** display status of the tooltip */
     hide: PropTypes.bool,
     /** Style the tooltip box */
-    tooltipMiscStyles: PropTypes.arrayOf(stylesPropType),
+    tooltipMiscStyles: stylesPropType,
     /** the children node */
     children: PropTypes.node.isRequired,
     /** Determine whethe the tooltip will open automatically or on mouse over\out */
@@ -74,10 +75,7 @@ class Tooltip extends Component {
   };
 
   componentDidMount = () => {
-    if (
-      parseInt(window.localStorage.getItem(this.storageParam), 10)
-      > this.props.closingCount
-    ) {
+    if (parseInt(window.localStorage.getItem(this.storageParam), 10) > this.props.closingCount) {
       return;
     }
 
@@ -111,10 +109,7 @@ class Tooltip extends Component {
         };
         this.arrowStyle = {
           borderWidth: '7px 7px 0 7px',
-          borderColor: `${this.theme.color(
-            'primary',
-            'base'
-          )} transparent transparent transparent`,
+          borderColor: `${this.theme.color('primary', 'base')} transparent transparent transparent`,
           transform: 'translateX(-50%)',
           top: '100%',
           insetInlineEnd: `calc(50% - ${this.props.offsetX}rem)`,
@@ -131,10 +126,7 @@ class Tooltip extends Component {
         };
         this.arrowStyle = {
           borderWidth: '0px 7px 7px 7px',
-          borderColor: `transparent transparent ${this.theme.color(
-            'primary',
-            'base'
-          )} transparent`,
+          borderColor: `transparent transparent ${this.theme.color('primary', 'base')} transparent`,
           transform: 'translateX(-50%)',
           bottom: '100%',
           insetInlineEnd: `calc(50% - ${this.props.offsetX}rem)`,
@@ -155,10 +147,7 @@ class Tooltip extends Component {
         this.arrowStyle = {
           top: `calc(50% - ${this.props.offsetY}rem)`,
           borderWidth: '7px 0px 7px 7px',
-          borderColor: `transparent transparent transparent ${this.theme.color(
-            'primary',
-            'base'
-          )}`,
+          borderColor: `transparent transparent transparent ${this.theme.color('primary', 'base')}`,
           transform: 'translateY(-50%)',
           insetInlineEnd: '100%',
         };
@@ -178,10 +167,7 @@ class Tooltip extends Component {
         this.arrowStyle = {
           top: `calc(50% - ${this.props.offsetY}rem)`,
           borderWidth: '7px 7px 7px 0px',
-          borderColor: `transparent ${this.theme.color(
-            'primary',
-            'base'
-          )} transparent transparent`,
+          borderColor: `transparent ${this.theme.color('primary', 'base')} transparent transparent`,
           transform: 'translateY(-50%)',
           insetInlineStart: '100%',
           insetInlineEnd: 'auto',
@@ -197,10 +183,7 @@ class Tooltip extends Component {
 
   onClose = () => {
     this.setState({ hide: true, });
-    const oldCount = parseInt(
-      window.localStorage.getItem(this.storageParam),
-      10
-    );
+    const oldCount = parseInt(window.localStorage.getItem(this.storageParam), 10);
     const updateCount = oldCount && !Number.isNaN(oldCount) ? oldCount + 1 : 1;
     window.localStorage.setItem(this.storageParam, updateCount);
   };
@@ -229,7 +212,10 @@ class Tooltip extends Component {
       position: 'absolute',
       ...arrowStyle,
     },
-    extend: [ theme.type(-1), ...tooltipMiscStyles, ],
+    extend: [
+      theme.type(-1),
+      ...(tooltipMiscStyles ? parseStyleProps(tooltipMiscStyles, theme.mq, theme.type) : []),
+    ],
   });
 
   b64EncodeUnicode = str => window.btoa(
@@ -249,15 +235,7 @@ class Tooltip extends Component {
     if (!this.id) {
       this.id = `aria${parseInt(Math.random() * 10000000, 10)}`;
     }
-    const {
-      text,
-      children,
-      offsetX,
-      attrs,
-      miscStyles,
-      tooltipMiscStyles,
-      openSide,
-    } = this.props;
+    const { text, children, offsetX, attrs, miscStyles, tooltipMiscStyles, openSide, } = this.props;
     this.storageParam = this.props.storageParam
       ? this.props.storageParam
       : this.b64EncodeUnicode(text);
@@ -265,7 +243,10 @@ class Tooltip extends Component {
     return (
       <FelaComponent
         render="span"
-        style={theme => ({ position: 'relative', ...miscStyles(theme), })}
+        style={theme => ({
+          position: 'relative',
+          extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+        })}
       >
         <FelaComponent
           style={{ display: 'flex', }}
@@ -308,11 +289,7 @@ class Tooltip extends Component {
                 <FelaComponent
                   style={theme => close(theme, this.props.openSide)}
                   render={({ className, }) => (
-                    <button
-                      type="button"
-                      className={className}
-                      onClick={() => this.onClose()}
-                    >
+                    <button type="button" className={className} onClick={() => this.onClose()}>
                       <IconClose size={2} miscStyles={closeInner} />
                     </button>
                   )}

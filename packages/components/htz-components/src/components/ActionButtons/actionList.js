@@ -44,7 +44,6 @@ import Tooltip from '../Tooltip/Tooltip';
 import Media from '../Media/Media';
 import ClickArea from '../ClickArea/ClickArea';
 
-
 const GET_COMMENTS_ID: Object = gql`
   query GetCommentsId {
     commentsElementId @client
@@ -560,13 +559,10 @@ const Whatsapp = ({
               <Tooltip
                 text={theme.shareBar.whatsappTooltip}
                 storageParam="tooltipCount"
-                tooltipMiscStyles={[
-                  theme.mq({ until: 's', }, { minWidth: '33rem', }),
-                  theme.mq({ from: 's', }, { whiteSpace: 'nowrap', }),
-                ]}
-                miscStyles={theme => ({
-                  extend: [ theme.mq({ until: 'm', }, { paddingTop: '1.5rem', }), ],
-                })}
+                tooltipMiscStyles={{
+                  minWidth: [ { until: 's', value: '33rem', }, ],
+                  whiteSpace: [ { from: 's', value: 'nowrap', }, ],
+                }}
                 openSide="top"
                 offsetX={matches ? 0 : -15}
                 hide={shouldMainNavBarDisplay === false}
