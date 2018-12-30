@@ -39,12 +39,6 @@ const UPDATE_SECTION = gql`
   }
 `;
 
-const commonStyle = theme => ({
-  ...theme.type(-1),
-  fontWeight: '700',
-  marginInlineEnd: '1rem',
-});
-
 const CityIcon = ({ icon, ...props }) => {
   switch (icon) {
     case 'IconRamatGan':
@@ -68,11 +62,13 @@ const ColoredLink = ({ crumb, }) => (
   <FelaComponent
     key={crumb.contentId}
     style={theme => ({
-      ...commonStyle(theme),
+      fontWeight: '700',
+      marginInlineEnd: '1rem',
       ':hover': {
         textDecoration: 'underline',
         underlineSkip: 'ink',
       },
+      extend: [ theme.type(-1), ],
     })}
     render={({ className, }) => (
       <HtzLink className={className} content={crumb.name} href={crumb.url} />
@@ -141,45 +137,56 @@ class Breadcrumbs extends React.Component {
           return (
             <Fragment>
               <nav aria-label={ariaLabel} className={className}>
-                {crumbLinks.map((elem, index) => (
-                  <Fragment key={elem.props.crumb.contentId + elem.props.crumb.pathSegment}>
-                    <FelaComponent
-                      style={theme => ({
-                        extend: [
-                          theme.mq(
-                            { until: 's', },
-                            {
-                              // hide every item but the last
-                              '&:not(:last-child)': { display: 'none', },
-                            }
-                          ),
-                          theme.mq(
-                            { from: 's', },
-                            {
-                              color: theme.color('primary'),
-                              ':hover': {
-                                color: theme.color('primary', '+1'),
-                              },
-                              ':nth-child(3n) > *': {
-                                color: theme.color('neutral', '-2'),
-                                ':hover': {
-                                  color: theme.color('neutral', '-1'),
-                                },
-                              },
-                            }
-                          ),
-                        ],
-                      })}
-                      render={({ className, }) => <span className={className}>{elem}</span>}
-                    />
-                    {crumbLinks.length - 1 === index ? null : (
-                      <FelaComponent style={commonStyle} render="span">
-
-                        |
+                {crumbLinks.map((elem, index) => {
+                  const isLast = crumbLinks.length - 1 === index;
+                  return (
+                    <Fragment key={elem.props.crumb.contentId + elem.props.crumb.pathSegment}>
+                      <FelaComponent
+                        render="span"
+                        style={{
+                          color:
+                            index === 0 ? theme.color('primary') : theme.color('neutral', '-2'),
+                          ':hover': {
+                            color:
+                              index === 0
+                                ? theme.color('primary', '+1')
+                                : theme.color('neutral', '-1'),
+                          },
+                          extend: [
+                            theme.mq(
+                              { until: 's', },
+                              isLast
+                                ? { color: theme.color('primary'), }
+                                : {
+                                  // hide every item but the last
+                                  display: 'none',
+                                }
+                            ),
+                          ],
+                        }}
+                      >
+                        {elem}
                       </FelaComponent>
-                    )}
-                  </Fragment>
-                ))}
+                      {isLast ? null : (
+                        <FelaComponent
+                          style={{
+                            extend: [
+                              theme.mq(
+                                { until: 's', },
+                                {
+                                  display: 'none',
+                                }
+                              ),
+                            ],
+                          }}
+                          render="span"
+                        >
+                          {' | '}
+                        </FelaComponent>
+                      )}
+                    </Fragment>
+                  );
+                })}
                 {cityIconWrapper}
               </nav>
             </Fragment>
