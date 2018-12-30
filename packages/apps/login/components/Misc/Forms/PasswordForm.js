@@ -51,6 +51,20 @@ const getFacebookLogin = user => {
     false;
 };
 
+const getUserTermsStatus = (userData = '', site) => {
+  const userTermsStatus = userData.userLegalBySite || [];
+  let termsStatus = false;
+
+  for(var i = 0; i < userTermsStatus.length; i++) {
+    if(userTermsStatus[i].termsAgreedSite == site) {
+      termsStatus = true;
+      break;
+    }
+  }
+
+  return termsStatus;
+}
+
 const modifyErrorMessage = message => (message === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת' ?
   'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message);
 
@@ -83,6 +97,7 @@ class PasswordForm extends Component {
     isLoading: false,
     isChecked: false,
     isFirstTime: false,
+    termsConfirmed: false,
   }
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
@@ -101,6 +116,10 @@ class PasswordForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
+  componentDidMount() {
+    this.initiateTremsStatus();
+  }
+
   showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
@@ -111,6 +130,12 @@ class PasswordForm extends Component {
 
   setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus, });
+  }
+
+  initiateTremsStatus = () => {
+    if(getUserTermsStatus(getUserData(this.props.client), 80)) {
+      this.setState({ termsConfirmed: true });
+    }
   }
 
   isCheckboxError = () => !(this.state.isFirstTime || this.state.isChecked);
@@ -130,7 +155,7 @@ class PasswordForm extends Component {
     if (password !== null) {
       errors = [ ...errors, ...validatePasswordInput({ password, }), ];
     }
-    if (this.isCheckboxError()) {
+    if (this.isCheckboxError() && !this.state.termsConfirmed) {
       errors = [ ...errors, ...this.validateTermsInput(), ];
     }
     console.log(errors.map(arr => JSON.stringify(arr)));
@@ -144,7 +169,10 @@ class PasswordForm extends Component {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
     const { client, login, theme, showDialog, user, flow, eventsTrackers, } = this.props;
     const host = getHost(client);
+
     const { InputLinkButton, TermsWrapper, } = LoginMiscLayoutStylesThemed(host);
+    let displayCheckbox = { display: this.state.termsConfirmed ? 'none' : 'block', };
+
     return (
       <FormWrapper>
         <Form
@@ -208,7 +236,7 @@ class PasswordForm extends Component {
               </div>
 
               <TermsWrapper>
-                <div>
+                <div style={displayCheckbox}>
                   <CheckBox
                     type="checkbox"
                     label="terms"

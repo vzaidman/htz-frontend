@@ -17,6 +17,9 @@ export default gql`
         isActiveHeb
         isActiveEng
       }
+      userLegalBySite {
+        termsAgreedSite
+      }
     }
   }
 `;
@@ -50,6 +53,9 @@ const USER_DATA = gql`
         isActiveTm
         isActiveHeb
         isActiveEng
+      }
+      userLegalBySite {
+        termsAgreedSite
       }
     }
   }
