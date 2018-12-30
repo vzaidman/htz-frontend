@@ -65,6 +65,11 @@ switch (connectionPreset) {
     break;
   }
 
+  case 'pre-prod': {
+    const baseConfigOverride = require('./pre-production');
+    presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
+    break;
+  }
   case 'prod': {
     const baseConfigOverride = require('./production');
     presetOverride = Object.assign(presetOverride, baseConfigOverride, {});
