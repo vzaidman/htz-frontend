@@ -70,6 +70,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                       tabindex="0"
                     >
                       <div
+                        class="htz-d htz-c"
                         role="document"
                       >
                         <div
@@ -193,6 +194,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                               tabindex="0"
                             >
                               <div
+                                class="htz-d htz-c"
                                 role="document"
                               >
                                 <div
@@ -247,6 +249,7 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                                 tabindex="0"
                               >
                                 <div
+                                  class="htz-d htz-c"
                                   role="document"
                                 >
                                   <div
@@ -304,52 +307,67 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
                             role="dialog"
                             tabIndex="0"
                           >
-                            <div
-                              role="document"
-                            >
-                              <FelaComponent
-                                render={[Function]}
-                                style={
-                                  Object {
-                                    "backgroundColor": "lightgreen",
-                                    "padding": "10rem",
-                                  }
+                            <FelaComponent
+                              render={[Function]}
+                              style={
+                                Object {
+                                  "height": "100%",
+                                  "width": "100%",
                                 }
+                              }
+                            >
+                              <FelaTheme
+                                render={[Function]}
                               >
-                                <FelaTheme
-                                  render={[Function]}
+                                <div
+                                  className="htz-d htz-c"
+                                  role="document"
                                 >
-                                  <div
-                                    className="htz-o htz-p"
+                                  <FelaComponent
+                                    render={[Function]}
+                                    style={
+                                      Object {
+                                        "backgroundColor": "lightgreen",
+                                        "padding": "10rem",
+                                      }
+                                    }
                                   >
-                                    <div>
-                                       this is Dialog content component 
-                                    </div>
-                                    <button
-                                      onClick={[Function]}
-                                      type="button"
+                                    <FelaTheme
+                                      render={[Function]}
                                     >
-                                       
-                                      Close Content
-                                       
-                                    </button>
-                                    <div>
-                                      <button
-                                        onClick={[Function]}
-                                        type="button"
+                                      <div
+                                        className="htz-o htz-p"
                                       >
-                                         
-                                        Button
-                                         
-                                      </button>
-                                      <h3>
-                                         No Focus trap!
-                                      </h3>
-                                    </div>
-                                  </div>
-                                </FelaTheme>
-                              </FelaComponent>
-                            </div>
+                                        <div>
+                                           this is Dialog content component 
+                                        </div>
+                                        <button
+                                          onClick={[Function]}
+                                          type="button"
+                                        >
+                                           
+                                          Close Content
+                                           
+                                        </button>
+                                        <div>
+                                          <button
+                                            onClick={[Function]}
+                                            type="button"
+                                          >
+                                             
+                                            Button
+                                             
+                                          </button>
+                                          <h3>
+                                             No Focus trap!
+                                          </h3>
+                                        </div>
+                                      </div>
+                                    </FelaTheme>
+                                  </FelaComponent>
+                                </div>
+                              </FelaTheme>
+                            </FelaComponent>
                           </div>
                         </FelaTheme>
                       </FelaComponent>
@@ -454,6 +472,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                       tabindex="0"
                     >
                       <div
+                        class="htz-d htz-c"
                         role="document"
                       >
                         <div
@@ -517,6 +536,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                       tabindex="0"
                     >
                       <div
+                        class="htz-d htz-c"
                         role="document"
                       >
                         <div
@@ -639,6 +659,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                               tabindex="0"
                             >
                               <div
+                                class="htz-d htz-c"
                                 role="document"
                               >
                                 <div
@@ -692,6 +713,7 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                                 tabindex="0"
                               >
                                 <div
+                                  class="htz-d htz-c"
                                   role="document"
                                 >
                                   <div
@@ -748,52 +770,67 @@ exports[`Dialog should open dialog with toggle state 1`] = `
                             role="dialog"
                             tabIndex="0"
                           >
-                            <div
-                              role="document"
-                            >
-                              <FelaComponent
-                                render={[Function]}
-                                style={
-                                  Object {
-                                    "backgroundColor": "lightgreen",
-                                    "padding": "10rem",
-                                  }
+                            <FelaComponent
+                              render={[Function]}
+                              style={
+                                Object {
+                                  "height": "100%",
+                                  "width": "100%",
                                 }
+                              }
+                            >
+                              <FelaTheme
+                                render={[Function]}
                               >
-                                <FelaTheme
-                                  render={[Function]}
+                                <div
+                                  className="htz-d htz-c"
+                                  role="document"
                                 >
-                                  <div
-                                    className="htz-o htz-p"
+                                  <FelaComponent
+                                    render={[Function]}
+                                    style={
+                                      Object {
+                                        "backgroundColor": "lightgreen",
+                                        "padding": "10rem",
+                                      }
+                                    }
                                   >
-                                    <div>
-                                       this is Dialog content component 
-                                    </div>
-                                    <button
-                                      onClick={[Function]}
-                                      type="button"
+                                    <FelaTheme
+                                      render={[Function]}
                                     >
-                                       
-                                      Close Content
-                                       
-                                    </button>
-                                    <div>
-                                      <button
-                                        onClick={[Function]}
-                                        type="button"
+                                      <div
+                                        className="htz-o htz-p"
                                       >
-                                         
-                                        Button
-                                         
-                                      </button>
-                                      <h3>
-                                         No Focus trap!
-                                      </h3>
-                                    </div>
-                                  </div>
-                                </FelaTheme>
-                              </FelaComponent>
-                            </div>
+                                        <div>
+                                           this is Dialog content component 
+                                        </div>
+                                        <button
+                                          onClick={[Function]}
+                                          type="button"
+                                        >
+                                           
+                                          Close Content
+                                           
+                                        </button>
+                                        <div>
+                                          <button
+                                            onClick={[Function]}
+                                            type="button"
+                                          >
+                                             
+                                            Button
+                                             
+                                          </button>
+                                          <h3>
+                                             No Focus trap!
+                                          </h3>
+                                        </div>
+                                      </div>
+                                    </FelaTheme>
+                                  </FelaComponent>
+                                </div>
+                              </FelaTheme>
+                            </FelaComponent>
                           </div>
                         </FelaTheme>
                       </FelaComponent>

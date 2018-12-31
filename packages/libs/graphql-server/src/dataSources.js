@@ -62,12 +62,16 @@ class PapiAPI extends RESTDataSource {
   // eslint-disable-next-line class-methods-use-this
   async getPaywallData() {
     return {
-      slotLocation: 'top',
+      slotLocation: 'popup',
       title: 'כל התכנים, בכל מכשיר, בכל זמן',
       text: 'הארץ בדיגיטל החל מ-4.90שח בחודש הראשון',
       confirm: {
         text: 'לרכישה',
         url: 'https://promotions.haaretz.co.il/promotions-page/sale-htz',
+      },
+      deny: {
+        text: 'כבר מנויים על הארץ? לחצו כאן והתחברו לאתר',
+        url: '',
       },
     };
   }

@@ -238,13 +238,21 @@ class A11yDialog extends React.Component {
                         ? {}
                         : { 'aria-hidden': 'true', })}
                     >
-                      <div role="document">
-                        {render({
-                          isVisible: this.state.isVisible,
-                          handleClose: this.closeDialog,
-                          isModal,
-                        })}
-                      </div>
+                      <FelaComponent
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                        }}
+                        render={({ className, }) => (
+                          <div role="document" className={className}>
+                            {render({
+                              isVisible: this.state.isVisible,
+                              handleClose: this.closeDialog,
+                              isModal,
+                            })}
+                          </div>
+                        )}
+                      />
                     </div>
                   )}
                 />

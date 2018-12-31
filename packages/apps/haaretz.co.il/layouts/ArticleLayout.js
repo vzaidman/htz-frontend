@@ -22,6 +22,7 @@ import {
   PaywallDbgController,
   PaywallDbgProvider,
   PaywallBottom,
+  PaywallPopup,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -185,7 +186,9 @@ class ArticleLayout extends React.Component {
                       {paywallData => (
                         paywallData.slotLocation === 'bot-persist'
                           ? <PaywallBottom {...paywallData} />
-                          : null
+                          : paywallData.slotLocation === 'popup'
+                            ? <PaywallPopup {...paywallData} />
+                            : null
                       )}
                     </PaywallDbgProvider>
                   </Fragment>
