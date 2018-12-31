@@ -14,24 +14,28 @@ const getPaywallDbgData = gql`
         text
         url
       }
+      deny {
+        text
+        url
+      }
     }
   }
 `;
 
 const PaywallDbgProvider = ({ children, }) => (
   <NoSSR>
-    <Query query={getPaywallDbgData} >
+    <Query query={getPaywallDbgData}>
       {({ data, loading, error, }) => {
-          if (error) {
-            console.log('[PaywallDataProvider] error %o', error);
-          }
-          if (error || loading) {
-            return null;
-          }
-          return (data && data.paywall)
-            ? children(data.paywall)
-            : null;
+        if (error) {
+          console.log('[PaywallDataProvider] error %o', error);
         }
+        if (error || loading) {
+          return null;
+        }
+        return (data && data.paywall)
+          ? children(data.paywall)
+          : null;
+      }
       }
     </Query>
   </NoSSR>

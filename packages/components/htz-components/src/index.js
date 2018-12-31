@@ -102,6 +102,7 @@ import PaywallDbgController from './components/Paywall/PaywallDbgController';
 import PaywallDbgProvider from './components/Paywall/PaywallDbgProvider';
 import PaywallBottom from './components/Paywall/Layout/PaywallBottom/PaywallBottom';
 import PaywallTop from './components/Paywall/Layout/PaywallTop/PaywallTop';
+import PaywallPopup from './components/Paywall/Layout/PaywallPopup/PaywallPopup';
 
 // Illustrations
 import Astronaut from './components/illustrations/Astronaut/Astronaut.js';
@@ -346,6 +347,7 @@ export {
   PaywallDbgProvider,
   PaywallBottom,
   PaywallTop,
+  PaywallPopup,
 
   // Illustrations
   Astronaut,

@@ -3,6 +3,14 @@ import {
   GraphQLString,
 } from 'graphql';
 
+const PaywallLink = new GraphQLObjectType({
+  name: 'PaywallLink',
+  fields: () => ({
+    text: { type: GraphQLString, },
+    url: { type: GraphQLString, },
+  }),
+});
+
 const Paywall = new GraphQLObjectType({
   name: 'Paywall',
   fields: () => ({
@@ -16,13 +24,10 @@ const Paywall = new GraphQLObjectType({
       type: GraphQLString,
     },
     confirm: {
-      type: new GraphQLObjectType({
-        name: 'Confirm',
-        fields: () => ({
-          text: { type: GraphQLString, },
-          url: { type: GraphQLString, },
-        }),
-      }),
+      type: PaywallLink,
+    },
+    deny: {
+      type: PaywallLink,
     },
   }),
 });
