@@ -7,18 +7,14 @@ import List from './List';
  */
 export default class ListSelector extends React.Component {
   static propTypes = {
-    /**
-     * List's contentId.
-     */
+    /** List's contentId. */
     // contentId: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
-    /**
-     * List's view name.
-     */
+    /** List's view name. */
     // view: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
   };
 
   state = {
-    view: 'Morbo',
+    view: null,
     turnA: true,
   };
 
@@ -48,6 +44,7 @@ export default class ListSelector extends React.Component {
               <option value="Bender">Bender</option>
               <option value="Calculon">Calculon</option>
               <option value="Donatello">Donatello</option>
+              <option value="Donbot">Donbot</option>
               <option value="Gamal">Gamal</option>
               <option value="Conrad">Conrad</option>
               <option value="Farnsworth">Farnsworth</option>

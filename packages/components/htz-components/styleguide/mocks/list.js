@@ -1,6 +1,7 @@
 import BenderMock from './listMocks/BenderMock';
 import CalculonMock from './listMocks/CalculonMock';
 import DefaultMock from './listMocks/DefaultMock';
+import DonbotMock from './listMocks/DonbotMock';
 import FarnsworthMock from './listMocks/FarnsworthMock';
 import GamalMock from './listMocks/GamalMock';
 import HawkingMock from './listMocks/HawkingMock';
@@ -26,6 +27,8 @@ export default (root, { listId, }) => {
       return CalculonMock;
     case 'Farnsworth':
       return FarnsworthMock;
+    case 'Donbot':
+      return DonbotMock;
     case 'Gamal':
       return GamalMock;
     case 'Hawking':
