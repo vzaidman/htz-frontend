@@ -131,7 +131,7 @@ class Masthead extends Component {
                       value: `translateY(${shouldDisplay ? '0' : '-100'}%)`,
                     },
                   ],
-                  zIndex: theme.getZIndex('modal', 1),
+                  zIndex: theme.getZIndex('masthead'),
                 }}
               >
                 <LayoutContainer
@@ -189,7 +189,7 @@ class Masthead extends Component {
                   start: '50%',
                   bottom: '0',
                   width: '100%',
-                  zIndex: theme.getZIndex('modal', 1),
+                  zIndex: theme.getZIndex('masthead'),
                   display: 'none',
                   extend: [
                     theme.getDelay('transition', -1),
