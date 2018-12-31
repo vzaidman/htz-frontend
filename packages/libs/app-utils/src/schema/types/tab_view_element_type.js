@@ -1,4 +1,11 @@
-import { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLList, GraphQLID, } from 'graphql';
+import {
+  GraphQLObjectType,
+  GraphQLBoolean,
+  GraphQLString,
+  GraphQLList,
+  GraphQLID,
+} from 'graphql';
+import List from './list_type';
 
 const TabViewElements = new GraphQLObjectType({
   name: 'TabViewElements',
@@ -7,18 +14,7 @@ const TabViewElements = new GraphQLObjectType({
     type: { type: GraphQLString, },
     viewMode: { type: GraphQLString, },
     elements: {
-      type: new GraphQLList(
-        new GraphQLObjectType({
-          name: 'TabViewElement',
-          fields: () => ({
-            view: { type: GraphQLString, },
-            hasPagination: { type: GraphQLBoolean, },
-            inputTemplate: { type: GraphQLString, },
-            contentId: { type: GraphQLID, },
-            contentName: { type: GraphQLString, },
-          }),
-        })
-      ),
+      type: new GraphQLList(List),
     },
     inputTemplate: { type: GraphQLString, },
     contentId: { type: GraphQLID, },

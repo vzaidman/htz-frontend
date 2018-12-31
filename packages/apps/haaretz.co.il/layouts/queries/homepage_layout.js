@@ -9,44 +9,6 @@ import {
   imageGallery,
 } from '@haaretz/app-utils';
 
-const itemsObj = `
-{
-  contentId
-  title
-  titleMobile
-  subtitle
-  subtitleMobile
-  exclusive
-  exclusiveMobile
-  path
-  commentsCounts
-  publishDate
-  lastUpdate
-  rank
-  inputTemplate
-  ...ImageInTeaser
-  authors {
-    contentName
-  }
-  relatedArticles {
-    title
-    path
-    contentId
-  }
-  media {
-    ... on Image {
-      ...Image
-    }
-    ... on Embed {
-      ...Embed
-    }
-    ... on ImageGallery {
-      ...ImageGallery
-    }
-  }
-}
-`;
-
 export default gql`
   query HomePageLayout {
     homePage {
@@ -73,7 +35,9 @@ export default gql`
               isLazyloadImages
               title
               contentId
-              items ${itemsObj}
+              items {
+                ...ItemInList
+              }
             }
             slotC {
               view
@@ -82,34 +46,13 @@ export default gql`
               isLazyloadImages
               title
               contentId
-              items ${itemsObj}
+              items {
+                ...ItemInList
+              }
             }
           }
           ... on List {
-            view
-            inputTemplate
-            loadPriority
-            isLazyloadImages
-            title
-            contentId
-            extraLinks {
-              href
-              contentName
-              contentId
-            }
-            marketingTeaser {
-              title
-              subtitle
-              href
-              cta
-            }
-            items ${itemsObj}
-            clickTrackers {
-              ...ClickTrackerBannersWrapper
-            }
-            dfp {
-              ...DfpBanner
-            }
+            ...HomePageList
           }
           ... on DfpBanner {
             ...DfpBanner
@@ -123,10 +66,84 @@ export default gql`
           ... on ClickTrackerBannersWrapper {
             ...ClickTrackerBannersWrapper
           }
+          ... on TabViewElements {
+            inputTemplate
+            contentId
+            title
+            elements {
+              ...HomePageList
+            }
+          }
         }
       }
     }
   }
+  
+  fragment ItemInList on TeaserInList {
+    contentId
+    title
+    titleMobile
+    subtitle
+    subtitleMobile
+    exclusive
+    exclusiveMobile
+    path
+    commentsCounts
+    publishDate
+    lastUpdate
+    rank
+    inputTemplate
+    ...ImageInTeaser
+    authors {
+      contentName
+    }
+    relatedArticles {
+      title
+      path
+      contentId
+    }
+    media {
+      ... on Image {
+        ...Image
+      }
+      ... on Embed {
+        ...Embed
+      }
+      ... on ImageGallery {
+        ...ImageGallery
+      }
+    }
+  }
+  
+  fragment HomePageList on List {
+    view
+    inputTemplate
+    loadPriority
+    isLazyloadImages
+    title
+    contentId
+    extraLinks {
+      href
+      contentName
+      contentId
+    }
+    marketingTeaser {
+      title
+      subtitle
+      href
+      cta
+    }
+    items {
+      ...ItemInList
+    }
+    clickTrackers {
+      ...ClickTrackerBannersWrapper
+    }
+    dfp {
+      ...DfpBanner
+    }
+  }
+  
   ${clickTrackerBannersWrapper}
   ${dfpBanner}
   ${elementGroup}

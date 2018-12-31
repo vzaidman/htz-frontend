@@ -5,6 +5,7 @@ import {
   GeneralAdSlot,
   MainBlock,
   ClickTracker,
+  TabElement,
   validateType,
   Debug,
 } from '@haaretz/htz-components';
@@ -13,7 +14,7 @@ import type { MainSlotType, } from '../../flowTypes/MainSlotType';
 
 import List from './List/List';
 
-const { isClickTrackerWrapper, isDfp, isList, isMainBlock, } = validateType;
+const { isClickTrackerWrapper, isDfp, isList, isMainBlock, isTabElement, } = validateType;
 
 type Props = {
   main: MainSlotType,
@@ -44,11 +45,15 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
                   ? (
                     <GeneralAdSlot key={element.contentId} {...element} />
                   )
-                  : (
-                    <Debug key={element.contentId}>
-                      {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
-                    </Debug>
-                  )
+                  : isTabElement(element)
+                    ? (
+                      <TabElement key={element.contentId} {...element} />
+                    )
+                    : (
+                      <Debug key={element.contentId}>
+                        {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
+                      </Debug>
+                    )
         )
       )}
     </FelaComponent>

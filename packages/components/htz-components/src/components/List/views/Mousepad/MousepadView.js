@@ -20,7 +20,7 @@ export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: 
   const listMiddle = list.items.length / 2;
 
   return (
-    <ListView disableWrapper innerBackgroundColor="white">
+    <ListView disableWrapper innerBackgroundColor="white" marginTop={0}>
       <GridItem width={1}>
         <Grid
           gutter={{
