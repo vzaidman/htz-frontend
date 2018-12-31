@@ -1,11 +1,20 @@
 import {
   GraphQLObjectType,
-  GraphQLBoolean,
   GraphQLString,
   GraphQLList,
-  GraphQLID,
+  GraphQLID, GraphQLUnionType,
 } from 'graphql';
-import List from './list_type';
+
+import list from './list_type';
+import clickTrackerBannersWrapper from './click_tracker_banner_wrapper_type';
+import content from './content_type';
+import dfpBanner from './dfp_banner_type';
+
+const type = new Map([
+  [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
+  [ 'com.polobase.DfpBannerElement', dfpBanner, ],
+  [ 'com.tm.element.List', list, ],
+]);
 
 const TabViewElements = new GraphQLObjectType({
   name: 'TabViewElements',
@@ -14,7 +23,18 @@ const TabViewElements = new GraphQLObjectType({
     type: { type: GraphQLString, },
     viewMode: { type: GraphQLString, },
     elements: {
-      type: new GraphQLList(List),
+      type: new GraphQLList(
+        new GraphQLUnionType({
+          name: 'TabViewItem',
+          types: [
+            clickTrackerBannersWrapper,
+            content,
+            dfpBanner,
+            list,
+          ],
+          resolveType: value => type.get(value.inputTemplate) || content,
+        })
+      ),
     },
     inputTemplate: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
