@@ -23,6 +23,10 @@ export function isMainBlock(item: TestObject): %checks {
   return item.inputTemplate === 'com.htz.PageMainBlockElement';
 }
 
+export function isTabElement(item: TestObject): %checks {
+  return item.inputTemplate === 'com.tm.TabViewElement';
+}
+
 export function isTeaser(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.TeaserData';
 }
@@ -45,6 +49,7 @@ export default {
   isDfp,
   isList,
   isMainBlock,
+  isTabElement,
   isTeaser,
   isImage,
   isEmbed,
