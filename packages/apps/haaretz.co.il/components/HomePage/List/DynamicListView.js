@@ -35,6 +35,9 @@ const Michelangelo = dynamic(() => import('./views/Michelangelo/Michelangelo'), 
 const Mom = dynamic(() => import('./views/Mom/Mom'), {
   loading: () => null,
 });
+const Morbo = dynamic(() => import('./views/Morbo/Morbo'), {
+  loading: () => null,
+});
 const Panucci = dynamic(() => import('./views/Panucci/Panucci'), {
   loading: () => null,
 });
@@ -98,6 +101,9 @@ export default function DynamicListView(props) {
     }
     case 'Mom': {
       return <Mom {...props} />;
+    }
+    case 'Morbo': {
+      return <Morbo {...props} />;
     }
     case 'Panucci': {
       return <Panucci {...props} />;
