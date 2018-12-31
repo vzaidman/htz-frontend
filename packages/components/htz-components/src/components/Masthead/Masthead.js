@@ -72,7 +72,7 @@ class Masthead extends React.Component<MastheadProps, State> {
             start: '50%',
             bottom: '0',
             width: '100%',
-            zIndex: theme.getZIndex('modal', 1),
+            zIndex: theme.getZIndex('masthead'),
             display: 'none',
             extend: [
               theme.getDelay('transition', -1),
