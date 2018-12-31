@@ -41,6 +41,7 @@ import Form from './components/Form/Form';
 import GaDimensions from './components/GoogleAnalytics/GaDimensions';
 import GoogleAnalytics from './components/GoogleAnalytics/GoogleAnalytics';
 import Grid from './components/Grid/Grid';
+import GridElement from './components/GridElement/GridElement';
 import GridItem from './components/Grid/GridItem';
 import H from './components/AutoLevels/H';
 import HeaderSlot from './components/PageLayout/slots/Header';
@@ -219,7 +220,9 @@ import Zombie from './components/List/views/Zombie/Zombie';
 import type { ClickTrackerBannerType, } from './flowTypes/ClickTrackerBannerType';
 import type { ClickTrackerBannerWrapperType, } from './flowTypes/ClickTrackerBannerWrapperType';
 import type { DfpBannerType, } from './flowTypes/DfpBannerType';
+import type { GridElementType, } from './flowTypes/GridElementType';
 import type { ListDataType, } from './flowTypes/ListDataType';
+import type { TabsElementType, } from './flowTypes/TabsElementType';
 
 export {
   // ArticleTypes
@@ -257,6 +260,7 @@ export {
   GaDimensions,
   GoogleAnalytics,
   Grid,
+  GridElement,
   GridItem,
   H,
   HeaderSlot,
@@ -424,5 +428,7 @@ export type {
   ClickTrackerBannerType,
   ClickTrackerBannerWrapperType,
   DfpBannerType,
+  GridElementType,
   ListDataType,
+  TabsElementType,
 };

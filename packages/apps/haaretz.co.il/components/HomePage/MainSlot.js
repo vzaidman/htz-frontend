@@ -3,6 +3,7 @@ import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
 import {
   GeneralAdSlot,
+  GridElement,
   MainBlock,
   ClickTracker,
   TabElement,
@@ -14,7 +15,14 @@ import type { MainSlotType, } from '../../flowTypes/MainSlotType';
 
 import List from './List/List';
 
-const { isClickTrackerWrapper, isDfp, isList, isMainBlock, isTabElement, } = validateType;
+const {
+  isClickTrackerWrapper,
+  isDfp,
+  isList,
+  isMainBlock,
+  isTabElement,
+  isGridElement,
+} = validateType;
 
 type Props = {
   main: MainSlotType,
@@ -49,11 +57,15 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
                     ? (
                       <TabElement key={element.contentId} {...element} />
                     )
-                    : (
-                      <Debug key={element.contentId}>
-                        {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
-                      </Debug>
-                    )
+                    : isGridElement(element)
+                      ? (
+                        <GridElement key={element.contentId} {...element} />
+                      )
+                      : (
+                        <Debug key={element.contentId}>
+                          {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
+                        </Debug>
+                      )
         )
       )}
     </FelaComponent>

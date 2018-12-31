@@ -1,10 +1,10 @@
 // @flow
-import React, { Fragment, } from 'react';
+import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
-import type { ListDataType, } from '../../flowTypes/ListDataType';
+import type { TabsElementType, TabItemType, } from '../../flowTypes/TabsElementType';
 
 import Tabs from '../Tabs/Tabs';
 import TabList from '../TabList/TabList';
@@ -14,16 +14,14 @@ import List from '../List/List';
 import ListViewHeader from '../ListViewHeader/ListViewHeader';
 import GridItem from '../Grid/GridItem';
 import ListView from '../ListView/ListView';
-import Grid from '../Grid/Grid';
-
-type TabsProps = {
-  title: string,
-  elements: Array<ListDataType>,
-}
+import { isClickTrackerWrapper, isDfp, isList, } from '../../utils/validateType';
+import ClickTracker from '../ClickTracker/ClickTrackerWrapper';
+import GeneralAdSlot from '../Ads/GeneralAdSlot';
+import Debug from '../Debug/Debug';
 
 type State = {
   controls: string,
-  selectedTab: ListDataType,
+  selectedTab: TabItemType,
   index: number,
 };
 
@@ -70,8 +68,9 @@ export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
   />
 );
 
-class TabElement extends React.Component<TabsProps, State> {
-  static getDerivedStateFromProps(nextProps: TabsProps, prevState: State) {
+class TabElement extends React.Component<TabsElementType, State> {
+  static getDerivedStateFromProps(nextProps: TabsElementType, prevState: State) {
+    console.log('nextProps: ', nextProps);
     const { elements, } = nextProps;
     return !prevState
       ? {
@@ -92,65 +91,80 @@ class TabElement extends React.Component<TabsProps, State> {
 
   render(): Node {
     const { controls, selectedTab, index, } = this.state;
-    const { elements, title, } = this.props;
+    const { elements, } = this.props;
     return (
-      <Fragment>
-        <GridItem width={1} stretchContent>
-          <ListViewHeader title={title} />
-        </GridItem>
-        <GridItem width={1} stretchContent>
-          <FelaComponent
-            style={theme => ({
-              color: theme.color('neutral', '-3'),
-              display: 'flex',
-              ...theme.type(-1),
-              extend: [
-                borderBottom('1px', 0, 'solid', theme.color('neutral', '-6')),
-              ],
-            })}
-            render={({ className, theme, }) => (
-              <Tabs
-                activeTab={index}
-                miscStyles={{
-                  backgroundColor: theme.color('neutral', '-10'),
-                  paddingStart: '2rem',
-                  paddingEnd: '2rem',
-                }}
-              >
-                <TabList className={className}>
-                  {elements.map(
-                    (element, i: number) => (
-                      <Tab
-                        key={element.contentId}
-                        index={i}
-                        controls={`tab-${element.contentId}`}
-                        presentation
-                        rule={tabRule}
-                        onClick={() => this.changeSelectedTab({
-                          controls: element.contentId,
-                          selectedTab: element,
-                          index: i,
-                        })}
-                        render={TabButton}
-                      >
-                        <span>{element.title}</span>
-                      </Tab>
+      <FelaComponent
+        style={theme => ({
+          color: theme.color('neutral', '-3'),
+          display: 'flex',
+          ...theme.type(-1),
+          extend: [
+            borderBottom('1px', 0, 'solid', theme.color('neutral', '-6')),
+          ],
+        })}
+        render={({ className, theme, }) => (
+          <Tabs
+            activeTab={index}
+            miscStyles={{
+              backgroundColor: theme.color('neutral', '-10'),
+              paddingStart: '2rem',
+              paddingEnd: '2rem',
+            }}
+          >
+            <TabList className={className}>
+              {elements.map(
+                (element, i: number) => (
+                  <Tab
+                    key={element.contentId}
+                    index={i}
+                    controls={`tab-${element.contentId}`}
+                    presentation
+                    rule={tabRule}
+                    onClick={() => this.changeSelectedTab({
+                      controls: element.contentId,
+                      selectedTab: element,
+                      index: i,
+                    })}
+                    render={TabButton}
+                  >
+                    {
+                      isList(element)
+                        ? <span>{element.title}</span>
+                        : null
+                    }
+                  </Tab>
+                )
+              )}
+            </TabList>
+            <TabPanel id={`tab-${controls}`}>
+              {
+                isClickTrackerWrapper(selectedTab)
+                  ? (
+                    <ClickTracker {...selectedTab} />
+                  )
+                  : isDfp(selectedTab)
+                    ? (
+                      <GeneralAdSlot {...selectedTab} />
                     )
-                  )}
-                </TabList>
-                <TabPanel id={`tab-${controls}`}>
-                  <List {...selectedTab} />
-                </TabPanel>
-              </Tabs>
-            )}
-          />
-        </GridItem>
-      </Fragment>
+                    : isList(selectedTab)
+                      ? (
+                        <List {...selectedTab} />
+                      )
+                      : (
+                        <Debug>
+                          {`Element of type '${selectedTab.inputTemplate}' is not supported in TabElement`}
+                        </Debug>
+                      )
+              }
+            </TabPanel>
+          </Tabs>
+        )}
+      />
     );
   }
 }
 
-type Props = TabsProps & {
+type Props = TabsElementType & {
   withoutWrapper?: boolean,
 };
 
@@ -161,13 +175,16 @@ WrappedTabs.defaultProps = {
 function WrappedTabs({ withoutWrapper, ...props }: Props): Node {
   return withoutWrapper
     ? (
-      <Grid>
-        <TabElement {...props} />
-      </Grid>
+      <TabElement {...props} />
     )
     : (
       <ListView>
-        <TabElement {...props} />
+        <GridItem width={1} stretchContent>
+          <ListViewHeader title={props.title} />
+        </GridItem>
+        <GridItem width={1} stretchContent>
+          <TabElement {...props} />
+        </GridItem>
       </ListView>
     );
 }

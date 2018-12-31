@@ -7,6 +7,8 @@ import {
   embed,
   image,
   imageGallery,
+  gridElementGroup,
+  tabViewElements,
 } from '@haaretz/app-utils';
 
 export default gql`
@@ -60,19 +62,14 @@ export default gql`
           ... on ElementGroup {
             ...ElementGroup
           }
-          ... on TabViewElements {
-            contentId
-          }
           ... on ClickTrackerBannersWrapper {
             ...ClickTrackerBannersWrapper
           }
+          ... on GridElementGroup {
+            ...GridElementGroup
+          }
           ... on TabViewElements {
-            inputTemplate
-            contentId
-            title
-            elements {
-              ...HomePageList
-            }
+            ...TabViewElements
           }
         }
       }
@@ -151,4 +148,6 @@ export default gql`
   ${embed}
   ${image}
   ${imageGallery}
+  ${gridElementGroup}
+  ${tabViewElements}
 `;

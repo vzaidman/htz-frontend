@@ -15,6 +15,10 @@ export function isDfp(item: TestObject): %checks {
   return item.inputTemplate === 'com.polobase.DfpBannerElement';
 }
 
+export function isGridElement(item: TestObject): %checks {
+  return item.inputTemplate === 'com.tm.GridElementGroup';
+}
+
 export function isList(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.element.List';
 }
@@ -47,6 +51,7 @@ export default {
   isClickTracker,
   isClickTrackerWrapper,
   isDfp,
+  isGridElement,
   isList,
   isMainBlock,
   isTabElement,
