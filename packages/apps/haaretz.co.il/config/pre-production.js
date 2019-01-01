@@ -24,7 +24,7 @@ module.exports = {
     }${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `pre.${this.domain}`;
+    return `pre-prod.${this.domain}`;
   }),
   useSSL: true,
   graphQLuseSSL: true,
