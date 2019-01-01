@@ -1,8 +1,5 @@
 import gql from 'graphql-tag';
-import {
-  seoData,
-
-} from '@haaretz/app-utils';
+import { seoData, } from '@haaretz/app-utils';
 
 export default gql`
   query ArticleBIContent($path: String!) {
@@ -13,12 +10,7 @@ export default gql`
         article {
           ... on ArticleData {
             authors {
-              ... on CreditObject {
-                name
-              }
-              ... on AuthorObject {
-                contentName
-              }
+              contentName
             }
           }
         }
