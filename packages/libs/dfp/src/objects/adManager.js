@@ -670,8 +670,9 @@ export default class AdManager {
       if (this.user.gender) {
         pubads.setTargeting('urgdr', [ this.user.gender, ]);
       }
-      handleSsoGroupTargeting(pubads, this.user.sso.userId, this.DEBUG);
-
+      if (this.user.sso) {
+        handleSsoGroupTargeting(pubads, this.user.sso.userId, this.DEBUG);
+      }
       // Context targeting
       if (this.config.section) {
         pubads.setTargeting('section', [ this.config.section, ]);
