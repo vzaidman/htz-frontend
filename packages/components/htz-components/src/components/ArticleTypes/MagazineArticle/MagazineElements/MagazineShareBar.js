@@ -17,7 +17,7 @@ type Props = {
 
 type State = {
   isOpen: boolean,
-  focused: boolean,
+  // focused: boolean,
   hover: boolean,
   hiddenButtonsBarWidth: number,
 };
@@ -29,7 +29,7 @@ class ShareBar extends React.Component<Props, State> {
 
   state = {
     isOpen: false,
-    focused: false,
+    // focused: false,
     hover: false,
     hiddenButtonsBarWidth: -1,
   };
@@ -38,9 +38,9 @@ class ShareBar extends React.Component<Props, State> {
     isOpen: !prevState.isOpen,
   }));
 
-  changeFocus: boolean => void = (focused: boolean) => this.setState({
-    focused,
-  });
+  // changeFocus: boolean => void = (focused: boolean) => this.setState({
+  //   focused,
+  // });
 
   toggleHover: boolean => void = (hover: boolean) => this.setState({
     hover,
@@ -48,7 +48,11 @@ class ShareBar extends React.Component<Props, State> {
 
   render(): Node {
     const { title, canonicalUrl, miscStyles, } = this.props;
-    const { isOpen, focused, hover, } = this.state;
+    const {
+      isOpen,
+      //  focused,
+      hover,
+    } = this.state;
     return (
       <FelaComponent
         style={(theme: Object) => ({
@@ -153,21 +157,18 @@ class ShareBar extends React.Component<Props, State> {
 
                 <Button
                   onClick={this.toggleOpen}
-                  onFocus={() => this.changeFocus(true)}
-                  onBlur={() => this.changeFocus(false)}
+                  // onFocus={() => this.changeFocus(true)}
+                  // onBlur={() => this.changeFocus(false)}
                   onMouseEnter={() => this.toggleHover(true)}
                   onMouseLeave={() => this.toggleHover(false)}
                   title={!isOpen ? 'אפשרויות נוספות' : null}
                   miscStyles={{
                     paddingStart: '3rem',
                     paddingEnd: '3rem',
+                    backgroundColor: 'white',
                   }}
                 >
-                  <PlusClose
-                    isOpen={isOpen}
-                    size={3}
-                    color={focused ? (hover ? [ 'primary', ] : [ 'neutral', '-10', ]) : [ 'primary', ]}
-                  />
+                  <PlusClose isOpen={isOpen} size={3} color={hover ? [ 'secondary', ] : [ 'primary', ]} />
                 </Button>
               </React.Fragment>
             </FelaComponent>

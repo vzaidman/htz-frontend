@@ -33,7 +33,7 @@ const getSourceOptions = ({ isVariationB, isSquare, }) => {
   return {
     sizes: isVariationB
       ? '(min-width:1024px) 60vw, 100vw'
-      : '(min-width:1280px) 910px, (min-width:1024px) 912px, (min-width:768px) 768px,(min-width:600px) 600px, 100vw',
+      : '100vw',
     transforms: [
       {
         width: '375',
@@ -67,6 +67,11 @@ const getSourceOptions = ({ isVariationB, isSquare, }) => {
       },
       {
         width: '1920',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '2560',
         aspect,
         quality: 'auto',
       },
@@ -129,7 +134,7 @@ function MagazineHeadlineElement({ elementObj, isVariationB, miscStyles, }) {
               paddingStart: '2rem',
               paddingTop: '0.5rem',
               paddingBottom: '0.5rem',
-
+              display: 'block',
               position: [ { from: 'l', value: 'absolute', }, ],
               insetInlineEnd: [ { from: 'l', value: '0', }, ],
               textAlign: [ { from: 'l', value: 'end', }, { until: 'l', value: 'start', }, ],

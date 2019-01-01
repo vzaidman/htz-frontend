@@ -102,6 +102,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.HeaderNewsGroup', TopNews, ],
   [ 'com.tm.ElementGroup', ElementGroup, ],
   [ 'com.polobase.DfpBannerElement', GeneralAdSlot, ],
+  [ 'com.htz.magazineArticleDfpBannerElement', GeneralAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
   [ null, null, ],
 ]);

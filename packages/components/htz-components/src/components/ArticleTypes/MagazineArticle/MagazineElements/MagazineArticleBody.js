@@ -113,7 +113,7 @@ const buildComponent = (context, index, isLastItem, magazineLayout) => {
         </MagazineContentWrapper>
         // </Aside>
       );
-    case 'com.polobase.DfpBannerElement':
+    case 'com.htz.magazineArticleDfpBannerElement':
       // todo: add miscStyles and then textAlign end on large bp
       return (
         <MagazineContentWrapper component={context} magazineLayout={magazineLayout}>
@@ -145,14 +145,6 @@ const buildComponent = (context, index, isLastItem, magazineLayout) => {
             <Component
               {...context}
               miscStyles={{
-                ...(isLastItem
-                  ? {}
-                  : parseComponentProp(
-                    'marginBottom',
-                    theme.articleStyle.body.marginBottom,
-                    theme.mq,
-                    mediaQueryCallback
-                  )),
                 marginRight: 'auto',
                 marginLeft: 'auto',
                 maxWidth: [

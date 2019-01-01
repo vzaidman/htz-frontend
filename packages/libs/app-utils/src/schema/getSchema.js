@@ -23,6 +23,7 @@ import TabViewElement from './types/tab_view_element_type';
 const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
   [ 'com.polobase.DfpBannerElement', dfpBanner, ],
+  [ 'com.htz.magazineArticleDfpBannerElement', dfpBanner, ],
   [ 'com.tm.ElementGroup', elementGroup, ],
   [ 'embed', embed, ],
   [ 'com.tm.GridElementGroup', gridElementGroup, ],

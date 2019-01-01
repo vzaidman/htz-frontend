@@ -80,6 +80,7 @@ export default gql`
               }
               ... on DfpBanner {
                 ...DfpBanner
+                position
               }
               ... on ElementGroup {
                 ...ElementGroup

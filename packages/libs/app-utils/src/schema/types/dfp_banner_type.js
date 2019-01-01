@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLBoolean,
-  GraphQLString,
-  GraphQLID,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLID, } from 'graphql';
 
 const DfpBannerType = new GraphQLObjectType({
   name: 'DfpBanner',
@@ -16,6 +11,7 @@ const DfpBannerType = new GraphQLObjectType({
     id: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
     style: { type: GraphQLString, },
+    position: { type: GraphQLString, },
   }),
 });
 

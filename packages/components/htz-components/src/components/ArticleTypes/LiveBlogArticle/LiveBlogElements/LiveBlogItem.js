@@ -121,6 +121,7 @@ class LiveBlogItem extends React.Component {
                   width={[ { until: 's', value: 1 / 1, }, { from: 's', value: 1 / 5, }, ]}
                   miscStyles={{
                     paddingTop: '3rem',
+                    paddingInlineStart: '2rem',
                     ...theme.mq({ until: 's', }, { display: 'inline-flex', alignItems: 'baseline', }),
                   }}
                 >

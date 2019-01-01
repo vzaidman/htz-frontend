@@ -229,23 +229,25 @@ function MagazineArticle({ articleId, slots, }) {
                       || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                     ) {
                       return (
-                        <WideArticleLayoutRow
-                          key={element.contentId}
-                          hideDivider
-                          {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
-                            ? {
-                              miscStyles: {
-                                display: [ { until: 's', value: 'none', }, ],
-                              },
-                            }
-                            : {})}
-                        >
-                          <Element
-                            articleId={articleId}
-                            {...elementWithoutProperties}
-                            {...properties}
-                          />
-                        </WideArticleLayoutRow>
+                        <LayoutContainer>
+                          <WideArticleLayoutRow
+                            key={element.contentId}
+                            hideDivider
+                            {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                              ? {
+                                miscStyles: {
+                                  display: [ { until: 's', value: 'none', }, ],
+                                },
+                              }
+                              : {})}
+                          >
+                            <Element
+                              articleId={articleId}
+                              {...elementWithoutProperties}
+                              {...properties}
+                            />
+                          </WideArticleLayoutRow>
+                        </LayoutContainer>
                       );
                     }
                     return (
