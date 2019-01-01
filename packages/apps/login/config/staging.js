@@ -34,12 +34,14 @@ module.exports = {
   useSSL: true,
   graphQLuseSSL: true,
   graphQLexposedPort: true,
+  // todo: ask tomer if we will add a staging graphql-server with different subDomain
+  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-stg',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
-  port: process.env.PORT || '3000',
+  appPort: process.env.APP_PORT || '2002',
+  graphQLPort: process.env.GRAPHQL_PORT || '4004',
   logLevel: 'info',
   assetPrefix: '',
   enableHttpLogging: false,
-  graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql-stg',
-  graphQLPort: process.env.GRAPHQL_PORT || '4004',
+  configName: 'staging',
 };
