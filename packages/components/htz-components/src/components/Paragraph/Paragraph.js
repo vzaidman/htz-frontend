@@ -9,9 +9,14 @@ import FirstImpressionPlaceholder from './FirstImpressionPlaceholder';
 import Zen from '../Zen/Zen';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 
-const Crosshead = props => (
+const Crosshead = ({ miscStyles, ...props }) => (
   <FelaComponent
-    style={theme => ({ extend: [ theme.type(2), ], })}
+    style={theme => ({
+      extend: [
+        theme.type(2),
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+      ],
+    })}
     render={({ className, }) => <H className={className} {...props} />}
   />
 );
@@ -64,7 +69,7 @@ const Question = ({ children, ...props }) => (
   />
 );
 // eslint-disable-next-line react/prop-types
-const Ul = ({ children, ...props }) => (
+const Ul = ({ children, miscStyles, ...props }) => (
   <FelaComponent
     style={theme => ({
       marginBottom: '3rem',
@@ -77,6 +82,7 @@ const Ul = ({ children, ...props }) => (
       extend: [
         theme.type(1, { untilBp: 'xl', lines: 5, }),
         theme.type(0, { fromBp: 'xl', lines: 5, }),
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
       ],
     })}
     render={({ className, }) => (
@@ -87,7 +93,7 @@ const Ul = ({ children, ...props }) => (
   />
 );
 // eslint-disable-next-line react/prop-types
-const Ol = ({ children, ...props }) => (
+const Ol = ({ children, miscStyles, ...props }) => (
   <FelaComponent
     style={theme => ({
       marginBottom: '3rem',
@@ -100,6 +106,7 @@ const Ol = ({ children, ...props }) => (
       extend: [
         theme.type(1, { untilBp: 'xl', lines: 5, }),
         theme.type(0, { fromBp: 'xl', lines: 5, }),
+        ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
       ],
     })}
     render={({ className, }) => (
@@ -224,14 +231,13 @@ const getTag = tag => {
   return tagsMap.get(tag);
 };
 
-const genChildren = tagElements => tagElements.map(
-  (tag, index) => (tag.tag === 'br' ? (
-    <br />
-  ) : tag.content ? (
-    <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
-  ) : (
-    tag.attributes[0].value
-  ))
+const genChildren = tagElements => tagElements.map((tag, index) => (tag.tag === 'br' ? (
+  <br />
+) : tag.content ? (
+  <Content key={index} content={tag} /> // eslint-disable-line react/no-array-index-key
+) : (
+  tag.attributes[0].value
+))
 );
 
 WrapperTag.propTypes = {
@@ -255,7 +261,7 @@ WrapperTag.propTypes = {
 
 WrapperTag.defaultProps = {
   renderFirstImpression: false,
-  miscStyles: {},
+  miscStyles: null,
 };
 
 function WrapperTag({
@@ -293,7 +299,8 @@ function WrapperTag({
   return Tag ? (
     <Tag
       {...attributes}
-      {...(tagName === 'p' ? { renderFirstImpression, miscStyles, } : {})}
+      {...([ 'p', 'h3', 'ol', 'ul', ].includes(tagName) ? { miscStyles, } : {})}
+      {...(tagName === 'p' ? { renderFirstImpression, } : {})}
     >
       {genChildren(tagElements)}
     </Tag>

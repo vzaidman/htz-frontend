@@ -42,9 +42,8 @@ const ArticleBody = new GraphQLList(
       tags,
       video,
     ],
-    resolveType: value => getSchema(
-      value.tag ? 'paragraph' : value.kind || value.inputTemplate
-    ) || content,
+    resolveType: value => getSchema(value.tag ? 'paragraph' : value.kind || value.inputTemplate || value.elementType)
+      || content,
   })
 );
 
