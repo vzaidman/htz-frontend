@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 services:
   htz_graphql:
     hostname: htz-graphql
@@ -6,21 +6,21 @@ services:
       context: .
       args:
         NEXT_BUILD_ID: ${version:-latest}
-    image: 'nexus-ng.themarker.com/htz-graphql:${version:-latest}'
+    image: "nexus-ng.themarker.com/htz-graphql:${version:-latest}"
     ports:
       - 3204:3204
     deploy:
-            replicas: 2
-            update_config:
-              parallelism: 2
-              delay: 30s
-              order: start-first
-            restart_policy:
-              condition: on-failure
-    command: ['yarn', 'workspace', '@haaretz/haaretz.co.il', 'start:gql']
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 30s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+    command: ["yarn", "workspace", "@haaretz/haaretz.co.il", "start:gql"]
     environment:
       - NODE_ENV=production
-      - CONNECTION_PRESET=prod
+      - CONNECTION_PRESET=pre-prod
       - NEXT_BUILD_ID=${NEXT_BUILD_ID:-latest}
       # the following environment is optional
       - PORT=3204
