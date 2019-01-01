@@ -20,9 +20,7 @@ import {
   Error,
   pixelEvent,
   PaywallDbgController,
-  PaywallDbgProvider,
-  PaywallBottom,
-  PaywallPopup,
+  Paywall,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -184,15 +182,7 @@ class ArticleLayout extends React.Component {
                     </FelaComponent>
                     <WelcomePage />
                     <PaywallDbgController />
-                    <PaywallDbgProvider>
-                      {paywallData => (
-                        paywallData.slotLocation === 'bot-persist'
-                          ? <PaywallBottom {...paywallData} />
-                          : paywallData.slotLocation === 'popup'
-                            ? <PaywallPopup {...paywallData} />
-                            : null
-                      )}
-                    </PaywallDbgProvider>
+                    <Paywall layouts={[ 'bot-persist', 'popup', ]} />
                   </Fragment>
                 </StyleProvider>
                 <div id="welcomePageModal" />

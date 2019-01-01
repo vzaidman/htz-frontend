@@ -8,8 +8,7 @@ import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
 import ShareBar from '../../../ShareBar/ShareBar';
-import PaywallDbgProvider from '../../../Paywall/PaywallDbgProvider';
-import PaywallTop from '../../../Paywall/Layout/PaywallTop/PaywallTop';
+import Paywall from '../../../Paywall/Paywall';
 
 Header.propTypes = {
   /**
@@ -164,27 +163,25 @@ function Header({
           >
             <ShareBar title={title} canonicalUrl={canonicalUrl} />
           </FelaComponent>
-          <PaywallDbgProvider>
-            {data => (
-              data.slotLocation === 'top'
-                ? (
-                  <FelaComponent
-                    style={{
-                      extend: [
-                        theme.mq({ until: 's', }, { order: -3, }),
-                        theme.mq({ from: 's', }, {
-                          marginTop: '2rem',
-                          marginBottom: '2rem',
-                        }),
-                      ],
-                    }}
-                  >
-                    <PaywallTop {...data} />
-                  </FelaComponent>
-                )
-                : null
+
+          <Paywall
+            layouts={[ 'top', ]}
+            render={PaywallLayout => (
+              <FelaComponent
+                style={{
+                  extend: [
+                    theme.mq({ until: 's', }, { order: -3, }),
+                    theme.mq({ from: 's', }, {
+                      marginTop: '2rem',
+                      marginBottom: '2rem',
+                    }),
+                  ],
+                }}
+              >
+                <PaywallLayout />
+              </FelaComponent>
             )}
-          </PaywallDbgProvider>
+          />
           {headlineElement ? (
             <HeadlineElement
               elementObj={headlineElement}

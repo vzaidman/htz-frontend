@@ -99,10 +99,7 @@ import TopNews from './components/TopNews/TopNews';
 import Video from './components/Video/Video';
 import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
 import PaywallDbgController from './components/Paywall/PaywallDbgController';
-import PaywallDbgProvider from './components/Paywall/PaywallDbgProvider';
-import PaywallBottom from './components/Paywall/Layout/PaywallBottom/PaywallBottom';
-import PaywallTop from './components/Paywall/Layout/PaywallTop/PaywallTop';
-import PaywallPopup from './components/Paywall/Layout/PaywallPopup/PaywallPopup';
+import Paywall from './components/Paywall/Paywall';
 
 // Illustrations
 import Astronaut from './components/illustrations/Astronaut/Astronaut.js';
@@ -344,10 +341,7 @@ export {
   TopNews,
   Video,
   PaywallDbgController,
-  PaywallDbgProvider,
-  PaywallBottom,
-  PaywallTop,
-  PaywallPopup,
+  Paywall,
 
   // Illustrations
   Astronaut,
