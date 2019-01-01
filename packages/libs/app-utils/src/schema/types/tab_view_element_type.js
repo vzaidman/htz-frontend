@@ -32,7 +32,11 @@ const TabViewElements = new GraphQLObjectType({
             dfpBanner,
             list,
           ],
-          resolveType: value => type.get(value.inputTemplate) || content,
+          resolveType: value => {
+            // weird bug where get schema does not return the list type but works with the other types
+            if (value.inputTemplate === 'com.tm.element.List') return list;
+            return type.get(value.inputTemplate) || content;
+          },
         })
       ),
     },

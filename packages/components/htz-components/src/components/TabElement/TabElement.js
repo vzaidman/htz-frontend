@@ -70,7 +70,6 @@ export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
 
 class TabElement extends React.Component<TabsElementType, State> {
   static getDerivedStateFromProps(nextProps: TabsElementType, prevState: State) {
-    console.log('nextProps: ', nextProps);
     const { elements, } = nextProps;
     return !prevState
       ? {

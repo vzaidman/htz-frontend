@@ -49,7 +49,11 @@ const GridElementGroup = new GraphQLObjectType({
                   list,
                   tabsElement,
                 ],
-                resolveType: value => getSchema(value.inputTemplate) || content,
+                resolveType: value => {
+                  // weird bug where get schema does not return the list type but works with the other types
+                  if (value.inputTemplate === 'com.tm.element.List') return list;
+                  return getSchema(value.inputTemplate) || content;
+                },
               }),
             },
           }),

@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment, } from 'react';
+import React from 'react';
 
 import type { ComponentType, Node, } from 'react';
 import type { GridElementType, } from '../../flowTypes/GridElementType';
@@ -36,7 +36,7 @@ function GridElement({ title, items, showTitle, withoutWrapper, }: GridElementPr
   return (
     <WrapperElement gutter={2}>
       {
-        showTitle
+        showTitle && title
           ? (
             <GridItem width={1} stretchContent>
               <ListViewHeader isHorizontal title={title} />

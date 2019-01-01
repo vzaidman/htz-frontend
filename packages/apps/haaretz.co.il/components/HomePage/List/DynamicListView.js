@@ -78,9 +78,9 @@ export default function DynamicListView(props) {
     case 'Donatello': {
       return <Donatello {...props} />;
     }
-    // case 'Gamal': {
-    //   return <Gamal {...props} />;
-    // }
+    case 'Gamal': {
+      return <Gamal {...props} />;
+    }
     case 'Farnsworth': {
       return <Farnsworth {...props} />;
     }
