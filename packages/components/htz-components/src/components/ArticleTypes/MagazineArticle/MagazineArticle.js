@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import Query from '../../ApolloBoundary/Query';
+import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 import ArticleLayout from '../../PageLayout/ArticleLayout';
 import MAGAZINE_ARTICLE_QUERY from './queries/magazine_article';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 import MagazineArticleHeader from './MagazineElements/MagazineArticleHeader';
 import MagazineArticleBody from './MagazineElements/MagazineArticleBody';
 import ArticleHeaderMeta from '../../ArticleHeader/ArticleHeaderMeta';
+import WideArticleLayoutRow from '../../PageLayout/WideArticleLayoutRow';
+import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
+import LayoutContainer from '../../PageLayout/LayoutContainer';
+
+import getComponent from '../../../utils/componentFromInputTemplate';
 
 const magazineLayout = {
   innerPadding: {
@@ -184,8 +190,84 @@ function MagazineArticle({ articleId, slots, }) {
                       </FelaComponent>
                     </FelaComponent>
                   ) : null}
+                  {article.map(element => {
+                    if (
+                      element.inputTemplate === 'com.htz.ArticleHeaderElement'
+                      || element.inputTemplate === 'com.tm.PageTitle'
+                    ) {
+                      return null;
+                    }
 
-                  <MagazineArticleBody body={body} magazineLayout={magazineLayout} />
+                    if (
+                      element.inputTemplate === 'com.htz.StandardArticle'
+                      || element.inputTemplate === 'com.mouse.story.MouseStandardStory'
+                      || element.inputTemplate === 'com.tm.BlogArticle'
+                      || element.inputTemplate === 'com.tm.StandardArticle'
+                    ) {
+                      return (
+                        <ApolloConsumer key={element.contentId}>
+                          {cache => {
+                            const { commentsElementId, } = element;
+                            cache.writeData({
+                              data: {
+                                commentsElementId,
+                              },
+                            });
+
+                            return (
+                              <MagazineArticleBody body={body} magazineLayout={magazineLayout} />
+                            );
+                          }}
+                        </ApolloConsumer>
+                      );
+                    }
+
+                    const Element = getComponent(element.inputTemplate);
+                    const { properties, ...elementWithoutProperties } = element;
+                    if (
+                      element.inputTemplate === 'com.polobase.OutbrainElement'
+                      || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                    ) {
+                      return (
+                        <WideArticleLayoutRow
+                          key={element.contentId}
+                          hideDivider
+                          {...(element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
+                            ? {
+                              miscStyles: {
+                                display: [ { until: 's', value: 'none', }, ],
+                              },
+                            }
+                            : {})}
+                        >
+                          <Element
+                            articleId={articleId}
+                            {...elementWithoutProperties}
+                            {...properties}
+                          />
+                        </WideArticleLayoutRow>
+                      );
+                    }
+                    return (
+                      <LayoutContainer>
+                        <ArticleLayoutRow
+                          key={element.contentId}
+                          {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
+                            ? {
+                              title: theme.articleLayoutI18n.commentSectionTitle,
+                              id: 'commentsSection',
+                            }
+                            : {})}
+                        >
+                          <Element
+                            articleId={articleId}
+                            {...elementWithoutProperties}
+                            {...properties}
+                          />
+                        </ArticleLayoutRow>
+                      </LayoutContainer>
+                    );
+                  })}
                 </article>
               )}
             />
