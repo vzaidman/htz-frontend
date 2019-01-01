@@ -1,6 +1,6 @@
 /* global document */
 
-export default isOn => {
+export default function togglePageScroll(isOn) {
   if (typeof document !== 'undefined') {
     const html = document.documentElement;
     html.style.overflow = isOn ? 'hidden' : null;
@@ -8,4 +8,4 @@ export default isOn => {
     html.style.touchAction = isOn ? 'none' : null;
   }
   return null;
-};
+}

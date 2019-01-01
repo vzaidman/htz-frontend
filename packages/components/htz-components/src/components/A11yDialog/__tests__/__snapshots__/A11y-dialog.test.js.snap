@@ -35,6 +35,9 @@ exports[`Dialog Should render dialog closed mode (should not render nested Dialo
         render={[Function]}
         toggleRefs={Array []}
       >
+        <NoSSR
+          onSSR={null}
+        />
         <Portal
           host="dialog-example-123"
         >
@@ -437,6 +440,9 @@ exports[`Dialog should open dialog with toggle state 1`] = `
         render={[Function]}
         toggleRefs={Array []}
       >
+        <NoSSR
+          onSSR={null}
+        />
         <Portal
           host="dialog-example-123"
         >

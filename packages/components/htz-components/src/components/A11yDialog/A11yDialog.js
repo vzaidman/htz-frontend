@@ -9,6 +9,8 @@ import buttonHandlers from './utils/concateHandlersToElementId';
 import setAriaHidden from './utils/setAriaHidden';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
+import NoSSR from '../NoSSR/NoSSR';
+import togglePageScroll from '../../utils/togglePageScroll';
 
 const dialogOverlayStyle = ({ theme, overlayBgColor, isVisible, isModal, }) => ({
   display: 'block',
@@ -142,6 +144,7 @@ class A11yDialog extends React.Component {
       toggleRefs.forEach(id => buttonHandlers.clearHandler(id, this.toggleDialog)
       );
     }
+    togglePageScroll(false);
   };
 
   openDialog = () => {
@@ -191,76 +194,79 @@ class A11yDialog extends React.Component {
       closeOnOutsideClick,
     } = this.props;
     return this.state.isMounted ? (
-      <Portal host={appendTo}>
-        <FelaComponent
-          {...{
-            isModal,
-            isVisible: this.state.isVisible,
-            overlayAttrs,
-            overlayBgColor,
-          }}
-          rule={dialogOverlayStyle}
-          render={({ className, }) => (
-            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-            <div
-              style={{ display: this.state.isVisible ? 'block' : 'none', }}
-              onKeyDown={this.handleKeydown}
-            >
-              <FocusLock
-                disabled={!(this.state.isVisible && isModal)}
-                autoFocus={false}
+      <React.Fragment>
+        <NoSSR>{togglePageScroll(isModal && this.props.isVisible && this.state.isVisible)}</NoSSR>
+        <Portal host={appendTo}>
+          <FelaComponent
+            {...{
+              isModal,
+              isVisible: this.state.isVisible,
+              overlayAttrs,
+              overlayBgColor,
+            }}
+            rule={dialogOverlayStyle}
+            render={({ className, }) => (
+              // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+              <div
+                style={{ display: this.state.isVisible ? 'block' : 'none', }}
+                onKeyDown={this.handleKeydown}
               >
-                <div
-                  className={className}
-                  {...(closeOnOutsideClick
-                    ? {
-                      onClick: this.closeDialog,
-                      tabIndex: '-1',
-                    }
-                    : {})}
-                />
-                <FelaComponent
-                  {...{
-                    isModal,
-                    containerMiscStyles,
-                  }}
-                  rule={dialogContentStyle}
-                  render={({ className, }) => (
-                    <div
-                      className={className}
-                      role="dialog"
-                      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                      tabIndex="0"
-                      ref={ref => {
-                        this.container = ref;
-                      }}
-                      {...(this.state.isVisible
-                        ? {}
-                        : { 'aria-hidden': 'true', })}
-                    >
-                      <FelaComponent
-                        style={{
-                          width: '100%',
-                          height: '100%',
+                <FocusLock
+                  disabled={!(this.state.isVisible && isModal)}
+                  autoFocus={false}
+                >
+                  <div
+                    className={className}
+                    {...(closeOnOutsideClick
+                      ? {
+                        onClick: this.closeDialog,
+                        tabIndex: '-1',
+                      }
+                      : {})}
+                  />
+                  <FelaComponent
+                    {...{
+                      isModal,
+                      containerMiscStyles,
+                    }}
+                    rule={dialogContentStyle}
+                    render={({ className, }) => (
+                      <div
+                        className={className}
+                        role="dialog"
+                        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                        tabIndex="0"
+                        ref={ref => {
+                          this.container = ref;
                         }}
-                        render={({ className, }) => (
-                          <div role="document" className={className}>
-                            {render({
-                              isVisible: this.state.isVisible,
-                              handleClose: this.closeDialog,
-                              isModal,
-                            })}
-                          </div>
-                        )}
-                      />
-                    </div>
-                  )}
-                />
-              </FocusLock>
-            </div>
-          )}
-        />
-      </Portal>
+                        {...(this.state.isVisible
+                          ? {}
+                          : { 'aria-hidden': 'true', })}
+                      >
+                        <FelaComponent
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                          }}
+                          render={({ className, }) => (
+                            <div role="document" className={className}>
+                              {render({
+                                isVisible: this.state.isVisible,
+                                handleClose: this.closeDialog,
+                                isModal,
+                              })}
+                            </div>
+                          )}
+                        />
+                      </div>
+                    )}
+                  />
+                </FocusLock>
+              </div>
+            )}
+          />
+        </Portal>
+      </React.Fragment>
     ) : null;
   };
 }

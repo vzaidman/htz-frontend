@@ -11,7 +11,7 @@ import NavigationQuery from '../../NavigationMenu/navigationQuery';
 import Query from '../../ApolloBoundary/Query';
 import A11yDialog from '../../A11yDialog/A11yDialog';
 import NoSSR from '../../NoSSR/NoSSR';
-import disablePageScroll from './disablePageScroll';
+import togglePageScroll from '../../../utils/togglePageScroll';
 
 const menuButtonStyle = ({ theme, menuIsOpen, isHomepage, }) => ({
   display: 'block',
@@ -258,7 +258,7 @@ export default ({ contentId, menuIsOpen, onClick, wrapperSetState, isHomepage, }
       } = data;
       return (
         <Fragment>
-          <NoSSR>{disablePageScroll(menuIsOpen)}</NoSSR>
+          <NoSSR>{togglePageScroll(menuIsOpen)}</NoSSR>
           <MobileNavigationMenu
             isHomepage={isHomepage}
             menuSections={menu}
