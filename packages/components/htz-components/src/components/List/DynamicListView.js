@@ -35,16 +35,12 @@ const Michelangelo = dynamic(() => import('./views/Michelangelo/Michelangelo'), 
 const Mom = dynamic(() => import('./views/Mom/Mom'), {
   loading: () => null,
 });
-<<<<<<< HEAD
 const Mousepad = dynamic(() => import('./views/Mousepad/Mousepad'), {
   loading: () => null,
 });
-||||||| merged common ancestors
-=======
 const Morbo = dynamic(() => import('./views/Morbo/Morbo'), {
   loading: () => null,
 });
->>>>>>> feat(morbo list): add morbo list - calcala
 const Panucci = dynamic(() => import('./views/Panucci/Panucci'), {
   loading: () => null,
 });
