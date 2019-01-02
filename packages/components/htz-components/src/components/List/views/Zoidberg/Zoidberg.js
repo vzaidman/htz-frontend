@@ -11,19 +11,13 @@ const ZoidbergQuery = gql`
     list(listId: $listId, history: $history) {
       title
       items {
-        ... on TeaserInList {
-          ...TeaserForLeftElement
-        }
+        ...TeaserForLeftElement
       }
-      clickTrackers: items {
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
-      dfp: items {
-        ... on DfpBanner {
-          ...DfpBanner
-        }
+      dfp {
+        ...DfpBanner
       }
     }
   }

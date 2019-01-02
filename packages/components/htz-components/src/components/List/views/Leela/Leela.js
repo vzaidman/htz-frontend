@@ -10,10 +10,8 @@ const LeelaQuery = gql`
   query LeelaQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
-      items {
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
     }
   }
