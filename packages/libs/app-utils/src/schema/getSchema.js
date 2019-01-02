@@ -49,4 +49,10 @@ const types = new Map([
   [ 'com.tm.TabViewElement', TabViewElement, ],
 ]);
 
-export default inputTemplate => types.get(inputTemplate);
+// What the fucking fuck?!
+// types.get('com.tm.element.List') doesn't get the map item
+export default inputTemplate => (
+  inputTemplate === 'com.tm.element.List'
+    ? list
+    : types.get(inputTemplate)
+);

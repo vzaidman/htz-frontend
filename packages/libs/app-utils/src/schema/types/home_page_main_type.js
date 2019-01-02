@@ -22,11 +22,7 @@ const Article = new GraphQLList(
       dfpBanner,
       clickTrackerBannersWrapper,
     ],
-    resolveType: value => {
-      // wierd bug where get schema does not return the list type but works with the other types
-      if (value.inputTemplate === 'com.tm.element.List') return List;
-      return getSchema(value.inputTemplate);
-    },
+    resolveType: value => getSchema(value.inputTemplate),
   })
 );
 
