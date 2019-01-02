@@ -37,33 +37,48 @@ export default function VogelView({
         miscStyles={{
           flexBasis: 'auto',
           flexGrow: '1',
-          flexSrink: '0',
+          flexShrink: '0',
         }}
         stretchContent
       >
         <Section isFragment>
-          <VogelItem
-            data={list.items[0]}
-            hideImageOnMobile
-            lazyLoadImages={lazyLoadImages}
-            index={0}
-            biAction={biAction}
-          />
-          <VogelItem
-            data={list.items[1]}
-            hideImage
-            hideSeparatorOnMobile
-            index={1}
-            biAction={biAction}
-          />
-          <VogelItem
-            data={list.items[2]}
-            hideImage
-            hideSeparator
-            hideOnMobile
-            index={2}
-            biAction={biAction}
-          />
+          {list.items.length > 0
+            ? (
+              <VogelItem
+                data={list.items[0]}
+                hideImageOnMobile
+                lazyLoadImages={lazyLoadImages}
+                index={0}
+                biAction={biAction}
+              />
+            )
+            : null
+          }
+          {list.items.length > 1
+            ? (
+              <VogelItem
+                data={list.items[1]}
+                hideImage
+                hideSeparatorOnMobile
+                index={1}
+                biAction={biAction}
+              />
+            )
+            : null
+          }
+          {list.items.length > 2
+            ? (
+              <VogelItem
+                data={list.items[2]}
+                hideImage
+                hideSeparator
+                hideOnMobile
+                index={2}
+                biAction={biAction}
+              />
+            )
+            : null
+          }
         </Section>
       </GridItem>
     </ListView>
