@@ -4,12 +4,14 @@ import PaywallDataProvider from './PaywallDataProvider';
 import PaywallBottom from './Layout/PaywallBottom/PaywallBottom';
 import PaywallTop from './Layout/PaywallTop/PaywallTop';
 import PaywallPopup from './Layout/PaywallPopup/PaywallPopup';
+import PaywallMidpage from './Layout/PaywallMidpage/PaywallMidpage';
 
 
 const mapper = {
   'bot-persist': PaywallBottom,
   'top': PaywallTop,
   'popup': PaywallPopup,
+  'midpage': PaywallMidpage,
 };
 
 function selectLayout(slotLocation) {

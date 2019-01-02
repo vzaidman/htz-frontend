@@ -8,6 +8,7 @@ import ArticleImage from '../ArticleBodyImage/ArticleBodyImage';
 import Tags from '../Tags/Tags';
 import Caption from '../Caption/Caption';
 import NoSSR from '../NoSSR/NoSSR';
+import Paywall from '../Paywall/Paywall';
 
 const propTypes = {
   /**
@@ -262,6 +263,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
   maxWidth: theme.articleStyle.body.maxWidth,
   marginRight: 'auto',
   marginLeft: 'auto',
+  position: 'relative',
   extend: [
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -270,6 +272,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
 function ArticleBody({ body, miscStyles, tagsList, showNewsletter, }) {
   return body && body.length > 0 ? (
     <FelaComponent miscStyles={miscStyles} rule={wrapperStyle}>
+      <Paywall layouts={[ 'midpage', ]} />
       {body.map((component, i) => buildComponent(component, i, i === body.length - 1, showNewsletter)
       )}
       {tagsList && tagsList.length ? <Tags tagsList={tagsList} /> : null}
