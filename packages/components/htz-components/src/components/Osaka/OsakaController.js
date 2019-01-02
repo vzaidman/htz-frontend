@@ -43,7 +43,7 @@ class OsakaWithOutbrain extends React.Component {
     // eslint-disable-next-line react/prop-types
     const { promotedElement, hostname, canonicalUrl, } = this.props;
     const url = canonicalUrl ? this.changeSubDomain(canonicalUrl) : '';
-    const promoted = promotedElement[0].banners[0];
+    const promoted = promotedElement[0].content.banners[0];
     const siteKey = this.keys.get(hostname);
     OBR
       && OBR.extern.callRecs(
