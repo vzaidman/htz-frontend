@@ -5,13 +5,21 @@
   ]
  * *************************************************************** */
 
-/* globals FB */
+/* globals document, window, FB */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
-import { appendScript, } from '../../../utils/scriptTools';
+import gql from 'graphql-tag';
 
-export default class Facebook extends React.Component {
+import Query from '../../ApolloBoundary/Query';
+
+const getFbStatus = gql`
+  query getPath {
+    FbScriptLoaded @client
+  }
+`;
+
+export default class Facebook extends React.Component<Props> {
   static propTypes = {
     /**
      * The type of this facebook element
@@ -39,37 +47,36 @@ export default class Facebook extends React.Component {
        */
       height: PropTypes.string,
     }).isRequired,
-    /**
-     * A function to be called when the element finishes to load.
-     */
-    onLoadCallback: PropTypes.func,
   };
 
-  static defaultProps = {
-    onLoadCallback: null,
+  static scriptAppended = false;
+
+  appendScript = client => {
+    const script = document.createElement('script');
+
+    script.src = 'https://connect.facebook.net/en_US/all.js#xfbml=1&amp;version=v2.9';
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.addEventListener('load', () => this.initScript(client));
+
+    Facebook.scriptAppended = true;
   };
 
-  componentDidMount() {
-    appendScript({
-      src: '//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.9',
-      id: 'facebook-jssdk',
-      isAsync: true,
-      onLoadFunction: this.initScript,
-      updateFunction: this.updateScript,
-    });
-  }
+  initScript = client => {
+    window.fbAsyncInit = () => {
+      FB.init({
+        appId: '110687712359084',
+        status: false,
+        xfbml: true,
+        version: 'v2.9',
+      });
 
-  initScript = () => {
-    FB.init({
-      appId: '110687712359084',
-      status: true,
-      xfbml: true,
-      version: 'v2.9',
-    });
-
-    FB.Event.subscribe('xfbml.render', () => {
-      this.props.onLoadCallback && this.props.onLoadCallback();
-    });
+      client.writeData({
+        data: { FbScriptLoaded: true, },
+      });
+      console.log('Facebook script init');
+    };
   };
 
   updateScript = () => {
@@ -78,57 +85,74 @@ export default class Facebook extends React.Component {
 
   render() {
     const { embedType: type, settings: { showText, width, height, }, } = this.props;
-
-    return type === 'post' ? (
-      <FelaComponent
-        style={{
-          '& *': {
-            width: '100% !important',
-          },
-        }}
-        render={({ className, }) => (
-          <div
-            className={`fb-post ${className}`}
-            data-width="auto"
-            data-href={this.props.source}
-          />
-        )}
-      />
-    ) : type === 'comment' ? (
-      <div
-        className="fb-comment-embed"
-        data-width="auto"
-        data-href={this.props.source}
-      />
-    ) : (
-      <FelaComponent
-        style={{
-          paddingBottom: `${(height * 100) / width}%`,
-          display: 'block',
-          height: '0',
-          position: 'relative',
-        }}
+    return (
+      <Query
+        query={getFbStatus}
       >
-        <FelaComponent
-          style={{
-            height: '100%',
-            left: '0',
-            top: '0',
-            position: 'absolute',
-            width: '100%',
-          }}
-          render={({ className, }) => (
-            <div
-              className={`fb-video ${className}`}
-              data-width="auto"
-              data-href={this.props.source}
-              data-allowfullscreen="true"
-              data-autoplay="false"
-              data-show-text={showText}
-            />
-          )}
-        />
-      </FelaComponent>
+        {({ loading, error, data, client, }) => {
+          if (loading) return null;
+          if (error) return null;
+          const { FbScriptLoaded, } = data;
+          if (!Facebook.scriptAppended) {
+            this.appendScript(client);
+          }
+          if (FbScriptLoaded) {
+            this.updateScript();
+            return type === 'post' ? (
+              <FelaComponent
+                style={{
+                  '& *': {
+                    width: '100% !important',
+                  },
+                }}
+                render={({ className, }) => (
+                  <div
+                    className={`fb-post ${className}`}
+                    data-width="auto"
+                    data-href={this.props.source}
+                  />
+                )}
+              />
+            ) : type === 'comments' ? (
+              <div
+                className="fb-comment-embed"
+                data-width="auto"
+                data-href={this.props.source}
+              />
+            ) : (
+              <FelaComponent
+                style={{
+                  paddingBottom: `${(height * 100) / width}%`,
+                  display: 'block',
+                  height: '0',
+                  position: 'relative',
+                }}
+              >
+                <FelaComponent
+                  style={{
+                    height: '100%',
+                    left: '0',
+                    top: '0',
+                    position: 'absolute',
+                    width: '100%',
+                  }}
+                  render={({ className, }) => (
+                    <div
+                      className={`fb-video ${className}`}
+                      data-width="auto"
+                      data-href={this.props.source}
+                      data-allowfullscreen="true"
+                      data-autoplay="false"
+                      data-show-text={showText}
+                    />
+                  )}
+                />
+              </FelaComponent>
+            );
+          }
+          return null;
+        }}
+      </Query>
     );
   }
 }
