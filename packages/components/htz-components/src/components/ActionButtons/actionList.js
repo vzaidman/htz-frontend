@@ -556,44 +556,44 @@ const Whatsapp = ({
         render={theme => (
           <Media query={{ until: 'm', }}>
             {matches => (
-              <Tooltip
-                text={theme.shareBar.whatsappTooltip}
-                storageParam="tooltipCount"
-                tooltipMiscStyles={{
-                  minWidth: [ { until: 's', value: '33rem', }, ],
-                  whiteSpace: [ { from: 's', value: 'nowrap', }, ],
-                }}
-                openSide="top"
-                offsetX={matches ? 0 : -15}
-                hide={shouldMainNavBarDisplay === false}
-              >
-                <Button
-                  {...props}
-                  miscStyles={buttonStyles}
-                  title="שתפו בוואטסאפ"
-                  onClick={() => {
-                    window.open(
-                      `${
-                        platform === 'mobile' ? 'whatsapp://' : 'https://web.whatsapp.com/'
-                      }send?text=${elementUrl}${encodeURIComponent(
-                        '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
-                      )}`,
-                      'popup',
-                      'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
-                    );
+              // <Tooltip
+              //   text={theme.shareBar.whatsappTooltip}
+              //   storageParam="tooltipCount"
+              //   tooltipMiscStyles={{
+              //     minWidth: [ { until: 's', value: '33rem', }, ],
+              //     whiteSpace: [ { from: 's', value: 'nowrap', }, ],
+              //   }}
+              //   openSide="top"
+              //   offsetX={matches ? 0 : -15}
+              //   hide={shouldMainNavBarDisplay === false}
+              // >
+              <Button
+                {...props}
+                miscStyles={buttonStyles}
+                title="שתפו בוואטסאפ"
+                onClick={() => {
+                  window.open(
+                    `${
+                      platform === 'mobile' ? 'whatsapp://' : 'https://web.whatsapp.com/'
+                    }send?text=${elementUrl}${encodeURIComponent(
+                      '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
+                    )}`,
+                    'popup',
+                    'width=635,height=800,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no'
+                  );
 
-                    biAction({
-                      actionCode: biActionMapper.get('whatsApp_share'),
-                      additionalInfo: {
-                        platform,
-                      },
-                    });
-                    return false;
-                  }}
-                >
-                  <IconWhatsapp size={size} miscStyles={iconStyles} />
-                </Button>
-              </Tooltip>
+                  biAction({
+                    actionCode: biActionMapper.get('whatsApp_share'),
+                    additionalInfo: {
+                      platform,
+                    },
+                  });
+                  return false;
+                }}
+              >
+                <IconWhatsapp size={size} miscStyles={iconStyles} />
+              </Button>
+              // </Tooltip>
             )}
           </Media>
         )}
