@@ -147,19 +147,20 @@ function Teaser1({
       render={theme => (
         <Teaser
           data={data}
-          gutter={1}
+          gutter={0}
           onClick={
             biAction
               ? () => biAction({ index: 0, articleId: data.contentId, })
               : null
           }
+          gridMiscStyles={{ flexWrap: 'nowrap', }}
         >
           {data.image ? (
             <TeaserMedia
               data={data}
               width={[
-                { until: 's', value: 1 / 3, },
-                { from: 's', until: 'l', value: 4 / 12, },
+                { until: 's', value: 17, },
+                { from: 's', until: 'l', value: 28, },
                 { from: 'l', until: 'xl', value: 2 / 7, },
                 { from: 'xl', value: 1 / 2, },
               ]}
@@ -170,26 +171,19 @@ function Teaser1({
                   bps: theme.bps,
                   imgData: data.image,
                   defaultImgOptions: {
-                    sizes: [ { size: '190px', }, ],
+                    sizes: [ { size: '102px', }, ],
                     aspect: 'square',
-                    widths: [ 102, 158, 184, 204, 240, 260, 400, 520, 1024, ],
+                    widths: [ 102, 204, ],
                   },
                   sources: [
-                    {
-                      aspect: 'square',
-                      sizes: '190px',
-                      widths: [ 190, 380, ],
-                    },
                     {
                       aspect: 'regular',
                       from: 's',
                       sizes: [
-                        { from: 'xl', size: '190px', },
-                        { from: 'l', size: '160px', },
-                        { from: 'm', size: '240px', },
-                        { from: 's', size: '180px', },
+                        { from: 'xl', size: '192px', },
+                        { from: 's', size: '168px', },
                       ],
-                      widths: [ 160, 200, 240, 320, 480, 1024, ],
+                      widths: [ 320, 192, 168, ],
                     },
                   ],
                 })}
@@ -198,9 +192,9 @@ function Teaser1({
           ) : null}
           <TeaserContent
             data={data}
+            padding={[ 0, 1, ]}
+            footerPadding={[ 1, 1, ]}
             width={[
-              { until: 's', value: 2 / 3, },
-              { from: 's', until: 'l', value: 8 / 12, },
               { from: 'l', until: 'xl', value: 5 / 7, },
               { from: 'xl', value: 1 / 2, },
             ]}
@@ -249,6 +243,8 @@ function Teaser234({
           <TeaserContent
             data={data}
             width={1}
+            padding={[ 0, 1, ]}
+            footerPadding={[ 1, 1, ]}
             renderContent={() => (
               <TeaserHeader
                 typeScale={[
