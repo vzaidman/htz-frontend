@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile-login
       args:
         NEXT_BUILD_ID: ${version:-latest}
-    image: 'nexus-ng.themarker.com/htz-login-app:${version:-latest}'
+    image: "nexus-ng.themarker.com/htz-login-app:${version:-latest}"
     ports:
       - 9005:9005
     environment:
@@ -20,8 +20,7 @@ services:
       - HOSTNAME=login-dev
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
-      - GRAPHQL_SUB_DOMAIN=graphql-dev
-
+      - GRAPHQL_SUB_DOMAIN=graphql-stg
 
     networks:
       - dev03
