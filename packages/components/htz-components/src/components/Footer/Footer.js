@@ -20,6 +20,8 @@ import ChartBeat from '../Scripts/ChartBeat';
 import ChromePush from '../Scripts/ChromePush';
 import FirstImpression from '../Scripts/FirstImpression';
 import GStat from '../Scripts/GStat';
+import IdxNielsen from '../Scripts/IdxNielsen';
+import CrazyEgg from '../Scripts/CrazyEgg';
 
 const GET_FOOTER_ITEMS = gql`
   query FooterQuery($listId: String!) {
@@ -222,6 +224,10 @@ class Footer extends React.Component {
         <FirstImpression />
         <GStat />
         <FirstImpressionPlaceHolder />
+        {/* // todo, get a boolean for each script from polopoly and render scripts
+        accordingly, the following scripts should only render on homepage */}
+        <IdxNielsen />
+        <CrazyEgg />
       </Fragment>
     );
   }

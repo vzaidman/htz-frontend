@@ -46,6 +46,8 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
           <React.Fragment>
             <Head>
               <title>{titleSEO}</title>
+              <meta property="article:publisher" content="https://www.facebook.com/haaretz" />
+              <meta property="fb:pages" content="109551402519" />
             </Head>
             <ScrollListener />
             <RouteChangeListener />

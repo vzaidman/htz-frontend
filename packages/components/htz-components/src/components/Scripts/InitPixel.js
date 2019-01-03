@@ -29,12 +29,14 @@ class InitPixel extends Component {
           const pixelId = hostname.includes('themarker.com')
             ? '288453064669123'
             : '1465233127023021';
+
+          const pixelId2 = hostname.includes('themarker.com') ? 'update this' : '801998859871552';
           return (
             <Head>
               <script
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
-                  __html: `
+                  __html: `  
                           !function(f,b,e,v,n,t,s)
                           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
                           n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -44,6 +46,7 @@ class InitPixel extends Component {
                           s.parentNode.insertBefore(t,s)}(window, document,'script',
                           'https://connect.facebook.net/en_US/fbevents.js');
                           fbq('init', ${pixelId});
+                          fbq('init', ${pixelId2});
                         `,
                 }}
               />
