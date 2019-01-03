@@ -1,6 +1,5 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, } from 'graphql';
-
-import ElementGroup from './element_group_type';
+import DfpBanner from './dfp_banner_type';
 import List from './list_type';
 
 const MainBlock = new GraphQLObjectType({
@@ -10,7 +9,7 @@ const MainBlock = new GraphQLObjectType({
     contentId: { type: GraphQLID, },
     inputTemplate: { type: GraphQLString, },
     slotA: { type: List, },
-    slotB: { type: ElementGroup, },
+    slotB: { type: DfpBanner, },
     slotC: { type: List, },
   }),
 });

@@ -41,6 +41,9 @@ export default gql`
                 ...ItemInList
               }
             }
+            slotB {
+              ...DfpBanner
+            }
             slotC {
               view
               inputTemplate

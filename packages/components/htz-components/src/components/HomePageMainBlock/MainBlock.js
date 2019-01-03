@@ -1,28 +1,24 @@
 // @flow
 import React from 'react';
-import { FelaComponent, } from 'react-fela';
 import type { Node, ComponentType, } from 'react';
 import GridItem from '../Grid/GridItem';
 import ListView from '../ListView/ListView';
 
+import GeneralAdSlot from '../Ads/GeneralAdSlot';
+
 import type { ListDataType, } from '../../flowTypes/ListDataType';
+import type { DfpBannerType, } from '../../flowTypes/DfpBannerType';
 
 type Props = {
   List: ComponentType<any>,
   data: {
     slotA: ListDataType,
-    // TODO: replace Dfp placeholder, and add typing
-    slotB: {
-      contentLists: {},
-    }[],
+    slotB: DfpBannerType,
     slotC: ListDataType,
   },
 };
 
-export default function MainBlock({
-  data: { slotA, slotB, slotC, },
-  List,
-}: Props): Node {
+export default function MainBlock({ data: { slotA, slotB, slotC, }, List, }: Props): Node {
   const isWideMain = slotA.view === 'Conrad';
   return (
     <ListView
@@ -76,15 +72,7 @@ export default function MainBlock({
           display: [ { until: 's', value: 'none', }, ],
         }}
       >
-        <FelaComponent
-          style={{
-            backgroundColor: 'orange',
-            height: '273px',
-            width: '300px',
-            marginRight: 'auto',
-            marginLeft: 'auto',
-          }}
-        />
+        <GeneralAdSlot {...slotB} />
       </GridItem>
       <List
         {...slotC}
