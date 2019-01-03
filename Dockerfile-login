@@ -2,7 +2,7 @@ FROM node:10.8
 ARG NEXT_BUILD_ID
 COPY  . /workspace/
 WORKDIR /workspace/
-ENV NEXT_BUILD_ID=${NEXT_BUILD_ID}
+ENV NEXT_BUILD_ID="${NEXT_BUILD_ID}5"
 #ENV BUILD_ID $(git rev-parse --verify HEAD)
 RUN rm -f /etc/localtime; ln -s /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime
 RUN yarn && yarn bootstrap
