@@ -14,7 +14,11 @@ const getCacheReferrer = client => {
   }
 };
 
+const addTimeStamp = (url) => {
+  return url.includes('?') ? `${url}&lts=${Date.now()}` : `${url}?lts=${Date.now()}`;
+}
+
 const getReferrerUrl = (client, referrerUrl = getCacheReferrer(client)) =>
-  (!regex.login.test(referrerUrl) && regex.site.test(referrerUrl) ? referrerUrl : false);
+  (!regex.login.test(referrerUrl) && regex.site.test(referrerUrl) ? addTimeStamp(referrerUrl) : false);
 
 export { getReferrerUrl, };
