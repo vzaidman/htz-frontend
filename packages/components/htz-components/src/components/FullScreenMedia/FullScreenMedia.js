@@ -172,7 +172,7 @@ class FullScreenMedia extends React.Component {
   handleGlobalKeydown = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
-      this.toggleFullScreen();
+      this.props.exitAction() || this.toggleFullScreen();
     }
   };
 
@@ -197,8 +197,8 @@ class FullScreenMedia extends React.Component {
         render={({ className, }) => (
           <span
             className={className}
-            onMouseEnter={() => this.toggleHide(false)}
-            onMouseLeave={() => this.toggleHide(true)}
+            onMouseEnter={!isFullScreen ? () => this.toggleHide(false) : null}
+            onMouseLeave={!isFullScreen ? () => this.toggleHide(true) : null}
           >
             {!isFullScreen ? (
               <Icon isFullScreen={false} hide={this.state.hide} onClick={this.toggleFullScreen} />
@@ -233,7 +233,7 @@ class FullScreenMedia extends React.Component {
                   closeButton={(
                     <Icon
                       isFullScreen
-                      onClick={this.toggleFullScreen}
+                      onClick={exitAction || this.toggleFullScreen}
                       hide={false}
                     />
 )}

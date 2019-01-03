@@ -111,7 +111,7 @@ const Aside = ({ children, }) => (
   </FelaComponent>
 );
 
-const buildImgOptions = (aspect, isFullScreen) => ({
+export const buildImgOptions = (aspect, isFullScreen) => ({
   sizes: isFullScreen
     ? '100vw'
     : '(min-width:1280px) 627px,(min-width:1024px) 460px,(min-width:600px) 540px, calc(100vw - 6rem)',

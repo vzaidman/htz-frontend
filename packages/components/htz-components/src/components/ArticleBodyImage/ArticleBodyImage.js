@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 
 import Caption from '../Caption/Caption';
-import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
 import Image from '../Image/Image';
 import Picture from '../Image/Picture';
-import { buildUrl, } from '../../utils/buildImgURLs';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
+import ApolloBoundaryConsumer from '../ApolloBoundary/ApolloConsumer';
+import EnlargementWrapper from './ImageWrapper';
 
 const articleImagePropTypes = {
   /**
@@ -29,10 +29,6 @@ const articleImagePropTypes = {
    * Image's credit.
    */
   credit: PropTypes.string,
-  /**
-   * Enable the the button that allows you to see the image in full-screen..
-   */
-  enableEnlarge: PropTypes.bool,
   /**
    * Force the image to render in a specific aspect, regardless of the editor's choice.
    */
@@ -69,6 +65,10 @@ const articleImagePropTypes = {
    */
   miscStyles: stylesPropType,
   /**
+   * Should the image open an Image gallery on click.
+   */
+  shouldOpenGallery: PropTypes.bool,
+  /**
    * Should the image be rendered with its caption.
    */
   showCaption: PropTypes.bool,
@@ -76,10 +76,6 @@ const articleImagePropTypes = {
    * Image's title.
    */
   title: PropTypes.string,
-  /**
-   * Toggle full screen mode function
-   */
-  toggleFullScreen: PropTypes.func.isRequired,
   /**
    * The image's selected view mode set by the editor (regular, full or 1/3).
    */
@@ -89,12 +85,12 @@ const articleImagePropTypes = {
 const articleImageDefaultProps = {
   className: null,
   credit: null,
-  enableEnlarge: true,
   forceAspect: null,
   isFullScreen: false,
   isHeadline: false,
   lastItem: false,
   miscStyles: {},
+  shouldOpenGallery: true,
   showCaption: true,
   title: null,
 };
@@ -269,7 +265,25 @@ const ImageElement = props => {
 ImageElement.propTypes = imagePropTypes;
 ImageElement.defaultProps = imageDefaultProps;
 
-const UnwrappedImage = ({
+const openGallery = ({ client, contentId, }) => (
+  client.writeData({
+    data: {
+      pageGallery: {
+        isOpen: true,
+        startWith: contentId,
+        __typename: 'PageGallery',
+      },
+    },
+  })
+);
+
+/**
+ * The ArticleImage component takes the Image/Picture component, strips it
+ * from it's wrapper and wraps it with a specific new one, according to the
+ * image's Meta (which is unique per article), and adds a [`full-screen`](./#fullscreenmedia) option as
+ * a default.
+ */
+function ArticleBodyImage({
   className,
   credit,
   imgOptions,
@@ -279,107 +293,71 @@ const UnwrappedImage = ({
   miscStyles,
   showCaption,
   title,
-  toggleFullScreen,
+  shouldOpenGallery,
   forceAspect,
   viewMode,
   ...image
-}) => (
-  <FelaComponent
-    rule={wrapperStyle}
-    viewMode={forceAspect || viewMode}
-    lastItem={lastItem}
-    isHeadline={isHeadline}
-    className={className}
-    miscStyles={miscStyles}
-    isFullScreen={isFullScreen}
-    render={({
-      className,
-      theme: {
-        creditPrefixI18n: { imageCreditPrefix, },
-      },
-    }) => (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <figure className={className} onClick={!isFullScreen ? toggleFullScreen : null}>
-        <ImageElement
-          imgOptions={imgOptions}
-          forceAspect={forceAspect}
-          viewMode={viewMode}
-          {...image}
-          isFullScreen={isFullScreen}
-        />
-        {showCaption && !isFullScreen ? (
-          <Caption
-            caption={title}
-            credit={credit}
-            creditprefix={imageCreditPrefix}
-            miscStyles={{ paddingInlineStart: 0, }}
-            typeStyles={{ step: -2, lines: 5, }}
-            creditTypeStyles={{ step: -2, lines: 5, }}
-          />
-        ) : null}
-      </figure>
-    )}
-  />
-);
-
-UnwrappedImage.propTypes = articleImagePropTypes;
-UnwrappedImage.defaultProps = articleImageDefaultProps;
-
-/**
- * The ArticleImage component takes the Image/Picture component, strips it
- * from it's wrapper and wraps it with a specific new one, according to the
- * image's Meta (which is unique per article), and adds a [`full-screen`](./#fullscreenmedia) option as
- * a default.
- */
-class ArticleBodyImage extends React.Component {
-  getImageUrl = () => {
-    const { contentId, imgArray, aspects, } = this.props;
-    return buildUrl(
-      contentId,
-      { ...imgArray[0], aspects, },
-      {
-        width: '1920',
-        aspect: 'full',
-        quality: 'auto',
-      }
-    );
-  };
-
-  render() {
-    const { enableEnlarge, contentName, title, credit, } = this.props;
-
-    const CaptionElement = () => (
-      <FelaComponent
-        style={{
-          display: 'flex',
-          marginBottom: '3rem',
-          textAlign: 'start',
-        }}
-        render={({ className, theme, }) => (
-          <div className={className}>
-            <Caption caption={title} credit={credit} color={[ 'neutral', '-10', ]} typeStyles={-1} />
-          </div>
-        )}
-      />
-    );
-
-    return enableEnlarge ? (
-      <FullScreenMedia
-        itemName={contentName}
-        itemUrl={this.getImageUrl()}
-        captionElement={<CaptionElement />}
-        render={({ isFullScreen, toggleFullScreen, }) => (
-          <UnwrappedImage
-            {...this.props}
-            isFullScreen={isFullScreen}
-            toggleFullScreen={toggleFullScreen}
-          />
-        )}
-      />
-    ) : (
-      <UnwrappedImage {...this.props} />
-    );
-  }
+}) {
+  return (
+    <FelaComponent
+      rule={wrapperStyle}
+      viewMode={forceAspect || viewMode}
+      lastItem={lastItem}
+      isHeadline={isHeadline}
+      className={className}
+      miscStyles={miscStyles}
+      isFullScreen={isFullScreen}
+      render={({
+        className,
+        theme: {
+          creditPrefixI18n: { imageCreditPrefix, },
+        },
+      }) => (
+        <figure className={className}>
+          {
+            shouldOpenGallery && !isFullScreen
+              ? (
+                <ApolloBoundaryConsumer>
+                  { client => (
+                    <EnlargementWrapper
+                      isFullScreen={isFullScreen}
+                      onClick={() => openGallery({ client, contentId: image.contentId, })}
+                    >
+                      <ImageElement
+                        imgOptions={imgOptions}
+                        forceAspect={forceAspect}
+                        viewMode={viewMode}
+                        {...image}
+                        isFullScreen={isFullScreen}
+                      />
+                    </EnlargementWrapper>
+                  )}
+                </ApolloBoundaryConsumer>
+              )
+              : (
+                <ImageElement
+                  imgOptions={imgOptions}
+                  forceAspect={forceAspect}
+                  viewMode={viewMode}
+                  {...image}
+                  isFullScreen={isFullScreen}
+                />
+              )
+          }
+          {showCaption && !isFullScreen ? (
+            <Caption
+              caption={title}
+              credit={credit}
+              creditprefix={imageCreditPrefix}
+              miscStyles={{ paddingInlineStart: 0, }}
+              typeStyles={{ step: -2, lines: 5, }}
+              creditTypeStyles={{ step: -2, lines: 5, }}
+            />
+          ) : null}
+        </figure>
+      )}
+    />
+  );
 }
 
 ArticleBodyImage.propTypes = articleImagePropTypes;

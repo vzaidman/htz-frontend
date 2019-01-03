@@ -10,6 +10,7 @@ import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
 import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
 import IconBack from '../Icon/icons/IconBack';
+import { buildImgOptions, } from '../ArticleBody/ArticleBody';
 
 const propTypes = {
   /**
@@ -53,6 +54,10 @@ const propTypes = {
    * Should the gallery's title be displayed on the page.
    */
   showTitle: PropTypes.oneOfType([ PropTypes.string, PropTypes.bool, ]),
+  /**
+   * At what index should the gallery start.
+   */
+  startAt: PropTypes.number,
 };
 
 const galleryProps = {
@@ -72,6 +77,7 @@ const defaultProps = {
   renderCaption: null,
   showTitle: true,
   exitFullScreenAction: null,
+  startAt: 0,
 };
 
 const captionWrapperStyle = ({
@@ -214,7 +220,6 @@ const Gallery = ({
   currentDisplaying,
   forceAspect,
   images,
-  imgOptions,
   renderCaption,
   fullScreenOnly,
   exitFullScreenAction,
@@ -282,6 +287,8 @@ const Gallery = ({
                       showCaption={false}
                       enableEnlarge={false}
                       ignoreSchema
+                      shouldOpenGallery={false}
+                      imgOptions={aspect => buildImgOptions(aspect, true)}
                       miscStyles={{
                         textAlign: 'center',
                         marginBottom: '0 !important',
@@ -297,7 +304,8 @@ const Gallery = ({
                         showCaption={false}
                         enableEnlarge={false}
                         ignoreSchema
-                        imgOptions={imgOptions}
+                        shouldOpenGallery={false}
+                        imgOptions={aspect => buildImgOptions(aspect, false)}
                         miscStyles={{
                           textAlign: 'center',
                           marginBottom: '0 !important',
@@ -579,9 +587,9 @@ Gallery.defaultProps = defaultProps;
  * component as a renderer.
  */
 class ImageGallery extends React.Component {
-  state = {
-    currentDisplaying: 0,
-  };
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return prevState || { currentDisplaying: nextProps.startAt, };
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return (

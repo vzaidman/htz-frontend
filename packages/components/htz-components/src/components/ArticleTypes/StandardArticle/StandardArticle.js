@@ -19,6 +19,7 @@ import { buildUrl, } from '../../../utils/buildImgURLs';
 import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 
 import StandardArticleQuery from './queries/standard_article';
+import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
 function StandardArticle({ articleId, slots, }) {
   return (
@@ -286,6 +287,7 @@ function StandardArticle({ articleId, slots, }) {
                       </aside>
                     )}
                   />
+                  <ArticleGallery articleId={articleId} />
                 </LayoutContainer>
               )}
             />
