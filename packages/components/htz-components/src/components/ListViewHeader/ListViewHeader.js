@@ -232,7 +232,7 @@ export default function ListViewHeader({
                 extend: [ theme.mq({ until: 'l', }, { display: 'none', }), ],
               }}
             >
-              {!isHorizontal && marketingTeaser ? (
+              {!isHorizontal && marketingTeaser && marketingTeaser.href ? (
                 <Section>
                   <IconAlefLogoTransparent color="secondary" size={3} />
                   <FelaComponent
