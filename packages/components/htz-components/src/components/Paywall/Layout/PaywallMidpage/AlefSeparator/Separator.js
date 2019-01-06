@@ -1,8 +1,15 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderTop, } from '@haaretz/htz-css-tools';
 
-export default function Separator({ color, marginLeft, marginRight, }) {
+type Props = {
+  color: string,
+  marginLeft: string,
+  marginRight: string,
+};
+
+export default function Separator({ color, marginLeft, marginRight, }: Props): React.Node {
   return (
     <FelaComponent
       style={{

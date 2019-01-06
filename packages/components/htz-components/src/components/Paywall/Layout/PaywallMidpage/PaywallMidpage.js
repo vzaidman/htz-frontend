@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import Section from '../../../AutoLevels/Section';
 import H from '../../../AutoLevels/H';
@@ -6,9 +7,11 @@ import Button from '../../../Button/Button';
 import HtzLink from '../../../HtzLink/HtzLink';
 import PaywallMidpageContainer from './PaywallMidpageContainer';
 import AlefSeparator from './AlefSeparator/AlefSeparator';
+import type { PaywallData, } from '../../PaywallDataProvider';
 
+type Props = PaywallData;
 
-export default function PaywallMidpage({ title, text, confirm, deny, }) {
+export default function PaywallMidpage({ title, text, confirm, deny, }: Props): React.Node {
   return (
     <FelaTheme
       render={theme => {

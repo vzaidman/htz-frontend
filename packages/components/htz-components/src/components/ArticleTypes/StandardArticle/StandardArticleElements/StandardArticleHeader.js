@@ -166,21 +166,11 @@ function Header({
 
           <Paywall
             layouts={[ 'top', ]}
-            render={PaywallLayout => (
-              <FelaComponent
-                style={{
-                  extend: [
-                    theme.mq({ until: 's', }, { order: -3, }),
-                    theme.mq({ from: 's', }, {
-                      marginTop: '2rem',
-                      marginBottom: '2rem',
-                    }),
-                  ],
-                }}
-              >
-                <PaywallLayout />
-              </FelaComponent>
-            )}
+            miscStyles={{
+              order: [ { until: 's', value: -3, }, ],
+              marginTop: [ { from: 's', value: '2rem', }, ],
+              marginBottom: [ { from: 's', value: '2rem', }, ],
+            }}
           />
           {headlineElement ? (
             <HeadlineElement
