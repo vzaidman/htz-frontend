@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import A11yDialog from '../../../A11yDialog/A11yDialog';
 import Section from '../../../AutoLevels/Section';
@@ -6,9 +7,11 @@ import H from '../../../AutoLevels/H';
 import Button from '../../../Button/Button';
 import HtzLink from '../../../HtzLink/HtzLink';
 import PaywallAstronaut from '../PaywallAstronaut';
+import type { PaywallData, } from '../../PaywallDataProvider';
 
+type Props = PaywallData;
 
-export default function PaywallPopup({ title, text, confirm, deny, }) {
+export default function PaywallPopup({ title, text, confirm, deny, }: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
@@ -51,7 +54,6 @@ export default function PaywallPopup({ title, text, confirm, deny, }) {
                   {
                     mq: { misc: 'portrait', until: 'm', },
                     size: '46rem',
-                    shift: { right: '0rem', top: '0rem', },
                     other: {
                       height: '24rem',
                       marginTop: '-3rem',
@@ -60,7 +62,6 @@ export default function PaywallPopup({ title, text, confirm, deny, }) {
                   {
                     mq: { misc: 'portrait', from: 'm', },
                     size: '65rem',
-                    shift: { right: '0rem', top: '0rem', },
                     other: {
                       height: '29rem',
                       marginTop: '-6rem',
@@ -69,7 +70,6 @@ export default function PaywallPopup({ title, text, confirm, deny, }) {
                   {
                     mq: { misc: 'landscape', until: 's', },
                     size: '45rem',
-                    shift: { right: '0rem', top: '0rem', },
                     other: {
                       height: '19rem',
                       marginTop: '-3rem',
@@ -78,7 +78,6 @@ export default function PaywallPopup({ title, text, confirm, deny, }) {
                   {
                     mq: { misc: 'landscape', from: 's', until: 'l', },
                     size: '49rem',
-                    shift: { right: '0rem', top: '0rem', },
                     other: {
                       height: '21rem',
                       marginTop: '-3rem',
@@ -87,7 +86,6 @@ export default function PaywallPopup({ title, text, confirm, deny, }) {
                   {
                     mq: { misc: 'landscape', from: 'l', },
                     size: '65rem',
-                    shift: { right: '0rem', top: '0rem', },
                     other: {
                       height: '29rem',
                       marginTop: '-6rem',

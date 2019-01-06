@@ -1,10 +1,16 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
 import IconAlef from '../../../../Icon/icons/IconAlefLogoTransparent';
 import Separator from './Separator';
 
+type Props = {
+  innerMargin: string,
+  outerMargin: string,
+  color: string,
+};
 
-export default function AlefSeparator({ innerMargin, outerMargin, color, }) {
+export default function AlefSeparator({ innerMargin, outerMargin, color, }: Props): React.Node {
   return (
     <FelaComponent
       style={{

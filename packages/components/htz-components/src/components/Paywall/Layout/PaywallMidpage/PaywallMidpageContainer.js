@@ -1,8 +1,22 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
 
+type Props = {
+  /** the content of the container */
+  children: React.Node,
+  /** height cleared of the container */
+  clearHeight: string,
+  /** height of the gradient part of the container */
+  gradientHight: string,
+};
 
-export default function PaywallMidpageContainer({ children, clearHeight, gradientHight, }) {
+
+export default function PaywallMidpageContainer({
+  children,
+  clearHeight,
+  gradientHight,
+}: Props): React.Node {
   return (
     <FelaComponent
       style={theme => ({

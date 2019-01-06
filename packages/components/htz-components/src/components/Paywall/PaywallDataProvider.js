@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import gql from 'graphql-tag';
 import Query from '../ApolloBoundary/Query';
 import NoSSR from '../NoSSR/NoSSR';
 
-const getPaywallData = gql`
+const paywallDataQuery = gql`
   query getPaywallData {
     paywall {
       slotLocation
@@ -22,9 +22,32 @@ const getPaywallData = gql`
   }
 `;
 
-const PaywallDataProvider = ({ children, }) => (
+export type PaywallLink = {
+  text: string,
+  url: string,
+};
+
+export type SlotLocation =
+  | 'bot-persist'
+  | 'top'
+  | 'popup'
+  | 'midpage';
+
+export type PaywallData = {
+  slotLocation: SlotLocation,
+  title: string,
+  text: string,
+  confirm: PaywallLink,
+  deny: PaywallLink,
+};
+
+type Props = {
+  children: PaywallData => React.Node,
+};
+
+const PaywallDataProvider = ({ children, }: Props): React.Node => (
   <NoSSR>
-    <Query query={getPaywallData}>
+    <Query query={paywallDataQuery}>
       {({ data, loading, error, }) => {
         if (error) {
           console.log('[PaywallDataProvider] error %o', error);
@@ -40,9 +63,5 @@ const PaywallDataProvider = ({ children, }) => (
     </Query>
   </NoSSR>
 );
-
-PaywallDataProvider.propTypes = {
-  children: PropTypes.func.isRequired,
-};
 
 export default PaywallDataProvider;
