@@ -44,9 +44,9 @@ const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
 
 const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
-  return facebookParams ?
-    getFacebookLoginUrl(facebookParams) :
-    false;
+  return facebookParams
+    ? getFacebookLoginUrl(facebookParams)
+    : false;
 };
 
 const b64DecodeUnicode = str => (str
@@ -82,12 +82,11 @@ const getUrlParams = () => {
 
 const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
-const validateEmailInput = ({ email, }) =>
-  (!email
-    ? generateEmailError('אנא הזינו כתובת דוא”ל')
-    : !isEmail(email)
-      ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
-      : []); // email is valid
+const validateEmailInput = ({ email, }) => (!email
+  ? generateEmailError('אנא הזינו כתובת דוא”ל')
+  : !isEmail(email)
+    ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
+    : []); // email is valid
 
 const getUserData = (dataSaved = '') => dataSaved.userData;
 
@@ -110,12 +109,11 @@ const hasCrmStatus = dataSaved => (dataSaved
 
 const hasActiveSub = dataSaved => {
   const crmStatus = hasCrmStatus(dataSaved);
-  return crmStatus &&
-        (crmStatus.isActiveTm || crmStatus.isActiveHeb);
+  return crmStatus
+        && (crmStatus.isActiveTm || crmStatus.isActiveHeb);
 };
 
-const isEmailValidationRequired = dataSaved =>
-  !hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved);
+const isEmailValidationRequired = dataSaved => !hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved);
 
 const setFacebookParamsOnApollo = client => {
   const { facebook, } = getUrlParams();
@@ -128,11 +126,9 @@ const setFacebookParamsOnApollo = client => {
   }
 };
 
-const getOtpErrorMessage = (msg) => {
-  return msg.includes("sms") ?
-    "עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות." :
-    (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.');
-}
+const getOtpErrorMessage = msg => (msg.includes('sms')
+  ? 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.'
+  : (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
 
 const handleGenerateOtp = ({
   phoneNum,
@@ -144,22 +140,21 @@ const handleGenerateOtp = ({
   showError,
   setPreloader,
   eventsHandler,
-}) =>
-  generateOtp(client)({ typeId: phoneNum, })
-    .then(data => {
-      const json = data.data.generateOtp;
-      saveOtpHash(client)({ otpHash: json.hash, });
-      if (json.success) {
-        saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
-        eventsHandler(() => {
-          Router.push(route);
-        });
-      }
-      else {
-        setPreloader(false);
-        showError(getOtpErrorMessage(json.msg));
-      }
-    });
+}) => generateOtp(client)({ typeId: phoneNum, })
+  .then(data => {
+    const json = data.data.generateOtp;
+    saveOtpHash(client)({ otpHash: json.hash, });
+    if (json.success) {
+      saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
+      eventsHandler(() => {
+        Router.push(route);
+      });
+    }
+    else {
+      setPreloader(false);
+      showError(getOtpErrorMessage(json.msg));
+    }
+  });
 
 const handleResponseFromGraphql = ({
   client,
@@ -185,8 +180,8 @@ const handleResponseFromGraphql = ({
     handleGenerateOtp({
       client,
       email,
-      phoneNum: phone ||
-        (dataSaved && dataSaved.userData
+      phoneNum: phone
+        || (dataSaved && dataSaved.userData
           ? dataSaved.userData.phoneNum
           : null),
       ssoId: (res && res.userByMail ? res.userByMail.ssoId : null),
