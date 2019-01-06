@@ -142,7 +142,7 @@ const Styles = {
       },
     }),
     errorBoxStyle: () => ({
-      maxWidth: '90%',
+      maxWidth: '100%',
       marginTop: '2rem',
       fontWeight: 'bold',
       fontSize: '2rem',
