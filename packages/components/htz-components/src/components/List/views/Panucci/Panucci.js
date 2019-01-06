@@ -19,12 +19,6 @@ const PanucciQuery = gql`
       }
     }
   }
-  breakingNewsBox(cid: "Haaretz.Element.BreakingNewsBoxElement") {
-    contentId
-    items {
-      title
-    }
-  }
   ${teaserForPanucci}
   ${link}
 `;
