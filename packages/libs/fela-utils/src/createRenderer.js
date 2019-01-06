@@ -5,7 +5,6 @@ import bidiTransformer from 'bidi-css-js';
 import embedded from 'fela-plugin-embedded';
 import extend from 'fela-plugin-extend';
 import fallbackValue from 'fela-plugin-fallback-value';
-import lvha from 'fela-plugin-lvha';
 import { prefix, } from 'inline-style-prefixer';
 import placeholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import unit from 'fela-plugin-unit';
@@ -13,7 +12,6 @@ import unit from 'fela-plugin-unit';
 import validator from 'fela-plugin-validator';
 
 // Fela enhancers
-import combineArrays from 'fela-combine-arrays';
 // Enhancers used only during development:
 import beautifier from 'fela-beautifier';
 // import perf from 'fela-perf';
@@ -46,8 +44,6 @@ export default function createRenderer({
     extend(),
     // Hendles @font-face and @keyframes
     embedded(),
-    // Sort pseudo-classes in a predictable order
-    lvha(),
     // Treat number primitives as a specific css unit
     unit('rem', {
       border: 'px',
@@ -64,7 +60,7 @@ export default function createRenderer({
     fallbackValue(),
     bidi(isRtl ? 'rtl' : 'ltr'),
   ];
-  const enhancers = [ combineArrays([ 'extend', ]), ];
+  const enhancers = [];
 
   if (isDev) {
     plugins.push(validator());
