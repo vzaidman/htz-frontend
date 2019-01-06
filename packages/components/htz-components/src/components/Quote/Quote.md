@@ -12,8 +12,8 @@
 ```jsx
 <div id="imageQuote" style={{ direction: 'rtl' }}>
   <Quote
-    text="בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון"
-    credit="מישהו"
+    text='"בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר הביטחון"'
+    credit="מישהו מאוד חשוב"
     position="midCenterPosition"
     afterParagraph="2"
     imagesList={[
@@ -21,44 +21,44 @@
         alt: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
         credit: 'אמיל סלמן',
         title: 'נתניהו בישיבת הממשלה השבועית, בתחילת השבוע',
-        aspects: {
-          full: {
-            width: 1942,
-            height: 1456,
-            x: 258,
-            y: 12,
-          },
-          headline: {
-            width: 2200,
-            height: 1277,
-            x: 0,
-            y: 56,
-          },
-          belgrade: {
-            width: 2200,
-            height: 690,
-            x: 0,
-            y: 369,
-          },
-          landscape: {
-            width: 2200,
-            height: 949,
-            x: 0,
-            y: 194,
-          },
-
-          vertical: {
-            width: 1227,
-            height: 1440,
-            x: 731,
-            y: 28,
-          },
-        },
         isAnimated: false,
         imgArray: [
           {
             imgName: 'image/2151933599.jpg',
             version: '1518556356',
+            aspects: {
+              full: {
+                width: 1942,
+                height: 1456,
+                x: 258,
+                y: 12,
+              },
+              headline: {
+                width: 2200,
+                height: 1277,
+                x: 0,
+                y: 56,
+              },
+              belgrade: {
+                width: 2200,
+                height: 690,
+                x: 0,
+                y: 369,
+              },
+              landscape: {
+                width: 2200,
+                height: 949,
+                x: 0,
+                y: 194,
+              },
+
+              vertical: {
+                width: 1227,
+                height: 1440,
+                x: 731,
+                y: 28,
+              },
+            },
           },
         ],
         imageType: 'image',
@@ -74,8 +74,8 @@
 ```jsx
 <div id="iconQuote" style={{ direction: 'rtl' }}>
   <Quote
-    text="בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון"
-    credit="מישהו"
+    text='בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר הביטחון"'
+    credit="מישהו מאוד חשוב"
     position="midCenterPosition"
     afterParagraph="2"
     imagesList={[]}

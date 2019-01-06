@@ -306,7 +306,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           >
             <a
               className="htz-bo htz-bp htz-bq htz-br htz-bs"
-              href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
+              href="mailto:advertisinghaaretz@haaretz.co.il"
               onClick={null}
             >
               פרסמו באתר

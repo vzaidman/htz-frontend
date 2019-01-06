@@ -8,25 +8,25 @@ Object {
         className="htz-a"
       >
         <blockquote
-          className="htz-b htz-c"
+          className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i"
         >
           <div
-            className="htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k"
+            className="htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q"
           >
             <img
               alt="נתניהו בישיבת הממשלה השבועית, בתחילת השבוע"
-              className="htz-l htz-m htz-n htz-o htz-p"
+              className="htz-r htz-s htz-t htz-u htz-v"
               src="https://images.haarets.co.il/image/upload/w_1461,h_1460,x_592,y_8,c_crop/q_auto,h_100,w_100,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518556356/1.5580.2151933599.jpg"
               title="אמיל סלמן"
             />
           </div>
           <p
-            className="htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
+            className="htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj"
           >
             בין השישה שלוש דמויות בולטות בפרשת הצוללות. דמויות אלו כוללות אישיות בכירה לשעבר  הביטחון
           </p>
           <span
-            className="htz-ak htz-al htz-am htz-an htz-ao htz-x htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
+            className="htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
           >
             מישהו
           </span>
@@ -34,6 +34,6 @@ Object {
       </div>
     </div>
   </div>,
-  "styles": ".htz-b{color:#787878}.htz-c{font-weight:700}.htz-d{height:0}.htz-e{padding-bottom:10rem}.htz-f{position:relative}.htz-g{width:10rem}.htz-h{background-color:#EBEBEB}.htz-i{border-radius:50%}.htz-j{overflow:hidden}.htz-k{display:inline-block}.htz-l{height:100%}.htz-m{left:0}.htz-n{position:absolute}.htz-o{top:0}.htz-p{width:100%}.htz-q:after{content:'\\"'}.htz-r:before{content:'\\"'}@media (max-width: 37.4375em){.htz-a{opacity:0}}@media (max-width: 47.9375em) and (max-width: 79.9375em){.htz-s{font-size:3rem}.htz-t{line-height:1.3333333333333333em}.htz-ak{font-size:2.3333333333333335rem}.htz-al{line-height:1.2857142857142858em}}@media (max-width: 47.9375em) and (min-width: 80em){.htz-u{font-size:3rem}.htz-v{line-height:1.3333333333333333em}.htz-am{font-size:2.2857142857142856rem}.htz-an{line-height:1.3125em}}@media (min-width: 48em) and (max-width: 63.9375em) and (max-width: 79.9375em){.htz-w{font-size:2.6666666666666665rem}.htz-x{line-height:1.5em}.htz-ao{font-size:2rem}}@media (min-width: 48em) and (max-width: 63.9375em) and (min-width: 80em){.htz-y{font-size:2.5714285714285716rem}.htz-z{line-height:1.5555555555555556em}.htz-ap{font-size:2rem}.htz-aq{line-height:1.5em}}@media (min-width: 64em) and (max-width: 79.9375em) and (max-width: 79.9375em){.htz-ab{font-size:3rem}.htz-ac{line-height:1.3333333333333333em}.htz-ar{font-size:2.6666666666666665rem}.htz-as{line-height:1.5em}}@media (min-width: 64em) and (max-width: 79.9375em) and (min-width: 80em){.htz-ae{font-size:3rem}.htz-af{line-height:1.3333333333333333em}.htz-at{font-size:2.5714285714285716rem}.htz-au{line-height:1.5555555555555556em}}@media (min-width: 80em) and (max-width: 79.9375em){.htz-ag{font-size:3.5rem}.htz-ah{line-height:1.4285714285714286em}.htz-av{font-size:2.3333333333333335rem}.htz-aw{line-height:1.2857142857142858em}}@media (min-width: 80em) and (min-width: 80em){.htz-ai{font-size:3.4285714285714284rem}.htz-aj{line-height:1.1666666666666667em}.htz-ax{font-size:2.2857142857142856rem}.htz-ay{line-height:1.3125em}}",
+  "styles": ".htz-b{font-weight:700}.htz-c{color:#0B7EB5}.htz-d:before{content:}.htz-e:before{background-color:#0B7EB5}.htz-f:before{width:16rem}.htz-g:before{height:1.5rem}.htz-h:before{display:none}.htz-i:before{margin-bottom:1.5rem}.htz-j{height:0}.htz-k{padding-bottom:10rem}.htz-l{position:relative}.htz-m{width:10rem}.htz-n{background-color:#EBEBEB}.htz-o{border-radius:50%}.htz-p{overflow:hidden}.htz-q{display:inline-block}.htz-r{height:100%}.htz-s{left:0}.htz-t{position:absolute}.htz-u{top:0}.htz-v{width:100%}.htz-ak{background-color:#FFE70C}.htz-al{padding-bottom:.5rem}.htz-am{padding-left:1rem}.htz-an{padding-right:1rem}.htz-ao{padding-top:.5rem}@media (max-width: 63.9375em){.htz-a{opacity:0}}@media (max-width: 63.9375em) and (max-width: 79.9375em){.htz-w{font-size:4.666666666666667rem}.htz-x{line-height:7rem}.htz-ap{font-size:2.3333333333333335rem}.htz-aq{line-height:1.2857142857142858em}}@media (max-width: 63.9375em) and (min-width: 80em){.htz-y{font-size:4.428571428571429rem}.htz-z{line-height:7rem}.htz-ar{font-size:2.2857142857142856rem}.htz-as{line-height:1.3125em}}@media (min-width: 64em) and (max-width: 79.9375em) and (max-width: 79.9375em){.htz-ab{font-size:3rem}.htz-ac{line-height:1.3333333333333333em}.htz-at{font-size:2.6666666666666665rem}.htz-au{line-height:1.5em}}@media (min-width: 64em) and (max-width: 79.9375em) and (min-width: 80em){.htz-ae{font-size:3rem}.htz-af{line-height:1.3333333333333333em}.htz-av{font-size:2.5714285714285716rem}.htz-aw{line-height:1.5555555555555556em}}@media (min-width: 80em) and (max-width: 79.9375em){.htz-ag{font-size:3.5rem}.htz-ah{line-height:1.4285714285714286em}.htz-ax{font-size:2.3333333333333335rem}.htz-ay{line-height:1.2857142857142858em}}@media (min-width: 80em) and (min-width: 80em){.htz-ai{font-size:3.4285714285714284rem}.htz-aj{line-height:1.1666666666666667em}.htz-az{font-size:2.2857142857142856rem}.htz-ba{line-height:1.3125em}}",
 }
 `;

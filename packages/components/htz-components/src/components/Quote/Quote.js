@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { FelaTheme, FelaComponent, } from 'react-fela';
 import Image from '../Image/Image';
 import IconQuote from '../Icon/icons/IconQuote';
 import FadeinViewport from './helper/FadeinViewport';
@@ -10,7 +10,7 @@ Quote.propTypes = {
   text: PropTypes.string.isRequired,
   /** The Quote's source (the quotee). */
   credit: PropTypes.string,
-  /** List of images (usually of the quotee). */
+  /** List of images (usually of the cited person). */
   imagesList: PropTypes.arrayOf(PropTypes.object),
 };
 
@@ -19,75 +19,10 @@ Quote.defaultProps = {
   imagesList: null,
 };
 
-const quoteWrapperStyle = ({ theme, isActive, }) => ({
-  color: theme.color('neutral', '-3'),
-  fontWeight: '700',
-});
-
-const QuoteWrapper = createComponent(quoteWrapperStyle, 'blockquote');
-
-const quoteStyle = ({ theme, quoteType, }) => ({
-  ':after': {
-    content: "''",
-  },
-  ...getStyleObj(quoteType),
-  extend: [
-    theme.mq({ until: 'm', }, { ...theme.type(1), }),
-    theme.mq({ from: 'm', until: 'l', }, { ...theme.type(0), }),
-    theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(1), }),
-    theme.mq({ from: 'xl', }, { ...theme.type(2), }),
-  ],
-});
-const QuoteElement = createComponent(quoteStyle, 'p');
-
-const citeStyle = ({ theme, }) => ({
-  extend: [
-    theme.mq({ until: 'm', }, { ...theme.type(-1), }),
-    theme.mq({ from: 'm', until: 'l', }, { ...theme.type(-2), }),
-    theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(0), }),
-    theme.mq({ from: 'xl', }, { ...theme.type(-1), }),
-  ],
-});
-const Cite = createComponent(citeStyle, 'span');
-
-const topBorderStyle = ({ theme, }) => ({
-  borderTopWidth: '1rem',
-  borderTopColor: theme.color('primary'),
-  borderTopStyle: 'solid',
-  width: '16.5rem',
-  height: '1rem',
-  display: 'inline-block',
-  marginBottom: '1rem',
-});
-const TopBorder = createComponent(topBorderStyle, 'span');
-
-function getStyleObj(quoteType) {
-  switch (quoteType) {
-    case 'image':
-      return {
-        ':before': {
-          content: "'\"'",
-        },
-        ':after': {
-          content: "'\"'",
-        },
-      };
-    case 'border':
-      return {
-        ':after': {
-          content: "''",
-        },
-      };
-    default:
-      return {};
-  }
-}
-
 const imgOptions = {
   transforms: {
     width: '100',
     aspect: 'square',
-    quality: 'auto',
   },
 };
 
@@ -102,40 +37,100 @@ const imgOptions = {
  *  * [Border-Top](#borderQuote)
  *    Default. when both `imagesList` and `credit` are empty or contains invalid content,
  *    there will be a simple border on top of the quote.
- *
  */
-function Quote({ text, credit, imagesList, }) {
-  const quoteType = imagesList && imagesList.length > 0
-    ? 'image'
-    : credit && credit.trim().length > 0
-      ? 'quote'
-      : 'border';
+export default function Quote({ text, credit, imagesList, }) {
+  const hasImage = imagesList && imagesList.length > 0;
+  const hasCredit = credit && credit.trim().length > 0;
+
+  const quoteType = hasImage ? 'image' : hasCredit ? 'quote' : 'border';
 
   return (
-    <FadeinViewport threshold={0.5} mediaQuery={{ until: 's', }}>
-      <QuoteWrapper>
-        {quoteType === 'image' ? (
-          <Image
-            imgOptions={imgOptions}
-            data={imagesList[0]}
-            miscStyles={{
-              width: '10rem',
-              paddingBottom: '10rem',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              display: 'inline-block',
+    <FadeinViewport threshold={1} mediaQuery={{ until: 'l', }}>
+      <FelaTheme
+        render={theme => (
+          <FelaComponent
+            render="blockquote"
+            style={{
+              fontWeight: '700',
+              color: theme.color('primary', 'base'),
+              '&:before': {
+                content: quoteType === 'border' ? '""' : '',
+                backgroundColor: theme.color('primary'),
+                width: '16rem',
+                height: '1.5rem',
+                display: quoteType === 'border' ? 'inline-block' : 'none',
+                marginBottom: '1.5rem',
+              },
             }}
-          />
-        ) : quoteType === 'quote' ? (
-          <IconQuote size={6.5} color="primary" miscStyles={{ marginBottom: '2rem', }} />
-        ) : (
-          <TopBorder />
+          >
+            {quoteType === 'image' ? (
+              <Image
+                imgOptions={imgOptions}
+                data={imagesList[0]}
+                miscStyles={{
+                  width: '10rem',
+                  paddingBottom: '10rem',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  display: 'inline-block',
+                }}
+              />
+            ) : quoteType === 'quote' ? (
+              <IconQuote size={6} color="primary" />
+            ) : null}
+            <QuoteText>{text}</QuoteText>
+            <Cite>{credit}</Cite>
+          </FelaComponent>
         )}
-        <QuoteElement quoteType={quoteType}>{text}</QuoteElement>
-        {credit ? <Cite>{credit}</Cite> : null}
-      </QuoteWrapper>
+      />
     </FadeinViewport>
   );
 }
 
-export default Quote;
+// /////////////////////////////////////////////////////////////////////
+//                          Inner Components                          //
+// /////////////////////////////////////////////////////////////////////
+
+QuoteText.propTypes = { children: PropTypes.node.isRequired, };
+function QuoteText({ children, }) {
+  return (
+    <FelaComponent
+      style={theme => ({
+        extend: [
+          theme.mq({ until: 'l', }, { ...theme.type(4, { lines: 7, }), }),
+          theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(1), }),
+          theme.mq({ from: 'xl', }, { ...theme.type(2), }),
+        ],
+      })}
+      render="p"
+    >
+      {children}
+    </FelaComponent>
+  );
+}
+
+Cite.propTypes = { children: PropTypes.node, };
+Cite.defaultProps = { children: null, };
+function Cite({ children, }) {
+  return (
+    children && (
+      <FelaComponent
+        style={theme => ({
+          backgroundColor: theme.color('quaternary', 'base'),
+          paddingBottom: '.5rem',
+          paddingInlineEnd: '1rem',
+          paddingInlineStart: '1rem',
+          paddingTop: '.5rem',
+          extend: [
+            theme.mq({ until: 'l', }, { ...theme.type(-1), }),
+            theme.mq({ from: 'l', until: 'xl', }, { ...theme.type(0), }),
+            theme.mq({ from: 'xl', }, { ...theme.type(-1), }),
+          ],
+        })}
+        render="span"
+      >
+        {children}
+      </FelaComponent>
+    )
+  );
+}
