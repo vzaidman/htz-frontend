@@ -20,7 +20,6 @@ import Debug from '../../../Debug/Debug';
 import BlockLink from '../../../BlockLink/BlockLink';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import { isClickTrackerWrapper, } from '../../../../utils/validateType';
 
 type Props = {
   list: ListDataType,
@@ -45,72 +44,73 @@ export default function Donatello({
   biAction,
   lazyLoadImages = true,
 }: Props): Node {
-  // The `isClickTracker` predicate checks the type and
-  // filters out non `ClickTrackerBannerWrapperType` elements,
-  // but flow does not understand predicates in `filter` yet:
-  // https://github.com/facebook/flow/issues/1414
-  // $FlowFixMe
-  const items: Array<ClickTrackerBannerWrapperType> = list.items
-    .filter(item => isClickTrackerWrapper(item))
-    .slice(0, 5);
-  return items ? (
-    <FelaTheme
-      render={theme => (
-        <ListView
-          innerBackgroundColor="transparent"
-          miscStyles={{
-            fontFamily: theme.fontStacks.commercial,
-            display: [ { until: 's', value: 'none', }, ],
-          }}
-        >
-          <GridItem
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}
-          >
-            <ListViewHeader
-              title={list.title}
-              backgroundColor={[ 'transparent', ]}
-              isCommercial
-            />
-          </GridItem>
-          <GridItem
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}
-          >
-            <Grid gutter={4}>
-              {items.map((item: ClickTrackerBannerWrapperType, index) => {
-                const isLast: boolean = index === items.length - 1;
-                return (
-                  <GridItem
-                    key={item.contentId}
-                    width={[
-                      { until: 'l', value: 1 / (items.length - 1), },
-                      { from: 'l', value: 1 / items.length, },
-                    ]}
-                    miscStyles={{
-                      display: isLast
-                        ? [
-                          { until: 'l', value: 'none', },
-                          { from: 'l', value: 'block', },
-                        ]
-                        : 'block',
-                    }}
-                  >
-                    <Item
-                      item={item}
-                      biAction={biAction}
-                      index={index}
-                      lazyLoadImages={lazyLoadImages}
-                    />
-                  </GridItem>
-                );
-              })}
-            </Grid>
-          </GridItem>
-        </ListView>
-      )}
-    />
-  ) : (
-    <Debug>There is not enough items to render this list view</Debug>
-  );
+  const items: ?Array<ClickTrackerBannerWrapperType> = list.clickTrackers
+    ? list.clickTrackers.slice(0, 5)
+    : null;
+  return items
+    ? list.title
+      ? (
+        <FelaTheme
+          render={theme => (
+            <ListView
+              innerBackgroundColor="transparent"
+              miscStyles={{
+                fontFamily: theme.fontStacks.commercial,
+                display: [ { until: 's', value: 'none', }, ],
+              }}
+            >
+              <GridItem
+                width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}
+              >
+                <ListViewHeader
+                  title={list.title}
+                  backgroundColor={[ 'transparent', ]}
+                  isCommercial
+                />
+              </GridItem>
+              <GridItem
+                width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}
+              >
+                <Grid gutter={4}>
+                  {items.map((item: ClickTrackerBannerWrapperType, index) => {
+                    const isLast: boolean = index === items.length - 1;
+                    return (
+                      <GridItem
+                        key={item.contentId}
+                        width={[
+                          { until: 'l', value: 1 / (items.length - 1), },
+                          { from: 'l', value: 1 / items.length, },
+                        ]}
+                        miscStyles={{
+                          display: isLast
+                            ? [
+                              { until: 'l', value: 'none', },
+                              { from: 'l', value: 'block', },
+                            ]
+                            : 'block',
+                        }}
+                      >
+                        <Item
+                          item={item}
+                          biAction={biAction}
+                          index={index}
+                          lazyLoadImages={lazyLoadImages}
+                        />
+                      </GridItem>
+                    );
+                  })}
+                </Grid>
+              </GridItem>
+            </ListView>
+          )}
+        />
+      )
+      : (
+        <Debug>This element cannot be rendered without a title</Debug>
+      )
+    : (
+      <Debug>There is not enough items to render this list view</Debug>
+    );
 }
 
 Item.defaultProps = {

@@ -10,10 +10,8 @@ const DonatelloQuery = gql`
   query DonatelloQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
-      items {
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
     }
   }
