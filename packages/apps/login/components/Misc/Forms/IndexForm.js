@@ -128,6 +128,12 @@ const setFacebookParamsOnApollo = client => {
   }
 };
 
+const getOtpErrorMessage = (msg) => {
+  return msg.includes("sms") ?
+    "עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות." :
+    (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.');
+}
+
 const handleGenerateOtp = ({
   phoneNum,
   email,
@@ -151,7 +157,7 @@ const handleGenerateOtp = ({
       }
       else {
         setPreloader(false);
-        showError((json.msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
+        showError(getOtpErrorMessage(json.msg));
       }
     });
 
