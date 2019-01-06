@@ -23,11 +23,14 @@ const propTypes = {
   rowBgc: PropTypes.string,
   /** should the masthead border bottom be full width */
   mastheadFullWidthBorder: PropTypes.bool,
+  /** should display navigation items from header slot (madorim- הארץ שלי, בעולם and so...) */
+  includeMadorimNavigation: PropTypes.bool,
 };
 
 const defaultProps = {
   rowBgc: null,
   mastheadFullWidthBorder: false,
+  includeMadorimNavigation: false,
 };
 
 // eslint-disable-next-line react/prop-types
@@ -62,7 +65,13 @@ const Logo = ({ host, }) => (
   />
 );
 
-function Masthead({ content, articleId, rowBgc, mastheadFullWidthBorder, }) {
+function Masthead({
+  content,
+  articleId,
+  rowBgc,
+  mastheadFullWidthBorder,
+  includeMadorimNavigation,
+}) {
   return (
     <Fragment>
       {content
@@ -75,7 +84,12 @@ function Masthead({ content, articleId, rowBgc, mastheadFullWidthBorder, }) {
               key={element.contentId}
               {...element}
               {...(element.inputTemplate === 'com.htz.EditableNavigationElement'
-                ? { Logo, rowBgc, mastheadFullWidthBorder, }
+                ? {
+                  Logo,
+                  rowBgc,
+                  mastheadFullWidthBorder,
+                  includeMadorimNavigation,
+                }
                 : {})}
               articleId={articleId}
             />

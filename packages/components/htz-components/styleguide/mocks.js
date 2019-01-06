@@ -1,5 +1,6 @@
 import AddComment from './mocks/AddComment';
 import List from './mocks/list';
+import NavMenu from './mocks/NavMenu';
 import CommentsElement from './mocks/CommentsElement';
 import Footer from './mocks/Footer';
 import Asset from './mocks/Asset';
@@ -44,6 +45,7 @@ const mocks = {
   CommentsElement,
   Footer,
   List,
+  NavMenu,
   Asset,
   BreakingNewsBox,
 };

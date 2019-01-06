@@ -13,6 +13,7 @@ import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import MobileNavigation from '../MobileNavigationMenu/MobileNavigationMain';
 import WrappedScroll from '../Scroll/Scroll';
 import UserDispenser from '../User/UserDispenser';
+import MadorimNavigation from './MadorimNavigation';
 
 const hostQuery = gql`
   query Hostname($path: String!) {
@@ -28,6 +29,8 @@ class Masthead extends Component {
     rowBgc: PropTypes.string,
     /** should the masthead borderbottom be full width */
     mastheadFullWidthBorder: PropTypes.bool,
+    /** should display navigation items from header slot (madorim- הארץ שלי, בעולם and so...) */
+    includeMadorimNavigation: PropTypes.bool,
     /**
      * Navigation Menu's content Id.
      */
@@ -46,6 +49,7 @@ class Masthead extends Component {
   static defaultProps = {
     rowBgc: null,
     mastheadFullWidthBorder: false,
+    includeMadorimNavigation: false,
     velocity: 0,
     y: 0,
   };
@@ -74,7 +78,15 @@ class Masthead extends Component {
   };
 
   render() {
-    const { contentId, hostname, y, Logo, rowBgc, mastheadFullWidthBorder, } = this.props;
+    const {
+      contentId,
+      hostname,
+      y,
+      Logo,
+      rowBgc,
+      mastheadFullWidthBorder,
+      includeMadorimNavigation,
+    } = this.props;
     const { shouldDisplay, searchIsOpen, } = this.state;
     const host = hostname.match(/^(?:.*?\.)?(.*)/i)[1];
 
@@ -133,15 +145,15 @@ class Masthead extends Component {
                           { from: 'l', until: 'xl', value: '100%', },
                           { from: 'xl', value: '100%', },
                         ],
+                        ...borderBottomMasthead,
                       },
                     }
-                    : {})}
+                    : { miscStyles: { ...borderBottomMasthead, }, })}
                 >
                   <FelaComponent
                     style={() => {
                       const mobileStyles = {
                         paddingTop: '2rem',
-                        ...(!mastheadFullWidthBorder ? borderBottomMasthead : {}),
                       };
                       return {
                         alignItems: 'stretch',
@@ -149,7 +161,6 @@ class Masthead extends Component {
                         display: 'flex',
                         position: 'relative',
                         extend: [
-                          ...(!mastheadFullWidthBorder ? [ borderBottomMasthead, ] : []),
                           theme.mq({ until: 's', }, mobileStyles),
                           theme.mq({ until: 'm', misc: 'landscape', }, mobileStyles),
                         ],
@@ -166,6 +177,7 @@ class Masthead extends Component {
                     {searchIsOpen ? null : <Logo host={host} />}
                     {searchIsOpen ? null : <MastheadUserTools y={y} />}
                   </FelaComponent>
+                  {includeMadorimNavigation && <MadorimNavigation contentId={contentId} />}
                 </LayoutContainer>
               </LayoutRow>
               <FelaComponent
@@ -198,18 +210,20 @@ class Masthead extends Component {
   }
 }
 
-export default props => (
-  <Query query={hostQuery}>
-    {({ loading, error, data, }) => {
-      if (loading) return null;
-      if (error) return null;
-      return (
-        <WrappedScroll
-          render={({ velocity, y, }) => (
-            <Masthead hostname={data.hostname} velocity={velocity} y={y} {...props} />
-          )}
-        />
-      );
-    }}
-  </Query>
-);
+export default function WrappedMasthead(props) {
+  return (
+    <Query query={hostQuery}>
+      {({ loading, error, data, }) => {
+        if (loading) return null;
+        if (error) return null;
+        return (
+          <WrappedScroll
+            render={({ velocity, y, }) => (
+              <Masthead hostname={data.hostname} velocity={velocity} y={y} {...props} />
+            )}
+          />
+        );
+      }}
+    </Query>
+  );
+}

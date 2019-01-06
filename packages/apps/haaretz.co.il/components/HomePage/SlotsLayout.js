@@ -39,7 +39,7 @@ function HomePageSlotsLayout({
     <React.Fragment>
       {preHeader ? <LayoutRow bgc={rowBgc}>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside HeaderSlot Component because its miscStyles depend on state */}
-      <HeaderSlot rowBgc={rowBgc} content={header} />
+      <HeaderSlot rowBgc={rowBgc} content={header} includeMadorimNavigation />
       {postHeader ? (
         <LayoutRow bgc={rowBgc}>
           <LayoutContainer>{getElements(postHeader)}</LayoutContainer>
