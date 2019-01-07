@@ -11,7 +11,7 @@ import CreditArticle from '../Credit/CreditArticle';
 import Alerts from '../Alerts/Alerts';
 import Image from '../Image/Image';
 import IconAlefLogo from '../Icon/icons/IconAlefLogo';
-import Time from '../Time/Time';
+import TeaserTime from '../TeaserTime/TeaserTime';
 import AuthorNotificationsRegistration from '../ServiceByMailRegistration/AuthorNotificationsRegistration';
 import SlideinBox from '../Transitions/SlideinBox';
 import EventTracker from '../../utils/EventTracker';
@@ -113,60 +113,28 @@ const alertsAndDesktopTimeContStyle = ({ theme, variationMq, }) => ({
   ],
 });
 
-const shouldShowDate = ({ startTime, endTime, hours = 18, }) => {
-  const MILISECS_IN_HOUR = 3600 * 1000;
-  return new Date(startTime).getTime() - new Date(endTime).getTime() < hours * MILISECS_IN_HOUR;
-};
-
-const articleTimeFormat = (startTime, endTime) => (shouldShowDate({ startTime, endTime, }) ? 'HH:mm' : 'DD.MM.YYYY');
-
 class ArticleHeaderMeta extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isShowAuthorAlertsForm: false,
     };
-
-    // this.toggleAuthorAlertsForm = this.toggleAuthorAlertsForm.bind(this);
     this.alertsToggleBtnRef = React.createRef();
   }
 
-  setModifiedDate = (modifiedDate, className) => {
-    if (!modifiedDate) {
-      return null;
-    }
-    const format = articleTimeFormat(new Date(), modifiedDate);
-    return <Time time={modifiedDate} format={`עודכן ב-${format}`} className={className} />;
-  };
-
-  displayDates = (publishDate, modifiedDate, className, variationMq) => {
-    if (new Date(publishDate).toDateString() === new Date(modifiedDate).toDateString()) {
-      const format = new Date().toDateString() === new Date(modifiedDate).toDateString()
-        ? 'HH:mm'
-        : 'DD.MM.YYYY';
-      return (
-        <Fragment>
-          <Time time={modifiedDate} format={format} className={className} />
-        </Fragment>
-      );
-    }
-    const format = new Date().toDateString() === new Date(publishDate).toDateString() ? 'HH:mm' : 'DD.MM.YYYY';
-    return (
-      <FelaComponent
-        style={theme => ({
-          extend: [
-            ...(variationMq.a ? [ theme.mq(variationMq.a, {}), ] : []),
-            ...(variationMq.b ? [ theme.mq(variationMq.b, { display: 'inline', }), ] : []),
-            ...(variationMq.c ? [ theme.mq(variationMq.c, {}), ] : []),
-          ],
-        })}
-      >
-        <Time time={publishDate} format={format} className={className} />
-        {' '}
-        {this.setModifiedDate(modifiedDate, className)}
-      </FelaComponent>
-    );
-  };
+  displayDates = (publishDate, modifiedDate, className, variationMq) => (
+    <FelaComponent
+      style={theme => ({
+        extend: [
+          ...(variationMq.a ? [ theme.mq(variationMq.a, {}), ] : []),
+          ...(variationMq.b ? [ theme.mq(variationMq.b, { display: 'inline', }), ] : []),
+          ...(variationMq.c ? [ theme.mq(variationMq.c, {}), ] : []),
+        ],
+      })}
+    >
+      <TeaserTime publishDate={publishDate} lastUpdate={modifiedDate} className={className} />
+    </FelaComponent>
+  );
 
   toggleAuthorAlertsForm = (biAction, platform) => {
     this.setState(
