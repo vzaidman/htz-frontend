@@ -54,7 +54,7 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
             <ScrollListener />
             <RouteChangeListener />
             <UserInjector />
-            <DfpInjector path="/" />
+            <DfpInjector path="/" pageType="htz_hp" />
             <GoogleAnalytics withEC />
             <StyleProvider renderer={styleRenderer} theme={htzTheme}>
               <React.Fragment>

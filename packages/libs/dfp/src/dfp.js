@@ -7,8 +7,9 @@ const resizeTimeout = 250;
 let breakpoints;
 
 export default class DFP {
-  constructor(config) {
+  constructor(pageType, config) {
     this.config = Object.assign({}, globalConfig({}), config);
+    this.pageType = pageType;
     breakpoints = breakpoints || this.config.breakpointsConfig.breakpoints;
     this.wasInitialized = false;
     this.initStarted = false;
@@ -21,7 +22,7 @@ export default class DFP {
    */
   resumeInit() {
     try {
-      this.adManager = this.adManager || new AdManager(this.config);
+      this.adManager = this.adManager || new AdManager(this.pageType, this.config);
     }
     catch (err) {
       console.error(err); // eslint-disable-line no-console

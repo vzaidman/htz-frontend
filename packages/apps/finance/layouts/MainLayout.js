@@ -61,7 +61,6 @@ function MainLayout({ children, section, assetId, title, description, path, }: P
       </Head>
       <ScrollListener />
       <RouteChangeListener />
-      {/* <DfpInjector path={path} /> */}
       <GoogleAnalytics />
       <UserInjector />
       <StyleProvider renderer={styleRenderer} theme={tmTheme}>

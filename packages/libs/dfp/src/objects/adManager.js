@@ -56,8 +56,9 @@ export const adTypes = {
 };
 
 export default class AdManager {
-  constructor(config) {
+  constructor(pageType, config) {
     this.config = Object.assign({}, config);
+    this.pageType = pageType;
     breakpoints = breakpoints || config.breakpointsConfig.breakpoints;
     this.user = new DfpUser(config);
     this.conflictResolver = new ConflictResolver(
@@ -651,7 +652,7 @@ export default class AdManager {
       // App targeting
       pubads.setTargeting('react', [ true, ]);
 
-      pubads.setTargeting('pageType', [ 'htz_article', ]);
+      pubads.setTargeting('pageType', [ this.pageType, ]);
 
       // User targeting
       if (this.user.type) {

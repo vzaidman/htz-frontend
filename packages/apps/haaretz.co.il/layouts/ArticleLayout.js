@@ -151,7 +151,7 @@ class ArticleLayout extends React.Component {
               <ScrollListener />
               <RouteChangeListener />
               <UserInjector />
-              <DfpInjector path={url.query.path} />
+              <DfpInjector path={url.query.path} pageType="htz_article" />
               <GoogleAnalytics withEC />
               <StyleProvider renderer={styleRenderer} theme={htzTheme}>
                 <Fragment>

@@ -15,11 +15,11 @@ export const adPriorities = {
   low: 'low',
 };
 
-const initDfpScript = (dfpConfig = {}, DEBUG = false) => {
+const initDfpScript = (pageType, dfpConfig = {}, DEBUG = false) => {
   //  Part I: immidiate initialization of high priority DFP ads, like maaavaron
   let q;
   if (dfpConfig) {
-    q = new DFP(dfpConfig);
+    q = new DFP(pageType, dfpConfig);
     if (DEBUG) {
       window.q = q;
     }
@@ -105,6 +105,7 @@ const propTypes = {
   error: PropTypes.bool,
   /** Indicates the path of the page to get the dfpConfig from */
   path: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+  pageType: PropTypes.string.isRequired,
   dfpConfig: PropTypes.shape({
     adSlotConfig: PropTypes.shape().isRequired,
     adManagerConfig: PropTypes.shape({
@@ -137,12 +138,12 @@ class DfpInjector extends Component {
       const DEBUG = window.location.search.includes('debug');
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ shouldRender: true, });
-      const { dfpConfig, } = this.props;
+      const { pageType, dfpConfig, } = this.props;
       try {
         if (window.tomer) {
           console.log('Client Navigation BLa Bla BLa');
         }
-        instance.dfp = initDfpScript(dfpConfig, DEBUG);
+        instance.dfp = initDfpScript(pageType, dfpConfig, DEBUG);
         window.tomer = true;
       }
       catch (e) {
@@ -177,10 +178,15 @@ class DfpInjector extends Component {
 DfpInjector.propTypes = propTypes;
 DfpInjector.defaultProps = defaultProps;
 
-function DfpInjectorWrapper(pathObject) {
+DfpInjectorWrapper.propTypes = {
+  path: PropTypes.string.isRequired,
+  pageType: PropTypes.string.isRequired,
+};
+
+function DfpInjectorWrapper({ path, pageType, }) {
   return (
     <React.Fragment>
-      <Query query={GET_AD_MANAGER} variables={{ path: pathObject.path, }}>
+      <Query query={GET_AD_MANAGER} variables={{ path, }}>
         {({ loading, error, data, client, }) => {
           if (loading) return null;
           if (error) logger.error(error);
@@ -189,7 +195,8 @@ function DfpInjectorWrapper(pathObject) {
           return (
             <DfpInjector
               dfpConfig={{ ...dfpConfig, section, subSection, }}
-              path={pathObject.path}
+              path={path}
+              pageType={pageType}
             />
           );
         }}
