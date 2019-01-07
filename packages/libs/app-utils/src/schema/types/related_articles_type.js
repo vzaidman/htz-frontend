@@ -6,7 +6,7 @@ const RelatedArticlesType = new GraphQLObjectType({
   name: 'RelatedArticles',
   fields: () => ({
     articles: { type: new GraphQLList(article), },
-    elementType: { type: GraphQLString, },
+    kind: { type: GraphQLString, },
   }),
 });
 

@@ -7,7 +7,7 @@ export default gql`
     articles {
       ...TeaserForRelatedArticles
     }
-    elementType
+    kind
   }
   ${teaserForRelatedArticles}
 `;

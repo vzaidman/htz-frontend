@@ -48,8 +48,7 @@ const Figure = ({ lastItem, children, notFullWidth, }) => (
 );
 
 const buildComponent = (context, index, isLastItem, magazineLayout) => {
-  // elementType is for related articles
-  const uniqueId = context.kind || context.inputTemplate || context.elementType || context.tag || null;
+  const uniqueId = context.kind || context.inputTemplate || context.tag || null;
 
   if (uniqueId === 'image') {
     return (
