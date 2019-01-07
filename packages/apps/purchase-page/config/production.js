@@ -8,9 +8,15 @@ module.exports = {
     }),
     newSso: 'https://ms-apps.haaretz.co.il/sso',
     sso: 'https://sso.haaretz.co.il',
+    otp: {
+      base: 'https://ms-apps.haaretz.co.il/otp',
+      generate: '/generate',
+      validate: '/validate',
+    },
     payment: 'https://payment.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
+    htzFunction: 'https://ms-apps.haaretz.co.il/htz-function',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''

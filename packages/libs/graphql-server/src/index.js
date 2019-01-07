@@ -16,8 +16,10 @@ import 'isomorphic-fetch';
 import createContext from './createContext';
 import dataSources from './dataSources';
 
-
-const port = parseInt(process.env.GRAPHQL_PORT || (config.has('graphQLPort') ? config.get('graphQLPort') : '4000'), 10);
+const port = parseInt(
+  process.env.GRAPHQL_PORT || (config.has('graphQLPort') ? config.get('graphQLPort') : '4000'),
+  10
+);
 const userInfoUri = config.get('service.userInfoUri');
 
 async function run() {
@@ -58,9 +60,15 @@ async function run() {
     introspection: true,
     dataSources,
     context: async req => {
-      // this request and the headers on it are passed from create client in app-utils
-      const context = await createContext(req.req.headers);
-      return context;
+      try {
+        // this request and the headers on it are passed from create client in app-utils
+        const context = await createContext(req.req.headers);
+        return context;
+      }
+      catch (err) {
+        console.log('error from create context gql server: ', err);
+        return {};
+      }
     },
     tracing: true,
     cacheControl: true,
