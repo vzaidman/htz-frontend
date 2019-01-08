@@ -7,7 +7,6 @@ import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 
 import VerticalList from '../commonViews/VerticalList';
-import { isClickTrackerWrapper, } from '../../../../utils/validateType';
 
 type Props = {
   list: ListDataType,
@@ -17,17 +16,12 @@ type Props = {
 };
 
 function Michelangelo({ list, ...props }: Props): Node {
-  // The `isClickTracker` predicate checks the type and
-  // filters out non `ClickTrackerBannerWrapperType` elements,
-  // but flow does not understand predicates in `filter` yet:
-  // https://github.com/facebook/flow/issues/1414
-  // $FlowFixMe
-  const items: Array<ClickTrackerBannerWrapperType> = list.items
-    .filter(item => isClickTrackerWrapper(item))
-    .slice(0, 3);
+  const banners: ?Array<ClickTrackerBannerWrapperType> = list.clickTrackers
+    ? list.clickTrackers.slice(0, 3)
+    : null;
 
-  return items.length > 0
-    ? <VerticalList banners={items} list={list} {...props} isCommercial />
+  return banners && banners.length > 0
+    ? <VerticalList banners={banners} list={list} {...props} isCommercial />
     : null;
 }
 

@@ -10,10 +10,8 @@ const MichelangeloQuery = gql`
   query MichelangeloQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
-      items {
-        ... on ClickTrackerBannersWrapper {
-          ...ClickTrackerBannersWrapper
-        }
+      clickTrackers {
+        ...ClickTrackerBannersWrapper
       }
     }
   }

@@ -18,9 +18,9 @@ function Raphael({ items, ...props }: Props): Node {
   const banners: Array<ClickTrackerBannerWrapperType> = items
     .slice(0, 3);
 
-  return banners.length > 0 ? (
-    <VerticalList banners={banners} isCommercial {...props} />
-  ) : null;
+  return banners.length > 0
+    ? <VerticalList banners={banners} isCommercial {...props} />
+    : null;
 }
 
 export default Raphael;
