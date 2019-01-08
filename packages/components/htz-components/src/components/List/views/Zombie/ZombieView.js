@@ -80,7 +80,7 @@ export default class Zombie extends React.Component<Props, State> {
   fetchStocks = () => {
     global
       .fetch(
-        'http://apifinance.themarker.com/TheMarkerApi/GetIndexes',
+        'https://apifinance.themarker.com/TheMarkerApi/GetIndexes',
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json', },
