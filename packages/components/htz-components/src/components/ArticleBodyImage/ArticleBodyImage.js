@@ -1,4 +1,4 @@
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
@@ -8,7 +8,7 @@ import Image from '../Image/Image';
 import Picture from '../Image/Picture';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ApolloBoundaryConsumer from '../ApolloBoundary/ApolloConsumer';
-import EnlargementWrapper from './ImageWrapper';
+import EnlargementWrapper from './EnlargementWrapper';
 
 const articleImagePropTypes = {
   /**
