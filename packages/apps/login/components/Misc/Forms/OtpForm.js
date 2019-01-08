@@ -5,7 +5,9 @@ import { Form, TextInput, Button, Login, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import {
+  saveUserData,
   getUserData,
+  getErrors,
   getPhoneNum,
   getOtpHash,
   generateOtp,
@@ -78,8 +80,9 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
   }
 };
 
-const translateErrorMsg = msg => (msg == 'cannot send sms'
-  ? 'לא ניתן לשלוח SMS כרגע, אנא נסה שנית במועד מאוחר יותר' : msg);
+const getOtpErrorMessage = msg => (msg.includes('sms')
+  ? 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.'
+  : (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
 
 const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader) => {
   hideError();
@@ -95,7 +98,7 @@ const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloa
       }
       else {
         setPreloader(false);
-        showError((translateErrorMsg(json.msg) || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
+        showError(getOtpErrorMessage(json.msg));
       }
     });
 };
@@ -104,6 +107,16 @@ const hidePhone = (phoneNumber, shouldShow) => (shouldShow
   ? `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`
   : '');
 
+const getMainMessage = (client, isSmsBlocked, showNumber, message) => {
+  return !isSmsBlocked ? (
+    <h5>
+      {message}
+      <br />
+      <span dir="ltr">{ hidePhone(getUserData(client).phoneNum, showNumber) }</span>
+    </h5>
+  ) : null;
+}
+
 // --------------------------
 
 class OtpForm extends Component {
@@ -111,12 +124,12 @@ class OtpForm extends Component {
     showError: false,
     errorMessage: '',
     isLoading: false,
+    smsBlocked: false,
   };
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
   static propTypes = {
     client: PropTypes.object.isRequired,
-    findRout: PropTypes.func.isRequired,
     doTransition: PropTypes.func.isRequired,
   };
 
@@ -128,6 +141,22 @@ class OtpForm extends Component {
   /* :::::::::::::::::::::::::::::::::::: PROPS } :::::::::::::::::::::::::::::::::::: */
 
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
+  componentDidMount() {
+    this.onLoadError();
+  }
+
+  onLoadError = (client = this.props.client) => {
+    try {
+      let incError = getErrors(client);
+      if(incError) {
+        this.showError(incError);
+        this.setState({ smsBlocked: true, });
+      }
+    } catch(e) {
+      
+    }
+  }
+
   showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   };
@@ -144,23 +173,19 @@ class OtpForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, findRout, doTransition, user, eventsTrackers, flow, eventCategory, } = this.props;
+    const { client, doTransition, user, eventsTrackers, flow, eventCategory, showNumber, message, } = this.props;
     const host = getHost(client);
+    const MainMessage = () => getMainMessage(client, this.state.smsBlocked, showNumber, message);
 
     return (
       <FormWrapper>
         <ItemCenterer>
-          <h5>
-            {this.props.message}
-            <br />
-            <span dir="ltr">{ hidePhone(getUserData(client).phoneNum, this.props.showNumber) }</span>
-          </h5>
+          <MainMessage/>
         </ItemCenterer>
         <Login
           render={({ loginWithMobile, }) => (
             <Form
               clearFormAfterSubmit={false}
-              // initialValues={{ email: 'insert email' }}
               validate={validateSmsCodeInput}
               onSubmit={onSubmit({ host, client, user, flow, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, eventCategory, })}
               render={({ getInputProps, handleSubmit, clearForm, }) => (
