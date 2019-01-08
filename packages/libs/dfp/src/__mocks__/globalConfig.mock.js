@@ -77,7 +77,7 @@ const dfpConfigMock = {
       id: 'haaretz.co.il.web.marketing.promotional_madrid.left_text3',
       responsive: false,
       fluid: false,
-      priority: 'low',
+      priority: 'normal',
       adSizeMapping: [ [ 375, 102, ], ],
       responsiveAdSizeMapping: {
         xxs: [],
@@ -97,29 +97,14 @@ const dfpConfigMock = {
     adUnitBase: 'haaretz.co.il_web',
   },
   breakpointsConfig: {
-    get breakpoints() {
-      const isType1 = true; // Override in VM from backend to control this toggle.
-      return isType1 ? this.breakpoints1 : this.breakpoints2;
-    },
-    // Type 1
-    breakpoints1: {
-      xxs: 600,
-      xs: 761,
-      s: 993,
-      m: 1009,
-      l: 1291,
-      xl: 1600,
+    // Type 4
+    breakpoints: {
+      xs: 100,
+      s: 600,
+      m: 768,
+      l: 1024,
+      xl: 1280,
       xxl: 1900,
-    },
-    // Type 2
-    breakpoints2: {
-      xxs: 600,
-      xs: 1000,
-      s: 1150,
-      m: 1281,
-      l: 1600,
-      xl: 1920,
-      xxl: 1920,
     },
   },
   userConfig: {
@@ -160,7 +145,7 @@ const dfpConfigMock = {
     enableSingleRequest: true,
     enableAsyncRendering: true,
     refreshIntervalTime: 1000,
-    breakpointType: 'type1',
+    breakpointType: 'type4',
   },
   sso: 'tmsso',
 };

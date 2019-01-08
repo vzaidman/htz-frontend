@@ -59,7 +59,7 @@ export default class AdManager {
   constructor(pageType, config) {
     this.config = Object.assign({}, config);
     this.pageType = pageType;
-    breakpoints = breakpoints || config.breakpointsConfig.breakpoints;
+    breakpoints = breakpoints || this.config.breakpointsConfig.breakpoints;
     this.user = new DfpUser(config);
     this.conflictResolver = new ConflictResolver(
       config.conflictManagementConfig

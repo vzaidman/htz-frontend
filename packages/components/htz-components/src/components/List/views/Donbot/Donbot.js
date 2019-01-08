@@ -1,16 +1,10 @@
 // @flow
-import {
-  imageInTeaser,
-  clickTrackerBannersWrapper,
-  dfpBanner,
-} from '@haaretz/app-utils';
+import { imageInTeaser, clickTrackerBannersWrapper, dfpBanner, } from '@haaretz/app-utils';
 import * as React from 'react';
 import gql from 'graphql-tag';
-
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import DonbotView from './DonbotView';
 import ListDataGetter from '../../ListDataGetter';
-
-import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const DonbotQuery = gql`
   query DonbotQuery($listId: String!, $history: [ID]) {
@@ -62,12 +56,8 @@ type Props = {
 
 export default function Donbot(props: Props): React.Node {
   return (
-    <ListDataGetter
-      query={DonbotQuery}
-      view="Donbot"
-      {...props}
-    >
-      {props => <DonbotView {...props} />}
+    <ListDataGetter query={DonbotQuery} view="Donbot" {...props}>
+      {dataProps => <DonbotView {...dataProps} />}
     </ListDataGetter>
   );
 }

@@ -5,6 +5,7 @@ import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
 import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 import MainTeaser from './MainTeaser';
 import HorizontalTeaser from './HorizontalTeaser';
@@ -35,34 +36,22 @@ export default function Panucci({
   biAction,
   lazyLoadImages,
 }: Props): React.Node {
-  // TODO: filter teaser and banners when kind field is available (or by inputTemplate)
-  const teaserItems = list.items;
-  const banners = null;
-
+  const { items, dfp, } = list;
   return (
     <ListView>
       {/* header */}
       <GridItem
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
         miscStyles={{
-          marginBottom: [
-            { until: 'l', value: '1rem', },
-            { from: 's', value: '4rem', },
-          ],
+          marginBottom: [ { until: 'l', value: '1rem', }, { from: 's', value: '4rem', }, ],
         }}
       >
-        <ListViewHeader
-          url={list.url}
-          extraLinks={list.extraLinks}
-          title={list.title}
-        />
+        <ListViewHeader url={list.url} extraLinks={list.extraLinks} title={list.title} />
       </GridItem>
       {/* end header */}
 
       {/* List items */}
-      <GridItem
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 8 / 12, }, ]}
-      >
+      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 8 / 12, }, ]}>
         <Grid
           rowSpacing={[
             { until: 's', value: { amount: 1, nUp: 1, }, },
@@ -87,7 +76,7 @@ export default function Panucci({
                 ]}
               >
                 <MainTeaser
-                  itemData={teaserItems[0]}
+                  itemData={items[0]}
                   lazyLoadImages={lazyLoadImages}
                   biAction={biAction}
                 />
@@ -103,7 +92,7 @@ export default function Panucci({
                 ]}
               >
                 <VerticalImageTeaser
-                  itemData={teaserItems[1]}
+                  itemData={items[1]}
                   lazyLoadImages
                   biAction={biAction}
                   displayFlags={{
@@ -132,7 +121,7 @@ export default function Panucci({
                 ]}
               >
                 <VerticalTeaser
-                  itemData={teaserItems[2]}
+                  itemData={items[2]}
                   lazyLoadImages
                   biAction={biAction}
                   displayFlags={{
@@ -159,7 +148,7 @@ export default function Panucci({
                   {/* item 4 */}
                   <GridItem width={1}>
                     <HorizontalTeaser
-                      itemData={teaserItems[3]}
+                      itemData={items[3]}
                       lazyLoadImages
                       biAction={biAction}
                       displayFlags={{ commentsCount: true, }}
@@ -169,7 +158,7 @@ export default function Panucci({
                   {/* item 5 */}
                   <GridItem width={1}>
                     <HorizontalTeaser
-                      itemData={teaserItems[4]}
+                      itemData={items[4]}
                       lazyLoadImages
                       biAction={biAction}
                       displayFlags={{ commentsCount: true, }}
@@ -185,13 +174,13 @@ export default function Panucci({
       {/* end list items */}
 
       {/* banner */}
-      {banners !== null && banners.length > 0 ? (
+      {dfp && dfp.length > 0 ? (
         <GridItem
           width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
           miscStyles={{ marginTop: [ { until: 'l', value: '1rem', }, ], }}
         >
           {/* banner content */}
-          <p style={{ backgroundColor: 'orange', height: '100%', }}>Banner</p>
+          <GeneralAdSlot {...(dfp ? dfp[0] : {})} />
         </GridItem>
       ) : null}
       {/* end banner */}

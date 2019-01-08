@@ -234,65 +234,14 @@ const dfpBaseConf = {
     adUnitBase: 'haaretz.co.il_Web',
   },
   breakpointsConfig: {
-    get breakpoints() {
-      // Override in VM from backend to control this toggle.
-      let breakpoints;
-      switch (dfpBaseConf.googleGlobalSettings.breakpointType) {
-        case 'type1':
-          breakpoints = this.breakpoints1;
-          break;
-        case 'type2':
-          breakpoints = this.breakpoints2;
-          break;
-        case 'type3':
-          breakpoints = this.breakpoints3;
-          break;
-        case 'type4':
-          breakpoints = this.breakpoints4;
-          break;
-        default:
-          breakpoints = this.breakpoints1;
-      }
-      return breakpoints;
-    },
-    // Type 1
-    breakpoints1: {
-      xxs: 600,
-      xs: 761,
-      s: 993,
-      m: 1009,
-      l: 1291,
-      xl: 1600,
-      xxl: 1900,
-    },
-    // Type 2
-    breakpoints2: {
-      xxs: 600,
-      xs: 1000,
-      s: 1150,
-      m: 1281,
-      l: 1600,
-      xl: 1920,
-      xxl: 1920,
-    },
-    // Type 3
-    breakpoints3: {
+    // Type 4
+    breakpoints: {
       xxs: 100,
       xs: 480,
       s: 600,
       m: 768,
       l: 1024,
       xl: 1280,
-      xxl: 1900,
-    },
-    // Type 4
-    breakpoints4: {
-      xxs: 600,
-      xs: 768,
-      s: 1024,
-      m: 1280,
-      l: 1900,
-      xl: 1900,
       xxl: 1900,
     },
   },
@@ -325,7 +274,7 @@ const dfpBaseConf = {
     enableSingleRequest: true,
     enableAsyncRendering: true,
     refreshIntervalTime: 1000,
-    breakpointType: 'type1',
+    breakpointType: 'type4',
   },
   get sso() {
     return siteConfig().ssoKey;

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { teaserForPanucci, link, } from '@haaretz/app-utils';
+import { teaserForPanucci, link, dfpBanner, } from '@haaretz/app-utils';
 import PanucciView from './PanucciView.js';
 import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -17,10 +17,14 @@ const PanucciQuery = gql`
       items {
         ...TeaserForPanucci
       }
+      dfp {
+        ...DfpBanner
+      }
     }
   }
   ${teaserForPanucci}
   ${link}
+  ${dfpBanner}
 `;
 
 type Props = {
