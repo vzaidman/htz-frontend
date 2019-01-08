@@ -30,6 +30,7 @@ export default function VogelView({
       gutter={0}
       sectionMiscStyles={{ display: 'flex', width: '100%', }}
       gridMiscStyles={{ flexDirection: 'column', width: '100%', }}
+      marginTop={0}
       disableWrapper
     >
       {list.title ? <VogelListTitle title={list.title} /> : null}
