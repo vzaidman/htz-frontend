@@ -23,6 +23,9 @@ const Hawking = dynamic(() => import('./views/Hawking/Hawking'), {
 const Gamal = dynamic(() => import('./views/Gamal/Gamal'), {
   loading: () => null,
 });
+const Kroker = dynamic(() => import('./views/Kroker/Kroker'), {
+  loading: () => null,
+});
 const Leela = dynamic(() => import('./views/Leela/Leela'), {
   loading: () => null,
 });
@@ -89,6 +92,9 @@ export default function DynamicListView(props) {
     }
     case 'Hawking': {
       return <Hawking {...props} />;
+    }
+    case 'Kroker': {
+      return <Kroker {...props} />;
     }
     case 'Leela': {
       return <Leela {...props} />;
