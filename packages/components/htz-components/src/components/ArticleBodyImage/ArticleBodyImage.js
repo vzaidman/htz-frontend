@@ -265,17 +265,15 @@ const ImageElement = props => {
 ImageElement.propTypes = imagePropTypes;
 ImageElement.defaultProps = imageDefaultProps;
 
-const openGallery = ({ client, contentId, }) => (
-  client.writeData({
-    data: {
-      pageGallery: {
-        isOpen: true,
-        startWith: contentId,
-        __typename: 'PageGallery',
-      },
+const openGallery = ({ client, contentId, }) => client.writeData({
+  data: {
+    pageGallery: {
+      isOpen: true,
+      startWith: contentId,
+      __typename: 'PageGallery',
     },
-  })
-);
+  },
+});
 
 /**
  * The ArticleImage component takes the Image/Picture component, strips it
@@ -314,44 +312,40 @@ function ArticleBodyImage({
         },
       }) => (
         <figure className={className}>
-          {
-            shouldOpenGallery && !isFullScreen
-              ? (
-                <ApolloBoundaryConsumer>
-                  { client => (
-                    <EnlargementWrapper
-                      isFullScreen={isFullScreen}
-                      onClick={() => openGallery({ client, contentId: image.contentId, })}
-                    >
-                      <ImageElement
-                        imgOptions={imgOptions}
-                        forceAspect={forceAspect}
-                        viewMode={viewMode}
-                        {...image}
-                        isFullScreen={isFullScreen}
-                      />
-                    </EnlargementWrapper>
-                  )}
-                </ApolloBoundaryConsumer>
-              )
-              : (
-                <ImageElement
-                  imgOptions={imgOptions}
-                  forceAspect={forceAspect}
-                  viewMode={viewMode}
-                  {...image}
+          {shouldOpenGallery && !isFullScreen ? (
+            <ApolloBoundaryConsumer>
+              {client => (
+                <EnlargementWrapper
                   isFullScreen={isFullScreen}
-                />
-              )
-          }
+                  onClick={() => openGallery({ client, contentId: image.contentId, })}
+                >
+                  <ImageElement
+                    imgOptions={imgOptions}
+                    forceAspect={forceAspect}
+                    viewMode={viewMode}
+                    {...image}
+                    isFullScreen={isFullScreen}
+                  />
+                </EnlargementWrapper>
+              )}
+            </ApolloBoundaryConsumer>
+          ) : (
+            <ImageElement
+              imgOptions={imgOptions}
+              forceAspect={forceAspect}
+              viewMode={viewMode}
+              {...image}
+              isFullScreen={isFullScreen}
+            />
+          )}
           {showCaption && !isFullScreen ? (
             <Caption
               caption={title}
               credit={credit}
               creditprefix={imageCreditPrefix}
-              miscStyles={{ paddingInlineStart: 0, }}
-              typeStyles={{ step: -2, lines: 5, }}
-              creditTypeStyles={{ step: -2, lines: 5, }}
+              miscStyles={{ paddingInlineStart: 0, marginTop: '1rem', }}
+              typeStyles={{ step: -2, }}
+              creditTypeStyles={{ step: -2, }}
             />
           ) : null}
         </figure>
