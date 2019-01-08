@@ -11,11 +11,7 @@ import getComponent from '../../utils/componentFromInputTemplate';
 import Masthead from './slots/Header';
 import ArticleBIQuery from './queries/article_bi';
 import UserDispenser from '../User/UserDispenser';
-
-const BIRequest = dynamic(import('../BI/BIRequest'), {
-  ssr: false,
-  loading: () => null,
-});
+import BIRequest from '../BI/BIRequest';
 
 const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
   ssr: false,

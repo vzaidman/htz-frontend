@@ -6,10 +6,10 @@ import {
   LayoutContainer,
   componentFromInputTemplate,
   HeaderSlot,
+  // BIRequest,
 } from '@haaretz/htz-components';
 
 import MainSlot from './MainSlot';
-import BIRequest from './DynamicUtils/BIRequestImport';
 
 type Props = {
   slots: {
@@ -38,7 +38,7 @@ function HomePageSlotsLayout({
 
   return (
     <React.Fragment>
-      <BIRequest />
+      {/* <BIRequest /> */}
       {preHeader ? <LayoutRow bgc={rowBgc}>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside HeaderSlot Component because its miscStyles depend on state */}
       <HeaderSlot rowBgc={rowBgc} content={header} includeMadorimNavigation />
