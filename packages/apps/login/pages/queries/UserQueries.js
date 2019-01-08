@@ -77,6 +77,14 @@ const OTP_HASH = gql`
   }
 `;
 
+const USER_ERRORS = gql`
+  query getErrors {
+    userData @client {
+      errors
+    }
+  }
+`;
+
 const PHONE_NUM = gql`
   query getPhoneNum {
     userData @client {
@@ -111,6 +119,7 @@ const PHONE_EMAIL_CONFIRMATION = gql`
 
 export {
   USER,
+  USER_ERRORS,
   USER_DATA,
   PHONE_NUM,
   OTP_HASH,
