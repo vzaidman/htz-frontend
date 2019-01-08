@@ -126,9 +126,21 @@ const setFacebookParamsOnApollo = client => {
   }
 };
 
-const getOtpErrorMessage = msg => (msg.includes('sms')
-  ? 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.'
-  : (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
+const handleOtpError = (msg, Router, client, setPreloader, showError) => {
+  if(msg.includes('sms')) {
+    saveUserData(client)({
+      userData: { errors: 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.', __typename: 'SsoUser', },
+    });
+    Router.push("/loginForms");
+  } else {
+    setPreloader(false);
+    showError(getOtpErrorMessage(msg));
+  }
+}
+
+const getOtpErrorMessage = msg => {
+  return (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.');
+};
 
 const handleGenerateOtp = ({
   phoneNum,
@@ -145,14 +157,17 @@ const handleGenerateOtp = ({
     const json = data.data.generateOtp;
     saveOtpHash(client)({ otpHash: json.hash, });
     if (json.success) {
-      saveUserData(client)({ userData: { phoneNum, ssoId, __typename: 'SsoUser', }, });
+      saveUserData(client)({
+        userData: { phoneNum, ssoId, __typename: 'SsoUser', },
+      });
       eventsHandler(() => {
         Router.push(route);
       });
     }
     else {
-      setPreloader(false);
-      showError(getOtpErrorMessage(json.msg));
+      handleOtpError(json.msg, Router, client, setPreloader, showError);
+      //setPreloader(false);
+      //showError(getOtpErrorMessage(json.msg));
     }
   });
 
