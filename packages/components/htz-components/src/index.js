@@ -198,6 +198,7 @@ import Donatello from './components/List/views/Donatello/Donatello';
 import Farnsworth from './components/List/views/Farnsworth/Farnsworth';
 import Gamal from './components/List/views/Gamal/Gamal';
 import Hawking from './components/List/views/Hawking/Hawking';
+import Kroker from './components/List/views/Kroker/Kroker';
 import Leela from './components/List/views/Leela/Leela';
 import Leonardo from './components/List/views/Leonardo/Leonardo';
 import Michelangelo from './components/List/views/Michelangelo/Michelangelo';
@@ -408,6 +409,7 @@ export {
   Farnsworth,
   Gamal,
   Hawking,
+  Kroker,
   Leela,
   Leonardo,
   Michelangelo,
