@@ -17,7 +17,7 @@ type Props = {
 };
 
 export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: Props): React.Node {
-  const listMiddle = list.items.length / 2;
+  const listMiddle = Math.ceil(list.items.length / 2);
 
   return (
     <ListView disableWrapper innerBackgroundColor="white" marginTop={0}>
@@ -33,7 +33,7 @@ export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: 
         >
           {list.items.map((item, index) => {
             const count = index + 1;
-            const order = index < listMiddle ? 1 + index * 2 : 2 + (index - listMiddle) * 2;
+            const order = index < listMiddle ? 1 + index * 2 : 2 + (index - listMiddle) * 2; // CSS flex-box order calculation
 
             return (
               <GridItem
@@ -48,7 +48,13 @@ export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: 
                   ],
                 }}
               >
-                <MousepadTeaser itemData={item} index={count} biAction={biAction} />
+                <MousepadTeaser
+                  itemData={item}
+                  index={count}
+                  biAction={biAction}
+                  hasBottomBorder={count % listMiddle !== 0}
+                  isLast={count === list.items.length}
+                />
               </GridItem>
             );
           })}
