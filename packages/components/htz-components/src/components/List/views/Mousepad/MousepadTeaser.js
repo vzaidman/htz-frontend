@@ -12,21 +12,40 @@ import CommentsCount from '../../../CommentsCount/CommentsCount';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
-const headerType = [ { until: 'l', value: -1, }, { from: 'l', value: 0, }, ];
+const headerType = [ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ];
 
 type Props = {
   biAction: ListBiActionType,
   itemData: TeaserDataType,
   index: number,
+  hasBottomBorder: boolean,
+  isLast: boolean,
 };
 
-export default function MousepadTeaser({ itemData, index, biAction, }: Props): React.Node {
+export default function MousepadTeaser({
+  itemData,
+  index,
+  biAction,
+  hasBottomBorder,
+  isLast,
+}: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={itemData}
-          miscStyles={{ borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ], }}
+          miscStyles={{
+            borderBottom: [
+              {
+                until: 's',
+                value: isLast ? null : [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
+              },
+              {
+                from: 's',
+                value: hasBottomBorder ? [ '1px', 1, 'solid', theme.color('neutral', '-6'), ] : null,
+              },
+            ],
+          }}
           onClick={() => biAction({ index, articleId: itemData.representedContent, })}
         >
           <GridItem
@@ -34,14 +53,18 @@ export default function MousepadTeaser({ itemData, index, biAction, }: Props): R
             miscStyles={{
               type: 9,
               color: theme.color('primary'),
-              textAlign: 'center',
               flexGrow: 0,
-              paddingTop: '1rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontWeight: 300,
             }}
           >
             {index}
           </GridItem>
           <TeaserContent
+            padding={[ 1, 2, 0, ]}
+            footerPadding={[ 0, 2, 0, ]}
             data={itemData}
             renderContent={() => (
               <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
