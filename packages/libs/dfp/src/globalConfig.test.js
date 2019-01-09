@@ -489,10 +489,7 @@ describe('globalConfig - unit tests for browser', () => {
     keys.forEach((key, index) => {
       const breakpoints = [];
       breakpointsConfig = globalConfig.breakpointsConfig;
-      breakpoints.push(breakpointsConfig.breakpoints1[key]);
-      breakpoints.push(breakpointsConfig.breakpoints2[key]);
-      breakpoints.push(breakpointsConfig.breakpoints3[key]);
-      breakpoints.push(breakpointsConfig.breakpoints4[key]);
+      breakpoints.push(breakpointsConfig.breakpoints[key]);
       it(`${key} breakpoint should be equal to one of: ${breakpoints}`, () => {
         expect(breakpointsConfig.breakpoints[key]).toBeOneOf(breakpoints);
       });

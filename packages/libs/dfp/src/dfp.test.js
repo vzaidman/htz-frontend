@@ -5,14 +5,15 @@ import DFP from './index';
 
 describe('DFP - unit tests for browser', () => {
   let dfp;
+  const pageType = 'htz_hp';
   beforeAll(() => {
-    dfp = new DFP(globalConfig);
+    dfp = new DFP(pageType, globalConfig);
     mockGoogleTagInit(dfp);
   });
 
   it('should not throw an error', () => {
     expect(() => {
-      new DFP(globalConfig); // eslint-disable-line no-new
+      new DFP(pageType, globalConfig); // eslint-disable-line no-new
     }).not.toThrowError(Error);
   });
 

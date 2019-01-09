@@ -10,13 +10,14 @@ const breakpoints = globalConfigMock.breakpointsConfig.breakpoints;
 
 describe('AdManager', () => {
   let adManager;
+  const pageType = 'htz_hp';
   // let dfp;
   beforeAll(async () => {
     // dfp = new DFP(globalConfigMock);
     // mockGoogleTagInit(dfp);
     prepareMarkup();
     window.googletag = new GPT();
-    adManager = await new AdManager(globalConfigMock);
+    adManager = await new AdManager(pageType, globalConfigMock);
     // Removes initializers pushed to google's CMD (CommandArray) for later execution
     window.googletag.cmd.splice(0, 3);
     // console.log('====================================');
@@ -40,7 +41,7 @@ describe('AdManager', () => {
   it('should not throw an error', () => {
     /* eslint-disable no-new */
     expect(() => {
-      adManager = new AdManager(globalConfigMock);
+      adManager = new AdManager(pageType, globalConfigMock);
     }).not.toThrow();
     /* eslint-enable no-new */
   });

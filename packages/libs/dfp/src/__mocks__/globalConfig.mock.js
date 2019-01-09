@@ -99,7 +99,8 @@ const dfpConfigMock = {
   breakpointsConfig: {
     // Type 4
     breakpoints: {
-      xs: 100,
+      xxs: 100,
+      xs: 480,
       s: 600,
       m: 768,
       l: 1024,

@@ -9,13 +9,14 @@ import globalConfigMock from '../__mocks__/globalConfig.mock';
 describe('adSlot', () => {
   let adSlot;
   let adManager;
+  const pageType = 'htz_hp';
 
   beforeAll(async () => {
     prepareMarkup();
     window.googletag = new GPT();
     // googletag.destroySlots();
     // console.log(window.googletag.pubads());
-    adManager = await new AdManager(globalConfigMock);
+    adManager = await new AdManager(pageType, globalConfigMock);
     adSlot = definePlazmaSlot(adManager);
     // eslint-disable-next-line no-underscore-dangle
     window.googletag._loaded();
