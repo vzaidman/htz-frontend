@@ -129,14 +129,21 @@ const imagePropTypes = {
 
 const imageDefaultProps = {
   isFullScreen: false,
-  viewMode: 'FullColumnWithVerticalImage',
+  viewMode: null,
   forceAspect: null,
   accessibility: null,
 };
 
 const mediaQueryCallback = (prop, value) => ({ [prop]: value, });
 
-const wrapperStyle = ({ viewMode, lastItem, isHeadline, miscStyles, theme, isFullScreen, }) => ({
+const wrapperStyle = ({
+  viewMode,
+  lastItem,
+  isHeadline,
+  miscStyles,
+  theme,
+  isFullScreen,
+}) => ({
   position: 'relative',
   display: 'block',
   width: '100%',
@@ -173,13 +180,16 @@ const wrapperStyle = ({ viewMode, lastItem, isHeadline, miscStyles, theme, isFul
       ]
       : []),
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
-    [ 'OneThirdView', 'TwoThirdView', 'VerticalView', ].includes(viewMode) && !isFullScreen
+    [ 'OneThirdView', 'TwoThirdView', 'VerticalView', ].includes(viewMode)
+    && !isFullScreen
       ? {
         float: 'end',
         marginBottom: '0.75rem',
         marginStart: '1.5rem',
         ...(viewMode !== 'VerticalView'
-          ? { width: `calc(100% *  ${viewMode === 'OneThirdView' ? 1 : 2}/3)`, }
+          ? {
+            width: `calc(100% *  ${viewMode === 'OneThirdView' ? 1 : 2}/3)`,
+          }
           : {}),
         width: 'calc(100%*1/3)',
       }
@@ -207,9 +217,16 @@ const getAspect = viewMode => {
 };
 
 const ImageElement = props => {
-  const { imageType, imgArray, isFullScreen, viewMode, forceAspect, imgOptions, } = props;
+  const {
+    imageType,
+    imgArray,
+    isFullScreen,
+    viewMode,
+    forceAspect,
+    imgOptions,
+  } = props;
 
-  const aspect = forceAspect || getAspect(viewMode);
+  const aspect = imageType === 'infographic' ? 'full' : forceAspect || getAspect(viewMode);
 
   const sourceAndImageOptions = imgOptions
     ? imgOptions(aspect, isFullScreen)
@@ -236,18 +253,13 @@ const ImageElement = props => {
     <Picture
       hasWrapper={!isFullScreen}
       defaultImg={{
-        data: props,
+        data: {
+          ...props,
+          imgArray: [ imgArray[1], ],
+        },
         sourceOptions: sourceAndImageOptions,
       }}
       sources={[
-        {
-          until: 'm',
-          data: {
-            ...props,
-            imgArray: [ imgArray[1], ],
-          },
-          sourceOptions: sourceAndImageOptions,
-        },
         {
           from: 'm',
           data: {
@@ -317,7 +329,8 @@ function ArticleBodyImage({
               {client => (
                 <EnlargementWrapper
                   isFullScreen={isFullScreen}
-                  onClick={() => openGallery({ client, contentId: image.contentId, })}
+                  onClick={() => openGallery({ client, contentId: image.contentId, })
+                  }
                 >
                   <ImageElement
                     imgOptions={imgOptions}
