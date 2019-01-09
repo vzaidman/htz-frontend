@@ -18,7 +18,6 @@ import HtzLink from '../HtzLink/HtzLink';
 import IconAlefLogoTransparent from '../Icon/icons/IconAlefLogoTransparent';
 import IconBack from '../Icon/icons/IconBack';
 import Section from '../AutoLevels/Section';
-import TextLink from '../TextLink/TextLink';
 import setColor from '../../utils/setColor';
 
 type BackgroundColorType =
@@ -313,7 +312,7 @@ function listViewHeaderStyle({ theme, isCommercial, backgroundColor, isHorizonta
         { until: 's', },
         borderTop(
           '1px',
-          0,
+          1,
           'solid',
           isCommercial ? theme.color('commercial') : theme.color('primary')
         )
@@ -323,7 +322,7 @@ function listViewHeaderStyle({ theme, isCommercial, backgroundColor, isHorizonta
         {
           ...borderTop(
             '2px',
-            0,
+            1,
             'solid',
             isCommercial ? theme.color('commercial') : theme.color('primary')
           ),
