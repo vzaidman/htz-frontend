@@ -62,7 +62,7 @@ const getGaObject = ({ page, flowNumber, label, }) => (page && flowNumber && lab
  * (EXPORT)
  * Returns a function that handles sending gaAction & biAction
  */
-const sendTrackingEvents = (eventTrackers, dataObj) => callback => {
+const sendTrackingEvents = (eventTrackers, dataObj) => (callback = () => {}) => {
   const gaObject = getGaObject(dataObj);
   if (
     eventTrackers
@@ -88,4 +88,6 @@ const sendTrackingEvents = (eventTrackers, dataObj) => callback => {
   }
 };
 
-export { sendTrackingEvents, };
+const eventWrapper = ({ eventTrackers, }) => ({ dataObj, callback, }) => () => sendTrackingEvents();
+
+export { sendTrackingEvents, eventWrapper, };

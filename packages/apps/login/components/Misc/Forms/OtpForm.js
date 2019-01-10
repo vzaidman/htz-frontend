@@ -5,24 +5,19 @@ import { Form, TextInput, Button, Login, } from '@haaretz/htz-components';
 import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import {
-  saveUserData,
   getUserData,
   getErrors,
   getPhoneNum,
   getOtpHash,
-  generateOtp,
   saveOtpHash,
   getEmail,
-  getReferrer,
   getUser,
   retrieveHash,
-  getDataFromUserInfo,
 } from '../../../pages/queryutil/userDetailsOperations';
-import { getHost, } from '../../../util/requestUtil';
+import { getHost, handleGenerateOtpIO, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
-import objTransform from '../../../util/objectTransformationUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -87,26 +82,16 @@ const getOtpErrorMessage = msg => (msg.includes('sms')
   ? 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.'
   : (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
 
-const checkForPhoneMailConnect = ({ client, res, showError, generateOtpIO, setPreloader, }) => {
-  saveUserData(client)({ userData: res.userByMail, });
-  if (objTransform(res).user.isPhoneConnectedWithEmail) {
-    generateOtpIO();
-  }
-  else {
-    setPreloader(false);
-    showError('לא ביצעתם אימות של הטלפון דרך המייל שנשלח אליכם');
-  }
-};
-
-const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader, sendTrackingEvents, eventsTrackers) => {
-  hideError();
-  setPreloader(true);
-  const userData = getUserData(client);
-  const generateOtpIO = () => generateOtp(client)({ typeId: getUserData(client).phoneNum, })
-    .then(data => {
-      const json = data.data.generateOtp;
-      saveOtpHash(client)({ otpHash: json.hash, });
-
+const generateOtpIO = (client, doTransition, showError, hideError, setPreloader, sendTrackingEvents, eventsTrackers, flow) =>
+  handleGenerateOtpIO({
+    client,
+    phoneNumObject: { typeId: getUserData(client).phoneNum, },
+    miscOperations: () => {
+      hideError();
+      setPreloader(true);
+    },
+    successCallback: json => {
+      console.log('inside success callback', json)
       if (json.success) {
         const route = doTransition('sendAgain');
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
@@ -117,16 +102,12 @@ const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloa
         setPreloader(false);
         showError(getOtpErrorMessage(json.msg));
       }
-    });
-
-  if (!userData.userStatus.isPhoneEmailConn) {
-    getDataFromUserInfo(client)(getEmail(client))
-      .then(res => checkForPhoneMailConnect({ client, res, showError, generateOtpIO, setPreloader, }));
-  }
-  else {
-    generateOtpIO();
-  }
-};
+    },
+    failCallback: json => {
+      setPreloader(false);
+      showError(getOtpErrorMessage(json.msg));
+    },
+  });
 
 const hidePhone = (phoneNumber, shouldShow) => (shouldShow
   ? `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`
@@ -234,7 +215,7 @@ class OtpForm extends Component {
                         data-role="resend"
                         onClick={e => {
                           e.preventDefault();
-                          handleGenerateOtp(client, doTransition, this.showError, this.hideError, this.setPreloader, sendTrackingEvents, eventsTrackers);
+                          generateOtpIO(client, doTransition, this.showError, this.hideError, this.setPreloader, sendTrackingEvents, eventsTrackers, flow)();
                         }}
                       >
                         שלח שוב
