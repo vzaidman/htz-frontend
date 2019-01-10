@@ -1,4 +1,5 @@
 // @flow
+/* global window */
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 
@@ -6,11 +7,11 @@ import type { ChildrenArray, Node, } from 'react';
 
 type Props = {
   children: ChildrenArray<Node> | Node,
-}
+};
 
 type State = {
   window: boolean,
-}
+};
 
 class Debug extends React.Component<Props, State> {
   state = {

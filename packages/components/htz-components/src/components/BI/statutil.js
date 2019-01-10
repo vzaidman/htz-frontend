@@ -1,9 +1,9 @@
 /* global window, document */
 import { CookieUtils, AbuseService, } from '@haaretz/htz-user-utils';
 import querystring from 'querystring';
+import config from 'config';
 import withTimeout from './withTimeout';
 import extractParameter from './extractParamFromUrl';
-import config from 'config';
 
 /**
  * This function is responsible for sending an action code with data
@@ -19,7 +19,6 @@ import config from 'config';
  */
 export function doStatAction(action, user) {
   const dsActionService = `${config.get('service.ds')}/action`;
-
 
 
   const { additionalInfo, } = action;

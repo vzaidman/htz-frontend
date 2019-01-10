@@ -273,6 +273,7 @@ function HawkingMainTeaser({ item, lazyLoadImages, biAction, index, }: TeaserPro
 
 HawkingTeaser.defaultProps = {
   biAction: null,
+  lazyLoadImages: true,
 };
 
 function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {

@@ -1,6 +1,5 @@
 /* global window */
 import React from 'react';
-import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { DomainUtils, } from '@haaretz/htz-user-utils';
@@ -22,13 +21,13 @@ class ImageCookies extends React.Component {
     if (this.props.images.length > 0) {
       const domain = DomainUtils.getSubdomain();
       return (
-          this.props.images.map((imageUrl, i) => {
-            const src = `${imageUrl}&_ts=${Date.now()}`;
-            const key = `login-cookie-${i}`;
-            return (
-              <img
-                key={key}
-                onLoad={
+        this.props.images.map((imageUrl, i) => {
+          const src = `${imageUrl}&_ts=${Date.now()}`;
+          const key = `login-cookie-${i}`;
+          return (
+            <img
+              key={key}
+              onLoad={
                   src.includes(domain)
                     ? () => {
                       this.props.onload();
@@ -44,11 +43,11 @@ class ImageCookies extends React.Component {
                     }
                     : null
                 }
-                src={src}
-                alt=""
-              />
-            );
-          })
+              src={src}
+              alt=""
+            />
+          );
+        })
       );
     }
     return null;

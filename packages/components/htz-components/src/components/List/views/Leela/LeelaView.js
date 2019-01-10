@@ -137,11 +137,11 @@ function Leela({ list, lazyLoadImages, gaAction, biAction, }: Props): Node {
                     render={theme => (
                       <BlockLink
                         miscStyles={{
-                            display: 'flex',
-                            marginBottom: '2rem',
-                            border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
-                            borderEnd: [ '4px', 0, 'solid', theme.color('neutral', '-4'), ],
-                          }}
+                          display: 'flex',
+                          marginBottom: '2rem',
+                          border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
+                          borderEnd: [ '4px', 0, 'solid', theme.color('neutral', '-4'), ],
+                        }}
                         href={link}
                         onClick={() => biAction({ index, articleId: item.contentId, })}
                       >

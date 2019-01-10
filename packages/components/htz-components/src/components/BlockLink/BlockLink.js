@@ -28,8 +28,6 @@ BlockLink.propTypes = {
   onClick: PropTypes.func,
   /** The HTML tag to render the `<BlockLink />` as */
   tagName: PropTypes.string,
-  /** Links target window. */
-  target: PropTypes.string,
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
