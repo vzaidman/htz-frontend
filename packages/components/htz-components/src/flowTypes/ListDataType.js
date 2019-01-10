@@ -9,27 +9,26 @@ import type { DfpBannerType, } from './DfpBannerType';
 export type ListDataType = {
   title?: string,
   extraLinks?: ListExtraLinkType[],
-  commercialLinks?: ListExtraLinkType[],
   // `commercialLinks` and `marketingTeaser` occupy the same
   // sapce, and should therefore be mutually exclusive, with
   // `marketingTeaser` taking precedence. So, if a list have both,
   // only `marketingTeaser` should be placed in the JSON
+  commercialLinks?: ListExtraLinkType[],
   marketingTeaser?: ListMarketingTeaserType,
   isLazyloadImages: boolean,
   loadPriority: "ssr" | "client" | "lazy",
   description?: string,
-  urlDescription?: string,
   items: Array<TeaserDataType>,
   dfp?: Array<DfpBannerType>,
   clickTrackers?: Array<ClickTrackerBannerWrapperType>,
   contentId: string,
   contentName: string,
   hasPagination: boolean,
-  inputTemplate: 'com.tm.element.List' | 'com.tm.ListElement',
+  inputTemplate: "com.tm.element.List" | "com.tm.ListElement",
   view: string,
   url?: string,
   description?: string,
   urlDescription?: string,
   lazyLoadImages: boolean,
-  loadPriority?: 'ssr' | 'client' | 'lazy',
+  loadPriority?: "ssr" | "client" | "lazy",
 };
