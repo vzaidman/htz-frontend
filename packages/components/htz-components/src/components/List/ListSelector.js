@@ -60,6 +60,7 @@ export default class ListSelector extends React.Component {
               <option value="Pazuzu">Pazuzu</option>
               <option value="Slim">Slim</option>
               <option value="Slugs">Slugs</option>
+              <option value="Spawn">Spawn</option>
               <option value="Vogel">Vogel</option>
               <option value="Wong">Wong</option>
               <option value="Zapp">Zapp</option>

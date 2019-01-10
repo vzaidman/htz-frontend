@@ -59,6 +59,9 @@ const Slim = dynamic(() => import('./views/Slim/Slim'), {
 const Slugs = dynamic(() => import('./views/Slugs/Slugs'), {
   loading: () => null,
 });
+const Spawn = dynamic(() => import('./views/Spawn/Spawn'), {
+  loading: () => null,
+});
 const Wong = dynamic(() => import('./views/Wong/Wong'), {
   loading: () => null,
 });
@@ -134,6 +137,9 @@ export default function DynamicListView(props) {
     }
     case 'Slugs': {
       return <Slugs {...props} />;
+    }
+    case 'Spawn': {
+      return <Spawn {...props} />;
     }
     case 'Wong': {
       return <Wong {...props} />;

@@ -209,6 +209,7 @@ import Pazuzu from './components/List/views/Pazuzu/Pazuzu';
 // import Raphael from './components/List/views/Raphael/Raphael';
 import Slim from './components/List/views/Slim/Slim';
 import Slugs from './components/List/views/Slugs/Slugs';
+import Spawn from './components/List/views/Spawn/Spawn';
 import Vogel from './components/List/views/Vogel/Vogel';
 import Wong from './components/List/views/Wong/Wong';
 import Zapp from './components/List/views/Zapp/Zapp';
@@ -420,6 +421,7 @@ export {
   // Raphael,
   Slim,
   Slugs,
+  Spawn,
   Vogel,
   Wong,
   Zapp,

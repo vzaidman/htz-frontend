@@ -13,6 +13,7 @@ import MousepadMock from './listMocks/MousepadMock';
 import PanucciMock from './listMocks/PanucciMock';
 import SlimMock from './listMocks/SlimMock';
 import SlugsMock from './listMocks/SlugsMock';
+import SpawnMock from './listMocks/SpawnMock';
 import WongMock from './listMocks/WongMock';
 import ZappMock from './listMocks/ZappMock';
 import ZoidbergMock from './listMocks/ZoidbergMock';
@@ -53,6 +54,8 @@ export default (root, { listId, }) => {
       return SlimMock;
     case 'Slugs':
       return SlugsMock;
+    case 'Spawn':
+      return SpawnMock;
     case 'Zapp':
       return ZappMock;
     case 'Zoidberg':

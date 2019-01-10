@@ -32,9 +32,12 @@ const Leela = dynamic(() => import('./views/Leela/Leela'), {
 const Leonardo = dynamic(() => import('./views/Leonardo/Leonardo'), {
   loading: () => null,
 });
-const Michelangelo = dynamic(() => import('./views/Michelangelo/Michelangelo'), {
-  loading: () => null,
-});
+const Michelangelo = dynamic(
+  () => import('./views/Michelangelo/Michelangelo'),
+  {
+    loading: () => null,
+  }
+);
 const Mom = dynamic(() => import('./views/Mom/Mom'), {
   loading: () => null,
 });
@@ -51,6 +54,9 @@ const Slim = dynamic(() => import('./views/Slim/Slim'), {
   loading: () => null,
 });
 const Slugs = dynamic(() => import('./views/Slugs/Slugs'), {
+  loading: () => null,
+});
+const Spawn = dynamic(() => import('./views/Spawn/Spawn'), {
   loading: () => null,
 });
 const Wong = dynamic(() => import('./views/Wong/Wong'), {
@@ -122,6 +128,9 @@ export default function DynamicListView(props) {
     }
     case 'Slugs': {
       return <Slugs {...props} />;
+    }
+    case 'Spawn': {
+      return <Spawn {...props} />;
     }
     case 'Wong': {
       return <Wong {...props} />;
