@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import SectionTitleA from '../SectionTitleA/SectionTitleA';
 import Section from '../AutoLevels/Section';
 
-
-const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPoint, }) => ({
+const margineliaStyle = ({
+  theme,
+  theme: { layoutStyle, },
+  hideUnderLargeBreakPoint,
+}) => ({
   extend: [
-    ...(hideUnderLargeBreakPoint ? [ theme.mq({ until: 'l', }, { display: 'none', }), ] : []),
+    ...(hideUnderLargeBreakPoint
+      ? [ theme.mq({ until: 'l', }, { display: 'none', }), ]
+      : []),
     theme.mq(
       { from: 'l', },
       {
@@ -18,14 +23,16 @@ const margineliaStyle = ({ theme, theme: { layoutStyle, }, hideUnderLargeBreakPo
       { from: 'l', until: 'xl', },
       {
         start: `${layoutStyle.startColumnPadding}rem`,
-        maxWidth: `${layoutStyle.startColumnWidthL - layoutStyle.startColumnPadding}rem`,
+        maxWidth: `${layoutStyle.startColumnWidthL
+          - layoutStyle.startColumnPadding}rem`,
       }
     ),
     theme.mq(
       { from: 'xl', },
       {
         start: `${layoutStyle.startColumnPaddingXL}rem`,
-        maxWidth: `${layoutStyle.startColumnWidthXL - layoutStyle.startColumnPaddingXL}rem`,
+        maxWidth: `${layoutStyle.startColumnWidthXL
+          - layoutStyle.startColumnPaddingXL}rem`,
       }
     ),
   ],
@@ -48,7 +55,11 @@ const ArticleLayoutRow = ({
     render={({ className, }) => (
       <Section className={className}>
         {title ? (
-          <SectionTitleA isInMargin={!!(id === 'commentsSection')} title={title} id={id || null} />
+          <SectionTitleA
+            isInMargin={!!(id === 'commentsSection')}
+            title={title}
+            id={id || null}
+          />
         ) : null}
         <FelaComponent
           style={({ layoutStyle, mq, }) => ({
@@ -58,7 +69,10 @@ const ArticleLayoutRow = ({
                 { from: 'l', until: 'xl', },
                 { paddingInlineStart: `${layoutStyle.startColumnWidthL}rem`, }
               ),
-              mq({ from: 'xl', }, { paddingInlineStart: `${layoutStyle.startColumnWidthXL}rem`, }),
+              mq(
+                { from: 'xl', },
+                { paddingInlineStart: `${layoutStyle.startColumnWidthXL}rem`, }
+              ),
             ],
           })}
         >
@@ -72,12 +86,15 @@ const ArticleLayoutRow = ({
           <FelaComponent
             style={theme => ({
               extend: [
-                theme.mq({ until: 's', }, { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }),
+                theme.mq(
+                  { until: 's', },
+                  { paddingInlineStart: '3rem', paddingInlineEnd: '3rem', }
+                ),
                 theme.mq(
                   { from: 's', until: 'l', },
                   { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', }
                 ),
-                theme.mq({ from: 'l', }, { paddingInlineStart: '5rem', paddingInlineEnd: '5rem', }),
+                theme.mq({ from: 'l', }, { paddingInlineStart: '5rem', }),
               ],
             })}
           >
