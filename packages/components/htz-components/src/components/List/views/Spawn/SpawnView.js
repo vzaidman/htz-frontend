@@ -1,13 +1,15 @@
 // @flow
+import * as React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import { rgba, } from '@haaretz/htz-css-tools';
-import * as React from 'react';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+
 import Card from '../../../Card/Card';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
+import Debug from '../../../Debug/Debug';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import H from '../../../AutoLevels/H';
@@ -81,7 +83,11 @@ export default function Spawn({
           >
             <Section isFragment>
               {/* COMIC (mobile only) */}
-              <Comic data={comicData} lazyLoadImages={lazyLoadImages} />
+              {comicData ? (
+                <Comic data={comicData} lazyLoadImages={lazyLoadImages} />
+              ) : (
+                <Debug>There is no data for the comic teaser</Debug>
+              )}
 
               {/* TEASERS */}
               <Grid
@@ -100,7 +106,11 @@ export default function Spawn({
                   ]}
                   miscStyles={{ display: 'flex', }}
                 >
-                  <Editorial data={editorialData} biAction={biAction} />
+                  {editorialData ? (
+                    <Editorial data={editorialData} biAction={biAction} />
+                  ) : (
+                    <Debug>There is no data for the editorial teaser</Debug>
+                  )}
                 </GridItem>
 
                 <GridItem
@@ -111,13 +121,17 @@ export default function Spawn({
                   ]}
                   miscStyles={{ display: 'flex', }}
                 >
-                  <OpEdTeaser
-                    data={teaser1Data}
-                    biAction={biAction}
-                    lazyLoadImages={lazyLoadImages}
-                    index={2}
-                    isStackedFromS
-                  />
+                  {teaser1Data ? (
+                    <OpEdTeaser
+                      biAction={biAction}
+                      data={teaser1Data}
+                      index={2}
+                      isStackedFromS
+                      lazyLoadImages={lazyLoadImages}
+                    />
+                  ) : (
+                    <Debug>There is no data for this teaser</Debug>
+                  )}
                 </GridItem>
                 <GridItem
                   width={[
@@ -127,13 +141,17 @@ export default function Spawn({
                   ]}
                   miscStyles={{ display: 'flex', }}
                 >
-                  <OpEdTeaser
-                    data={teaser2Data}
-                    biAction={biAction}
-                    lazyLoadImages={lazyLoadImages}
-                    index={3}
-                    isStackedFromS
-                  />
+                  {teaser2Data ? (
+                    <OpEdTeaser
+                      biAction={biAction}
+                      data={teaser2Data}
+                      index={3}
+                      isStackedFromS
+                      lazyLoadImages={lazyLoadImages}
+                    />
+                  ) : (
+                    <Debug>There is no data for this teaser</Debug>
+                  )}
                 </GridItem>
                 <GridItem
                   width={[
@@ -143,13 +161,17 @@ export default function Spawn({
                   ]}
                   miscStyles={{ display: 'flex', }}
                 >
-                  <OpEdTeaser
-                    data={teaser3Data}
-                    biAction={biAction}
-                    lazyLoadImages={lazyLoadImages}
-                    index={4}
-                    isStackedFromS
-                  />
+                  {teaser3Data ? (
+                    <OpEdTeaser
+                      biAction={biAction}
+                      data={teaser3Data}
+                      index={4}
+                      isStackedFromS
+                      lazyLoadImages={lazyLoadImages}
+                    />
+                  ) : (
+                    <Debug>There is no data for this teaser</Debug>
+                  )}
                 </GridItem>
 
                 {/* Bottom Couple */}
@@ -176,24 +198,32 @@ export default function Spawn({
                       width={[ { from: 'l', value: 1 / 2, }, ]}
                       miscStyles={{ display: 'flex', }}
                     >
-                      <OpEdTeaser
-                        biAction={biAction}
-                        data={teaser4Data}
-                        index={5}
-                        lazyLoadImages={lazyLoadImages}
-                      />
+                      {teaser4Data ? (
+                        <OpEdTeaser
+                          biAction={biAction}
+                          data={teaser4Data}
+                          index={5}
+                          lazyLoadImages={lazyLoadImages}
+                        />
+                      ) : (
+                        <Debug>There is no data for this teaser</Debug>
+                      )}
                     </GridItem>
                     <GridItem
                       width={[ { from: 'l', value: 1 / 2, }, ]}
                       miscStyles={{ display: 'flex', }}
                     >
-                      <OpEdTeaser
-                        biAction={biAction}
-                        data={teaser5Data}
-                        hasMarginTop
-                        index={6}
-                        lazyLoadImages={lazyLoadImages}
-                      />
+                      {teaser5Data ? (
+                        <OpEdTeaser
+                          biAction={biAction}
+                          data={teaser5Data}
+                          hasMarginTop
+                          index={6}
+                          lazyLoadImages={lazyLoadImages}
+                        />
+                      ) : (
+                        <Debug>There is no data for this teaser</Debug>
+                      )}
                     </GridItem>
                   </Grid>
                 </GridItem>
@@ -207,7 +237,11 @@ export default function Spawn({
                   ]}
                   miscStyles={{ display: 'flex', }}
                 >
-                  <QuoteTeaser data={quoteData} biAction={biAction} />
+                  {quoteData ? (
+                    <QuoteTeaser data={quoteData} biAction={biAction} />
+                  ) : (
+                    <Debug>There is no data for this teaser</Debug>
+                  )}
                 </GridItem>
               </Grid>
             </Section>
