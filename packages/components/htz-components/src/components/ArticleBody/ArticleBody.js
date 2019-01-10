@@ -191,7 +191,7 @@ const buildComponent = (context, index, isLastItem, showNewsletter) => {
         </Figure>
       );
     case 'interactiveElement':
-    case 'com.tm.Video': // eslint-disable-line no-case-declarations
+    case 'video': // eslint-disable-line no-case-declarations
       return (
         <Figure key={context.contentId} lastItem={isLastItem}>
           <Component {...context} />

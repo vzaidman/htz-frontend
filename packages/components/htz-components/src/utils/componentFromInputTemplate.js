@@ -84,7 +84,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.tm.BlogImage', Image, ],
   [ 'com.tm.ImageGalleryElement', ImageGallery, ],
   [ 'gallery', ImageGallery, ],
-  [ 'com.tm.Video', Video, ],
+  [ 'video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
   [
