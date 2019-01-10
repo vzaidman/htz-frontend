@@ -77,7 +77,7 @@ function StandardArticle({ articleId, slots, }) {
             // modDate,
           } = standardArticleElement;
           const header = standardArticleElement.header;
-          const dontDisplayComments = authors.filter(author => author.contentId === '1.758').length;
+          const dontDisplayComments = authors.filter(author => author.contentId && author.contentId === '1.758').length;
 
           return (
             <FelaTheme

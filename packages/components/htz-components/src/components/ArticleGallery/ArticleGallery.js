@@ -48,8 +48,8 @@ const filterData: Array<any> => Array<ImageDataType> = article => (
     if (slot.__typename === 'ArticleData') { // eslint-disable-line no-underscore-dangle
       Object.keys(slot).forEach(key => (
         Array.isArray(slot[key])
-          ? slot[key].forEach(item => isImage(item) && result.push(item))
-          : typeof slot[key] === 'object' && isImage(slot[key]) && result.push(slot[key])
+          ? slot[key].forEach(item => item && isImage(item) && result.push(item))
+          : slot[key] && typeof slot[key] === 'object' && isImage(slot[key]) && result.push(slot[key])
       ));
     }
     return result;
