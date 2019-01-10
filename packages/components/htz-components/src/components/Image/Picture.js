@@ -6,21 +6,36 @@ import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { imageOptionsType, } from '../../propTypes/imageOptionsType';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
-import { buildURLs, } from '../../utils/buildImgURLs';
+import { buildUrl, buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 import { aspectRatios, } from './Image';
 import DefaultImage from '../DefaultImage/DefaultImage';
 import setColor from '../../utils/setColor';
 
-const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
+const PictureWrapperStyle = ({
+  sources,
+  theme,
+  defaultImg,
+  bgc,
+  miscStyles,
+}) => ({
   height: '0',
   width: '100%',
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
-    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
+    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq(
+      { from, until, misc, type, },
+      { paddingBottom: getDimensions(restOfImgData), }
+    )
     ),
-    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
+    parseComponentProp(
+      'backgroundColor',
+      bgc || [ 'image', 'bgc', ],
+      theme.mq,
+      setColor,
+      theme.color
+    ),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -223,7 +238,7 @@ function Picture(props) {
     data: { alt, credit, },
     sourceOptions,
   } = defaultImg;
-  const [ imgSrc, imgSrcSet, ] = getImgSources(props);
+  const [ imgSrc, ...imgSrcSet ] = getImgSources(props);
   const defaultSizes = sourceOptions.sizes;
   const media = getMedia(props);
 
@@ -237,13 +252,17 @@ function Picture(props) {
             tagName="source"
             type="image/webp"
             srcSet={getSources(props, index, true)}
-            {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+            {...(img.sourceOptions.sizes
+              ? { sizes: img.sourceOptions.sizes, }
+              : {})}
           />
           <ImgSource
             {...(media[index] ? { media: media[index], } : [])}
             tagName="source"
             srcSet={getSources(props, index, false)}
-            {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+            {...(img.sourceOptions.sizes
+              ? { sizes: img.sourceOptions.sizes, }
+              : {})}
           />
         </Fragment>
       ) : (
@@ -254,7 +273,9 @@ function Picture(props) {
           tagName="source"
           {...(img.mimeType ? { type: img.mimeType, } : {})}
           srcSet={getSources(props, index, false)}
-          {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+          {...(img.sourceOptions.sizes
+            ? { sizes: img.sourceOptions.sizes, }
+            : {})}
         />
       ))
       )}
@@ -285,12 +306,18 @@ function Picture(props) {
         defaultImg={defaultImg}
         bgc={bgcolor}
       >
-        <Observer triggerOnce rootMargin={lazyLoad === true ? '1000px' : lazyLoad}>
+        <Observer
+          triggerOnce
+          rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
+        >
           {inView => (inView ? Element : null)}
         </Observer>
       </StyledPictureWrapper>
     ) : (
-      <Observer triggerOnce rootMargin={lazyLoad === true ? '1000px' : lazyLoad}>
+      <Observer
+        triggerOnce
+        rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
+      >
         {inView => (inView ? Element : null)}
       </Observer>
     );
@@ -324,7 +351,9 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 
   const imageNameFromData = imgCore.imgName;
   const imgVersion = imgCore.version;
-  const imgName = isAnimatedGif ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
+  const imgName = isAnimatedGif
+    ? `${imageNameFromData.split('.')[0]}.webp`
+    : imageNameFromData;
 
   const imgData = { imgName, version: imgVersion, aspects: imgCore.aspects, };
 
@@ -347,7 +376,10 @@ function getImgSources({
     aspects,
   };
 
-  return buildURLs(contentId, imgData, transformsArray, true);
+  const src = buildUrl(contentId, imgData, transformsArray[0]);
+  const srcSet = buildURLs(contentId, imgData, transformsArray, false);
+
+  return [ src, ...srcSet, ];
 }
 
 function getMedia({ sources, theme, }) {
@@ -356,7 +388,9 @@ function getMedia({ sources, theme, }) {
     const imgHasMedia = [ from, until, misc, type, ]
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
-    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true, true) : undefined;
+    return imgHasMedia
+      ? theme.getMqString({ from, until, misc, type, }, true, true)
+      : undefined;
   });
   return finalMedia;
 }

@@ -31,6 +31,11 @@ exports[`<Picture /> Render picture element correctly 1`] = `
         className="htz-h htz-i htz-j htz-k htz-b"
         sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 280px"
         src="https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg"
+        srcSet={
+          Array [
+            "https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg 1045w",
+          ]
+        }
         title="this is title/credit"
       />
     </picture>
@@ -67,7 +72,12 @@ exports[`<Picture /> Render picture sources with animated gifs correctly 1`] = `
         alt="סיכות של קמפיים #METOO"
         className="htz-g htz-h htz-i htz-j htz-b"
         src="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
-        srcSet="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
+        srcSet={
+          Array [
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 745w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 945w",
+          ]
+        }
         title="LUCY NICHOLSON/רויטרס"
       />
     </picture>
@@ -119,7 +129,12 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         className="htz-i htz-j htz-k htz-l htz-b"
         role="presentation"
         src="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
-        srcSet="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
+        srcSet={
+          Array [
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 745w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 945w",
+          ]
+        }
         title="LUCY NICHOLSON/רויטרס"
       />
     </picture>
