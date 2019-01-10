@@ -14,12 +14,15 @@ import {
   saveOtpHash,
   getEmail,
   getReferrer,
-  getUser, retrieveHash,
+  getUser,
+  retrieveHash,
+  getDataFromUserInfo,
 } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
+import objTransform from '../../../util/objectTransformationUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -84,38 +87,58 @@ const getOtpErrorMessage = msg => (msg.includes('sms')
   ? 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.'
   : (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
 
-const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader) => {
+const checkForPhoneMailConnect = ({ client, res, showError, generateOtpIO, setPreloader, }) => {
+  saveUserData(client)({ userData: res.userByMail, });
+  if (objTransform(res).user.isPhoneConnectedWithEmail) {
+    generateOtpIO();
+  }
+  else {
+    setPreloader(false);
+    showError('לא ביצעתם אימות של הטלפון דרך המייל שנשלח אליכם');
+  }
+};
+
+const handleGenerateOtp = (client, doTransition, showError, hideError, setPreloader, sendTrackingEvents, eventsTrackers) => {
   hideError();
   setPreloader(true);
-  generateOtp(client)({ typeId: getUserData(client).phoneNum, })
+  const userData = getUserData(client);
+  const generateOtpIO = () => generateOtp(client)({ typeId: getUserData(client).phoneNum, })
     .then(data => {
       const json = data.data.generateOtp;
       saveOtpHash(client)({ otpHash: json.hash, });
 
       if (json.success) {
         const route = doTransition('sendAgain');
-        Router.push(route);
+        sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
+          Router.push(route);
+        });
       }
       else {
         setPreloader(false);
         showError(getOtpErrorMessage(json.msg));
       }
     });
+
+  if (!userData.userStatus.isPhoneEmailConn) {
+    getDataFromUserInfo(client)(getEmail(client))
+      .then(res => checkForPhoneMailConnect({ client, res, showError, generateOtpIO, setPreloader, }));
+  }
+  else {
+    generateOtpIO();
+  }
 };
 
 const hidePhone = (phoneNumber, shouldShow) => (shouldShow
   ? `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`
   : '');
 
-const getMainMessage = (client, isSmsBlocked, showNumber, message) => {
-  return !isSmsBlocked ? (
-    <h5>
-      {message}
-      <br />
-      <span dir="ltr">{ hidePhone(getUserData(client).phoneNum, showNumber) }</span>
-    </h5>
-  ) : null;
-}
+const getMainMessage = (client, isSmsBlocked, showNumber, message) => (!isSmsBlocked ? (
+  <h5>
+    {message}
+    <br />
+    <span dir="ltr">{ hidePhone(getUserData(client).phoneNum, showNumber) }</span>
+  </h5>
+) : null);
 
 // --------------------------
 
@@ -147,13 +170,14 @@ class OtpForm extends Component {
 
   onLoadError = (client = this.props.client) => {
     try {
-      let incError = getErrors(client);
-      if(incError) {
+      const incError = getErrors(client);
+      if (incError) {
         this.showError(incError);
         this.setState({ smsBlocked: true, });
       }
-    } catch(e) {
-      
+    }
+    catch (e) {
+
     }
   }
 
@@ -180,7 +204,7 @@ class OtpForm extends Component {
     return (
       <FormWrapper>
         <ItemCenterer>
-          <MainMessage/>
+          <MainMessage />
         </ItemCenterer>
         <Login
           render={({ loginWithMobile, }) => (
@@ -210,10 +234,7 @@ class OtpForm extends Component {
                         data-role="resend"
                         onClick={e => {
                           e.preventDefault();
-                          sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
-                            handleGenerateOtp(client, doTransition, this.showError, this.hideError, this.setPreloader);
-                          }
-                          );
+                          handleGenerateOtp(client, doTransition, this.showError, this.hideError, this.setPreloader, sendTrackingEvents, eventsTrackers);
                         }}
                       >
                         שלח שוב
