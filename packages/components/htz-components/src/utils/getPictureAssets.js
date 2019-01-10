@@ -14,7 +14,7 @@ type SourceType = AssetOptions & {
 
 type PictureAssetPropsType = {
   bps: BpsConfig,
-  imgData: ImageDataType,
+  imgData: ?ImageDataType,
   defaultImgOptions: AssetOptions,
   sources: SourceType[],
 };

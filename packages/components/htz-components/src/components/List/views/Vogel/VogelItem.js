@@ -51,16 +51,14 @@ function VogelItem({
         <Teaser
           data={data}
           miscStyles={{
-            ...(hideOnMobile
-              ? { display: [ { until: 's', value: 'none', }, ], }
-              : {}),
+            ...(hideOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
             flexGrow: '1',
             flexShrink: '0',
           }}
           gridMiscStyles={{ flexDirection: 'column', }}
           onClick={() => biAction({ index, articleId: data.contentId, })}
         >
-          {hideImage === false && data.image ? (
+          {hideImage === false ? (
             <TeaserMedia
               width={1}
               data={data}
@@ -68,28 +66,24 @@ function VogelItem({
                 flexShrink: '0',
                 flexGrow: '0',
                 width: '100%',
-                ...(hideImageOnMobile
-                  ? { display: [ { until: 's', value: 'none', }, ], }
-                  : {}),
+                ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
               }}
             >
-              {data.image ? (
-                <Image
-                  data={data.image}
-                  imgOptions={getImageAssets({
-                    bps: theme.bps,
-                    aspect: 'headline',
-                    widths: [ 230, 460, 184, 368, 156, 302, ],
-                    sizes: [
-                      { from: 'xl', size: '218px', },
-                      { from: 'l', size: '238px', },
-                      { from: 'm', size: '240px', },
-                      { from: 's', size: '184px', },
-                    ],
-                  })}
-                  lazyLoad={lazyLoadImages}
-                />
-              ) : null}
+              <Image
+                data={data.image}
+                imgOptions={getImageAssets({
+                  bps: theme.bps,
+                  aspect: 'headline',
+                  widths: [ 230, 460, 184, 368, 156, 302, ],
+                  sizes: [
+                    { from: 'xl', size: '218px', },
+                    { from: 'l', size: '238px', },
+                    { from: 'm', size: '240px', },
+                    { from: 's', size: '184px', },
+                  ],
+                })}
+                lazyLoad={lazyLoadImages}
+              />
             </TeaserMedia>
           ) : null}
           <TeaserContent
@@ -114,12 +108,7 @@ function VogelItem({
                     ? [
                       {
                         from: 's',
-                        value: [
-                          '1px',
-                          1,
-                          'solid',
-                          theme.color('neutral', '-5'),
-                        ],
+                        value: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
                       },
                     ]
                     : [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],

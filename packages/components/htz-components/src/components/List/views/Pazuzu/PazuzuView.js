@@ -89,28 +89,26 @@ function PazuzuTeaser({
                 ...(isStackedOnXl ? [] : [ { from: 'xl', value: 1 / 2, }, ]),
               ]}
             >
-              {item.image && (
-                <Picture
-                  lazyLoad={lazyLoadImages}
-                  {...getPictureAssets({
-                    bps: theme.bps,
-                    imgData: item.image,
-                    defaultImgOptions: {
-                      sizes: '375px',
-                      aspect: 'headline',
-                      widths: [ 375, 425, 600, 768, 1028, 1280, 1920, ],
+              <Picture
+                lazyLoad={lazyLoadImages}
+                {...getPictureAssets({
+                  bps: theme.bps,
+                  imgData: item.image,
+                  defaultImgOptions: {
+                    sizes: '375px',
+                    aspect: 'headline',
+                    widths: [ 375, 425, 600, 768, 1028, 1280, 1920, ],
+                  },
+                  sources: [
+                    {
+                      aspect: isStackedOnXl ? 'landscape' : 'headline',
+                      from: 'xl',
+                      sizes: [ { from: 'xl', size: '388px', }, ],
+                      widths: [ 388, 776, 1024, ],
                     },
-                    sources: [
-                      {
-                        aspect: isStackedOnXl ? 'landscape' : 'headline',
-                        from: 'xl',
-                        sizes: [ { from: 'xl', size: '388px', }, ],
-                        widths: [ 388, 776, 1024, ],
-                      },
-                    ],
-                  })}
-                />
-              )}
+                  ],
+                })}
+              />
             </TeaserMedia>
             <TeaserContent
               isStacked={stackingSettings}
@@ -134,10 +132,7 @@ function PazuzuTeaser({
                 ...(isStackedOnXl
                   ? {}
                   : {
-                    marginTop: [
-                      { until: 'xl', value: 'auto', },
-                      { from: 'xl', value: '0', },
-                    ],
+                    marginTop: [ { until: 'xl', value: 'auto', }, { from: 'xl', value: '0', }, ],
                   }),
                 type: [
                   { until: 's', value: -3, },
@@ -150,16 +145,10 @@ function PazuzuTeaser({
                 { from: 's', until: 'xl', value: [ 1, 0, 0, ], },
                 { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : 0, },
               ]}
-              footerPadding={[
-                { until: 'xl', value: 1, },
-                { from: 'xl', value: [ 1, 0, ], },
-              ]}
+              footerPadding={[ { until: 'xl', value: 1, }, { from: 'xl', value: [ 1, 0, ], }, ]}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors
-                    authors={item.authors}
-                    miscStyles={{ fontWeight: 'bold', }}
-                  />
+                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}

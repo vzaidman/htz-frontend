@@ -30,7 +30,7 @@ type ClickTrackerProps = {
   item: ClickTrackerBannerWrapperType,
   index: number,
   biAction: ListBiActionType,
-}
+};
 
 function ClickTrackerItem({ item, index, biAction, }: ClickTrackerProps): Node {
   return (
@@ -76,12 +76,7 @@ type ItemProps = {
   listLength: number,
 };
 
-function Item({
-  data,
-  index,
-  biAction,
-  listLength,
-}: ItemProps): Node {
+function Item({ data, index, biAction, listLength, }: ItemProps): Node {
   return (
     <FelaTheme
       render={theme => (
@@ -90,10 +85,9 @@ function Item({
             ...listItemStyle,
             marginTop: index ? '1rem' : undefined,
             ...(index < listLength - 1
-              // place separators only between items
-              ? { borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ], }
-              : {}
-            ),
+              ? // place separators only between items
+              { borderBottom: [ '1px', '1', 'solid', theme.color('neutral', '-4'), ], }
+              : {}),
           }}
           href={data.path}
           onClick={() => biAction({ index, articleId: data.representedContent, })}
@@ -189,57 +183,37 @@ function Zoidberg({ list, lazyLoadImages, biAction, }: Props): Node {
         render={({ className, }) => <H className={className}>{title}</H>}
       />
       <Section>
-        {
-          items.map((item, index) => (
+        {items.map((item, index) => (
+          <ListItem key={item.contentId}>
+            {isTeaser(item) ? (
+              <Item data={item} index={index} biAction={biAction} listLength={stdItemsLength} />
+            ) : null}
+          </ListItem>
+        ))}
+        {clickTrackers && clickTrackers.length > 0
+          ? clickTrackers.map((item, index) => (
             <ListItem key={item.contentId}>
-              {isTeaser(item)
-                ? (
-                  <Item
-                    data={item}
-                    index={index}
-                    biAction={biAction}
-                    listLength={stdItemsLength}
-                  />
-                )
-                : null
-              }
+              {isClickTrackerWrapper(item) ? (
+                <ClickTrackerItem item={item} index={index} biAction={biAction} />
+              ) : null}
             </ListItem>
           ))
-        }
-        {clickTrackers && clickTrackers.length > 0 ? (
-          clickTrackers.map((item, index) => (
+          : null}
+        {dfp && dfp.length > 0
+          ? dfp.map(item => (
             <ListItem key={item.contentId}>
-              {isClickTrackerWrapper(item)
-                ? (
-                  <ClickTrackerItem
-                    item={item}
-                    index={index}
-                    biAction={biAction}
-                  />
-                )
-                : null
-              }
+              {isDfp(item) ? (
+                <GeneralAdSlot
+                  {...item}
+                  styleRule={{
+                    ...listItemStyle,
+                    marginTop: '1rem',
+                  }}
+                />
+              ) : null}
             </ListItem>
           ))
-        ) : null}
-        {dfp && dfp.length > 0 ? (
-          dfp.map(item => (
-            <ListItem key={item.contentId}>
-              {isDfp(item)
-                ? (
-                  <GeneralAdSlot
-                    {...item}
-                    styleRule={{
-                      ...listItemStyle,
-                      marginTop: '1rem',
-                    }}
-                  />
-                )
-                : null
-              }
-            </ListItem>
-          ))
-        ) : null}
+          : null}
       </Section>
     </FelaComponent>
   );

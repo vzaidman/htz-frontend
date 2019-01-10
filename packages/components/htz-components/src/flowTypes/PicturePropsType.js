@@ -20,7 +20,7 @@ export type SourceOptionsType = {
 
 type ImageType = {
   sourceOptions: SourceOptionsType,
-  data: ImageDataType,
+  data: ?ImageDataType,
 };
 
 type SourceType = {

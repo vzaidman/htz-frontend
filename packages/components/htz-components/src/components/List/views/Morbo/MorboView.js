@@ -147,38 +147,36 @@ function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
           onClick={biAction ? () => biAction({ index: 0, articleId: data.contentId, }) : null}
           gridMiscStyles={{ flexWrap: 'nowrap', }}
         >
-          {data.image ? (
-            <TeaserMedia
-              data={data}
-              width={[
-                { until: 's', value: 17, },
-                { from: 's', until: 'l', value: 28, },
-                { from: 'l', until: 'xl', value: 2 / 7, },
-                { from: 'xl', value: 1 / 2, },
-              ]}
-            >
-              <Picture
-                lazyLoad={lazyLoadImages}
-                {...getPictureAssets({
-                  bps: theme.bps,
-                  imgData: data.image,
-                  defaultImgOptions: {
-                    sizes: [ { size: '102px', }, ],
-                    aspect: 'square',
-                    widths: [ 102, 204, ],
+          <TeaserMedia
+            data={data}
+            width={[
+              { until: 's', value: 17, },
+              { from: 's', until: 'l', value: 28, },
+              { from: 'l', until: 'xl', value: 2 / 7, },
+              { from: 'xl', value: 1 / 2, },
+            ]}
+          >
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: data.image,
+                defaultImgOptions: {
+                  sizes: [ { size: '102px', }, ],
+                  aspect: 'square',
+                  widths: [ 102, 204, ],
+                },
+                sources: [
+                  {
+                    aspect: 'regular',
+                    from: 's',
+                    sizes: [ { from: 'xl', size: '192px', }, { from: 's', size: '168px', }, ],
+                    widths: [ 320, 192, 168, ],
                   },
-                  sources: [
-                    {
-                      aspect: 'regular',
-                      from: 's',
-                      sizes: [ { from: 'xl', size: '192px', }, { from: 's', size: '168px', }, ],
-                      widths: [ 320, 192, 168, ],
-                    },
-                  ],
-                })}
-              />
-            </TeaserMedia>
-          ) : null}
+                ],
+              })}
+            />
+          </TeaserMedia>
           <TeaserContent
             data={data}
             padding={[ 0, 1, ]}

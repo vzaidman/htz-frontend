@@ -13,7 +13,7 @@ import TeaserFooter from './TeaserFooter';
 
 import type { DisplayFlagsType, } from './TeaserFooter';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { TeaserDataType } from '../../../../flowTypes/TeaserDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 type Props = {
   itemData: TeaserDataType,
@@ -39,64 +39,49 @@ export default function VerticalImageTeaser({
       render={theme => (
         <Teaser
           data={itemData}
-          onClick={
-            biAction
-              ? () => biAction({ index: 1, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 1, articleId: itemData.contentId, }) : null}
           gridMiscStyles={{ flexDirection: [ { from: 's', value: 'column', }, ], }}
         >
-          {itemData.image
-            ? (
-              <TeaserMedia
-                data={itemData}
-                width={[ { until: 's', value: 17, }, ]}
-                miscStyles={{ flexGrow: [ { from: 's', value: 0, }, ], }}
-              >
-                <Picture
-                  lazyLoad={lazyLoadImages}
-                  {...getPictureAssets({
-                    bps: theme.bps,
-                    imgData: itemData.image,
-                    defaultImgOptions: {
-                      sizes: '102px',
-                      aspect: 'square',
-                      widths: [ 102, ],
-                    },
-                    sources: [
-                      {
-                        from: 's',
-                        aspect: 'regular',
-                        sizes: [
-                          { from: 'xl', size: '180px', },
-                          { from: 'l', size: '225px', },
-                          { from: 's', size: '166px', },
-                        ],
-                        widths: [ 166, 180, 225, ],
-                      },
+          <TeaserMedia
+            data={itemData}
+            width={[ { until: 's', value: 17, }, ]}
+            miscStyles={{ flexGrow: [ { from: 's', value: 0, }, ], }}
+          >
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: itemData.image,
+                defaultImgOptions: {
+                  sizes: '102px',
+                  aspect: 'square',
+                  widths: [ 102, ],
+                },
+                sources: [
+                  {
+                    from: 's',
+                    aspect: 'regular',
+                    sizes: [
+                      { from: 'xl', size: '180px', },
+                      { from: 'l', size: '225px', },
+                      { from: 's', size: '166px', },
                     ],
-                  })}
-                />
-              </TeaserMedia>
-            )
-            : null
-          }
+                    widths: [ 166, 180, 225, ],
+                  },
+                ],
+              })}
+            />
+          </TeaserMedia>
           <TeaserContent
             data={itemData}
             padding={[ 1, 1, 0, ]}
             footerPadding={[ 2, 1, 1, ]}
             gridItemMiscStyles={{ flexBasis: [ { from: 's', value: 'auto', }, ], }}
             renderContent={() => (
-              <TeaserHeader
-                {...itemData}
-                typeScale={headerType}
-                kickerTypeScale={headerType}
-              />
+              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
             )}
             footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

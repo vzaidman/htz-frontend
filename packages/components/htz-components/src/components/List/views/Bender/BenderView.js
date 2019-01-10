@@ -61,12 +61,7 @@ Bender.defaultProps = {
   lazyLoadImages: true,
 };
 
-export default function Bender({
-  list,
-  lazyLoadImages,
-  gaAction,
-  biAction,
-}: Props): Node {
+export default function Bender({ list, lazyLoadImages, gaAction, biAction, }: Props): Node {
   const imgOptions: Object = {
     transforms: {
       aspect: 'vertical',
@@ -74,11 +69,11 @@ export default function Bender({
     },
   };
 
-  const BenderItem: (
-    item: TeaserDataType,
-    i: number,
-    itemsToRender: number
-  ) => Node = (item, i, itemsToRender) => (
+  const BenderItem: (item: TeaserDataType, i: number, itemsToRender: number) => Node = (
+    item,
+    i,
+    itemsToRender
+  ) => (
     <GridItem width={1 / itemsToRender} key={item.contentId}>
       <ListItem>
         <BlockLink
@@ -93,20 +88,15 @@ export default function Bender({
                 const { title, } = theme.benderStyle;
                 return (
                   <div className={className}>
-                    <Image
-                      data={item.image}
-                      imgOptions={imgOptions}
-                      lazyLoad={lazyLoadImages}
-                    />
+                    <Image data={item.image} imgOptions={imgOptions} lazyLoad={lazyLoadImages} />
+
                     <FelaComponent
                       style={{
                         fontWeight: 'bold',
                         color: theme.color('neutral'),
                         marginBottom: '1rem',
                         marginTop: '1rem',
-                        extend: [
-                          parseTypographyProp(title.fontSize, theme.type),
-                        ],
+                        extend: [ parseTypographyProp(title.fontSize, theme.type), ],
                       }}
                       render={({ className, }) => (
                         <H className={className}>
@@ -128,21 +118,11 @@ export default function Bender({
                         {item.authors
                           ? item.authors.map(author => {
                             if (author.url) {
-                              return (
-                                <HtzLink
-                                  href={author.url}
-                                  content={author.contentName}
-                                />
-                              );
+                              return <HtzLink href={author.url} content={author.contentName} />;
                             }
-                            return (
-                              <span key={author.contentName}>
-                                {author.contentName}
-                              </span>
-                            );
+                            return <span key={author.contentName}>{author.contentName}</span>;
                           })
-                          : null
-                        }
+                          : null}
                       </span>
                     )}
                   </AboveBlockLink>
@@ -157,10 +137,8 @@ export default function Bender({
 
   const { items, title, } = list;
 
-  const content: ?number => Node = itemsToRender => (itemsToRender
-    ? items
-      .slice(0, itemsToRender)
-      .map((item, i) => BenderItem(item, i, itemsToRender))
+  const content: (?number) => Node = itemsToRender => (itemsToRender
+    ? items.slice(0, itemsToRender).map((item, i) => BenderItem(item, i, itemsToRender))
     : null);
 
   return (
@@ -174,10 +152,7 @@ export default function Bender({
               color: theme.color('primary'),
               marginBottom: '2rem',
               extend: [
-                parseTypographyProp(
-                  theme.benderStyle.mainTitle.fontSize,
-                  theme.type
-                ),
+                parseTypographyProp(theme.benderStyle.mainTitle.fontSize, theme.type),
                 theme.mq({ until: 's', }, { display: 'none', }),
               ],
             }}

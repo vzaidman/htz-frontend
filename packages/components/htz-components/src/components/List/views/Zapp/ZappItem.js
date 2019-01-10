@@ -46,54 +46,45 @@ export default function ZappItem({
         flexDirection: [ { from: 'l', value: 'column', }, ],
       }}
     >
-      {data.image ? (
-        <TeaserMedia
-          width={[
-            { until: 's', value: 4 / 12, },
-            { from: 's', until: 'l', value: 5 / 12, },
-          ]}
-          data={data}
-          miscStyles={{
-            flexBasis: [ { from: 'l', value: 'auto', }, ],
-            flexGrow: [ { from: 'l', value: '0', }, ],
-            ...(hideImageOnMobile
-              ? { display: [ { until: 's', value: 'none', }, ], }
-              : {}),
-          }}
-        >
-          <FelaTheme
-            render={theme => (data.image ? (
-            // checking data.image again so flow would not cry out
-              <Picture
-                lazyLoad={lazyLoadImages}
-                {...getPictureAssets({
-                  bps: theme.bps,
-                  imgData: data.image,
-                  defaultImgOptions: {
-                    sizes: '122',
-                    aspect: 'square',
-                    widths: [ 122, 244, ],
+      <TeaserMedia
+        width={[ { until: 's', value: 4 / 12, }, { from: 's', until: 'l', value: 5 / 12, }, ]}
+        data={data}
+        miscStyles={{
+          flexBasis: [ { from: 'l', value: 'auto', }, ],
+          flexGrow: [ { from: 'l', value: '0', }, ],
+          ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
+        }}
+      >
+        <FelaTheme
+          render={theme => (
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: data.image,
+                defaultImgOptions: {
+                  sizes: '122',
+                  aspect: 'square',
+                  widths: [ 122, 244, ],
+                },
+                sources: [
+                  {
+                    from: 's',
+                    aspect: 'headline',
+                    sizes: [
+                      { from: 'xl', size: '295px', },
+                      { from: 'l', size: '238px', },
+                      { from: 'm', size: '320px', },
+                      { from: 's', size: '250px', },
+                    ],
+                    widths: [ 500, 320, 295, 250, 238, ],
                   },
-                  sources: [
-                    {
-                      from: 's',
-                      aspect: 'headline',
-                      sizes: [
-                        { from: 'xl', size: '295px', },
-                        { from: 'l', size: '238px', },
-                        { from: 'm', size: '320px', },
-                        { from: 's', size: '250px', },
-                      ],
-                      widths: [ 500, 320, 295, 250, 238, ],
-                    },
-                  ],
-                })}
-              />
-            ) : null)
-            }
-          />
-        </TeaserMedia>
-      ) : null}
+                ],
+              })}
+            />
+          )}
+        />
+      </TeaserMedia>
       <TeaserContent
         data={data}
         padding={[ 1, 1, 1, ]}

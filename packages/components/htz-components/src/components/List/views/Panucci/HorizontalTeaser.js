@@ -42,67 +42,52 @@ export default function HorizontalTeaser({
     <FelaTheme
       render={theme => (
         <Teaser
-          onClick={
-            biAction
-              ? () => biAction({ index, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index, articleId: itemData.contentId, }) : null}
           data={itemData}
         >
-          {itemData.image
-            ? (
-              <TeaserMedia
-                data={itemData}
-                width={[
-                  { until: 's', value: 17, },
-                  { from: 's', until: 'l', value: 28, },
-                  { from: 'l', until: 'xl', value: 25, },
-                  { from: 'xl', value: 30, },
-                ]}
-              >
-                <Picture
-                  lazyLoad={lazyLoadImages}
-                  {...getPictureAssets({
-                    bps: theme.bps,
-                    imgData: itemData.image,
-                    defaultImgOptions: {
-                      sizes: '17rem',
-                      aspect: 'square',
-                      widths: [ 102, 204, ],
-                    },
-                    sources: [
-                      {
-                        from: 's',
-                        aspect: 'regular',
-                        sizes: [
-                          { from: 'xl', size: '30rem', },
-                          { from: 'l', size: '25rem', },
-                          { from: 's', size: '28rem', },
-                        ],
-                        widths: [ 336, 210, 150, 168, ],
-                      },
+          <TeaserMedia
+            data={itemData}
+            width={[
+              { until: 's', value: 17, },
+              { from: 's', until: 'l', value: 28, },
+              { from: 'l', until: 'xl', value: 25, },
+              { from: 'xl', value: 30, },
+            ]}
+          >
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: itemData.image,
+                defaultImgOptions: {
+                  sizes: '17rem',
+                  aspect: 'square',
+                  widths: [ 102, 204, ],
+                },
+                sources: [
+                  {
+                    from: 's',
+                    aspect: 'regular',
+                    sizes: [
+                      { from: 'xl', size: '30rem', },
+                      { from: 'l', size: '25rem', },
+                      { from: 's', size: '28rem', },
                     ],
-                  })}
-                />
-              </TeaserMedia>
-            )
-            : null
-          }
+                    widths: [ 336, 210, 150, 168, ],
+                  },
+                ],
+              })}
+            />
+          </TeaserMedia>
           <TeaserContent
             data={itemData}
             padding={[ 1, 1, 0, ]}
             footerPadding={[ 2, 1, 1, ]}
             footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
-              <TeaserHeader
-                {...itemData}
-                typeScale={headerType}
-                kickerTypeScale={headerType}
-              />
+              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
             )}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

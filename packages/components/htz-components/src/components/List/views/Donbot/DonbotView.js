@@ -36,12 +36,7 @@ DonbotList.defaultProps = {
   lazyLoadImages: true,
 };
 
-export default function DonbotList({
-  list,
-  biAction,
-  gaAction,
-  lazyLoadImages,
-}: Props): Node {
+export default function DonbotList({ list, biAction, gaAction, lazyLoadImages, }: Props): Node {
   const { items, } = list;
   const mainTeaser = items && items.length > 0 && items[0];
   const teaser1 = items && items.length > 1 && items[1];
@@ -50,15 +45,9 @@ export default function DonbotList({
   const teaser4 = items && items.length > 4 && items[4];
 
   return (
-    <ListView
-      gutter={4}
-      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
-    >
+    <ListView gutter={4} padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}>
       {/* LIST HEADER */}
-      <GridItem
-        stretchContent
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-      >
+      <GridItem stretchContent width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}>
         <ListViewHeader
           title={list.title}
           extraLinks={list.extraLinks}
@@ -79,9 +68,7 @@ export default function DonbotList({
           ]}
         >
           {/* MAIN TEASER */}
-          <GridItem
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 6 / 10, }, ]}
-          >
+          <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 6 / 10, }, ]}>
             {mainTeaser && (
               <DonbotMainTeaser
                 item={mainTeaser}
@@ -107,10 +94,7 @@ export default function DonbotList({
                 stretchContent
                 width={1 / 2}
                 miscStyles={{
-                  paddingInlineEnd: [
-                    { until: 's', value: 0.5, },
-                    { from: 's', value: 2, },
-                  ],
+                  paddingInlineEnd: [ { until: 's', value: 0.5, }, { from: 's', value: 2, }, ],
                 }}
               >
                 {teaser1 && (
@@ -126,10 +110,7 @@ export default function DonbotList({
                 stretchContent
                 width={1 / 2}
                 miscStyles={{
-                  paddingInlineStart: [
-                    { until: 's', value: 0.5, },
-                    { from: 's', value: 2, },
-                  ],
+                  paddingInlineStart: [ { until: 's', value: 0.5, }, { from: 's', value: 2, }, ],
                 }}
               >
                 {teaser2 && (
@@ -145,10 +126,7 @@ export default function DonbotList({
                 stretchContent
                 width={1 / 2}
                 miscStyles={{
-                  paddingInlineEnd: [
-                    { until: 's', value: 0.5, },
-                    { from: 's', value: 2, },
-                  ],
+                  paddingInlineEnd: [ { until: 's', value: 0.5, }, { from: 's', value: 2, }, ],
                 }}
               >
                 {teaser3 && (
@@ -164,10 +142,7 @@ export default function DonbotList({
                 stretchContent
                 width={1 / 2}
                 miscStyles={{
-                  paddingInlineStart: [
-                    { until: 's', value: 0.5, },
-                    { from: 's', value: 2, },
-                  ],
+                  paddingInlineStart: [ { until: 's', value: 0.5, }, { from: 's', value: 2, }, ],
                 }}
               >
                 {teaser4 && (
@@ -200,21 +175,12 @@ type TeaserProps = {
 
 DonbotMainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
 
-function DonbotMainTeaser({
-  item,
-  lazyLoadImages,
-  biAction,
-}: TeaserProps): React.Node {
+function DonbotMainTeaser({ item, lazyLoadImages, biAction, }: TeaserProps): React.Node {
   const articleId = item.contentId;
   return (
     <FelaTheme
       render={theme => (
-        <Teaser
-          data={item}
-          gutter={0}
-          onClick={() => biAction({ index: 0, articleId, })}
-          isStacked
-        >
+        <Teaser data={item} gutter={0} onClick={() => biAction({ index: 0, articleId, })} isStacked>
           <TeaserMedia data={item} isStacked>
             <Image
               lazyLoad={lazyLoadImages}
@@ -236,16 +202,10 @@ function DonbotMainTeaser({
 
           <TeaserContent
             data={item}
-            padding={[
-              { until: 'xl', value: [ 1, 2, 0, ], },
-              { from: 'xl', value: [ 1, 4, 0, ], },
-            ]}
+            padding={[ { until: 'xl', value: [ 1, 2, 0, ], }, { from: 'xl', value: [ 1, 4, 0, ], }, ]}
             isStacked
             gridItemMiscStyles={{ alignItems: 'center', }}
-            footerPadding={[
-              { until: 'xl', value: [ 1, 2, ], },
-              { from: 'xl', value: [ 2, 4, 1, ], },
-            ]}
+            footerPadding={[ { until: 'xl', value: [ 1, 2, ], }, { from: 'xl', value: [ 2, 4, 1, ], }, ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
@@ -264,10 +224,7 @@ function DonbotMainTeaser({
                 />
                 <TeaserSubtitle
                   {...item}
-                  typeScale={[
-                    { until: 'xl', value: 0, },
-                    { from: 'xl', value: -1, },
-                  ]}
+                  typeScale={[ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ]}
                   miscStyles={{
                     display: [ { until: 's', value: 'none', }, ],
                     fontWeight: '400',
@@ -277,9 +234,7 @@ function DonbotMainTeaser({
                 />
               </React.Fragment>
             )}
-            renderFooter={() => (
-              <Footer data={item} hasCommentsOnMobile hasRankOnMobile />
-            )}
+            renderFooter={() => <Footer data={item} hasCommentsOnMobile hasRankOnMobile />}
           />
         </Teaser>
       )}
@@ -288,22 +243,13 @@ function DonbotMainTeaser({
 }
 
 DonbotTeaser.defaultProps = { biAction: null, lazyLoadImages: true, };
-function DonbotTeaser({
-  item,
-  index,
-  biAction,
-  lazyLoadImages,
-}: TeaserProps): Node {
+function DonbotTeaser({ item, index, biAction, lazyLoadImages, }: TeaserProps): Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={item}
-          onClick={
-            biAction
-              ? () => biAction({ index, articleId: item.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index, articleId: item.contentId, }) : null}
           isStacked
         >
           <TeaserMedia data={item} isStacked>
@@ -338,10 +284,7 @@ function DonbotTeaser({
             renderContent={data => (
               <TeaserHeader
                 {...data}
-                typeScale={[
-                  { until: 's', value: -1, },
-                  { from: 'xl', value: -1, },
-                ]}
+                typeScale={[ { until: 's', value: -1, }, { from: 'xl', value: -1, }, ]}
               />
             )}
             renderFooter={() => (
@@ -368,19 +311,12 @@ Footer.defaultProps = {
   hasRankOnMobile: false,
 };
 
-function Footer({
-  data,
-  hasCommentsOnMobile,
-  hasRankOnMobile,
-}: FooterProps): React.Node {
+function Footer({ data, hasCommentsOnMobile, hasRankOnMobile, }: FooterProps): React.Node {
   return (
     <React.Fragment>
       {data.authors ? (
         <span style={{ marginInlineEnd: '1rem', }}>
-          <TeaserAuthors
-            authors={data.authors}
-            miscStyles={{ fontWeight: 'bold', }}
-          />
+          <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
           <span> | </span>
           <TeaserTime {...data} />
         </span>
@@ -389,18 +325,14 @@ function Footer({
         commentsCount={data.commentsCounts}
         miscStyles={{
           marginInlineEnd: '1rem',
-          display: hasCommentsOnMobile
-            ? [ { until: 's', value: 'none', }, ]
-            : undefined,
+          display: hasCommentsOnMobile ? [ { until: 's', value: 'none', }, ] : undefined,
         }}
       />
       {data.rank ? (
         <TeaserRank
           rank={data.rank}
           miscStyles={{
-            display: hasRankOnMobile
-              ? [ { until: 's', value: 'none', }, ]
-              : undefined,
+            display: hasRankOnMobile ? [ { until: 's', value: 'none', }, ] : undefined,
           }}
         />
       ) : null}

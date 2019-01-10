@@ -33,12 +33,7 @@ type Props = {
   lazyLoadImages: boolean,
 };
 
-function Farnsworth({
-  list,
-  lazyLoadImages,
-  gaAction,
-  biAction,
-}: Props): Node {
+function Farnsworth({ list, lazyLoadImages, gaAction, biAction, }: Props): Node {
   const { title, items, } = list;
   return (
     <FelaComponent
@@ -58,36 +53,28 @@ function Farnsworth({
       >
         <H>{title}</H>
       </FelaComponent>
-      {items.map((item, index) => (
-        isTeaser(item)
-          ? (
-            <ListItem key={item.contentId}>
-              <BlockLink
-                href={item.path}
-                onClick={() => biAction({ index, articleId: item.representedContent, })}
-              >
-                <FelaComponent style={{ marginBottom: '2rem', }}>
-                  <Image
-                    data={item.image}
-                    imgOptions={imgOptions}
-                    lazyLoad={lazyLoadImages}
-                  />
-                  <FelaComponent
-                    style={theme => ({
-                      fontWeight: 'bold',
-                      color: theme.color('neutral'),
-                      marginTop: '1rem',
-                    })}
-                    render={({ className, }) => (
-                      <H className={className}>{item.title}</H>
-                    )}
-                  />
-                </FelaComponent>
-              </BlockLink>
-            </ListItem>
-          )
-          : null
-      ))}
+      {items.map((item, index) => (isTeaser(item) ? (
+        <ListItem key={item.contentId}>
+          <BlockLink
+            href={item.path}
+            onClick={() => biAction({ index, articleId: item.representedContent, })}
+          >
+            <FelaComponent style={{ marginBottom: '2rem', }}>
+              <Image data={item.image} imgOptions={imgOptions} lazyLoad={lazyLoadImages} />
+
+              <FelaComponent
+                style={theme => ({
+                  fontWeight: 'bold',
+                  color: theme.color('neutral'),
+                  marginTop: '1rem',
+                })}
+                render={({ className, }) => <H className={className}>{item.title}</H>}
+              />
+            </FelaComponent>
+          </BlockLink>
+        </ListItem>
+      ) : null)
+      )}
     </FelaComponent>
   );
 }

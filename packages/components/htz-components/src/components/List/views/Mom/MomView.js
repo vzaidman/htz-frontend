@@ -35,17 +35,9 @@ Mom.defaultProps = { lazyLoadImages: true, };
 
 const headerTypeScale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
 
-export default function Mom({
-  list,
-  gaAction,
-  biAction,
-  lazyLoadImages,
-}: Props): React.Node {
+export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props): React.Node {
   const { title, description, items, url, urlDescription, } = list;
-  const listViewPadding = [
-    { until: 's', value: '2rem', },
-    { from: 's', value: '4rem', },
-  ];
+  const listViewPadding = [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ];
 
   return (
     <ListView
@@ -58,9 +50,7 @@ export default function Mom({
       }}
     >
       {/* LIST TITLE */}
-      <GridItem
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-      >
+      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}>
         <FelaComponent
           rule={({ theme, }) => ({
             marginBottom: '2rem',
@@ -108,19 +98,13 @@ export default function Mom({
             </HtzLink>
           )}
         />
-        <FelaComponent
-          style={theme => ({ ...theme.type(-1), marginBottom: '3rem', })}
-          render="p"
-        >
+        <FelaComponent style={theme => ({ ...theme.type(-1), marginBottom: '3rem', })} render="p">
           {description}
         </FelaComponent>
       </GridItem>
 
       {/* CONTENT */}
-      <GridItem
-        stretchContent
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
-      >
+      <GridItem stretchContent width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}>
         <Grid gutter={4}>
           <GridItem
             stretchContent
@@ -136,11 +120,7 @@ export default function Mom({
               ],
             }}
           >
-            <TeaserWithImg1
-              data={items[0]}
-              index={0}
-              {...{ biAction, lazyLoadImages, }}
-            />
+            <TeaserWithImg1 data={items[0]} index={0} {...{ biAction, lazyLoadImages, }} />
           </GridItem>
 
           <GridItem
@@ -160,10 +140,7 @@ export default function Mom({
             <Grid
               gutter={4}
               miscStyles={{
-                flexDirection: [
-                  { until: 's', value: 'column', },
-                  { from: 'xl', value: 'column', },
-                ],
+                flexDirection: [ { until: 's', value: 'column', }, { from: 'xl', value: 'column', }, ],
                 flexGrow: 1,
               }}
             >
@@ -171,18 +148,12 @@ export default function Mom({
                 stretchContent
                 width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
                 miscStyles={{
-                  marginBottom: [
-                    { until: 's', value: '1rem', },
-                    { from: 'xl', value: '4rem', },
-                  ],
+                  marginBottom: [ { until: 's', value: '1rem', }, { from: 'xl', value: '4rem', }, ],
                 }}
               >
                 <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
               </GridItem>
-              <GridItem
-                stretchContent
-                width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
-              >
+              <GridItem stretchContent width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}>
                 <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
               </GridItem>
             </Grid>
@@ -199,11 +170,7 @@ export default function Mom({
               order: [ { from: 'l', until: 'xl', value: 1, }, ],
             }}
           >
-            <TeaserWithImg2
-              data={items[3]}
-              index={3}
-              {...{ biAction, lazyLoadImages, }}
-            />
+            <TeaserWithImg2 data={items[3]} index={3} {...{ biAction, lazyLoadImages, }} />
           </GridItem>
           <GridItem
             stretchContent
@@ -226,10 +193,7 @@ export default function Mom({
         <GridItem
           width={1}
           miscStyles={{
-            display: [
-              { until: 's', value: 'flex', },
-              { from: 's', value: 'none', },
-            ],
+            display: [ { until: 's', value: 'flex', }, { from: 's', value: 'none', }, ],
           }}
         >
           <FelaComponent
@@ -265,242 +229,197 @@ type TeaserProps = {
 
 TeaserWithImg1.defaultProps = { lazyLoadImages: true, };
 
-function TeaserWithImg1({
-  data,
-  index,
-  lazyLoadImages,
-  biAction,
-}: TeaserProps): React.Node {
+function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data)
-    ? (
-      <Teaser
+  return isTeaser(data) ? (
+    <Teaser
+      data={data}
+      gutter={2}
+      onClick={() => biAction({ index, articleId, })}
+      gridMiscStyles={{
+        flexDirection: [ { from: 'xl', value: 'column', }, ],
+      }}
+    >
+      <TeaserMedia
         data={data}
-        gutter={2}
-        onClick={() => biAction({ index, articleId, })}
-        gridMiscStyles={{
-          flexDirection: [ { from: 'xl', value: 'column', }, ],
+        width={[
+          { until: 's', value: 20, },
+          { from: 's', until: 'l', value: 8 / 12, },
+          { from: 'l', until: 'xl', value: 4 / 6, },
+        ]}
+        miscStyles={{
+          flexGrow: [ { from: 'xl', value: '0', }, ],
+          order: [ { from: 's', until: 'xl', value: '1', }, ],
         }}
       >
-        {data.image ? (
-          <TeaserMedia
-            data={data}
-            width={[
-              { until: 's', value: 20, },
-              { from: 's', until: 'l', value: 8 / 12, },
-              { from: 'l', until: 'xl', value: 4 / 6, },
-            ]}
-            miscStyles={{
-              flexGrow: [ { from: 'xl', value: '0', }, ],
-              order: [ { from: 's', until: 'xl', value: '1', }, ],
-            }}
-          >
-            <FelaTheme
-              render={theme => (data.image ? (
-                <Picture
-                  lazyLoad={lazyLoadImages}
-                  {...getPictureAssets({
-                    bps: theme.bps,
-                    imgData: data.image,
-                    defaultImgOptions: {
-                      sizes: '108px',
-                      aspect: 'regular',
-                      widths: [ 108, 216, ],
-                    },
-                    sources: [
-                      {
-                        aspect: 'headline',
-                        from: 's',
-                        sizes: [
-                          { from: 'xl', size: '281px', },
-                          { from: 'l', size: '314px', },
-                          { from: 'm', size: '476px', },
-                          { from: 's', size: '364px', },
-                        ],
-                        widths: [ 473, 364, 314, 281, ],
-                      },
+        <FelaTheme
+          render={theme => (
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: data.image,
+                defaultImgOptions: {
+                  sizes: '108px',
+                  aspect: 'regular',
+                  widths: [ 108, 216, ],
+                },
+                sources: [
+                  {
+                    aspect: 'headline',
+                    from: 's',
+                    sizes: [
+                      { from: 'xl', size: '281px', },
+                      { from: 'l', size: '314px', },
+                      { from: 'm', size: '476px', },
+                      { from: 's', size: '364px', },
                     ],
-                  })}
-                />
-              ) : null)
-              }
-            />
-          </TeaserMedia>
-        ) : null}
-        <TeaserContent
-          data={data}
-          padding={[
-            { until: 's', value: [ 1, 0, 0, 1, ], },
-            { from: 's', value: [ 1, 1, 0, 0, ], },
-          ]}
-          footerPadding={[
-            { until: 's', value: [ 2, 0, 1, 1, ], },
-            { from: 's', value: [ 2, 1, 1, 0, ], },
-          ]}
-          gridItemMiscStyles={{
-            flexBasis: [ { from: 'xl', value: 'auto', }, ],
-            flexGrow: [ { from: 'xl', value: '1', }, ],
-          }}
-          renderContent={() => (
-            <TeaserHeader typeScale={headerTypeScale} {...data} />
-          )}
-          renderFooter={() => (
-            <FelaComponent
-              style={theme => ({
-                color: theme.color('primary'),
-                fontWeight: '700',
-                extend: [ theme.type(-3), ],
+                    widths: [ 473, 364, 314, 281, ],
+                  },
+                ],
               })}
-              render="span"
-            >
-              {data.commentsCounts}
-              <IconComment size={2} />
-            </FelaComponent>
+            />
           )}
         />
-      </Teaser>
-    )
-    : null;
+      </TeaserMedia>
+      <TeaserContent
+        data={data}
+        padding={[ { until: 's', value: [ 1, 0, 0, 1, ], }, { from: 's', value: [ 1, 1, 0, 0, ], }, ]}
+        footerPadding={[ { until: 's', value: [ 2, 0, 1, 1, ], }, { from: 's', value: [ 2, 1, 1, 0, ], }, ]}
+        gridItemMiscStyles={{
+          flexBasis: [ { from: 'xl', value: 'auto', }, ],
+          flexGrow: [ { from: 'xl', value: '1', }, ],
+        }}
+        renderContent={() => <TeaserHeader typeScale={headerTypeScale} {...data} />}
+        renderFooter={() => (
+          <FelaComponent
+            style={theme => ({
+              color: theme.color('primary'),
+              fontWeight: '700',
+              extend: [ theme.type(-3), ],
+            })}
+            render="span"
+          >
+            {data.commentsCounts}
+            <IconComment size={2} />
+          </FelaComponent>
+        )}
+      />
+    </Teaser>
+  ) : null;
 }
 
 TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
 
-function TeaserWithImg2({
-  data,
-  index,
-  lazyLoadImages,
-  biAction,
-}: TeaserProps): React.Node {
+function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data)
-    ? (
-      <Teaser
+  return isTeaser(data) ? (
+    <Teaser
+      data={data}
+      gutter={2}
+      onClick={() => biAction({ index, articleId, })}
+      gridMiscStyles={{
+        flexDirection: [
+          { from: 's', until: 'l', value: 'column', },
+          { from: 'xl', value: 'column', },
+        ],
+      }}
+    >
+      <TeaserMedia
         data={data}
-        gutter={2}
-        onClick={() => biAction({ index, articleId, })}
-        gridMiscStyles={{
-          flexDirection: [
-            { from: 's', until: 'l', value: 'column', },
-            { from: 'xl', value: 'column', },
-          ],
+        width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
+        miscStyles={{
+          flexGrow: [ { from: 's', until: 'l', value: '0', }, { from: 'xl', value: '0', }, ],
         }}
       >
-        {data.image ? (
-          <TeaserMedia
-            data={data}
-            width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
-            miscStyles={{
-              flexGrow: [
-                { from: 's', until: 'l', value: '0', },
-                { from: 'xl', value: '0', },
-              ],
-            }}
-          >
-            <FelaTheme
-              render={theme => (data.image ? (
-                <Image
-                  lazyLoad={lazyLoadImages}
-                  data={data.image}
-                  imgOptions={getImageAssets({
-                    bps: theme.bps,
-                    aspect: 'headline',
-                    widths: [ 472, 364, 314, 281, ],
-                    sizes: [
-                      { from: 'xl', size: '281px', },
-                      { from: 'l', size: '314px', },
-                      { from: 'm', size: '472px', },
-                      { from: 's', size: '430px', },
-                      { size: '364px', },
-                    ],
-                  })}
-                />
-              ) : null)
-              }
-            />
-          </TeaserMedia>
-        ) : null}
-        <TeaserContent
-          data={data}
-          padding={[
-            { from: 's', until: 'l', value: [ 1, 1, 0, ], },
-            { from: 'l', until: 'xl', value: [ 1, 0, 0, 1, ], },
-            { from: 'xl', value: [ 1, 1, 0, ], },
-          ]}
-          footerPadding={[
-            { from: 's', until: 'l', value: [ 2, 1, 1, ], },
-            { from: 'l', until: 'xl', value: [ 2, 0, 1, 1, ], },
-            { from: 'xl', value: [ 2, 1, 1, ], },
-          ]}
-          gridItemMiscStyles={{
-            flexBasis: [
-              { from: 's', until: 'l', value: 'auto', },
-              { from: 'xl', value: 'auto', },
-            ],
-            flexGrow: [
-              { from: 's', until: 'l', value: '1', },
-              { from: 'xl', value: '1', },
-            ],
-          }}
-          renderContent={() => (
-            <TeaserHeader typeScale={headerTypeScale} {...data} />
-          )}
-          renderFooter={() => (
-            <FelaComponent
-              style={theme => ({
-                color: theme.color('primary'),
-                fontWeight: '700',
-                extend: [ theme.type(-3), ],
+        <FelaTheme
+          render={theme => (
+            <Image
+              lazyLoad={lazyLoadImages}
+              data={data.image}
+              imgOptions={getImageAssets({
+                bps: theme.bps,
+                aspect: 'headline',
+                widths: [ 472, 364, 314, 281, ],
+                sizes: [
+                  { from: 'xl', size: '281px', },
+                  { from: 'l', size: '314px', },
+                  { from: 'm', size: '472px', },
+                  { from: 's', size: '430px', },
+                  { size: '364px', },
+                ],
               })}
-              render="span"
-            >
-              {data.commentsCounts}
-              <IconComment size={2} />
-            </FelaComponent>
+            />
           )}
         />
-      </Teaser>
-    )
-    : null;
+      </TeaserMedia>
+
+      <TeaserContent
+        data={data}
+        padding={[
+          { from: 's', until: 'l', value: [ 1, 1, 0, ], },
+          { from: 'l', until: 'xl', value: [ 1, 0, 0, 1, ], },
+          { from: 'xl', value: [ 1, 1, 0, ], },
+        ]}
+        footerPadding={[
+          { from: 's', until: 'l', value: [ 2, 1, 1, ], },
+          { from: 'l', until: 'xl', value: [ 2, 0, 1, 1, ], },
+          { from: 'xl', value: [ 2, 1, 1, ], },
+        ]}
+        gridItemMiscStyles={{
+          flexBasis: [ { from: 's', until: 'l', value: 'auto', }, { from: 'xl', value: 'auto', }, ],
+          flexGrow: [ { from: 's', until: 'l', value: '1', }, { from: 'xl', value: '1', }, ],
+        }}
+        renderContent={() => <TeaserHeader typeScale={headerTypeScale} {...data} />}
+        renderFooter={() => (
+          <FelaComponent
+            style={theme => ({
+              color: theme.color('primary'),
+              fontWeight: '700',
+              extend: [ theme.type(-3), ],
+            })}
+            render="span"
+          >
+            {data.commentsCounts}
+            <IconComment size={2} />
+          </FelaComponent>
+        )}
+      />
+    </Teaser>
+  ) : null;
 }
 
 TextualTeaser.defaultProps = { lazyLoadImages: undefined, };
 function TextualTeaser({ data, index, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
-  return isTeaser(data)
-    ? (
-      <Teaser
+  return isTeaser(data) ? (
+    <Teaser
+      data={data}
+      gutter={2}
+      onClick={() => biAction({ index, articleId, })}
+      miscStyles={{ flexGrow: '1', }}
+    >
+      <TeaserContent
         data={data}
-        gutter={2}
-        onClick={() => biAction({ index, articleId, })}
-        miscStyles={{ flexGrow: '1', }}
-      >
-        <TeaserContent
-          data={data}
-          padding={[ 1, 1, 0, ]}
-          footerPadding={[
-            { until: 's', value: 1, },
-            { from: 's', value: [ 2, 1, 1, ], },
-          ]}
-          renderContent={() => (
-            <TeaserHeader {...data} typeScale={headerTypeScale} />
-          )}
-          renderFooter={() => (
-            <FelaComponent
-              style={theme => ({
-                color: theme.color('primary'),
-                fontWeight: '700',
-                extend: [ theme.type(-3), ],
-              })}
-              render="span"
-            >
-              {data.commentsCounts}
-              <IconComment size={2} />
-            </FelaComponent>
-          )}
-        />
-      </Teaser>
-    )
-    : null;
+        padding={[ 1, 1, 0, ]}
+        footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 2, 1, 1, ], }, ]}
+        renderContent={() => <TeaserHeader {...data} typeScale={headerTypeScale} />}
+        renderFooter={() => (
+          <FelaComponent
+            style={theme => ({
+              color: theme.color('primary'),
+              fontWeight: '700',
+              extend: [ theme.type(-3), ],
+            })}
+            render="span"
+          >
+            {data.commentsCounts}
+            <IconComment size={2} />
+          </FelaComponent>
+        )}
+      />
+    </Teaser>
+  ) : null;
 }

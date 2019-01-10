@@ -7,6 +7,7 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
 import { buildURLs, buildUrl, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
+import DefaultImage from '../DefaultImage/DefaultImage';
 import logger from '../../componentsLogger';
 import setColor from '../../utils/setColor';
 
@@ -17,13 +18,7 @@ const ImgWrapperStyle = ({ bgc, height, theme, width, miscStyles, }) => ({
   position: 'relative',
   width: '100%',
   extend: [
-    parseComponentProp(
-      'backgroundColor',
-      bgc || [ 'image', 'bgc', ],
-      theme.mq,
-      setColor,
-      theme.color
-    ),
+    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -67,185 +62,144 @@ const imageOptionsType = PropTypes.shape({
    * the `src` attribute, and then all items will be used in
    * constructing the `srcset` attribute.
    */
-  transforms: PropTypes.oneOfType([
-    ImgTransfromOptions,
-    PropTypes.arrayOf(ImgTransfromOptions),
-  ]).isRequired,
+  transforms: PropTypes.oneOfType([ ImgTransfromOptions, PropTypes.arrayOf(ImgTransfromOptions), ])
+    .isRequired,
 });
 
-class Image extends React.Component {
-  static propTypes = {
+Image.propTypes = {
+  /**
+   * An object of attributes to set on the DOM element.
+   * Passed to the underlying react element
+   */
+  attrs: attrsPropType,
+  /**
+   * A background color for the wrapper around the image, which will be
+   * visible until the image is loaded. Defaults to the color set in the
+   * theme.
+   */
+  bgcolor: PropTypes.string,
+  /** Image data from polopoly */
+  data: PropTypes.shape({
+    /** Image alt from polopoly */
+    alt: PropTypes.string,
     /**
-     * An object of attributes to set on the DOM element.
-     * Passed to the underlying react element
+     * When the array contains multiple elements, each should be used
+     * independently in creating sources for the picture element.
      */
-    attrs: attrsPropType,
+    imgArray: PropTypes.arrayOf(
+      PropTypes.shape({
+        /** Image name from polopoly by the format 'image/imageName.imgType' */
+        imgName: PropTypes.string.isRequired,
+        /** Image version from polopoly */
+        version: PropTypes.string,
+        /** Holds the image aspects object */
+        aspects: PropTypes.object,
+      })
+    ),
+    /** Image id from polopoly */
+    contentId: PropTypes.string.isRequired,
+    /** The photographer credit. added to title in the title attribute */
+    credit: PropTypes.string,
     /**
-     * A background color for the wrapper around the image, which will be
-     * visible until the image is loaded. Defaults to the color set in the
-     * theme.
+     * When present, the image should be rendered inside
+     * a `<picture>` element to serve webp image type
      */
-    bgcolor: PropTypes.string,
-    /** Image data from polopoly */
-    data: PropTypes.shape({
-      /** Image alt from polopoly */
-      alt: PropTypes.string,
-      /**
-       * When the array contains multiple elements, each should be used
-       * independently in creating sources for the picture element.
-       */
-      imgArray: PropTypes.arrayOf(
-        PropTypes.shape({
-          /** Image name from polopoly by the format 'image/imageName.imgType' */
-          imgName: PropTypes.string.isRequired,
-          /** Image version from polopoly */
-          version: PropTypes.string,
-          /** Holds the image aspects object */
-          aspects: PropTypes.object,
-        })
-      ),
-      /** Image id from polopoly */
-      contentId: PropTypes.string.isRequired,
-      /** The photographer credit. added to title in the title attribute */
-      credit: PropTypes.string,
-      /**
-       * When present, the image should be rendered inside
-       * a `<picture>` element to serve webp image type
-       */
-      isAnimatedGif: PropTypes.bool,
-    }).isRequired,
-    /** An image options for user transforms and sizes */
-    imgOptions: imageOptionsType.isRequired,
-    /**
-     * Determines if the image will be surrounded by
-     * a wrapper to prevent content jumping
-     */
-    hasWrapper: PropTypes.bool,
-    /** Passing attributes role="presentation" and aria-hidden="true" if exists  */
-    isPresentational: PropTypes.bool,
-    /**
-     * Determine if the component should be lazyloaded. Defaults to `false`.
-     * If lazyloaded, indicates how many pixels before entering the screen
-     * should the image be loaded.
-     * For example, when `{lazyLoad: true}`, the image will be
-     * lazyloaded as soon as it enters the screen. When `{lazyLoad: '400px'}`
-     * the image will be lazyloaded 400px before entering the screen.
-     * Strings should be in css length units.
-     */
-    lazyLoad: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string, ]),
-    /**
-     * A special property holding miscellaneous CSS values that
-     * trumps all default values. Processed by
-     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops).
-     * passes down only to the image wrapper.
-     */
-    miscStyles: stylesPropType,
-  };
+    isAnimatedGif: PropTypes.bool,
+  }).isRequired,
+  /** An image options for user transforms and sizes */
+  imgOptions: imageOptionsType.isRequired,
+  /**
+   * Determines if the image will be surrounded by
+   * a wrapper to prevent content jumping
+   */
+  hasWrapper: PropTypes.bool,
+  /** Passing attributes role="presentation" and aria-hidden="true" if exists  */
+  isPresentational: PropTypes.bool,
+  /**
+   * Determine if the component should be lazyloaded. Defaults to `false`.
+   * If lazyloaded, indicates how many pixels before entering the screen
+   * should the image be loaded.
+   * For example, when `{lazyLoad: true}`, the image will be
+   * lazyloaded as soon as it enters the screen. When `{lazyLoad: '400px'}`
+   * the image will be lazyloaded 400px before entering the screen.
+   * Strings should be in css length units.
+   */
+  lazyLoad: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string, ]),
+  /**
+   * A special property holding miscellaneous CSS values that
+   * trumps all default values. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops).
+   * passes down only to the image wrapper.
+   */
+  miscStyles: stylesPropType,
+};
 
-  static defaultProps = {
-    attrs: null,
-    bgcolor: null,
-    hasWrapper: true,
-    isPresentational: false,
-    lazyLoad: false,
-    miscStyles: null,
-  };
+Image.defaultProps = {
+  attrs: null,
+  bgcolor: null,
+  hasWrapper: true,
+  isPresentational: false,
+  lazyLoad: false,
+  miscStyles: null,
+};
 
-  componentWillMount() {
-    if (this.props.data === null) {
-      return null;
-    }
-    const { imgArray, } = this.props.data;
-    const { transforms, } = this.props.imgOptions;
+function Image(props) {
+  const { data, imgOptions, } = props;
+  if (data === null) {
+    const { transforms, } = imgOptions;
+    const { aspect, width, height, } = Array.isArray(transforms) ? transforms[0] : transforms;
+    return <DefaultImage transforms={{ aspect, width, height, }} />;
+  }
 
-    // Check if transforms matches image aspects pattern
-    const aspectMatchResult = Array.isArray(transforms)
-      ? transforms.every(
-        (element, index, arr) => (index === 0 ? true : element.aspect === arr[index - 1].aspect)
-      )
-      : true;
+  const {
+    attrs,
+    bgcolor,
+    data: { alt, credit, isAnimatedGif, },
+    imgOptions: { sizes, },
+    isPresentational,
+    lazyLoad,
+    miscStyles,
+    hasWrapper,
+  } = props;
 
-    // Does this look like it should be a `<Picture />` component?
-    const isPicture = !aspectMatchResult || imgArray.length > 1;
-
-    if (isPicture) {
-      logger.error(
-        `The data structure of the "${
-          this.props.data.contentId
-        }" image is of a picture element, not an image.
+  const isPicture = data.imgArray.length > 1;
+  if (isPicture) {
+    logger.error(
+      `The data structure of the "${data.contentId}" image is of a picture element, not an image.
 Please use the "<Picture />" component`
-      );
-    }
+    );
+
     return null;
   }
 
-  render() {
-    if (this.props.data === null) {
-      return null;
-    }
-    const {
-      attrs,
-      bgcolor,
-      data: { alt, credit, isAnimatedGif, },
-      imgOptions: { sizes, },
-      isPresentational,
-      lazyLoad,
-      miscStyles,
-      hasWrapper,
-    } = this.props;
+  if (isPresentational && (attrs && (!!attrs.role || !!attrs['aria-hidden']))) {
+    logger.warn(
+      'When "isPresentational" prop value is true, "role" and "aria-hidden" are set automatically'
+    );
+  }
+  const { height, width, } = getDimensions(props);
+  const sources = getSources(props);
+  const src = sources[0];
+  const srcSet = sources[1];
+  const webpSources = isAnimatedGif ? getSources(props, true) : undefined;
 
-    if (
-      isPresentational
-      && (attrs && (!!attrs.role || !!attrs['aria-hidden']))
-    ) {
-      logger.warn(
-        'When "isPresentational" prop value is true, "role" and "aria-hidden" are set automatically'
-      );
-    }
-    const { height, width, } = getDimensions(this.props);
-    const sources = getSources(this.props);
-    const src = sources[0];
-    const srcSet = sources[1];
-    const webpSources = isAnimatedGif
-      ? getSources(this.props, true)
-      : undefined;
+  const Sources = isAnimatedGif ? (
+    <picture>
+      <ImgSource
+        {...(sizes ? { sizes, } : {})}
+        tagName="source"
+        type="image/webp"
+        src={webpSources[0]}
+        {...(srcSet ? { srcSet: webpSources[1], } : {})}
+      />
 
-    const Sources = isAnimatedGif ? (
-      <picture>
-        <ImgSource
-          {...(sizes ? { sizes, } : {})}
-          tagName="source"
-          type="image/webp"
-          src={webpSources[0]}
-          {...(srcSet ? { srcSet: webpSources[1], } : {})}
-        />
-
-        <ImgSource
-          {...(alt ? { alt, } : {})}
-          src={src}
-          hasWrapper={hasWrapper}
-          {...(srcSet ? { srcSet, } : {})}
-          {...(sizes ? { sizes, } : {})}
-          title={credit}
-          attrs={
-            isPresentational
-              ? {
-                ...attrs,
-                role: 'presentation',
-                'aria-hidden': true,
-              }
-              : attrs
-          }
-        />
-      </picture>
-    ) : (
       <ImgSource
         {...(alt ? { alt, } : {})}
-        hasWrapper={hasWrapper}
-        title={credit}
         src={src}
+        hasWrapper={hasWrapper}
         {...(srcSet ? { srcSet, } : {})}
         {...(sizes ? { sizes, } : {})}
+        title={credit}
         attrs={
           isPresentational
             ? {
@@ -256,46 +210,48 @@ Please use the "<Picture />" component`
             : attrs
         }
       />
-    );
+    </picture>
+  ) : (
+    <ImgSource
+      {...(alt ? { alt, } : {})}
+      hasWrapper={hasWrapper}
+      title={credit}
+      src={src}
+      {...(srcSet ? { srcSet, } : {})}
+      {...(sizes ? { sizes, } : {})}
+      attrs={
+        isPresentational
+          ? {
+            ...attrs,
+            role: 'presentation',
+            'aria-hidden': true,
+          }
+          : attrs
+      }
+    />
+  );
 
-    if (!lazyLoad) {
-      return hasWrapper ? (
-        <StyledImgWrapper
-          width={width}
-          height={height}
-          bgc={bgcolor}
-          miscStyles={miscStyles}
-        >
-          {Sources}
-        </StyledImgWrapper>
-      ) : (
-        Sources
-      );
-    }
-
+  if (!lazyLoad) {
     return hasWrapper ? (
-      <StyledImgWrapper
-        width={width}
-        height={height}
-        bgc={bgcolor}
-        miscStyles={miscStyles}
-      >
-        <Observer
-          triggerOnce
-          rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
-        >
-          {inView => (inView ? Sources : null)}
-        </Observer>
+      <StyledImgWrapper width={width} height={height} bgc={bgcolor} miscStyles={miscStyles}>
+        {Sources}
       </StyledImgWrapper>
     ) : (
-      <Observer
-        triggerOnce
-        rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
-      >
-        {inView => (inView ? Sources : null)}
-      </Observer>
+      Sources
     );
   }
+
+  return hasWrapper ? (
+    <StyledImgWrapper width={width} height={height} bgc={bgcolor} miscStyles={miscStyles}>
+      <Observer triggerOnce rootMargin={lazyLoad === true ? '1000px' : lazyLoad}>
+        {inView => (inView ? Sources : null)}
+      </Observer>
+    </StyledImgWrapper>
+  ) : (
+    <Observer triggerOnce rootMargin={lazyLoad === true ? '1000px' : lazyLoad}>
+      {inView => (inView ? Sources : null)}
+    </Observer>
+  );
 }
 
 export default Image;
@@ -327,9 +283,7 @@ function getSources(
   const hasSrcset = transformsArray.length > 1;
   const imageNameFromData = imgArray[0].imgName;
 
-  const imgName = isAnimatedGif && isWebP
-    ? `${imageNameFromData.split('.')[0]}.webp`
-    : imageNameFromData;
+  const imgName = isAnimatedGif && isWebP ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
 
   // Always use the first image in the imageArray
   const imgVersion = imgArray[0].version;

@@ -39,78 +39,61 @@ Donatello.defaultProps = {
   biAction: null,
 };
 
-export default function Donatello({
-  list,
-  biAction,
-  lazyLoadImages = true,
-}: Props): Node {
+export default function Donatello({ list, biAction, lazyLoadImages = true, }: Props): Node {
   const items: ?Array<ClickTrackerBannerWrapperType> = list.clickTrackers
     ? list.clickTrackers.slice(0, 5)
     : null;
-  return items
-    ? list.title
-      ? (
-        <FelaTheme
-          render={theme => (
-            <ListView
-              innerBackgroundColor="transparent"
-              miscStyles={{
-                fontFamily: theme.fontStacks.commercial,
-                display: [ { until: 's', value: 'none', }, ],
-              }}
-            >
-              <GridItem
-                width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}
-              >
-                <ListViewHeader
-                  title={list.title}
-                  backgroundColor={[ 'transparent', ]}
-                  isCommercial
-                />
-              </GridItem>
-              <GridItem
-                width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}
-              >
-                <Grid gutter={4}>
-                  {items.map((item: ClickTrackerBannerWrapperType, index) => {
-                    const isLast: boolean = index === items.length - 1;
-                    return (
-                      <GridItem
-                        key={item.contentId}
-                        width={[
-                          { until: 'l', value: 1 / (items.length - 1), },
-                          { from: 'l', value: 1 / items.length, },
-                        ]}
-                        miscStyles={{
-                          display: isLast
-                            ? [
-                              { until: 'l', value: 'none', },
-                              { from: 'l', value: 'block', },
-                            ]
-                            : 'block',
-                        }}
-                      >
-                        <Item
-                          item={item}
-                          biAction={biAction}
-                          index={index}
-                          lazyLoadImages={lazyLoadImages}
-                        />
-                      </GridItem>
-                    );
-                  })}
-                </Grid>
-              </GridItem>
-            </ListView>
-          )}
-        />
-      )
-      : (
-        <Debug>This element cannot be rendered without a title</Debug>
-      )
-    : (
-      <Debug>There is not enough items to render this list view</Debug>
-    );
+  return items ? (
+    list.title ? (
+      <FelaTheme
+        render={theme => (
+          <ListView
+            innerBackgroundColor="transparent"
+            miscStyles={{
+              fontFamily: theme.fontStacks.commercial,
+              display: [ { until: 's', value: 'none', }, ],
+            }}
+          >
+            <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}>
+              <ListViewHeader title={list.title} backgroundColor={[ 'transparent', ]} isCommercial />
+            </GridItem>
+            <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}>
+              <Grid gutter={4}>
+                {items.map((item: ClickTrackerBannerWrapperType, index) => {
+                  const isLast: boolean = index === items.length - 1;
+                  return (
+                    <GridItem
+                      key={item.contentId}
+                      width={[
+                        { until: 'l', value: 1 / (items.length - 1), },
+                        { from: 'l', value: 1 / items.length, },
+                      ]}
+                      miscStyles={{
+                        display: isLast
+                          ? [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ]
+                          : 'block',
+                      }}
+                    >
+                      <Item
+                        item={item}
+                        biAction={biAction}
+                        index={index}
+                        lazyLoadImages={lazyLoadImages}
+                      />
+                    </GridItem>
+                  );
+                })}
+              </Grid>
+            </GridItem>
+          </ListView>
+        )}
+      />
+    ) : (
+      <Debug>This element cannot be rendered without a title</Debug>
+    )
+  ) : (
+    <Debug>There is not enough items to render this list view</Debug>
+  );
 }
 
 Item.defaultProps = {
@@ -133,11 +116,7 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
                   border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
                 }}
                 href={link}
-                onClick={
-                  biAction
-                    ? () => biAction({ index, articleId: contentId, })
-                    : null
-                }
+                onClick={biAction ? () => biAction({ index, articleId: contentId, }) : null}
                 target={linkTarget}
               >
                 <Teaser
@@ -146,39 +125,29 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
                   backgroundColor={[ 'neutral', '-7', ]}
                   gutter={2}
                   isRev={false}
-                  onClick={
-                    biAction
-                      ? () => biAction({ index, articleId: contentId, })
-                      : null
-                  }
+                  onClick={biAction ? () => biAction({ index, articleId: contentId, }) : null}
                   miscStyles={{
                     height: '100%',
                   }}
                 >
-                  {clicktrackerimage ? (
-                    <TeaserMedia data={banner} width={1} isClickTracker>
-                      <Image
-                        data={clicktrackerimage}
-                        lazyLoad={lazyLoadImages}
-                        imgOptions={{
-                          transforms: {
-                            width: '180',
-                            aspect: 'regular',
-                            quality: 'auto',
-                          },
-                        }}
-                      />
-                    </TeaserMedia>
-                  ) : null}
+                  <TeaserMedia data={banner} width={1} isClickTracker>
+                    <Image
+                      data={clicktrackerimage}
+                      lazyLoad={lazyLoadImages}
+                      imgOptions={{
+                        transforms: {
+                          width: '180',
+                          aspect: 'regular',
+                          quality: 'auto',
+                        },
+                      }}
+                    />
+                  </TeaserMedia>
                   <TeaserContent
                     data={banner}
                     padding={[ 1, 2, 2, 2, ]}
                     renderContent={() => (
-                      <TeaserHeader
-                        title={text || ''}
-                        path={link}
-                        typeScale={-1}
-                      />
+                      <TeaserHeader title={text || ''} path={link} typeScale={-1} />
                     )}
                   />
                 </Teaser>

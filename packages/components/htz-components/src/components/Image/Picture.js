@@ -9,32 +9,18 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import { buildURLs, } from '../../utils/buildImgURLs';
 import ImgSource from './elements/ImgSource';
 import { aspectRatios, } from './Image';
+import DefaultImage from '../DefaultImage/DefaultImage';
 import setColor from '../../utils/setColor';
 
-const PictureWrapperStyle = ({
-  sources,
-  theme,
-  defaultImg,
-  bgc,
-  miscStyles,
-}) => ({
+const PictureWrapperStyle = ({ sources, theme, defaultImg, bgc, miscStyles, }) => ({
   height: '0',
   width: '100%',
   position: 'relative',
   paddingBottom: getDimensions(defaultImg),
   extend: [
-    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq(
-      { from, until, misc, type, },
-      { paddingBottom: getDimensions(restOfImgData), }
-    )
+    ...sources.map(({ from, until, misc, type, ...restOfImgData }) => theme.mq({ from, until, misc, type, }, { paddingBottom: getDimensions(restOfImgData), })
     ),
-    parseComponentProp(
-      'backgroundColor',
-      bgc || [ 'image', 'bgc', ],
-      theme.mq,
-      setColor,
-      theme.color
-    ),
+    parseComponentProp('backgroundColor', bgc || [ 'image', 'bgc', ], theme.mq, setColor, theme.color),
     // Trump all other styles with those defined in `miscStyles`
     ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
   ],
@@ -184,6 +170,55 @@ function Picture(props) {
     miscStyles,
     sources,
   } = props;
+
+  if (!defaultImg.data) {
+    console.warn(
+      'default image data for Picture component is corrupt, rendering DefaultImage instead'
+    );
+    const defaultImgTransforms = defaultImg.sourceOptions.transforms;
+    // sourceOptions.transforms can be either an array or an object,
+    // we need the aspect / width and height and they should be the same
+    //  for every transform so we just take the first one
+    const defaultImageTransform = Array.isArray(defaultImgTransforms)
+      ? defaultImgTransforms[0]
+      : defaultImgTransforms;
+
+    // building the data to match data of sources
+    const transformForDefaultImage = {
+      sourceOptions: {
+        transforms: {
+          aspect: defaultImageTransform.aspect,
+          width: defaultImageTransform.width,
+          height: defaultImageTransform.height,
+        },
+      },
+    };
+    const transforms = [ transformForDefaultImage, ...sources, ].map(
+      ({ from, until, sourceOptions, }) => {
+        const sourceTransform = Array.isArray(sourceOptions.transforms)
+          ? sourceOptions.transforms[0]
+          : sourceOptions.transforms;
+
+        const value = {
+          aspect: sourceTransform.aspect,
+          width: sourceTransform.width,
+          height: sourceTransform.height,
+        };
+        return {
+          ...(from ? { from, } : {}),
+          ...(until ? { until, } : {}),
+          // since value is an object and we dont always get a from or until
+          // in order for parseComponentProp in DefaultImage
+          //  to work correctly with the value key we always pass media type: all
+          type: 'all',
+          value,
+        };
+      }
+    );
+
+    return <DefaultImage transforms={transforms} />;
+  }
+
   const {
     data: { alt, credit, },
     sourceOptions,
@@ -194,41 +229,34 @@ function Picture(props) {
 
   const Element = (
     <picture>
-      {sources.map(
-        (img, index) => (img.data.isAnimatedGif ? (
-        // eslint-disable-next-line react/no-array-index-key
-          <Fragment key={index}>
-            <ImgSource
-              {...(media[index] ? { media: media[index], } : [])}
-              tagName="source"
-              type="image/webp"
-              srcSet={getSources(props, index, true)}
-              {...(img.sourceOptions.sizes
-                ? { sizes: img.sourceOptions.sizes, }
-                : {})}
-            />
-            <ImgSource
-              {...(media[index] ? { media: media[index], } : [])}
-              tagName="source"
-              srcSet={getSources(props, index, false)}
-              {...(img.sourceOptions.sizes
-                ? { sizes: img.sourceOptions.sizes, }
-                : {})}
-            />
-          </Fragment>
-        ) : (
+      {sources.map((img, index) => (img.data.isAnimatedGif ? (
+      // eslint-disable-next-line react/no-array-index-key
+        <Fragment key={index}>
           <ImgSource
-              // eslint-disable-next-line react/no-array-index-key
-            key={index}
             {...(media[index] ? { media: media[index], } : [])}
             tagName="source"
-            {...(img.mimeType ? { type: img.mimeType, } : {})}
-            srcSet={getSources(props, index, false)}
-            {...(img.sourceOptions.sizes
-              ? { sizes: img.sourceOptions.sizes, }
-              : {})}
+            type="image/webp"
+            srcSet={getSources(props, index, true)}
+            {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
           />
-        ))
+          <ImgSource
+            {...(media[index] ? { media: media[index], } : [])}
+            tagName="source"
+            srcSet={getSources(props, index, false)}
+            {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+          />
+        </Fragment>
+      ) : (
+        <ImgSource
+            // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          {...(media[index] ? { media: media[index], } : [])}
+          tagName="source"
+          {...(img.mimeType ? { type: img.mimeType, } : {})}
+          srcSet={getSources(props, index, false)}
+          {...(img.sourceOptions.sizes ? { sizes: img.sourceOptions.sizes, } : {})}
+        />
+      ))
       )}
       <ImgSource
         {...(alt ? { alt, } : {})}
@@ -257,18 +285,12 @@ function Picture(props) {
         defaultImg={defaultImg}
         bgc={bgcolor}
       >
-        <Observer
-          triggerOnce
-          rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
-        >
+        <Observer triggerOnce rootMargin={lazyLoad === true ? '1000px' : lazyLoad}>
           {inView => (inView ? Element : null)}
         </Observer>
       </StyledPictureWrapper>
     ) : (
-      <Observer
-        triggerOnce
-        rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
-      >
+      <Observer triggerOnce rootMargin={lazyLoad === true ? '1000px' : lazyLoad}>
         {inView => (inView ? Element : null)}
       </Observer>
     );
@@ -302,9 +324,7 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 
   const imageNameFromData = imgCore.imgName;
   const imgVersion = imgCore.version;
-  const imgName = isAnimatedGif
-    ? `${imageNameFromData.split('.')[0]}.webp`
-    : imageNameFromData;
+  const imgName = isAnimatedGif ? `${imageNameFromData.split('.')[0]}.webp` : imageNameFromData;
 
   const imgData = { imgName, version: imgVersion, aspects: imgCore.aspects, };
 
@@ -336,9 +356,7 @@ function getMedia({ sources, theme, }) {
     const imgHasMedia = [ from, until, misc, type, ]
       // eslint-disable-next-line eqeqeq
       .some(item => item != undefined);
-    return imgHasMedia
-      ? theme.getMqString({ from, until, misc, type, }, true, true)
-      : undefined;
+    return imgHasMedia ? theme.getMqString({ from, until, misc, type, }, true, true) : undefined;
   });
   return finalMedia;
 }

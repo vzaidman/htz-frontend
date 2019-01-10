@@ -50,18 +50,12 @@ export default function Calculon({
   return (
     <ListView gutter={4} innerBackgroundColor="transparent">
       {/* Header */}
-      <GridItem
-        stretchContent
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-      >
+      <GridItem stretchContent width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}>
         <ListViewHeader {...list} />
       </GridItem>
 
       {/* Items */}
-      <GridItem
-        stretchContent
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
-      >
+      <GridItem stretchContent width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}>
         <Section isFragment>
           <Grid
             gutter={4}
@@ -159,62 +153,47 @@ const teaserDefaultProps = {
 
 Teaser1.defaultProps = teaserDefaultProps;
 
-function Teaser1({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return isTeaser(data) ? (
     <FelaTheme
       render={theme => (
         <Teaser
           data={data}
           gutter={0}
-          onClick={
-            biAction
-              ? () => biAction({ index: 0, articleId: data.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 0, articleId: data.contentId, }) : null}
           gridMiscStyles={{
             flexDirection: [ { until: 'l', value: 'column', }, ],
           }}
         >
-          {data.image ? (
-            <TeaserMedia
-              data={data}
-              width={[
-                { from: 'l', until: 'xl', value: 7 / 10, },
-                { from: 'xl', value: 6 / 8, },
-              ]}
-              miscStyles={{
-                flexBasis: [ { until: 'l', value: 'auto', }, ],
-                flexGrow: [ { until: 'l', value: '0', }, ],
-              }}
-            >
-              <Image
-                data={data.image}
-                lazyLoad={lazyLoadImages}
-                imgOptions={getImageAssets({
-                  bps: theme.bps,
-                  aspect: 'headline',
-                  sizes: [
-                    { from: 'xl', size: '621px', },
-                    { from: 'l', size: '591px', },
-                    { from: 'm', size: '504px', },
-                    { from: 's', size: '392px', },
-                    { size: 'calc(100vw - 4rem)', },
-                  ],
-                  widths: [ 621, 591, 504, 392, 400, ],
-                })}
-              />
-            </TeaserMedia>
-          ) : null}
+          <TeaserMedia
+            data={data}
+            width={[ { from: 'l', until: 'xl', value: 7 / 10, }, { from: 'xl', value: 6 / 8, }, ]}
+            miscStyles={{
+              flexBasis: [ { until: 'l', value: 'auto', }, ],
+              flexGrow: [ { until: 'l', value: '0', }, ],
+            }}
+          >
+            <Image
+              data={data.image}
+              lazyLoad={lazyLoadImages}
+              imgOptions={getImageAssets({
+                bps: theme.bps,
+                aspect: 'headline',
+                sizes: [
+                  { from: 'xl', size: '621px', },
+                  { from: 'l', size: '591px', },
+                  { from: 'm', size: '504px', },
+                  { from: 's', size: '392px', },
+                  { size: 'calc(100vw - 4rem)', },
+                ],
+                widths: [ 621, 591, 504, 392, 400, ],
+              })}
+            />
+          </TeaserMedia>
+
           <TeaserContent
             data={data}
-            width={[
-              { from: 'l', until: 'xl', value: 3 / 10, },
-              { from: 'xl', value: 2 / 8, },
-            ]}
+            width={[ { from: 'l', until: 'xl', value: 3 / 10, }, { from: 'xl', value: 2 / 8, }, ]}
             padding={[ 1, 1, 0, ]}
             footerPadding={[ 2, 1, 1, ]}
             footerColor={[ 'neutral', '-3', ]}
@@ -239,9 +218,7 @@ function Teaser1({
                 {...data}
               />
             )}
-            renderFooter={() => (isTeaser(data) ? (
-              <Footer data={data} showAuthor isRankOnTop />
-            ) : null)
+            renderFooter={() => (isTeaser(data) ? <Footer data={data} showAuthor isRankOnTop /> : null)
             }
           />
         </Teaser>
@@ -251,11 +228,7 @@ function Teaser1({
 }
 
 Teaser2.defaultProps = teaserDefaultProps;
-function Teaser2({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser2({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return isTeaser(data) ? (
     <FelaTheme
       render={theme => (
@@ -269,61 +242,45 @@ function Teaser2({
               { from: 'xl', value: 'column', },
             ],
           }}
-          onClick={
-            biAction
-              ? () => biAction({ index: 1, articleId: data.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 1, articleId: data.contentId, }) : null}
         >
-          {data.image ? (
-            <TeaserMedia
-              data={data}
-              width={[
-                { until: 's', value: 17, },
-                { from: 'l', until: 'xl', value: 2 / 5, },
-              ]}
-              miscStyles={{
-                flexBasis: [
-                  { from: 's', until: 'l', value: 'auto', },
-                  { from: 'xl', value: 'auto', },
-                ],
-                flexGrow: [
-                  { from: 's', until: 'l', value: '0', },
-                  { from: 'xl', value: '0', },
-                ],
-              }}
-            >
-              <Picture
-                lazyLoad={lazyLoadImages}
-                {...getPictureAssets({
-                  bps: theme.bps,
-                  imgData: data.image,
-                  defaultImgOptions: {
-                    sizes: [
-                      { from: 'l', size: '158px', },
-                      { from: 'm', size: '240px', },
-                      { from: 's', size: '184px', },
-                      { size: '17rem', },
-                    ],
-                    aspect: 'square',
-                    widths: [ 102, 158, 184, 204, 240, 400, ],
-                  },
-                  sources: [
-                    {
-                      aspect: 'vertical',
-                      from: 'xl',
-                      sizes: '188px',
-                      widths: [ 188, ],
-                    },
+          <TeaserMedia
+            data={data}
+            width={[ { until: 's', value: 17, }, { from: 'l', until: 'xl', value: 2 / 5, }, ]}
+            miscStyles={{
+              flexBasis: [ { from: 's', until: 'l', value: 'auto', }, { from: 'xl', value: 'auto', }, ],
+              flexGrow: [ { from: 's', until: 'l', value: '0', }, { from: 'xl', value: '0', }, ],
+            }}
+          >
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: data.image,
+                defaultImgOptions: {
+                  sizes: [
+                    { from: 'l', size: '158px', },
+                    { from: 'm', size: '240px', },
+                    { from: 's', size: '184px', },
+                    { size: '17rem', },
                   ],
-                })}
-              />
-            </TeaserMedia>
-          ) : null}
+                  aspect: 'square',
+                  widths: [ 102, 158, 184, 204, 240, 400, ],
+                },
+                sources: [
+                  {
+                    aspect: 'vertical',
+                    from: 'xl',
+                    sizes: '188px',
+                    widths: [ 188, ],
+                  },
+                ],
+              })}
+            />
+          </TeaserMedia>
           <TeaserContent
             data={data}
             width={[ { from: 'l', until: 'xl', value: 3 / 5, }, ]}
-            padding={[ 1, 0, 0, 1, ]}
             padding={[ 1, 0, 1, 1, ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
@@ -333,30 +290,17 @@ function Teaser2({
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
             }}
             gridItemMiscStyles={{
-              flexBasis: [
-                { from: 's', until: 'l', value: 'auto', },
-                { from: 'xl', value: 'auto', },
-              ],
-              flexGrow: [
-                { from: 's', until: 'l', value: '1', },
-                { from: 'xl', value: '1', },
-              ],
-              flexShrink: [
-                { from: 's', until: 'l', value: '0', },
-                { from: 'xl', value: '0', },
-              ],
+              flexBasis: [ { from: 's', until: 'l', value: 'auto', }, { from: 'xl', value: 'auto', }, ],
+              flexGrow: [ { from: 's', until: 'l', value: '1', }, { from: 'xl', value: '1', }, ],
+              flexShrink: [ { from: 's', until: 'l', value: '0', }, { from: 'xl', value: '0', }, ],
             }}
             renderContent={() => (
               <TeaserHeader
-                typeScale={[
-                  { until: 's', value: -1, },
-                  { from: 'xl', value: -1, },
-                ]}
+                typeScale={[ { until: 's', value: -1, }, { from: 'xl', value: -1, }, ]}
                 {...data}
               />
             )}
-            renderFooter={() => (isTeaser(data) ? <Footer data={data} /> : null)
-            }
+            renderFooter={() => (isTeaser(data) ? <Footer data={data} /> : null)}
           />
         </Teaser>
       )}
@@ -365,69 +309,56 @@ function Teaser2({
 }
 
 Teaser3.defaultProps = teaserDefaultProps;
-function Teaser3({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser3({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return isTeaser(data) ? (
     <FelaTheme
       render={theme => (
         <Teaser
           data={data}
           gutter={1}
-          onClick={
-            biAction
-              ? () => biAction({ index: 2, articleId: data.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 2, articleId: data.contentId, }) : null}
           gridMiscStyles={{ flexWrap: 'nowrap', }}
         >
-          {data.image ? (
-            <TeaserMedia
-              data={data}
-              width={[
-                { until: 's', value: 17, },
-                { from: 's', until: 'l', value: 4 / 12, },
-                { from: 'l', until: 'xl', value: 2 / 5, },
-                { from: 'xl', value: 2 / 4, },
-              ]}
-            >
-              <Picture
-                lazyLoad={lazyLoadImages}
-                {...getPictureAssets({
-                  bps: theme.bps,
-                  imgData: data.image,
-                  defaultImgOptions: {
-                    sizes: [
-                      { from: 'l', until: 'xl', size: '158px', },
-                      { size: '17rem', },
-                    ],
-                    aspect: 'square',
-                    widths: [ 102, 158, 204, ],
+          <TeaserMedia
+            data={data}
+            width={[
+              { until: 's', value: 17, },
+              { from: 's', until: 'l', value: 4 / 12, },
+              { from: 'l', until: 'xl', value: 2 / 5, },
+              { from: 'xl', value: 2 / 4, },
+            ]}
+          >
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: data.image,
+                defaultImgOptions: {
+                  sizes: [ { from: 'l', until: 'xl', size: '158px', }, { size: '17rem', }, ],
+                  aspect: 'square',
+                  widths: [ 102, 158, 204, ],
+                },
+                sources: [
+                  {
+                    aspect: 'regular',
+                    from: 'xl',
+                    sizes: '202px',
+                    widths: [ 202, ],
                   },
-                  sources: [
-                    {
-                      aspect: 'regular',
-                      from: 'xl',
-                      sizes: '202px',
-                      widths: [ 202, ],
-                    },
-                    {
-                      aspect: 'regular',
-                      from: 's',
-                      until: 'l',
-                      sizes: [
-                        { from: 's', until: 'm', size: '188px', },
-                        { from: 'm', until: 'l', size: '256px', },
-                      ],
-                      widths: [ 188, 376, 256, 512, ],
-                    },
-                  ],
-                })}
-              />
-            </TeaserMedia>
-          ) : null}
+                  {
+                    aspect: 'regular',
+                    from: 's',
+                    until: 'l',
+                    sizes: [
+                      { from: 's', until: 'm', size: '188px', },
+                      { from: 'm', until: 'l', size: '256px', },
+                    ],
+                    widths: [ 188, 376, 256, 512, ],
+                  },
+                ],
+              })}
+            />
+          </TeaserMedia>
           <TeaserContent
             data={data}
             width={[
@@ -446,15 +377,11 @@ function Teaser3({
             }}
             renderContent={() => (
               <TeaserHeader
-                typeScale={[
-                  { until: 's', value: -1, },
-                  { from: 'xl', value: -1, },
-                ]}
+                typeScale={[ { until: 's', value: -1, }, { from: 'xl', value: -1, }, ]}
                 {...data}
               />
             )}
-            renderFooter={() => (isTeaser(data) ? <Footer data={data} /> : null)
-            }
+            renderFooter={() => (isTeaser(data) ? <Footer data={data} /> : null)}
           />
         </Teaser>
       )}
@@ -463,39 +390,30 @@ function Teaser3({
 }
 
 Teaser4.defaultProps = teaserDefaultProps;
-function Teaser4({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser4({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return isTeaser(data) ? (
     <FelaTheme
       render={theme => (
         <Teaser
           data={data}
           gutter={1}
-          onClick={
-            biAction
-              ? () => biAction({ index: 3, articleId: data.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 3, articleId: data.contentId, }) : null}
           gridMiscStyles={{ flexWrap: 'nowrap', }}
         >
-          {data.image ? (
-            <TeaserMedia
-              data={data}
-              width={[ { until: 'xl', value: 0, }, ]}
-              miscStyles={{ display: [ { until: 'l', value: 'none', }, ], }}
-            >
-              <Image
-                data={data.image}
-                lazyLoad={lazyLoadImages}
-                imgOptions={{
-                  transforms: { aspect: 'regular', width: 198, },
-                }}
-              />
-            </TeaserMedia>
-          ) : null}
+          <TeaserMedia
+            data={data}
+            width={[ { until: 'xl', value: 0, }, ]}
+            miscStyles={{ display: [ { until: 'l', value: 'none', }, ], }}
+          >
+            <Image
+              data={data.image}
+              lazyLoad={lazyLoadImages}
+              imgOptions={{
+                transforms: { aspect: 'regular', width: 198, },
+              }}
+            />
+          </TeaserMedia>
+
           <TeaserContent
             data={data}
             width={[
@@ -503,14 +421,8 @@ function Teaser4({
               { from: 'l', until: 'xl', value: 3 / 5, },
               { from: 'xl', value: 2 / 4, },
             ]}
-            padding={[
-              { until: 'xl', value: [ 1, 1, 0, ], },
-              { from: 'xl', value: [ 1, 0, 0, 1, ], },
-            ]}
-            footerPadding={[
-              { until: 'xl', value: 1, },
-              { from: 'xl', value: [ 1, 0, 1, 1, ], },
-            ]}
+            padding={[ { until: 'xl', value: [ 1, 1, 0, ], }, { from: 'xl', value: [ 1, 0, 0, 1, ], }, ]}
+            footerPadding={[ { until: 'xl', value: 1, }, { from: 'xl', value: [ 1, 0, 1, 1, ], }, ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
               display: 'flex',
@@ -520,15 +432,11 @@ function Teaser4({
             }}
             renderContent={() => (
               <TeaserHeader
-                typeScale={[
-                  { until: 's', value: -1, },
-                  { from: 'xl', value: -1, },
-                ]}
+                typeScale={[ { until: 's', value: -1, }, { from: 'xl', value: -1, }, ]}
                 {...data}
               />
             )}
-            renderFooter={() => (isTeaser(data) ? <Footer data={data} /> : null)
-            }
+            renderFooter={() => (isTeaser(data) ? <Footer data={data} /> : null)}
           />
         </Teaser>
       )}
@@ -537,20 +445,12 @@ function Teaser4({
 }
 
 Teaser5.defaultProps = teaserDefaultProps;
-function Teaser5({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser5({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return isTeaser(data) ? (
     <Teaser
       data={data}
       gutter={1}
-      onClick={
-        biAction
-          ? () => biAction({ index: 3, articleId: data.contentId, })
-          : null
-      }
+      onClick={biAction ? () => biAction({ index: 3, articleId: data.contentId, }) : null}
     >
       <TeaserContent
         data={data}
@@ -595,14 +495,9 @@ function Footer({ data, showAuthor, isRankOnTop, }: FooterProps): React.Node {
             }}
             render="span"
           >
-            <TeaserAuthors
-              authors={data.authors}
-              miscStyles={{ fontWeight: 'bold', }}
-            />
+            <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
           </FelaComponent>
-          {data.publishDate || data.lastUpdate ? (
-            <TeaserTime {...data} />
-          ) : null}
+          {data.publishDate || data.lastUpdate ? <TeaserTime {...data} /> : null}
           {' '}
         </div>
       ) : null}
@@ -615,10 +510,7 @@ function Footer({ data, showAuthor, isRankOnTop, }: FooterProps): React.Node {
             ...(isRankOnTop
               ? {
                 extend: [
-                  theme.mq(
-                    { from: 'xl', },
-                    { flexBasis: '100%', flexShrink: '0', order: '-1', }
-                  ),
+                  theme.mq({ from: 'xl', }, { flexBasis: '100%', flexShrink: '0', order: '-1', }),
                 ],
               }
               : {}),
