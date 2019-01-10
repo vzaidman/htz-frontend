@@ -71,4 +71,10 @@ export default function htz(app, server, DEV) {
     console.log('rendering standardArticle');
     return app.render(req, res, '/standardArticle', query);
   });
+
+  // if no match return 404 error
+  server.get([ '*', ], (req, res) => {
+    res.status(404);
+    return app.render(req, res, '/error', { status: 404, });
+  });
 }
