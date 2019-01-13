@@ -164,22 +164,35 @@ class FullScreenMedia extends React.Component {
   }
 
   componentDidUpdate() {
-    this.state.isFullScreen
-      ? document.addEventListener('keydown', this.handleGlobalKeydown)
-      : document.removeEventListener('keydown', this.handleGlobalKeydown);
+    if (this.state.isFullScreen) {
+      document.addEventListener('keydown', this.handleGlobalKeydown);
+      document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    }
+    else {
+      document.removeEventListener('keydown', this.handleGlobalKeydown);
+      document.getElementsByTagName('html')[0].style.overflow = 'visible';
+    }
   }
 
   handleGlobalKeydown = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
-      this.props.exitAction() || this.toggleFullScreen();
+      this.toggleFullScreen();
     }
   };
 
   toggleFullScreen = () => {
-    this.setState(prevState => ({
-      isFullScreen: !prevState.isFullScreen,
-    }));
+    const { exitAction, } = this.props;
+    const { isFullScreen, } = this.state;
+    if (!exitAction || !isFullScreen) {
+      this.setState(prevState => ({
+        isFullScreen: !prevState.isFullScreen,
+      }));
+    }
+    else {
+      document.getElementsByTagName('html')[0].style.overflow = 'visible';
+      exitAction();
+    }
   };
 
   toggleHide = hide => this.setState({
@@ -187,7 +200,7 @@ class FullScreenMedia extends React.Component {
   });
 
   render() {
-    const { render, captionElement, itemName, itemUrl, exitAction, } = this.props;
+    const { render, captionElement, itemName, itemUrl, } = this.props;
     const { isFullScreen, } = this.state;
 
     return (
@@ -225,7 +238,7 @@ class FullScreenMedia extends React.Component {
                     end: '2rem',
                   }}
                 >
-                  <Icon isFullScreen onClick={exitAction || this.toggleFullScreen} hide={false} />
+                  <Icon isFullScreen onClick={this.toggleFullScreen} hide={false} />
                 </FelaComponent>
                 <ToolBar
                   itemName={itemName}
@@ -233,7 +246,7 @@ class FullScreenMedia extends React.Component {
                   closeButton={(
                     <Icon
                       isFullScreen
-                      onClick={exitAction || this.toggleFullScreen}
+                      onClick={this.toggleFullScreen}
                       hide={false}
                     />
 )}

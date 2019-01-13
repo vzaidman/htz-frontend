@@ -1,7 +1,6 @@
-import React from 'react';
 import ArticleImage from '../components/ArticleBodyImage/ArticleBodyImage';
 import Embed from '../components/Embed/Embed';
-// import ImageGallery from '../ImageGallery/ImageGallery';
+import ImageGallery from '../components/ImageGallery/ImageGallery';
 import Video from '../components/Video/Video';
 
 export default (kind, ImageComponent = ArticleImage) => {
@@ -9,8 +8,7 @@ export default (kind, ImageComponent = ArticleImage) => {
     case 'image':
       return ImageComponent;
     case 'gallery':
-      // return <ImageGallery {...elementObj} forceAspect="headline" />;
-      return () => <p>ImageGallery</p>;
+      return ImageGallery;
     case 'video':
       return Video;
     case 'embed':
