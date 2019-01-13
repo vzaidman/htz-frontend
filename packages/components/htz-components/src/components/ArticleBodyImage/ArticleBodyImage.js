@@ -210,7 +210,7 @@ const getAspect = viewMode => {
     case 'verticalView':
       return 'vertical';
     case 'FullColumnWithVerticalImage':
-      return 'headline';
+      return 'full';
     default:
       return 'full';
   }
