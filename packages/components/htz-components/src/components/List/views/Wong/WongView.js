@@ -181,7 +181,11 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
         <GridItem
           gutter={gutter}
           width={width}
-          rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]}
+          rule={
+            isConrad
+              ? null
+              : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]
+          }
         >
           {isTeaser(item) && (
             <Teaser
@@ -199,7 +203,11 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                   { from: 'l', until: 'xl', value: 7 / 12, },
                   { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
                 ]}
-                miscStyles={{ paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '4rem', }, ], }}
+                miscStyles={{
+                  paddingInlineEnd: [
+                    { from: 'xl', value: isConrad ? 0 : '2rem', },
+                  ],
+                }}
               >
                 <MediaComponent {...mediaProps} />
               </TeaserMedia>
@@ -213,11 +221,14 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 padding={[
                   { until: 's', value: [ 0, 2, 0, 0, ], },
                   { from: 's', until: 'l', value: [ 3, 0, 0, 0, ], },
-                  { from: 'l', until: 'xl', value: [ 0, 4, 0, 0, ], },
-                  { from: 'xl', value: [ 0, isConrad ? 4 : 0, 0, isConrad ? 0 : 4, ], },
+                  { from: 'l', until: 'xl', value: [ 0, 2, 0, 0, ], },
+                  { from: 'xl', value: isConrad ? [ 0, 2, 0, ] : [ 0, 0, 0, 2, ], },
                 ]}
                 miscStyles={{
-                  marginTop: [ { until: 's', value: '-3rem', }, ],
+                  marginTop:
+                    item && (item.exclusive || item.exclusiveMobile)
+                      ? [ { until: 's', value: '-3rem', }, ]
+                      : undefined,
                 }}
                 renderContent={() => (
                   <React.Fragment>
@@ -228,10 +239,12 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                       typeScale={[
                         { until: 's', value: 1, },
                         { from: 's', until: 'l', value: 6, },
-                        { from: 'l', until: 'xl', value: 5, },
-                        { from: 'xl', value: 5, },
+                        { from: 'l', value: isConrad ? 5 : 3, },
                       ]}
-                      kickerTypeScale={-1}
+                      kickerTypeScale={[
+                        { until: 'xl', value: -1, },
+                        { from: 'xl', value: -2, },
+                      ]}
                       miscStyles={{
                         marginTop: '1rem',
                       }}
@@ -245,7 +258,10 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                     />
                     <TeaserSubtitle
                       {...item}
-                      typeScale={[ { from: 'xl', value: -1, }, ]}
+                      typeScale={[
+                        { until: 'xl', value: -1, },
+                        { from: 'xl', value: -2, },
+                      ]}
                       miscStyles={{
                         display: [ { until: 's', value: 'none', }, ],
                         marginTop: [ { from: 's', value: '1rem', }, ],
@@ -257,16 +273,15 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 footerPadding={[
                   { until: 's', value: [ 1, 2, ], },
                   { from: 's', until: 'l', value: [ 1, 0, ], },
-                  { from: 'l', until: 'xl', value: [ 1, 4, 0, 0, ], },
+                  { from: 'l', until: 'xl', value: [ 1, 2, 0, 0, ], },
                   isConrad
-                    ? { from: 'xl', value: [ 1, 4, 0, 0, ], }
-                    : { from: 'xl', value: [ 1, 0, 0, 4, ], },
+                    ? { from: 'xl', value: [ 1, 2, 0, 0, ], }
+                    : { from: 'xl', value: [ 1, 0, 0, 2, ], },
                 ]}
                 footerMiscStyles={{
+                  marginTop: '0',
                   display: 'block',
                   color: theme.color('neutral', '-3'),
-                  marginTop: [ { from: 'xl', value: '0', }, ],
-                  position: [ { from: 's', value: 'initial', }, ],
                   type: [
                     { until: 's', value: -3, },
                     { from: 's', until: 'xl', value: -2, },
@@ -275,7 +290,10 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                 }}
                 renderFooter={() => (
                   <React.Fragment>
-                    <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                    <TeaserAuthors
+                      authors={item.authors}
+                      miscStyles={{ fontWeight: 'bold', }}
+                    />
                     {' | '}
                     <TeaserTime {...item} />
                     {' '}
@@ -287,10 +305,9 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                       <FelaComponent
                         style={{
                           marginTop: '1rem',
+                          fontWeight: '700',
                           extend: [
                             theme.mq({ until: 's', }, { display: 'none', }),
-                            theme.mq({ from: 'l', }, { marginTop: '2rem', }),
-                            // theme.mq({ from: 'xl', }, { display: 'none', }),
                           ],
                         }}
                         render="ul"
@@ -303,7 +320,9 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                               <FelaComponent
                                 style={{
                                   color: theme.color('link', 'base'),
-                                  ':visited': { color: theme.color('link', 'base'), },
+                                  ':visited': {
+                                    color: theme.color('link', 'base'),
+                                  },
                                   extend: [
                                     theme.mq(
                                       { until: 'xl', },
@@ -314,10 +333,18 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                                   ],
                                 }}
                                 render={({ className, }) => (
-                                  <HtzLink href={article.path} className={className}>
+                                  <HtzLink
+                                    href={article.path}
+                                    className={className}
+                                  >
                                     <IconBack
-                                      size={[ { until: 'xl', value: 2, }, { from: 'xl', value: 1.5, }, ]}
-                                      miscStyles={{ marginInlineEnd: '0.5rem', }}
+                                      size={[
+                                        { until: 'xl', value: 2, },
+                                        { from: 'xl', value: 1.5, },
+                                      ]}
+                                      miscStyles={{
+                                        marginInlineEnd: '0.5rem',
+                                      }}
                                     />
                                     {article.title}
                                   </HtzLink>

@@ -18,16 +18,17 @@ type Props = {
   },
 };
 
-export default function MainBlock({ data: { slotA, slotB, slotC, }, List, }: Props): Node {
+export default function MainBlock({
+  data: { slotA, slotB, slotC, },
+  List,
+}: Props): Node {
   const isWideMain = slotA.view === 'Conrad';
   return (
     <ListView
       gutter={0}
       innerBackgroundColor={[ { until: 's', value: 'transparent', }, ]}
-      miscStyles={{
-        paddingInlineEnd: [ { from: 's', value: '4rem', }, ],
-        paddingInlineStart: [ { from: 's', value: '4rem', }, ],
-      }}
+      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
+      marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
     >
       <List
         {...slotA}
