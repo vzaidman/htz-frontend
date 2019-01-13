@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, } from 'react-fela';
+import { createComponent, FelaTheme, } from 'react-fela';
 import Observer from 'react-intersection-observer';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
@@ -154,7 +154,7 @@ function Image(props) {
   const {
     attrs,
     bgcolor,
-    data: { alt, credit, isAnimatedGif, },
+    data: { accessibility, alt, title, credit, isAnimatedGif, },
     imgOptions: { sizes, },
     isPresentational,
     lazyLoad,
@@ -183,51 +183,57 @@ Please use the "<Picture />" component`
   const srcSet = sources[1];
   const webpSources = isAnimatedGif ? getSources(props, true) : undefined;
 
-  const Sources = isAnimatedGif ? (
-    <picture>
-      <ImgSource
-        {...(sizes ? { sizes, } : {})}
-        tagName="source"
-        type="image/webp"
-        src={webpSources[0]}
-        {...(srcSet ? { srcSet: webpSources[1], } : {})}
-      />
+  const Sources = (
+    <FelaTheme
+      render={theme => (
+        isAnimatedGif ? (
+          <picture>
+            <ImgSource
+              {...(sizes ? { sizes, } : {})}
+              tagName="source"
+              type="image/webp"
+              src={webpSources[0]}
+              {...(srcSet ? { srcSet: webpSources[1], } : {})}
+            />
 
-      <ImgSource
-        {...(alt ? { alt, } : {})}
-        src={src}
-        hasWrapper={hasWrapper}
-        {...(srcSet ? { srcSet, } : {})}
-        {...(sizes ? { sizes, } : {})}
-        title={credit}
-        attrs={
-          isPresentational
-            ? {
-              ...attrs,
-              role: 'presentation',
-              'aria-hidden': true,
+            <ImgSource
+              alt={alt || accessibility}
+              src={src}
+              hasWrapper={hasWrapper}
+              {...(srcSet ? { srcSet, } : {})}
+              {...(sizes ? { sizes, } : {})}
+              title={`${title || ''}${title && credit ? ', ' : ''}${credit ? `${theme.creditPrefixI18n.imageCreditPrefix}: ${credit}` : ''}`}
+              attrs={
+                isPresentational
+                  ? {
+                    ...attrs,
+                    role: 'presentation',
+                    'aria-hidden': true,
+                  }
+                  : attrs
+              }
+            />
+          </picture>
+        ) : (
+          <ImgSource
+            alt={alt || accessibility}
+            hasWrapper={hasWrapper}
+            title={`${title || ''}${title && credit ? ', ' : ''}${credit ? `${theme.creditPrefixI18n.imageCreditPrefix}: ${credit}` : ''}`}
+            src={src}
+            {...(srcSet ? { srcSet, } : {})}
+            {...(sizes ? { sizes, } : {})}
+            attrs={
+              isPresentational
+                ? {
+                  ...attrs,
+                  role: 'presentation',
+                  'aria-hidden': true,
+                }
+                : attrs
             }
-            : attrs
-        }
-      />
-    </picture>
-  ) : (
-    <ImgSource
-      {...(alt ? { alt, } : {})}
-      hasWrapper={hasWrapper}
-      title={credit}
-      src={src}
-      {...(srcSet ? { srcSet, } : {})}
-      {...(sizes ? { sizes, } : {})}
-      attrs={
-        isPresentational
-          ? {
-            ...attrs,
-            role: 'presentation',
-            'aria-hidden': true,
-          }
-          : attrs
-      }
+          />
+        )
+      )}
     />
   );
 

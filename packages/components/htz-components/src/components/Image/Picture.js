@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import { createComponent, withTheme, } from 'react-fela';
+import { createComponent, FelaTheme, withTheme, } from 'react-fela';
 import Observer from 'react-intersection-observer';
 import { parseComponentProp, parseStyleProps, } from '@haaretz/htz-css-tools';
 import { attrsPropType, } from '../../propTypes/attrsPropType';
@@ -235,7 +235,7 @@ function Picture(props) {
   }
 
   const {
-    data: { alt, credit, },
+    data: { accessibility, alt, title, credit, },
     sourceOptions,
   } = defaultImg;
   const [ imgSrc, ...imgSrcSet ] = getImgSources(props);
@@ -243,60 +243,64 @@ function Picture(props) {
   const media = getMedia(props);
 
   const Element = (
-    <picture>
-      {sources.map((img, index) => (img.data.isAnimatedGif ? (
-      // eslint-disable-next-line react/no-array-index-key
-        <Fragment key={index}>
+    <FelaTheme
+      render={theme => (
+        <picture>
+          {sources.map((img, index) => (img.data.isAnimatedGif ? (
+          // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              <ImgSource
+                {...(media[index] ? { media: media[index], } : [])}
+                tagName="source"
+                type="image/webp"
+                srcSet={getSources(props, index, true)}
+                {...(img.sourceOptions.sizes
+                  ? { sizes: img.sourceOptions.sizes, }
+                  : {})}
+              />
+              <ImgSource
+                {...(media[index] ? { media: media[index], } : [])}
+                tagName="source"
+                srcSet={getSources(props, index, false)}
+                {...(img.sourceOptions.sizes
+                  ? { sizes: img.sourceOptions.sizes, }
+                  : {})}
+              />
+            </Fragment>
+          ) : (
+            <ImgSource
+                // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              {...(media[index] ? { media: media[index], } : [])}
+              tagName="source"
+              {...(img.mimeType ? { type: img.mimeType, } : {})}
+              srcSet={getSources(props, index, false)}
+              {...(img.sourceOptions.sizes
+                ? { sizes: img.sourceOptions.sizes, }
+                : {})}
+            />
+          ))
+          )}
           <ImgSource
-            {...(media[index] ? { media: media[index], } : [])}
-            tagName="source"
-            type="image/webp"
-            srcSet={getSources(props, index, true)}
-            {...(img.sourceOptions.sizes
-              ? { sizes: img.sourceOptions.sizes, }
-              : {})}
-          />
-          <ImgSource
-            {...(media[index] ? { media: media[index], } : [])}
-            tagName="source"
-            srcSet={getSources(props, index, false)}
-            {...(img.sourceOptions.sizes
-              ? { sizes: img.sourceOptions.sizes, }
-              : {})}
-          />
-        </Fragment>
-      ) : (
-        <ImgSource
-            // eslint-disable-next-line react/no-array-index-key
-          key={index}
-          {...(media[index] ? { media: media[index], } : [])}
-          tagName="source"
-          {...(img.mimeType ? { type: img.mimeType, } : {})}
-          srcSet={getSources(props, index, false)}
-          {...(img.sourceOptions.sizes
-            ? { sizes: img.sourceOptions.sizes, }
-            : {})}
-        />
-      ))
-      )}
-      <ImgSource
-        {...(alt ? { alt, } : {})}
-        src={imgSrc}
-        hasWrapper={hasWrapper}
-        {...(imgSrcSet ? { srcSet: imgSrcSet, } : {})}
-        {...(defaultSizes ? { sizes: defaultSizes, } : {})}
-        title={credit}
-        attrs={
-          isPresentational
-            ? {
-              ...attrs,
-              role: 'presentation',
-              'aria-hidden': true,
+            alt={alt || accessibility}
+            src={imgSrc}
+            hasWrapper={hasWrapper}
+            {...(imgSrcSet ? { srcSet: imgSrcSet, } : {})}
+            {...(defaultSizes ? { sizes: defaultSizes, } : {})}
+            title={`${title || ''}${title && credit ? ', ' : ''}${credit ? `${theme.creditPrefixI18n.imageCreditPrefix}: ${credit}` : ''}`}
+            attrs={
+              isPresentational
+                ? {
+                  ...attrs,
+                  role: 'presentation',
+                  'aria-hidden': true,
+                }
+                : attrs
             }
-            : attrs
-        }
-      />
-    </picture>
+          />
+        </picture>
+      )}
+    />
   );
   if (lazyLoad) {
     return hasWrapper ? (
