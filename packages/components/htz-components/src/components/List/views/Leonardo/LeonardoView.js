@@ -21,27 +21,35 @@ type Props = {
 };
 
 function Leonardo({ list, }: Props): Node {
-  const items: ?Array<ClickTrackerBannerWrapperType> = list.clickTrackers && list.clickTrackers.length > 3 ? list.clickTrackers.slice(0, 4) : null;
+  const items: ?Array<ClickTrackerBannerWrapperType> = list.clickTrackers && list.clickTrackers.length > 3
+    ? list.clickTrackers.slice(0, 4)
+    : null;
+
   return items ? (
     <FelaTheme
       render={theme => (
         <ListView
-          innerBackgroundColor={[ 'neutral', '-10', ]}
+          innerBackgroundColor="white"
+          marginTop={0}
+          padding={[
+            { from: 's', until: 'l', value: [ 2, 4, 4, ], },
+            { from: 'l', until: 'xl', value: [ 4, 12, 8, ], },
+            { from: 'xl', value: [ 4, 20, 8, ], },
+          ]}
           miscStyles={{
             display: [ { until: 's', value: 'none', }, ],
+            borderTop: [
+              {
+                from: 's',
+                until: 'l',
+                value: [ '2px', 2, 'solid', theme.color('bg'), ],
+              },
+              { from: 'l', value: [ '2px', 4, 'solid', theme.color('bg'), ], },
+            ],
           }}
         >
           <GridItem width={1}>
-            <Grid
-              gutter={4}
-              miscStyles={{
-                paddingInlineStart: [
-                  { until: 'xl', value: '12rem', },
-                  { from: 'xl', value: '20rem', },
-                ],
-                paddingInlineEnd: [ { until: 'xl', value: '12rem', }, { from: 'xl', value: '20rem', }, ],
-              }}
-            >
+            <Grid gutter={4}>
               {items.map(item => (
                 <GridItem key={item.contentId} width={1 / items.length}>
                   <ClickTracker
@@ -52,8 +60,18 @@ function Leonardo({ list, }: Props): Node {
                         <FelaComponent
                           style={{
                             extend: [
-                              borderTop('1px', 2, 'solid', theme.color('neutral', '-5')),
-                              borderBottom('1px', 2, 'solid', theme.color('neutral', '-5')),
+                              borderTop(
+                                '1px',
+                                2,
+                                'solid',
+                                theme.color('neutral', '-5')
+                              ),
+                              borderBottom(
+                                '1px',
+                                2,
+                                'solid',
+                                theme.color('neutral', '-5')
+                              ),
                             ],
                           }}
                         >
