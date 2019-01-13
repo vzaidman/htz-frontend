@@ -6,6 +6,8 @@ import {
   LayoutContainer,
   componentFromInputTemplate,
   HeaderSlot,
+  UserDispenser,
+  GaDimensions,
 } from '@haaretz/htz-components';
 
 import MainSlot from './MainSlot';
@@ -55,6 +57,9 @@ function HomePageSlotsLayout({
       ) : null}
       {footer ? <LayoutRow bgc={rowBgc}>{getElements(footer)}</LayoutRow> : null}
       <LayoutRow bgc={rowBgc} idName="modalsRoot" />
+      <UserDispenser
+        render={({ user, }) => <GaDimensions pageType="HomePage" userType={user.type} />}
+      />
     </React.Fragment>
   );
 }
