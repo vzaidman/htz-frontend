@@ -1,7 +1,7 @@
 import React, { Fragment, Component, } from 'react';
 import PropTypes from 'prop-types';
 import { Form, TextInput, Button, } from '@haaretz/htz-components';
-import { UserTransformations, CookieUtils, } from '@haaretz/htz-user-utils';
+import { UserTransformations, } from '@haaretz/htz-user-utils';
 import isEmail from 'validator/lib/isEmail';
 import Router from 'next/router';
 import objTransform from '../../../util/objectTransformationUtil';
@@ -9,19 +9,18 @@ import { storeFlowNumber, } from '../../FlowDispenser/flowStorage';
 import {
   saveUserData,
   getDataFromUserInfo,
-  saveOtpHash,
-  generateOtp,
   saveUserEmail,
   validateMailWithPhone,
   validateMailConfirmation,
   sendMailConfirmation,
+  saveIsEnterWithSms,
 } from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
-import { generateOtpErrorMessage, getHost, handleGenerateOtpIO } from '../../../util/requestUtil';
+import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -38,7 +37,7 @@ const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
       subscription: user.type,
       ssoId: user.id,
     };
-    return window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
+    window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
   }
 };
 
@@ -88,32 +87,10 @@ const validateEmailInput = ({ email, }) => (!email
     ? generateEmailError('אנא הזינו כתובת דוא”ל תקינה')
     : []); // email is valid
 
-const getUserData = (dataSaved = '') => dataSaved.userData;
-
-const hasValidatedPhone = dataSaved => dataSaved
-        && dataSaved.userData
-        && dataSaved.userData.userStatus
-        && dataSaved.userData.userStatus.isMobileValidated
-        && dataSaved.userData.phoneNum;
-
 const hasValidatedEmail = dataSaved => dataSaved
         && dataSaved.userData
         && dataSaved.userData.userStatus
         && dataSaved.userData.userStatus.isEmailValidated;
-
-const hasCrmStatus = dataSaved => (dataSaved
-  && dataSaved.userData
-  && dataSaved.userData.userCrmStatus
-  ? dataSaved.userData.userCrmStatus
-  : false);
-
-const hasActiveSub = dataSaved => {
-  const crmStatus = hasCrmStatus(dataSaved);
-  return crmStatus
-        && (crmStatus.isActiveTm || crmStatus.isActiveHeb);
-};
-
-const isEmailValidationRequired = dataSaved => !hasActiveSub(dataSaved) && !hasValidatedEmail(dataSaved);
 
 const setFacebookParamsOnApollo = client => {
   const { facebook, } = getUrlParams();
@@ -269,6 +246,7 @@ class IndexForm extends Component {
     const eventsTrackers = { gaAction: this.props.gaAction, biAction: this.props.biAction, };
     const { prefix, suffix, } = UserTransformations.mobileNumberParser(phone);
     if (confirmation && type === 'phoneEmailConnect') {
+      saveIsEnterWithSms(client)(true);
       validateMailWithPhone(client)({ email, confirmation, mobilePrefix: prefix, mobileNum: suffix, })
         .then(
           () => onSubmit(

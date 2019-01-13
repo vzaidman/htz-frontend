@@ -1,20 +1,16 @@
 /* global fetch, window */
 import React, { Fragment, Component, } from 'react';
-import config from 'config';
 import Router from 'next/router';
 import { ApolloConsumer, } from 'react-apollo';
-
-import { EventTracker, HtzLink, Login, Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
-import FSMLayout from '../layouts/FSMLayout';
-import { getUser, getEmail, getPhoneNum, getOtpHash, } from './queryutil/userDetailsOperations';
-
 import isEmail from 'validator/lib/isEmail';
 import { FelaTheme, } from 'react-fela';
+
+import { EventTracker, HtzLink, Login, Button, } from '@haaretz/htz-components';
+import FSMLayout from '../layouts/FSMLayout';
+import { getUser, isEnterWithSms, } from './queryutil/userDetailsOperations';
+
 import BottomLinks from '../components/Misc/BottomLinks';
-import {
-  LoginContentStyles,
-  LoginMiscLayoutStyles,
-} from '../components/StyleComponents/LoginStyleComponents';
+import { LoginContentStyles, } from '../components/StyleComponents/LoginStyleComponents';
 import Preloader from '../components/Misc/Preloader';
 
 import TabsFrame from '../components/Misc/TabsFrame';
@@ -44,7 +40,8 @@ const validateEmailInput = ({ email, }) =>
 const getUserFromApollo = (client) => {
   try {
     return getUser(client);
-  } catch(e) {
+  }
+  catch(e) {
     return false;
   }
 }
@@ -68,7 +65,7 @@ class LoginForms extends Component {
     this.setState({ showDialog: false, })
   }
 
-  setPreloader = (isLoadingStatus) => {
+  setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus, });
   }
 
@@ -87,7 +84,7 @@ class LoginForms extends Component {
   render() {
     return (
       <Login
-        render={({ login, loginWithMobile, }) => (
+        render={({ login, }) => (
           <FSMLayout>
             {({ currentState, findRout, doTransition, }) => (
               <ApolloConsumer>
@@ -141,7 +138,7 @@ class LoginForms extends Component {
 
                                   {/* ----------------- Tabs Frame ----------------- */}
                                   <TabsFrame
-                                    activeTab={1}
+                                    activeTab={isEnterWithSms(client) ? 0 : 1}
                                     formIndex={activeTab === 0 ? 0 : 1}
                                     findRout={findRout}
                                     doTransition={doTransition}

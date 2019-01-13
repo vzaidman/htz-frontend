@@ -1,8 +1,8 @@
 /* eslint-disable react/no-did-mount-set-state */
 
 import React, { Fragment, } from 'react';
-import { ApolloConsumer, } from 'react-apollo';
-import { GoogleAnalytics, EventTracker, Footer, UserDispenser, } from '@haaretz/htz-components';
+// import { ApolloConsumer, } from 'react-apollo';
+import { GoogleAnalytics, EventTracker, Footer, UserDispenser,ApolloConsumer, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { FelaTheme, } from 'react-fela';
 import Header from '../layouts/Header';
@@ -33,7 +33,6 @@ const Index = () => (
             <FelaTheme
               render={theme => (
                 <Fragment>
-                  
                   <UserDispenser
                     render={({ isLoggedIn, user, }) => (
                       <EventTracker>

@@ -80,7 +80,7 @@ class PhoneMailSent extends Component {
               return (
                 <Fragment>
                   <EventTracker>
-                    {({ biAction, gaAction, gaMapper }) => (
+                    {({ biAction, gaAction, gaMapper, }) => (
                       <ContentWrapper>
                         <FormWrapper>
                           <ItemCenterer>
@@ -99,6 +99,7 @@ class PhoneMailSent extends Component {
                             showNumber={false}
                             eventCategory="Phone Mail Sent"
                             eventsTrackers={{ biAction, gaAction, }}
+                            dontGenerateOtp={true}
                             flow={flow}
                           />
 

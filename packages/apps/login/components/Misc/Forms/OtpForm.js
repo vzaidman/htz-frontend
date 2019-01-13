@@ -102,7 +102,7 @@ const generateOtpIO = ({
   successCallback: json => {
     setPreloader(false);
     if (json.success) {
-      if(isResending) {
+      if (isResending) {
         const route = doTransition('sendAgain');
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
           Router.push(route);
@@ -146,6 +146,7 @@ class OtpForm extends Component {
   static propTypes = {
     client: PropTypes.object.isRequired,
     doTransition: PropTypes.func.isRequired,
+    dontGenerateOtp: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -158,14 +159,16 @@ class OtpForm extends Component {
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
     this.onLoadError();
-    generateOtpIO({
-      showError: this.showError,
-      hideError: this.hideError,
-      setPreloader: this.setPreloader,
-      sendTrackingEvents,
-      isResending: false,
-      ...this.props,
-    })();
+    if (!this.props.dontGenerateOtp && !this.state.isLoading) {
+      generateOtpIO({
+        showError: this.showError,
+        hideError: this.hideError,
+        setPreloader: this.setPreloader,
+        sendTrackingEvents,
+        isResending: false,
+        ...this.props,
+      })();
+    }
   }
 
   onLoadError = (client = this.props.client) => {
