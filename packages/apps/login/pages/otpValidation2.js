@@ -193,8 +193,6 @@ class OtpValidation2 extends Component {
                       </FormWrapper>
                     )}
                   </EventTracker>
-    
-                  {/*<OtpForm dataRefs={{ host, client, findRout, doTransition, }} />*/}
                 </ContentWrapper>
               );
             }}

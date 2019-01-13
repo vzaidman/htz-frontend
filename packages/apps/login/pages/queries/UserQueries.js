@@ -24,6 +24,12 @@ export default gql`
   }
 `;
 
+const IS_SMS_ENTER = gql`
+  query isEnterWithSms {
+    isEnterWithSms @client
+  }
+`;
+
 const USER = gql`
   query getUser {
     userData @client {
@@ -128,4 +134,5 @@ export {
   REFERRER,
   PHONE_EMAIL_CONFIRMATION,
   RETRIEVE_HASH,
+  IS_SMS_ENTER,
 };

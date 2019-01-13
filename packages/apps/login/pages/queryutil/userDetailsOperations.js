@@ -9,6 +9,7 @@ import INSPECT_EMAIL, {
   REFERRER,
   PHONE_EMAIL_CONFIRMATION,
   RETRIEVE_HASH,
+  IS_SMS_ENTER,
 } from '../queries/UserQueries';
 import {
   GENERATE_HASH,
@@ -42,6 +43,10 @@ const mockDataFromUserInfo = client => email => Promise.resolve({
   },
 });
 
+const isEnterWithSms = client => client.readQuery({ query: IS_SMS_ENTER, }).isEnterWithSms;
+const saveIsEnterWithSms = client => boolean => client.writeData(
+  { data: { isEnterWithSms: boolean, }, }
+);
 const getUser = client => client.readQuery({ query: USER, }).userData;
 const getUserData = client => client.readQuery({ query: USER_DATA, }).userData;
 const getOtpHash = client => {
@@ -143,4 +148,6 @@ export {
   sendMailConfirmation,
   validateMailConfirmation,
   retrieveHash,
+  isEnterWithSms,
+  saveIsEnterWithSms,
 };
