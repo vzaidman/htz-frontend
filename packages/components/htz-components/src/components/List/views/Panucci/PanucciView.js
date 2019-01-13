@@ -51,7 +51,7 @@ export default function Panucci({
       {/* end header */}
 
       {/* List items */}
-      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 8 / 12, }, ]}>
+      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 6 / 12, }, ]}>
         <Grid
           rowSpacing={[
             { until: 's', value: { amount: 1, nUp: 1, }, },
@@ -176,7 +176,7 @@ export default function Panucci({
       {/* banner */}
       {dfp && dfp.length > 0 ? (
         <GridItem
-          width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+          width={[ { until: 'l', value: 1, }, { from: 'l', value: 4 / 12, }, ]}
           miscStyles={{ marginTop: [ { until: 'l', value: '1rem', }, ], }}
         >
           {/* banner content */}
