@@ -79,7 +79,7 @@ class OtpValidation2 extends Component {
     isLoading: false,
   }
 
-  showError = (errorMsg) => {
+  showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
   }
 
@@ -155,9 +155,7 @@ class OtpValidation2 extends Component {
                         />
                         <BottomLinks spacing={0}>
                           <span>לא הגיע?</span>
-            
                           <br />
-            
                           <HtzLink
                             href={`${findRout('withPassword')}`}
                             onClick={e => {
@@ -171,9 +169,7 @@ class OtpValidation2 extends Component {
                           >
                             כניסה עם סיסמה
                           </HtzLink>
-            
                           <br />
-            
                           <span>או </span>
                           <HtzLink
                             href="https://www.haaretz.co.il/misc/contact-us"

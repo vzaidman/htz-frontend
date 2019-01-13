@@ -15,6 +15,7 @@ export default [
       registration: 'register',
       withSms: 'loginFormsOtp',
       accept: 'phoneMailSent',
+      sendAgain: 'otpValidation2',
     },
   },
   {
