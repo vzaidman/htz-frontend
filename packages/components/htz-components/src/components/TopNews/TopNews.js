@@ -1,7 +1,13 @@
 // @flow
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
+import { borderBottom, } from '@haaretz/htz-css-tools';
+
+import H from '../AutoLevels/H';
 import HtzLink from '../HtzLink/HtzLink';
+import LayoutContainer from '../PageLayout/LayoutContainer';
+import LayoutRow from '../PageLayout/LayoutRow';
+import Section from '../AutoLevels/Section';
 
 type Props = {
   newsItems: [
@@ -13,50 +19,77 @@ type Props = {
       contentName: string,
     },
   ],
-  // contentId: string,
   contentName: string,
 };
 
 function TopNews({ newsItems, contentName, }: Props): React.Node {
+  const topBottomPadding = 1;
   return (
-    <FelaComponent
-      style={theme => ({
-        paddingRight: '4rem',
-        paddingLeft: '4rem',
-        extend: [ theme.mq({ until: 'l', }, { display: 'none', }), ],
-      })}
-      render={({ theme, className, }) => (
-        <div className={className}>
-          <FelaComponent
-            style={{ color: theme.color('tertiary'), fontWeight: 700, extend: [ theme.type(-1), ], }}
-            render="span"
-          >
-            {contentName}
-            {' '}
-          </FelaComponent>
-          {newsItems
-            && newsItems.map((link, idx) => {
-              const isLast = idx === newsItems.length - 1;
-              return (
-                <FelaComponent
-                  key={link.contentName}
-                  style={{
-                    fontWeight: '700',
-                    color: theme.color(...(isLast ? [ 'primary', '+1', ] : [ 'neutral', ])),
-                    extend: [ theme.type(-1), ],
-                  }}
-                  render={({ className: linkClass, }) => (
-                    <HtzLink className={linkClass} href={link.href}>
-                      {link.contentName}
+    <LayoutRow>
+      <LayoutContainer
+        tagname="section"
+        namedBgc="white"
+        miscStyles={{ paddingBottom: '4rem', }}
+      >
+        <FelaComponent
+          style={theme => ({
+            paddingInlineEnd: '4rem',
+            paddingTop: `${topBottomPadding}rem`,
+            paddingInlineStart: '4rem',
+            extend: [
+              theme.mq({ until: 'l', }, { display: 'none', }),
+              theme.type(-1, { until: 'xl', }),
+              theme.type(-2, { from: 'xl', }),
+              borderBottom('2px', topBottomPadding, 'solid', theme.color('bg')),
+            ],
+          })}
+          render={({ theme, className, }) => (
+            <Section tagName="div" className={className}>
+              <FelaComponent
+                style={{
+                  color: theme.color('tertiary'),
+                  display: 'inline',
+                  fontWeight: '700',
+                  paddingInlineEnd: '1rem',
+                }}
+                render={({ className: headerClassName, }) => (
+                  <H className={headerClassName} offset={2}>
+                    {contentName}
+                  </H>
+                )}
+              />
+              {newsItems
+                && newsItems.map((link, idx) => {
+                  const isLast = idx === newsItems.length - 1;
+                  const hoverFocusStyle = {
+                    textDecoration: 'underline',
+                    textDecorationColor: theme.color('primary', '-2'),
+                  };
+                  return (
+                    <HtzLink href={link.href}>
+                      <FelaComponent
+                        key={link.contentName}
+                        style={{
+                          fontWeight: '700',
+                          color: theme.color(
+                            ...(isLast ? [ 'primary', '+1', ] : [ 'neutral', ])
+                          ),
+                          '&:hover': hoverFocusStyle,
+                          '&:focus': hoverFocusStyle,
+                        }}
+                        render="span"
+                      >
+                        {link.contentName}
+                      </FelaComponent>
                       {isLast ? null : ' | '}
                     </HtzLink>
-                  )}
-                />
-              );
-            })}
-        </div>
-      )}
-    />
+                  );
+                })}
+            </Section>
+          )}
+        />
+      </LayoutContainer>
+    </LayoutRow>
   );
 }
 
