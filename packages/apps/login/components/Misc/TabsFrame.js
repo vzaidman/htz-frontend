@@ -83,11 +83,7 @@ export default class TabsFrame extends React.Component {
       ) : null);
   }
 
-  navClickHandler = (index) => {
-    this.state.isLine[index] ?
-      this.changeTab(index) :
-      console.log("do router action");
-  }
+  navClickHandler = index => (this.state.isLine[index] ? this.changeTab(index) : false);
 
   /* ----------- Tabs Rendering ------------ */
   createNavigation(children) {

@@ -1,5 +1,4 @@
 const transformGraphQlObjectToFlowDispenserObject = ({ userByMail, }) => {
-  console.log('in transform', userByMail)
   const userExist = userByMail !== null;
   const userStatus = userExist && userByMail.userStatus !== null;
   const crmStatus = userExist && userByMail.userCrmStatus !== null;

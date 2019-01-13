@@ -14,7 +14,7 @@ import {
   getUser,
   retrieveHash,
 } from '../../../pages/queryutil/userDetailsOperations';
-import { getHost, handleGenerateOtpIO, } from '../../../util/requestUtil';
+import { getHost, handleGenerateOtpIO } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
@@ -82,32 +82,43 @@ const getOtpErrorMessage = msg => (msg.includes('sms')
   ? 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.'
   : (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
 
-const generateOtpIO = (client, doTransition, showError, hideError, setPreloader, sendTrackingEvents, eventsTrackers, flow) =>
-  handleGenerateOtpIO({
-    client,
-    phoneNumObject: { typeId: getUserData(client).phoneNum, },
-    miscOperations: () => {
-      hideError();
-      setPreloader(true);
-    },
-    successCallback: json => {
-      console.log('inside success callback', json)
-      if (json.success) {
+const generateOtpIO = ({
+  client,
+  doTransition,
+  showError,
+  hideError,
+  setPreloader,
+  sendTrackingEvents,
+  eventsTrackers,
+  flow,
+  isResending,
+}) => handleGenerateOtpIO({
+  client,
+  phoneNumObject: { typeId: getUserData(client).phoneNum, },
+  miscOperations: () => {
+    hideError();
+    setPreloader(true);
+  },
+  successCallback: json => {
+    setPreloader(false);
+    if (json.success) {
+      if(isResending) {
         const route = doTransition('sendAgain');
         sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
           Router.push(route);
         });
       }
-      else {
-        setPreloader(false);
-        showError(getOtpErrorMessage(json.msg));
-      }
-    },
-    failCallback: json => {
+    }
+    else {
       setPreloader(false);
       showError(getOtpErrorMessage(json.msg));
-    },
-  });
+    }
+  },
+  failCallback: json => {
+    setPreloader(false);
+    showError(getOtpErrorMessage(json.msg));
+  },
+});
 
 const hidePhone = (phoneNumber, shouldShow) => (shouldShow
   ? `${phoneNumber.substring(0, 3)}****${phoneNumber.substring(7)}`
@@ -147,6 +158,14 @@ class OtpForm extends Component {
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
     this.onLoadError();
+    generateOtpIO({
+      showError: this.showError,
+      hideError: this.hideError,
+      setPreloader: this.setPreloader,
+      sendTrackingEvents,
+      isResending: false,
+      ...this.props,
+    })();
   }
 
   onLoadError = (client = this.props.client) => {
@@ -215,7 +234,17 @@ class OtpForm extends Component {
                         data-role="resend"
                         onClick={e => {
                           e.preventDefault();
-                          generateOtpIO(client, doTransition, this.showError, this.hideError, this.setPreloader, sendTrackingEvents, eventsTrackers, flow)();
+                          generateOtpIO({
+                            client,
+                            doTransition,
+                            showError: this.showError,
+                            hideError: this.hideError,
+                            setPreloader: this.setPreloader,
+                            sendTrackingEvents,
+                            eventsTrackers,
+                            flow,
+                            isResending: true,
+                          })();
                         }}
                       >
                         שלח שוב

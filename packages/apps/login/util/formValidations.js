@@ -59,9 +59,7 @@ const valdiateForm = ({ firstname, lastname, email, password, terms }) => {
     errors = [ ...errors, ...validatePasswordInput({ password, }), ];
   }
   if (!terms) {
-    console.log("terms: " + terms);
     errors = [ ...errors, ...validateTermsInput({ terms, }), ];
   }
-  console.log(errors.map(arr => JSON.stringify(arr)));
   return errors;
 };

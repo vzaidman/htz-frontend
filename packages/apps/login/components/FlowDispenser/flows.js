@@ -2,8 +2,8 @@
 export default [
   {
     flowNumber: 1,
-    initialState: 'loginFormsOtp',
-    initialTransition: { url: '/loginForms', param: 0 },
+    initialState: 'loginFormsPass',
+    initialTransition: { url: '/loginForms', param: 1 },
     transitionRouteMap: new Map([]),
     loginFormsOtp: {
       registration: 'register',
@@ -19,7 +19,7 @@ export default [
   },
   {
     flowNumber: 2,
-    initialState: 'loginFormsPhone',
+    initialState: 'loginFormsPass',
     initialTransition: { url: '/loginForms', param: 1 },
     transitionRouteMap: new Map([]),
     emailPhoneInput: {
@@ -57,7 +57,7 @@ export default [
   {
     flowNumber: 5,
     initialState: 'loginFormsPass',
-    initialTransition: { url: '/loginForms', param: 0 },
+    initialTransition: { url: '/loginForms', param: 1 },
     transitionRouteMap: new Map([]),
     loginFormsPass: {
       registration: 'register',
@@ -67,8 +67,8 @@ export default [
   },
   {
     flowNumber: 6,
-    initialState: 'loginFormsOtp',
-    initialTransition: { url: '/loginForms', param: 0 },
+    initialState: 'loginFormsPass',
+    initialTransition: { url: '/loginForms', param: 1 },
     transitionRouteMap: new Map([]),
     loginFormsPass: {
       registration: 'register',
