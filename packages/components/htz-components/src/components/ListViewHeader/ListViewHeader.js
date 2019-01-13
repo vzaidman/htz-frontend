@@ -351,7 +351,7 @@ function listViewHeaderStyle({
         : [
           theme.mq(
             { from: 'l', },
-            borderTop('5px', 1, 'solid', theme.color('primary'))
+            borderTop('5px', 1, 'solid', isCommercial ? theme.color('commercial') : theme.color('primary'))
           ),
           theme.mq({ from: 'l', }, { flexDirection: 'column', }),
         ]),
