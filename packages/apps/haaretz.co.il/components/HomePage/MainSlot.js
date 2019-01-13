@@ -55,11 +55,11 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
                   )
                   : isTabElement(element)
                     ? (
-                      <TabElement key={element.contentId} {...element} />
+                      <TabElement key={element.contentId} List={List} {...element} />
                     )
                     : isGridElement(element)
                       ? (
-                        <GridElement key={element.contentId} {...element} />
+                        <GridElement key={element.contentId} List={List} {...element} />
                       )
                       : (
                         <Debug key={element.contentId}>

@@ -3,14 +3,14 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
-import type { ChildrenArray, Node, StatelessFunctionalComponent, } from 'react';
+import type { ChildrenArray, Node, StatelessFunctionalComponent, ComponentType, } from 'react';
 import type { TabsElementType, TabItemType, } from '../../flowTypes/TabsElementType';
 
 import Tabs from '../Tabs/Tabs';
 import TabList from '../TabList/TabList';
 import Tab from '../Tab/Tab';
 import TabPanel from '../TabPanel/TabPanel';
-import List from '../List/List';
+import CsrList from '../List/List';
 import ListViewHeader from '../ListViewHeader/ListViewHeader';
 import GridItem from '../Grid/GridItem';
 import ListView from '../ListView/ListView';
@@ -18,6 +18,10 @@ import { isClickTrackerWrapper, isDfp, isList, } from '../../utils/validateType'
 import ClickTracker from '../ClickTracker/ClickTrackerWrapper';
 import GeneralAdSlot from '../Ads/GeneralAdSlot';
 import Debug from '../Debug/Debug';
+
+type TabsElementProps = TabsElementType & {
+  List?: ?ComponentType<any>,
+}
 
 type State = {
   controls: string,
@@ -68,8 +72,12 @@ export const TabButton: StatelessFunctionalComponent<TabButtonProps> = ({
   />
 );
 
-class TabElement extends React.Component<TabsElementType, State> {
-  static getDerivedStateFromProps(nextProps: TabsElementType, prevState: State) {
+class TabElement extends React.Component<TabsElementProps, State> {
+  static defaultProps = {
+    List: null,
+  };
+
+  static getDerivedStateFromProps(nextProps: TabsElementProps, prevState: State) {
     const { elements, } = nextProps;
     return !prevState
       ? {
@@ -90,7 +98,8 @@ class TabElement extends React.Component<TabsElementType, State> {
 
   render(): Node {
     const { controls, selectedTab, index, } = this.state;
-    const { elements, } = this.props;
+    const { elements, List: SsrList, } = this.props;
+    const List = SsrList || CsrList;
     return (
       <FelaComponent
         style={theme => ({

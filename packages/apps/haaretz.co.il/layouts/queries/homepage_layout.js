@@ -7,8 +7,6 @@ import {
   embed,
   image,
   imageGallery,
-  gridElementGroup,
-  tabViewElements,
 } from '@haaretz/app-utils';
 
 export default gql`
@@ -144,6 +142,54 @@ export default gql`
     }
   }
   
+  fragment GridElementGroup on GridElementGroup {
+    inputTemplate
+    contentName
+    contentId
+    title
+    items {
+      width {
+        from
+        until
+        value
+      }
+      content {
+        ... on ClickTrackerBannersWrapper {
+          ...ClickTrackerBannersWrapper
+        }
+        ... on DfpBanner {
+          ...DfpBanner
+        }
+        ... on List {
+          ...HomePageList
+        }
+        ... on TabViewElements {
+          ...TabViewElements
+        }
+      }
+    }
+  }
+  
+  fragment TabViewElements on TabViewElements {
+    inputTemplate
+    contentId
+    contentName
+    title
+    type
+    viewMode
+    elements {
+      ... on ClickTrackerBannersWrapper {
+        ...ClickTrackerBannersWrapper
+      }
+      ... on DfpBanner {
+        ...DfpBanner
+      }
+      ... on List {
+        ...HomePageList
+      }
+    }
+  }
+  
   ${clickTrackerBannersWrapper}
   ${dfpBanner}
   ${elementGroup}
@@ -151,6 +197,4 @@ export default gql`
   ${embed}
   ${image}
   ${imageGallery}
-  ${gridElementGroup}
-  ${tabViewElements}
 `;

@@ -6,7 +6,7 @@ import type { GridElementType, } from '../../flowTypes/GridElementType';
 
 import Grid from '../Grid/Grid';
 import GridItem from '../Grid/GridItem';
-import List from '../List/List';
+import CsrList from '../List/List';
 import ListView from '../ListView/ListView';
 import ListViewHeader from '../ListViewHeader/ListViewHeader';
 import Debug from '../Debug/Debug';
@@ -24,15 +24,24 @@ type GridElementProps = GridElementType & {
   showTitle?: boolean,
   gutter: number,
   withoutWrapper?: boolean,
+  List?: ?ComponentType<any>,
 }
 
 GridElement.defaultProps = {
   withoutWrapper: false,
   showTitle: true,
+  List: null,
 };
 
-function GridElement({ title, items, showTitle, withoutWrapper, }: GridElementProps): Node {
+function GridElement({
+  title,
+  items,
+  showTitle,
+  withoutWrapper,
+  List: SsrList,
+}: GridElementProps): Node {
   const WrapperElement: ComponentType<any> = withoutWrapper ? Grid : ListView;
+  const List = SsrList || CsrList;
   return (
     <WrapperElement gutter={2}>
       {
@@ -61,7 +70,7 @@ function GridElement({ title, items, showTitle, withoutWrapper, }: GridElementPr
                   )
                   : isTabElement(content)
                     ? (
-                      <TabElement key={content.contentId} {...content} withoutWrapper />
+                      <TabElement key={content.contentId} List={SsrList} {...content} withoutWrapper />
                     )
                     : (
                       <Debug key={content.contentId}>

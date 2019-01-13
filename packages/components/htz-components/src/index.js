@@ -204,6 +204,7 @@ import Leonardo from './components/List/views/Leonardo/Leonardo';
 import Michelangelo from './components/List/views/Michelangelo/Michelangelo';
 import Mom from './components/List/views/Mom/Mom';
 import Morbo from './components/List/views/Morbo/Morbo';
+import Mousepad from './components/List/views/Mousepad/Mousepad';
 import Panucci from './components/List/views/Panucci/Panucci';
 import Pazuzu from './components/List/views/Pazuzu/Pazuzu';
 // import Raphael from './components/List/views/Raphael/Raphael';
@@ -416,9 +417,9 @@ export {
   Michelangelo,
   Mom,
   Morbo,
+  Mousepad,
   Panucci,
   Pazuzu,
-  // Raphael,
   Slim,
   Slugs,
   Spawn,
