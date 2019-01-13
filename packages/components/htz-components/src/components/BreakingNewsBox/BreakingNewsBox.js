@@ -47,8 +47,7 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
     visibleIndex: 0,
   };
 
-  setVisible(
-    visibleIndex: number) {
+  setVisible(visibleIndex: number) {
     this.setState({ visibleIndex, });
   }
 
@@ -63,15 +62,20 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
           if (loading || error || !(data && data.breakingNewsBox)) {
             return null;
           }
-          
+
           const { items, } = data.breakingNewsBox;
           return (
             <FelaTheme
               render={theme => (
                 <Grid
+                  gutter={0}
                   miscStyles={{
-                    borderBottom: [ '1px', 0, 'solid', theme.color('neutral', -6), ],
-                    marginTop: '2rem',
+                    borderBottom: [
+                      '1px',
+                      0,
+                      'solid',
+                      theme.color('neutral', -6),
+                    ],
                   }}
                 >
                   <GridItem miscStyles={{ flexGrow: 0, }}>
@@ -91,7 +95,9 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
                       {theme.breakingNewsStrip.title}
                     </FelaComponent>
                   </GridItem>
-                  <GridItem miscStyles={{ flexGrow: 1, }}>
+                  <GridItem
+                    miscStyles={{ flexGrow: 1, paddingInlineStart: '2rem', }}
+                  >
                     <FelaComponent
                       render="ul"
                       style={{
@@ -116,7 +122,8 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
                   </GridItem>
                   <GridItem miscStyles={{ flexGrow: 0, }}>
                     <StripController
-                      onChange={controllerData => this.setVisible(controllerData.index)}
+                      onChange={controllerData => this.setVisible(controllerData.index)
+                      }
                       speed={speed}
                       size={items.length}
                       loop={loop}

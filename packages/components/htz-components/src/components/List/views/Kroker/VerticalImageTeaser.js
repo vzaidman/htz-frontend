@@ -44,10 +44,19 @@ export default function VerticalImageTeaser({
       render={theme => (
         <Teaser
           data={itemData}
-          onClick={biAction ? () => biAction({ index: 1, articleId: itemData.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 1, articleId: itemData.contentId, })
+              : null
+          }
           gridMiscStyles={{ flexDirection: [ { from: 's', value: 'column', }, ], }}
           miscStyles={{
-            borderBottom: [ { from: 's', value: [ '1px', 1, 'solid', theme.color('neutral', '-6'), ], }, ],
+            borderBottom: [
+              {
+                from: 's',
+                value: [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
+              },
+            ],
           }}
         >
           <TeaserMedia
@@ -84,14 +93,20 @@ export default function VerticalImageTeaser({
           </TeaserMedia>
           <TeaserContent
             data={itemData}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
+            padding={[ 1, 0, 0, ]}
+            footerPadding={[ 1, 0, 0, ]}
             gridItemMiscStyles={{ flexBasis: [ { from: 's', value: 'auto', }, ], }}
             renderContent={() => (
-              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
+              <TeaserHeader
+                {...itemData}
+                typeScale={headerType}
+                kickerTypeScale={headerType}
+              />
             )}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
-            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
+            renderFooter={() => (
+              <TeaserFooter data={itemData} displayFlags={displayFlags} />
+            )}
           />
         </Teaser>
       )}

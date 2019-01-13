@@ -36,21 +36,36 @@ export default function VerticlaTeaser({
     <FelaTheme
       render={theme => (
         <Teaser
-          onClick={biAction ? () => biAction({ index: 2, articleId: itemData.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 2, articleId: itemData.contentId, })
+              : null
+          }
           miscStyles={{
-            borderBottom: [ { from: 's', value: [ '1px', 1, 'solid', theme.color('neutral', '-6'), ], }, ],
+            borderBottom: [
+              {
+                from: 's',
+                value: [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
+              },
+            ],
           }}
           data={itemData}
         >
           <TeaserContent
             data={itemData}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
+            padding={0}
+            footerPadding={[ 1, 0, 0, ]}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
-              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
+              <TeaserHeader
+                {...itemData}
+                typeScale={headerType}
+                kickerTypeScale={headerType}
+              />
             )}
-            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
+            renderFooter={() => (
+              <TeaserFooter data={itemData} displayFlags={displayFlags} />
+            )}
           />
         </Teaser>
       )}
