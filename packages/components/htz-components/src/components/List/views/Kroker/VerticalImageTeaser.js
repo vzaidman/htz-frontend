@@ -69,7 +69,7 @@ export default function VerticalImageTeaser({
                   sources: [
                     {
                       from: 's',
-                      aspect: 'regular',
+                      aspect: 'headline',
                       sizes: [
                         { from: 'xl', size: '180px', },
                         { from: 'l', size: '225px', },
