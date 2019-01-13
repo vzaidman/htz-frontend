@@ -154,7 +154,6 @@ class PasswordForm extends Component {
     if (this.isCheckboxError() && !this.state.termsConfirmed) {
       errors = [ ...errors, ...this.validateTermsInput(), ];
     }
-    console.log(errors.map(arr => JSON.stringify(arr)));
     return errors;
   };
 

@@ -13,8 +13,46 @@ const getHost = client => client.readQuery({ query: GET_HOST, }).hostname.match(
 
 const checkForPhoneMailConnect = userData => {
   const transformed = objTransform({ userByMail: userData, })
-  console.log('inside check (transformed)', transformed) // TODO remove all console logs
-  return !!transformed.user.isPhoneConnectedWithEmail
+  return !!transformed.user.isPhoneConnectedWithEmail;
+};
+
+const updateWithServerIfNeeded = ({ client, userData, }) => new Promise(resolve => {
+  if (!userData.userStatus.isPhoneEmailConn) {
+    resolve(
+      getDataFromUserInfo(client)(getEmail(client))
+        .then(res => saveUserData(client)({ userData: res.userByMail, }).userData)
+    );
+  }
+  else {
+    resolve(userData);
+  }
+});
+
+const generateOtpErrorMessage = ({ msg, }) => {
+  if (msg.includes('sms')) {
+    return 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.';
+  }
+  return msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.';
+};
+
+const generateOtpHash = ({
+  client,
+  generationPredicate,
+  phoneNumObject,
+  successCallback,
+  failCallback,
+}) => shouldGenerate => {
+  if (shouldGenerate && generationPredicate()) {
+    generateOtp(client)(phoneNumObject)
+      .then(data => {
+        saveOtpHash(client)({ otpHash: data.data.generateOtp.hash, });
+        return data.data.generateOtp;
+      })
+      .then(successCallback, failCallback);
+  }
+  else {
+    failCallback({ msg: 'לא ביצעתם אימות של הטלפון דרך המייל שנשלח אליכם', });
+  }
 };
 
 const handleGenerateOtpIO = ({
@@ -27,36 +65,15 @@ const handleGenerateOtpIO = ({
 }) => () => {
   miscOperations();
   const userData = getUserData(client);
-  console.log('after misc ops', userData)
-  new Promise(resolve => {
-    if (!userData.userStatus.isPhoneEmailConn) {
-      console.log('isphoneemailconn false', userData)
-      resolve(
-        getDataFromUserInfo(client)(getEmail(client))
-          .then(res => {
-            return saveUserData(client)({ userData: res.userByMail, }).userData
-          })
-      );
-    }
-    else {
-      resolve(userData);
-    }
-  })
+  updateWithServerIfNeeded({ client, userData, })
     .then(checkForPhoneMailConnect)
-    .then(shouldGenerate => {
-      console.log('should generate', shouldGenerate, '/ngeneration predicate', generationPredicate())
-      if (shouldGenerate && generationPredicate()) {
-        generateOtp(client)(phoneNumObject)
-          .then(data => {
-            saveOtpHash(client)({ otpHash: data.data.generateOtp.hash, });
-            return data.data.generateOtp;
-          })
-          .then(successCallback, failCallback);
-      }
-      else {
-        failCallback({ msg: 'לא ביצעתם אימות של הטלפון דרך המייל שנשלח אליכם', });
-      }
-    });
+    .then(generateOtpHash({
+      client,
+      generationPredicate,
+      phoneNumObject,
+      successCallback,
+      failCallback,
+    }));
 };
 
-export { getHost, handleGenerateOtpIO, };
+export { getHost, handleGenerateOtpIO, generateOtpErrorMessage, };

@@ -21,7 +21,7 @@ import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponent
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
-import { getHost, } from '../../../util/requestUtil';
+import { generateOtpErrorMessage, getHost, handleGenerateOtpIO } from '../../../util/requestUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -126,48 +126,6 @@ const setFacebookParamsOnApollo = client => {
   }
 };
 
-const handleOtpError = (msg, Router, client, setPreloader, showError) => {
-  if (msg.includes('sms')) {
-    saveUserData(client)({
-      userData: { errors: 'עקב מספר נסיונות כושלים לא ניתן להיכנס כעת.  אנא נסו שנית בעוד 20 דקות.', __typename: 'SsoUser', },
-    });
-    Router.push('/loginForms');
-  }
-  else {
-    setPreloader(false);
-    showError(getOtpErrorMessage(msg));
-  }
-};
-
-const getOtpErrorMessage = msg => (msg || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.');
-
-const handleGenerateOtp = ({
-  phoneNum,
-  email,
-  ssoId,
-  client,
-  flow,
-  route,
-  showError,
-  setPreloader,
-  eventsHandler,
-}) => generateOtp(client)({ typeId: phoneNum, })
-  .then(data => {
-    const json = data.data.generateOtp;
-    saveOtpHash(client)({ otpHash: json.hash, });
-    if (json.success) {
-      saveUserData(client)({
-        userData: { phoneNum, ssoId, __typename: 'SsoUser', },
-      });
-      eventsHandler(() => {
-        Router.push(route);
-      });
-    }
-    else {
-      handleOtpError(json.msg, Router, client, setPreloader, showError);
-    }
-  });
-
 const handleResponseFromGraphql = ({
   client,
   getFlowByData,
@@ -188,23 +146,15 @@ const handleResponseFromGraphql = ({
 
   setFacebookParamsOnApollo(client);
 
-  if (!isEmailValidationRequired(dataSaved) && hasValidatedPhone(dataSaved)) {
-    handleGenerateOtp({
-      client,
-      email,
-      phoneNum: phone
-        || (dataSaved && dataSaved.userData
-          ? dataSaved.userData.phoneNum
-          : null),
-      ssoId: (res && res.userByMail ? res.userByMail.ssoId : null),
-      flow,
-      route,
-      showError,
-      setPreloader,
-      eventsHandler,
-    });
-  }
-  else if (dataSaved && dataSaved.userData && !hasValidatedEmail(dataSaved)) {
+  const phoneNum = phone || (dataSaved && dataSaved.userData
+    ? dataSaved.userData.phoneNum
+    : null);
+  const ssoId = (res && res.userByMail ? res.userByMail.ssoId : null);
+  saveUserData(client)({
+    userData: { phone: phoneNum, ssoId, __typename: 'SsoUser', },
+  });
+
+  if (dataSaved && dataSaved.userData && !hasValidatedEmail(dataSaved)) {
     // eslint-disable-next-line no-undef
     const prefix = /(https?:\/\/\D*).(haaretz.co.il|themarker.com|haaretz.com).*/.exec(window.location.origin)[1];
     sendMailConfirmation(client)({

@@ -141,7 +141,7 @@ class LoginForms extends Component {
 
                                   {/* ----------------- Tabs Frame ----------------- */}
                                   <TabsFrame
-                                    activeTab={(flow === 5 || flow === 4) ? 1 : 0}
+                                    activeTab={1}
                                     formIndex={activeTab === 0 ? 0 : 1}
                                     findRout={findRout}
                                     doTransition={doTransition}
