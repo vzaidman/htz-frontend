@@ -11,45 +11,39 @@ import ListView from '../../../ListView/ListView';
 import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
-type BeavisPropsType = {
+type ButtheadPropsType = {
   list: ListDataType,
   lazyLoadImages: boolean,
   biAction: ?ListBiActionType,
   gaAction: ?() => void,
 };
 
-Beavis.defaultProps = {
+Butthead.defaultProps = {
   biAction: null,
   gaAction: null,
   lazyLoadImages: true,
 };
 
 
-function Beavis({
+function Butthead({
   list,
   lazyLoadImages,
   biAction,
   gaAction,
-}: BeavisPropsType): Node {
+}: ButtheadPropsType): Node {
   const { title, dfp, } = list;
   return (
     <ListView
       gutter={4}
-      isHorizontal={[
-        { until: 'l', value: true, },
-        { from: 'l', value: false, },
-      ]}
+      miscStyles={{
+        display: [ { until: 'l', value: 'none', }, ],
+      }}
     >
       {/* Header */}
       <GridItem
-        width={
-          [
-            { until: 'l', value: 1, },
-            { from: 'l', value: 2 / 12, },
-          ]
-        }
+        width={1}
       >
-        <ListViewHeader title={title} isCommercial />
+        <ListViewHeader title={title} isHorizontal isCommercial />
       </GridItem>
 
       {/* Items */}
@@ -57,25 +51,14 @@ function Beavis({
         dfp
           ? (
             <GridItem
-              width={
-                [
-                  { until: 'l', value: 1, },
-                  { from: 'l', value: 10 / 12, },
-                ]
-              }
+              width={1}
             >
               <Grid gutter={2}>
                 {
                   dfp[0]
                     ? (
                       <GridItem
-                        width={
-                          [
-                            { until: 'l', value: 1, },
-                            { from: 'l', until: 'xl', value: 5 / 10, },
-                            { from: 'xl', value: 6 / 10, },
-                          ]
-                        }
+                        width={1 / 2}
                       >
                         <GeneralAdSlot {...dfp[0]} />
                       </GridItem>
@@ -86,13 +69,7 @@ function Beavis({
                   dfp[1]
                     ? (
                       <GridItem
-                        width={
-                          [
-                            { until: 'l', value: 1, },
-                            { from: 'l', until: 'xl', value: 5 / 10, },
-                            { from: 'xl', value: 4 / 10, },
-                          ]
-                        }
+                        width={1 / 2}
                       >
                         <GeneralAdSlot {...dfp[1]} />
                       </GridItem>
@@ -108,4 +85,4 @@ function Beavis({
   );
 }
 
-export default Beavis;
+export default Butthead;

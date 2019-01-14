@@ -1,5 +1,5 @@
 export default {
-  title: 'Beavis',
+  title: 'תוכן מקודם',
   view: 'Beavis',
   hasPagination: false,
   items: [

@@ -25,6 +25,7 @@ import PazuzuMock from './listMocks/PazuzuMock';
 export default (root, { listId, }) => {
   switch (listId) {
     case 'Beavis':
+    case 'Butthead':
       return BeavisMock;
     case 'Bender':
       return BenderMock;

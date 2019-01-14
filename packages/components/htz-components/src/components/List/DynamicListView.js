@@ -8,6 +8,9 @@ const Beavis = dynamic(() => import('./views/Beavis/Beavis'), {
 const Bender = dynamic(() => import('./views/Bender/Bender'), {
   loading: () => null,
 });
+const Butthead = dynamic(() => import('./views/Butthead/Butthead'), {
+  loading: () => null,
+});
 const Calculon = dynamic(() => import('./views/Calculon/Calculon'), {
   loading: () => null,
 });
@@ -89,6 +92,9 @@ export default function DynamicListView(props) {
     }
     case 'Bender': {
       return <Bender {...props} />;
+    }
+    case 'Butthead': {
+      return <Butthead {...props} />;
     }
     case 'Calculon': {
       return <Calculon {...props} />;
