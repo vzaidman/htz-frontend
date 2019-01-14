@@ -19,6 +19,7 @@ import tags from './types/tags_type';
 import video from './types/video_type';
 import MainBlock from './types/main_block_type';
 import TabViewElement from './types/tab_view_element_type';
+import HeaderNewsGroup from './types/header_news_group_type';
 
 const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
@@ -27,6 +28,7 @@ const types = new Map([
   [ 'com.tm.ElementGroup', elementGroup, ],
   [ 'embed', embed, ],
   [ 'com.tm.GridElementGroup', gridElementGroup, ],
+  [ 'com.tm.HeaderNewsGroup', HeaderNewsGroup, ],
   [ 'com.tm.HtmlElement', htmlElement, ],
   [ 'com.tm.Image', image, ],
   [ 'com.tm.BlogImage', image, ],

@@ -9,11 +9,14 @@ import ElementGroup from './element_group_type';
 import TabViewElement from './tab_view_element_type';
 import dfpBanner from './dfp_banner_type';
 import clickTrackerBannersWrapper from './click_tracker_banner_wrapper_type';
+import Content from './content_type';
+import HeaderNewsGroup from './header_news_group_type';
 
 const Article = new GraphQLList(
   new GraphQLUnionType({
     name: 'HomePageRow',
     types: [
+      HeaderNewsGroup,
       MainBlock,
       List,
       GridElementGroup,
@@ -21,8 +24,9 @@ const Article = new GraphQLList(
       TabViewElement,
       dfpBanner,
       clickTrackerBannersWrapper,
+      Content,
     ],
-    resolveType: value => getSchema(value.inputTemplate),
+    resolveType: value => getSchema(value.inputTemplate) || Content,
   })
 );
 

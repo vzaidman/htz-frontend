@@ -19,6 +19,18 @@ export default gql`
         postMain
         footer
         main {
+          ... on HeaderNewsGroup {
+            contentId
+            contentName
+            inputTemplate
+            newsItems: contentLists {
+              href
+              isCommercial
+              contentId
+              inputTemplate
+              contentName
+            }
+          }
           ... on HomePageMainBlock {
             contentId
             inputTemplate

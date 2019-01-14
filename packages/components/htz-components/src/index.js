@@ -90,6 +90,7 @@ import TeaserResponsiveText from './components/TeaserResponsiveText/TeaserRespon
 import TeaserSubtitle from './components/TeaserSubtitle/TeaserSubtitle';
 import TextInput from './components/TextInput/TextInput';
 import TextLink from './components/TextLink/TextLink';
+import TopNews from './components/TopNews/TopNews';
 import Video from './components/Video/Video';
 
 // Icons
@@ -313,6 +314,7 @@ export {
   TeaserSubtitle,
   TextInput,
   TextLink,
+  TopNews,
   Video,
   // Icons
   IconAccessibility,

@@ -4,7 +4,7 @@ import { FelaComponent, } from 'react-fela';
 import HtzLink from '../HtzLink/HtzLink';
 
 type Props = {
-  contentLists: [
+  newsItems: [
     {
       href: string,
       toolTip: string,
@@ -17,7 +17,7 @@ type Props = {
   contentName: string,
 };
 
-function TopNews({ contentLists, contentName, }: Props): React.Node {
+function TopNews({ newsItems, contentName, }: Props): React.Node {
   return (
     <FelaComponent
       style={theme => ({
@@ -34,9 +34,9 @@ function TopNews({ contentLists, contentName, }: Props): React.Node {
             {contentName}
             {' '}
           </FelaComponent>
-          {contentLists
-            && contentLists.map((link, idx) => {
-              const isLast = idx === contentLists.length - 1;
+          {newsItems
+            && newsItems.map((link, idx) => {
+              const isLast = idx === newsItems.length - 1;
               return (
                 <FelaComponent
                   key={link.contentName}

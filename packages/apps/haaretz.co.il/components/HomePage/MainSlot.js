@@ -7,21 +7,22 @@ import {
   MainBlock,
   ClickTracker,
   TabElement,
+  TopNews,
   validateType,
   Debug,
 } from '@haaretz/htz-components';
-
 import type { MainSlotType, } from '../../flowTypes/MainSlotType';
 
 import List from './List/List';
 
 const {
-  isClickTrackerWrapper,
   isDfp,
   isList,
   isMainBlock,
   isTabElement,
   isGridElement,
+  isHeaderNewsGroup,
+  isClickTrackerWrapper,
 } = validateType;
 
 type Props = {
@@ -61,11 +62,15 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
                       ? (
                         <GridElement key={element.contentId} List={List} {...element} />
                       )
-                      : (
-                        <Debug key={element.contentId}>
-                          {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
-                        </Debug>
-                      )
+                      : isHeaderNewsGroup(element)
+                        ? (
+                          <TopNews key={element.contentId} {...element} />
+                        )
+                        : (
+                          <Debug key={element.contentId}>
+                            {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
+                          </Debug>
+                        )
         )
       )}
     </FelaComponent>

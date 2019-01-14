@@ -19,6 +19,10 @@ export function isGridElement(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.GridElementGroup';
 }
 
+export function isHeaderNewsGroup(item: TestObject): %checks {
+  return item.inputTemplate === 'com.tm.HeaderNewsGroup';
+}
+
 export function isList(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.element.List';
 }
@@ -52,6 +56,7 @@ export default {
   isClickTrackerWrapper,
   isDfp,
   isGridElement,
+  isHeaderNewsGroup,
   isList,
   isMainBlock,
   isTabElement,
