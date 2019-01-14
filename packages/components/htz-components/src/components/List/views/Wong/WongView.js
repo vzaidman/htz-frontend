@@ -1,13 +1,7 @@
 // @flow
 import * as React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
-
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
-import type { ListDataType, } from '../../../../flowTypes/ListDataType';
-import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
-import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType';
-import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
-
 import GridItem from '../../../Grid/GridItem';
 import getMediaComponent from '../../../../utils/getMediaComponent';
 import Teaser from '../../../Teaser/Teaser';
@@ -18,15 +12,19 @@ import TeaserSubtitle from '../../../TeaserSubtitle/TeaserSubtitle';
 import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 import Picture from '../../../Image/Picture';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
+import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType';
+import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import HtzLink from '../../../HtzLink/HtzLink';
-import IconBack from '../../../Icon/icons/IconBack';
-import AboveBlockLink from '../../../BlockLink/AboveBlockLink.js';
 import {
+  isTeaser,
   isImage,
   isEmbed,
   //  isGallery,
 } from '../../../../utils/validateType.js';
+import IconBack from '../../../Icon/icons/IconBack';
 
 const getSourceOptions = (aspect: string) => ({
   sizes: '(min-width:1280px) 1280px, 100vw',
@@ -174,7 +172,7 @@ Wong.defaultProps = {
 
 function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node {
   const item = items[0];
-  const media = item.media || null;
+  const media = isTeaser(item) ? item.media : null;
   const MediaComponent = getMediaComponent(media && media.kind, Picture);
   const mediaProps = getMediaProps(media, isConrad);
   return (
@@ -185,158 +183,156 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
           width={width}
           rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]}
         >
-          <Teaser
-            gutter={0}
-            data={item}
-            isRev={[ { from: 'xl', value: !isConrad, }, ]}
-            gridMiscStyles={{
-              justifyContent: [ { from: 'xl', value: 'flex-end', }, ],
-            }}
-          >
-            <TeaserMedia
+          {isTeaser(item) && (
+            <Teaser
+              gutter={0}
               data={item}
-              width={[
-                { until: 'l', value: 1, },
-                { from: 'l', until: 'xl', value: 7 / 12, },
-                { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
-              ]}
-              miscStyles={{ paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '4rem', }, ], }}
+              isRev={[ { from: 'xl', value: !isConrad, }, ]}
+              gridMiscStyles={{
+                justifyContent: [ { from: 'xl', value: 'flex-end', }, ],
+              }}
             >
-              <MediaComponent {...mediaProps} />
-            </TeaserMedia>
-            <TeaserContent
-              width={[
-                { until: 'l', value: 1, },
-                { from: 'l', until: 'xl', value: 5 / 12, },
-                { from: 'xl', value: isConrad ? 1 / 2 : 3 / 7, },
-              ]}
-              data={item}
-              padding={[
-                { until: 's', value: [ 0, 2, 0, 0, ], },
-                { from: 's', until: 'l', value: [ 3, 0, 0, 0, ], },
-                { from: 'l', until: 'xl', value: [ 0, 4, 0, 0, ], },
-                { from: 'xl', value: [ 0, isConrad ? 4 : 0, 0, isConrad ? 0 : 4, ], },
-              ]}
-              miscStyles={{
-                marginTop: [ { until: 's', value: '-3rem', }, ],
-              }}
-              renderContent={() => (
-                <React.Fragment>
-                  <TeaserHeader
-                    kickerIsBlock
-                    isH1
-                    {...item}
-                    typeScale={[
-                      { until: 's', value: 1, },
-                      { from: 's', until: 'l', value: 6, },
-                      { from: 'l', until: 'xl', value: 5, },
-                      { from: 'xl', value: 5, },
-                    ]}
-                    kickerTypeScale={-1}
-                    miscStyles={{
-                      marginTop: '1rem',
-                    }}
-                    kickerMiscStyles={{
-                      marginInlineStart: [ { until: 's', value: '-2rem', }, ],
-                    }}
-                    kickerInnerMiscStyles={{
-                      paddingInlineStart: [ { until: 's', value: '2rem', }, ],
-                      paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
-                    }}
-                  />
-                  <TeaserSubtitle
-                    {...item}
-                    typeScale={[ { from: 'xl', value: -1, }, ]}
-                    miscStyles={{
-                      display: [ { until: 's', value: 'none', }, ],
-                      marginTop: [ { from: 's', value: '1rem', }, ],
-                      fontWeight: 400,
-                    }}
-                  />
-                </React.Fragment>
-              )}
-              footerPadding={[
-                { until: 's', value: [ 1, 2, ], },
-                { from: 's', until: 'l', value: [ 1, 0, ], },
-                { from: 'l', until: 'xl', value: [ 1, 4, 0, 0, ], },
-                isConrad
-                  ? { from: 'xl', value: [ 1, 4, 0, 0, ], }
-                  : { from: 'xl', value: [ 1, 0, 0, 4, ], },
-              ]}
-              footerMiscStyles={{
-                display: 'block',
-                color: theme.color('neutral', '-3'),
-                marginTop: [ { from: 'xl', value: '0', }, ],
-                position: [ { from: 's', value: 'initial', }, ],
-                type: [
-                  { until: 's', value: -3, },
-                  { from: 's', until: 'xl', value: -2, },
-                  { from: 'xl', value: -3, },
-                ],
-              }}
-              renderFooter={() => (
-                <React.Fragment>
-                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
-                  {' | '}
-                  <TeaserTime {...item} />
-                  {' '}
-                  <CommentsCount
-                    commentsCount={item.commentsCounts}
-                    size={[ { from: 's', until: 'l', value: 2, }, ]}
-                  />
-                  {item.relatedArticles && (
-                    <FelaComponent
-                      style={{
+              <TeaserMedia
+                data={item}
+                width={[
+                  { until: 'l', value: 1, },
+                  { from: 'l', until: 'xl', value: 7 / 12, },
+                  { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
+                ]}
+                miscStyles={{ paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '4rem', }, ], }}
+              >
+                <MediaComponent {...mediaProps} />
+              </TeaserMedia>
+              <TeaserContent
+                width={[
+                  { until: 'l', value: 1, },
+                  { from: 'l', until: 'xl', value: 5 / 12, },
+                  { from: 'xl', value: isConrad ? 1 / 2 : 3 / 7, },
+                ]}
+                data={item}
+                padding={[
+                  { until: 's', value: [ 0, 2, 0, 0, ], },
+                  { from: 's', until: 'l', value: [ 3, 0, 0, 0, ], },
+                  { from: 'l', until: 'xl', value: [ 0, 4, 0, 0, ], },
+                  { from: 'xl', value: [ 0, isConrad ? 4 : 0, 0, isConrad ? 0 : 4, ], },
+                ]}
+                miscStyles={{
+                  marginTop: [ { until: 's', value: '-3rem', }, ],
+                }}
+                renderContent={() => (
+                  <React.Fragment>
+                    <TeaserHeader
+                      kickerIsBlock
+                      isH1
+                      {...item}
+                      typeScale={[
+                        { until: 's', value: 1, },
+                        { from: 's', until: 'l', value: 6, },
+                        { from: 'l', until: 'xl', value: 5, },
+                        { from: 'xl', value: 5, },
+                      ]}
+                      kickerTypeScale={-1}
+                      miscStyles={{
                         marginTop: '1rem',
-                        extend: [
-                          theme.mq({ until: 's', }, { display: 'none', }),
-                          theme.mq({ from: 'l', }, { marginTop: '2rem', }),
-                          // theme.mq({ from: 'xl', }, { display: 'none', }),
-                        ],
                       }}
-                      render="ul"
-                    >
-                      {item.relatedArticles.map(
-                        // related articles should show up to
-                        // 3 articles on xl bp, 2 articles for s-l bp, and none for s bp
-                        (article, idx) => (idx < 3 ? (
-                          <li key={article.contentId}>
-                            <FelaComponent
-                              style={{
-                                color: theme.color('link', 'base'),
-                                ':visited': { color: theme.color('link', 'base'), },
-                                extend: [
-                                  theme.mq(
-                                    { until: 'xl', },
-                                    idx === 2 ? { display: 'none', } : {}
-                                  ),
-                                  theme.type(-1, { untilBp: 'xl', }),
-                                  theme.type(-2, { fromBp: 'xl', }),
-                                ],
-                              }}
-                              render={({ className, }) => (
-                                <AboveBlockLink>
-                                  {({ className: aboveClass, }) => (
-                                    <HtzLink href={article.path} className={`${className} ${aboveClass}`}>
-                                      <IconBack
-                                        size={[ { until: 'xl', value: 2, }, { from: 'xl', value: 1.5, }, ]}
-                                        miscStyles={{ marginInlineEnd: '0.5rem', }}
-                                      />
-                                      {article.title}
-                                    </HtzLink>
-                                  )}
-                                </AboveBlockLink>
-                              )}
-                            />
-                          </li>
-                        ) : null)
-                      )}
-                    </FelaComponent>
-                  )}
-                </React.Fragment>
-              )}
-            />
-          </Teaser>
+                      kickerMiscStyles={{
+                        marginInlineStart: [ { until: 's', value: '-2rem', }, ],
+                      }}
+                      kickerInnerMiscStyles={{
+                        paddingInlineStart: [ { until: 's', value: '2rem', }, ],
+                        paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
+                      }}
+                    />
+                    <TeaserSubtitle
+                      {...item}
+                      typeScale={[ { from: 'xl', value: -1, }, ]}
+                      miscStyles={{
+                        display: [ { until: 's', value: 'none', }, ],
+                        marginTop: [ { from: 's', value: '1rem', }, ],
+                        fontWeight: 400,
+                      }}
+                    />
+                  </React.Fragment>
+                )}
+                footerPadding={[
+                  { until: 's', value: [ 1, 2, ], },
+                  { from: 's', until: 'l', value: [ 1, 0, ], },
+                  { from: 'l', until: 'xl', value: [ 1, 4, 0, 0, ], },
+                  isConrad
+                    ? { from: 'xl', value: [ 1, 4, 0, 0, ], }
+                    : { from: 'xl', value: [ 1, 0, 0, 4, ], },
+                ]}
+                footerMiscStyles={{
+                  display: 'block',
+                  color: theme.color('neutral', '-3'),
+                  marginTop: [ { from: 'xl', value: '0', }, ],
+                  position: [ { from: 's', value: 'initial', }, ],
+                  type: [
+                    { until: 's', value: -3, },
+                    { from: 's', until: 'xl', value: -2, },
+                    { from: 'xl', value: -3, },
+                  ],
+                }}
+                renderFooter={() => (
+                  <React.Fragment>
+                    <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                    {' | '}
+                    <TeaserTime {...item} />
+                    {' '}
+                    <CommentsCount
+                      commentsCount={item.commentsCounts}
+                      size={[ { from: 's', until: 'l', value: 2, }, ]}
+                    />
+                    {item.relatedArticles && (
+                      <FelaComponent
+                        style={{
+                          marginTop: '1rem',
+                          extend: [
+                            theme.mq({ until: 's', }, { display: 'none', }),
+                            theme.mq({ from: 'l', }, { marginTop: '2rem', }),
+                            // theme.mq({ from: 'xl', }, { display: 'none', }),
+                          ],
+                        }}
+                        render="ul"
+                      >
+                        {item.relatedArticles.map(
+                          // related articles should show up to
+                          // 3 articles on xl bp, 2 articles for s-l bp, and none for s bp
+                          (article, idx) => (idx < 3 ? (
+                            <li key={article.contentId}>
+                              <FelaComponent
+                                style={{
+                                  color: theme.color('link', 'base'),
+                                  ':visited': { color: theme.color('link', 'base'), },
+                                  extend: [
+                                    theme.mq(
+                                      { until: 'xl', },
+                                      idx === 2 ? { display: 'none', } : {}
+                                    ),
+                                    theme.type(-1, { untilBp: 'xl', }),
+                                    theme.type(-2, { fromBp: 'xl', }),
+                                  ],
+                                }}
+                                render={({ className, }) => (
+                                  <HtzLink href={article.path} className={className}>
+                                    <IconBack
+                                      size={[ { until: 'xl', value: 2, }, { from: 'xl', value: 1.5, }, ]}
+                                      miscStyles={{ marginInlineEnd: '0.5rem', }}
+                                    />
+                                    {article.title}
+                                  </HtzLink>
+                                )}
+                              />
+                            </li>
+                          ) : null)
+                        )}
+                      </FelaComponent>
+                    )}
+                  </React.Fragment>
+                )}
+              />
+            </Teaser>
+          )}
         </GridItem>
       )}
     />
