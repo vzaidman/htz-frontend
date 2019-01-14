@@ -38,7 +38,7 @@ const List = new GraphQLObjectType({
     items: {
       type: new GraphQLList(TeaserInListType),
       resolve: parentValue => (
-        parentValue.items.reduce((results, item) => {
+        parentValue.items && parentValue.items.reduce((results, item) => {
           if (type.get(item.inputTemplate) === 'teaser') {
             results.push(item);
           }
@@ -49,7 +49,7 @@ const List = new GraphQLObjectType({
     clickTrackers: {
       type: new GraphQLList(ClickTrackerWrapperType),
       resolve: parentValue => (
-        parentValue.items.reduce((results, item) => {
+        parentValue.items && parentValue.items.reduce((results, item) => {
           if (type.get(item.inputTemplate) === 'clickTracker') {
             results.push(item);
           }
@@ -60,7 +60,7 @@ const List = new GraphQLObjectType({
     dfp: {
       type: new GraphQLList(DfpBanner),
       resolve: parentValue => (
-        parentValue.items.reduce((results, item) => {
+        parentValue.items && parentValue.items.reduce((results, item) => {
           if (type.get(item.inputTemplate) === 'dfp') {
             results.push(item);
           }
@@ -71,7 +71,7 @@ const List = new GraphQLObjectType({
     content: {
       type: new GraphQLList(Content),
       resolve: parentValue => (
-        parentValue.items.reduce((results, item) => {
+        parentValue.items && parentValue.items.reduce((results, item) => {
           if (!type.get(item.inputTemplate)) {
             results.push(item);
           }
