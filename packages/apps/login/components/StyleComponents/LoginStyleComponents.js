@@ -144,6 +144,19 @@ const Styles = {
       '>h5': {
         margin: '0 auto',
       },
+      '>.resend': {
+        color: '#29a042',
+      },
+    }),
+    resendTextBoxStyle: () => ({
+      margin: '0 auto',
+      width: '300px',
+      maxWidth: '90%',
+      textAlign: 'center',
+      fontSize: '2rem',
+      lineHeight: '3rem',
+      fontWeight: 'bold',
+      color: '#29a042',
     }),
     errorBoxStyle: () => ({
       maxWidth: '100%',
@@ -239,6 +252,7 @@ const LoginGeneralLayoutStyles = {
 const LoginMiscLayoutStyles = {
   InputLinkButton: createComponent(Styles.MiscLayout.inputLinkButton),
   TextBox: createComponent(Styles.MiscLayout.textBoxStyle),
+  ResendTextBox: createComponent(Styles.MiscLayout.resendTextBoxStyle),
   ErrorBox: createComponent(Styles.MiscLayout.errorBoxStyle),
   TermsWrapper: createComponent(Styles.MiscLayout.termsStyle),
   MobileFooterSpacer: createComponent(Styles.MiscLayout.mobileFooterSpacerStyle),
