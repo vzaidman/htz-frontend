@@ -12,12 +12,6 @@ import {
 export default gql`
   query HomePageLayout {
     homePage {
-      lineage {
-        contentId
-        name
-        pathSegment
-        url
-      }
       slots {
         preHeader
         header

@@ -32,12 +32,8 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         if (error) logger.error(error);
-        const {
-          homePage: { slots, lineage, },
-        } = data;
-        const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
-          lineage.length > 2 ? lineage[lineage.length - 1].name : ''
-        }`;
+        const { homePage: { slots, }, } = data;
+        const titleSEO = 'חדשות, ידיעות מהארץ והעולם - עיתון הארץ';
         client.writeData({
           data: {
             title: titleSEO,
