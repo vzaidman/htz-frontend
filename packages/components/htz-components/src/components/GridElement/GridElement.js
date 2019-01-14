@@ -25,17 +25,19 @@ type GridElementProps = GridElementType & {
   gutter: number,
   withoutWrapper?: boolean,
   List?: ?ComponentType<any>,
-}
+};
 
 GridElement.defaultProps = {
-  withoutWrapper: false,
-  showTitle: true,
+  gutter: 4,
   List: null,
+  showTitle: true,
+  withoutWrapper: false,
 };
 
 function GridElement({
   title,
   items,
+  gutter,
   showTitle,
   withoutWrapper,
   List: SsrList,
@@ -43,47 +45,40 @@ function GridElement({
   const WrapperElement: ComponentType<any> = withoutWrapper ? Grid : ListView;
   const List = SsrList || CsrList;
   return (
-    <WrapperElement gutter={2}>
-      {
-        showTitle && title
-          ? (
-            <GridItem width={1} stretchContent>
-              <ListViewHeader isHorizontal title={title} />
-            </GridItem>
-          )
-          : null
+    <WrapperElement
+      gutter={gutter}
+      padding={
+        withoutWrapper
+          ? null
+          : [ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]
       }
-      {items.map(({ content, width, miscStyles, }) => (
+    >
+      {showTitle && title ? (
+        <GridItem width={1} stretchContent>
+          <ListViewHeader isHorizontal title={title} />
+        </GridItem>
+      ) : null}
+      {items.map(({ content, width, }) => (
         <GridItem
+          key={content.contentId}
           width={width}
-          miscStyles={{
-            display: 'flex',
-            ...(miscStyles || {}),
-          }}
+          miscStyles={{ display: 'flex', }}
         >
-          {
-            isClickTrackerWrapper(content)
-              ? (
-                <ClickTracker key={content.contentId} {...content} />
-              )
-              : isDfp(content)
-                ? (
-                  <GeneralAdSlot key={content.contentId} {...content} />
-                )
-                : isList(content)
-                  ? (
-                    <List key={content.contentId} {...content} />
-                  )
-                  : isTabElement(content)
-                    ? (
-                      <TabElement key={content.contentId} List={SsrList} {...content} withoutWrapper />
-                    )
-                    : (
-                      <Debug key={content.contentId}>
-                        {`Element of type '${content.inputTemplate}' is not supported in GridElementGroup`}
-                      </Debug>
-                    )
-          }
+          {isClickTrackerWrapper(content) ? (
+            <ClickTracker {...content} />
+          ) : isDfp(content) ? (
+            <GeneralAdSlot {...content} />
+          ) : isList(content) ? (
+            <List {...content} />
+          ) : isTabElement(content) ? (
+            <TabElement List={SsrList} {...content} withoutWrapper />
+          ) : (
+            <Debug key={content.contentId}>
+              {`Element of type '${
+                content.inputTemplate
+              }' is not supported in GridElementGroup`}
+            </Debug>
+          )}
         </GridItem>
       ))}
     </WrapperElement>
