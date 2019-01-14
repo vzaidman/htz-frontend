@@ -20,10 +20,11 @@ import { getFlowNumber } from "../components/FlowDispenser/flowStorage";
 import { sendTrackingEvents } from "../util/trackingEventsUtil";
 import BottomLinks from "../components/Misc/BottomLinks";
 import Preloader from "../components/Misc/Preloader";
-import { LoginContentStyles } from "../components/StyleComponents/LoginStyleComponents";
+import { LoginContentStyles, LoginMiscLayoutStyles, } from "../components/StyleComponents/LoginStyleComponents";
 
 // Styling Components -------
 const { ContentWrapper, FormWrapper, ItemCenterer } = LoginContentStyles;
+const { ResendTextBox, } = LoginMiscLayoutStyles;
 // --------------------------
 
 // Methods -------------------
@@ -41,7 +42,7 @@ const loginWithPass = (email, flow, eventTrackers) => {
   });
 };
 
-const sendAgain = (client, doTransition) => {
+const sendAgain = (client, setPreloader, setResentMessage) => {
   const userData = getUserData(client);
   const email = getEmail(client);
   const phoneNumber = getPhoneNum(client);
@@ -53,8 +54,8 @@ const sendAgain = (client, doTransition) => {
     url: getHostname(client)
   }).then(
     () => {
-      const route = doTransition("sentAgain");
-      Router.push(route);
+      setPreloader(false);
+      setResentMessage('email');
     },
     error => console.log(error.message) //TODO error ui
   );
@@ -63,12 +64,17 @@ const sendAgain = (client, doTransition) => {
 
 class PhoneMailSent extends Component {
   state = {
-    isLoading: false
+    isLoading: false,
+    resentMessage: '',
   };
 
   setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus });
   };
+
+  setResentMessage = type => {
+    this.setState({ resentMessage: type == 'email' ? 'נשלח אליכם דוא"ל בשנית' : 'נשלח אליכם קוד SMS בשנית.' })
+  }
 
   render() {
     return (
@@ -89,6 +95,12 @@ class PhoneMailSent extends Component {
                               הטלפון
                             </h5>
                           </ItemCenterer>
+                          <ResendTextBox>
+                            {this.state.resentMessage}
+                          </ResendTextBox>
+                          <ItemCenterer>
+                            <Preloader isLoading={this.state.isLoading} />
+                          </ItemCenterer>
                           <OtpForm
                             client={client}
                             doTransition={doTransition}
@@ -102,10 +114,6 @@ class PhoneMailSent extends Component {
                             dontGenerateOtp={true}
                             flow={flow}
                           />
-
-                          <ItemCenterer>
-                            <Preloader isLoading={this.state.isLoading} />
-                          </ItemCenterer>
 
                           <BottomLinks spacing={0}>
                             <span>לא הגיע?</span>
@@ -126,7 +134,7 @@ class PhoneMailSent extends Component {
                                     label: "sendAgainPhoneEmail"
                                   }
                                 )(() => {
-                                  sendAgain(client, doTransition);
+                                  sendAgain(client, this.setPreloader, this.setResentMessage);
                                 });
                               }}
                             >

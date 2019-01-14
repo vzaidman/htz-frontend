@@ -55,7 +55,7 @@ const Index = () => (
                             </ContentWrapper>
                             <MobileFooterSpacer />
                             <ErrorBoundary FallbackComponent={FooterFallback}>
-                              <Footer contentId="7.1283189" />
+                              <Footer contentId="Haaretz.Element.FooterElement" />
                             </ErrorBoundary>
                           </PageWrapper>
                         )}
