@@ -1,3 +1,4 @@
+import BeavisMock from './listMocks/BeavisMock';
 import BenderMock from './listMocks/BenderMock';
 import CalculonMock from './listMocks/CalculonMock';
 import DefaultMock from './listMocks/DefaultMock';
@@ -23,6 +24,8 @@ import PazuzuMock from './listMocks/PazuzuMock';
 
 export default (root, { listId, }) => {
   switch (listId) {
+    case 'Beavis':
+      return BeavisMock;
     case 'Bender':
       return BenderMock;
     case 'Calculon':

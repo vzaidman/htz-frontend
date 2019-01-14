@@ -2,6 +2,9 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Debug from '../Debug/Debug';
 
+const Beavis = dynamic(() => import('./views/Beavis/Beavis'), {
+  loading: () => null,
+});
 const Bender = dynamic(() => import('./views/Bender/Bender'), {
   loading: () => null,
 });
@@ -81,6 +84,9 @@ const Vogel = dynamic(() => import('./views/Vogel/Vogel'), {
 export default function DynamicListView(props) {
   const view = props.listData.view;
   switch (view) {
+    case 'Beavis': {
+      return <Beavis {...props} />;
+    }
     case 'Bender': {
       return <Bender {...props} />;
     }

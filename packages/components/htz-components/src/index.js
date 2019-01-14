@@ -192,6 +192,7 @@ import pixelEvent from './utils/pixelEvent';
 // temp for ssr lists because of this bug with nextjs: https://github.com/zeit/next.js/issues/5511
 
 import ReadingHistoryProvider from './components/ReadingHistory/ReadingHistoryProvider';
+import Beavis from './components/List/views/Beavis/Beavis';
 import Bender from './components/List/views/Bender/Bender';
 import Conrad from './components/List/views/Conrad/Conrad';
 import Calculon from './components/List/views/Calculon/Calculon';
@@ -406,6 +407,7 @@ export {
   pixelEvent,
   // temp for ssr lists because of this bug with nextjs: https://github.com/zeit/next.js/issues/5511
   ReadingHistoryProvider,
+  Beavis,
   Bender,
   Conrad,
   Calculon,
