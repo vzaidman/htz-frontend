@@ -3,10 +3,10 @@
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { StyleProvider, } from '@haaretz/fela-utils';
-import { Query, Footer, } from '@haaretz/htz-components';
+import { Query, Footer, ErrorBoundary, } from '@haaretz/htz-components';
 import FiniteStateMachine from '../components/FiniteStateMachine/FiniteStateMachine';
 import Header from '../layouts/Header';
-// import Footer from '../layouts/Footer';
+import FooterFallback from '../layouts/FooterFallback';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme';
 import { getFlowNumber, } from '../components/FlowDispenser/flowStorage';
@@ -56,7 +56,9 @@ const FSMLayout = ({ children, }) => (
                               doTransition,
                             })}
                             <MobileFooterSpacer />
-                            <Footer contentId="7.1283189" />
+                            <ErrorBoundary FallbackComponent={FooterFallback}>
+                              <Footer contentId="7.1283189" />
+                            </ErrorBoundary>
                           </PageWrapper>
                         </Fragment>
                       </StyleProvider>
