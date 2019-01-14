@@ -93,7 +93,7 @@ const Styles = {
       width: '100%',
       height: '315px',
       marginTop: '55px',
-      backgroundColor: '#00537a',
+      backgroundColor: '#006B96',
       color: '#ffffff',
 
       '@media (max-width: 768px)': {
@@ -107,13 +107,18 @@ const Styles = {
 
       '> div': {
         display: 'flex',
-        alignItems: 'center',
+        //alignItems: 'center',
         width: '100%',
         padding: '14px 0',
         '&:first-child': {
           borderBottom: '1px solid #fff',
         },
       },
+    }),
+    footerBottomLayout: () => ({
+      display: 'flex',
+      flexDirection: 'column',
+      fontSize: '2rem',
     }),
   },
 
@@ -229,6 +234,7 @@ const LoginGeneralLayoutStyles = {
   HeaderWrapper: createComponent(Styles.GeneralLayout.loginHeaderWrapper),
   FooterWrapper: createComponent(Styles.GeneralLayout.footerWrapper),
   FooterContentHolder: createComponent(Styles.GeneralLayout.footerContentHolder),
+  FooterBottomLayout: createComponent(Styles.GeneralLayout.footerBottomLayout),
 };
 
 const LoginMiscLayoutStyles = {

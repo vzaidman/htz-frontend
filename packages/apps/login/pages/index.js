@@ -2,11 +2,11 @@
 
 import React, { Fragment, } from 'react';
 // import { ApolloConsumer, } from 'react-apollo';
-import { GoogleAnalytics, EventTracker, Footer, UserDispenser,ApolloConsumer, } from '@haaretz/htz-components';
+import { GoogleAnalytics, EventTracker, UserDispenser,ApolloConsumer, ErrorBoundary, Footer, } from '@haaretz/htz-components';
 import { StyleProvider, } from '@haaretz/fela-utils';
 import { FelaTheme, } from 'react-fela';
 import Header from '../layouts/Header';
-// import Footer from '../layouts/Footer';
+import FooterFallback from '../layouts/FooterFallback';
 import styleRenderer from '../components/styleRenderer/styleRenderer';
 import theme from '../theme/index';
 import GET_HOST from './queries/GetHost';
@@ -54,7 +54,9 @@ const Index = () => (
                               />
                             </ContentWrapper>
                             <MobileFooterSpacer />
-                            <Footer contentId="7.1283189" />
+                            <ErrorBoundary FallbackComponent={FooterFallback}>
+                              <Footer contentId="7.1283189" />
+                            </ErrorBoundary>
                           </PageWrapper>
                         )}
                       </EventTracker>

@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react';
 import Head from 'next/head';
-import { IconHaaretzLogo, } from '@haaretz/htz-components';
+import { IconHaaretzLogo, HtzLink, } from '@haaretz/htz-components';
 import { createComponent, FelaComponent, } from 'react-fela';
 
 const headerWrapperStyle = () => ({
@@ -50,7 +50,9 @@ const Header = () => (
       <title>Login</title>
     </Head>
     <HeaderWrapper>
-      <IconHaaretzLogo size={2.7} />
+      <HtzLink href='https://www.haaretz.co.il'>
+        <IconHaaretzLogo size={2.7} />
+      </HtzLink>
       <TitleWrapper>
         <div>התחברות</div>
       </TitleWrapper>

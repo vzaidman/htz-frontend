@@ -36,6 +36,7 @@ import Comments from './components/CommentsSection/CommentsInViewWrapper';
 import Debug from './components/Debug/Debug';
 import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
 import Embed from './components/Embed/Embed';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import GaDimensions from './components/GoogleAnalytics/GaDimensions';
@@ -262,6 +263,7 @@ export {
   Debug,
   DeviceTypeInjector,
   Embed,
+  ErrorBoundary,
   Footer,
   Form,
   GaDimensions,
