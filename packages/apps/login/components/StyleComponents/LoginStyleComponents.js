@@ -107,7 +107,6 @@ const Styles = {
 
       '> div': {
         display: 'flex',
-        //alignItems: 'center',
         width: '100%',
         padding: '14px 0',
         '&:first-child': {
