@@ -20,7 +20,13 @@ const updateWithServerIfNeeded = ({ client, userData, }) => new Promise(resolve 
   if (!userData.userStatus.isPhoneEmailConn) {
     resolve(
       getDataFromUserInfo(client)(getEmail(client))
-        .then(res => saveUserData(client)({ userData: res.userByMail, }).userData)
+        .then(res => {
+          const userDataFromServer = res.userByMail;
+          if (!userDataFromServer.phoneNum && userData.phoneNum) {
+            userDataFromServer.phoneNum = userData.phoneNum;
+          }
+          return saveUserData(client)({ userData: userDataFromServer, }).userData;
+        })
     );
   }
   else {

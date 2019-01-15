@@ -14,7 +14,7 @@ import {
   getUser,
   retrieveHash,
 } from '../../../pages/queryutil/userDetailsOperations';
-import { getHost, handleGenerateOtpIO } from '../../../util/requestUtil';
+import { getHost, handleGenerateOtpIO, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
@@ -104,7 +104,11 @@ const generateOtpIO = ({
     if (json.success) {
       if (isResending) {
         const route = doTransition('sendAgain');
-        sendTrackingEvents(eventsTrackers, { page: 'How to login? SMS', flowNumber: flow, label: 'sendAgainOtp', })(() => {
+        sendTrackingEvents(eventsTrackers, {
+          page: 'How to login? SMS',
+          flowNumber: flow,
+          label: 'sendAgainOtp',
+        })(() => {
           Router.push(route);
         });
       }

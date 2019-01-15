@@ -22,6 +22,7 @@ import {
 const getDataFromUserInfo = client => email => client.query({
   query: INSPECT_EMAIL,
   variables: { email, },
+  fetchPolicy: 'no-cache',
 })
   .then(res => res.data);
 
