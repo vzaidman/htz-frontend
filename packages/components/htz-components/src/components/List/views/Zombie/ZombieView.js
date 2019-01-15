@@ -491,6 +491,8 @@ export default class Zombie extends React.Component<Props, State> {
                     miscStyles={{
                       paddingStart: [ { until: 's', value: '2rem', }, ],
                       paddingEnd: [ { until: 's', value: '2rem', }, ],
+                      marginTop: [ { until: 'l', value: '4rem', }, ],
+                      marginBottom: [ { until: 's', value: '4rem', }, ],
                       display: [
                         { until: 'l', value: 'block', },
                         { from: 'l', until: 'xl', value: 'none', },
@@ -505,20 +507,6 @@ export default class Zombie extends React.Component<Props, State> {
                 ) : null}
               </Grid>
             </GridItem>
-            {dfp && dfp.length > 0 ? (
-              <GridItem
-                width={1}
-                miscStyles={{
-                  display: [
-                    { until: 'l', value: 'none', },
-                    { from: 'l', until: 'xl', value: 'block', },
-                    { from: 'xl', value: 'none', },
-                  ],
-                }}
-              >
-                <GeneralAdSlot {...dfp[0]} />
-              </GridItem>
-            ) : null}
           </ListView>
         )}
       />

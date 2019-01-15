@@ -236,8 +236,8 @@ const dfpBaseConf = {
   breakpointsConfig: {
     // Type 4
     breakpoints: {
-      xxs: 100,
-      xs: 480,
+      xxs: 10,
+      xs: 20,
       s: 600,
       m: 768,
       l: 1024,

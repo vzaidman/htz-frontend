@@ -174,7 +174,6 @@ export default function HawkingList({
       >
         <FelaComponent
           style={theme => ({
-            backgroundColor: 'GoldenRod',
             extend: [
               theme.mq(
                 { from: 's', until: 'l', },
@@ -185,7 +184,13 @@ export default function HawkingList({
             ],
           })}
         >
+<<<<<<< f4ddf54f21bae641899567e4f6c88cb6db1daa90
           {dfp ? <GeneralAdSlot {...dfp[0]} /> : null}
+=======
+          {dfp && dfp.length > 0 ? (
+            <GeneralAdSlot {...(dfp ? dfp[0] : {})} />
+          ) : null}
+>>>>>>> fix(dfp, components): banners in lists
         </FelaComponent>
       </GridItem>
     </ListView>

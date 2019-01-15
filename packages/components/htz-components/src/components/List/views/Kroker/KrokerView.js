@@ -2,21 +2,20 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
+import BreakingNewsBox from '../../../BreakingNewsBox/BreakingNewsBox';
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
 import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
-import BreakingNewsBox from '../../../BreakingNewsBox/BreakingNewsBox';
-
 import MainTeaser from './MainTeaser';
 import VerticalImageTeaser from './VerticalImageTeaser';
 import VerticalTeaser from './VerticalTeaser';
-import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
-import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { DfpBannerType, } from '../../../../flowTypes/DfpBannerType';
-import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 type Props = {
   list: ListDataType,
@@ -33,6 +32,7 @@ export default function KrokerView({
   gaAction,
   biAction,
 }: Props): React.Node {
+  const { items, dfp, } = list;
   return (
     <ListView
       gutter={{
@@ -77,8 +77,8 @@ export default function KrokerView({
           {/* list items */}
           <GridItem width={1}>
             <ListItems
-              items={list.items}
-              dfp={list.dfp}
+              items={items}
+              dfp={dfp}
               lazyLoadImages={lazyLoadImages}
               biAction={biAction}
               gaAction={gaAction}
@@ -177,11 +177,16 @@ function ListItems({
             </Grid>
           </GridItem>
           {/* banner */}
-          <GridItem
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
-          >
-            {dfp && dfp[0] ? <GeneralAdSlot {...dfp[0]} /> : null}
-          </GridItem>
+          {dfp && dfp.length > 0 ? (
+            <GridItem
+              width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
+              miscStyles={{ display: 'flex', }}
+            >
+              {/* banner content */}
+              <GeneralAdSlot {...(dfp ? dfp[0] : {})} />
+            </GridItem>
+          ) : null}
+          {/* end banner */}
         </Grid>
       )}
     />

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { image, clickTrackerBannersWrapper, } from '@haaretz/app-utils';
+import { image, clickTrackerBannersWrapper, dfpBanner, } from '@haaretz/app-utils';
 import ZappView from './ZappView.js';
 import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -33,10 +33,14 @@ const ZappQuery = gql`
       clickTrackers {
         ...ClickTrackerBannersWrapper
       }
+      dfp {
+        ...DfpBanner
+      }
     }
   }
   ${image}
   ${clickTrackerBannersWrapper}
+  ${dfpBanner}
 `;
 
 type Props = {

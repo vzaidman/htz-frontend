@@ -36,6 +36,7 @@ const KrokerQuery = gql`
   ${imageInTeaser}
   ${dfpBanner}
   ${link}
+  ${dfpBanner}
 `;
 
 type Props = {

@@ -192,8 +192,13 @@ export default function Panucci({
       {/* banner */}
       {dfp && dfp.length > 0 ? (
         <GridItem
+<<<<<<< f4ddf54f21bae641899567e4f6c88cb6db1daa90
           width={[ { until: 'l', value: 1, }, { from: 'l', value: 4 / 12, }, ]}
           miscStyles={{ marginTop: [ { until: 'l', value: '1rem', }, ], }}
+=======
+          width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+          miscStyles={{ marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ], }}
+>>>>>>> fix(dfp, components): banners in lists
         >
           {/* banner content */}
           <GeneralAdSlot {...(dfp ? dfp[0] : {})} />

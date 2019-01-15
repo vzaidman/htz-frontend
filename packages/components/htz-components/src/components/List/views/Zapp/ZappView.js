@@ -1,12 +1,14 @@
 // @flow
 import * as React from 'react';
+
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
 import ZappItem from './ZappItem';
 import ZappPromotedContent from './ZappPromotedContent';
 
-import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const width = [ { until: 'l', value: 1, }, { from: 'l', value: 1 / 4, }, ];
 
@@ -21,12 +23,13 @@ Zapp.defaultProps = {
   lazyLoadImages: false,
 };
 
-function Zapp({
-  list,
+export default function Zapp({
   lazyLoadImages,
+  list,
   gaAction,
   biAction,
 }: ZappPropTypes): React.Node {
+  const numOfItems = list && list.items ? list.items.length : 0;
   return (
     <ListView
       gutter={4}
@@ -41,7 +44,7 @@ function Zapp({
         { from: 's', until: 'l', value: { amount: 4, }, },
       ]}
     >
-      {list.items.length > 0 ? (
+      {numOfItems > 0 ? (
         <GridItem width={width}>
           <ZappItem
             data={list.items[0]}
@@ -66,7 +69,7 @@ function Zapp({
           />
         ) : null}
       </GridItem>
-      {list.items.length > 1 ? (
+      {numOfItems > 1 ? (
         <GridItem width={width}>
           <ZappItem
             data={list.items[1]}
@@ -76,7 +79,7 @@ function Zapp({
           />
         </GridItem>
       ) : null}
-      {list.items.length > 2 ? (
+      {numOfItems > 2 ? (
         <GridItem width={width}>
           <ZappItem
             data={list.items[2]}
@@ -86,7 +89,7 @@ function Zapp({
           />
         </GridItem>
       ) : null}
-      {list.items.length > 3 ? (
+      {numOfItems > 3 ? (
         <GridItem width={width}>
           <ZappItem
             data={list.items[3]}
@@ -97,8 +100,22 @@ function Zapp({
           />
         </GridItem>
       ) : null}
+      {/* banner */}
+      {list.dfp && list.dfp.length > 0 ? (
+        <GridItem
+          width={1}
+          miscStyles={{
+            display: [
+              { until: 's', value: 'block', },
+              { from: 's', value: 'none', },
+            ],
+          }}
+        >
+          {/* banner content */}
+          <GeneralAdSlot {...(list.dfp ? list.dfp[0] : {})} />
+        </GridItem>
+      ) : null}
+      {/* end banner */}
     </ListView>
   );
 }
-
-export default Zapp;
