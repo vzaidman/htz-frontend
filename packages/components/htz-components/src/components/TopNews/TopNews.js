@@ -1,9 +1,14 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import HtzLink from '../HtzLink/HtzLink';
 
-type Props = {
+import type { Node, } from 'react';
+
+import HtzLink from '../HtzLink/HtzLink';
+import ListView from '../ListView/ListView';
+import GridItem from '../Grid/GridItem';
+
+type TopNewsProps = {
   newsItems: [
     {
       href: string,
@@ -17,12 +22,12 @@ type Props = {
   contentName: string,
 };
 
-function TopNews({ newsItems, contentName, }: Props): React.Node {
+function TopNews({ newsItems, contentName, }: TopNewsProps): Node {
   return (
     <FelaComponent
       style={theme => ({
-        paddingRight: '4rem',
-        paddingLeft: '4rem',
+        // paddingRight: '4rem',
+        // paddingLeft: '4rem',
         extend: [ theme.mq({ until: 'l', }, { display: 'none', }), ],
       })}
       render={({ theme, className, }) => (
@@ -60,4 +65,26 @@ function TopNews({ newsItems, contentName, }: Props): React.Node {
   );
 }
 
-export default TopNews;
+type Props = TopNewsProps & {
+  withoutWrapper?: boolean,
+}
+
+export default function ({ withoutWrapper = false, ...props }: Props): Node {
+  return (
+    withoutWrapper
+      ? (
+        <TopNews {...props} />
+      )
+      : (
+        <ListView
+          padding={[ 0, 4, ]}
+          gutter={4}
+          innerBackgroundColor={[ 'neutral', '-10', ]}
+        >
+          <GridItem width={1}>
+            <TopNews {...props} />
+          </GridItem>
+        </ListView>
+      )
+  );
+}

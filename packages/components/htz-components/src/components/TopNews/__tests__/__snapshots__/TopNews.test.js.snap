@@ -2,32 +2,70 @@
 
 exports[`<TopNews> DOM element renders correctly with minimal required props 1`] = `
 <div>
-  <div
-    className="htz-a htz-b htz-c"
+  <section
+    className="htz-a htz-b htz-c htz-d"
+    id={null}
   >
-    <span
-      className="htz-d htz-e htz-f htz-g htz-h htz-i"
+    <div
+      className="htz-e htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
     >
-       
-    </span>
-  </div>
+      <div
+        className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac"
+        id={null}
+      >
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-r htz-ai htz-aj htz-ak htz-al"
+          id={null}
+        >
+          <div
+            className="htz-am"
+          >
+            <span
+              className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as"
+            >
+               
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 `;
 
-exports[`<TopNews> DOM element renders correctly with minimal required props 2`] = `".htz-a{padding-right:4rem}.htz-b{padding-left:4rem}.htz-d{color:#A8001C}.htz-e{font-weight:700}@media (max-width: 63.9375em){.htz-c{display:none}}@media (max-width: 79.9375em){.htz-f{font-size:2.3333333333333335rem}.htz-g{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-h{font-size:2.2857142857142856rem}.htz-i{line-height:1.3125em}}"`;
+exports[`<TopNews> DOM element renders correctly with minimal required props 2`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-e{background-color:#FFF}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{padding-top:0rem}.htz-m{padding-right:4rem}.htz-n{padding-bottom:0rem}.htz-o{padding-left:4rem}.htz-p{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-q{flex-wrap:wrap}.htz-r{list-style:none}.htz-s{justify-content:flex-start}.htz-t{margin-right:-2rem}.htz-u{margin-left:-2rem}.htz-v{flex-direction:row}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:multiple}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{flex-basis:100%}.htz-ag{flex-grow:0}.htz-ah{flex-shrink:0}.htz-ai{padding-left:2rem}.htz-aj{padding-right:2rem}.htz-ak{max-width:100%}.htz-al{-webkit-box-flex:0}.htz-an{color:#A8001C}.htz-ao{font-weight:700}@media (max-width: 37.4375em){.htz-c{margin-top:4rem}}@media (min-width: 37.5em){.htz-d{margin-top:8rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-ar{font-size:2.2857142857142856rem}.htz-as{line-height:1.3125em}}@media (max-width: 63.9375em){.htz-am{display:none}}@media (max-width: 79.9375em){.htz-ap{font-size:2.3333333333333335rem}.htz-aq{line-height:1.2857142857142858em}}"`;
 
 exports[`<TopNews> DOM element renders correctly with minimal required props 3`] = `
 <div>
-  <div
-    className="htz-a htz-b htz-c"
+  <section
+    className="htz-a htz-b htz-c htz-d"
+    id={null}
   >
-    <span
-      className="htz-d htz-e htz-f htz-g htz-h htz-i"
+    <div
+      className="htz-e htz-f htz-g htz-b htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
     >
-       
-    </span>
-  </div>
+      <div
+        className="htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac"
+        id={null}
+      >
+        <div
+          className="htz-ae htz-af htz-ag htz-ah htz-r htz-ai htz-aj htz-ak htz-al"
+          id={null}
+        >
+          <div
+            className="htz-am"
+          >
+            <span
+              className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as"
+            >
+               
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 `;
 
-exports[`<TopNews> DOM element renders correctly with minimal required props 4`] = `".htz-a{padding-right:4rem}.htz-b{padding-left:4rem}.htz-d{color:#A8001C}.htz-e{font-weight:700}@media (max-width: 63.9375em){.htz-c{display:none}}@media (max-width: 79.9375em){.htz-f{font-size:2.3333333333333335rem}.htz-g{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-h{font-size:2.2857142857142856rem}.htz-i{line-height:1.3125em}}"`;
+exports[`<TopNews> DOM element renders correctly with minimal required props 4`] = `".htz-a{background-color:#EBF2F5}.htz-b{width:100%}.htz-e{background-color:#FFF}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{padding-top:0rem}.htz-m{padding-right:4rem}.htz-n{padding-bottom:0rem}.htz-o{padding-left:4rem}.htz-p{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-q{flex-wrap:wrap}.htz-r{list-style:none}.htz-s{justify-content:flex-start}.htz-t{margin-right:-2rem}.htz-u{margin-left:-2rem}.htz-v{flex-direction:row}.htz-w{align-items:stretch}.htz-x{-webkit-box-lines:multiple}.htz-y{-webkit-box-pack:right}.htz-z{-webkit-box-orient:horizontal}.htz-ab{-webkit-box-direction:normal}.htz-ac{-webkit-box-align:stretch}.htz-ae{box-sizing:border-box}.htz-af{flex-basis:100%}.htz-ag{flex-grow:0}.htz-ah{flex-shrink:0}.htz-ai{padding-left:2rem}.htz-aj{padding-right:2rem}.htz-ak{max-width:100%}.htz-al{-webkit-box-flex:0}.htz-an{color:#A8001C}.htz-ao{font-weight:700}@media (max-width: 37.4375em){.htz-c{margin-top:4rem}}@media (min-width: 37.5em){.htz-d{margin-top:8rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-ar{font-size:2.2857142857142856rem}.htz-as{line-height:1.3125em}}@media (max-width: 63.9375em){.htz-am{display:none}}@media (max-width: 79.9375em){.htz-ap{font-size:2.3333333333333335rem}.htz-aq{line-height:1.2857142857142858em}}"`;
