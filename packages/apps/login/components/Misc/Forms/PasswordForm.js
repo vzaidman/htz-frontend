@@ -140,7 +140,7 @@ class PasswordForm extends Component {
     ? generateTermsError('יש לאשר את תנאי השימוש באתר')
     : []);
 
-  toggleChecked = () => this.setState(prevState =>({ isChecked: !prevState.isChecked, isFirstTime: false, }));
+  toggleChecked = () => this.setState(prevState => ({ isChecked: !prevState.isChecked, isFirstTime: false, }));
 
   validateForm = ({ email, password, trmsChk, }) => {
     let errors = [];
