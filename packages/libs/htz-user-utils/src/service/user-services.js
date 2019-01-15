@@ -77,7 +77,7 @@ export default function UserService(config = {}) {
    * user: the current user object (prior to login)
    * @return {*}
    */
-  function login({ username, password, user, }) {
+  function login({ username, password, user, trmsChk, }) {
     let anonymousId;
     if (!user) {
       const factory = new UserFactory();
@@ -95,7 +95,7 @@ export default function UserService(config = {}) {
       + `&userName=${username}`
       + `&anonymousId=${anonymousId}`
       + `&password=${password}`
-      + '&termsChk=on';
+      + `&termsChk=${trmsChk ? 'on' : 'off'}`;
 
     const loginPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
       method: 'POST',
@@ -151,31 +151,28 @@ export default function UserService(config = {}) {
       mobileNumber: suffix,
       email,
       id: hash,
-      // termsChk: trmsChk ? 'on' : 'off',
-      termsChk: trmsChk ? 'on' : 'on',
+      termsChk: trmsChk ? 'on' : 'off',
     };
 
-    const loginPromise = new Promise((resolve, reject) =>
-      fetch(serviceUrl, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+    const loginPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params),
+    })
+      .then(parseResponse)
+      .then(loginData => handleSsoResponse(loginData).then(
+        () => {
+          if (onImageLoadCallback) {
+            onImageLoadCallback(); // TODO: add correct callback
+          }
+          resolve();
         },
-        body: JSON.stringify(params),
-      })
-        .then(parseResponse)
-        .then(loginData =>
-          handleSsoResponse(loginData).then(
-            () => {
-              if (onImageLoadCallback) {
-                onImageLoadCallback(); // TODO: add correct callback
-              }
-              resolve();
-            },
-            reason => reject(reason)
-          )
-        )
+        reason => reject(reason)
+      )
+      )
     );
     return withTimeout(loginPromise, defaultTimeout);
   }
@@ -252,20 +249,19 @@ export default function UserService(config = {}) {
     }
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.newSsoDomain}/registerUrlEncoded`;
-    const params =
-      'newsso=true' +
-      '&layer=createuser' +
-      `&site=${siteConfig.siteId}` +
-      `&userName=${email}` +
-      `&password=${password}` +
-      `&confirmPassword=${confirmPassword}` +
-      `&firstName=${firstName}` +
-      `&lastName=${lastName}` +
-      `&mobilePrefix=${mobilePrefix}` +
-      `&mobileNumber=${mobileNumber}` +
-      `&termsChk=${termsChk ? 'on' : 'off'}` +
-      `&anonymousId=${anonymousId}` +
-      `&g-recaptcha-response=${gRecaptchaResponse}`;
+    const params = 'newsso=true'
+      + '&layer=createuser'
+      + `&site=${siteConfig.siteId}`
+      + `&userName=${email}`
+      + `&password=${password}`
+      + `&confirmPassword=${confirmPassword}`
+      + `&firstName=${firstName}`
+      + `&lastName=${lastName}`
+      + `&mobilePrefix=${mobilePrefix}`
+      + `&mobileNumber=${mobileNumber}`
+      + `&termsChk=${termsChk ? 'on' : 'off'}`
+      + `&anonymousId=${anonymousId}`
+      + `&g-recaptcha-response=${gRecaptchaResponse}`;
 
     const registerPromise = new Promise((resolve, reject) => fetch(serviceUrl, {
       method: 'POST',
@@ -304,21 +300,21 @@ export default function UserService(config = {}) {
         ); // remove (' and ')
         tokens = tokens.split("','");
 
-          const status = tokens[0];
-          let data = null;
-          const redirect = tokens[3] ? /redirect:(\/misc\/abuse-login-page):(.*):(.*)/.exec(tokens[3]) : null;
-          const redirectInfo = redirect ? { url: `https://www.haaretz.co.il${redirect[1]}`, email: redirect[2], sso: redirect[3], } : null;
-          if (status === 'success') {
-            data = JSON.parse(tokens[1]);
-          }
-          const message = tokens[2];
-          resolve({
-            status,
-            data,
-            message,
-            redirectInfo,
-          });
-        })
+        const status = tokens[0];
+        let data = null;
+        const redirect = tokens[3] ? /redirect:(\/misc\/abuse-login-page):(.*):(.*)/.exec(tokens[3]) : null;
+        const redirectInfo = redirect ? { url: `https://www.haaretz.co.il${redirect[1]}`, email: redirect[2], sso: redirect[3], } : null;
+        if (status === 'success') {
+          data = JSON.parse(tokens[1]);
+        }
+        const message = tokens[2];
+        resolve({
+          status,
+          data,
+          message,
+          redirectInfo,
+        });
+      })
     );
   }
 
