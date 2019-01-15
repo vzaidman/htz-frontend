@@ -48,8 +48,8 @@ const itemWrapperStyle = ({ theme, }) => ({
 const updatesStyle = ({ theme, timeLine, }) => ({
   backgroundColor: 'white',
   display: 'block',
-  paddingBottom: '4rem',
-  paddingTop: '4rem',
+  paddingBottom: '2rem',
+  // paddingTop: '4rem',
   ...theme.mq({ until: 's', }, { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', ...(!timeLine && { marginTop: '2rem', }), }),
   ...theme.mq(
     { from: 's', until: 'l', },
@@ -74,7 +74,7 @@ const updatesStyle = ({ theme, timeLine, }) => ({
       alignItems: 'center',
       ...borderTop({
         width: '13px',
-        lines: 6,
+        lines: 5,
         style: 'solid',
         color: theme.color('primary', '-6'),
       }),
@@ -188,7 +188,6 @@ class LiveBlogContainer extends React.Component {
                     <FelaComponent
                       style={{
                         display: 'flex',
-                        paddinTop: '1rem',
                         ...theme.mq({ until: 'm', }, { justifyContent: 'flex-start', }),
                       }}
                       render={({ className, }) => (

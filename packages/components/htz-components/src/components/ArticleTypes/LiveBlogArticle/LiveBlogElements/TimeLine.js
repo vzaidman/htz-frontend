@@ -27,7 +27,6 @@ const defaultProps = {
   miscStyles: null,
 };
 
-
 // //////////////////////////////////////////////////////////////////////
 //                           Timeline Style                            //
 // //////////////////////////////////////////////////////////////////////
@@ -95,7 +94,7 @@ const itemStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   ],
 });
 
-const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
+const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, active, cardId, }) => ({
   position: 'relative',
   display: 'block',
   fontWeight: 'bold',
@@ -104,7 +103,7 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
     content: '""',
     width: '1.5rem',
     height: '1.5rem',
-    backgroundColor: theme.color('neutral', '-6'),
+    backgroundColor: active === cardId ? theme.color('tertiary') : theme.color('neutral', '-6'),
     border: '1px solid #ccc',
     top: '45%',
     right: '-1.79em',
@@ -113,8 +112,11 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
   },
   extend: [
     theme.mq({ until: 's', }, { ':before': { right: '-1.35em', }, }),
-    theme.mq({ from: 's', until: 'l', }, { marginInlineEnd: '2rem', ':before': { right: '-1.5em', }, }),
-    isFirstItem || isLastItem
+    theme.mq(
+      { from: 's', until: 'l', },
+      { marginInlineEnd: '2rem', ':before': { right: '-1.5em', }, }
+    ),
+    active !== cardId && (isFirstItem || isLastItem)
       ? {
         position: 'relative',
         ':before': {
@@ -129,72 +131,96 @@ const TimeHeadlineStyle = ({ theme, isFirstItem, isLastItem, }) => ({
 //                            Main Component                           //
 // //////////////////////////////////////////////////////////////////////
 
-function TimeLine({ keyEvents, miscStyles, }) {
-  if (!keyEvents) return <></>;
-  return (
-    <React.Fragment>
-      <FelaComponent
-        rule={wrapperStyle}
-        miscStyles={miscStyles}
-        render={({ className, theme, }) => (
-          <div className={className}>
-            <FelaComponent
-              style={theme => ({
-                paddingBlockEnd: '5rem',
-                paddingBlockStart: '5rem',
-                paddingInlineStart: '2rem',
-                paddingInlineEnd: '2rem',
-                ...theme.mq({ from: 'l', }, { paddingBlockStart: '3rem', paddingInlineEnd: '0rem', }),
-              })}
-              render={({ className, }) => (
-                <ul className={className}>
-                  {keyEvents.map((item, i) => (
-                    <FelaComponent
-                      isFirstItem={i === 0}
-                      isLastItem={i === keyEvents.length - 1}
-                      rule={itemStyle}
-                      render={({ className, }) => (
-                        <li key={`cardId-${item.cardId}`} className={className}>
-                          <FelaComponent
-                            isFirstItem={i === 0}
-                            isLastItem={i === keyEvents.length - 1}
-                            rule={TimeHeadlineStyle}
-                            render={({ className, }) => (
-                              <Time time={item.pubDate} format="HH:mm" className={className} />
-                            )}
-                          />
-                          <FelaComponent
-                            style={theme => ({
-                              ...theme.mq(
-                                { from: 's', until: 'm', },
-                                { display: 'inline', marginInlineStart: '3rem', }
-                              ),
-                              color: theme.color('primary', '+1'),
-                              ':hover': {
+class TimeLine extends React.Component {
+  state = {
+    activeItem: null,
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.activeItem !== nextState.activeItem;
+  }
+
+  activateItem = cardId => {
+    this.setState({ activeItem: cardId, });
+  };
+
+  render() {
+    const { keyEvents, miscStyles, } = this.props;
+    if (!keyEvents) return <></>;
+    return (
+      <React.Fragment>
+        <FelaComponent
+          rule={wrapperStyle}
+          miscStyles={miscStyles}
+          render={({ className, theme, }) => (
+            <div className={className}>
+              <FelaComponent
+                style={theme => ({
+                  paddingBlockEnd: '5rem',
+                  paddingBlockStart: '5rem',
+                  paddingInlineStart: '2rem',
+                  paddingInlineEnd: '2rem',
+                  ...theme.mq(
+                    { from: 'l', },
+                    { paddingBlockStart: '3rem', paddingInlineEnd: '0rem', }
+                  ),
+                })}
+                render={({ className, }) => (
+                  <ul className={className}>
+                    {keyEvents.map((item, i) => (
+                      <FelaComponent
+                        isFirstItem={i === 0}
+                        isLastItem={i === keyEvents.length - 1}
+                        rule={itemStyle}
+                        render={({ className, }) => (
+                          <li key={`cardId-${item.cardId}`} className={className}>
+                            <FelaComponent
+                              isFirstItem={i === 0}
+                              isLastItem={i === keyEvents.length - 1}
+                              rule={TimeHeadlineStyle}
+                              active={this.state.activeItem}
+                              cardId={item.cardId}
+                              render={({ className, }) => (
+                                <Time time={item.pubDate} format="HH:mm" className={className} />
+                              )}
+                            />
+                            <FelaComponent
+                              style={theme => ({
+                                ...theme.mq(
+                                  { from: 's', until: 'm', },
+                                  { display: 'inline', marginInlineStart: '3rem', }
+                                ),
                                 color: theme.color('primary', '+1'),
-                              },
-                              ':visited': {
-                                color: theme.color('primary', '+1'),
-                              },
-                            })}
-                            render={({ className, }) => (
-                              <a className={className} href={`#${item.cardId}`}>
-                                {item.keyEvent}
-                              </a>
-                            )}
-                          />
-                        </li>
-                      )}
-                    />
-                  ))}
-                </ul>
-              )}
-            />
-          </div>
-        )}
-      />
-    </React.Fragment>
-  );
+                                ':hover': {
+                                  color: theme.color('primary', '+1'),
+                                },
+                                ':visited': {
+                                  color: theme.color('primary', '+1'),
+                                },
+                              })}
+                              render={({ className, }) => (
+                                <a
+                                  className={className}
+                                  href={`#${item.cardId}`}
+                                  onClick={() => this.activateItem(item.cardId)}
+                                >
+                                  {item.keyEvent}
+                                </a>
+                              )}
+                            />
+                          </li>
+                        )}
+                      />
+                    ))}
+                  </ul>
+                )}
+              />
+            </div>
+          )}
+        />
+      </React.Fragment>
+    );
+  }
 }
 
 TimeLine.propTypes = propTypes;

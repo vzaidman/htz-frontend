@@ -21,6 +21,7 @@ Object {
           <a
             className="htz-az htz-ba htz-bb htz-bc htz-bd"
             href="#707650185"
+            onClick={[Function]}
           >
              תקף עמדת חמאס בצפון רצועת עזה
           </a>
@@ -37,6 +38,7 @@ Object {
           <a
             className="htz-az htz-ba htz-bb htz-bc htz-bd"
             href="#707650136"
+            onClick={[Function]}
           >
             אחרי הודעת חמאס הלילה על הפסקת אש,  הודיע על חזרה לשגרה בעוטף עזה 
           </a>

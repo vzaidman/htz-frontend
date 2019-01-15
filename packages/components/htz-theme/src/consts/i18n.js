@@ -352,8 +352,8 @@ export const reviewRatingI18n = Object.freeze({
 export const liveBlogI18n = Object.freeze({
   liveUpdate: 'LIVE',
   updatesTitle: 'עדכונים',
-  firstToLastLabel: 'מהראשון לאחרון',
-  lastToFirstLabel: 'מהאחרון לראשון',
+  firstToLastLabel: 'סדר מהראשון לאחרון',
+  lastToFirstLabel: 'סדר מהאחרון לראשון',
   expand: 'להרחבה',
   close: 'סגור',
 });
