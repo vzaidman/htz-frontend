@@ -82,29 +82,25 @@ export default gql`
       }
     }
   }
-  
+
   fragment ItemInList on TeaserInList {
+    commentsCounts
     contentId
-    title
-    titleMobile
-    subtitle
-    subtitleMobile
     exclusive
     exclusiveMobile
-    path
-    commentsCounts
-    publishDate
-    lastUpdate
-    rank
+    firstParagraph
     inputTemplate
+    lastUpdate
+    path
+    publishDate
+    rank
+    subtitle
+    subtitleMobile
+    title
+    titleMobile
     ...ImageInTeaser
     authors {
       contentName
-    }
-    relatedArticles {
-      title
-      path
-      contentId
     }
     media {
       ... on Image {
@@ -117,19 +113,41 @@ export default gql`
         ...ImageGallery
       }
     }
+    relatedArticles {
+      title
+      path
+      contentId
+    }
   }
-  
+
   fragment HomePageList on List {
-    view
-    inputTemplate
-    loadPriority
-    isLazyloadImages
-    title
     contentId
+    description
+    inputTemplate
+    isLazyloadImages
+    loadPriority
+    title
+    url
+    urlDescription
+    view
+    clickTrackers {
+      ...ClickTrackerBannersWrapper
+    }
+    commercialLinks {
+      href
+      contentName
+      contentId
+    }
+    dfp {
+      ...DfpBanner
+    }
     extraLinks {
       href
       contentName
       contentId
+    }
+    items {
+      ...ItemInList
     }
     marketingTeaser {
       title
@@ -137,17 +155,8 @@ export default gql`
       href
       cta
     }
-    items {
-      ...ItemInList
-    }
-    clickTrackers {
-      ...ClickTrackerBannersWrapper
-    }
-    dfp {
-      ...DfpBanner
-    }
   }
-  
+
   fragment GridElementGroup on GridElementGroup {
     inputTemplate
     contentName
@@ -176,7 +185,7 @@ export default gql`
       }
     }
   }
-  
+
   fragment TabViewElements on TabViewElements {
     inputTemplate
     contentId
@@ -196,7 +205,7 @@ export default gql`
       }
     }
   }
-  
+
   ${clickTrackerBannersWrapper}
   ${dfpBanner}
   ${elementGroup}
