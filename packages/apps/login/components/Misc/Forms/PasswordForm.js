@@ -63,9 +63,10 @@ const getUserTermsStatus = (userData = '', site) => {
 const modifyErrorMessage = message => (message === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת'
   ? 'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message);
 
-const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, eventsTrackers, }) => ({ email, password, trmsChk, }) => {
+const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, termsConfirmed, eventsTrackers, }) => ({ email, password, trmsChk, }) => {
   setPreloader(true);
   hideError();
+  trmsChk = termsConfirmed ? 'off' : 'on';
   login(email, password, trmsChk)
     .then(
       () => {
@@ -172,7 +173,17 @@ class PasswordForm extends Component {
           clearFormAfterSubmit={false}
           initialValues={{ email: getEmail(client), }}
           validate={this.validateForm}
-          onSubmit={onSubmit({ login, host, user, flow, client, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
+          onSubmit={onSubmit({ login,
+            host,
+            user,
+            flow,
+            client,
+            showError: this.showError,
+            hideError: this.hideError,
+            setPreloader: this.setPreloader,
+            termsConfirmed: this.state.termsConfirmed,
+            eventsTrackers,
+          })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <div>
