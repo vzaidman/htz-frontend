@@ -11,8 +11,10 @@ import BreakingNewsBox from '../../../BreakingNewsBox/BreakingNewsBox';
 import MainTeaser from './MainTeaser';
 import VerticalImageTeaser from './VerticalImageTeaser';
 import VerticalTeaser from './VerticalTeaser';
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { DfpBannerType, } from '../../../../flowTypes/DfpBannerType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
@@ -62,6 +64,7 @@ export default function KrokerView({
           <GridItem width={1}>
             <ListItems
               items={list.items}
+              dfp={list.dfp}
               lazyLoadImages={lazyLoadImages}
               biAction={biAction}
               gaAction={gaAction}
@@ -75,11 +78,12 @@ export default function KrokerView({
 
 type ListItemsProps = {
   items: Array<TeaserDataType>,
+  dfp: ?Array<DfpBannerType>,
   lazyLoadImages: boolean,
   gaAction: ?() => void,
   biAction: ?ListBiActionType,
 };
-function ListItems({ items, lazyLoadImages, gaAction, biAction, }: ListItemsProps): React.Node {
+function ListItems({ items, dfp, lazyLoadImages, gaAction, biAction, }: ListItemsProps): React.Node {
   return (
     <FelaTheme
       render={theme => (
@@ -137,9 +141,14 @@ function ListItems({ items, lazyLoadImages, gaAction, biAction, }: ListItemsProp
           {/* banner */}
           <GridItem
             width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
-            miscStyles={{ display: 'flex', }}
           >
-            <div style={{ backgroundColor: 'orange', width: '100%', }}>banner</div>
+            {
+              dfp && dfp[0]
+                ? (
+                  <GeneralAdSlot {...dfp[0]} />
+                )
+                : null
+            }
           </GridItem>
         </Grid>
       )}

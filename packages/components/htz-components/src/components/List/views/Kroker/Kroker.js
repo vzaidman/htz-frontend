@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { link, imageInTeaser, } from '@haaretz/app-utils';
+import { link, imageInTeaser, dfpBanner, } from '@haaretz/app-utils';
 
 import KrokerView from './KrokerView.js';
 import ListDataGetter from '../../ListDataGetter';
@@ -28,9 +28,13 @@ const KrokerQuery = gql`
           commentsCounts
         }
       }
+      dfp {
+        ...DfpBanner
+      }
     }
   }
   ${imageInTeaser}
+  ${dfpBanner}
   ${link}
 `;
 
