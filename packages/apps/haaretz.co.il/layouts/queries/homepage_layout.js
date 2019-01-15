@@ -159,6 +159,7 @@ export default gql`
         until
         value
       }
+      miscStyles
       content {
         ... on ClickTrackerBannersWrapper {
           ...ClickTrackerBannersWrapper

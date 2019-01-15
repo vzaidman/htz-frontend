@@ -7,6 +7,7 @@ import {
   GraphQLList,
   GraphQLID,
 } from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
 
 import clickTrackerBannersWrapper from './click_tracker_banner_wrapper_type';
 import content from './content_type';
@@ -39,6 +40,7 @@ const GridElementGroup = new GraphQLObjectType({
                 })
               ),
             },
+            miscStyles: { type: GraphQLJSON, },
             content: {
               type: new GraphQLUnionType({
                 name: 'GridElementItemContent',

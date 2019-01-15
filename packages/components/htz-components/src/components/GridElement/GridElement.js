@@ -53,8 +53,14 @@ function GridElement({
           )
           : null
       }
-      {items.map(({ content, width, }) => (
-        <GridItem width={width} miscStyles={{ display: 'flex', }}>
+      {items.map(({ content, width, miscStyles, }) => (
+        <GridItem
+          width={width}
+          miscStyles={{
+            display: 'flex',
+            ...(miscStyles || {}),
+          }}
+        >
           {
             isClickTrackerWrapper(content)
               ? (

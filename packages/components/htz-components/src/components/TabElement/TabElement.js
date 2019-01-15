@@ -181,20 +181,28 @@ WrappedTabs.defaultProps = {
 };
 
 function WrappedTabs({ withoutWrapper, ...props }: Props): Node {
-  return withoutWrapper
-    ? (
-      <TabElement {...props} />
-    )
-    : (
-      <ListView>
-        <GridItem width={1} stretchContent>
-          <ListViewHeader title={props.title} />
-        </GridItem>
-        <GridItem width={1} stretchContent>
-          <TabElement {...props} />
-        </GridItem>
-      </ListView>
-    );
+  return (
+    <FelaComponent
+      style={{ width: '100%', }}
+    >
+      {
+        withoutWrapper
+          ? (
+            <TabElement {...props} />
+          )
+          : (
+            <ListView>
+              <GridItem width={1} stretchContent>
+                <ListViewHeader title={props.title} />
+              </GridItem>
+              <GridItem width={1} stretchContent>
+                <TabElement {...props} />
+              </GridItem>
+            </ListView>
+          )
+      }
+    </FelaComponent>
+  );
 }
 
 export default WrappedTabs;

@@ -16,6 +16,7 @@ type GridItemType = {
     until?: ?string,
     value: number,
   },
+  miscStyles: ?Object,
 }
 
 
