@@ -49,7 +49,7 @@ type Props = {
 Pazuzu.defaultProps = {
   gutter: null,
   isStackedOnXl: false,
-  lazyLoadImages: true,
+  lazyLoadImages: false,
   width: null,
 };
 
@@ -122,8 +122,7 @@ function PazuzuTeaser({
                   {...item}
                   typeScale={[
                     { until: 's', value: -1, },
-                    { from: 's', until: 'xl', value: 2, },
-                    { from: 'xl', value: 1, },
+                    { from: 's', until: 'xl', value: 1, },
                   ]}
                 />
               )}
@@ -132,7 +131,10 @@ function PazuzuTeaser({
                 ...(isStackedOnXl
                   ? {}
                   : {
-                    marginTop: [ { until: 'xl', value: 'auto', }, { from: 'xl', value: '0', }, ],
+                    marginTop: [
+                      { until: 'xl', value: 'auto', },
+                      { from: 'xl', value: '0', },
+                    ],
                   }),
                 type: [
                   { until: 's', value: -3, },
@@ -145,10 +147,16 @@ function PazuzuTeaser({
                 { from: 's', until: 'xl', value: [ 1, 0, 0, ], },
                 { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : 0, },
               ]}
-              footerPadding={[ { until: 'xl', value: 1, }, { from: 'xl', value: [ 1, 0, ], }, ]}
+              footerPadding={[
+                { until: 'xl', value: 1, },
+                { from: 'xl', value: [ 1, 0, ], },
+              ]}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                  <TeaserAuthors
+                    authors={item.authors}
+                    miscStyles={{ fontWeight: 'bold', }}
+                  />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}
@@ -193,8 +201,6 @@ function Pazuzu({
           gutter={gutter}
           width={width}
           miscStyles={{
-            paddingInlineStart: [ { until: 's', value: '2rem', }, ],
-            paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
             marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
           }}
         >

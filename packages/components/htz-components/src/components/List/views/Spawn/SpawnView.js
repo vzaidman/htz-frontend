@@ -355,17 +355,17 @@ function Editorial({
         >
           <TeaserMedia
             data={data}
-            width={17}
+            width={19}
             miscStyles={{ display: [ { from: 's', value: 'none', }, ], }}
           >
             <FelaComponent
               style={{
                 borderRadius: '50%',
-                padding: '2rem',
+                padding: '2.5rem',
                 backgroundColor: theme.color('primary', '-5'),
               }}
             >
-              <IconAlefLogoTransparent size={11} color="primary" />
+              <IconAlefLogoTransparent size={12} color="primary" />
             </FelaComponent>
           </TeaserMedia>
 
@@ -438,7 +438,7 @@ function Editorial({
                         {
                           bottom: '0',
                           left: '0',
-                          paddingBottom: '2rem',
+                          paddingBottom: '1rem',
                           paddingInlineEnd: '2rem',
                           paddingInlineStart: '2rem',
                           position: 'absolute',
@@ -488,7 +488,7 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
           }}
         >
           <GridItem
-            width={[ { until: 's', value: 17, }, ]}
+            width={[ { until: 's', value: 19, }, ]}
             miscStyles={{
               alignItems: [ { until: 's', value: 'center', }, ],
               display: 'flex',

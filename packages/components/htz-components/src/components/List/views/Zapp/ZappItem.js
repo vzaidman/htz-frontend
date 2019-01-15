@@ -41,18 +41,19 @@ export default function ZappItem({
     <Teaser
       data={data}
       onClick={() => biAction({ index, articleId: data.contentId, })}
-      gridMiscStyles={{
-        flexWrap: 'nowrap',
-        flexDirection: [ { from: 'l', value: 'column', }, ],
-      }}
+      isStacked={[ { from: 'l', value: true, }, ]}
     >
       <TeaserMedia
-        width={[ { until: 's', value: 4 / 12, }, { from: 's', until: 'l', value: 5 / 12, }, ]}
+        width={[
+          { until: 's', value: 4 / 12, },
+          { from: 's', until: 'l', value: 5 / 12, },
+        ]}
         data={data}
+        isStacked={[ { from: 'l', value: true, }, ]}
         miscStyles={{
-          flexBasis: [ { from: 'l', value: 'auto', }, ],
-          flexGrow: [ { from: 'l', value: '0', }, ],
-          ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
+          ...(hideImageOnMobile
+            ? { display: [ { until: 's', value: 'none', }, ], }
+            : {}),
         }}
       >
         <FelaTheme
@@ -89,19 +90,17 @@ export default function ZappItem({
         data={data}
         padding={[ 1, 1, 1, ]}
         footerPadding={[ 1, 1, 1, ]}
+        isStacked={[ { from: 'l', value: true, }, ]}
         gridItemMiscStyles={{
           display: [ { from: 's', until: 'l', value: 'block', }, ],
-          flexBasis: [ { from: 'l', value: 'auto', }, ],
-          flexGrow: [ { from: 'l', value: '1', }, ],
-          flexShrink: [ { from: 'l', value: '0', }, ],
         }}
         renderContent={() => (
           <TeaserHeader
             {...data}
             typeScale={[
               { until: 's', value: -1, },
-              { from: 's', until: 'xl', value: 1, },
-              { from: 'xl', value: 0, },
+              { from: 's', until: 'xl', value: 0, },
+              { from: 'xl', value: -1, },
             ]}
             onClick={() => biAction({ index, articleId: data.contentId, })}
           />

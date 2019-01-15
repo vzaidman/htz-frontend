@@ -62,8 +62,10 @@ GridItem.propTypes = {
     PropTypes.bool,
     PropTypes.shape({
       width: PropTypes.number.isRequired,
-      color: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string), ])
-        .isRequired,
+      color: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+      ]).isRequired,
     }),
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -72,8 +74,10 @@ GridItem.propTypes = {
           PropTypes.bool,
           PropTypes.shape({
             width: PropTypes.number.isRequired,
-            color: PropTypes.oneOfType([ PropTypes.string, PropTypes.arrayOf(PropTypes.string), ])
-              .isRequired,
+            color: PropTypes.oneOfType([
+              PropTypes.string,
+              PropTypes.arrayOf(PropTypes.string),
+            ]).isRequired,
           }),
         ]).isRequired,
       })
@@ -158,17 +162,28 @@ const gridItemStyles = ({
   flexGrow: 1,
   flexShrink: 1,
   listStyle: 'none',
-  paddingLeft: `${gutter / 2}rem`,
-  paddingRight: `${gutter / 2}rem`,
+  paddingInlineEnd: `${gutter / 2}rem`,
+  paddingInlineStart: `${gutter / 2}rem`,
 
   extend: [
     ...(stretchContent
-      ? [ parseComponentProp('stretchContent', stretchContent, theme.mq, contentStretcher), ]
+      ? [
+        parseComponentProp(
+          'stretchContent',
+          stretchContent,
+          theme.mq,
+          contentStretcher
+        ),
+      ]
       : []),
     // Offset an item from the previous item (or the begining of the grid)
-    ...(offset ? [ parseComponentProp('offset', offset, theme.mq, setOffset), ] : []),
+    ...(offset
+      ? [ parseComponentProp('offset', offset, theme.mq, setOffset), ]
+      : []),
     // Set the vertical rule at the end of the `<GridItem />`
-    ...(rule ? [ parseComponentProp('rule', rule, theme.mq, setRule, theme), ] : []),
+    ...(rule
+      ? [ parseComponentProp('rule', rule, theme.mq, setRule, theme), ]
+      : []),
     // Set the width of an item
     ...(width ? [ parseComponentProp('width', width, theme.mq, setWidth), ] : []),
     // Trump all other styles with those defined in `miscStyles`

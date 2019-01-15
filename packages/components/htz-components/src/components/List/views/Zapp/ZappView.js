@@ -27,7 +27,6 @@ function Zapp({
   gaAction,
   biAction,
 }: ZappPropTypes): React.Node {
-  // marginTop={[ { until: 's', value: 1, }, { from: 's', value: 4, }, ]}
   return (
     <ListView
       gutter={4}
@@ -42,78 +41,62 @@ function Zapp({
         { from: 's', until: 'l', value: { amount: 4, }, },
       ]}
     >
-      {list.items.length > 0
-        ? (
-          <GridItem width={width}>
-            <ZappItem
-              data={list.items[0]}
-              lazyLoadImages={lazyLoadImages}
-              index={0}
-              biAction={biAction}
-            />
-          </GridItem>
-        )
-        : null
-      }
+      {list.items.length > 0 ? (
+        <GridItem width={width}>
+          <ZappItem
+            data={list.items[0]}
+            lazyLoadImages={lazyLoadImages}
+            index={0}
+            biAction={biAction}
+          />
+        </GridItem>
+      ) : null}
       <GridItem
         width={width}
         miscStyles={{
           display: [ { from: 's', value: 'none', }, ],
         }}
       >
-        {
-          list.clickTrackers
-            ? (
-              <ZappPromotedContent
-                data={list.clickTrackers[0]}
-                lazyLoadImages={lazyLoadImages}
-                index={1}
-                biAction={biAction}
-              />
-            )
-            : null
-        }
+        {list.clickTrackers ? (
+          <ZappPromotedContent
+            data={list.clickTrackers[0]}
+            lazyLoadImages={lazyLoadImages}
+            index={1}
+            biAction={biAction}
+          />
+        ) : null}
       </GridItem>
-      {list.items.length > 1
-        ? (
-          <GridItem width={width}>
-            <ZappItem
-              data={list.items[1]}
-              lazyLoadImages={lazyLoadImages}
-              index={2}
-              biAction={biAction}
-            />
-          </GridItem>
-        )
-        : null
-      }
-      {list.items.length > 2
-        ? (
-          <GridItem width={width}>
-            <ZappItem
-              data={list.items[2]}
-              lazyLoadImages={lazyLoadImages}
-              index={3}
-              biAction={biAction}
-            />
-          </GridItem>
-        )
-        : null
-      }
-      {list.items.length > 3
-        ? (
-          <GridItem width={width}>
-            <ZappItem
-              data={list.items[3]}
-              lazyLoadImages={lazyLoadImages}
-              hideImageOnMobile
-              index={4}
-              biAction={biAction}
-            />
-          </GridItem>
-        )
-        : null
-      }
+      {list.items.length > 1 ? (
+        <GridItem width={width}>
+          <ZappItem
+            data={list.items[1]}
+            lazyLoadImages={lazyLoadImages}
+            index={2}
+            biAction={biAction}
+          />
+        </GridItem>
+      ) : null}
+      {list.items.length > 2 ? (
+        <GridItem width={width}>
+          <ZappItem
+            data={list.items[2]}
+            lazyLoadImages={lazyLoadImages}
+            index={3}
+            biAction={biAction}
+          />
+        </GridItem>
+      ) : null}
+      {list.items.length > 3 ? (
+        <GridItem width={width}>
+          <ZappItem
+            data={list.items[3]}
+            lazyLoadImages={lazyLoadImages}
+            hideImageOnMobile
+            index={4}
+            biAction={biAction}
+          />
+        </GridItem>
+      ) : null}
     </ListView>
   );
 }

@@ -1,6 +1,11 @@
 // @flow
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import { borderTop, borderBottom, borderEnd, parseComponentProp, } from '@haaretz/htz-css-tools';
+import {
+  borderTop,
+  borderBottom,
+  borderEnd,
+  parseComponentProp,
+} from '@haaretz/htz-css-tools';
 import * as React from 'react';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
@@ -29,11 +34,11 @@ type StockType = {
 };
 
 type StocksType = {
-  '142': StockType,
-  '137': StockType,
-  '9001': StockType,
-  '29.10.@CCO': StockType,
-  '30.10.!DJI': StockType,
+  "142": StockType,
+  "137": StockType,
+  "9001": StockType,
+  "29.10.@CCO": StockType,
+  "30.10.!DJI": StockType,
 };
 
 export type Props = {
@@ -80,29 +85,41 @@ export default class Zombie extends React.Component<Props, State> {
       })
       .then(res => res.json())
       .then(json => {
-        const stocksIds: Array<string> = [ '142', '137', '9001', '29.10.@CCO', '30.10.!DJI', ];
-        const stocks: StocksType = Object.keys(json).reduce((result: StocksType, source) => {
-          const parssedSource = json[source].DataSource
-            ? json[source].DataSource.reduce((relevantSources, sourceInfo) => {
-              const id = sourceInfo[5];
-              const sourceInfoObj: ?StockType = stocksIds.includes(id)
-                ? {
-                  name: sourceInfo[1],
-                  value: sourceInfo[3],
-                  change: sourceInfo[4],
-                }
-                : null;
-              return ({
-                ...relevantSources,
-                ...(sourceInfoObj ? { [id]: sourceInfoObj, } : {}),
-              }: StocksType);
-            }, {})
-            : null;
-          return ({
-            ...result,
-            ...(parssedSource ? { ...parssedSource, } : {}),
-          }: StocksType);
-        }, ({}: any));
+        const stocksIds: Array<string> = [
+          '142',
+          '137',
+          '9001',
+          '29.10.@CCO',
+          '30.10.!DJI',
+        ];
+        const stocks: StocksType = Object.keys(json).reduce(
+          (result: StocksType, source) => {
+            const parssedSource = json[source].DataSource
+              ? json[source].DataSource.reduce(
+                (relevantSources, sourceInfo) => {
+                  const id = sourceInfo[5];
+                  const sourceInfoObj: ?StockType = stocksIds.includes(id)
+                    ? {
+                      name: sourceInfo[1],
+                      value: sourceInfo[3],
+                      change: sourceInfo[4],
+                    }
+                    : null;
+                  return ({
+                    ...relevantSources,
+                    ...(sourceInfoObj ? { [id]: sourceInfoObj, } : {}),
+                  }: StocksType);
+                },
+                {}
+              )
+              : null;
+            return ({
+              ...result,
+              ...(parssedSource ? { ...parssedSource, } : {}),
+            }: StocksType);
+          },
+          ({}: any)
+        );
         this.setState({
           stocks,
         });
@@ -119,10 +136,10 @@ export default class Zombie extends React.Component<Props, State> {
       <FelaTheme
         render={theme => (
           <ListView
-            miscStyles={{
-              paddingInlineStart: [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ],
-              paddingInlineEnd: [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ],
-            }}
+            padding={[
+              { until: 's', value: [ 0, 2, ], },
+              { from: 's', value: [ 0, 4, ], },
+            ]}
           >
             {/* Title */}
             <GridItem
@@ -165,16 +182,31 @@ export default class Zombie extends React.Component<Props, State> {
                       height: '100%',
                       backgroundColor: theme.color('neutral', '-10'),
                       extend: [
-                        borderTop('1px', 0, 'solid', theme.color('neutral', '-2')),
-                        borderBottom('1px', 0, 'solid', theme.color('neutral', '-2')),
+                        borderTop(
+                          '1px',
+                          0,
+                          'solid',
+                          theme.color('neutral', '-2')
+                        ),
+                        borderBottom(
+                          '1px',
+                          0,
+                          'solid',
+                          theme.color('neutral', '-2')
+                        ),
                       ],
                     }}
                   >
                     {stocks ? (
                       <Grid gutter={0} miscStyles={{ height: '100%', }}>
-                        <GridItem miscStyles={stockWrapperStyle(theme)} width={stockWidth}>
+                        <GridItem
+                          miscStyles={stockWrapperStyle(theme)}
+                          width={stockWidth}
+                        >
                           <FelaComponent style={stockStyle(theme)}>
-                            <FelaComponent style={{ ...theme.type(-2), fontWeight: '700', }}>
+                            <FelaComponent
+                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                            >
                               {stocks['142'].name}
                             </FelaComponent>
                             <FelaComponent
@@ -197,20 +229,30 @@ export default class Zombie extends React.Component<Props, State> {
                               {stocks['142'].value}
                             </FelaComponent>
                             <FelaComponent
-                              style={stockYieldStyle(theme, stocks['142'].change)}
+                              style={stockYieldStyle(
+                                theme,
+                                stocks['142'].change
+                              )}
                               render="span"
                             >
                               {stocks['142'].change
-                                ? `${stocks['142'].change > 0 ? '+' : '-'}${numToHebrewString(
+                                ? `${
+                                  stocks['142'].change > 0 ? '+' : '-'
+                                }${numToHebrewString(
                                   Math.abs(stocks['142'].change)
                                 )}%`
                                 : ''}
                             </FelaComponent>
                           </FelaComponent>
                         </GridItem>
-                        <GridItem miscStyles={stockWrapperStyle(theme, true)} width={stockWidth}>
+                        <GridItem
+                          miscStyles={stockWrapperStyle(theme, true)}
+                          width={stockWidth}
+                        >
                           <FelaComponent style={stockStyle(theme)}>
-                            <FelaComponent style={{ ...theme.type(-2), fontWeight: '700', }}>
+                            <FelaComponent
+                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                            >
                               {stocks['137'].name}
                             </FelaComponent>
                             <FelaComponent
@@ -233,20 +275,30 @@ export default class Zombie extends React.Component<Props, State> {
                               {stocks['137'].value}
                             </FelaComponent>
                             <FelaComponent
-                              style={stockYieldStyle(theme, stocks['137'].change)}
+                              style={stockYieldStyle(
+                                theme,
+                                stocks['137'].change
+                              )}
                               render="span"
                             >
                               {stocks['137'].change
-                                ? `${stocks['137'].change > 0 ? '+' : '-'}${numToHebrewString(
+                                ? `${
+                                  stocks['137'].change > 0 ? '+' : '-'
+                                }${numToHebrewString(
                                   Math.abs(stocks['137'].change)
                                 )}%`
                                 : ''}
                             </FelaComponent>
                           </FelaComponent>
                         </GridItem>
-                        <GridItem miscStyles={stockWrapperStyle(theme)} width={stockWidth}>
+                        <GridItem
+                          miscStyles={stockWrapperStyle(theme)}
+                          width={stockWidth}
+                        >
                           <FelaComponent style={stockStyle(theme)}>
-                            <FelaComponent style={{ ...theme.type(-2), fontWeight: '700', }}>
+                            <FelaComponent
+                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                            >
                               {stocks[9001].name}
                             </FelaComponent>
                             <FelaComponent
@@ -269,20 +321,30 @@ export default class Zombie extends React.Component<Props, State> {
                               {stocks[9001].value}
                             </FelaComponent>
                             <FelaComponent
-                              style={stockYieldStyle(theme, stocks[9001].change)}
+                              style={stockYieldStyle(
+                                theme,
+                                stocks[9001].change
+                              )}
                               render="span"
                             >
                               {stocks[9001].change
-                                ? `${stocks[9001].change > 0 ? '+' : '-'}${numToHebrewString(
+                                ? `${
+                                  stocks[9001].change > 0 ? '+' : '-'
+                                }${numToHebrewString(
                                   Math.abs(stocks[9001].change)
                                 )}%`
                                 : ''}
                             </FelaComponent>
                           </FelaComponent>
                         </GridItem>
-                        <GridItem miscStyles={stockWrapperStyle(theme)} width={stockWidth}>
+                        <GridItem
+                          miscStyles={stockWrapperStyle(theme)}
+                          width={stockWidth}
+                        >
                           <FelaComponent style={stockStyle(theme, false, true)}>
-                            <FelaComponent style={{ ...theme.type(-2), fontWeight: '700', }}>
+                            <FelaComponent
+                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                            >
                               {stocks['29.10.@CCO'].name}
                             </FelaComponent>
                             <FelaComponent
@@ -305,20 +367,30 @@ export default class Zombie extends React.Component<Props, State> {
                               {stocks['29.10.@CCO'].value}
                             </FelaComponent>
                             <FelaComponent
-                              style={stockYieldStyle(theme, stocks['29.10.@CCO'].change)}
+                              style={stockYieldStyle(
+                                theme,
+                                stocks['29.10.@CCO'].change
+                              )}
                               render="span"
                             >
                               {stocks['29.10.@CCO'].change
                                 ? `${
                                   stocks['29.10.@CCO'].change > 0 ? '+' : '-'
-                                }${numToHebrewString(Math.abs(stocks['29.10.@CCO'].change))}%`
+                                }${numToHebrewString(
+                                  Math.abs(stocks['29.10.@CCO'].change)
+                                )}%`
                                 : ''}
                             </FelaComponent>
                           </FelaComponent>
                         </GridItem>
-                        <GridItem miscStyles={stockWrapperStyle(theme, true)} width={stockWidth}>
+                        <GridItem
+                          miscStyles={stockWrapperStyle(theme, true)}
+                          width={stockWidth}
+                        >
                           <FelaComponent style={stockStyle(theme, false)}>
-                            <FelaComponent style={{ ...theme.type(-2), fontWeight: '700', }}>
+                            <FelaComponent
+                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                            >
                               {stocks['30.10.!DJI'].name}
                             </FelaComponent>
                             <FelaComponent
@@ -328,13 +400,18 @@ export default class Zombie extends React.Component<Props, State> {
                               {stocks['30.10.!DJI'].value}
                             </FelaComponent>
                             <FelaComponent
-                              style={stockYieldStyle(theme, stocks['30.10.!DJI'].change)}
+                              style={stockYieldStyle(
+                                theme,
+                                stocks['30.10.!DJI'].change
+                              )}
                               render="span"
                             >
                               {stocks['30.10.!DJI'].change
                                 ? `${
                                   stocks['30.10.!DJI'].change > 0 ? '+' : '-'
-                                }${numToHebrewString(Math.abs(stocks['30.10.!DJI'].change))}%`
+                                }${numToHebrewString(
+                                  Math.abs(stocks['30.10.!DJI'].change)
+                                )}%`
                                 : ''}
                             </FelaComponent>
                           </FelaComponent>
@@ -386,16 +463,31 @@ export default class Zombie extends React.Component<Props, State> {
                           { from: 's', value: { amount: 4, }, },
                         ]}
                       >
-                        <TextualTeaser data={items[1]} index={1} biAction={biAction} />
-                        <TextualTeaser data={items[2]} index={2} biAction={biAction} />
-                        <TextualTeaser data={items[3]} index={3} biAction={biAction} />
+                        <TextualTeaser
+                          data={items[1]}
+                          index={1}
+                          biAction={biAction}
+                        />
+                        <TextualTeaser
+                          data={items[2]}
+                          index={2}
+                          biAction={biAction}
+                        />
+                        <TextualTeaser
+                          data={items[3]}
+                          index={3}
+                          biAction={biAction}
+                        />
                       </Grid>
                     </GridItem>
                   </Grid>
                 </GridItem>
                 {dfp && dfp.length > 0 ? (
                   <GridItem
-                    width={[ { until: 'l', value: 1, }, { from: 'xl', value: 4 / 10, }, ]}
+                    width={[
+                      { until: 'l', value: 1, },
+                      { from: 'xl', value: 4 / 10, },
+                    ]}
                     miscStyles={{
                       paddingStart: [ { until: 's', value: '2rem', }, ],
                       paddingEnd: [ { until: 's', value: '2rem', }, ],
@@ -447,7 +539,12 @@ type TeaserProps = {
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
 
-function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): React.Node {
+function MainTeaser({
+  biAction,
+  data,
+  index,
+  lazyLoadImages,
+}: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return (
@@ -457,9 +554,9 @@ function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): Re
           data={data}
           gutter={0}
           onClick={() => biAction({ index, articleId, })}
-          gridMiscStyles={{ flexDirection: 'column', }}
+          isStacked
         >
-          <TeaserMedia data={data} miscStyles={{ flexGrow: '0', flexShrink: '0', }}>
+          <TeaserMedia data={data} isStacked>
             <Picture
               lazyLoad={lazyLoadImages}
               {...pictureAssetProps({
@@ -490,10 +587,13 @@ function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): Re
           <TeaserContent
             data={data}
             padding={[ 1, 1, 0, ]}
-            gridItemMiscStyles={{ flexBasis: 'auto', }}
+            isStacked
             footerColor={[ 'neutral', '-3', ]}
-            footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 2, 1, 1, ], }, ]}
-            footerMiscStyles={{ type: -2, }}
+            footerPadding={[
+              { until: 's', value: 1, },
+              { from: 's', value: [ 2, 1, 1, ], },
+            ]}
+            footerMiscStyles={{ type: -3, }}
             renderContent={() => (
               <TeaserHeader
                 typeScale={[ { until: 's', value: 1, }, { from: 's', value: 2, }, ]}
@@ -518,13 +618,16 @@ function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
         data={data}
         onClick={() => biAction({ index, articleId, })}
         miscStyles={{ flexGrow: '1', }}
+        gridMiscStyles={{ alignContent: 'stretch', }}
       >
         <TeaserContent
           data={data}
           padding={[ 1, 1, 0, ]}
           footerPadding={[ 2, 1, 1, ]}
-          footerMiscStyles={{ type: -2, }}
-          renderContent={() => <TeaserHeader {...data} typeScale={headerTypo} />}
+          footerMiscStyles={{ type: -3, }}
+          renderContent={() => (
+            <TeaserHeader {...data} typeScale={headerTypo} />
+          )}
           renderFooter={() => <Footer data={data} />}
         />
       </Teaser>
@@ -540,13 +643,19 @@ function Footer({ data, showAuthors, }: FooterProps): React.Node {
   return (
     <React.Fragment>
       {showAuthors && data.authors ? (
-        <span style={{ marginInlineEnd: '1rem', }}>
-          <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
+        <React.Fragment>
+          <TeaserAuthors
+            authors={data.authors}
+            miscStyles={{ fontWeight: 'bold', }}
+          />
           <span> | </span>
           <TeaserTime {...data} />
-        </span>
+        </React.Fragment>
       ) : null}
-      <CommentsCount commentsCount={data.commentsCounts} miscStyles={{ marginInlineEnd: '1rem', }} />
+      <CommentsCount
+        commentsCount={data.commentsCounts}
+        miscStyles={{ marginInlineStart: '1rem', }}
+      />
     </React.Fragment>
   );
 }
@@ -567,13 +676,20 @@ function stockWrapperStyle(theme: Object, hideOnM: boolean = false): Object {
     ...theme.type(-1),
     ...(hideOnM
       ? {
-        display: [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
+        display: [
+          { until: 'l', value: 'none', },
+          { from: 'l', value: 'block', },
+        ],
       }
       : {}),
   };
 }
 
-function stockStyle(theme: Object, border: boolean = true, hideOnM: boolean = false) {
+function stockStyle(
+  theme: Object,
+  border: boolean = true,
+  hideOnM: boolean = false
+) {
   return {
     paddingEnd: '2rem',
     paddingBottom: '1rem',
@@ -604,7 +720,10 @@ function stockStyle(theme: Object, border: boolean = true, hideOnM: boolean = fa
         ? [
           ...[
             !hideOnM
-              ? theme.mq({ until: 'l', }, borderEnd('1px', 'solid', theme.color('neutral', '-5')))
+              ? theme.mq(
+                { until: 'l', },
+                borderEnd('1px', 'solid', theme.color('neutral', '-5'))
+              )
               : [],
           ],
           theme.mq(
@@ -613,7 +732,10 @@ function stockStyle(theme: Object, border: boolean = true, hideOnM: boolean = fa
               ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-5')),
             }
           ),
-          theme.mq({ from: 'xl', }, borderEnd('1px', 'solid', theme.color('neutral', '-5'))),
+          theme.mq(
+            { from: 'xl', },
+            borderEnd('1px', 'solid', theme.color('neutral', '-5'))
+          ),
         ]
         : []),
     ],
@@ -622,12 +744,15 @@ function stockStyle(theme: Object, border: boolean = true, hideOnM: boolean = fa
 
 function stockYieldStyle(theme: Object, change?: ?number): Object {
   return {
-    color: change && change < 0 ? theme.color('negative') : theme.color('positive'),
+    color:
+      change && change < 0 ? theme.color('negative') : theme.color('positive'),
     direction: 'ltr',
     fontWeight: '700',
     paddingEnd: '1rem',
     position: 'relative',
     textAlign: 'start',
-    extend: [ theme.mq({ until: 'm', }, { display: 'inline-block', marginTop: '1rem', }), ],
+    extend: [
+      theme.mq({ until: 'm', }, { display: 'inline-block', marginTop: '1rem', }),
+    ],
   };
 }

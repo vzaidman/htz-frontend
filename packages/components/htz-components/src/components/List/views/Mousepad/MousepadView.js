@@ -16,21 +16,18 @@ type Props = {
   biAction: ListBiActionType,
 };
 
-export default function Mousepad({ list, gaAction, biAction, lazyLoadImages, }: Props): React.Node {
+export default function Mousepad({
+  list,
+  gaAction,
+  biAction,
+  lazyLoadImages,
+}: Props): React.Node {
   const listMiddle = Math.ceil(list.items.length / 2);
 
   return (
     <ListView disableWrapper innerBackgroundColor="white" marginTop={0}>
       <GridItem width={1}>
-        <Grid
-          gutter={{
-            queries: [
-              { from: 's', until: 'l', value: 5, },
-              { from: 'l', until: 'xl', value: 8, },
-              { from: 'xl', value: 5, },
-            ],
-          }}
-        >
+        <Grid gutter={4}>
           {list.items.map((item, index) => {
             const count = index + 1;
             const order = index < listMiddle ? 1 + index * 2 : 2 + (index - listMiddle) * 2; // CSS flex-box order calculation

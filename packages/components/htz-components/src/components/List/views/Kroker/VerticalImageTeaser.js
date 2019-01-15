@@ -43,13 +43,14 @@ export default function VerticalImageTeaser({
     <FelaTheme
       render={theme => (
         <Teaser
+          gutter={1}
           data={itemData}
+          isStacked={[ { from: 's', value: true, }, ]}
           onClick={
             biAction
               ? () => biAction({ index: 1, articleId: itemData.contentId, })
               : null
           }
-          gridMiscStyles={{ flexDirection: [ { from: 's', value: 'column', }, ], }}
           miscStyles={{
             borderBottom: [
               {
@@ -60,9 +61,9 @@ export default function VerticalImageTeaser({
           }}
         >
           <TeaserMedia
+            isStacked={[ { from: 's', value: true, }, ]}
             data={itemData}
             width={[ { until: 's', value: 17, }, ]}
-            miscStyles={{ flexGrow: [ { from: 's', value: 0, }, ], }}
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -73,7 +74,7 @@ export default function VerticalImageTeaser({
                   defaultImgOptions: {
                     sizes: '102px',
                     aspect: 'square',
-                    widths: [ 102, ],
+                    widths: [ 102, 204, ],
                   },
                   sources: [
                     {
@@ -92,10 +93,10 @@ export default function VerticalImageTeaser({
             />
           </TeaserMedia>
           <TeaserContent
+            isStacked={[ { from: 's', value: true, }, ]}
             data={itemData}
             padding={[ 1, 0, 0, ]}
             footerPadding={[ 1, 0, 0, ]}
-            gridItemMiscStyles={{ flexBasis: [ { from: 's', value: 'auto', }, ], }}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}

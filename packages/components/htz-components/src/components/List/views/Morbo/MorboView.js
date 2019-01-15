@@ -137,14 +137,22 @@ const teaserDefaultProps = {
 
 Teaser1.defaultProps = teaserDefaultProps;
 
-function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
+function Teaser1({
+  data,
+  lazyLoadImages,
+  biAction,
+}: TeaserPropsType): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={data}
           gutter={0}
-          onClick={biAction ? () => biAction({ index: 0, articleId: data.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 0, articleId: data.contentId, })
+              : null
+          }
           gridMiscStyles={{ flexWrap: 'nowrap', }}
         >
           <TeaserMedia
@@ -170,7 +178,10 @@ function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
                   {
                     aspect: 'regular',
                     from: 's',
-                    sizes: [ { from: 'xl', size: '192px', }, { from: 's', size: '168px', }, ],
+                    sizes: [
+                      { from: 'xl', size: '192px', },
+                      { from: 's', size: '168px', },
+                    ],
                     widths: [ 320, 192, 168, ],
                   },
                 ],
@@ -179,9 +190,12 @@ function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
           </TeaserMedia>
           <TeaserContent
             data={data}
-            padding={[ 0, 1, ]}
+            padding={[ 1, 1, 0, ]}
             footerPadding={[ 1, 1, ]}
-            width={[ { from: 'l', until: 'xl', value: 5 / 7, }, { from: 'xl', value: 1 / 2, }, ]}
+            width={[
+              { from: 'l', until: 'xl', value: 5 / 7, },
+              { from: 'xl', value: 1 / 2, },
+            ]}
             renderContent={() => (
               <TeaserHeader
                 typeScale={[
@@ -194,7 +208,10 @@ function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
               />
             )}
             renderFooter={() => (
-              <CommentsCount commentsCount={data.commentsCounts} miscStyles={{ type: -3, }} />
+              <CommentsCount
+                commentsCount={data.commentsCounts}
+                miscStyles={{ type: -3, }}
+              />
             )}
           />
         </Teaser>
@@ -204,19 +221,27 @@ function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
 }
 
 Teaser234.defaultProps = teaserDefaultProps;
-function Teaser234({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
+function Teaser234({
+  data,
+  lazyLoadImages,
+  biAction,
+}: TeaserPropsType): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={data}
           gutter={0}
-          onClick={biAction ? () => biAction({ index: 1, articleId: data.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 1, articleId: data.contentId, })
+              : null
+          }
         >
           <TeaserContent
             data={data}
             width={1}
-            padding={[ 0, 1, ]}
+            padding={[ 1, 1, 0, ]}
             footerPadding={[ 1, 1, ]}
             renderContent={() => (
               <TeaserHeader
@@ -230,7 +255,10 @@ function Teaser234({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.
               />
             )}
             renderFooter={() => (
-              <CommentsCount commentsCount={data.commentsCounts} miscStyles={{ type: -3, }} />
+              <CommentsCount
+                commentsCount={data.commentsCounts}
+                miscStyles={{ type: -3, }}
+              />
             )}
           />
         </Teaser>

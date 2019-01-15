@@ -35,13 +35,22 @@ Mom.defaultProps = { lazyLoadImages: true, };
 
 const headerTypeScale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
 
-export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props): React.Node {
+export default function Mom({
+  list,
+  gaAction,
+  biAction,
+  lazyLoadImages,
+}: Props): React.Node {
   const { title, description, items, url, urlDescription, } = list;
-  const listViewPadding = [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ];
+  const listViewPadding = [
+    { until: 's', value: '2rem', },
+    { from: 's', value: '4rem', },
+  ];
 
   return (
     <ListView
       innerBackgroundColor={[ 'primary', '-4', ]}
+      marginTop={[ { until: 's', value: 4, }, { from: 's', value: 0, }, ]}
       miscStyles={{
         paddingBottom: listViewPadding,
         paddingInlineStart: listViewPadding,
@@ -50,7 +59,9 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
       }}
     >
       {/* LIST TITLE */}
-      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}>
+      <GridItem
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+      >
         <FelaComponent
           rule={({ theme, }) => ({
             marginBottom: '2rem',
@@ -98,13 +109,19 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
             </HtzLink>
           )}
         />
-        <FelaComponent style={theme => ({ ...theme.type(-1), marginBottom: '3rem', })} render="p">
+        <FelaComponent
+          style={theme => ({ ...theme.type(-1), marginBottom: '3rem', })}
+          render="p"
+        >
           {description}
         </FelaComponent>
       </GridItem>
 
       {/* CONTENT */}
-      <GridItem stretchContent width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}>
+      <GridItem
+        stretchContent
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
+      >
         <Grid gutter={4}>
           <GridItem
             stretchContent
@@ -120,7 +137,11 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
               ],
             }}
           >
-            <TeaserWithImg1 data={items[0]} index={0} {...{ biAction, lazyLoadImages, }} />
+            <TeaserWithImg1
+              data={items[0]}
+              index={0}
+              {...{ biAction, lazyLoadImages, }}
+            />
           </GridItem>
 
           <GridItem
@@ -140,7 +161,10 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
             <Grid
               gutter={4}
               miscStyles={{
-                flexDirection: [ { until: 's', value: 'column', }, { from: 'xl', value: 'column', }, ],
+                flexDirection: [
+                  { until: 's', value: 'column', },
+                  { from: 'xl', value: 'column', },
+                ],
                 flexGrow: 1,
               }}
             >
@@ -148,12 +172,18 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
                 stretchContent
                 width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
                 miscStyles={{
-                  marginBottom: [ { until: 's', value: '1rem', }, { from: 'xl', value: '4rem', }, ],
+                  marginBottom: [
+                    { until: 's', value: '1rem', },
+                    { from: 'xl', value: '4rem', },
+                  ],
                 }}
               >
                 <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
               </GridItem>
-              <GridItem stretchContent width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}>
+              <GridItem
+                stretchContent
+                width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
+              >
                 <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
               </GridItem>
             </Grid>
@@ -170,7 +200,11 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
               order: [ { from: 'l', until: 'xl', value: 1, }, ],
             }}
           >
-            <TeaserWithImg2 data={items[3]} index={3} {...{ biAction, lazyLoadImages, }} />
+            <TeaserWithImg2
+              data={items[3]}
+              index={3}
+              {...{ biAction, lazyLoadImages, }}
+            />
           </GridItem>
           <GridItem
             stretchContent
@@ -184,7 +218,11 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
               marginBottom: [ { until: 's', value: '1rem', }, ],
             }}
           >
-            <TextualTeaser data={items[4]} {...{ biAction, index: 4, }} />
+            <TextualTeaser
+              data={items[4]}
+              {...{ biAction, index: 4, }}
+              isLargeText
+            />
           </GridItem>
         </Grid>
       </GridItem>
@@ -193,7 +231,10 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
         <GridItem
           width={1}
           miscStyles={{
-            display: [ { until: 's', value: 'flex', }, { from: 's', value: 'none', }, ],
+            display: [
+              { until: 's', value: 'flex', },
+              { from: 's', value: 'none', },
+            ],
           }}
         >
           <FelaComponent
@@ -229,7 +270,12 @@ type TeaserProps = {
 
 TeaserWithImg1.defaultProps = { lazyLoadImages: true, };
 
-function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
+function TeaserWithImg1({
+  data,
+  index,
+  lazyLoadImages,
+  biAction,
+}: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return isTeaser(data) ? (
@@ -237,9 +283,7 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
       data={data}
       gutter={2}
       onClick={() => biAction({ index, articleId, })}
-      gridMiscStyles={{
-        flexDirection: [ { from: 'xl', value: 'column', }, ],
-      }}
+      isStacked={[ { from: 'xl', value: true, }, ]}
     >
       <TeaserMedia
         data={data}
@@ -248,8 +292,8 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           { from: 's', until: 'l', value: 8 / 12, },
           { from: 'l', until: 'xl', value: 4 / 6, },
         ]}
+        isStacked={[ { from: 'xl', value: true, }, ]}
         miscStyles={{
-          flexGrow: [ { from: 'xl', value: '0', }, ],
           order: [ { from: 's', until: 'xl', value: '1', }, ],
         }}
       >
@@ -285,13 +329,18 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
       </TeaserMedia>
       <TeaserContent
         data={data}
-        padding={[ { until: 's', value: [ 1, 0, 0, 1, ], }, { from: 's', value: [ 1, 1, 0, 0, ], }, ]}
-        footerPadding={[ { until: 's', value: [ 2, 0, 1, 1, ], }, { from: 's', value: [ 2, 1, 1, 0, ], }, ]}
-        gridItemMiscStyles={{
-          flexBasis: [ { from: 'xl', value: 'auto', }, ],
-          flexGrow: [ { from: 'xl', value: '1', }, ],
-        }}
-        renderContent={() => <TeaserHeader typeScale={headerTypeScale} {...data} />}
+        padding={[
+          { until: 's', value: [ 1, 0, 0, 1, ], },
+          { from: 's', value: [ 1, 1, 0, 0, ], },
+        ]}
+        footerPadding={[
+          { until: 's', value: [ 2, 0, 1, 1, ], },
+          { from: 's', value: [ 2, 1, 1, 0, ], },
+        ]}
+        isStacked={[ { from: 'xl', value: true, }, ]}
+        renderContent={() => (
+          <TeaserHeader typeScale={headerTypeScale} {...data} />
+        )}
         renderFooter={() => (
           <FelaComponent
             style={theme => ({
@@ -312,7 +361,12 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
 
 TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
 
-function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
+function TeaserWithImg2({
+  data,
+  index,
+  lazyLoadImages,
+  biAction,
+}: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return isTeaser(data) ? (
@@ -320,19 +374,18 @@ function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps)
       data={data}
       gutter={2}
       onClick={() => biAction({ index, articleId, })}
-      gridMiscStyles={{
-        flexDirection: [
-          { from: 's', until: 'l', value: 'column', },
-          { from: 'xl', value: 'column', },
-        ],
-      }}
+      isStacked={[
+        { from: 's', until: 'l', value: true, },
+        { from: 'xl', value: true, },
+      ]}
     >
       <TeaserMedia
         data={data}
         width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
-        miscStyles={{
-          flexGrow: [ { from: 's', until: 'l', value: '0', }, { from: 'xl', value: '0', }, ],
-        }}
+        isStacked={[
+          { from: 's', until: 'l', value: true, },
+          { from: 'xl', value: true, },
+        ]}
       >
         <FelaTheme
           render={theme => (
@@ -368,11 +421,13 @@ function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           { from: 'l', until: 'xl', value: [ 2, 0, 1, 1, ], },
           { from: 'xl', value: [ 2, 1, 1, ], },
         ]}
-        gridItemMiscStyles={{
-          flexBasis: [ { from: 's', until: 'l', value: 'auto', }, { from: 'xl', value: 'auto', }, ],
-          flexGrow: [ { from: 's', until: 'l', value: '1', }, { from: 'xl', value: '1', }, ],
-        }}
-        renderContent={() => <TeaserHeader typeScale={headerTypeScale} {...data} />}
+        isStacked={[
+          { from: 's', until: 'l', value: true, },
+          { from: 'xl', value: true, },
+        ]}
+        renderContent={() => (
+          <TeaserHeader typeScale={headerTypeScale} {...data} />
+        )}
         renderFooter={() => (
           <FelaComponent
             style={theme => ({
@@ -391,8 +446,15 @@ function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps)
   ) : null;
 }
 
-TextualTeaser.defaultProps = { lazyLoadImages: undefined, };
-function TextualTeaser({ data, index, biAction, }: TeaserProps): React.Node {
+type TextualTeaserPropTypes = TeaserProps & { isLargeText: boolean, };
+
+TextualTeaser.defaultProps = { lazyLoadImages: undefined, isLargeText: false, };
+function TextualTeaser({
+  data,
+  index,
+  biAction,
+  isLargeText,
+}: TextualTeaserPropTypes): React.Node {
   const articleId = data.contentId;
   return isTeaser(data) ? (
     <Teaser
@@ -400,12 +462,29 @@ function TextualTeaser({ data, index, biAction, }: TeaserProps): React.Node {
       gutter={2}
       onClick={() => biAction({ index, articleId, })}
       miscStyles={{ flexGrow: '1', }}
+      gridItemMiscStyles={{ alignContent: 'stretch', }}
     >
       <TeaserContent
         data={data}
         padding={[ 1, 1, 0, ]}
-        footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 2, 1, 1, ], }, ]}
-        renderContent={() => <TeaserHeader {...data} typeScale={headerTypeScale} />}
+        footerPadding={[
+          { until: 's', value: 1, },
+          { from: 's', value: [ 2, 1, 1, ], },
+        ]}
+        renderContent={() => (
+          <TeaserHeader
+            {...data}
+            typeScale={
+              isLargeText
+                ? headerTypeScale
+                : [
+                  { until: 's', value: -1, },
+                  { from: 's', until: 'l', value: 0, },
+                  { from: 'l', value: -1, },
+                ]
+            }
+          />
+        )}
         renderFooter={() => (
           <FelaComponent
             style={theme => ({

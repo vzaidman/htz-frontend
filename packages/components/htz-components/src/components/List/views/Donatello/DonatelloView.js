@@ -39,7 +39,11 @@ Donatello.defaultProps = {
   biAction: null,
 };
 
-export default function Donatello({ list, biAction, lazyLoadImages = true, }: Props): Node {
+export default function Donatello({
+  list,
+  biAction,
+  lazyLoadImages = true,
+}: Props): Node {
   const items: ?Array<ClickTrackerBannerWrapperType> = list.clickTrackers
     ? list.clickTrackers.slice(0, 5)
     : null;
@@ -49,15 +53,27 @@ export default function Donatello({ list, biAction, lazyLoadImages = true, }: Pr
         render={theme => (
           <ListView
             innerBackgroundColor="transparent"
+            padding={[
+              { until: 's', value: [ 0, 2, ], },
+              { from: 's', value: [ 0, 4, ], },
+            ]}
             miscStyles={{
               fontFamily: theme.fontStacks.commercial,
               display: [ { until: 's', value: 'none', }, ],
             }}
           >
-            <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}>
-              <ListViewHeader title={list.title} backgroundColor={[ 'transparent', ]} isCommercial />
+            <GridItem
+              width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}
+            >
+              <ListViewHeader
+                title={list.title}
+                backgroundColor={[ 'transparent', ]}
+                isCommercial
+              />
             </GridItem>
-            <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}>
+            <GridItem
+              width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}
+            >
               <Grid gutter={4}>
                 {items.map((item: ClickTrackerBannerWrapperType, index) => {
                   const isLast: boolean = index === items.length - 1;
@@ -70,7 +86,10 @@ export default function Donatello({ list, biAction, lazyLoadImages = true, }: Pr
                       ]}
                       miscStyles={{
                         display: isLast
-                          ? [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ]
+                          ? [
+                            { until: 'l', value: 'none', },
+                            { from: 'l', value: 'block', },
+                          ]
                           : 'block',
                       }}
                     >
@@ -116,7 +135,11 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
                   border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
                 }}
                 href={link}
-                onClick={biAction ? () => biAction({ index, articleId: contentId, }) : null}
+                onClick={
+                  biAction
+                    ? () => biAction({ index, articleId: contentId, })
+                    : null
+                }
                 target={linkTarget}
               >
                 <Teaser
@@ -125,7 +148,11 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
                   backgroundColor={[ 'neutral', '-7', ]}
                   gutter={2}
                   isRev={false}
-                  onClick={biAction ? () => biAction({ index, articleId: contentId, }) : null}
+                  onClick={
+                    biAction
+                      ? () => biAction({ index, articleId: contentId, })
+                      : null
+                  }
                   miscStyles={{
                     height: '100%',
                   }}
@@ -147,7 +174,11 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
                     data={banner}
                     padding={[ 1, 2, 2, 2, ]}
                     renderContent={() => (
-                      <TeaserHeader title={text || ''} path={link} typeScale={-1} />
+                      <TeaserHeader
+                        title={text || ''}
+                        path={link}
+                        typeScale={-1}
+                      />
                     )}
                   />
                 </Teaser>

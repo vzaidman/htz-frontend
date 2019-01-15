@@ -48,10 +48,7 @@ export default function Slugs({
     <ListView
       gutter={4}
       innerBackgroundColor="transparent"
-      miscStyles={{
-        paddingInlineStart: [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ],
-        paddingInlineEnd: [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ],
-      }}
+      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
     >
       {/* List Meta Title */}
       <GridItem width={1}>
@@ -71,7 +68,9 @@ export default function Slugs({
       </GridItem>
 
       {/* TEASERS */}
-      <GridItem width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}>
+      <GridItem
+        width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
+      >
         {/* Main teaser */}
         <Grid gutter={4} miscStyles={{ paddingBottom: '3rem', }}>
           <GridItem
@@ -94,7 +93,11 @@ export default function Slugs({
               { from: 'xl', value: 6 / 12, },
             ]}
           >
-            <TwoUp data1={items[1]} data2={items[2]} {...{ lazyLoadImages, biAction, }} />
+            <TwoUp
+              data1={items[1]}
+              data2={items[2]}
+              {...{ lazyLoadImages, biAction, }}
+            />
 
             {/* Textual Teaser */}
             <TextualTeaser data={items[3]} {...{ lazyLoadImages, biAction, }} />
@@ -107,8 +110,14 @@ export default function Slugs({
         <GridItem
           width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
           miscStyles={{
-            marginBottom: [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ],
-            marginTop: [ { until: 's', value: '2rem', }, { from: 's', until: 'xl', value: '4rem', }, ],
+            marginBottom: [
+              { until: 's', value: '2rem', },
+              { from: 's', value: '4rem', },
+            ],
+            marginTop: [
+              { until: 's', value: '2rem', },
+              { from: 's', until: 'xl', value: '4rem', },
+            ],
           }}
         >
           <GeneralAdSlot {...dfp[0]} />
@@ -131,7 +140,11 @@ type TeaserProps = {
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
 
-function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Node {
+function MainTeaser({
+  data,
+  lazyLoadImages,
+  biAction,
+}: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return isTeaser(data) ? (
@@ -141,14 +154,14 @@ function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Nod
           data={data}
           gutter={0}
           onClick={() => biAction({ index: 0, articleId, })}
+          isStacked
           miscStyles={{
             marginInlineEnd: [ { from: 's', until: 'l', value: 'auto', }, ],
             marginInlineStart: [ { from: 's', until: 'l', value: 'auto', }, ],
             maxWidth: [ { from: 's', until: 'l', value: '68rem', }, ],
           }}
-          gridMiscStyles={{ flexDirection: 'column', flexWrap: 'nowrap', }}
         >
-          <TeaserMedia data={data} miscStyles={{ flexGrow: '0', flexShrink: '0', }}>
+          <TeaserMedia data={data} isStacked>
             <Image
               lazyLoad={lazyLoadImages}
               imgOptions={getImageAssets({
@@ -170,13 +183,17 @@ function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Nod
             data={data}
             padding={[ 1, 2, 0, ]}
             footerColor={[ 'neutral', '-3', ]}
-            gridItemMiscStyles={{ alignItems: 'center', flexBasis: 'auto', }}
-            footerMiscStyles={{ type: -2, }}
+            isStacked
+            gridItemMiscStyles={{ alignItems: 'center', }}
+            footerMiscStyles={{ type: -3, }}
             renderContent={() => (
               <TeaserHeader
                 {...data}
                 isCentered
-                typeScale={[ { from: 'l', until: 'xl', value: 2, }, { from: 'xl', value: 3, }, ]}
+                typeScale={[
+                  { from: 'l', until: 'xl', value: 2, },
+                  { from: 'xl', value: 3, },
+                ]}
               />
             )}
             renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
@@ -188,7 +205,12 @@ function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Nod
 }
 
 TwoUpTeaser.defaultProps = { lazyLoadImages: true, };
-function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): React.Node {
+function TwoUpTeaser({
+  data,
+  lazyLoadImages,
+  biAction,
+  index,
+}: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return isTeaser(data) ? (
@@ -198,7 +220,7 @@ function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): R
           data={data}
           gutter={0}
           onClick={() => biAction({ index, articleId, })}
-          gridMiscStyles={{ flexDirection: [ { until: 's', value: 'column', }, ], }}
+          isStacked={[ { until: 's', value: true, }, ]}
         >
           <TeaserMedia
             data={data}
@@ -207,6 +229,7 @@ function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): R
               { from: 'l', until: 'xl', value: 3 / 7, },
               { from: 'xl', value: 9 / 16, },
             ]}
+            isStacked={[ { until: 's', value: true, }, ]}
           >
             <Image
               lazyLoad={lazyLoadImages}
@@ -228,14 +251,17 @@ function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): R
           </TeaserMedia>
           <TeaserContent
             data={data}
-            padding={[ { until: 's', value: [ 1, 1, 0, ], }, { from: 's', value: [ 1, 2, 0, ], }, ]}
-            gridItemMiscStyles={{
-              flexBasis: [ { until: 's', value: 'auto', }, ],
-              flexGrow: [ { until: 's', value: '1', }, ],
-            }}
-            footerPadding={[ { until: 's', value: [ 2, 1, 1, ], }, { from: 's', value: [ 2, 2, 1, ], }, ]}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: [ 1, 2, 0, ], },
+            ]}
+            isStacked={[ { until: 's', value: true, }, ]}
+            footerPadding={[
+              { until: 's', value: [ 1, 1, 1, ], },
+              { from: 's', value: [ 1, 2, 1, ], },
+            ]}
             footerColor={[ 'neutral', '-3', ]}
-            footerMiscStyles={{ type: -2, }}
+            footerMiscStyles={{ type: -3, }}
             renderContent={() => <TeaserHeader {...data} />}
             renderFooter={() => <Footer data={data} />}
           />
@@ -264,9 +290,12 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
       <TeaserContent
         data={data}
         padding={[ { until: 's', value: [ 1, 1, ], }, { from: 's', value: [ 1, 2, ], }, ]}
-        footerPadding={[ { until: 's', value: [ 2, 1, 1, ], }, { from: 's', value: [ 3, 2, 1, ], }, ]}
+        footerPadding={[
+          { until: 's', value: [ 1, 1, 1, ], },
+          { from: 's', value: [ 1, 2, 1, ], },
+        ]}
         footerColor={[ 'neutral', '-3', ]}
-        footerMiscStyles={{ type: -2, }}
+        footerMiscStyles={{ type: -3, }}
         renderContent={() => <TeaserHeader {...data} />}
         renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
       />
@@ -282,14 +311,22 @@ type TwoUpProps = {
 };
 
 TwoUp.defaultProps = { lazyLoadImages: true, };
-function TwoUp({ data1, data2, lazyLoadImages, biAction, }: TwoUpProps): React.Node {
+function TwoUp({
+  data1,
+  data2,
+  lazyLoadImages,
+  biAction,
+}: TwoUpProps): React.Node {
   return (
     <Grid
       rowSpacing={[ { from: 's', value: { amount: 4, }, }, ]}
       gutter={1}
       miscStyles={{
         flexGrow: '0',
-        marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ],
+        marginTop: [
+          { until: 's', value: '1rem', },
+          { from: 's', until: 'l', value: '4rem', },
+        ],
       }}
     >
       <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>
@@ -313,28 +350,40 @@ Footer.defaultProps = {
   hasRankOnMobile: false,
 };
 
-function Footer({ data, hasCommentsOnMobile, hasRankOnMobile, }: FooterProps): React.Node {
+function Footer({
+  data,
+  hasCommentsOnMobile,
+  hasRankOnMobile,
+}: FooterProps): React.Node {
   return (
     <React.Fragment>
       {data.authors ? (
-        <span style={{ marginInlineEnd: '1rem', }}>
-          <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
+        <React.Fragment>
+          <TeaserAuthors
+            authors={data.authors}
+            miscStyles={{ fontWeight: 'bold', }}
+          />
           <span> | </span>
           <TeaserTime {...data} />
-        </span>
+        </React.Fragment>
       ) : null}
       <CommentsCount
         commentsCount={data.commentsCounts}
         miscStyles={{
-          marginInlineEnd: '1rem',
-          display: hasCommentsOnMobile ? [ { until: 's', value: 'none', }, ] : undefined,
+          marginInlinestart: '1rem',
+          display: hasCommentsOnMobile
+            ? [ { until: 's', value: 'none', }, ]
+            : undefined,
         }}
       />
       {data.rank ? (
         <TeaserRank
           rank={data.rank}
           miscStyles={{
-            display: hasRankOnMobile ? [ { until: 's', value: 'none', }, ] : undefined,
+            marginInlinestart: '1rem',
+            display: hasRankOnMobile
+              ? [ { until: 's', value: 'none', }, ]
+              : undefined,
           }}
         />
       ) : null}

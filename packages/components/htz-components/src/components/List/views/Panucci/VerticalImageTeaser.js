@@ -26,7 +26,11 @@ VerticalImageTeaser.defaultProps = {
   lazyLoadImages: true,
   biAction: null,
 };
-const headerType = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
+const headerType = [
+  { until: 's', value: -1, },
+  { from: 's', until: 'xl', value: 0, },
+  { from: 'xl', value: -1, },
+];
 
 export default function VerticalImageTeaser({
   itemData,
@@ -39,13 +43,17 @@ export default function VerticalImageTeaser({
       render={theme => (
         <Teaser
           data={itemData}
-          onClick={biAction ? () => biAction({ index: 1, articleId: itemData.contentId, }) : null}
-          gridMiscStyles={{ flexDirection: [ { from: 's', value: 'column', }, ], }}
+          onClick={
+            biAction
+              ? () => biAction({ index: 1, articleId: itemData.contentId, })
+              : null
+          }
+          isStacked={[ { from: 's', value: true, }, ]}
         >
           <TeaserMedia
             data={itemData}
             width={[ { until: 's', value: 17, }, ]}
-            miscStyles={{ flexGrow: [ { from: 's', value: 0, }, ], }}
+            isStacked={[ { from: 's', value: true, }, ]}
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -55,7 +63,7 @@ export default function VerticalImageTeaser({
                 defaultImgOptions: {
                   sizes: '102px',
                   aspect: 'square',
-                  widths: [ 102, ],
+                  widths: [ 102, 104, ],
                 },
                 sources: [
                   {
@@ -75,13 +83,19 @@ export default function VerticalImageTeaser({
           <TeaserContent
             data={itemData}
             padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
-            gridItemMiscStyles={{ flexBasis: [ { from: 's', value: 'auto', }, ], }}
+            footerPadding={1}
+            isStacked={[ { from: 's', value: true, }, ]}
             renderContent={() => (
-              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
+              <TeaserHeader
+                {...itemData}
+                typeScale={headerType}
+                kickerTypeScale={headerType}
+              />
             )}
-            footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
-            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
+            footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
+            renderFooter={() => (
+              <TeaserFooter data={itemData} displayFlags={displayFlags} />
+            )}
           />
         </Teaser>
       )}

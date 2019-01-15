@@ -41,7 +41,7 @@ export default function MainTeaser({
       render={theme => (
         <Teaser
           data={itemData}
-          gridMiscStyles={{ flexDirection: 'column', }}
+          isStacked
           miscStyles={{
             borderBottom: [
               {
@@ -56,7 +56,7 @@ export default function MainTeaser({
               : null
           }
         >
-          <TeaserMedia data={itemData}>
+          <TeaserMedia data={itemData} isStacked>
             <Image
               data={itemData.image}
               lazyLoad={lazyLoadImages}
@@ -75,10 +75,16 @@ export default function MainTeaser({
             />
           </TeaserMedia>
           <TeaserContent
+            isStacked
             data={itemData}
-            padding={[ 1, 0, 0, ]}
-            footerPadding={[ 1, 0, 0, ]}
-            gridItemMiscStyles={{ flexBasis: 'auto', }}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: [ 1, 0, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: 1, },
+              { from: 's', value: [ 1, 0, 0, ], },
+            ]}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}

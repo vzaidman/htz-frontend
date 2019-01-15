@@ -38,20 +38,36 @@ export default function Panucci({
 }: Props): React.Node {
   const { items, dfp, } = list;
   return (
-    <ListView>
+    <ListView
+      gutter={4}
+      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
+    >
       {/* header */}
       <GridItem
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
         miscStyles={{
-          marginBottom: [ { until: 'l', value: '1rem', }, { from: 's', value: '4rem', }, ],
+          marginBottom: [
+            { until: 'l', value: '1rem', },
+            { from: 's', value: '4rem', },
+          ],
         }}
       >
-        <ListViewHeader url={list.url} extraLinks={list.extraLinks} title={list.title} />
+        <ListViewHeader
+          url={list.url}
+          extraLinks={list.extraLinks}
+          title={list.title}
+        />
       </GridItem>
       {/* end header */}
 
       {/* List items */}
-      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 6 / 12, }, ]}>
+      <GridItem
+        width={[
+          { until: 'l', value: 1, },
+          { from: 'l', until: 'xl', value: 8 / 12, },
+          { from: 'xl', value: 6 / 12, },
+        ]}
+      >
         <Grid
           rowSpacing={[
             { until: 's', value: { amount: 1, nUp: 1, }, },

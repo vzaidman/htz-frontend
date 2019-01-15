@@ -26,18 +26,26 @@ MainTeaser.defaultProps = {
   biAction: null,
 };
 
-const headerType = [ { until: 'xl', value: 1, }, { from: 'xl', value: 2, }, ];
+const headerType = [ { until: 'xl', value: 1, }, { from: 'xl', value: 0, }, ];
 
-export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Props): React.Node {
+export default function MainTeaser({
+  itemData,
+  lazyLoadImages,
+  biAction,
+}: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={itemData}
-          gridMiscStyles={{ flexDirection: 'column', }}
-          onClick={biAction ? () => biAction({ index: 0, articleId: itemData.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 0, articleId: itemData.contentId, })
+              : null
+          }
+          isStacked
         >
-          <TeaserMedia data={itemData}>
+          <TeaserMedia data={itemData} isStacked>
             <Image
               data={itemData.image}
               lazyLoad={lazyLoadImages}
@@ -58,12 +66,16 @@ export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Prop
           <TeaserContent
             data={itemData}
             padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
-            gridItemMiscStyles={{ flexBasis: 'auto', }}
+            footerPadding={1}
+            isStacked
             renderContent={() => (
-              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
+              <TeaserHeader
+                {...itemData}
+                typeScale={headerType}
+                kickerTypeScale={headerType}
+              />
             )}
-            footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
+            footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderFooter={() => (
               <TeaserFooter
                 data={itemData}

@@ -47,6 +47,7 @@ export default function MousepadTeaser({
             ],
           }}
           onClick={() => biAction({ index, articleId: itemData.representedContent, })}
+          gridMiscStyles={{ alignContent: 'stretch', }}
         >
           <GridItem
             width={6}

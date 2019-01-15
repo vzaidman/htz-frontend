@@ -43,8 +43,8 @@ export default function VerticlaTeaser({
           <TeaserContent
             data={itemData}
             padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
-            footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
+            footerPadding={1}
+            footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}

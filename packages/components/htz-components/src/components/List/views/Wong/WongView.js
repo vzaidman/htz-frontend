@@ -93,6 +93,7 @@ function getImageProps(media: ImageDataType, isConrad: boolean): Object {
     ],
   };
 }
+
 function getEmbedProps(media: HTMLEmbedDataType): Object {
   return media.inputTemplate === 'com.polobase.YouTubeEmbed'
     ? {
@@ -123,6 +124,7 @@ function getEmbedProps(media: HTMLEmbedDataType): Object {
       credit: media.credit,
     };
 }
+
 const getMediaProps = (
   media: ?(ImageDataType | HTMLEmbedDataType | GalleryDataType),
   isConrad: boolean
@@ -162,15 +164,23 @@ type Props = {
    * />
    */
   width: ?(number | ComponentPropResponsiveObject<number>[]),
+  lazyLoadImages: boolean,
 };
 
 Wong.defaultProps = {
   gutter: null,
   isConrad: false,
+  lazyLoadImages: false,
   width: null,
 };
 
-function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node {
+function Wong({
+  isConrad,
+  gutter,
+  lazyLoadImages,
+  list: { items, },
+  width,
+}: Props): React.Node {
   const item = items[0];
   const media = isTeaser(item) ? item.media : null;
   const MediaComponent = getMediaComponent(media && media.kind, Picture);
@@ -209,7 +219,7 @@ function Wong({ isConrad, gutter, list: { items, }, width, }: Props): React.Node
                   ],
                 }}
               >
-                <MediaComponent {...mediaProps} />
+                <MediaComponent {...mediaProps} lazyLoad={lazyLoadImages} />
               </TeaserMedia>
               <TeaserContent
                 width={[

@@ -28,9 +28,6 @@ HorizontalTeaser.defaultProps = {
   lazyLoadImages: true,
   biAction: null,
 };
-
-const headerType = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
-
 export default function HorizontalTeaser({
   itemData,
   lazyLoadImages,
@@ -38,21 +35,32 @@ export default function HorizontalTeaser({
   biAction,
   index,
 }: Props): React.Node {
+  const headerType = [
+    { until: 's', value: -1, },
+    { from: 's', value: 0, },
+    { from: 'xl', value: -1, },
+  ];
+
   return isTeaser(itemData) ? (
     <FelaTheme
       render={theme => (
         <Teaser
-          onClick={biAction ? () => biAction({ index, articleId: itemData.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index, articleId: itemData.contentId, })
+              : null
+          }
           data={itemData}
         >
           <TeaserMedia
             data={itemData}
             width={[
-              { until: 's', value: 17, },
-              { from: 's', until: 'l', value: 28, },
-              { from: 'l', until: 'xl', value: 25, },
-              { from: 'xl', value: 30, },
+              { until: 's', value: 19, },
+              { from: 's', until: 'l', value: 1 / 2, },
+              { from: 'l', until: 'xl', value: 2 / 5, },
+              { from: 'xl', value: 1 / 2, },
             ]}
+            miscStyles={{ paddingInlineEnd: '2rem', }}
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -69,11 +77,12 @@ export default function HorizontalTeaser({
                     from: 's',
                     aspect: 'regular',
                     sizes: [
-                      { from: 'xl', size: '30rem', },
-                      { from: 'l', size: '25rem', },
-                      { from: 's', size: '28rem', },
+                      { from: 'xl', size: '173px', },
+                      { from: 'l', size: '145px', },
+                      { from: 'm', size: '224px', },
+                      { from: 's', size: '168px', },
                     ],
-                    widths: [ 336, 210, 150, 168, ],
+                    widths: [ 350, 224, 175, 145, 168, ],
                   },
                 ],
               })}
@@ -81,13 +90,19 @@ export default function HorizontalTeaser({
           </TeaserMedia>
           <TeaserContent
             data={itemData}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
-            footerMiscStyles={{ type: -2, color: theme.color('neutral', '-3'), }}
+            padding={[ 1, 0, 0, 1, ]}
+            footerPadding={[ 1, 0, 1, 1, ]}
+            footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
-              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
+              <TeaserHeader
+                {...itemData}
+                typeScale={headerType}
+                kickerTypeScale={headerType}
+              />
             )}
-            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
+            renderFooter={() => (
+              <TeaserFooter data={itemData} displayFlags={displayFlags} />
+            )}
           />
         </Teaser>
       )}

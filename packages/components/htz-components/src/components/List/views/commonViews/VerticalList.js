@@ -59,12 +59,12 @@ export default function VerticalList({
       render={theme => (
         <ListView
           disableWrapper
-          {...(title ? { marginTop: 0, } : {})}
+          marginTop={0}
           miscStyles={{
             ...(isCommercial ? { fontFamily: theme.fontStacks.commercial, } : {}),
           }}
-          gridMiscStyles={{ flexDirection: 'column', }}
-          sectionMiscStyles={{ display: 'flex', }}
+          gridMiscStyles={{ flexDirection: 'column', flexGrow: '1', }}
+          sectionMiscStyles={{ display: 'flex', flexGrow: '1', }}
         >
           <GridItem miscStyles={{ flexGrow: '0', }}>
             {list || title ? (
@@ -170,14 +170,14 @@ function VerticalListFirstTeaser({
               : null
           }
           miscStyles={{ flexGrow: '1', flexShrink: '0', }}
-          gridMiscStyles={{ flexDirection: 'column', }}
           isClickTracker={isClickTracker(itemData)}
+          isStacked
         >
           <TeaserMedia
             data={itemData}
             width={1}
             isClickTracker={isClickTracker(itemData)}
-            miscStyles={{ flexShrink: '0', width: '100%', }}
+            isStacked
           >
             <Image
               lazyLoad={lazyLoadImages}
@@ -203,9 +203,8 @@ function VerticalListFirstTeaser({
           <TeaserContent
             data={itemData}
             padding={[ 1, 0, ]}
+            isStacked
             gridItemMiscStyles={{
-              flexBasis: 'auto',
-              flexGrow: 1,
               paddingInlineEnd: '1rem',
               paddingInlineStart: '1rem',
             }}

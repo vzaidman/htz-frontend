@@ -19,19 +19,13 @@ type Props = {
 };
 
 VerticlaTeaser.defautlProps = { biAction: null, isLast: false, };
-
-const headerType = [
-  { until: 's', value: -1, },
-  { from: 's', until: 'xl', value: 0, },
-  { from: 'xl', value: -1, },
-];
-
 export default function VerticlaTeaser({
   itemData,
   lazyLoadImages,
   displayFlags,
   biAction,
 }: Props): React.Node {
+  const headerType = [ { until: 's', value: -1, }, { from: 's', value: -1, }, ];
   return (
     <FelaTheme
       render={theme => (
@@ -53,9 +47,15 @@ export default function VerticlaTeaser({
         >
           <TeaserContent
             data={itemData}
-            padding={0}
-            footerPadding={[ 1, 0, 0, ]}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: 0, },
+            ]}
+            footerPadding={[
+              { until: 's', value: 1, },
+              { from: 's', value: [ 1, 0, 0, ], },
+            ]}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}

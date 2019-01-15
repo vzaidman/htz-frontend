@@ -176,12 +176,22 @@ type StackingSettings = {
 };
 
 function setStacking(options: IsStackedType): StackingSettings {
-  if (typeof options === 'boolean') return { flexDirection: options ? 'column' : 'row', };
+  if (typeof options === 'boolean') {
+    return {
+      flexDirection: options ? 'column' : 'row',
+      flexWrap: options ? 'nowrap' : 'wrap',
+    };
+  }
   return {
     flexDirection: options.map(({ from, until, value, }) => ({
       from,
       until,
       value: value ? 'column' : 'row',
+    })),
+    flexWrap: options.map(({ from, until, value, }) => ({
+      from,
+      until,
+      value: value ? 'nowrap' : 'wrap',
     })),
   };
 }
