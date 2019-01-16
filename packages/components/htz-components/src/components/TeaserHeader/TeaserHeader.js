@@ -137,6 +137,7 @@ type TeaserHeaderProps = {
    * around the title and image
    */
   onClick: ?(evt: SyntheticMouseEvent<HTMLElement>) => void,
+  showKicker: boolean,
 };
 
 TeaserHeader.defaultProps = {
@@ -151,6 +152,7 @@ TeaserHeader.defaultProps = {
   typeScale: null,
   color: null,
   miscStyles: null,
+  showKicker: true,
   kickerMiscStyles: null,
   kickerInnerMiscStyles: null,
   kickerIsBlock: false,
@@ -173,6 +175,7 @@ export default function TeaserHeader({
   typeScale,
   color,
   miscStyles,
+  showKicker,
   kickerMiscStyles,
   kickerInnerMiscStyles,
   kickerIsBlock,
@@ -198,7 +201,7 @@ export default function TeaserHeader({
           {({ className: AboveBlockLinkClassName, }) => (
             <div className={`${AboveBlockLinkClassName} ${wrapperClassName}`}>
               <HtzLink href={path} onClick={onClick}>
-                {(exclusive || exclusiveMobile) && (
+                {showKicker && (exclusive || exclusiveMobile) && (
                   <Kicker
                     {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}
                     {...(kickerTypeScale ? { fontSize: kickerTypeScale, } : {})}

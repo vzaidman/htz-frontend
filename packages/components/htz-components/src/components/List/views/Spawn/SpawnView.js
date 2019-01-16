@@ -519,7 +519,7 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
             }}
             isStacked={[ { from: 's', value: true, }, ]}
             renderContent={() => (
-              <TeaserHeader {...data} typeScale={[ { from: 'xl', value: -1, }, ]} />
+              <TeaserHeader {...data} typeScale={[ { from: 'xl', value: -1, }, ]} showKicker={false} />
             )}
             renderFooter={() => (
               <React.Fragment>
