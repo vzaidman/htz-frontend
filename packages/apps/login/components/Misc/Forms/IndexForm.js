@@ -32,19 +32,18 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 const iOSversion = () => {
   if (/iP(hone|od|ad)/.test(window.navigator.platform)) {
     // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
-    var v = (window.navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
-    return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+    const v = (window.navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+    return [ parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10), ];
   }
-}
+};
 
 const browsersRedirect = () => {
-  console.log("testing IOS");
-  let iOSVer = iOSversion() || [];
-  let isIE = /*@cc_on!@*/false || !!document.documentMode;
+  const iOSVer = iOSversion() || [];
+  const isIE = /* @cc_on!@ */false || !!document.documentMode;
   if (iOSVer[0] < 10 || isIE) {
-    window.location.href = "https://haaretz.co.il/misc/login-page";
+    window.location.href = 'https://haaretz.co.il/misc/login-page';
   }
-}
+};
 
 const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
   if (isLoggedIn) {
