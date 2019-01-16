@@ -41,7 +41,7 @@ const browsersRedirect = () => {
   const iOSVer = iOSversion() || [];
   const isIE = /* @cc_on!@ */false || !!document.documentMode;
   if ((iOSVer[0] > 0 && iOSVer[0] < 10) || isIE) {
-    window.location.href = 'https://haaretz.co.il/misc/login-page';
+    window.location.href = 'https://www.haaretz.co.il/misc/login-old-page';
   }
 };
 
