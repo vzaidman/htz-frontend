@@ -199,6 +199,7 @@ import Butthead from './components/List/views/Butthead/Butthead';
 import Conrad from './components/List/views/Conrad/Conrad';
 import Calculon from './components/List/views/Calculon/Calculon';
 import Donatello from './components/List/views/Donatello/Donatello';
+import Donbot from './components/List/views/Donbot/Donbot';
 import Farnsworth from './components/List/views/Farnsworth/Farnsworth';
 import Gamal from './components/List/views/Gamal/Gamal';
 import Hawking from './components/List/views/Hawking/Hawking';
@@ -416,6 +417,7 @@ export {
   Conrad,
   Calculon,
   Donatello,
+  Donbot,
   Farnsworth,
   Gamal,
   Hawking,

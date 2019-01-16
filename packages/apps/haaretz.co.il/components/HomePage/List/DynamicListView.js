@@ -23,6 +23,9 @@ const Conrad = dynamic(() => import('./views/Conrad/Conrad'), {
 const Donatello = dynamic(() => import('./views/Donatello/Donatello'), {
   loading: () => null,
 });
+const Donbot = dynamic(() => import('./views/Donbot/Donbot'), {
+  loading: () => null,
+});
 const Farnsworth = dynamic(() => import('./views/Farnsworth/Farnsworth'), {
   loading: () => null,
 });
@@ -110,6 +113,9 @@ export default function DynamicListView(props) {
     }
     case 'Donatello': {
       return <Donatello {...props} />;
+    }
+    case 'Donbot': {
+      return <Donbot {...props} />;
     }
     case 'Gamal': {
       return <Gamal {...props} />;
