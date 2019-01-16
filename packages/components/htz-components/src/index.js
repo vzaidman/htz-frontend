@@ -194,6 +194,7 @@ import pixelEvent from './utils/pixelEvent';
 import ReadingHistoryProvider from './components/ReadingHistory/ReadingHistoryProvider';
 import Beavis from './components/List/views/Beavis/Beavis';
 import Bender from './components/List/views/Bender/Bender';
+import Boxy from './components/List/views/Boxy/Boxy';
 import Butthead from './components/List/views/Butthead/Butthead';
 import Conrad from './components/List/views/Conrad/Conrad';
 import Calculon from './components/List/views/Calculon/Calculon';
@@ -410,6 +411,7 @@ export {
   ReadingHistoryProvider,
   Beavis,
   Bender,
+  Boxy,
   Butthead,
   Conrad,
   Calculon,

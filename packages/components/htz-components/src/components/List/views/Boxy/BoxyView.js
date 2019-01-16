@@ -17,13 +17,17 @@ import BlockLink from '../../../BlockLink/BlockLink';
 import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
 import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType';
 import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+import { isImage, isEmbed, } from '../../../../utils/validateType';
+
+type MediaType = ImageDataType | HTMLEmbedDataType | GalleryDataType;
 
 type Props = {
   list: ListDataType,
   marginTop: string | ComponentPropResponsiveObject<number>[],
 };
 
-BoxyList.defaultProps = {
+Boxy.defaultProps = {
   // Disabling eslint here, because it doesn't understand how
   // flow works with default props and required props
   /* eslint-disable react/default-props-match-prop-types */
@@ -129,22 +133,15 @@ function getEmbedProps(media: HTMLEmbedDataType): Object {
 }
 
 const getMediaProps = (
-  mediaUniqueId: string,
-  media: ImageDataType | HTMLEmbedDataType | GalleryDataType
+  media: MediaType
 ): ?Object => {
-  switch (mediaUniqueId) {
-    case 'com.tm.Image':
-    case 'com.tm.BlogImage':
-      return getImageProps(media);
-    // TODO: Add support for image gallery
-    // case 'com.tm.ImageGalleryElement':
-    //   return null;
-    case 'embedElement':
-      return getEmbedProps(media);
-
-    default:
-      return null;
+  if (isImage(media)) {
+    return getImageProps(media);
   }
+  if (isEmbed(media)) {
+    return getEmbedProps(media);
+  }
+  return null;
 };
 
 const wrapperStyle = theme => ({
@@ -179,28 +176,15 @@ const innerTextStyle = theme => ({
   paddingTop: '0',
   paddingRight: '1rem',
   paddingLeft: '1rem',
-  extend: [
-    theme.mq(
-      { until: 'l', },
-      {
-        paddingBottom: '0.5rem',
-      }
-    ),
-    theme.mq(
-      { from: 'l', },
-      {
-        paddingBottom: '1rem',
-      }
-    ),
-  ],
+  paddingBottom: '0',
 });
 
-export default function BoxyList({ list, marginTop, }: Props): Node {
-  const item = list.items[0];
-  const media = item && item.media;
-  const mediaUniqueId = media && (media.inputTemplate || media.elementType || null);
-  const MediaComponent = getMediaComponent(mediaUniqueId, Picture);
-  const mediaProps = getMediaProps(mediaUniqueId, media);
+export default function Boxy({ list, marginTop, }: Props): Node {
+  const item: TeaserDataType = list.items[0];
+  const media: ?MediaType = item ? item.media : null;
+  const mediaKind: ?string = media ? media.kind : null;
+  const MediaComponent: React.ComponentType<any> = getMediaComponent(mediaKind, Picture);
+  const mediaProps: ?Object = media ? getMediaProps(media) : null;
   return item && MediaComponent && mediaProps ? (
     <FelaTheme
       render={theme => {
@@ -229,7 +213,7 @@ export default function BoxyList({ list, marginTop, }: Props): Node {
                   />
                 )}
               </FelaComponent>
-              {mediaUniqueId === 'com.tm.Image' || mediaUniqueId === 'com.tm.BlogImage' ? (
+              {mediaKind === 'image' ? (
                 <TeaserMedia data={item}>
                   <MediaComponent {...mediaProps} />
                 </TeaserMedia>

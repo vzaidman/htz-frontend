@@ -1,12 +1,12 @@
 import React from 'react';
 import felaSnapshotter from '../../../../../test-helpers/felaSnapshotter';
-import BoxyView from '../Boxy.view.js';
+import Boxy from '../BoxyView.js';
 
-describe('<BoxyList>', () => {
+describe('<Boxy>', () => {
   describe('DOM element', () => {
     it('renders image correctly', () => {
       const { component, styles, } = felaSnapshotter(
-        <BoxyView
+        <Boxy
           list={{
             title: 'כותרת רשימה',
             items: [
@@ -115,6 +115,7 @@ describe('<BoxyList>', () => {
                   inputTemplate: 'com.tm.Image',
                   contentId: '1.6611169',
                   contentName: 'יונה יהב, היום',
+                  kind: 'image',
                 },
               },
             ],
@@ -126,37 +127,45 @@ describe('<BoxyList>', () => {
     });
     it('renders YouTube correctly', () => {
       const { component, styles, } = felaSnapshotter(
-        <BoxyView
+        <Boxy
           list={{
-            title: 'כותרת רשימה',
+            view: 'Boxy',
+            loadPriority: 'ssr',
+            isLazyloadImages: true,
+            hasPagination: false,
             items: [
               {
-                title: 'כותרת לבדיקה',
-                titleMobile: 'כותרת מובייל לבדיקה',
-                path: 'http://pre.haaretz.co.il/news/local/1.6611159',
+                path: '/1.6437284',
+                kind: 'teaser',
+                representedContent: '1.6437284',
+                contentId: '7.7829316',
                 media: {
-                  content: '3wGM6VmeIbU',
-                  caption: 'טסט',
-                  credit: 'טסט',
+                  content: 'ZUKR62v1JpI',
                   embedType: 'video',
-                  elementType: 'embedElement',
                   settings: {
                     controls: '1',
                     related: '1',
                     loop: '0',
-                    videoImage: '//img.youtube.com/vi/3wGM6VmeIbU/0.jpg',
+                    videoImage: '//img.youtube.com/vi/ZUKR62v1JpI/0.jpg',
                     logo: '1',
                     autoplay: false,
                     startAt: 0,
                     asGif: '0',
-                    mute: false,
                   },
                   inputTemplate: 'com.polobase.YouTubeEmbed',
-                  contentId: '7.7829196',
-                  contentName: 'טסט',
+                  contentId: '1.6653801',
+                  contentName: 'תיעוד פגיעת הטיל באוטובוס',
+                  kind: 'embed',
                 },
+                title: 'עמוד באדמה',
+                titleMobile: 'עמוד באדמה',
+                inputTemplate: 'com.tm.TeaserData',
+                commentsCounts: 38,
               },
             ],
+            inputTemplate: 'com.tm.element.List',
+            contentId: '7.7829315',
+            contentName: "קיקר ענק הומפייג' ריאקט",
           }}
         />
       );
@@ -165,7 +174,7 @@ describe('<BoxyList>', () => {
     });
     it('renders facebook correctly', () => {
       const { component, styles, } = felaSnapshotter(
-        <BoxyView
+        <Boxy
           list={{
             title: 'כותרת רשימה',
             items: [
@@ -187,6 +196,7 @@ describe('<BoxyList>', () => {
                   inputTemplate: 'com.polobase.FacebookEmbed',
                   contentId: '7.4695',
                   contentName: 'Post',
+                  kind: 'embed',
                 },
               },
             ],
