@@ -1,16 +1,19 @@
 // @flow
-import React, { Children, isValidElement, cloneElement, } from 'react';
+import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
-import type { ChildrenArray, Node, } from 'react';
+import type { Node, } from 'react';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 
 type Props = {
-  activeTab?: number, // eslint-disable-line react/no-unused-prop-types
-  children: ChildrenArray<Node> | Node,
+  activeTab: number,
   render: ?string,
   miscStyles?: StyleProps,
+  children: ({
+    activeTab: number,
+    setActiveTab: number => void,
+  }) => Node,
 }
 
 type State = {
@@ -19,19 +22,13 @@ type State = {
 
 class Tabs extends React.Component<Props, State> {
   static defaultProps = {
-    activeTab: 0,
-    className: '',
     render: null,
     miscStyles: null,
   };
 
-  state: State;
-
-  static getDerivedStateFromProps(nextProps: Props) {
-    return {
-      activeTab: nextProps.activeTab,
-    };
-  }
+  state = {
+    activeTab: this.props.activeTab,
+  };
 
   setActiveTab: number => void = tabIndex => (
     this.setState({
@@ -40,7 +37,7 @@ class Tabs extends React.Component<Props, State> {
   );
 
   render(): Node {
-    const { children, render, miscStyles, } = this.props;
+    const { render, miscStyles, children, } = this.props;
     const { activeTab, } = this.state;
     const TabTag: string = render || 'div';
     return (
@@ -53,20 +50,7 @@ class Tabs extends React.Component<Props, State> {
         render={({ className, }) => (
           <TabTag className={className}>
             {
-              Children.map(
-                children,
-                child => {
-                  const childName = child && child.type && child.type.name;
-                  return (
-                    (isValidElement(child) && [ 'TabList', 'TabPanels', ].includes(childName))
-                      ? cloneElement(child, {
-                        setActiveTab: this.setActiveTab,
-                        activeTab,
-                      })
-                      : child
-                  );
-                }
-              )
+              children({ activeTab, setActiveTab: this.setActiveTab, })
             }
           </TabTag>
         )}

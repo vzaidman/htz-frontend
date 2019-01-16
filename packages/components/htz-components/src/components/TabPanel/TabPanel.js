@@ -9,7 +9,7 @@ type Props = {
   children: ChildrenArray<any>,
 };
 
-const TabPanel = ({ render, id, className, children, }: Props): Node => {
+function TabPanel({ render, id, className, children, }: Props): Node {
   const TabPanelTag: string = render;
   return (
     <TabPanelTag
@@ -21,7 +21,9 @@ const TabPanel = ({ render, id, className, children, }: Props): Node => {
       {children}
     </TabPanelTag>
   );
-};
+}
+
+TabPanel.displayName = 'TabPanel';
 
 TabPanel.defaultProps = {
   render: 'div',

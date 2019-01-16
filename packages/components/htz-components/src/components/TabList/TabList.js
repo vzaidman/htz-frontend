@@ -1,43 +1,38 @@
 // @flow
-import React, { Children, isValidElement, cloneElement, } from 'react';
+import React from 'react';
+import { FelaComponent, } from 'react-fela';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
+
 import type { ChildrenArray, Node, } from 'react';
+import type { StyleProps, } from '@haaretz/htz-css-tools';
 
 type Props = {
-  className?: ?string,
   render?: string,
   children: ChildrenArray<Node> | Node,
-  activeTab?: ?number,
-  setActiveTab?: ?(number) => void,
-};
-
-const TabList = ({
-  render,
-  className,
-  children,
-  activeTab,
-  setActiveTab,
-}: Props): Node => {
-  const TabListTag: string = render || 'ul';
-  return (
-    <TabListTag className={className} role="tablist">
-      {Children.map(
-        children,
-        (child, index) => (isValidElement(child)
-          ? cloneElement(child, {
-            isActive: index === activeTab,
-            setActiveTab,
-          })
-          : child)
-      )}
-    </TabListTag>
-  );
+  miscStyles?: StyleProps,
 };
 
 TabList.defaultProps = {
-  className: null,
   render: 'ul',
-  activeTab: null,
-  setActiveTab: null,
+  miscStyles: null,
 };
+
+function TabList({ render, children, miscStyles, }: Props): Node {
+  const TabListTag: string = render || 'ul';
+  return (
+    <FelaComponent
+      style={theme => ({
+        extend: [
+          ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+        ],
+      })}
+      render={({ className, }) => (
+        <TabListTag className={className} role="tablist">
+          {children}
+        </TabListTag>
+      )}
+    />
+  );
+}
 
 export default TabList;
