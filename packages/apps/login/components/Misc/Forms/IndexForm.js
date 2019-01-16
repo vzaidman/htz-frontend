@@ -38,9 +38,9 @@ const iOSversion = () => {
 };
 
 const browsersRedirect = () => {
-  const iOSVer = iOSversion()[0] || [];
+  const iOSVer = iOSversion() || [];
   const isIE = /* @cc_on!@ */false || !!document.documentMode;
-  if ((iOSVer > 0 && iOSVer < 10) || isIE) {
+  if ((iOSVer[0] > 0 && iOSVer[0] < 10) || isIE) {
     window.location.href = 'https://haaretz.co.il/misc/login-page';
   }
 };
