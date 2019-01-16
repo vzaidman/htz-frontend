@@ -49,7 +49,12 @@ export default function MadorimNavigation({ contentId, }: Props) {
               const isLast = idx === navigation.length - 1;
               return (
                 <FelaComponent
-                  style={theme => ({ fontWeight: 700, extend: [ theme.type(-2), ], })}
+                  style={theme => ({
+                    paddingInlineEnd: '.5rem',
+                    paddingInlineStart: '.5rem',
+                    fontWeight: 700,
+                    extend: [ theme.type(-2), ],
+                  })}
                   render="span"
                 >
                   <HtzLink href={item.url} key={item.contentId}>
