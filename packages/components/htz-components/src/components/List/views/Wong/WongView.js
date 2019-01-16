@@ -26,117 +26,6 @@ import {
 } from '../../../../utils/validateType.js';
 import IconBack from '../../../Icon/icons/IconBack';
 
-const getSourceOptions = (aspect: string) => ({
-  sizes: '(min-width:1280px) 1280px, 100vw',
-  transforms: [
-    {
-      width: '375',
-      aspect,
-      quality: 'auto',
-    },
-    {
-      width: '425',
-      aspect,
-      quality: 'auto',
-    },
-    {
-      width: '600',
-      aspect,
-      quality: 'auto',
-    },
-    {
-      width: '768',
-      aspect,
-      quality: 'auto',
-    },
-    {
-      width: '1028',
-      aspect,
-      quality: 'auto',
-    },
-    {
-      width: '1280',
-      aspect,
-      quality: 'auto',
-    },
-    {
-      width: '1920',
-      aspect,
-      quality: 'auto',
-    },
-  ],
-});
-
-function getImageProps(media: ImageDataType, isConrad: boolean): Object {
-  return {
-    defaultImg: {
-      sourceOptions: getSourceOptions('regular'),
-      data: media,
-    },
-    sources: [
-      {
-        until: 's',
-        sourceOptions: getSourceOptions('regular'),
-        data: media,
-      },
-      {
-        from: 's',
-        until: 'xl',
-        sourceOptions: getSourceOptions('headline'),
-        data: media,
-      },
-      {
-        from: 'xl',
-        sourceOptions: getSourceOptions(isConrad ? 'headline' : 'regular'),
-        data: media,
-      },
-    ],
-  };
-}
-
-function getEmbedProps(media: HTMLEmbedDataType): Object {
-  return media.inputTemplate === 'com.polobase.YouTubeEmbed'
-    ? {
-      source: media.source,
-      embedType: media.embedType,
-      settings: {
-        ...media.settings,
-        controls: '0',
-        autoplay: true,
-        loop: '1',
-        logo: '1',
-        startAt: 0,
-        related: '0',
-        mute: true,
-      },
-      showCaption: false,
-      inputTemplate: media.inputTemplate,
-      caption: media.caption,
-      credit: media.credit,
-    }
-    : {
-      source: media.source,
-      embedType: media.embedType,
-      settings: media.settings,
-      showCaption: false,
-      inputTemplate: media.inputTemplate,
-      caption: media.caption,
-      credit: media.credit,
-    };
-}
-
-const getMediaProps = (
-  media: ?(ImageDataType | HTMLEmbedDataType | GalleryDataType),
-  isConrad: boolean
-): ?Object => {
-  if (media) {
-    if (isImage(media)) return getImageProps(media, isConrad);
-    if (isEmbed(media)) return getEmbedProps(media);
-    // if (isGallery(media)) return getGalleryProps(media);
-  }
-  return null;
-};
-
 type Props = {
   gutter: ?number,
   // Conrad and wong are almost identical with small differences in xl bps
@@ -174,7 +63,7 @@ Wong.defaultProps = {
   width: null,
 };
 
-function Wong({
+export default function Wong({
   isConrad,
   gutter,
   lazyLoadImages,
@@ -249,7 +138,8 @@ function Wong({
                       typeScale={[
                         { until: 's', value: 1, },
                         { from: 's', until: 'l', value: 6, },
-                        { from: 'l', value: isConrad ? 5 : 3, },
+                        { from: 'l', until: 'xl', value: 5, },
+                        { from: 'xl', value: isConrad ? 5 : 4, },
                       ]}
                       kickerTypeScale={[
                         { until: 'xl', value: -1, },
@@ -376,4 +266,119 @@ function Wong({
   );
 }
 
-export default Wong;
+// /////////////////////////////////////////////////////////////////////
+//                               UTILS                                //
+// /////////////////////////////////////////////////////////////////////
+
+function getSourceOptions(aspect: string): Object {
+  return {
+    sizes: '(min-width:1280px) 1280px, 100vw',
+    transforms: [
+      {
+        width: '375',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '425',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '600',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '768',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1028',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1280',
+        aspect,
+        quality: 'auto',
+      },
+      {
+        width: '1920',
+        aspect,
+        quality: 'auto',
+      },
+    ],
+  };
+}
+
+function getImageProps(media: ImageDataType, isConrad: boolean): Object {
+  return {
+    defaultImg: {
+      sourceOptions: getSourceOptions('regular'),
+      data: media,
+    },
+    sources: [
+      {
+        until: 's',
+        sourceOptions: getSourceOptions('regular'),
+        data: media,
+      },
+      {
+        from: 's',
+        until: 'xl',
+        sourceOptions: getSourceOptions('headline'),
+        data: media,
+      },
+      {
+        from: 'xl',
+        sourceOptions: getSourceOptions(isConrad ? 'headline' : 'regular'),
+        data: media,
+      },
+    ],
+  };
+}
+
+function getEmbedProps(media: HTMLEmbedDataType): Object {
+  return media.inputTemplate === 'com.polobase.YouTubeEmbed'
+    ? {
+      source: media.source,
+      embedType: media.embedType,
+      settings: {
+        ...media.settings,
+        controls: '0',
+        autoplay: true,
+        loop: '1',
+        logo: '1',
+        startAt: 0,
+        related: '0',
+        mute: true,
+      },
+      showCaption: false,
+      inputTemplate: media.inputTemplate,
+      caption: media.caption,
+      credit: media.credit,
+    }
+    : {
+      source: media.source,
+      embedType: media.embedType,
+      settings: media.settings,
+      showCaption: false,
+      inputTemplate: media.inputTemplate,
+      caption: media.caption,
+      credit: media.credit,
+    };
+}
+
+function getMediaProps(
+  media: ?(ImageDataType | HTMLEmbedDataType | GalleryDataType),
+  isConrad: boolean
+): ?Object {
+  if (media) {
+    if (isImage(media)) return getImageProps(media, isConrad);
+    if (isEmbed(media)) return getEmbedProps(media);
+    // if (isGallery(media)) return getGalleryProps(media);
+  }
+  return null;
+}
