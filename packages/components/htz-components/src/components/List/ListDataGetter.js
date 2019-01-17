@@ -38,6 +38,12 @@ export default function ListDataGetter({
   listData,
 }: ListDataGetterProps): React.Node {
   const isSsr = listData && listData.loadPriority === 'ssr';
+
+  // TODO: Figure out why mixing client-side rendered lists and
+  //       server-side rendered lists breaks the page and remove
+  //       this line
+  if (!isSsr) return null;
+
   return (
     <Query query={query} variables={variables} skip={isSsr}>
       {({ data, loading, error, }) => {
