@@ -1,6 +1,5 @@
 import gql from 'graphql-tag';
 import {
-  imageInTeaser,
   clickTrackerBannersWrapper,
   dfpBanner,
   elementGroup,
@@ -98,9 +97,14 @@ export default gql`
     subtitleMobile
     title
     titleMobile
-    ...ImageInTeaser
     authors {
       contentName
+    }
+    authorImage {
+      ...Image
+    }
+    image {
+      ...Image
     }
     media {
       ... on Image {
@@ -209,7 +213,6 @@ export default gql`
   ${clickTrackerBannersWrapper}
   ${dfpBanner}
   ${elementGroup}
-  ${imageInTeaser}
   ${embed}
   ${image}
   ${imageGallery}
