@@ -187,9 +187,6 @@ function Picture(props) {
   } = props;
 
   if (!defaultImg.data) {
-    console.warn(
-      'default image data for Picture component is corrupt, rendering DefaultImage instead'
-    );
     const defaultImgTransforms = defaultImg.sourceOptions.transforms;
     // sourceOptions.transforms can be either an array or an object,
     // we need the aspect / width and height and they should be the same
@@ -287,7 +284,11 @@ function Picture(props) {
             hasWrapper={hasWrapper}
             {...(imgSrcSet ? { srcSet: imgSrcSet, } : {})}
             {...(defaultSizes ? { sizes: defaultSizes, } : {})}
-            title={`${title || ''}${title && credit ? ', ' : ''}${credit ? `${theme.creditPrefixI18n.imageCreditPrefix}: ${credit}` : ''}`}
+            title={`${title || ''}${title && credit ? ', ' : ''}${
+              credit
+                ? `${theme.creditPrefixI18n.imageCreditPrefix}: ${credit}`
+                : ''
+            }`}
             attrs={
               isPresentational
                 ? {
