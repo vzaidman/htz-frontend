@@ -266,9 +266,9 @@ export default Image;
 //                          Helper Functions                          //
 // //////////////////////////////////////////////////////////////////////
 export const aspectRatios = {
-  regular: { height: 3, width: 4, },
-  headline: { height: 9, width: 16, },
-  landscape: { height: 9, width: 21, },
+  regular: { height: 3, width: 3.9, },
+  headline: { height: 9, width: 15.48, },
+  landscape: { height: 9, width: 20.79, },
   square: { height: 1, width: 1, },
   vertical: { height: 20, width: 17, },
   belgrade: { height: 1, width: 3.18, },

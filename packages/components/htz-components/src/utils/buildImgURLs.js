@@ -1,8 +1,8 @@
 import config from 'config';
 
 const aspectRatios = {
-  regular: 4 / 3,
-  headline: 16 / 9,
+  regular: 1.3,
+  headline: 1.72,
   landscape: 2.31,
   square: 1,
   vertical: 0.85,
