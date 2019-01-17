@@ -162,6 +162,7 @@ function MagazineArticle({ articleId, slots, }) {
                               {
                                 float: 'right',
                                 clear: 'right',
+                                marginBottom: '4rem',
                                 marginInlineStart: `-${magazineLayout.innerPadding.xl}`,
                                 paddingInlineEnd: magazineLayout.spacing.xl,
                                 width: magazineLayout.innerPadding.xl,
@@ -172,6 +173,7 @@ function MagazineArticle({ articleId, slots, }) {
                               {
                                 float: 'right',
                                 clear: 'right',
+                                marginBottom: '4rem',
                                 marginInlineStart: `-${magazineLayout.innerPadding.l.start}`,
                                 paddingInlineEnd: magazineLayout.spacing.l,
                                 width: magazineLayout.innerPadding.l.start,
@@ -251,7 +253,7 @@ function MagazineArticle({ articleId, slots, }) {
                       );
                     }
                     return (
-                      <LayoutContainer>
+                      <LayoutContainer miscStyles={{ paddingInlineEnd: '30rem', paddingInlineStart: '30rem', }}>
                         <ArticleLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'

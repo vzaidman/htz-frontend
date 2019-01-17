@@ -60,7 +60,7 @@ class ShareBar extends React.Component<Props, State> {
           overflow: 'hidden',
           display: 'flex',
           justifyContent: 'space-between',
-          width: isOpen ? '55rem' : '40rem',
+          width: isOpen ? '61rem' : '43rem',
           marginRight: 'auto',
           marginLeft: 'auto',
           transitionProperty: 'width',
@@ -103,13 +103,14 @@ class ShareBar extends React.Component<Props, State> {
               globalButtonsStyles={{
                 minWidth: '8rem',
               }}
-              size={4}
+              size={4.5}
             />
             <FelaComponent style={{ display: 'flex', }}>
               <React.Fragment>
                 <div
                   ref={el => {
                     if (el && this.state.hiddenButtonsBarWidth === -1) {
+                      console.warn('el.offsetWidth', el.offsetWidth);
                       this.setState({ hiddenButtonsBarWidth: el.offsetWidth, });
                     }
                   }}
@@ -134,7 +135,7 @@ class ShareBar extends React.Component<Props, State> {
                       {
                         name: 'save',
                         buttonStyles: isArticleSaved => ({
-                          minWidth: '10rem',
+                          minWidth: '12rem',
                           ...(isArticleSaved
                             ? {
                               color: theme.color('neutral', '-10'),

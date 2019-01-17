@@ -3,6 +3,7 @@ import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import PropTypes from 'prop-types';
 // import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import LayoutContainer from '../../../PageLayout/LayoutContainer';
 import ArticleHeaderMeta from '../../../ArticleHeader/ArticleHeaderMeta';
@@ -11,7 +12,7 @@ import MagazineShareBar from './MagazineShareBar';
 import MagazineHeaderText from './MagazineHeaderText';
 
 // eslint-disable-next-line react/prop-types
-const HeaderElementCont = ({ children, miscStyles, }) => (
+const HeaderElementCont = ({ children, miscStyles, theme, }) => (
   <LayoutContainer
     miscStyles={{
       maxWidth: [ { from: 'xl', value: '148rem', }, { from: 'l', until: 'xl', value: '164rem', }, ],
@@ -86,6 +87,17 @@ function Header({
         <header className={className}>
           <HeaderElementCont
             miscStyles={{
+              ...theme.mq(
+                { from: 'l', },
+                {
+                  ...(variationB
+                    ? {
+                      ...borderBottom('2px', 0, 'solid', theme.color('neutral', '-6')),
+                      paddingBottom: '0px',
+                    }
+                    : {}),
+                }
+              ),
               ...(variationB
                 ? {
                   width: '100%',

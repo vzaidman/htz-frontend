@@ -201,6 +201,7 @@ const MagazineContentWrapper = ({
               theme.mq(
                 { from: 'xl', },
                 {
+                  marginTop: '3rem',
                   paddingInlineStart:
                       position === 'midRightPosition' || position === 'midWide'
                         ? 0

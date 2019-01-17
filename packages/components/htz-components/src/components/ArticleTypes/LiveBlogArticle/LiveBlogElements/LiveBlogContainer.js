@@ -49,7 +49,6 @@ const updatesStyle = ({ theme, timeLine, }) => ({
   backgroundColor: 'white',
   display: 'block',
   paddingBottom: '2rem',
-  // paddingTop: '4rem',
   ...theme.mq({ until: 's', }, { paddingInlineStart: '2rem', paddingInlineEnd: '2rem', ...(!timeLine && { marginTop: '2rem', }), }),
   ...theme.mq(
     { from: 's', until: 'l', },
