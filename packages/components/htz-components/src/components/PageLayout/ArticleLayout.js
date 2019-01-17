@@ -2,6 +2,7 @@ import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Observer from 'react-intersection-observer';
+import { ReadArticleService, } from '@haaretz/htz-user-utils';
 
 import Query from '../ApolloBoundary/Query';
 import { extractAuthorsFromArticle, } from '../GoogleAnalytics/helpers/extractAuthorsFromArticle';
@@ -12,6 +13,7 @@ import Masthead from './slots/Header';
 import ArticleBIQuery from './queries/article_bi';
 import UserDispenser from '../User/UserDispenser';
 import BIRequest from '../BI/BIRequest';
+import NoSSR from '../NoSSR/NoSSR';
 
 const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
   ssr: false,
@@ -76,6 +78,11 @@ const ArticlePageLayout = ({
 
   return (
     <Fragment>
+      <NoSSR>
+        {
+          ReadArticleService.update(articleId)
+        }
+      </NoSSR>
       {preHeader ? <LayoutRow bgc={rowBgc}>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside Masthead Component because its miscStyles depend on state */}
       <Masthead
