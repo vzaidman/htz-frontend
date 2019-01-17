@@ -1,6 +1,7 @@
 /* global document */
 import React, { Fragment, } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { FelaComponent, } from 'react-fela';
 import IconClose from '../../Icon/icons/IconClose';
 import IconSearch from '../../Icon/icons/IconSearch';
@@ -25,7 +26,7 @@ class HeaderSearch extends React.Component {
   };
 
   state = {
-    query: null,
+    query: '',
     isHovered: false,
   };
 
@@ -54,9 +55,14 @@ class HeaderSearch extends React.Component {
     }
   };
 
-  recordQuery = e => this.setState({
-    query: e.target.value,
+  recordQuery = event => this.setState({
+    query: event.target.value,
   });
+
+  submitHandler = (event, searchUrl) => {
+    event.preventDefault();
+    Router.push(searchUrl || '#');
+  }
 
   render() {
     const { isHovered, } = this.state;
@@ -84,7 +90,10 @@ class HeaderSearch extends React.Component {
             type,
           },
         }) => (
-          <div className={className}>
+          <form
+            className={className}
+            onSubmit={event => this.submitHandler(event, queryUrl(this.state.query))}
+          >
             <FelaComponent
               style={{
                 alignItems: 'center',
@@ -219,7 +228,7 @@ class HeaderSearch extends React.Component {
                 )}
               />
             ) : null}
-          </div>
+          </form>
         )}
       />
     );

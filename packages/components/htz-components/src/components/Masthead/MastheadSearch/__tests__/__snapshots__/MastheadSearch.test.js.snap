@@ -3,8 +3,9 @@
 exports[`<MastheadSearch> render correctly 1`] = `
 Object {
   "component": <div>
-    <div
+    <form
       className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h"
+      onSubmit={[Function]}
     >
       <button
         aria-expanded={false}
@@ -32,7 +33,7 @@ Object {
           חיפוש
         </span>
       </button>
-    </div>
+    </form>
   </div>,
   "styles": ".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-grow:0}.htz-c{overflow:hidden}.htz-d{transition-duration:.3s}.htz-e{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-h{-webkit-box-flex:0}.htz-i{align-items:center}.htz-j{color:#787878}.htz-k{font-weight:700}.htz-l{justify-content:center}.htz-m{min-width:6rem}.htz-n{padding:1rem}.htz-o{position:relative}.htz-p{z-index:1}.htz-u{-webkit-box-align:center}.htz-v{-webkit-box-pack:center}.htz-w{vertical-align:-0.15em}.htz-x{color:#0B7EB5}.htz-y{fill:#FFF}.htz-z{font-size:3.5rem}.htz-ab{margin-left:1rem}@media (max-width: 37.4375em){.htz-f{display:none}}@media (max-width: 47.9375em) and (orientation: landscape){.htz-g{display:none}}@media (max-width: 79.9375em){.htz-q{font-size:2.3333333333333335rem}.htz-r{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-s{font-size:2.2857142857142856rem}.htz-t{line-height:1.3125em}}",
 }
