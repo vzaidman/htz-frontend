@@ -130,11 +130,11 @@ class HeaderSearch extends React.Component {
                   type="button"
                 >
                   {searchIsOpen ? (
-                    <IconClose size={3} color="white" fill="primary" />
+                    <IconClose size={3.5} color="white" fill="primary" />
                   ) : (
                     <Fragment>
                       <IconSearch
-                        size={3}
+                        size={3.5}
                         miscStyles={{
                           marginEnd: '1rem',
                           ...(isHovered ? {} : { color: color('headerSearch', 'bgHover'), }),
@@ -209,7 +209,7 @@ class HeaderSearch extends React.Component {
                                 this.linkRef = linkRef;
                               }}
                               className={className}
-                              content={<IconSearch size={3} color="primary" />}
+                              content={<IconSearch size={3.5} color="primary" />}
                             />
                           )}
                         />

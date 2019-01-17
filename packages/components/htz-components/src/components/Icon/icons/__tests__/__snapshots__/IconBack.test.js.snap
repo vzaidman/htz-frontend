@@ -6,12 +6,12 @@ exports[`<IconBack /> DOM element add "id" attribute to DOM element 1`] = `
     className="htz-a htz-b htz-c"
     height="1em"
     id="hasId"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -26,12 +26,12 @@ exports[`<IconBack /> DOM element add "onClick" attribute to DOM element 1`] = `
     className="htz-a htz-b htz-c"
     height="1em"
     id={[Function]}
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -46,12 +46,12 @@ exports[`<IconBack /> DOM element pass attributes defined in the "attrs" prop to
     aria-hidden={true}
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -65,12 +65,12 @@ exports[`<IconBack /> DOM element render correctly when no props are passed 1`] 
   <svg
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -84,12 +84,12 @@ exports[`<IconBack /> styles responsively set misc styles on an icon 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d htz-e"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -103,12 +103,12 @@ exports[`<IconBack /> styles set icon's color 1`] = `
   <svg
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -122,12 +122,12 @@ exports[`<IconBack /> styles set icon's color responsively 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -141,12 +141,12 @@ exports[`<IconBack /> styles set icon's fill 1`] = `
   <svg
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -160,12 +160,12 @@ exports[`<IconBack /> styles set icon's fill responsively 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -179,12 +179,12 @@ exports[`<IconBack /> styles set icon's size 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -198,12 +198,12 @@ exports[`<IconBack /> styles set icon's size responsively 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d htz-e"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>
@@ -217,12 +217,12 @@ exports[`<IconBack /> styles set misc styles on an icon 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M84.1 127.7l99.6 99.6-19.8 19.8L44.5 127.7 163.9 8.3l19.8 19.8-99.6 99.6z"
+      d="M138.4 226.4l-77.8-77.8-19.1-19.1 19.1-19.1 77.8-77.8 19.1 19.1-77.8 77.8 77.8 77.8-19.1 19.1z"
       fill="currentColor"
     />
   </svg>

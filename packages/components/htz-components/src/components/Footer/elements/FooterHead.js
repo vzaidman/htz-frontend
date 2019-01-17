@@ -40,7 +40,7 @@ const desktopHeadStyle = ({
 });
 
 const LogoMiscStyle = {
-  marginBottom: '-1rem',
+  marginBottom: '-0.5rem',
   paddingTop: [
     {
       until: 's',
@@ -79,7 +79,7 @@ const LogoStyle = ({
 
 const IconsUlStyle = ({ theme, }) => ({
   marginInlineStart: 'auto',
-  fontSize: '3rem',
+  fontSize: '4rem',
   ...theme.mq(
     {
       until: 's',
@@ -213,7 +213,7 @@ export default function FooterHead() {
                             <AriaDescription id="footergoogleplus">
                               Google Plus
                             </AriaDescription>
-                            <IconGPlus miscStyles={IconMiscStyle} size={3} />
+                            <IconGPlus miscStyles={IconMiscStyle} />
                           </Fragment>
 )}
                         href="https://plus.google.com/+haaretzcoil"

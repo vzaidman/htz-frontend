@@ -32,7 +32,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           className="htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
         >
           <svg
-            className="htz-aj htz-ak htz-al htz-am htz-z htz-ae"
+            className="htz-aj htz-ak htz-al htz-am htz-an htz-ae"
             height="1em"
             viewBox="0 0 256 86"
             width="2.9767441860465116em"
@@ -44,17 +44,17 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
             />
           </svg>
           <span
-            className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+            className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
             id="footerhaaretzLogo"
           >
             הארץ
           </span>
         </div>
         <ul
-          className="htz-f htz-ay htz-ab htz-ac htz-az"
+          className="htz-f htz-az htz-ab htz-ac htz-ba"
         >
           <li
-            className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+            className="htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -62,27 +62,27 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footerfacebookIcon"
               >
                 facebook
               </span>
               <svg
-                className="htz-aj htz-ak htz-al htz-bd htz-bg"
+                className="htz-aj htz-ak htz-al htz-be htz-bh"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
               >
                   
                 <path
-                  d="M213 31H43.7c-7 0-12.7 5.8-12.7 12.8v168c0 7.2 5.8 13.2 12.9 13.2h93.7v-75.9h-18.2v-28.8h18.2V98.8c0-14.3 5.5-36.1 33.3-36.1h25.3v28.8h-19.4c-3.1 0-6.5 2.4-6.5 9.2v19.6h25.6l-3.2 28.8h-22.4V225h44.1c5.6 0 10.6-3.7 10.6-9.3V43c0-6.6-5.4-12-12-12z"
+                  d="M211 59v143.1c0 4.9-4 8.9-8.9 8.9H165v-63h18.7l2.7-24H165v-16.3c0-5.7 2.9-7.7 5.5-7.7H187V76h-21.6c-22.9 0-27.4 18.2-27.4 30.1V124h-15v24h15v63H59.8c-6 0-10.8-4.9-10.8-11V59.7C49 53.8 53.8 49 59.6 49H201c5.5 0 10 4.5 10 10z"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </li>
           <li
-            className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+            className="htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -90,27 +90,27 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footertwitterIcon"
               >
                 Twitter
               </span>
               <svg
-                className="htz-aj htz-ak htz-al htz-bd htz-bg"
+                className="htz-aj htz-ak htz-al htz-be htz-bh"
                 height="1em"
                 viewBox="0 0 256 256"
                 width="1em"
               >
                   
                 <path
-                  d="M224 75.9c.1 2.3.2 4.6.2 6.8 0 70.7-49.6 152.3-140.1 152.3-27.9 0-53.7-8.9-75.5-24.1 3.8.5 7.8.7 11.8.7 23.1 0 44.3-8.5 61.1-22.9-21.5-.3-39.7-15.8-46-37.2 3 .7 6 .9 9.2.9 4.5 0 8.9-.6 13-1.8-22.5-5-39.5-26.6-39.5-52.5v-.7c6.6 4 14.2 6.3 22.3 6.7-13.2-9.5-21.9-25.9-21.9-44.5 0-9.8 2.4-19 6.6-26.9C49.5 65 85.8 86.4 126.7 88.5c-.8-3.9-1.2-8-1.2-12.1 0-29.6 22-53.5 49.2-53.5 14.1 0 27 6.5 35.9 17 11.2-2.5 21.8-6.9 31.3-13-3.7 12.5-11.5 22.9-21.7 29.6 10-1.3 19.4-4.1 28.3-8.4-6.5 10.7-14.9 20.1-24.5 27.8z"
+                  d="M202.4 90.7c.1 1.8.1 3.5.1 5.3 0 54.4-38.1 117.2-107.8 117.2-21.4 0-41.3-6.8-58.1-18.6 3 .4 6 .6 9 .6 17.8 0 34.1-6.5 47.1-17.6-16.6-.2-30.6-12.2-35.4-28.6 2.3.6 4.7.7 7.1.7 3.5 0 6.8-.4 10-1.4-17.3-3.8-30.4-20.5-30.4-40.4v-.6c5.1 3.1 10.9 4.9 17.2 5.1-10.2-7.3-16.9-20-16.9-34.2 0-7.6 1.9-14.6 5.1-20.7 18.7 24.9 46.7 41.3 78.1 43-.6-3-1-6.1-1-9.3 0-22.8 17-41.2 37.9-41.2 10.9 0 20.8 5 27.6 13.1 8.7-2 16.8-5.3 24.1-10-2.9 9.6-8.9 17.7-16.7 22.8 7.7-1 15-3.2 21.8-6.5-5 8.1-11.4 15.4-18.8 21.3z"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </li>
           <li
-            className="htz-ba htz-bb htz-bh htz-bd htz-be htz-bf"
+            className="htz-bb htz-bc htz-bi htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -118,7 +118,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footerandroidIcon"
               >
                 Android
@@ -131,14 +131,14 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               >
                   
                 <path
-                  d="M67 174c0 11.3 7.7 21 19 21h8v28.4c0 6.4 4.3 12.2 10.5 13.5 8.7 1.9 15.5-6.5 15.5-14.8V195h13v27.1c0 7.5 8 15.1 14 15.1 7.8 0 13-7.5 13-15.1V195h7c11.3 0 22-8.7 22-20v-74H67v73zm85-136.1l8.7-16.6c.4-.8.1-1.8-.7-2.2-.8-.4-1.9-.2-2.3.7l-8.8 16.9c-6.9-2.7-14.2-4.7-22-4.7-7.8 0-15.4 2-22.3 4.7l-8.8-16.9c-.4-.7-1.2-1-1.9-.7-.9.4-1.6 1.4-1.1 2.3l8.7 16.6C82 46.7 69.5 66 67 88h121.4c-2.4-22-17-41.3-36.4-50.1zm-46.8 36.4c-5.1 0-9.2-4.2-9.2-9.3s4.1-9.3 9.2-9.3 9.2 4.2 9.2 9.3-4.1 9.3-9.2 9.3zm44.9 0c-5.1 0-9.2-4.2-9.2-9.3s4.1-9.3 9.2-9.3 9.2 4.2 9.2 9.3-4.1 9.3-9.2 9.3zM46.7 170h-.3C39 170 33 164 33 156.7V98.3C33 91 39 85 46.3 85h.3C54 85 60 91 60 98.3v58.3c0 7.4-6 13.4-13.3 13.4zm163 0h-.3c-7.3 0-13.3-6-13.3-13.3V98.3c0-7.3 6-13.3 13.3-13.3h.3c7.3 0 13.3 6 13.3 13.3v58.3c0 7.4-6 13.4-13.3 13.4z"
+                  d="M76 162c0 10.2 6.9 19 17.1 19h7.9v25.9c0 5.1 3.1 9.8 7.8 11.6 8.4 3.1 15.2-4.9 15.2-12.9V181h12v24.5c0 6.8 7.1 13.6 12.4 13.6 6.9 0 11.6-6.8 11.6-13.6V181h6.2c10.2 0 19.8-7.9 19.8-18.1V96H76v66zm76.4-123.3l7.8-15c.4-.8.1-1.6-.7-2-.8-.4-1.7-.2-2.1.6l-7.9 15.3c-6.2-2.4-12.8-4.2-19.9-4.2-7.1 0-13.9 1.8-20.2 4.2l-7.9-15.2c-.4-.7-1.2-1-1.9-.6s-1.3 1.3-.9 2l7.8 15c-17.5 7.9-28.8 25.4-31 45.3h109.7c-2.1-20-15.3-37.4-32.8-45.4zm-42.3 32.8c-4.6 0-8.4-3.7-8.4-8.4s3.7-8.4 8.4-8.4 8.4 3.7 8.4 8.4-3.8 8.4-8.4 8.4zm40.6 0c-4.6 0-8.4-3.7-8.4-8.4s3.7-8.4 8.4-8.4 8.4 3.7 8.4 8.4-3.8 8.4-8.4 8.4zM57 158c-6.6 0-12-5.4-12-12V93c0-6.6 5.4-12 12-12s12 5.4 12 12v53c0 6.6-5.4 12-12 12zm148 0c-6.6 0-12-5.4-12-12V93c0-6.6 5.4-12 12-12h.1c6.6 0 12 5.4 12 12v53c-.1 6.6-5.5 12-12.1 12z"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </li>
           <li
-            className="htz-ba htz-bb htz-bh htz-bd htz-be htz-bf"
+            className="htz-bb htz-bc htz-bi htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -146,7 +146,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footerappleIcon"
               >
                 Apple
@@ -159,14 +159,14 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               >
                   
                 <path
-                  d="M187.1 131c-.3-27.4 22.4-40.5 23.4-41.2-12.7-18.6-32.6-21.1-39.6-21.4-16.9-1.7-32.9 9.9-41.5 9.9-8.5 0-21.8-9.7-35.7-9.4-18.4.2-35.4 10.6-44.8 27.1-19.1 33.1-4.9 82.2 13.7 109 9.1 13.1 20 27.9 34.2 27.4 13.7-.5 18.9-8.9 35.5-8.9s21.2 8.9 35.8 8.6c14.8-.3 24.1-13.4 33.2-26.6 10.4-15.3 14.8-30 15-30.8-.4-.1-28.9-11-29.2-43.7m-27.2-80.4c7.6-9.2 12.7-21.9 11.3-34.6-10.9.4-24.1 7.3-31.9 16.4-7 8.1-13.3 21.4-11.7 33.8 12.1.9 24.7-6.5 32.3-15.6"
+                  d="M181.8 117.3c-.2-25.2 20.6-37.3 21.5-37.9-11.7-17.1-29.9-19.4-36.4-19.7-15.5-1.6-30.3 9.1-38.2 9.1-7.9 0-20-8.9-32.9-8.7-16.9.4-32.5 9.9-41.2 25.1-17.6 30.4-4.5 75.6 12.6 100.3 8.4 12.1 18.4 25.7 31.5 25.2 12.6-.5 17.4-8.1 32.6-8.1 15.3 0 19.5 8.1 32.9 7.9 13.6-.3 22.2-12.3 30.5-24.4 9.6-14 13.6-27.6 13.8-28.3-.3-.3-26.5-10.4-26.7-40.5m-25.1-73.9c7-8.4 11.7-20.1 10.4-31.8-10 .4-22.2 6.7-29.3 15.1-6.5 7.5-12.2 19.7-10.7 31.1 11.1.8 22.6-6 29.6-14.4"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </li>
           <li
-            className="htz-ba htz-bb htz-bc htz-bd htz-be htz-bf"
+            className="htz-bb htz-bc htz-bd htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -174,27 +174,27 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footergoogleplus"
               >
                 Google Plus
               </span>
               <svg
-                className="htz-aj htz-ak htz-al htz-ay htz-bd htz-bg"
+                className="htz-aj htz-ak htz-al htz-be htz-bh"
                 height="1em"
-                viewBox="0 0 295 256"
-                width="1.15234375em"
+                viewBox="0 0 306 256"
+                width="1.1953125em"
               >
                   
                 <path
-                  d="M260.5 139.2v29h-25v-29h-28v-25h28v-28h25v28h27v25h-27zm-68.2-24h-90.8v31h53c-7.9 39.5-61.2 53.4-89.8 27.6-29.4-22.6-28-72.3 2.6-93.3 21.3-17 51.7-12.8 73 1.9 8.4-7.7 16.2-16 23.8-24.6-17.8-14.1-39.5-24.2-62.7-23.1C53 33.1 8.6 75.3 7.8 123.5c-3.1 39.4 22.7 78.5 59.6 91.9 36.6 13.3 83.5 4.2 106.8-28.3 15.1-20.9 18.1-47.4 18.1-71.9z"
+                  d="M255 134v26h-22v-26h-25v-22h25V87h22v25h24v22h-24zm-61.3-21h-82v28h47.9c-7.1 35.7-55.3 48.2-81.1 24.9-26.5-20.4-25.3-65.3 2.3-84.3 19.3-15.3 46.7-11.5 66 1.7 7.6-7 14.7-14.4 21.5-22.2-16-12.7-35.7-21.8-56.6-20.8-43.8-1.4-83.9 36.7-84.6 80.2-2.8 35.6 20.5 70.9 53.9 83 33 12 75.4 3.8 96.5-25.5 13.5-18.9 16.2-42.9 16.2-65z"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </li>
           <li
-            className="htz-ba htz-bb htz-bh htz-bd htz-be htz-bf"
+            className="htz-bb htz-bc htz-bi htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -202,7 +202,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footermail"
               >
                 Email
@@ -215,14 +215,14 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               >
                   
                 <path
-                  d="M242.4 49l-114.9 90.3L13.8 49h228.6zm-71.3 71.4l72.2 68.3-8.2 8.7-73.5-69.5-34 26.8-34.1-27.1-73.1 69.6-8.3-8.7L83.9 120 8 59.6V207h240V59.9l-76.9 60.5z"
+                  d="M221 88.8V196H35V88.2c1.5 1.1 93 64.3 93 64.3l93-63.7zm-93 48.4l93-62.4V60H35v13.5c12.4 9.3 52.7 38.1 93 63.7z"
                   fill="currentColor"
                 />
               </svg>
             </a>
           </li>
           <li
-            className="htz-ba htz-bh htz-bd htz-be htz-bf"
+            className="htz-bb htz-bi htz-be htz-bf htz-bg"
           >
             <a
               className={null}
@@ -230,7 +230,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               onClick={null}
             >
               <span
-                className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+                className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
                 id="footerrss"
               >
                 RSS
@@ -243,7 +243,7 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               >
                   
                 <path
-                  d="M15 59V15c125.4 0 227 101.6 227 227h-44c0-101.1-81.9-183-183-183zm96 179.5c0 1.2 0 2.3-.1 3.5h43v-3.5C154 163.1 92.9 102 17.5 102H15v43h2.5c51.6 0 93.5 41.9 93.5 93.5zM67.9 242c.1-1 .1-2 .1-3 0-27.6-22.4-50-50-50-1 0-2 0-3 .1V242h52.9z"
+                  d="M44 75.5v-34c97 0 175.6 78.6 175.6 175.6h-34C185.5 138.8 122.2 75.5 44 75.5zm74.3 138.8c0 .9 0 1.8-.1 2.7h33.3v-2.7c0-58.3-47.3-105.6-105.6-105.6H44V142h1.9c40 0 72.4 32.4 72.4 72.3zM84.9 217c0-.8.1-1.5.1-2.3 0-21.4-17.3-38.7-38.7-38.7-.8 0-1.6 0-2.3.1V217h40.9z"
                   fill="currentColor"
                 />
               </svg>
@@ -252,16 +252,16 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
         </ul>
       </div>
       <div
-        className="htz-bi htz-ab htz-ac"
+        className="htz-bj htz-ab htz-ac"
       >
         <ul
-          className="htz-bj htz-bk htz-f htz-g htz-bl htz-bm"
+          className="htz-bk htz-bl htz-f htz-g htz-bm htz-bn"
         >
           <li
-            className="htz-bn"
+            className="htz-bo"
           >
             <a
-              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              className="htz-bp htz-bq htz-br htz-bs htz-bt"
               href="https://www.haaretz.co.il/promotions-page"
               onClick={null}
             >
@@ -269,10 +269,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
             </a>
           </li>
           <li
-            className="htz-bn"
+            className="htz-bo"
           >
             <a
-              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              className="htz-bp htz-bq htz-br htz-bs htz-bt"
               href="https://www.haaretz.co.il/blogs"
               onClick={null}
             >
@@ -280,10 +280,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
             </a>
           </li>
           <li
-            className="htz-bn"
+            className="htz-bo"
           >
             <a
-              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              className="htz-bp htz-bq htz-br htz-bs htz-bt"
               href="https://www.haaretz.co.il/misc/terms-of-use"
               onClick={null}
             >
@@ -291,10 +291,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
             </a>
           </li>
           <li
-            className="htz-bn"
+            className="htz-bo"
           >
             <a
-              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              className="htz-bp htz-bq htz-br htz-bs htz-bt"
               href="https://www.haaretz.co.il/mobile/contact-us"
               onClick={null}
             >
@@ -302,10 +302,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
             </a>
           </li>
           <li
-            className="htz-bn"
+            className="htz-bo"
           >
             <a
-              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              className="htz-bp htz-bq htz-br htz-bs htz-bt"
               href="mailto:advertisinghaaretz@haaretz.co.il"
               onClick={null}
             >
@@ -313,10 +313,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
             </a>
           </li>
           <li
-            className="htz-bn"
+            className="htz-bo"
           >
             <a
-              className="htz-bo htz-bp htz-bq htz-br htz-bs"
+              className="htz-bp htz-bq htz-br htz-bs htz-bt"
               href="https://www.haaretz.co.il/personal-area/my-account"
               onClick={null}
             >
@@ -325,40 +325,40 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           </li>
         </ul>
         <a
-          className="htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bo htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-ax htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-c htz-dr htz-ds htz-dt htz-du htz-dv"
+          className="htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-bp htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-ay htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-c htz-ds htz-dt htz-du htz-dv htz-dw"
           href="https://www.haaretz.co.il/st/inter/shivuk-digital/hebrew/mtm/haaretzapp.html"
           id={null}
           onClick={null}
         >
           <span
-            className="htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec"
+            className="htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed"
           >
             להורדת האפליקציה
           </span>
           <span
-            className="htz-ed htz-ee htz-ef htz-av htz-eg htz-eh htz-ei htz-b htz-ej htz-ek htz-el htz-em htz-en"
+            className="htz-ee htz-ef htz-eg htz-aw htz-eh htz-ei htz-ej htz-b htz-ek htz-el htz-em htz-en htz-eo"
           />
         </a>
         <span
-          className="htz-eo htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev"
+          className="htz-ep htz-eq htz-er htz-es htz-et htz-eu htz-ev htz-ew"
         >
           © כל הזכויות שמורות
         </span>
       </div>
       <div
-        className="htz-bh"
+        className="htz-bi"
       >
         <div
-          className="htz-l htz-ew htz-bt htz-ex htz-ep htz-ey htz-ez htz-fa htz-ds"
+          className="htz-l htz-ex htz-bu htz-ey htz-eq htz-ez htz-fa htz-fb htz-dt"
         >
           <ul
-            className="htz-fb"
+            className="htz-fc"
           >
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/editors"
                 onClick={null}
               >
@@ -366,10 +366,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/management"
                 onClick={null}
               >
@@ -377,10 +377,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/about-haaretz"
                 onClick={null}
               >
@@ -388,10 +388,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/jobs"
                 onClick={null}
               >
@@ -399,10 +399,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/contact-us"
                 onClick={null}
               >
@@ -410,10 +410,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/promotions-page"
                 onClick={null}
               >
@@ -421,10 +421,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/contact-us"
                 onClick={null}
               >
@@ -432,10 +432,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-fd htz-fe"
+                className="htz-fd htz-bp htz-fe htz-ff"
                 href="https://www.haaretz.co.il/misc/faq"
                 onClick={null}
               >
@@ -443,10 +443,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
               </a>
             </li>
             <li
-              className="htz-ba"
+              className="htz-bb"
             >
               <a
-                className="htz-fc htz-bo htz-ff htz-fe"
+                className="htz-fd htz-bp htz-fg htz-ff"
                 href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
                 onClick={null}
               >
@@ -456,18 +456,18 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           </ul>
           <button
             aria-expanded="false"
-            className="htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bo htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-ax htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-fg htz-dl htz-dm htz-fh htz-do htz-dp htz-dq htz-c htz-dr htz-f htz-ds htz-dt htz-du htz-dv"
+            className="htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-bp htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-ay htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-fh htz-dm htz-dn htz-fi htz-dp htz-dq htz-dr htz-c htz-ds htz-f htz-dt htz-du htz-dv htz-dw"
             id={null}
             onClick={[Function]}
             type="button"
           >
             <span
-              className="htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec"
+              className="htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec htz-ed"
             >
               הצג עוד
             </span>
             <span
-              className="htz-ed htz-ee htz-ef htz-av htz-eg htz-eh htz-ei htz-b htz-ej htz-ek htz-el htz-em htz-en"
+              className="htz-ee htz-ef htz-eg htz-aw htz-eh htz-ei htz-ej htz-b htz-ek htz-el htz-em htz-en htz-eo"
             />
           </button>
         </div>
@@ -475,47 +475,47 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           tabIndex="-1"
         >
           <div
-            className="htz-fi htz-a htz-fj htz-fk htz-fl htz-cb htz-fm htz-ff htz-fn htz-fo htz-fp htz-fq htz-fr htz-fs"
+            className="htz-fj htz-a htz-fk htz-fl htz-fm htz-cc htz-fn htz-fg htz-fo htz-fp htz-fq htz-fr htz-fs htz-ft"
           >
             <div
-              className="htz-l htz-ft htz-fu htz-fv htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-r htz-gd"
+              className="htz-l htz-fu htz-fv htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-gd htz-r htz-ge"
               id={null}
             >
               <div
-                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-gm htz-gn htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha htz-hb htz-hc htz-hd"
+                className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-gn htz-go htz-gp htz-gq htz-gr htz-gs htz-gt htz-gu htz-gv htz-gw htz-gx htz-gy htz-gz htz-ha htz-hb htz-hc htz-hd htz-he"
                 id={null}
               >
                 <div
-                  className="htz-l htz-ft htz-fu htz-fv htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-r htz-gd"
+                  className="htz-l htz-fu htz-fv htz-fw htz-fx htz-fy htz-fz htz-ga htz-gb htz-gc htz-gd htz-r htz-ge"
                   id={null}
                 >
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
+                    className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-hf htz-hg htz-gp htz-gq htz-gr htz-hh htz-hi htz-gu htz-gv htz-gw htz-hj htz-hk htz-hb htz-he"
                     id={null}
                   >
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         מדורים
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -523,28 +523,28 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       </ul>
                     </section>
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         Haaretz.com
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -553,32 +553,32 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
+                    className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-hf htz-hg htz-gp htz-gq htz-gr htz-hh htz-hi htz-gu htz-gv htz-gw htz-hj htz-hk htz-hb htz-he"
                     id={null}
                   >
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         כלים שימושיים
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -587,32 +587,32 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
+                    className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-hf htz-hg htz-gp htz-gq htz-gr htz-hh htz-hi htz-gu htz-gv htz-gw htz-hj htz-hk htz-hb htz-he"
                     id={null}
                   >
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         עכבר העיר
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -621,32 +621,32 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
+                    className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-hf htz-hg htz-gp htz-gq htz-gr htz-hh htz-hi htz-gu htz-gv htz-gw htz-hj htz-hk htz-hb htz-he"
                     id={null}
                   >
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         TheMarker
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -654,28 +654,28 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                       </ul>
                     </section>
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         Finance
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -684,32 +684,32 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </section>
                   </div>
                   <div
-                    className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-he htz-hf htz-go htz-gp htz-gq htz-hg htz-hh htz-gt htz-gu htz-gv htz-hi htz-hj htz-ha htz-hd"
+                    className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-hf htz-hg htz-gp htz-gq htz-gr htz-hh htz-hi htz-gu htz-gv htz-gw htz-hj htz-hk htz-hb htz-he"
                     id={null}
                   >
                     <section
-                      className="htz-hk htz-fl"
+                      className="htz-hl htz-fm"
                     >
                       <h2
-                        className="htz-bn htz-bo"
+                        className="htz-bo htz-bp"
                       >
                         שיתופי פעולה
                       </h2>
                       <ul>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
                         </li>
                         <li
-                          className="htz-bn"
+                          className="htz-bo"
                         >
                           <a
-                            className="htz-bn"
+                            className="htz-bo"
                             href={null}
                             onClick={null}
                           />
@@ -720,15 +720,15 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                 </div>
               </div>
               <div
-                className="htz-ge htz-gf htz-gg htz-gh htz-fu htz-gi htz-gj htz-gk htz-gl htz-hl htz-hm htz-go htz-gp htz-gq htz-hn htz-ho htz-gt htz-gu htz-gv htz-hp htz-hq htz-ha htz-hd"
+                className="htz-gf htz-gg htz-gh htz-gi htz-fv htz-gj htz-gk htz-gl htz-gm htz-hm htz-hn htz-gp htz-gq htz-gr htz-ho htz-hp htz-gu htz-gv htz-gw htz-hq htz-hr htz-hb htz-he"
                 id={null}
               >
                 <ul>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="https://www.haaretz.co.il/misc/entitlement"
                       onClick={null}
                     >
@@ -736,10 +736,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </a>
                   </li>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="https://www.haaretz.co.il/personal-area/newsletter"
                       onClick={null}
                     >
@@ -747,10 +747,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </a>
                   </li>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="https://www.haaretz.co.il/promotions-page"
                       onClick={null}
                     >
@@ -758,10 +758,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </a>
                   </li>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="https://secure.pulseem.com/clientpages/07092017151238sa6045.html?v=89a6c973-41b3-4181-811c-a459ac50164e_"
                       onClick={null}
                     >
@@ -769,10 +769,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </a>
                   </li>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="https://www.haaretz.co.il/st/c/prod/global/mediaKit/haaretzHeb.html"
                       onClick={null}
                     >
@@ -780,10 +780,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </a>
                   </li>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="mailto: moshem@haaretz.co.il"
                       onClick={null}
                     >
@@ -791,10 +791,10 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
                     </a>
                   </li>
                   <li
-                    className="htz-bn"
+                    className="htz-bo"
                   >
                     <a
-                      className="htz-bn htz-bo"
+                      className="htz-bo htz-bp"
                       href="https://www.haaretz.co.il/personal-area/my-account"
                       onClick={null}
                     >
@@ -807,12 +807,12 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
           </div>
         </div>
         <div
-          className="htz-hr htz-bq htz-hs htz-ht"
+          className="htz-hs htz-br htz-ht htz-hu"
         >
           חדשות, ידיעות מהארץ והעולם - הידיעות והחדשות בעיתון הארץ. סקופים, מאמרים, פרשנויות ותחקירי עומק באתר האיכותי בישראל
         </div>
         <div
-          className="htz-hr htz-bq htz-hs htz-ht"
+          className="htz-hs htz-br htz-ht htz-hu"
         >
           © כל הזכויות שמורות להוצאת עיתון הארץ בע"מ
         </div>
@@ -825,4 +825,4 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
 </div>
 `;
 
-exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-z{margin-bottom:-1rem}.htz-aj{vertical-align:-0.15em}.htz-ak{color:inherit}.htz-al{fill:#FFF}.htz-am{font-size:6rem}.htz-an{border:0}.htz-ao{clip:rect(0 0 0 0)}.htz-ap{-webkit-clip-path:inset(50%)}.htz-aq{clip-path:inset(50%)}.htz-ar{height:1px}.htz-as{margin:-1px}.htz-at{overflow:hidden}.htz-au{padding:0}.htz-av{position:absolute}.htz-aw{width:1px}.htz-ax{white-space:nowrap}.htz-ay{font-size:3rem}.htz-ba{display:inline-block}.htz-bb{margin-left:3rem}.htz-bj{margin-bottom:5rem}.htz-bk{max-width:42rem}.htz-bl{-webkit-column-count:2}.htz-bm{column-count:2}.htz-bn{margin-bottom:1rem}.htz-bo{font-weight:bold}.htz-bt{align-items:center}.htz-bu{-webkit-appearance:none}.htz-bv{-moz-appearance:none}.htz-bw{appearance:none}.htz-bx{cursor:pointer}.htz-by{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bz{font-size:inherit}.htz-ca{justify-content:center}.htz-cb{position:relative}.htz-cc{transform:scale(1)}.htz-cd{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ce{text-decoration:none}.htz-cf::moz-focus-inner{border:0}.htz-cg::moz-focus-inner{padding:0}.htz-dc{border-bottom-width:1px}.htz-dd{border-bottom-style:solid}.htz-de{padding-bottom:calc(1rem - 1px)}.htz-df{border-top-width:1px}.htz-dg{border-top-style:solid}.htz-dh{padding-top:calc(1rem - 1px)}.htz-di{border-right-width:1px}.htz-dj{border-right-style:solid}.htz-dk{padding-right:5rem}.htz-dl{border-left-width:1px}.htz-dm{border-left-style:solid}.htz-dn{padding-left:5rem}.htz-do{border-radius:0}.htz-dp{background-color:rgba(0,0,0,0)}.htz-dq{border-color:#FFF}.htz-ds{-webkit-box-align:center}.htz-dt{-webkit-box-pack:center}.htz-du{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dv{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{opacity:1}.htz-dx{transition-property:opacity}.htz-dy{transition-duration:0.16666666666666666s}.htz-dz{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ea{transition-delay:.3s}.htz-eb{-webkit-transition-property:opacity}.htz-ec{-moz-transition-property:opacity}.htz-ed{background-color:rgba(200,200,200, 0.3)}.htz-ee{height:100%}.htz-ef{right:0}.htz-eg{top:0}.htz-eh{transform:scaleX(0)}.htz-ei{transform-origin:right}.htz-ej{animation-direction:alternate}.htz-ek{animation-iteration-count:infinite}.htz-el{animation-duration:1s}.htz-em{animation-delay:0.75s}.htz-en{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eo{margin-top:1rem}.htz-ep{margin-bottom:4rem}.htz-eq{text-align:center}.htz-er{display:block}.htz-ew{flex-wrap:no-wrap}.htz-ex{margin-top:2rem}.htz-fa{-webkit-box-lines:no-wrap}.htz-fb{margin-left:2rem}.htz-fc{margin-left:1rem}.htz-fd:after{content:\\"|\\"}.htz-fe:after{margin-right:1rem}.htz-ff:after{content:\\"\\"}.htz-fg{padding-right:4rem}.htz-fh{padding-left:4rem}.htz-fi{display:none}.htz-fj{align-items:baseline}.htz-fk{padding-bottom:3rem}.htz-fl{margin-bottom:2rem}.htz-fm:after{background-color:#FFF}.htz-fn:after{height:1px}.htz-fo:after{position:absolute}.htz-fp:after{width:100%}.htz-fq:after{bottom:0}.htz-fr:after{right:0}.htz-fs{-webkit-box-align:baseline}.htz-ft{flex-wrap:wrap}.htz-fu{list-style:none}.htz-fv{justify-content:flex-start}.htz-fw{margin-right:-2rem}.htz-fx{margin-left:-2rem}.htz-fy{flex-direction:row}.htz-fz{align-items:stretch}.htz-ga{-webkit-box-lines:multiple}.htz-gb{-webkit-box-pack:right}.htz-gc{-webkit-box-orient:horizontal}.htz-gd{-webkit-box-align:stretch}.htz-ge{box-sizing:border-box}.htz-gf{flex-basis:auto}.htz-gg{flex-grow:1}.htz-gh{flex-shrink:1}.htz-gi{padding-left:2rem}.htz-gj{padding-right:2rem}.htz-hd{-webkit-box-flex:1}.htz-dr:visited{color:#FFF}.htz-ch:hover{text-decoration:none}.htz-ci:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cj:hover{background-color:rgba(255,255,255,0.2)}.htz-ck:hover{border-color:#FFF}.htz-cl:hover{color:#FFF}.htz-cm:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cn:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:focus{outline:none}.htz-cp:focus{text-decoration:none}.htz-cq:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cr:focus{background-color:rgba(255,255,255,0.1)}.htz-cs:focus{border-color:#FFF}.htz-ct:focus{color:#FFF}.htz-cu:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cv:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:active{outline:none}.htz-cx:active{text-decoration:none}.htz-cy:active{transition-duration:0s}.htz-cz:active{background-color:rgba(0,0,0,0)}.htz-da:active{border-color:#FFF}.htz-db:active{color:#FFF}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}.htz-gk{flex-grow:0}.htz-gl{flex-shrink:0}.htz-gm{flex-basis:66.66666666666666%}.htz-gn{max-width:66.66666666666666%}.htz-go{-webkit-box-flex:0}.htz-he{flex-basis:50%}.htz-hf{max-width:50%}.htz-hl{flex-basis:33.33333333333333%}.htz-hm{max-width:33.33333333333333%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-gp{flex-grow:0}.htz-gq{flex-shrink:0}.htz-gr{flex-basis:80%}.htz-gs{max-width:80%}.htz-gt{-webkit-box-flex:0}.htz-hg{flex-basis:25%}.htz-hh{max-width:25%}.htz-hn{flex-basis:20%}.htz-ho{max-width:20%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-br{font-size:2.5714285714285716rem}.htz-bs{line-height:1.5555555555555556em}.htz-eu{font-size:1.7142857142857142rem}.htz-ev{line-height:1.75em}.htz-gu{flex-grow:0}.htz-gv{flex-shrink:0}.htz-gw{flex-basis:83.33333333333334%}.htz-gx{max-width:83.33333333333334%}.htz-gy{font-size:2.2857142857142856rem}.htz-gz{line-height:1.3125em}.htz-ha{-webkit-box-flex:0}.htz-hi{flex-basis:20%}.htz-hj{max-width:20%}.htz-hk{margin-left:8rem}.htz-hp{flex-basis:16.666666666666664%}.htz-hq{max-width:16.666666666666664%}.htz-hs{font-size:2rem}.htz-ht{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:13rem}.htz-o{padding-bottom:8rem}.htz-s{border-bottom-width:1px}.htz-t{border-bottom-style:solid}.htz-u{border-bottom-color:#FFF}.htz-v{padding-bottom:calc(2rem - 1px)}.htz-w{align-items:baseline}.htz-x{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-y{-webkit-box-align:baseline}.htz-bi{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:4rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{padding-top:1.5rem}.htz-af{border-bottom-width:1px}.htz-ag{border-bottom-style:solid}.htz-ah{border-bottom-color:#FFF}.htz-ai{padding-bottom:calc(2rem - 1px)}.htz-az{margin-bottom:4rem}.htz-bc{display:inline-block}.htz-bd{margin-top:1.5rem}.htz-be{font-size:3rem}.htz-bf{margin-right:2rem}.htz-bg{font-size:3.5rem}.htz-bh{display:none}}@media (max-width: 79.9375em){.htz-bp{font-size:2.6666666666666665rem}.htz-bq{line-height:1.5em}.htz-es{font-size:1.8333333333333333rem}.htz-et{line-height:1.6363636363636365em}.htz-hb{font-size:2.3333333333333335rem}.htz-hc{line-height:1.2857142857142858em}.htz-hr{font-size:2rem}}@media (max-width: 63.9375em){.htz-ey{align-items:start}.htz-ez{-webkit-box-align:right}}"`;
+exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element correctly 2`] = `".htz-a{background-color:#00537A}.htz-b{width:100%}.htz-c{color:#FFF}.htz-d{padding-right:8rem}.htz-e{padding-left:8rem}.htz-f{margin-right:auto}.htz-g{margin-left:auto}.htz-l{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-m{flex-direction:column}.htz-q{-webkit-box-orient:vertical}.htz-r{-webkit-box-direction:normal}.htz-z{margin-bottom:-1rem}.htz-aj{vertical-align:-0.15em}.htz-ak{color:inherit}.htz-al{fill:#FFF}.htz-am{font-size:6rem}.htz-an{margin-bottom:-0.5rem}.htz-ao{border:0}.htz-ap{clip:rect(0 0 0 0)}.htz-aq{-webkit-clip-path:inset(50%)}.htz-ar{clip-path:inset(50%)}.htz-as{height:1px}.htz-at{margin:-1px}.htz-au{overflow:hidden}.htz-av{padding:0}.htz-aw{position:absolute}.htz-ax{width:1px}.htz-ay{white-space:nowrap}.htz-az{font-size:4rem}.htz-bb{display:inline-block}.htz-bc{margin-left:3rem}.htz-bk{margin-bottom:5rem}.htz-bl{max-width:42rem}.htz-bm{-webkit-column-count:2}.htz-bn{column-count:2}.htz-bo{margin-bottom:1rem}.htz-bp{font-weight:bold}.htz-bu{align-items:center}.htz-bv{-webkit-appearance:none}.htz-bw{-moz-appearance:none}.htz-bx{appearance:none}.htz-by{cursor:pointer}.htz-bz{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ca{font-size:inherit}.htz-cb{justify-content:center}.htz-cc{position:relative}.htz-cd{transform:scale(1)}.htz-ce{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cf{text-decoration:none}.htz-cg::moz-focus-inner{border:0}.htz-ch::moz-focus-inner{padding:0}.htz-dd{border-bottom-width:1px}.htz-de{border-bottom-style:solid}.htz-df{padding-bottom:calc(1rem - 1px)}.htz-dg{border-top-width:1px}.htz-dh{border-top-style:solid}.htz-di{padding-top:calc(1rem - 1px)}.htz-dj{border-right-width:1px}.htz-dk{border-right-style:solid}.htz-dl{padding-right:5rem}.htz-dm{border-left-width:1px}.htz-dn{border-left-style:solid}.htz-do{padding-left:5rem}.htz-dp{border-radius:0}.htz-dq{background-color:rgba(0,0,0,0)}.htz-dr{border-color:#FFF}.htz-dt{-webkit-box-align:center}.htz-du{-webkit-box-pack:center}.htz-dv{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dx{opacity:1}.htz-dy{transition-property:opacity}.htz-dz{transition-duration:0.16666666666666666s}.htz-ea{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-eb{transition-delay:.3s}.htz-ec{-webkit-transition-property:opacity}.htz-ed{-moz-transition-property:opacity}.htz-ee{background-color:rgba(200,200,200, 0.3)}.htz-ef{height:100%}.htz-eg{right:0}.htz-eh{top:0}.htz-ei{transform:scaleX(0)}.htz-ej{transform-origin:right}.htz-ek{animation-direction:alternate}.htz-el{animation-iteration-count:infinite}.htz-em{animation-duration:1s}.htz-en{animation-delay:0.75s}.htz-eo{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ep{margin-top:1rem}.htz-eq{margin-bottom:4rem}.htz-er{text-align:center}.htz-es{display:block}.htz-ex{flex-wrap:no-wrap}.htz-ey{margin-top:2rem}.htz-fb{-webkit-box-lines:no-wrap}.htz-fc{margin-left:2rem}.htz-fd{margin-left:1rem}.htz-fe:after{content:\\"|\\"}.htz-ff:after{margin-right:1rem}.htz-fg:after{content:\\"\\"}.htz-fh{padding-right:4rem}.htz-fi{padding-left:4rem}.htz-fj{display:none}.htz-fk{align-items:baseline}.htz-fl{padding-bottom:3rem}.htz-fm{margin-bottom:2rem}.htz-fn:after{background-color:#FFF}.htz-fo:after{height:1px}.htz-fp:after{position:absolute}.htz-fq:after{width:100%}.htz-fr:after{bottom:0}.htz-fs:after{right:0}.htz-ft{-webkit-box-align:baseline}.htz-fu{flex-wrap:wrap}.htz-fv{list-style:none}.htz-fw{justify-content:flex-start}.htz-fx{margin-right:-2rem}.htz-fy{margin-left:-2rem}.htz-fz{flex-direction:row}.htz-ga{align-items:stretch}.htz-gb{-webkit-box-lines:multiple}.htz-gc{-webkit-box-pack:right}.htz-gd{-webkit-box-orient:horizontal}.htz-ge{-webkit-box-align:stretch}.htz-gf{box-sizing:border-box}.htz-gg{flex-basis:auto}.htz-gh{flex-grow:1}.htz-gi{flex-shrink:1}.htz-gj{padding-left:2rem}.htz-gk{padding-right:2rem}.htz-he{-webkit-box-flex:1}.htz-ds:visited{color:#FFF}.htz-ci:hover{text-decoration:none}.htz-cj:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ck:hover{background-color:rgba(255,255,255,0.2)}.htz-cl:hover{border-color:#FFF}.htz-cm:hover{color:#FFF}.htz-cn:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-co:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{outline:none}.htz-cq:focus{text-decoration:none}.htz-cr:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cs:focus{background-color:rgba(255,255,255,0.1)}.htz-ct:focus{border-color:#FFF}.htz-cu:focus{color:#FFF}.htz-cv:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cw:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:active{outline:none}.htz-cy:active{text-decoration:none}.htz-cz:active{transition-duration:0s}.htz-da:active{background-color:rgba(0,0,0,0)}.htz-db:active{border-color:#FFF}.htz-dc:active{color:#FFF}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-h{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-i{max-width:128rem}.htz-gl{flex-grow:0}.htz-gm{flex-shrink:0}.htz-gn{flex-basis:66.66666666666666%}.htz-go{max-width:66.66666666666666%}.htz-gp{-webkit-box-flex:0}.htz-hf{flex-basis:50%}.htz-hg{max-width:50%}.htz-hm{flex-basis:33.33333333333333%}.htz-hn{max-width:33.33333333333333%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-j{max-width:170.66666666666666rem}.htz-gq{flex-grow:0}.htz-gr{flex-shrink:0}.htz-gs{flex-basis:80%}.htz-gt{max-width:80%}.htz-gu{-webkit-box-flex:0}.htz-hh{flex-basis:25%}.htz-hi{max-width:25%}.htz-ho{flex-basis:20%}.htz-hp{max-width:20%}}@media (min-width: 80em){.htz-k{max-width:180.42857142857142rem}.htz-bs{font-size:2.5714285714285716rem}.htz-bt{line-height:1.5555555555555556em}.htz-ev{font-size:1.7142857142857142rem}.htz-ew{line-height:1.75em}.htz-gv{flex-grow:0}.htz-gw{flex-shrink:0}.htz-gx{flex-basis:83.33333333333334%}.htz-gy{max-width:83.33333333333334%}.htz-gz{font-size:2.2857142857142856rem}.htz-ha{line-height:1.3125em}.htz-hb{-webkit-box-flex:0}.htz-hj{flex-basis:20%}.htz-hk{max-width:20%}.htz-hl{margin-left:8rem}.htz-hq{flex-basis:16.666666666666664%}.htz-hr{max-width:16.666666666666664%}.htz-ht{font-size:2rem}.htz-hu{line-height:1.5em}}@media (min-width: 37.5em){.htz-n{padding-top:13rem}.htz-o{padding-bottom:8rem}.htz-s{border-bottom-width:1px}.htz-t{border-bottom-style:solid}.htz-u{border-bottom-color:#FFF}.htz-v{padding-bottom:calc(2rem - 1px)}.htz-w{align-items:baseline}.htz-x{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-y{-webkit-box-align:baseline}.htz-bj{display:none}}@media (max-width: 37.4375em){.htz-p{padding-bottom:4rem}.htz-ab{display:block}.htz-ac{text-align:center}.htz-ae{padding-top:1.5rem}.htz-af{border-bottom-width:1px}.htz-ag{border-bottom-style:solid}.htz-ah{border-bottom-color:#FFF}.htz-ai{padding-bottom:calc(2rem - 1px)}.htz-ba{margin-bottom:4rem}.htz-bd{display:inline-block}.htz-be{margin-top:1.5rem}.htz-bf{font-size:3rem}.htz-bg{margin-right:2rem}.htz-bh{font-size:3.5rem}.htz-bi{display:none}}@media (max-width: 79.9375em){.htz-bq{font-size:2.6666666666666665rem}.htz-br{line-height:1.5em}.htz-et{font-size:1.8333333333333333rem}.htz-eu{line-height:1.6363636363636365em}.htz-hc{font-size:2.3333333333333335rem}.htz-hd{line-height:1.2857142857142858em}.htz-hs{font-size:2rem}}@media (max-width: 63.9375em){.htz-ez{align-items:start}.htz-fa{-webkit-box-align:right}}"`;

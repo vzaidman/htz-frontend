@@ -56,11 +56,12 @@ class ShareBar extends React.Component<Props, State> {
         style={(theme: Object) => ({
           marginTop: '3rem',
           display: 'flex',
+          paddingInlineEnd: '1.5rem',
           justifyContent: 'space-between',
           extend: [
             borderTop({
               width: '1px',
-              lines: 1,
+              lines: 2,
               style: 'solid',
               color: theme.color('neutral', '-5'),
             }),
@@ -94,7 +95,7 @@ class ShareBar extends React.Component<Props, State> {
                 },
                 'mail',
               ]}
-              size={3.5}
+              size={4.5}
             />
             <FelaComponent style={{ display: 'flex', }}>
               <Query query={IS_MOUSE_STORY}>
@@ -122,7 +123,7 @@ class ShareBar extends React.Component<Props, State> {
                         elementName={title}
                         elementUrl={canonicalUrl}
                         buttons={[ ...buttons, ]}
-                        size={3.5}
+                        size={4.5}
                       />
                       <FelaComponent
                         style={{
@@ -173,7 +174,7 @@ class ShareBar extends React.Component<Props, State> {
                                   }),
                                 },
                               ]}
-                              size={3.5}
+                              size={4.5}
                             />
                           </div>
                         )}

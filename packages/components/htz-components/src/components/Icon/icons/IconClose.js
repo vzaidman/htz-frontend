@@ -18,7 +18,7 @@ const IconClose = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M148.8 129l99.6 99.6-19.8 19.8-99.6-99.6-99.6 99.6-19.8-19.8 99.6-99.6L9.6 29.4 29.4 9.6l99.6 99.6 99.6-99.6 19.8 19.8-99.6 99.6z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M187.5 203l-58.7-58.7-60.9 60.9-16.7-16.7 60.9-60.9-58.8-58.7 17.4-17.4 58 58 58.7-58.7 17.4 17.4-58.7 58.7 58.7 58.7-17.3 17.4z" /></svg>
     )}
   />
 );

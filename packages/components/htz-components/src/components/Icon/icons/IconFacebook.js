@@ -18,7 +18,7 @@ const IconFacebook = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z" /></svg>
+      <svg width="0.8828125em" height="1em" viewBox="0 0 226 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z" /></svg>
     )}
   />
 );

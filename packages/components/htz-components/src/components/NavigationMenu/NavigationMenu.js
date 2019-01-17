@@ -193,7 +193,7 @@ class NavigationMenu extends React.Component {
                           <FelaComponent
                             style={{
                               marginStart: '2rem',
-                              marginEnd: '2rem',
+                              marginEnd: '3rem',
                               position: 'relative',
                             }}
                             render="span"

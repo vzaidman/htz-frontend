@@ -49,8 +49,8 @@ PlusClose.propTypes = {
 
 PlusClose.defaultProps = {
   color: [ 'neutral', 'base', ],
-  size: 2,
-  thickness: 2,
+  size: 2.5,
+  thickness: 2.5,
 };
 
 const setColor = (prop, value, getColor) => {

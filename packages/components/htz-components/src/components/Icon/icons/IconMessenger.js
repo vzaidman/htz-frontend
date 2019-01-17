@@ -18,7 +18,7 @@ const IconMessenger = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M128.4 28c-56 0-101.5 42.2-101.5 94.2 0 29.8 14.8 56.1 38.1 73.3V231l32.1-19.5c9.9 3 20.3 5.1 31.3 5.1 56.1 0 101.5-42.4 101.5-94.5S184.5 28 128.4 28zm9.9 125.6l-26.5-26.3-47.1 24.8 51.5-55.5 26.5 26.3 48.5-24.8-52.9 55.5z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M128.1 44.8c-47.8 0-86.5 35.9-86.5 80.3 0 25.4 12.6 47.8 32.4 62.5v30.3l27.4-16.6c8.4 2.5 17.3 4.3 26.7 4.3 47.8 0 86.5-36.2 86.5-80.5s-38.8-80.3-86.5-80.3zm8.5 107L114 129.4l-40.1 21.2 43.9-47.3 22.6 22.4 41.4-21.2-45.2 47.3z" /></svg>
     )}
   />
 );

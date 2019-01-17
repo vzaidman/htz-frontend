@@ -11,7 +11,7 @@ exports[`<IconComment /> DOM element add "id" attribute to DOM element 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -31,7 +31,7 @@ exports[`<IconComment /> DOM element add "onClick" attribute to DOM element 1`] 
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -51,7 +51,7 @@ exports[`<IconComment /> DOM element pass attributes defined in the "attrs" prop
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -70,7 +70,7 @@ exports[`<IconComment /> DOM element render correctly when no props are passed 1
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -89,7 +89,7 @@ exports[`<IconComment /> styles responsively set misc styles on an icon 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -108,7 +108,7 @@ exports[`<IconComment /> styles set icon's color 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -127,7 +127,7 @@ exports[`<IconComment /> styles set icon's color responsively 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -146,7 +146,7 @@ exports[`<IconComment /> styles set icon's fill 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -165,7 +165,7 @@ exports[`<IconComment /> styles set icon's fill responsively 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -184,7 +184,7 @@ exports[`<IconComment /> styles set icon's size 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -203,7 +203,7 @@ exports[`<IconComment /> styles set icon's size responsively 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>
@@ -222,7 +222,7 @@ exports[`<IconComment /> styles set misc styles on an icon 1`] = `
   >
       
     <path
-      d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+      d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
       fill="currentColor"
     />
   </svg>

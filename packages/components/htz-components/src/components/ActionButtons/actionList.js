@@ -194,16 +194,11 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
               query: GET_COMMENTS_ID,
             });
             return commentsElementId ? (
-              <Query
-                query={GET_COMMENTS_COUNT}
-                variables={{ path: commentsElementId, }}
-              >
+              <Query query={GET_COMMENTS_COUNT} variables={{ path: commentsElementId, }}>
                 {({ loading, error, data, }) => {
                   if (loading) return null;
                   if (error) return null;
-                  const commentsNumber: number = Number(
-                    data.commentsElement.totalHits
-                  );
+                  const commentsNumber: number = Number(data.commentsElement.totalHits);
                   cache.writeData({
                     data: {
                       isCommentsNumberLoaded: true,
@@ -213,6 +208,7 @@ const Comments: StatelessFunctionalComponent<CommentButtonProps> = ({
                     <FelaComponent
                       style={theme => ({
                         marginEnd: '1rem',
+                        paddingBlockStart: '0.3rem',
                         color: theme.color('neutral', '-3'),
                       })}
                       render="span"
@@ -276,19 +272,13 @@ const Facebook: StatelessFunctionalComponent<FacebookButtonProps> = ({
 
 const FacebookRound = (props: Object) => <Facebook {...props} round />;
 
-class FacebookLogo extends React.Component<
-  FacebookLogoProps,
-  FacebookLogoState
-> {
+class FacebookLogo extends React.Component<FacebookLogoProps, FacebookLogoState> {
   state = {
     host: null,
     facebookCount: 0,
   };
 
-  componentDidUpdate(
-    prevProps: FacebookLogoProps,
-    prevState: FacebookLogoState
-  ) {
+  componentDidUpdate(prevProps: FacebookLogoProps, prevState: FacebookLogoState) {
     const eligibleForFacebookFetch: boolean = prevState.host !== this.state.host;
     if (eligibleForFacebookFetch) {
       this.getFacebookCount(this.state.host);
@@ -346,7 +336,7 @@ class FacebookLogo extends React.Component<
               }}
             >
               {facebookCount ? (
-                <FelaComponent style={{ marginEnd: '1rem', }} render="span">
+                <FelaComponent style={{ marginEnd: '1rem', paddingTop: '0.8rem', }} render="span">
                   {facebookCount}
                 </FelaComponent>
               ) : null}
@@ -469,9 +459,7 @@ const Messenger: StatelessFunctionalComponent<MessengerButtonProps> = ({
         {...props}
         miscStyles={buttonStyles}
         title="שתפו כתבה במסנג'ר"
-        href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(
-          host
-        )}`}
+        href={`fb-messenger://share/?link=${elementUrl}&app_id=${fbAppIds.get(host)}`}
         onClick={() => {
           biAction({
             actionCode: '',
@@ -590,9 +578,7 @@ const Whatsapp = ({
                 onClick={() => {
                   window.open(
                     `${
-                      platform === 'mobile'
-                        ? 'whatsapp://'
-                        : 'https://web.whatsapp.com/'
+                      platform === 'mobile' ? 'whatsapp://' : 'https://web.whatsapp.com/'
                     }send?text=${elementUrl}${encodeURIComponent(
                       '?utm_source=Web_Share&utm_medium=Whatsapp&utm_campaign=Share'
                     )}`,
@@ -658,6 +644,7 @@ const Zen: StatelessFunctionalComponent<ZenButtonProps> = ({
                 <FelaComponent
                   style={{
                     marginEnd: '1rem',
+                    paddingBlockStart: '0.3rem',
                     color: theme.color('neutral', '-3'),
                   }}
                   render={({ className, theme: { zenTextI18n, }, }) => (

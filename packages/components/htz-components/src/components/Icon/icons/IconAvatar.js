@@ -18,7 +18,7 @@ const IconAvatar = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M69.7 69c0-33.2 26.9-60.2 60.2-60.2S190 35.8 190 69s-26.9 60.2-60.2 60.2-60.1-27-60.1-60.2zm73.1 86.6h-25.9c-52.6 0-96 41.1-99.9 92.7h225.8c-4-51.6-47.4-92.7-100-92.7z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M172 82c0 24.3-19.7 44-44 44s-44-19.7-44-44 19.7-44 44-44 44 19.7 44 44zm38.8 133c-2.9-37.9-34.7-68-73.3-68h-19c-38.6 0-70.4 30.1-73.3 68h165.6z" /></svg>
     )}
   />
 );

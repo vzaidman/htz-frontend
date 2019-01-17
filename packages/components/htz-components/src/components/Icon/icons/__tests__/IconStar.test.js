@@ -1,5 +1,6 @@
+
 /* global window */
-/** ************************************************************** *
+/* *************************************************************** *
  * THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT EDIT IT DIRECTLY.
  *
  * If you want to change the styleguide example, it is generated
@@ -7,7 +8,7 @@
  * *************************************************************** */
 import React from 'react';
 import felaSnapshotter from '../../../../test-helpers/felaSnapshotter';
-import IconStar from '../../../IconStar/IconStar';
+import IconStar from '../IconStar';
 
 describe('<IconStar />', () => {
   /* The error tests are left as documentation, but are commented out for the redability of the test results */
@@ -75,7 +76,9 @@ describe('<IconStar />', () => {
     testCase("set icon's size", <IconStar size={6} />);
     testCase(
       "set icon's size responsively",
-      <IconStar size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]} />
+      <IconStar
+        size={[ { until: 'xl', value: 6, }, { from: 'xl', value: 7, }, ]}
+      />
     );
     testCase(
       'set misc styles on an icon',

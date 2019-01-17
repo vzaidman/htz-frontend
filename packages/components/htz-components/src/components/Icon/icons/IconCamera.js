@@ -18,7 +18,7 @@ const IconCamera = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M174.2 67L164 40H88.4L78.2 67H25v140h206V67h-56.8zm-45.9 116c-25.7 0-46.6-20.9-46.6-46.6 0-25.7 20.9-46.6 46.6-46.6s46.6 20.9 46.6 46.6c0 25.8-20.9 46.6-46.6 46.6zm29.7-46.8c0 16.4-13.3 29.7-29.7 29.7s-29.7-13.3-29.7-29.7 13.3-29.7 29.7-29.7 29.7 13.3 29.7 29.7z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M170.4 76L161 51H90.9l-9.4 25H34v128h189V76h-52.6zm-41.9 106.2c-23.6 0-42.7-19.1-42.7-42.7s19.1-42.7 42.7-42.7 42.7 19.1 42.7 42.7-19.1 42.7-42.7 42.7zm27.3-42.8c0 15-12.2 27.2-27.2 27.2s-27.2-12.2-27.2-27.2 12.2-27.2 27.2-27.2c15-.1 27.2 12.1 27.2 27.2z" /></svg>
     )}
   />
 );

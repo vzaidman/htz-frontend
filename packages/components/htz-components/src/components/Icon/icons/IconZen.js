@@ -18,7 +18,7 @@ const IconZen = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M128 20C68.4 20 20 68.4 20 128s48.4 108 108 108 108-48.4 108-108S187.6 20 128 20zm15 169h-30V66h30v123z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M128 39c-49.2 0-89 39.8-89 89s39.8 89 89 89 89-39.8 89-89-39.8-89-89-89zm13 139h-25V77h25v101z" /></svg>
     )}
   />
 );

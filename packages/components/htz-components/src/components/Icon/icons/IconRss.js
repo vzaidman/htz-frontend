@@ -18,7 +18,7 @@ const IconRss = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M15 59V15c125.4 0 227 101.6 227 227h-44c0-101.1-81.9-183-183-183zm96 179.5c0 1.2 0 2.3-.1 3.5h43v-3.5C154 163.1 92.9 102 17.5 102H15v43h2.5c51.6 0 93.5 41.9 93.5 93.5zM67.9 242c.1-1 .1-2 .1-3 0-27.6-22.4-50-50-50-1 0-2 0-3 .1V242h52.9z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M44 75.5v-34c97 0 175.6 78.6 175.6 175.6h-34C185.5 138.8 122.2 75.5 44 75.5zm74.3 138.8c0 .9 0 1.8-.1 2.7h33.3v-2.7c0-58.3-47.3-105.6-105.6-105.6H44V142h1.9c40 0 72.4 32.4 72.4 72.3zM84.9 217c0-.8.1-1.5.1-2.3 0-21.4-17.3-38.7-38.7-38.7-.8 0-1.6 0-2.3.1V217h40.9z" /></svg>
     )}
   />
 );

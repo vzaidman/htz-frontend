@@ -18,7 +18,7 @@ const IconZoomOut = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M237.8 219.8l-66-66.1c10-13.8 15.9-30.8 15.9-49.2 0-46.3-37.7-84-83.9-84s-83.9 37.7-83.9 84 37.7 84 83.9 84c18.8 0 36.2-6.2 50.2-16.7l65.9 66 17.9-18zm-134-52.2c-34.8 0-63.1-28.3-63.1-63.1S69 41.3 103.8 41.3s63.1 28.3 63.1 63.1-28.4 63.2-63.1 63.2zM150 96v18H59V96h91z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M165.6 153.6c7.8-10.8 12.5-24.1 12.5-38.5 0-36.3-29.5-65.8-65.7-65.8s-65.7 29.5-65.7 65.8 29.5 65.8 65.7 65.8c14.7 0 28.3-4.9 39.3-13.1l51.6 51.6 14.1-14.1-51.8-51.7zm-18-33.6h-72v-16h72v16z" /></svg>
     )}
   />
 );

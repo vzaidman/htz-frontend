@@ -6,12 +6,12 @@ exports[`<IconFacebook /> DOM element add "id" attribute to DOM element 1`] = `
     className="htz-a htz-b htz-c"
     height="1em"
     id="hasId"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -26,12 +26,12 @@ exports[`<IconFacebook /> DOM element add "onClick" attribute to DOM element 1`]
     className="htz-a htz-b htz-c"
     height="1em"
     id={[Function]}
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -46,12 +46,12 @@ exports[`<IconFacebook /> DOM element pass attributes defined in the "attrs" pro
     aria-hidden={true}
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -65,12 +65,12 @@ exports[`<IconFacebook /> DOM element render correctly when no props are passed 
   <svg
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -84,12 +84,12 @@ exports[`<IconFacebook /> styles responsively set misc styles on an icon 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d htz-e"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -103,12 +103,12 @@ exports[`<IconFacebook /> styles set icon's color 1`] = `
   <svg
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -122,12 +122,12 @@ exports[`<IconFacebook /> styles set icon's color responsively 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -141,12 +141,12 @@ exports[`<IconFacebook /> styles set icon's fill 1`] = `
   <svg
     className="htz-a htz-b htz-c"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -160,12 +160,12 @@ exports[`<IconFacebook /> styles set icon's fill responsively 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -179,12 +179,12 @@ exports[`<IconFacebook /> styles set icon's size 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -198,12 +198,12 @@ exports[`<IconFacebook /> styles set icon's size responsively 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d htz-e"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>
@@ -217,12 +217,12 @@ exports[`<IconFacebook /> styles set misc styles on an icon 1`] = `
   <svg
     className="htz-a htz-b htz-c htz-d"
     height="1em"
-    viewBox="0 0 256 256"
-    width="1em"
+    viewBox="0 0 226 256"
+    width="0.8828125em"
   >
       
     <path
-      d="M94 248V137H69V92h25V63c0-21.4 10.3-55 54.1-55H187v44h-28.3c-4.6 0-12.7 3.2-12.7 13v27h43l-4.2 45H146v111H94z"
+      d="M84 224v-84H64v-36h20V80.8c0-17 8.2-43.8 43-43.8h31v35h-21.8c-3.7 0-10.2 2.6-10.2 10.4V104h34.4l-3.4 36h-31v84H84z"
       fill="currentColor"
     />
   </svg>

@@ -18,7 +18,7 @@ exports[`<CommentsCount> DOM element renders correctly with color, size and comm
     >
         
       <path
-        d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+        d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
         fill="currentColor"
       />
     </svg>
@@ -50,7 +50,7 @@ exports[`<CommentsCount> DOM element renders correctly with miscStyles 1`] = `
     >
         
       <path
-        d="M233 170h-50v46.3L121.6 170H24V40h209v130z"
+        d="M218.5 178h-43v44.9L116.6 178H37.5V55h181v123z"
         fill="currentColor"
       />
     </svg>

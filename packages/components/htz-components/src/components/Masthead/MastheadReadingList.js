@@ -31,7 +31,7 @@ export default function MastheadReadingList() {
         const { url, } = theme.readingListMenuI18n;
         return (
           <HtzLink className={className} href={url}>
-            <IconReading size={3} />
+            <IconReading size={3.5} />
           </HtzLink>
         );
       }}

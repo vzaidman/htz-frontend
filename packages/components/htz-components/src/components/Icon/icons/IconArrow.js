@@ -18,7 +18,7 @@ const IconArrow = ({ size, fill, color, attrs, miscStyles, ...props }) => (
     miscStyles={miscStyles}
     rule={iconStyle}
     render={({ className, }) => (
-      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M238.1 142H69l59.4 59.4-19.5 19.6-93-93 93-93 19.6 19.6L69 114h169.1v28z" /></svg>
+      <svg width="1em" height="1em" viewBox="0 0 256 256" className={className} {...props} {...attrs} >  <path fill="currentColor" d="M213 141H70.4l50.1 50.9-16.5 16.8L25.6 129 104 49.3l16.5 16.8L70.4 117H213v24z" /></svg>
     )}
   />
 );

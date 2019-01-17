@@ -114,7 +114,7 @@ class MastheadA11yMenu extends React.Component {
                             }
                           }}
                         >
-                          <IconAccessibility size={3} />
+                          <IconAccessibility size={3.5} />
                         </button>
                       )}
                     />

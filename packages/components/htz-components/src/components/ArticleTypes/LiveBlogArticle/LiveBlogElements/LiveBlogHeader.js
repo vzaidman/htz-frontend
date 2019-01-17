@@ -247,7 +247,7 @@ function Header({
                 })}
                 miscStyles={{
                   backgroundColor: [ { from: 'l', value: theme.color('primary', '-6'), }, ],
-                  marginTop: [ { from: 'l', value: '2rem', }, ],
+                  marginTop: [ { from: 's', value: '2rem', }, ],
                   order: [ { until: 's', value: -2, }, ],
                 }}
               />

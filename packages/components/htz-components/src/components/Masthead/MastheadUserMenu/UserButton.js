@@ -65,6 +65,7 @@ class UserButton extends React.Component {
             <FelaComponent
               render="span"
               style={{
+                paddingBlockStart: '0.4rem',
                 color:
                   isHovered || isOpen
                     ? theme.color('userMenu', 'textOpenOrHover')
@@ -94,7 +95,7 @@ class UserButton extends React.Component {
                 {!!userName ? userName : theme.userMenuI18n.noUserData}
               </FelaComponent>
             </FelaComponent>
-            <IconAvatar size={3} miscStyles={{ marginRight: '2rem', }} />
+            <IconAvatar size={3.5} miscStyles={{ marginRight: '2rem', }} />
           </button>
         )}
       />

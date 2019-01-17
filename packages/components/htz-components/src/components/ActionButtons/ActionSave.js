@@ -16,6 +16,7 @@ const GET_READING_LIST = gql`
 
 const saveLabel = theme => ({
   color: theme.color('neutral', '-3'),
+  paddingBlockStart: '0.3rem',
   display: 'none',
   extend: [ theme.mq({ from: 'm', }, { display: 'inline', }), ],
 });
