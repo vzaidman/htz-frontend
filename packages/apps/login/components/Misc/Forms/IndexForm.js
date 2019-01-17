@@ -28,19 +28,6 @@ const { ErrorBox, } = LoginMiscLayoutStyles;
 // ------------------------------------
 
 // Methods ----------------------------
-const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
-  if (isLoggedIn) {
-    const host = getHost(client);
-    const { facebook, } = getUrlParams();
-    const facebookUser = {
-      facebook,
-      subscription: user.type,
-      ssoId: user.id,
-    };
-    window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
-  }
-};
-
 const getFacebookLogin = user => {
   const facebookParams = getFacebookParams(user);
   return facebookParams
@@ -79,6 +66,20 @@ const getUrlParams = () => {
   };
 };
 
+const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
+  if (isLoggedIn) {
+    const host = getHost(client);
+    const { facebook, } = getUrlParams();
+    const facebookUser = {
+      facebook,
+      subscription: user.type,
+      ssoId: user.id,
+    };
+    // eslint-disable-next-line no-undef
+    window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
+  }
+};
+
 const generateEmailError = message => [ { name: 'email', order: 1, errorText: message, }, ];
 
 const validateEmailInput = ({ email, }) => (!email
@@ -96,10 +97,6 @@ const setFacebookParamsOnApollo = client => {
   const { facebook, } = getUrlParams();
   if (facebook && facebook.token && facebook.redirect) {
     saveUserData(client)({ userData: { facebook, __typename: 'SsoUser', }, });
-  }
-  else {
-    const facebookEmpty = { token: null, redirect: null, __typename: 'facebookLogin', };
-    saveUserData(client)({ userData: { facebook: facebookEmpty, __typename: 'SsoUser', }, });
   }
 };
 
@@ -198,9 +195,9 @@ class IndexForm extends Component {
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
   static propTypes = {
-    client: PropTypes.object.isRequired,
+    client: PropTypes.shape().isRequired,
     getFlowByData: PropTypes.func.isRequired,
-    theme: PropTypes.object.isRequired,
+    theme: PropTypes.shape().isRequired,
     gaAction: PropTypes.func,
     biAction: PropTypes.func,
   };
@@ -234,6 +231,7 @@ class IndexForm extends Component {
   };
 
   setReferrer = client => {
+    // eslint-disable-next-line no-undef
     const referrerUrl = document.referrer;
     saveUserData(client)({ loginReferrer: referrerUrl, });
   }
@@ -295,7 +293,7 @@ class IndexForm extends Component {
 
   render() {
     /* :::::::::::::::::::::::::::::::::::: { RENDER :::::::::::::::::::::::::::::::::::: */
-    const { client, getFlowByData, theme, gaAction, biAction, userDispenser, } = this.props;
+    const { client, getFlowByData, theme, gaAction, biAction, } = this.props;
     const eventsTrackers = { gaAction, biAction, };
     return (
       <FormWrapper>

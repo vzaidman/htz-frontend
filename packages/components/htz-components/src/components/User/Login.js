@@ -9,7 +9,7 @@ const propTypes = {
 const defaultProps = {};
 
 class Login extends React.Component {
-  getLoginFunction = (user, plantImages, handleImgOnload) => function login(username, password) {
+  getLoginFunction = (user, plantImages, handleImgOnload) => function login(username, password, trmsChk) {
     const userService = new UserService({
       plantImagesCallback: plantImages,
       onImageLoadCallback: handleImgOnload,

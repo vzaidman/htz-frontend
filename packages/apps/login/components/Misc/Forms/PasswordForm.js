@@ -1,15 +1,13 @@
 import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
-import Router from 'next/router';
-import { Form, TextInput, Button, Login, HtzLink, CheckBox, } from '@haaretz/htz-components';
+import { Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
-import theme from '../../../theme/index';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
-import { getUserData, getPhoneNum, getOtpHash, generateOtp, saveOtpHash, getEmail, getUser, getReferrer, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
-import { isName, isMobile, isPassword, } from './fieldsValidators';
+import { isPassword, } from './fieldsValidators';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
 
@@ -52,9 +50,8 @@ const getFacebookLogin = user => {
 const getUserTermsStatus = (userData = '', site) => {
   const userTermsStatus = userData.userLegalBySite || [];
   let termsStatus = false;
-
-  for (let i = 0; i < userTermsStatus.length; i++) {
-    if (userTermsStatus[i].termsAgreedSite == site) {
+  for (let i = 0; i < userTermsStatus.length; i += 1) {
+    if (userTermsStatus[i].termsAgreedSite === site) {
       termsStatus = true;
       break;
     }
@@ -66,14 +63,16 @@ const getUserTermsStatus = (userData = '', site) => {
 const modifyErrorMessage = message => (message === 'הדואר האלקטרוני או הסיסמה שהוזנו אינם קיימים במערכת'
   ? 'הדוא"ל או הסיסמה שהוזנו אינם קיימים במערכת' : message);
 
-const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, eventsTrackers, }) => ({ email, password, }) => {
+const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPreloader, termsConfirmed, eventsTrackers, }) => ({ email, password, trmsChk, }) => {
   setPreloader(true);
   hideError();
-  login(email, password)
+  trmsChk = termsConfirmed ? 'off' : 'on';
+  login(email, password, trmsChk)
     .then(
       () => {
         sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
           const referrerUrl = getReferrerUrl(client);
+          // eslint-disable-next-line no-undef
           window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
         }
         );
@@ -99,8 +98,8 @@ class PasswordForm extends Component {
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
   static propTypes = {
-    client: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
+    client: PropTypes.shape().isRequired,
+    theme: PropTypes.shape().isRequired,
     login: PropTypes.func.isRequired,
     showDialog: PropTypes.func.isRequired,
   };
@@ -130,7 +129,7 @@ class PasswordForm extends Component {
   }
 
   initiateTremsStatus = () => {
-    if (getUserTermsStatus(getUserData(this.props.client), 80)) {
+    if (getUserTermsStatus(getUserData(this.props.client), '80')) {
       this.setState({ termsConfirmed: true, });
     }
   }
@@ -141,9 +140,9 @@ class PasswordForm extends Component {
     ? generateTermsError('יש לאשר את תנאי השימוש באתר')
     : []);
 
-  toggleChecked = () => this.setState({ isChecked: !this.state.isChecked, isFirstTime: false, });
+  toggleChecked = () => this.setState(prevState => ({ isChecked: !prevState.isChecked, isFirstTime: false, }));
 
-  validateForm = ({ email, password, terms, }) => {
+  validateForm = ({ email, password, trmsChk, }) => {
     let errors = [];
     if (email !== null) {
       errors = [ ...validateEmailInput({ email, }), ];
@@ -174,7 +173,17 @@ class PasswordForm extends Component {
           clearFormAfterSubmit={false}
           initialValues={{ email: getEmail(client), }}
           validate={this.validateForm}
-          onSubmit={onSubmit({ login, host, user, flow, client, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, })}
+          onSubmit={onSubmit({ login,
+            host,
+            user,
+            flow,
+            client,
+            showError: this.showError,
+            hideError: this.hideError,
+            setPreloader: this.setPreloader,
+            termsConfirmed: this.state.termsConfirmed,
+            eventsTrackers,
+          })}
           render={({ getInputProps, handleSubmit, clearForm, }) => (
             <Fragment>
               <div>
@@ -217,6 +226,7 @@ class PasswordForm extends Component {
                 />
                 <InputLinkButton>
                   <button
+                    type="submit"
                     onClick={e => {
                       e.preventDefault();
                       sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'forgotPassword', })(() => {
@@ -234,13 +244,14 @@ class PasswordForm extends Component {
                 <div style={displayCheckbox}>
                   <CheckBox
                     type="checkbox"
+                    name
                     label="terms"
                     noteText="יש לאשר את תנאי השימוש באתר"
                     errorText="יש לאשר את תנאי השימוש באתר"
                     onClick={this.toggleChecked}
                     checked={this.state.isChecked}
                     {...getInputProps({
-                      name: 'terms',
+                      name: 'trmsChk',
                       label: getTermsText(),
                       type: 'checkbox',
                     })}
