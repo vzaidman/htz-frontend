@@ -74,6 +74,7 @@ export default function Wong({
   const media = isTeaser(item) ? item.media : null;
   const MediaComponent = getMediaComponent(media && media.kind, Picture);
   const mediaProps = getMediaProps(media, isConrad);
+  const relatedPadding = '2rem';
   return (
     <FelaTheme
       render={theme => (
@@ -220,7 +221,10 @@ export default function Wong({
                               <FelaComponent
                                 style={{
                                   color: theme.color('link', 'base'),
-                                  ':visited': {
+                                  display: 'block',
+                                  paddingInlineStart: relatedPadding,
+
+                                  '&:visited': {
                                     color: theme.color('link', 'base'),
                                   },
                                   extend: [
@@ -243,6 +247,7 @@ export default function Wong({
                                         { from: 'xl', value: 1.5, },
                                       ]}
                                       miscStyles={{
+                                        marginInlineStart: `-${relatedPadding}`,
                                         marginInlineEnd: '0.5rem',
                                       }}
                                     />
