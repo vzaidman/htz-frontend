@@ -2,20 +2,25 @@
 
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
+
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
+
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+
+import CommentsCount from '../../../CommentsCount/CommentsCount';
 import GridItem from '../../../Grid/GridItem';
+import Image from '../../../Image/Image';
 import ListView from '../../../ListView/ListView';
+import Picture from '../../../Image/Picture';
 import Teaser from '../../../Teaser/Teaser';
+import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
-import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
-import type { ListDataType, } from '../../../../flowTypes/ListDataType';
-import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
-import CommentsCount from '../../../CommentsCount/CommentsCount';
-import Picture from '../../../Image/Picture';
+import getImageAssets from '../../../../utils/getImageAssets';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 
 type Props = {
@@ -80,52 +85,70 @@ function PazuzuTeaser({
             ],
           }}
         >
-          <Teaser data={item} gutter={1} isStacked={stackingSettings}>
+          <Teaser
+            data={item}
+            isStacked={stackingSettings}
+            gutter={0}
+            gridMiscStyles={{ flexWrap: 'nowrap', }}
+          >
             <TeaserMedia
               data={item}
               isStacked={stackingSettings}
-              width={[
-                { until: 'xl', value: 1, },
-                ...(isStackedOnXl ? [] : [ { from: 'xl', value: 1 / 2, }, ]),
-              ]}
+              width={isStackedOnXl ? null : [ { from: 'xl', value: 44, }, ]}
             >
-              <Picture
-                lazyLoad={lazyLoadImages}
-                {...getPictureAssets({
-                  bps: theme.bps,
-                  imgData: item.image,
-                  defaultImgOptions: {
-                    sizes: '375px',
-                    aspect: 'headline',
-                    widths: [ 375, 425, 600, 768, 1028, 1280, 1920, ],
-                  },
-                  sources: [
-                    {
-                      aspect: isStackedOnXl ? 'landscape' : 'headline',
-                      from: 'xl',
-                      sizes: [ { from: 'xl', size: '388px', }, ],
-                      widths: [ 388, 776, 1024, ],
+              {isStackedOnXl ? (
+                <Picture
+                  lazyLoad={lazyLoadImages}
+                  {...getPictureAssets({
+                    bps: theme.bps,
+                    imgData: item.image,
+                    defaultImgOptions: {
+                      sizes: [
+                        { from: 'l', size: '314px', },
+                        { from: 'm', size: '348px', },
+                        { from: 's', size: '264px', },
+                        { size: 'calc(50vw - 4.5rem)', },
+                      ],
+                      aspect: 'headline',
+                      widths: [ 265, 315, 350, 600, ],
                     },
-                  ],
-                })}
-              />
+                    sources: [
+                      {
+                        aspect: 'landscape',
+                        from: 'xl',
+                        sizes: [ { size: '314px', }, ],
+                        widths: [ 314, ],
+                      },
+                    ],
+                  })}
+                />
+              ) : (
+                <Image
+                  lazyLoad={lazyLoadImages}
+                  data={item.image}
+                  imgOptions={getImageAssets({
+                    bps: theme.bps,
+                    aspect: 'headline',
+                    sizes: [
+                      { from: 'xl', size: '308px', },
+                      { from: 'l', size: '314px', },
+                      { from: 'm', size: '348px', },
+                      { from: 's', size: '264px', },
+                      { size: 'calc(50vw - 4.5rem)', },
+                    ],
+                    widths: [ 265, 315, 350, 600, ],
+                  })}
+                />
+              )}
             </TeaserMedia>
             <TeaserContent
               isStacked={stackingSettings}
-              width={[
-                { until: 'xl', value: 1, },
-                ...(isStackedOnXl ? [] : [ { from: 'xl', value: 1 / 2, }, ]),
-              ]}
               data={item}
-              renderContent={() => (
-                <TeaserHeader
-                  {...item}
-                  typeScale={[
-                    { until: 's', value: -1, },
-                    { from: 's', until: 'xl', value: 1, },
-                  ]}
-                />
-              )}
+              padding={[
+                { until: 's', value: [ 1, 1, 0, ], },
+                { from: 's', until: 'xl', value: [ 1, 0, 0, ], },
+                { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : [ 0, 1, 0, 0, ], },
+              ]}
               footerMiscStyles={{
                 color: theme.color('neutral', '-3'),
                 ...(isStackedOnXl
@@ -142,15 +165,20 @@ function PazuzuTeaser({
                   { from: 'xl', value: -3, },
                 ],
               }}
-              padding={[
-                { until: 's', value: [ 1, 1, 0, ], },
-                { from: 's', until: 'xl', value: [ 1, 0, 0, ], },
-                { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : 0, },
-              ]}
               footerPadding={[
                 { until: 'xl', value: 1, },
                 { from: 'xl', value: [ 1, 0, ], },
+                { from: 'xl', value: isStackedOnXl ? [ 1, 0, ] : [ 1, 1, 1, 0, ], },
               ]}
+              renderContent={() => (
+                <TeaserHeader
+                  {...item}
+                  typeScale={[
+                    { until: 's', value: -1, },
+                    { from: 's', until: 'xl', value: 1, },
+                  ]}
+                />
+              )}
               renderFooter={() => (
                 <React.Fragment>
                   <TeaserAuthors
