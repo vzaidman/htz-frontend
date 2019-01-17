@@ -49,7 +49,7 @@ export default class AuthorNotificationsRegistration extends React.Component {
 
   handleCloseDialog() {
     this.setState({ showDialog: false, });
-    this.props.onCancel && this.props.onCancel();
+    this.props.onToggle && this.props.onToggle();
   }
 
   render() {
@@ -70,7 +70,7 @@ export default class AuthorNotificationsRegistration extends React.Component {
                 }&type=writers`}
                 onRegistrationSuccess={this.onRegistrationSuccess}
                 onRegistrationError={this.onRegistrationError}
-                onCancel={this.props.onCancel}
+                onCancel={this.props.onToggle}
               />
             </div>
             <A11yDialog
@@ -78,7 +78,7 @@ export default class AuthorNotificationsRegistration extends React.Component {
               elementToHide={`${this.id}_form`}
               isVisible={this.state.showDialog}
               overlayBgColor="rgba(0, 0, 0, 0.5)"
-              onClose={this.props.onCancel}
+              onClose={this.props.onToggle}
               containerMiscStyles={{
                 backgroundColor: theme.color('primary', '-6'),
                 width: '100%',
@@ -122,9 +122,9 @@ export default class AuthorNotificationsRegistration extends React.Component {
 AuthorNotificationsRegistration.propTypes = {
   author: PropTypes.shape(authorPropTypes).isRequired,
   /** Callback to execute when cancel button is pressed, If omitted, the Cancel button wont appear * */
-  onCancel: PropTypes.func,
+  onToggle: PropTypes.func,
 };
 
 AuthorNotificationsRegistration.defaultProps = {
-  onCancel: null,
+  onToggle: null,
 };

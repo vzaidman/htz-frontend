@@ -1,9 +1,6 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import AlertsButton, {
-  alertButtonPropTypes,
-  alertsButtonDefaultProps,
-} from './AlertsButton';
+import AlertsButton, { alertButtonPropTypes, alertsButtonDefaultProps, } from './AlertsButton';
 import IconMailAlert from '../Icon/icons/IconMailAlert';
 
 const Alerts = React.forwardRef((props, ref) => {
@@ -51,34 +48,36 @@ const Alerts = React.forwardRef((props, ref) => {
           alertsI18n: { mobileAlertsText, desktopAlertsText, },
         },
       }) => (
-        <AlertsButton
-          className={className}
-          author={author}
-          onToggle={onToggle}
-          forwardedRef={ref}
-        >
-          <IconMailAlert
-            size={[ { until: 's', value: 3, }, { from: 's', value: 2.5, }, ]}
-            miscStyles={{ marginEnd: '1rem', }}
-          />
-          <FelaComponent
-            style={{
-              extend: [ theme.mq({ until: 's', }, { display: 'none', }), ],
-            }}
-            render="span"
+        <React.Fragment>
+          <AlertsButton
+            className={className}
+            author={author}
+            onToggle={onToggle}
+            forwardedRef={ref}
           >
-            {desktopAlertsText}
-          </FelaComponent>
-          <FelaComponent
-            style={{
-              display: 'block',
-              extend: [ theme.mq({ from: 's', }, { display: 'none', }), ],
-            }}
-            render="span"
-          >
-            {mobileAlertsText}
-          </FelaComponent>
-        </AlertsButton>
+            <IconMailAlert
+              size={[ { until: 's', value: 3, }, { from: 's', value: 2.5, }, ]}
+              miscStyles={{ marginEnd: '1rem', }}
+            />
+            <FelaComponent
+              style={{
+                extend: [ theme.mq({ until: 's', }, { display: 'none', }), ],
+              }}
+              render="span"
+            >
+              {desktopAlertsText}
+            </FelaComponent>
+            <FelaComponent
+              style={{
+                display: 'block',
+                extend: [ theme.mq({ from: 's', }, { display: 'none', }), ],
+              }}
+              render="span"
+            >
+              {mobileAlertsText}
+            </FelaComponent>
+          </AlertsButton>
+        </React.Fragment>
       )}
     />
   );

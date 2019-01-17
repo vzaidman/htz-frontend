@@ -90,6 +90,17 @@ export default class ServiceByMailRegistration extends React.Component {
               paddingEnd: '1rem',
               position: 'relative',
               textAlign: 'start',
+              extend: [
+                theme.mq(
+                  { from: 'l', },
+                  {
+                    paddingStart: '4rem',
+                    paddingInlineEnd: '5rem',
+                    paddingInlineStart: '5rem',
+                    paddingBottom: '4rem',
+                  }
+                ),
+              ],
             })}
             render={({ className, theme, }) => (
               <div className={className}>

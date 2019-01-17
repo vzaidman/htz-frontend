@@ -8,7 +8,8 @@ import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Query from '../ApolloBoundary/Query';
 
 import CreditArticle from '../Credit/CreditArticle';
-import Alerts from '../Alerts/Alerts';
+// import Alerts from '../Alerts/Alerts';
+import AuthorAlert from '../Alerts/AuthorAlert';
 import Image from '../Image/Image';
 import IconAlefLogo from '../Icon/icons/IconAlefLogo';
 import TeaserTime from '../TeaserTime/TeaserTime';
@@ -357,10 +358,17 @@ class ArticleHeaderMeta extends React.Component {
                               variationMq={variationMq}
                             >
                               {authors.length === 1 && authors[0].hasEmailAlerts ? (
-                                <Alerts
+                                // <Alerts
+                                //   author={authors[0]}
+                                //   onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                                //   ref={this.alertsToggleBtnRef}
+                                // />
+                                <AuthorAlert
                                   author={authors[0]}
-                                  onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                                  platform={platform}
+                                  biAction={biAction}
                                   ref={this.alertsToggleBtnRef}
+                                  onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
                                 />
                               ) : null}
                             </FelaComponent>
@@ -380,6 +388,10 @@ class ArticleHeaderMeta extends React.Component {
                               )}
                             />
                           </div>
+                          {/* <SlideBox
+                            hasEmailAlerts={authors[0].hasEmailAlerts}
+
+                          /> */}
                           <SlideinBox
                             show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
                             duration={2}
@@ -390,7 +402,7 @@ class ArticleHeaderMeta extends React.Component {
                               author={authors[0]}
                               platform={platform}
                               biAction={biAction}
-                              onCancel={() => this.toggleAuthorAlertsForm(biAction, platform)}
+                              onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
                             />
                           </SlideinBox>
                         </Fragment>
