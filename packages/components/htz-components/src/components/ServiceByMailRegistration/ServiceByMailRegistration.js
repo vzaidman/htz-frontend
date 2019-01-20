@@ -94,9 +94,9 @@ export default class ServiceByMailRegistration extends React.Component {
                 theme.mq(
                   { from: 'l', },
                   {
-                    paddingStart: '4rem',
-                    paddingInlineEnd: '5rem',
-                    paddingInlineStart: '5rem',
+                    paddingTop: '4rem',
+                    paddingInlineEnd: '2rem',
+                    paddingInlineStart: '2rem',
                     paddingBottom: '4rem',
                   }
                 ),
@@ -143,6 +143,7 @@ export default class ServiceByMailRegistration extends React.Component {
                             miscStyles: {
                               type: [ { from: 'l', value: -2, }, ],
                               fontWeight: 'bold',
+                              width: [ { from: 'l', value: '67rem', }, ],
                             },
                           })}
                         />
@@ -154,9 +155,15 @@ export default class ServiceByMailRegistration extends React.Component {
                           justifyContent: 'center',
                           extend: [
                             theme.mq(
-                              { from: 's', },
+                              { from: 's', until: 'm', },
                               {
                                 justifyContent: 'flex-start',
+                              }
+                            ),
+                            theme.mq(
+                              { from: 'l', },
+                              {
+                                justifyContent: 'flex-end',
                               }
                             ),
                           ],

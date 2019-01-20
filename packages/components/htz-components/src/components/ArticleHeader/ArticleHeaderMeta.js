@@ -358,11 +358,6 @@ class ArticleHeaderMeta extends React.Component {
                               variationMq={variationMq}
                             >
                               {authors.length === 1 && authors[0].hasEmailAlerts ? (
-                                // <Alerts
-                                //   author={authors[0]}
-                                //   onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
-                                //   ref={this.alertsToggleBtnRef}
-                                // />
                                 <AuthorAlert
                                   author={authors[0]}
                                   platform={platform}
@@ -388,10 +383,7 @@ class ArticleHeaderMeta extends React.Component {
                               )}
                             />
                           </div>
-                          {/* <SlideBox
-                            hasEmailAlerts={authors[0].hasEmailAlerts}
-
-                          /> */}
+                          {/* Author notifaction dialog until M breakpoint. The L and XL modal break points login at <AuthorAlert /> */}
                           <SlideinBox
                             show={authors[0].hasEmailAlerts && this.state.isShowAuthorAlertsForm}
                             duration={2}
@@ -405,6 +397,7 @@ class ArticleHeaderMeta extends React.Component {
                               onToggle={() => this.toggleAuthorAlertsForm(biAction, platform)}
                             />
                           </SlideinBox>
+                          {/* End of Author notifaction dialog until M breakpoint */}
                         </Fragment>
                       )}
                     />

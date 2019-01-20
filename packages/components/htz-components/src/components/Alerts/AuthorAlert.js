@@ -21,7 +21,7 @@ class AuthorAlert extends React.Component {
         isShowAuthorAlertsForm: !prevState.isShowAuthorAlertsForm,
       }),
       () => {
-        if (showMe) {
+        if (!this.state.isShowAuthorAlertsForm) {
           this.props.innerRef.current.focus();
         }
         else {
@@ -88,7 +88,8 @@ class AuthorAlert extends React.Component {
                   <AlertsButton
                     className={className}
                     author={this.props.author}
-                    onToggle={this.toggleAuthorAlertsForm}
+                    onToggle={() => this.toggleAuthorAlertsForm(this.state.isShowAuthorAlertsForm)
+                      }
                     forwardedRef={this.props.innerRef}
                   >
                     <IconMailAlert size={2.5} miscStyles={{ marginEnd: '1rem', }} />
@@ -98,11 +99,9 @@ class AuthorAlert extends React.Component {
                     appendTo="modal-example-12"
                     elementToHide="pageRoot"
                     isVisible={this.state.isShowAuthorAlertsForm}
-                      // toggleRefs={[ 'openRef', 'additionalOpenRef', ]}
                     overlayBgColor="rgba(255, 255, 255, 0.9)"
                     closeOnOutsideClick
-                    onOpen={() => console.warn('The Dialog has been opened!')}
-                    onClose={() => this.toggleAuthorAlertsForm(true)}
+                    onClose={() => this.toggleAuthorAlertsForm(this.state.isShowAuthorAlertsForm)}
                     isModal
                     render={({ isVisible, handleClose, isModal, }) => (
                       <FelaComponent

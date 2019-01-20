@@ -1,3 +1,4 @@
+// TODO: This components is out of use. remove when new AuthorAlert component successfully merged.
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import AlertsButton, { alertButtonPropTypes, alertsButtonDefaultProps, } from './AlertsButton';
