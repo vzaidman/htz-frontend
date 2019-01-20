@@ -20,6 +20,7 @@ import Ingredients from './RecipeArticleElements/Ingredients';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import RecipeArticleQuery from './queries/recipe_article';
+import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
 function RecipeArticle({ articleId, slots, }) {
   return (
@@ -263,6 +264,7 @@ function RecipeArticle({ articleId, slots, }) {
                       )}
                     />
                   </FelaComponent>
+                  <ArticleGallery articleId={articleId} />
                 </LayoutContainer>
               )}
             />

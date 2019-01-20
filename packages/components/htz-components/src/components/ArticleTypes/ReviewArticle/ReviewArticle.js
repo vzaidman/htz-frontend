@@ -19,6 +19,7 @@ import Zen from '../../Zen/Zen';
 import ReviewAmenities from './ReviewArticleElements/ReviewAmenities';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 import ReviewArticleQuery from './queries/review_article';
+import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
 function ReviewArticle({ articleId, slots, }) {
   return (
@@ -259,6 +260,7 @@ function ReviewArticle({ articleId, slots, }) {
                       )}
                     />
                   </FelaComponent>
+                  <ArticleGallery articleId={articleId} />
                 </LayoutContainer>
               )}
             />

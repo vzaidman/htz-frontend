@@ -25,6 +25,7 @@ import LiveBlogHeader from './LiveBlogElements/LiveBlogHeader';
 import LiveBlogHeaderMeta from './LiveBlogElements/LiveBlogHeaderMeta';
 import TimeLine from './LiveBlogElements/TimeLine';
 import LiveBlogContainer from './LiveBlogElements/LiveBlogContainer';
+import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
 const IS_OSAKA_DISPLAYED = gql`
   query IsOsakaDisplayed {
@@ -379,6 +380,7 @@ function LiveBlog({ articleId, slots, }) {
                       </aside>
                     )}
                   />
+                  <ArticleGallery articleId={articleId} />
                 </LayoutContainer>
               )}
             />

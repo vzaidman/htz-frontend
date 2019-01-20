@@ -15,6 +15,7 @@ import ArticleLayoutRow from '../../PageLayout/ArticleLayoutRow';
 import LayoutContainer from '../../PageLayout/LayoutContainer';
 
 import getComponent from '../../../utils/componentFromInputTemplate';
+import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
 const magazineLayout = {
   innerPadding: {
@@ -269,6 +270,7 @@ function MagazineArticle({ articleId, slots, }) {
                             {...properties}
                           />
                         </ArticleLayoutRow>
+                        <ArticleGallery articleId={articleId} />
                       </LayoutContainer>
                     );
                   })}
