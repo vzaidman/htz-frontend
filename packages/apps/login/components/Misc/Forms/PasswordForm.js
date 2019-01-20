@@ -150,6 +150,7 @@ class PasswordForm extends Component {
     if (password !== null) {
       errors = [ ...errors, ...validatePasswordInput({ password, }), ];
     }
+    console.log("this.state.termsConfirmed",this.state.termsConfirmed);
     if (this.isCheckboxError() && !this.state.termsConfirmed) {
       errors = [ ...errors, ...this.validateTermsInput(), ];
     }
@@ -251,7 +252,7 @@ class PasswordForm extends Component {
                     onClick={this.toggleChecked}
                     checked={this.state.isChecked}
                     {...getInputProps({
-                      name: 'trmsChk',
+                      name: 'terms',
                       label: getTermsText(),
                       type: 'checkbox',
                     })}
