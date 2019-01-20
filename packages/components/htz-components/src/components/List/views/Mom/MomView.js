@@ -1,11 +1,13 @@
 // @flow
-import { FelaComponent, FelaTheme, } from 'react-fela';
 import * as React from 'react';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
+import { isTeaser, } from '../../../../utils/validateType';
+import Debug from '../../../Debug/Debug';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import H from '../../../AutoLevels/H';
@@ -22,7 +24,6 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import getPictureAssets from '../../../../utils/getPictureAssets';
-import { isTeaser, } from '../../../../utils/validateType';
 
 type Props = {
   list: ListDataType,
@@ -31,10 +32,9 @@ type Props = {
   lazyLoadImages: boolean,
 };
 
-Mom.defaultProps = { lazyLoadImages: true, };
-
 const headerTypeScale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
 
+Mom.defaultProps = { lazyLoadImages: true, };
 export default function Mom({
   list,
   gaAction,
@@ -137,11 +137,15 @@ export default function Mom({
               ],
             }}
           >
-            <TeaserWithImg1
-              data={items[0]}
-              index={0}
-              {...{ biAction, lazyLoadImages, }}
-            />
+            {items[0] ? (
+              <TeaserWithImg1
+                data={items[0]}
+                index={0}
+                {...{ biAction, lazyLoadImages, }}
+              />
+            ) : (
+              <Debug>There is no data for the first teaser in this list</Debug>
+            )}
           </GridItem>
 
           <GridItem
@@ -178,13 +182,25 @@ export default function Mom({
                   ],
                 }}
               >
-                <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
+                {items[1] ? (
+                  <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
+                ) : (
+                  <Debug>
+                    This is no data for the second teaser in this list
+                  </Debug>
+                )}
               </GridItem>
               <GridItem
                 stretchContent
                 width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}
               >
-                <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
+                {items[2] ? (
+                  <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
+                ) : (
+                  <Debug>
+                    This is no data for the third teaser in this list
+                  </Debug>
+                )}
               </GridItem>
             </Grid>
           </GridItem>
@@ -200,11 +216,15 @@ export default function Mom({
               order: [ { from: 'l', until: 'xl', value: 1, }, ],
             }}
           >
-            <TeaserWithImg2
-              data={items[3]}
-              index={3}
-              {...{ biAction, lazyLoadImages, }}
-            />
+            {items[3] ? (
+              <TeaserWithImg2
+                data={items[3]}
+                index={3}
+                {...{ biAction, lazyLoadImages, }}
+              />
+            ) : (
+              <Debug>This is no data for the fourth teaser in this list</Debug>
+            )}
           </GridItem>
           <GridItem
             stretchContent
@@ -218,11 +238,15 @@ export default function Mom({
               marginBottom: [ { until: 's', value: '1rem', }, ],
             }}
           >
-            <TextualTeaser
-              data={items[4]}
-              {...{ biAction, index: 4, }}
-              isLargeText
-            />
+            {items[4] ? (
+              <TextualTeaser
+                data={items[4]}
+                {...{ biAction, index: 4, }}
+                isLargeText
+              />
+            ) : (
+              <Debug>This is no data for the fifth teaser in this list</Debug>
+            )}
           </GridItem>
         </Grid>
       </GridItem>
