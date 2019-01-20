@@ -35,6 +35,7 @@ import ClickTracker from './components/ClickTracker/ClickTrackerWrapper';
 import Comments from './components/CommentsSection/CommentsInViewWrapper';
 import Debug from './components/Debug/Debug';
 import DeviceTypeInjector from './components/DeviceTypeInjector/DeviceTypeInjector';
+import Error from './components/Error/Error';
 import Embed from './components/Embed/Embed';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
@@ -264,6 +265,7 @@ export {
   Debug,
   DeviceTypeInjector,
   Embed,
+  Error,
   Footer,
   Form,
   GaDimensions,

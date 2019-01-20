@@ -11,6 +11,7 @@ import dfpBanner from './dfp_banner_type';
 import clickTrackerBannersWrapper from './click_tracker_banner_wrapper_type';
 import Content from './content_type';
 import HeaderNewsGroup from './header_news_group_type';
+import nullFallback from './null_fallback_type';
 
 const Article = new GraphQLList(
   new GraphQLUnionType({
@@ -25,8 +26,9 @@ const Article = new GraphQLList(
       dfpBanner,
       clickTrackerBannersWrapper,
       Content,
+      nullFallback,
     ],
-    resolveType: value => getSchema(value.inputTemplate) || Content,
+    resolveType: value => getSchema(value.kind || value.inputTemplate) || Content,
   })
 );
 

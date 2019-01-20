@@ -40,6 +40,11 @@ export default gql`
             contentName
             properties
           }
+          ... on NullFallback {
+            message
+            errorCode
+            kind
+          }
           ... on ArticleData {
             header {
               exclusive

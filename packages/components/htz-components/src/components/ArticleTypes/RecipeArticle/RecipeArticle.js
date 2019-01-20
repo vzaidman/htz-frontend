@@ -181,7 +181,7 @@ function RecipeArticle({ articleId, slots, }) {
                             </ApolloConsumer>
                           );
                         }
-                        const Element = getComponent(element.inputTemplate);
+                        const Element = getComponent(element.kind || element.inputTemplate);
                         const { properties, ...elementWithoutProperties } = element;
                         if (
                           element.inputTemplate === 'com.polobase.OutbrainElement'

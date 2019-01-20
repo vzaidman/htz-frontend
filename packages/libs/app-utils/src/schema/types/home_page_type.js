@@ -6,8 +6,8 @@ import TaxonomyItem from './taxonomy_item_type';
 import DfpConfigType from './dfp_config_type';
 import homepageMain from './home_page_main_type';
 
-const Page = new GraphQLObjectType({
-  name: 'HomePage',
+const HomePage = new GraphQLObjectType({
+  name: 'Home',
   fields: () => ({
     pageType: {
       type: GraphQLString,
@@ -25,7 +25,21 @@ const Page = new GraphQLObjectType({
           preHeader: { type: new GraphQLList(GraphQLJSON), },
           header: { type: new GraphQLList(GraphQLJSON), },
           postHeader: { type: new GraphQLList(GraphQLJSON), },
-          main: { type: homepageMain, },
+          main: {
+            type: homepageMain,
+            resolve: ({ main, }) => {
+              main.forEach((item, index) => {
+                if (!item) {
+                  main[index] = {
+                    message: `Got Null in main slot of homepage, position: ${index}`,
+                    kind: 'error',
+                    errorCode: 6,
+                  };
+                }
+              });
+              return main;
+            },
+          },
           postMain: { type: new GraphQLList(GraphQLJSON), },
           footer: { type: new GraphQLList(GraphQLJSON), },
         }),
@@ -37,4 +51,4 @@ const Page = new GraphQLObjectType({
   }),
 });
 
-export default Page;
+export default HomePage;

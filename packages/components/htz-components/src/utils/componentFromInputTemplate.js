@@ -11,6 +11,7 @@ import ClickTrackerWrapper from '../components/ClickTracker/ClickTrackerWrapper'
 import Debug from '../components/Debug/Debug';
 import ElementGroup from '../components/ElementGroup/ElementGroup';
 import Embed from '../components/Embed/Embed';
+import Error from '../components/Error/Error';
 import Footer from '../components/Footer/Footer';
 import HtmlElement from '../components/Interactive/components/HtmlElement';
 import Image from '../components/Image/Image';
@@ -33,8 +34,6 @@ import TopNews from '../components/TopNews/TopNews';
 import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
 import withDfpSideEffect from '../components/Dfp/withDfpSideEffect';
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 const tagsFromTagElement = ({ tagsList, }) => tagsList.map(x => x.contentName);
 
@@ -87,15 +86,7 @@ const inputTemplateToComponent = new Map([
   [ 'video', Video, ],
   [ 'com.tm.HtmlElement', HtmlElement, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', Newsletter, ],
-  [
-    'com.tm.ListElement',
-    () => {
-      if (isProduction) {
-        return null;
-      }
-      return <p>Old list, NOT SUPPORTED</p>;
-    },
-  ],
+  [ 'com.tm.ListElement', () => <Debug><p>Old list, NOT SUPPORTED</p></Debug>, ],
   [ 'com.tm.element.List', List, ],
   [ 'com.polobase.whtzMobileSiteListsWrapper', MobileListWrapper, ],
   [ 'com.tm.element.group', ChangeableElementGroup, ],
@@ -104,24 +95,20 @@ const inputTemplateToComponent = new Map([
   [ 'com.polobase.DfpBannerElement', GeneralAdSlot, ],
   [ 'com.htz.magazineArticleDfpBannerElement', GeneralAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
+  [ 'error', Error, ],
   [ null, null, ],
 ]);
 
 // eslint-disable-next-line react/prop-types
-const DefaultComponent = ({ inputTemplate, contentId, contentName, }) => {
+const DefaultComponent = ({ inputTemplate, contentId, kind, }) => {
   logger.trace(`
-    Element with inputTemplate: '${inputTemplate}' is not supported and
+    Element of type: '${kind || inputTemplate}' is not supported and
     we don't have any component fot it yet.
     The id of the element you tried to render on this page is: ${contentId}.
   `);
   return (
     <Debug>
-      <p>
-        {inputTemplate}
-        {' '}
-
-is currently not supported
-      </p>
+      <p>{`${kind || inputTemplate} is currently not supported`}</p>
     </Debug>
   );
 };

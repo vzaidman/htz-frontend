@@ -20,6 +20,7 @@ import video from './types/video_type';
 import MainBlock from './types/main_block_type';
 import TabViewElement from './types/tab_view_element_type';
 import HeaderNewsGroup from './types/header_news_group_type';
+import nullFallback from './types/null_fallback_type';
 
 const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
@@ -40,6 +41,7 @@ const types = new Map([
   [ 'com.tm.element.List', list, ],
   [ 'com.polobase.quickNewsletterRegistration', mobileQuickRegistrationType, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', newsLetter, ],
+  [ 'error', nullFallback, ],
   [ 'paragraph', paragraph, ],
   [ 'relatedArticles', relatedArticles, ],
   [ 'relatedArticleSeries', seriesOrBlockArticles, ],

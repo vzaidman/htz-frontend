@@ -1,5 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLList, GraphQLUnionType, } from 'graphql';
+import {
+  GraphQLList,
+  GraphQLUnionType,
+} from 'graphql';
 import getSchema from '../getSchema';
 
 import content from './content_type';
@@ -19,6 +22,7 @@ import seriesOrBlockArticles from './series_or_block_articles_type';
 import quote from './quote_type';
 import tags from './tags_type';
 import video from './video_type';
+import nullFallback from './null_fallback_type';
 
 const ArticleBody = new GraphQLList(
   new GraphQLUnionType({
@@ -41,6 +45,7 @@ const ArticleBody = new GraphQLList(
       quote,
       tags,
       video,
+      nullFallback,
     ],
     resolveType: value => getSchema(value.tag ? 'paragraph' : value.kind || value.inputTemplate)
       || content,

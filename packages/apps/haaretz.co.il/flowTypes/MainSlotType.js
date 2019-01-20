@@ -5,6 +5,7 @@ import type {
   GridElementType,
   ListDataType,
   TabsElementType,
+  ErrorType,
 } from '@haaretz/htz-components';
 
 type MainSlotElement =
@@ -13,5 +14,6 @@ type MainSlotElement =
   | GridElementType
   | ListDataType
   | TabsElementType
+  | ErrorType
 
 export type MainSlotType = Array<MainSlotElement>;

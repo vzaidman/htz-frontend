@@ -46,7 +46,22 @@ const Page = new GraphQLObjectType({
           header: { type: new GraphQLList(GraphQLJSON), },
           postHeader: { type: new GraphQLList(GraphQLJSON), },
           aside: { type: sideBar, },
-          article: { type: article, },
+          article: {
+            type: article,
+            resolve: ({ article: articleSlot, }) => {
+              articleSlot.forEach((item, index) => {
+                if (!item) {
+                  articleSlot[index] = {
+                    message: `Got Null in Article(Main) slot, position: ${index}`,
+                    kind: 'error',
+                    errorCode: 6,
+                    __typename: 'NullFallback',
+                  };
+                }
+              });
+              return articleSlot;
+            },
+          },
           postMain: { type: new GraphQLList(GraphQLJSON), },
           footer: { type: new GraphQLList(GraphQLJSON), },
         }),

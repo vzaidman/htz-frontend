@@ -17,6 +17,7 @@ import {
   UserInjector,
   PremiumContentMeta,
   Query,
+  Error,
   pixelEvent,
 } from '@haaretz/htz-components';
 
@@ -115,63 +116,72 @@ class ArticleLayout extends React.Component {
         {({ loading, error, data, client, }) => {
           if (loading) return null;
           if (error) logger.error(error);
-          const {
-            page: { pageType, slots, lineage, jsonld, },
-          } = data;
-          const articleId = lineage[0].contentId;
-          this.setState({
-            articleId,
-          });
-          const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
-            lineage.length > 2 ? lineage[lineage.length - 1].name : ''
-          }`;
-          client.writeData({
-            data: {
+          if (data && data.page) {
+            const {
+              page: { pageType, slots, lineage, jsonld, },
+            } = data;
+            const articleId = lineage[0].contentId;
+            this.setState({
               articleId,
-              title: titleSEO,
-              // place properties to reset in the client store when a new article is loaded
-              isOsakaDisplayed: false,
-            },
-          });
-          const standardArticleElement = slots.article.find(
-            ({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle')
-          );
-          const isPremiumContent = standardArticleElement
-            ? standardArticleElement.isPremiumContent
-            : null;
+            });
+            const titleSEO = `${lineage[0].name} - ${lineage[1] ? lineage[1].name : ''} - ${
+              lineage.length > 2 ? lineage[lineage.length - 1].name : ''
+            }`;
+            client.writeData({
+              data: {
+                articleId,
+                title: titleSEO,
+                // place properties to reset in the client store when a new article is loaded
+                isOsakaDisplayed: false,
+              },
+            });
+            const standardArticleElement = slots.article.find(
+              ({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle')
+            );
+            const isPremiumContent = standardArticleElement
+              ? standardArticleElement.isPremiumContent
+              : null;
+            return (
+              <Fragment>
+                <Head>
+                  <title>{titleSEO}</title>
+                </Head>
+                {// render <PremiumContentMeta/> only when isPremiumContent is defined
+                  isPremiumContent !== null ? (
+                    <PremiumContentMeta isPremiumContent={isPremiumContent} />
+                  ) : null}
+                <ScrollListener />
+                <RouteChangeListener />
+                <UserInjector />
+                <DfpInjector path={url.query.path} pageType="htz_article" />
+                <GoogleAnalytics withEC />
+                <StyleProvider renderer={styleRenderer} theme={htzTheme}>
+                  <Fragment>
+                    <AriaLive />
+                    <DeviceTypeInjector />
+                    <FelaComponent
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        minHeight: '100vh',
+                      }}
+                    >
+                      {render({ articleId: this.props.url.query.path, slots, pageType, })}
+                    </FelaComponent>
+                    <WelcomePage />
+                  </Fragment>
+                </StyleProvider>
+                <div id="welcomePageModal" />
+                {jsonld ? <PageSchema jsonld={jsonld} /> : null}
+              </Fragment>
+            );
+          }
           return (
-            <Fragment>
-              <Head>
-                <title>{titleSEO}</title>
-              </Head>
-              {// render <PremiumContentMeta/> only when isPremiumContent is defined
-              isPremiumContent !== null ? (
-                <PremiumContentMeta isPremiumContent={isPremiumContent} />
-              ) : null}
-              <ScrollListener />
-              <RouteChangeListener />
-              <UserInjector />
-              <DfpInjector path={url.query.path} pageType="htz_article" />
-              <GoogleAnalytics withEC />
-              <StyleProvider renderer={styleRenderer} theme={htzTheme}>
-                <Fragment>
-                  <AriaLive />
-                  <DeviceTypeInjector />
-                  <FelaComponent
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      minHeight: '100vh',
-                    }}
-                  >
-                    {render({ articleId: this.props.url.query.path, slots, pageType, })}
-                  </FelaComponent>
-                  <WelcomePage />
-                </Fragment>
-              </StyleProvider>
-              <div id="welcomePageModal" />
-              {jsonld ? <PageSchema jsonld={jsonld} /> : null}
-            </Fragment>
+            <Error
+              errorCode={1}
+              kind="error"
+              message="PApi is down, Call Avi Kaufman."
+            />
           );
         }}
       </Query>

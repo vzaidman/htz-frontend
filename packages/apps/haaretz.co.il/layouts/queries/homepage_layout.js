@@ -77,6 +77,11 @@ export default gql`
           ... on TabViewElements {
             ...TabViewElements
           }
+          ... on NullFallback {
+            message
+            errorCode
+            kind
+          }
         }
       }
     }

@@ -42,6 +42,11 @@ export default gql`
             contentName
             properties
           }
+          ... on NullFallback {
+            message
+            errorCode
+            kind
+          }
           ... on ArticleData {
             header {
               exclusive
@@ -125,6 +130,11 @@ export default gql`
               }
               ... on Video {
                 ...Video
+              }
+              ... on NullFallback {
+                message
+                errorCode
+                kind
               }
             }
             tags {

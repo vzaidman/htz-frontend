@@ -39,6 +39,10 @@ export function isTeaser(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.TeaserData';
 }
 
+export function isError(media: KindObject): %checks {
+  return media.kind === 'error';
+}
+
 export function isImage(media: KindObject): %checks {
   return media.kind === 'image';
 }
@@ -61,6 +65,7 @@ export default {
   isMainBlock,
   isTabElement,
   isTeaser,
+  isError,
   isImage,
   isEmbed,
   isGallery,

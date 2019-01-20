@@ -85,7 +85,21 @@ const ArticleData = new GraphQLObjectType({
     ), },
     bookCover: { type: image, },
     authors: { type: new GraphQLList(author), },
-    body: { type: articleBody, },
+    body: {
+      type: articleBody,
+      resolve: ({ body, contentId, }) => {
+        body.forEach((item, index) => {
+          if (!item) {
+            body[index] = {
+              message: `Got Null in body of article ${contentId}, position: ${index}`,
+              kind: 'error',
+              errorCode: 6,
+            };
+          }
+        });
+        return body;
+      },
+    },
     commentsElementId: { type: GraphQLID, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
