@@ -7,15 +7,15 @@ import type {
   StyleProps,
 } from '@haaretz/htz-css-tools';
 
+import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
-import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
-
+import { isClickTracker, } from '../../utils/validateType';
 import Card from '../Card/Card';
+import Debug from '../Debug/Debug';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
 import HtzLink from '../HtzLink/HtzLink';
-import { isClickTracker, } from '../../utils/validateType';
 
 export type IsStackedType = boolean | ComponentPropResponsiveObject<boolean>[];
 
@@ -115,6 +115,9 @@ export default function Teaser({
   isRev,
   gridMiscStyles,
 }: TeaserPropTypes): React.Node {
+  if (!data) {
+    return <Debug>No data was provided for this teaser</Debug>;
+  }
   return (
     <ErrorBoundary>
       <Card
