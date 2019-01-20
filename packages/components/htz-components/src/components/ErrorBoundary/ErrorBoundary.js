@@ -1,41 +1,48 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import Debug from '../Debug/Debug';
 import logger from '../../componentsLogger';
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  FallbackComponent: PropTypes.node,
-};
-
-const defaultProps = {
-  FallbackComponent: null,
-};
-
-class ErrorBoundary extends React.Component {
-  state = {
-    hasError: false,
+export default class ErrorBoundary extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    FallbackComponent: PropTypes.node,
   };
 
-  componentDidCatch(error, info) {
-    this.setState({
-      hasError: true,
-    });
-    logger.error(error, info);
+  static defaultProps = {
+    FallbackComponent: null,
+  };
+
+  state = {
+    error: null,
+    errorInfo: null,
+  };
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({ error, errorInfo, });
+    logger.error(error, errorInfo);
   }
 
   render() {
     const { children, FallbackComponent, } = this.props;
-    return this.state.hasError ? (
-      FallbackComponent ? (
+
+    if (this.state.error) {
+      return FallbackComponent ? (
         <FallbackComponent />
-      ) : null
-    ) : (
-      children
-    );
+      ) : (
+        <Debug>
+          <div>
+            <h2 style={{ fontWeight: 700, fontSize: '2em', lineHeight: 1.5, }}>
+              Oops... Something went wrong
+            </h2>
+            <p style={{ color: 'red', }}>{this.state.error.toString()}</p>
+            <h3>Component Stack Error Details: </h3>
+            <p className="red">{this.state.errorInfo.componentStack}</p>
+          </div>
+        </Debug>
+      );
+    }
+    return children;
   }
 }
-
-ErrorBoundary.propTypes = propTypes;
-ErrorBoundary.defaultProps = defaultProps;
-
-export default ErrorBoundary;
