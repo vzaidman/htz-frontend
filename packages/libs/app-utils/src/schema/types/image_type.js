@@ -6,6 +6,9 @@ const ImageType = new GraphQLObjectType({
   name: 'Image',
   fields: () => ({
     viewMode: { type: GraphQLString, },
+    photographer: { type: GraphQLString, },
+    imageUrlLinkGroup: { type: GraphQLString, },
+    imageUrlLinkGroupTarget: { type: GraphQLString, },
     position: { type: GraphQLString, },
     accessibility: { type: GraphQLString, },
     title: { type: GraphQLString, },

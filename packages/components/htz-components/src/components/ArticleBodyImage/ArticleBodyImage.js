@@ -324,7 +324,7 @@ function ArticleBodyImage({
         },
       }) => (
         <figure className={className}>
-          {shouldOpenGallery && !isFullScreen ? (
+          {shouldOpenGallery && !isFullScreen && !image.imageUrlLinkGroup ? (
             <ApolloBoundaryConsumer>
               {client => (
                 <EnlargementWrapper

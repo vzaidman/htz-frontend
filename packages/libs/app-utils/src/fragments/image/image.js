@@ -4,6 +4,8 @@ import gql from 'graphql-tag';
 const imageObj = `{
   inputTemplate
   viewMode
+  imageUrlLinkGroup
+  imageUrlLinkGroupTarget
   accessibility
   title
   credit
