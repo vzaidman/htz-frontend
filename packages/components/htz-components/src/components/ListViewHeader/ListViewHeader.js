@@ -186,9 +186,10 @@ export default function ListViewHeader({
                   theme.mq({ until: 's', }, { display: 'none', }),
                   theme.type(-1, { until: 'xl', }),
                   theme.type(-2, { from: 'xl', }),
-                  isHorizontal
-                    ? undefined
-                    : theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }),
+                  ...(isHorizontal
+                    ? []
+                    : [ theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }), ]
+                  ),
                 ],
               }}
               render="ul"
