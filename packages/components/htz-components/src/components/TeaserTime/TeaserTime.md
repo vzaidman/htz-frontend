@@ -1,7 +1,7 @@
 Renders date/time for teasers according to the the following logic:
-* If there is no lastUpdate, show only the publishDate (only date)
-* If lastUpdate is in the range of the last 24 hours - show the lastUpdate's hour (only time).
-* If lastUpdate isn't in the range of the last 24 hours - show the lastUpdate's date (only date)
+* `lastUpdate` will be rendered if it exists, otherwise `publishDate` will be used.
+* If in the range of the last 24 hours -> show only time (HH:mm)
+* Otherwise (not in the last 24 hours) -> show only date (DD.MM.YYYY)
 
 **without lastUpdate:**
 ```jsx

@@ -19,17 +19,15 @@ type TeaserTimePropTypes = {
 };
 
 const TeaserTime = ({ className, publishDate, lastUpdate, }: TeaserTimePropTypes): React.Node => {
-  const now = Date.now();
-  if (publishDate) {
-    if (lastUpdate) {
-      if (differenceInHours(now, lastUpdate) < 24) {
-        return <Time className={className} time={lastUpdate} format="HH:mm" />;
-      }
-      return <Time className={className} time={lastUpdate} format="DD.MM.YYYY" />;
-    }
-    return <Time className={className} time={publishDate} format="DD.MM.YYYY" />;
+  const relevantDateTime = lastUpdate || publishDate || null;
+  if (relevantDateTime == null) {
+    return null;
   }
-  return null;
+  const now = Date.now();
+  const format = (differenceInHours(now, relevantDateTime) < 24)
+    ? 'HH:mm'
+    : 'DD.MM.YYYY';
+  return <Time className={className} time={relevantDateTime} format={format} />;
 };
 
 TeaserTime.defaultProps = {
