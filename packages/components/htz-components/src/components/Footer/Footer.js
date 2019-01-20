@@ -113,6 +113,11 @@ const StyledDesktopText = createComponent(optionalExtendedWrapper);
 class Footer extends React.Component {
   static propTypes = {
     contentId: PropTypes.string.isRequired,
+    shouldRenderScripts: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    shouldRenderScripts: true,
   };
 
   state = {
@@ -128,7 +133,7 @@ class Footer extends React.Component {
 
   render() {
     const { expanded, } = this.state;
-    const { contentId, } = this.props;
+    const { contentId, shouldRenderScripts, } = this.props;
     return (
       <Fragment>
         <FirstImpressionPlaceHolder />
@@ -224,10 +229,8 @@ class Footer extends React.Component {
         <FirstImpression />
         <GStat />
         <FirstImpressionPlaceHolder />
-        {/* // todo, get a boolean for each script from polopoly and render scripts
-        accordingly, the following scripts should only render on homepage */}
-        <IdxNielsen />
-        <CrazyEgg />
+        <IdxNielsen shouldRender={shouldRenderScripts} />
+        <CrazyEgg shouldRender={shouldRenderScripts} />
       </Fragment>
     );
   }

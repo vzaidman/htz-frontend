@@ -1,5 +1,6 @@
 /* global window navigator location */
 import { Component, } from 'react';
+import PropTypes from 'prop-types';
 import { appendScript, } from '../../utils/scriptTools';
 
 function deviceUtil() {
@@ -80,46 +81,54 @@ function deviceUtil() {
   };
 }
 class IdxNielsen extends Component {
+  static propTypes = {
+    shouldRender: PropTypes.bool.isRequired,
+  };
+
   componentDidMount() {
-    const DeviceUtil = deviceUtil();
-    window.idx = {
-      lat: null,
-      long: null,
-      xl8id: null,
-      geo_timestamp: null,
-      log_timestamp: DeviceUtil.getTimeStamp(),
-      adv_id_type: null,
-      device_type: DeviceUtil.DeviceType(),
-      device_brand: DeviceUtil.Manufacture(),
-      device_os: DeviceUtil.OSVersion(),
-      device_model: null,
-      age_range: null,
-      birth_year: null,
-      gender: null,
-    };
-    window.xl8_config = {
-      p: 899,
-      g: 1,
-      dataObjects: [ 'articlePageContentGroup', 'idx', ],
-      cssObjects: [
-        {
-          selector: 'meta',
-          key: 'property',
-          value: 'content',
-        },
-        {
-          selector: 'meta',
-          key: 'name',
-          value: 'content',
-        },
-      ],
-    };
-    appendScript({
-      id: 'idx_nielsen',
-      src: 'https://cdn.exelator.com/build/static.min.js',
-      isAsync: true,
-      attributes: { type: 'text/javascript', },
-    });
+    if (this.props.shouldRender) {
+      console.warn('!!! hello i am here!');
+      const DeviceUtil = deviceUtil();
+      window.idx = {
+        lat: null,
+        long: null,
+        xl8id: null,
+        geo_timestamp: null,
+        log_timestamp: DeviceUtil.getTimeStamp(),
+        adv_id_type: null,
+        device_type: DeviceUtil.DeviceType(),
+        device_brand: DeviceUtil.Manufacture(),
+        device_os: DeviceUtil.OSVersion(),
+        device_model: null,
+        age_range: null,
+        birth_year: null,
+        gender: null,
+      };
+      window.xl8_config = {
+        p: 899,
+        g: 1,
+        dataObjects: [ 'articlePageContentGroup', 'idx', ],
+        cssObjects: [
+          {
+            selector: 'meta',
+            key: 'property',
+            value: 'content',
+          },
+          {
+            selector: 'meta',
+            key: 'name',
+            value: 'content',
+          },
+        ],
+      };
+      appendScript({
+        id: 'idx_nielsen',
+        src: 'https://cdn.exelator.com/build/static.min.js',
+        isAsync: true,
+        attributes: { type: 'text/javascript', },
+      });
+    }
+    return null;
   }
 
   render() {
