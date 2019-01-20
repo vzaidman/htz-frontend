@@ -9,10 +9,13 @@ import { FelaComponent, } from 'react-fela';
 import * as React from 'react';
 
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
+
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Grid from '../Grid/Grid';
 import LayoutContainer from '../PageLayout/LayoutContainer';
 import LayoutRow from '../PageLayout/LayoutRow';
 import Section from '../AutoLevels/Section';
+
 import isArray from '../../utils/isArray';
 import isResponsiveOptions from '../../utils/isResponsiveOptions';
 
@@ -113,22 +116,28 @@ export default function ListView({
   gridMiscStyles,
 }: ListViewPropTypes): React.Node {
   return (
-    <ListViewWrapper
-      {...{
-        attrs,
-        disableWrapper,
-        innerBackgroundColor,
-        outerBackgroundColor,
-        marginTop,
-        miscStyles,
-        padding,
-        sectionMiscStyles,
-      }}
-    >
-      <Grid gutter={gutter} rowSpacing={rowSpacing} miscStyles={gridMiscStyles}>
-        {children}
-      </Grid>
-    </ListViewWrapper>
+    <ErrorBoundary>
+      <ListViewWrapper
+        {...{
+          attrs,
+          disableWrapper,
+          innerBackgroundColor,
+          outerBackgroundColor,
+          marginTop,
+          miscStyles,
+          padding,
+          sectionMiscStyles,
+        }}
+      >
+        <Grid
+          gutter={gutter}
+          rowSpacing={rowSpacing}
+          miscStyles={gridMiscStyles}
+        >
+          {children}
+        </Grid>
+      </ListViewWrapper>
+    </ErrorBoundary>
   );
 }
 
