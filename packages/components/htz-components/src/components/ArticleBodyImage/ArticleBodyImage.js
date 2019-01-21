@@ -9,6 +9,7 @@ import Picture from '../Image/Picture';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import ApolloBoundaryConsumer from '../ApolloBoundary/ApolloConsumer';
 import EnlargementWrapper from './EnlargementWrapper';
+import HtzLink from '../HtzLink/HtzLink';
 
 const articleImagePropTypes = {
   /**
@@ -324,7 +325,7 @@ function ArticleBodyImage({
         },
       }) => (
         <figure className={className}>
-          {shouldOpenGallery && !isFullScreen && !image.imageUrlLinkGroup ? (
+          {shouldOpenGallery && !isFullScreen ? (
             <ApolloBoundaryConsumer>
               {client => (
                 <EnlargementWrapper
@@ -370,4 +371,14 @@ function ArticleBodyImage({
 ArticleBodyImage.propTypes = articleImagePropTypes;
 ArticleBodyImage.defaultProps = articleImageDefaultProps;
 
-export default ArticleBodyImage;
+export default ({ imageUrlLinkGroup, imageUrlLinkGroupTarget, ...props }) => (
+  imageUrlLinkGroup
+    ? (
+      <HtzLink href={imageUrlLinkGroup} target={imageUrlLinkGroupTarget}>
+        <ArticleBodyImage {...props} shouldOpenGallery={false} />
+      </HtzLink>
+    )
+    : (
+      <ArticleBodyImage {...props} />
+    )
+);
