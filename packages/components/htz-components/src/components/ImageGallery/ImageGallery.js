@@ -261,7 +261,7 @@ const Gallery = ({
                 exitAction={exitFullScreenAction}
                 itemUrl={buildUrl(
                   image.contentId,
-                  { ...image.imgArray[0], aspects: image.aspects, },
+                  { ...image.imgArray[0], },
                   {
                     width: '1920',
                     aspect: 'full',
