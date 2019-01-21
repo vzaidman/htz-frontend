@@ -100,6 +100,7 @@ const RootQuery = new GraphQLObjectType({
       args: {
         articleCount: { type: new GraphQLNonNull(GraphQLInt), },
         platform: { type: new GraphQLNonNull(GraphQLString), },
+        isSuperContent: { type: new GraphQLNonNull(GraphQLBoolean), },
       },
       resolve(parentValue, args, { dataSources, }) {
         return dataSources.PapiAPI.getPaywallData(args);

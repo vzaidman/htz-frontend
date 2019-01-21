@@ -143,6 +143,13 @@ class ArticleLayout extends React.Component {
             const standardArticleElement = slots.article.find(
               ({ inputTemplate, }) => inputTemplate && inputTemplate.endsWith('StandardArticle')
             );
+            if (standardArticleElement) {
+              client.writeData({
+                data: {
+                  isSuperContent: standardArticleElement.isSuperContent,
+                },
+              });
+            }
             const isPremiumContent = standardArticleElement
               ? standardArticleElement.isPremiumContent
               : null;

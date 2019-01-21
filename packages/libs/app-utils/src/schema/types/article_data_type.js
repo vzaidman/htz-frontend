@@ -105,6 +105,7 @@ const ArticleData = new GraphQLObjectType({
     contentName: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
     isPremiumContent: { type: GraphQLBoolean, },
+    isSuperContent: { type: GraphQLBoolean, },
 
     reviewStars: { type: GraphQLFloat, },
     // recipe article related

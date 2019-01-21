@@ -19,6 +19,7 @@ export default gql`
               contentName
             }
             isPremiumContent
+            isSuperContent
             inputTemplate
           }
         }

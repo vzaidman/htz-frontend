@@ -9,10 +9,12 @@ const paywallDataQuery = gql`
   query getPaywallData(
     $articleCount: Int!
     $platform: String!
+    $isSuperContent: Boolean!
   ) {
     paywall(
       articleCount: $articleCount
       platform: $platform
+      isSuperContent: $isSuperContent
       ) {
       slotLocation
       colorScheme
@@ -30,9 +32,10 @@ const paywallDataQuery = gql`
   }
 `;
 
-const getPlatform = gql`
-  query GetPlatform {
+const getPaywallArgs = gql`
+  query GetPaywallArgs {
       platform @client
+      isSuperContent @client
   }
 `;
 
@@ -62,7 +65,7 @@ type Props = {
 
 const PaywallDataProvider = ({ children, }: Props): React.Node => (
   <NoSSR>
-    <Query query={getPlatform}>
+    <Query query={getPaywallArgs}>
       {({ data, loading, error, }) => {
         if (error) {
           console.log('[PaywallDataProvider] error %o', error);
@@ -74,7 +77,8 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
               query={paywallDataQuery}
               variables={{
                 articleCount: ReadArticleService.getArticleCount() || 1,
-                platform: data.platform, // todo: convert 'web' to 'desktop'
+                platform: data.platform,
+                isSuperContent: data.isSuperContent || false,
               }}
             >
               {({ data, loading, error, }) => {
