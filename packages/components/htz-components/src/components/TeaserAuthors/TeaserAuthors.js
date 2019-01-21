@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { FelaComponent, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 
@@ -42,16 +42,20 @@ const TeaserAuthors = ({
 
   const commaMaxIndex = Math.min(authors.length, limit) - 1;
   return (
-    <React.Fragment>
-      {authors.slice(0, limit).map((author, idx) => (
-        <React.Fragment key={author.contentName}>
-          <InlineAddress miscStyles={miscStyles}>
-            {author.contentName}
-          </InlineAddress>
-          {idx < commaMaxIndex ? ', ' : ''}
-        </React.Fragment>
-      ))}
-    </React.Fragment>
+    <FelaTheme
+      render={theme => (
+        <span dir={theme.direction}>
+          {authors.slice(0, limit).map((author, idx) => (
+            <React.Fragment key={author.contentName}>
+              <InlineAddress miscStyles={miscStyles}>
+                {author.contentName}
+              </InlineAddress>
+              {idx < commaMaxIndex ? ', ' : ''}
+            </React.Fragment>
+          ))}
+        </span>
+      )}
+    />
   );
 };
 
