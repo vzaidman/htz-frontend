@@ -393,7 +393,7 @@ export default class AdManager {
       //  if a paywall pop-up is shown And the number is 12 or more - SHOW MAAVRON
       && this.shouldDisplayAdMaavaronAfterPayWallBanner(adSlot)
       // Mobile device detection (responsive)
-      && this.isMobile(adSlot)
+      // && this.isMobile(adSlot)
       // Responsive: breakpoint contains ad?
       && this.doesBreakpointContainAd(adSlot)
       // check in case of Smartphoneapp
