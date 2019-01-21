@@ -423,7 +423,11 @@ function Editorial({
                     ],
                   }}
                 >
-                  {data.firstParagraph}
+                  {
+                    data.firstParagraph
+                      ? data.firstParagraph.replace(/&quot;/g, '"')
+                      : ''
+                  }
                 </FelaComponent>
                 <FelaComponent
                   render="footer"
