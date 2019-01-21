@@ -99,7 +99,7 @@ const RootQuery = new GraphQLObjectType({
       type: Paywall,
       args: {
         articleCount: { type: new GraphQLNonNull(GraphQLInt), },
-        platform: { type: new GraphQLNonNull(GraphQLString), },
+        useragent: { type: new GraphQLNonNull(GraphQLString), },
         isSuperContent: { type: new GraphQLNonNull(GraphQLBoolean), },
       },
       resolve(parentValue, args, { dataSources, }) {
