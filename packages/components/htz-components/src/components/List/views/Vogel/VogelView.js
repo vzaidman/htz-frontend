@@ -33,7 +33,16 @@ export default function VogelView({
       marginTop={0}
       disableWrapper
     >
-      {list.title ? <VogelListTitle title={list.title} /> : null}
+      {
+        list.title
+          ? (
+            <VogelListTitle
+              title={list.title}
+              url={list.url}
+            />
+          )
+          : null
+        }
       <GridItem
         miscStyles={{
           flexBasis: 'auto',
