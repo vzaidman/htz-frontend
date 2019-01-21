@@ -534,7 +534,7 @@ export default class AdManager {
    * @param {AdSlot} adSlot - the adSlot to check.
    * @returns {boolean} true iff the adSlot should be displayed.
    */
-  isMobile(adSlot) {
+  /* isMobile(adSlot) {
     if (!adSlot) {
       throw new Error(
         'Missing argument: a call to isMobile must have an adSlot'
@@ -543,7 +543,7 @@ export default class AdManager {
     const isMobileAdSlot = adSlot.id.includes('mobile_web');
     const isOnMobile = this.config.isMobile;
     return isMobileAdSlot === isOnMobile;
-  }
+  } */
 
   /**
    * Initializes the callback from the 'slotRenderEnded' event for each slot
