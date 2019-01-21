@@ -62,13 +62,13 @@ function Leonardo({ list, }: Props): Node {
                             extend: [
                               borderTop(
                                 '1px',
-                                2,
+                                0,
                                 'solid',
                                 theme.color('neutral', '-5')
                               ),
                               borderBottom(
                                 '1px',
-                                2,
+                                0,
                                 'solid',
                                 theme.color('neutral', '-5')
                               ),
@@ -81,7 +81,7 @@ function Leonardo({ list, }: Props): Node {
                               imgOptions={{
                                 transforms: {
                                   width: '227',
-                                  aspect: 'landscape',
+                                  aspect: 'full',
                                   quality: 'auto',
                                 },
                               }}
