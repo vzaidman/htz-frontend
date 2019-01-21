@@ -183,7 +183,7 @@ function ListItems({
               miscStyles={{ display: 'flex', }}
             >
               {/* banner content */}
-              <GeneralAdSlot {...(dfp ? dfp[0] : {})} />
+              <GeneralAdSlot {...(dfp ? dfp[0] : {})} miscStyles={{ width: '100%', }} />
             </GridItem>
           ) : null}
           {/* end banner */}

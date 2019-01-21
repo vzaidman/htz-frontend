@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unused-state */
-import React, { Fragment, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
+import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Query from '../ApolloBoundary/Query';
 import ToggleFade from '../Transitions/ToggleFade';
 
@@ -30,9 +32,16 @@ class Zen extends React.Component {
      * Should the element be hidden or removed (default).
      */
     hide: PropTypes.bool,
+    /**
+     * A special property holding miscellaneous CSS values that
+     * trump all default values. Processed by
+     * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
+     */
+    miscStyles: stylesPropType,
   };
 
   static defaultProps = {
+    miscStyles: null,
     animate: false,
     hide: false,
   };
@@ -43,7 +52,7 @@ class Zen extends React.Component {
   };
 
   render() {
-    const { children, hide, animate, } = this.props;
+    const { children, hide, animate, miscStyles, } = this.props;
     return (
       <Query query={ZEN_QUERY}>
         {({ loading, error, data, }) => {
@@ -52,20 +61,41 @@ class Zen extends React.Component {
           const { zenMode, } = data;
           if (hide) {
             return (
-              <FelaComponent style={{ display: zenMode ? 'none' : 'block', }}>
+              <FelaComponent
+                style={theme => ({
+                  display: zenMode ? 'none' : 'block',
+                  extend: [
+                    ...(miscStyles
+                      ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                      : []),
+                  ],
+                })}
+              >
                 {children}
               </FelaComponent>
             );
           }
           if (animate) {
             return (
-              <ToggleFade duration={0} show={!zenMode}>
+              <ToggleFade duration={0} show={!zenMode} miscStyles={miscStyles}>
                 {children}
               </ToggleFade>
             );
           }
           if (!zenMode) {
-            return <Fragment>{children}</Fragment>;
+            return (
+              <FelaComponent
+                style={theme => ({
+                  extend: [
+                    ...(miscStyles
+                      ? parseStyleProps(miscStyles, theme.mq, theme.type)
+                      : []),
+                  ],
+                })}
+              >
+                {children}
+              </FelaComponent>
+            );
           }
           return null;
         }}
