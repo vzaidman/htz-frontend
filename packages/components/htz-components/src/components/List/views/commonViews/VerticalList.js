@@ -75,7 +75,7 @@ export default function VerticalList({
                 title={title || (list ? list.title : '')}
                 backgroundColor={[ 'white', ]}
                 isCommercial={isCommercial}
-                miscStyles={{
+                titleMiscStyles={{
                   ...theme.type(0),
                 }}
               />
@@ -283,6 +283,7 @@ function VerticalListTeaser({
                     theme.color('neutral', '-5'),
                   ],
                 }),
+              fontWeight: [ { from: 'xl', value: 700, }, ],
             }}
             renderContent={() => (
               <TeaserHeader
@@ -293,7 +294,10 @@ function VerticalListTeaser({
                 }
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
-                typeScale={-1}
+                typeScale={[
+                  { until: 'xl', value: -1, },
+                  { from: 'xl', value: -2, },
+                ]}
                 kickerTypeScale={-1}
                 miscStyles={{ fontWeight: '400', }}
               />

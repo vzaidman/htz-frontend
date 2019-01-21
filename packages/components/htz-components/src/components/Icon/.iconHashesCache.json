@@ -21,7 +21,7 @@
   "src/components/Icon/icons/IconDislike.js": "1cf5af2b03899da247319020205fc733",
   "src/components/Icon/icons/IconDrive.js": "16501163512ebb0b5f0738a15e7b1587",
   "src/components/Icon/icons/IconFacebook.js": "ccfc26f20fbf1436656adb17d3bb1a50",
-  "src/components/Icon/icons/IconFacebookLogo.js": "4fedd8182be3f833ffe470d4e1d52661",
+  "src/components/Icon/icons/IconFacebookLogo.js": "96937636171c52b5dc2acba02b70f6fd",
   "src/components/Icon/icons/IconGPlus.js": "676fb7b802e108943f4b1af3d7d40517",
   "src/components/Icon/icons/IconGaniYoshua.js": "683cc33163821c41a247fb78ddc6fa9a",
   "src/components/Icon/icons/IconHaaretzLogo.js": "fb94fffa1e1c2f0a665d6fe95ec45d0a",
@@ -41,7 +41,7 @@
   "src/components/Icon/icons/IconPortions.js": "5e4cdac7cfe8d6ea0eee96ef3cc82c16",
   "src/components/Icon/icons/IconPetachTikva.js": "b004a9988cbc9b8e1f33d67cce2b8d6b",
   "src/components/Icon/icons/IconPrint.js": "02417a775d483f63d82eb516e894766d",
-  "src/components/Icon/icons/IconReading.js": "223d61dfcc5358be9cb267873eb69593",
+  "src/components/Icon/icons/IconReading.js": "27339b30eddf95a8aed254e57fa6f31d",
   "src/components/Icon/icons/IconQuote.js": "121f7d11ed22065def415ced03f2b3f2",
   "src/components/Icon/icons/IconReply.js": "9c1166b35b6b4186585098d6964936b4",
   "src/components/Icon/icons/IconRss.js": "007cb1fd6b0e78f9fd49f0a52ada7055",
@@ -59,5 +59,6 @@
   "src/components/Icon/icons/IconZoomOut.js": "304e305b68b166a2c40729cb9a4708ec",
   "src/components/Icon/icons/IconZoomIn.js": "688a272457aff819530bdb35735c9b5f",
   "src/components/Icon/icons/IconMarkerLogo.js": "da09f07ed46d2e64fd8d119b1279263d",
-  "src/components/Icon/icons/IconMail.js": "e41752f263e64a09e1dffd597c588804"
+  "src/components/Icon/icons/IconMail.js": "e41752f263e64a09e1dffd597c588804",
+  "src/components/Icon/icons/IconArrowDiagonal.js": "119861ae532f011aaee51ad9a3be1063"
 }

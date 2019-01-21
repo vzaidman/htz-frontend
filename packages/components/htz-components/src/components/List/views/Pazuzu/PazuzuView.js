@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
-
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
 
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
 import CommentsCount from '../../../CommentsCount/CommentsCount';
+import Debug from '../../../Debug/Debug';
 import GridItem from '../../../Grid/GridItem';
 import Image from '../../../Image/Image';
 import ListView from '../../../ListView/ListView';
@@ -58,17 +58,66 @@ Pazuzu.defaultProps = {
   width: null,
 };
 
+export default function Pazuzu({
+  isStackedOnXl,
+  gutter,
+  width,
+  list,
+  lazyLoadImages,
+}: Props): React.Node {
+  const { items = [], } = list || {};
+  return (
+    <FelaTheme
+      render={theme => (
+        <GridItem
+          gutter={gutter}
+          width={width}
+          miscStyles={{
+            marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
+          }}
+        >
+          <ListView disableWrapper gutter={0} marginTop={0}>
+            {items && items[0] ? (
+              <PazuzuTeaser
+                lazyLoadImages={lazyLoadImages}
+                isStackedOnXl={isStackedOnXl}
+                isSecondItem={false}
+                item={items[0]}
+              />
+            ) : (
+              <Debug>There is no data for the first teaser in this list</Debug>
+            )}
+            {items && items[1] ? (
+              <PazuzuTeaser
+                lazyLoadImages={lazyLoadImages}
+                isStackedOnXl={isStackedOnXl}
+                isSecondItem
+                item={items[1]}
+              />
+            ) : (
+              <Debug>There is no data for the second teaser in this list</Debug>
+            )}
+          </ListView>
+        </GridItem>
+      )}
+    />
+  );
+}
+
+type PazuzuTeaserPropTypes = {
+  item: TeaserDataType,
+  isStackedOnXl: boolean,
+  isSecondItem: boolean,
+  lazyLoadImages: boolean,
+};
+
+PazuzuTeaser.defaultProps = { lazyLoadImages: false, };
 function PazuzuTeaser({
   item,
   isStackedOnXl,
   isSecondItem,
   lazyLoadImages,
-}: {
-  item: TeaserDataType,
-  isStackedOnXl: boolean,
-  isSecondItem: boolean,
-  lazyLoadImages: boolean,
-}): React.Node {
+}: PazuzuTeaserPropTypes): React.Node {
   const stackingSettings = isStackedOnXl
     ? true
     : [ { until: 'xl', value: true, }, { from: 'xl', value: false, }, ];
@@ -94,7 +143,7 @@ function PazuzuTeaser({
             <TeaserMedia
               data={item}
               isStacked={stackingSettings}
-              width={isStackedOnXl ? null : [ { from: 'xl', value: 44, }, ]}
+              width={isStackedOnXl ? null : [ { from: 'xl', value: 48, }, ]}
             >
               {isStackedOnXl ? (
                 <Picture
@@ -130,7 +179,7 @@ function PazuzuTeaser({
                     bps: theme.bps,
                     aspect: 'headline',
                     sizes: [
-                      { from: 'xl', size: '308px', },
+                      { from: 'xl', size: '336px', },
                       { from: 'l', size: '314px', },
                       { from: 'm', size: '348px', },
                       { from: 's', size: '264px', },
@@ -147,7 +196,7 @@ function PazuzuTeaser({
               padding={[
                 { until: 's', value: [ 1, 1, 0, ], },
                 { from: 's', until: 'xl', value: [ 1, 0, 0, ], },
-                { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : [ 0, 1, 0, 0, ], },
+                { from: 'xl', value: isStackedOnXl ? [ 1, 0, 0, ] : [ 0, 2, 0, 0, ], },
               ]}
               footerMiscStyles={{
                 color: theme.color('neutral', '-3'),
@@ -168,14 +217,14 @@ function PazuzuTeaser({
               footerPadding={[
                 { until: 'xl', value: 1, },
                 { from: 'xl', value: [ 1, 0, ], },
-                { from: 'xl', value: isStackedOnXl ? [ 1, 0, ] : [ 1, 1, 1, 0, ], },
+                { from: 'xl', value: isStackedOnXl ? [ 1, 0, ] : [ 1, 2, 1, 0, ], },
               ]}
               renderContent={() => (
                 <TeaserHeader
                   {...item}
                   typeScale={[
                     { until: 's', value: -1, },
-                    { from: 's', until: 'xl', value: 1, },
+                    { from: 's', value: 1, },
                   ]}
                 />
               )}
@@ -214,42 +263,3 @@ function PazuzuTeaser({
     />
   );
 }
-
-function Pazuzu({
-  isStackedOnXl,
-  gutter,
-  width,
-  list: { items, },
-  lazyLoadImages,
-}: Props): React.Node {
-  return (
-    <FelaTheme
-      render={theme => (
-        <GridItem
-          gutter={gutter}
-          width={width}
-          miscStyles={{
-            marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
-          }}
-        >
-          <ListView disableWrapper gutter={0} marginTop={0}>
-            <PazuzuTeaser
-              lazyLoadImages={lazyLoadImages}
-              isStackedOnXl={isStackedOnXl}
-              isSecondItem={false}
-              item={items[0]}
-            />
-            <PazuzuTeaser
-              lazyLoadImages={lazyLoadImages}
-              isStackedOnXl={isStackedOnXl}
-              isSecondItem
-              item={items[1]}
-            />
-          </ListView>
-        </GridItem>
-      )}
-    />
-  );
-}
-
-export default Pazuzu;

@@ -122,6 +122,8 @@ function teaserRankStyle({
   theme,
 }: TeaserRankStyleOpts): Object {
   return {
+    position: 'relative',
+    top: '-0.15em',
     whiteSpace: 'nowrap',
     extend: [
       // Set the width and height of an icon. The svgs' "height" attribute is

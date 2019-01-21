@@ -51,7 +51,9 @@ function VogelItem({
         <Teaser
           data={data}
           miscStyles={{
-            ...(hideOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
+            ...(hideOnMobile
+              ? { display: [ { until: 's', value: 'none', }, ], }
+              : {}),
             flexGrow: '1',
             flexShrink: '0',
           }}
@@ -66,7 +68,9 @@ function VogelItem({
                 flexShrink: '0',
                 flexGrow: '0',
                 width: '100%',
-                ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
+                ...(hideImageOnMobile
+                  ? { display: [ { until: 's', value: 'none', }, ], }
+                  : {}),
               }}
             >
               <Image
@@ -108,7 +112,12 @@ function VogelItem({
                     ? [
                       {
                         from: 's',
-                        value: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
+                        value: [
+                          '1px',
+                          1,
+                          'solid',
+                          theme.color('neutral', '-5'),
+                        ],
                       },
                     ]
                     : [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
@@ -117,7 +126,10 @@ function VogelItem({
             renderContent={teaserData => (
               <TeaserHeader
                 {...teaserData}
-                typeScale={-1}
+                typeScale={[
+                  { until: 'xl', value: -1, },
+                  { from: 'xl', value: -2, },
+                ]}
                 kickerTypeScale={-1}
                 miscStyles={{ fontWeight: 'normal', }}
                 onClick={() => biAction({ index, articleId: data.contentId, })}

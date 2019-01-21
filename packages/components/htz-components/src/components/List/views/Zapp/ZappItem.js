@@ -88,7 +88,10 @@ export default function ZappItem({
       </TeaserMedia>
       <TeaserContent
         data={data}
-        padding={[ 1, 1, 1, ]}
+        padding={[
+          { until: 's', value: [ 1, 1, 0, ], },
+          { from: 's', value: [ 1, 0, 0, ], },
+        ]}
         footerPadding={[ 1, 1, 1, ]}
         isStacked={[ { from: 'l', value: true, }, ]}
         gridItemMiscStyles={{
@@ -97,11 +100,7 @@ export default function ZappItem({
         renderContent={() => (
           <TeaserHeader
             {...data}
-            typeScale={[
-              { until: 's', value: -1, },
-              { from: 's', until: 'xl', value: 0, },
-              { from: 'xl', value: -1, },
-            ]}
+            typeScale={[ { until: 's', value: -1, }, { from: 's', value: 0, }, ]}
             onClick={() => biAction({ index, articleId: data.contentId, })}
           />
         )}

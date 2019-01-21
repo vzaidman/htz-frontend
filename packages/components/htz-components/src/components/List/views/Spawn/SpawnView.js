@@ -371,7 +371,7 @@ function Editorial({
 
           <TeaserContent
             data={data}
-            padding={[ { from: 's', value: [ 0, 0, 4, ], }, ]}
+            padding={[ { from: 's', value: [ 1, 0, 4, ], }, ]}
             miscStyles={{ flexGrow: [ { from: 'l', value: '1', }, ], }}
             renderContent={() => (
               <React.Fragment>
@@ -410,24 +410,22 @@ function Editorial({
                       )} 40%, ${rgba(theme.color('white'), 0) || ''} 100%)`,
                       bottom: '0',
                       content: '""',
-                      height: '16rem',
+                      height: '13rem',
                       left: '0',
                       position: 'absolute',
                       right: '0',
                     },
                     extend: [
-                      theme.type(-1, { from: 'xl', }),
+                      theme.type(-2, { from: 'xl', }),
                       theme.mq({ until: 's', }, { display: 'none', }),
                       theme.mq({ from: 's', until: 'l', }, { height: '16rem', }),
                       theme.mq({ from: 'l', }, { height: '18rem', }),
                     ],
                   }}
                 >
-                  {
-                    data.firstParagraph
-                      ? data.firstParagraph.replace(/&quot;/g, '"')
-                      : ''
-                  }
+                  {data.firstParagraph
+                    ? data.firstParagraph.replace(/&quot;/g, '"')
+                    : ''}
                 </FelaComponent>
                 <FelaComponent
                   render="footer"
@@ -523,7 +521,11 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
             }}
             isStacked={[ { from: 's', value: true, }, ]}
             renderContent={() => (
-              <TeaserHeader {...data} typeScale={[ { from: 'xl', value: -1, }, ]} showKicker={false} />
+              <TeaserHeader
+                {...data}
+                typeScale={[ { from: 'xl', value: -1, }, ]}
+                showKicker={false}
+              />
             )}
             renderFooter={() => (
               <React.Fragment>

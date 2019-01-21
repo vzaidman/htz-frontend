@@ -1,12 +1,11 @@
 // @flow
 
-import { FelaTheme, } from 'react-fela';
 import * as React from 'react';
+import { FelaTheme, } from 'react-fela';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
-
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -18,6 +17,7 @@ import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
+import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 
 type MorboPropsType = {
@@ -243,6 +243,9 @@ function Teaser234({
             width={1}
             padding={[ 1, 1, 0, ]}
             footerPadding={[ 1, 1, ]}
+            footerMiscStyles={{
+              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+            }}
             renderContent={() => (
               <TeaserHeader
                 typeScale={[
@@ -255,10 +258,13 @@ function Teaser234({
               />
             )}
             renderFooter={() => (
-              <CommentsCount
-                commentsCount={data.commentsCounts}
-                miscStyles={{ type: -3, }}
-              />
+              <React.Fragment>
+                {data.publishDate || data.lastUpdate ? (
+                  <TeaserTime {...data} />
+                ) : null}
+                {' '}
+                <CommentsCount commentsCount={data.commentsCounts} />
+              </React.Fragment>
             )}
           />
         </Teaser>

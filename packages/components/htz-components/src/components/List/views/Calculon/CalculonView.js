@@ -220,8 +220,14 @@ function Teaser1({
               { from: 'l', until: 'xl', value: 3 / 10, },
               { from: 'xl', value: 2 / 8, },
             ]}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
+            padding={[
+              { until: 'l', value: [ 1, 1, 0, ], },
+              { from: 'l', value: [ 2, 2, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 'l', value: 1, },
+              { from: 'l', value: [ 1, 2, ], },
+            ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
               display: 'flex',
@@ -315,7 +321,18 @@ function Teaser2({
           <TeaserContent
             data={data}
             width={[ { from: 'l', until: 'xl', value: 3 / 5, }, ]}
-            padding={[ 1, 0, 1, 1, ]}
+            padding={[
+              { until: 's', value: [ 1, 0, 0, 1, ], },
+              { from: 's', until: 'l', value: [ 1, 1, 0, 1, ], },
+              { from: 'l', until: 'xl', value: [ 1, 0, 0, 1, ], },
+              { from: 'xl', value: [ 1, 1, 0, 1, ], },
+            ]}
+            paddingFooter={[
+              { until: 's', value: [ 1, 0, 1, 1, ], },
+              { from: 's', until: 'l', value: 1, },
+              { from: 'l', until: 'xl', value: [ 1, 0, 1, 1, ], },
+              { from: 'xl', value: 1, },
+            ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
               display: 'flex',

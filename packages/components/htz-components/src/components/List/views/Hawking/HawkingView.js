@@ -340,11 +340,7 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
               <TeaserHeader {...data} typeScale={[ { until: 's', value: -1, }, ]} />
             )}
             renderFooter={() => (
-              <CommentsCount
-                commentsCount={item.commentsCounts}
-                minCount={1}
-                miscStyles={{ paddingRight: '1rem', }}
-              />
+              <CommentsCount commentsCount={item.commentsCounts} />
             )}
           />
         </Teaser>

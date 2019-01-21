@@ -14,15 +14,17 @@ const MousepadQuery = gql`
     list(listId: $listId, history: $history) {
       items {
         ... on TeaserInList {
-          contentId
-          path
-          representedContent
           commentsCounts
+          contentId
           exclusive
           exclusiveMobile
+          inputTemplate
+          lastUpdate
+          path
+          publishDate
+          representedContent
           title
           titleMobile
-          inputTemplate
         }
       }
     }

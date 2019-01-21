@@ -7,29 +7,29 @@ exports[`<Boxy> DOM element renders YouTube correctly 1`] = `
     id={null}
   >
     <div
-      className="htz-c htz-d htz-e htz-b htz-f htz-g htz-h htz-i htz-j"
+      className="htz-c htz-d htz-e htz-b htz-f htz-g htz-h htz-i htz-j htz-k"
     >
       <div
-        className="htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v"
+        className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w"
       >
         <h2
-          className="htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+          className="htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
           offset={1}
         >
           עמוד באדמה
         </h2>
       </div>
       <div
-        className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+        className="htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av"
         id={null}
       >
         <article
-          className="htz-j"
+          className="htz-k"
           tabIndex={-1}
         >
           <a
             aria-hidden={true}
-            className="htz-av htz-aw htz-ax htz-k htz-l htz-ay htz-az"
+            className="htz-aw htz-ax htz-ay htz-l htz-m htz-az htz-ba"
             href="/1.6437284"
             onClick={null}
             tabIndex="-1"
@@ -41,7 +41,7 @@ exports[`<Boxy> DOM element renders YouTube correctly 1`] = `
 </div>
 `;
 
-exports[`<Boxy> DOM element renders YouTube correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-c{background-color:#FFF}.htz-d{margin-right:auto}.htz-e{margin-left:auto}.htz-j{position:relative}.htz-k{position:absolute}.htz-l{right:0}.htz-m{z-index:2}.htz-n{max-width:70%}.htz-w{font-weight:400}.htz-x{padding:1rem}.htz-y{background-color:rgba(255,231,12,0.85)}.htz-z{display:inline}.htz-ab{-webkit-box-decoration-break:clone}.htz-ac{box-decoration-break:clone}.htz-ae{padding-top:0}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-ah{padding-bottom:0}.htz-ai{box-sizing:border-box}.htz-aj{flex-basis:100%}.htz-ak{flex-grow:0}.htz-al{flex-shrink:0}.htz-am{list-style:none}.htz-an{padding-left:0rem}.htz-ao{padding-right:0rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{flex-direction:column}.htz-ar{max-width:100%}.htz-as{-webkit-box-flex:0}.htz-at{-webkit-box-orient:vertical}.htz-au{-webkit-box-direction:normal}.htz-av{background-color:transparent}.htz-aw{bottom:0}.htz-ax{left:0}.htz-ay{top:0}.htz-az{z-index:0}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-f{max-width:100%}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{max-width:100%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-h{max-width:100%}.htz-r{font-size:4.666666666666667rem}.htz-s{line-height:6rem}}@media (min-width: 80em){.htz-i{max-width:180.42857142857142rem}.htz-t{font-size:4.428571428571429rem}.htz-u{line-height:6rem}}@media (max-width: 63.9375em){.htz-o{font-size:4rem}.htz-p{line-height:5rem}.htz-q{bottom:1px}}@media (min-width: 64em){.htz-v{bottom:2px}}"`;
+exports[`<Boxy> DOM element renders YouTube correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-c{background-color:#FFF}.htz-d{margin-right:auto}.htz-e{margin-left:auto}.htz-j{overflow:hidden}.htz-k{position:relative}.htz-l{position:absolute}.htz-m{right:0}.htz-n{z-index:2}.htz-o{max-width:70%}.htz-x{font-weight:400}.htz-y{padding:1rem}.htz-z{background-color:rgba(255,231,12,0.85)}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-top:0.15em}.htz-ag{padding-right:1rem}.htz-ah{padding-left:1rem}.htz-ai{padding-bottom:0.15em}.htz-aj{box-sizing:border-box}.htz-ak{flex-basis:100%}.htz-al{flex-grow:0}.htz-am{flex-shrink:0}.htz-an{list-style:none}.htz-ao{padding-left:0rem}.htz-ap{padding-right:0rem}.htz-aq{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ar{flex-direction:column}.htz-as{max-width:100%}.htz-at{-webkit-box-flex:0}.htz-au{-webkit-box-orient:vertical}.htz-av{-webkit-box-direction:normal}.htz-aw{background-color:transparent}.htz-ax{bottom:0}.htz-ay{left:0}.htz-az{top:0}.htz-ba{z-index:0}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-f{max-width:100%}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{max-width:100%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-h{max-width:100%}.htz-s{font-size:4.666666666666667rem}.htz-t{line-height:6.4rem}}@media (min-width: 80em){.htz-i{max-width:180.42857142857142rem}.htz-u{font-size:3.857142857142857rem}.htz-v{line-height:5.4rem}}@media (max-width: 63.9375em){.htz-p{font-size:4rem}.htz-q{line-height:5.5rem}.htz-r{bottom:1px}}@media (min-width: 64em){.htz-w{bottom:0}}"`;
 
 exports[`<Boxy> DOM element renders facebook correctly 1`] = `
 <div>
@@ -50,38 +50,38 @@ exports[`<Boxy> DOM element renders facebook correctly 1`] = `
     id={null}
   >
     <div
-      className="htz-c htz-d htz-e htz-b htz-f htz-g htz-h htz-i htz-j"
+      className="htz-c htz-d htz-e htz-b htz-f htz-g htz-h htz-i htz-j htz-k"
     >
       <div
-        className="htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v"
+        className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w"
       >
         <h2
-          className="htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+          className="htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
           offset={1}
         >
           <span
-            className="htz-ai"
+            className="htz-aj"
           >
             test facebook
           </span>
           <span
-            className="htz-aj"
+            className="htz-ak"
           >
             test facebook embed
           </span>
         </h2>
       </div>
       <div
-        className="htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw"
+        className="htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
         id={null}
       >
         <article
-          className="htz-j"
+          className="htz-k"
           tabIndex={-1}
         >
           <a
             aria-hidden={true}
-            className="htz-ax htz-ay htz-az htz-k htz-l htz-ba htz-bb"
+            className="htz-ay htz-az htz-ba htz-l htz-m htz-bb htz-bc"
             href="http://pre.haaretz.co.il/news/local/1.6611159"
             onClick={null}
             tabIndex="-1"
@@ -93,7 +93,7 @@ exports[`<Boxy> DOM element renders facebook correctly 1`] = `
 </div>
 `;
 
-exports[`<Boxy> DOM element renders facebook correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-c{background-color:#FFF}.htz-d{margin-right:auto}.htz-e{margin-left:auto}.htz-j{position:relative}.htz-k{position:absolute}.htz-l{right:0}.htz-m{z-index:2}.htz-n{max-width:70%}.htz-w{font-weight:400}.htz-x{padding:1rem}.htz-y{background-color:rgba(255,231,12,0.85)}.htz-z{display:inline}.htz-ab{-webkit-box-decoration-break:clone}.htz-ac{box-decoration-break:clone}.htz-ae{padding-top:0}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-ah{padding-bottom:0}.htz-ak{box-sizing:border-box}.htz-al{flex-basis:100%}.htz-am{flex-grow:0}.htz-an{flex-shrink:0}.htz-ao{list-style:none}.htz-ap{padding-left:0rem}.htz-aq{padding-right:0rem}.htz-ar{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-as{flex-direction:column}.htz-at{max-width:100%}.htz-au{-webkit-box-flex:0}.htz-av{-webkit-box-orient:vertical}.htz-aw{-webkit-box-direction:normal}.htz-ax{background-color:transparent}.htz-ay{bottom:0}.htz-az{left:0}.htz-ba{top:0}.htz-bb{z-index:0}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-f{max-width:100%}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{max-width:100%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-h{max-width:100%}.htz-r{font-size:4.666666666666667rem}.htz-s{line-height:6rem}}@media (min-width: 80em){.htz-i{max-width:180.42857142857142rem}.htz-t{font-size:4.428571428571429rem}.htz-u{line-height:6rem}}@media (max-width: 63.9375em){.htz-o{font-size:4rem}.htz-p{line-height:5rem}.htz-q{bottom:1px}}@media (min-width: 64em){.htz-v{bottom:2px}}@media (min-width: 37.5em){.htz-ai{display:none}}@media (max-width: 37.4375em){.htz-aj{display:none}}"`;
+exports[`<Boxy> DOM element renders facebook correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-c{background-color:#FFF}.htz-d{margin-right:auto}.htz-e{margin-left:auto}.htz-j{overflow:hidden}.htz-k{position:relative}.htz-l{position:absolute}.htz-m{right:0}.htz-n{z-index:2}.htz-o{max-width:70%}.htz-x{font-weight:400}.htz-y{padding:1rem}.htz-z{background-color:rgba(255,231,12,0.85)}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-top:0.15em}.htz-ag{padding-right:1rem}.htz-ah{padding-left:1rem}.htz-ai{padding-bottom:0.15em}.htz-al{box-sizing:border-box}.htz-am{flex-basis:100%}.htz-an{flex-grow:0}.htz-ao{flex-shrink:0}.htz-ap{list-style:none}.htz-aq{padding-left:0rem}.htz-ar{padding-right:0rem}.htz-as{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-at{flex-direction:column}.htz-au{max-width:100%}.htz-av{-webkit-box-flex:0}.htz-aw{-webkit-box-orient:vertical}.htz-ax{-webkit-box-direction:normal}.htz-ay{background-color:transparent}.htz-az{bottom:0}.htz-ba{left:0}.htz-bb{top:0}.htz-bc{z-index:0}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-f{max-width:100%}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{max-width:100%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-h{max-width:100%}.htz-s{font-size:4.666666666666667rem}.htz-t{line-height:6.4rem}}@media (min-width: 80em){.htz-i{max-width:180.42857142857142rem}.htz-u{font-size:3.857142857142857rem}.htz-v{line-height:5.4rem}}@media (max-width: 63.9375em){.htz-p{font-size:4rem}.htz-q{line-height:5.5rem}.htz-r{bottom:1px}}@media (min-width: 64em){.htz-w{bottom:0}}@media (min-width: 37.5em){.htz-aj{display:none}}@media (max-width: 37.4375em){.htz-ak{display:none}}"`;
 
 exports[`<Boxy> DOM element renders image correctly 1`] = `
 <div>
@@ -102,33 +102,33 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
     id={null}
   >
     <div
-      className="htz-c htz-d htz-e htz-b htz-f htz-g htz-h htz-i htz-j"
+      className="htz-c htz-d htz-e htz-b htz-f htz-g htz-h htz-i htz-j htz-k"
     >
       <div
-        className="htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v"
+        className="htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w"
       >
         <h2
-          className="htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
+          className="htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai"
           offset={1}
         >
           <span
-            className="htz-ai"
+            className="htz-aj"
           >
             יונה יהב הודה בהפסד בבחירות לקליש-רותם: "מכבד את רצון הבוחרים"
           </span>
           <span
-            className="htz-aj"
+            className="htz-ak"
           >
             תוצאות הבחירות המקומיות בחיפה | יונה יהב הודה בהפסד לקליש-רותם: "מכבד את רצון הבוחרים"
           </span>
         </h2>
       </div>
       <div
-        className="htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar"
+        className="htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as"
         id={null}
       >
         <div
-          className="htz-j htz-as"
+          className="htz-k htz-at"
         >
           <a
             className={null}
@@ -137,7 +137,7 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
             tabIndex={-1}
           >
             <div
-              className="htz-at htz-b htz-j htz-au htz-av htz-aw htz-ax"
+              className="htz-au htz-b htz-k htz-av htz-aw htz-ax htz-ay"
             >
               <picture>
                 <source
@@ -172,7 +172,7 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
                 />
                 <img
                   alt="יונה יהב, היום"
-                  className="htz-ay htz-az htz-k htz-ba htz-b"
+                  className="htz-az htz-ba htz-l htz-bb htz-b"
                   sizes="(min-width:1280px) 1280px, 100vw"
                   src="https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg"
                   srcSet={
@@ -198,4 +198,4 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
 </div>
 `;
 
-exports[`<Boxy> DOM element renders image correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-c{background-color:#FFF}.htz-d{margin-right:auto}.htz-e{margin-left:auto}.htz-j{position:relative}.htz-k{position:absolute}.htz-l{right:0}.htz-m{z-index:2}.htz-n{max-width:70%}.htz-w{font-weight:400}.htz-x{padding:1rem}.htz-y{background-color:rgba(255,231,12,0.85)}.htz-z{display:inline}.htz-ab{-webkit-box-decoration-break:clone}.htz-ac{box-decoration-break:clone}.htz-ae{padding-top:0}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-ah{padding-bottom:0}.htz-ak{box-sizing:border-box}.htz-al{flex-basis:0}.htz-am{flex-grow:1}.htz-an{flex-shrink:1}.htz-ao{list-style:none}.htz-ap{padding-left:0rem}.htz-aq{padding-right:0rem}.htz-ar{-webkit-box-flex:1}.htz-as{z-index:1}.htz-at{height:0}.htz-au{padding-bottom:43.18181818181818%}.htz-ax{background-color:#EBEBEB}.htz-ay{height:100%}.htz-az{left:0}.htz-ba{top:0}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-f{max-width:100%}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{max-width:100%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-h{max-width:100%}.htz-r{font-size:4.666666666666667rem}.htz-s{line-height:6rem}}@media (min-width: 80em){.htz-i{max-width:180.42857142857142rem}.htz-t{font-size:4.428571428571429rem}.htz-u{line-height:6rem}}@media (max-width: 63.9375em){.htz-o{font-size:4rem}.htz-p{line-height:5rem}.htz-q{bottom:1px}}@media (min-width: 64em){.htz-v{bottom:2px}}@media (min-width: 37.5em){.htz-ai{display:none}.htz-aw{padding-bottom:43.18181818181818%}}@media (max-width: 37.4375em){.htz-aj{display:none}.htz-av{padding-bottom:117.31078904991949%}}"`;
+exports[`<Boxy> DOM element renders image correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-c{background-color:#FFF}.htz-d{margin-right:auto}.htz-e{margin-left:auto}.htz-j{overflow:hidden}.htz-k{position:relative}.htz-l{position:absolute}.htz-m{right:0}.htz-n{z-index:2}.htz-o{max-width:70%}.htz-x{font-weight:400}.htz-y{padding:1rem}.htz-z{background-color:rgba(255,231,12,0.85)}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-top:0.15em}.htz-ag{padding-right:1rem}.htz-ah{padding-left:1rem}.htz-ai{padding-bottom:0.15em}.htz-al{box-sizing:border-box}.htz-am{flex-basis:0}.htz-an{flex-grow:1}.htz-ao{flex-shrink:1}.htz-ap{list-style:none}.htz-aq{padding-left:0rem}.htz-ar{padding-right:0rem}.htz-as{-webkit-box-flex:1}.htz-at{z-index:1}.htz-au{height:0}.htz-av{padding-bottom:43.18181818181818%}.htz-ay{background-color:#EBEBEB}.htz-az{height:100%}.htz-ba{left:0}.htz-bb{top:0}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-f{max-width:100%}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-g{max-width:100%}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-h{max-width:100%}.htz-s{font-size:4.666666666666667rem}.htz-t{line-height:6.4rem}}@media (min-width: 80em){.htz-i{max-width:180.42857142857142rem}.htz-u{font-size:3.857142857142857rem}.htz-v{line-height:5.4rem}}@media (max-width: 63.9375em){.htz-p{font-size:4rem}.htz-q{line-height:5.5rem}.htz-r{bottom:1px}}@media (min-width: 64em){.htz-w{bottom:0}}@media (min-width: 37.5em){.htz-aj{display:none}.htz-ax{padding-bottom:43.18181818181818%}}@media (max-width: 37.4375em){.htz-ak{display:none}.htz-aw{padding-bottom:117.31078904991949%}}"`;

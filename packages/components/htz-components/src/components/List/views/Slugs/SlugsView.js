@@ -188,7 +188,9 @@ function MainTeaser({
             footerColor={[ 'neutral', '-3', ]}
             isStacked
             gridItemMiscStyles={{ alignItems: 'center', }}
-            footerMiscStyles={{ type: -3, }}
+            footerMiscStyles={{
+              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+            }}
             renderContent={() => (
               <TeaserHeader
                 {...data}
@@ -264,7 +266,9 @@ function TwoUpTeaser({
               { from: 's', value: [ 1, 2, 1, ], },
             ]}
             footerColor={[ 'neutral', '-3', ]}
-            footerMiscStyles={{ type: -3, }}
+            footerMiscStyles={{
+              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+            }}
             renderContent={() => <TeaserHeader {...data} />}
             renderFooter={() => <Footer data={data} />}
           />
@@ -292,13 +296,15 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
     >
       <TeaserContent
         data={data}
-        padding={[ { until: 's', value: [ 1, 1, ], }, { from: 's', value: [ 1, 2, ], }, ]}
-        footerPadding={[
-          { until: 's', value: [ 1, 1, 1, ], },
-          { from: 's', value: [ 1, 2, 1, ], },
+        padding={[
+          { until: 's', value: [ 1, 1, 0, ], },
+          { from: 's', value: [ 2, 2, 0, ], },
         ]}
+        footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 1, 2, ], }, ]}
         footerColor={[ 'neutral', '-3', ]}
-        footerMiscStyles={{ type: -3, }}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
         renderContent={() => <TeaserHeader {...data} />}
         renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
       />
@@ -373,7 +379,7 @@ function Footer({
       <CommentsCount
         commentsCount={data.commentsCounts}
         miscStyles={{
-          marginInlinestart: '1rem',
+          marginInlineStart: '1rem',
           display: hasCommentsOnMobile
             ? [ { until: 's', value: 'none', }, ]
             : undefined,

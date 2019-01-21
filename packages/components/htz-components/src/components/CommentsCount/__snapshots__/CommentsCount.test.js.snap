@@ -11,7 +11,7 @@ exports[`<CommentsCount> DOM element renders correctly with color, size and comm
       32
     </div>
     <svg
-      className="htz-g htz-f htz-h"
+      className="htz-g htz-f htz-h htz-i htz-j"
       height="1em"
       viewBox="0 0 256 256"
       width="1em"
@@ -26,7 +26,7 @@ exports[`<CommentsCount> DOM element renders correctly with color, size and comm
 </div>
 `;
 
-exports[`<CommentsCount> DOM element renders correctly with color, size and commentsCount 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{align-items:center}.htz-c{-webkit-box-align:center}.htz-d{font-weight:bold}.htz-e{padding-left:0.5rem}.htz-f{color:#289DD3}.htz-g{vertical-align:-0.15em}.htz-h{fill:#FFF}"`;
+exports[`<CommentsCount> DOM element renders correctly with color, size and commentsCount 2`] = `".htz-a{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-b{align-items:center}.htz-c{-webkit-box-align:center}.htz-d{font-weight:bold}.htz-e{padding-left:0.5rem}.htz-f{color:#289DD3}.htz-g{vertical-align:-0.15em}.htz-h{fill:#FFF}.htz-i{position:relative}.htz-j{top:-.12em}"`;
 
 exports[`<CommentsCount> DOM element renders correctly with minimal required props 1`] = `<div />`;
 
@@ -43,7 +43,7 @@ exports[`<CommentsCount> DOM element renders correctly with miscStyles 1`] = `
       12
     </div>
     <svg
-      className="htz-i htz-g htz-j"
+      className="htz-i htz-g htz-j htz-k htz-l"
       height="1em"
       viewBox="0 0 256 256"
       width="1em"
@@ -58,6 +58,6 @@ exports[`<CommentsCount> DOM element renders correctly with miscStyles 1`] = `
 </div>
 `;
 
-exports[`<CommentsCount> DOM element renders correctly with miscStyles 2`] = `".htz-a{display:block}.htz-b{align-items:center}.htz-c{margin-left:5rem}.htz-d{-webkit-box-align:center}.htz-e{font-weight:bold}.htz-f{padding-left:0.5rem}.htz-g{color:#A39308}.htz-h{padding-right:0.2rem}.htz-i{vertical-align:-0.15em}.htz-j{fill:#FFF}"`;
+exports[`<CommentsCount> DOM element renders correctly with miscStyles 2`] = `".htz-a{display:block}.htz-b{align-items:center}.htz-c{margin-left:5rem}.htz-d{-webkit-box-align:center}.htz-e{font-weight:bold}.htz-f{padding-left:0.5rem}.htz-g{color:#A39308}.htz-h{padding-right:0.2rem}.htz-i{vertical-align:-0.15em}.htz-j{fill:#FFF}.htz-k{position:relative}.htz-l{top:-.12em}"`;
 
 exports[`<CommentsCount> DOM element should render nothing when commentsCount is smaller than minCount 1`] = `<div />`;

@@ -82,7 +82,11 @@ function CommentsCount({
                 render={({ theme, className, }) => <div className={className}>{commentsCount}</div>}
               />
             ) : null}
-            <IconComment color={color} miscStyles={iconMiscStyles} />
+            <IconComment color={color} miscStyles={{
+              position: 'relative',
+              top: '-.12em',
+              ...(iconMiscStyles || {})
+            }} />
           </span>
         )}
       />

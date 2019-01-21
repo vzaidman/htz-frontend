@@ -52,6 +52,9 @@ export default function Boxy({ list, }: Props): Node {
                   { from: 'm', until: 'l', value: '100%', },
                   { from: 'l', until: 'xl', value: '100%', },
                 ],
+                // Hide yellow strip when it overflows from the bottom
+                // because of subpixel rendering
+                overflow: 'hidden',
                 position: 'relative',
               }}
             >
@@ -208,10 +211,14 @@ function textWrapperStyle(theme) {
     zIndex: '2',
     maxWidth: '70%',
     extend: [
-      theme.type(3, { lines: 5, untilBp: 'l', }),
-      theme.type(4, { lines: 6, fromBp: 'l', }),
+      // The text is outside the flow of the verticle rhythm,
+      // so it is okay to use uneven numbers for `lines` to
+      // keep the background lines nice
+      theme.type(3, { lines: 5.5, untilBp: 'l', }),
+      theme.type(4, { lines: 6.4, fromBp: 'l', untilBp: 'xl', }),
+      theme.type(3, { lines: 5.4, fromBp: 'xl', }),
       theme.mq({ until: 'l', }, { bottom: '1px', }),
-      theme.mq({ from: 'l', }, { bottom: '2px', }),
+      theme.mq({ from: 'l', }, { bottom: '0', }),
     ],
   };
 }
@@ -223,9 +230,9 @@ function innerTextStyle(theme) {
     backgroundColor: rgba(theme.color('quaternary', 'base'), 0.85),
     display: 'inline',
     boxDecorationBreak: 'clone',
-    paddingTop: '0',
+    paddingTop: '0.15em',
     paddingRight: '1rem',
     paddingLeft: '1rem',
-    paddingBottom: '0',
+    paddingBottom: '0.15em',
   };
 }

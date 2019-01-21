@@ -19,18 +19,19 @@ const partRule = ({ theme, ...props }) => ({
 
 const rule = ({ theme, ...props }) => ({
   backGroundColor: 'transparent',
-  width: '0.8em',
-  height: '1em',
+  width: '0.6em',
+  height: '0.8em',
   position: 'relative',
-  xborder: '1px solid',
 
-  ':before': { // Pause icon
+  ':before': {
+    // Pause icon
     ...partRule({ theme, ...props, }),
     borderStyle: 'double',
     borderWidth: props.isPlay ? '0 0 0 .6em' : '0.5em 0px 0.5em 0.6em',
   },
 
-  ':after': { // Play icon
+  ':after': {
+    // Play icon
     ...partRule({ theme, ...props, }),
     borderStyle: 'solid',
     borderWidth: props.isPlay ? '0' : '0.5em 0px 0.5em 0.6em',
@@ -47,7 +48,10 @@ PlayPauseIcon.defaultProps = {
   animationDuration: 0.25,
 };
 
-export default function PlayPauseIcon({ isPlay, animationDuration, }: Props): React.Node {
+export default function PlayPauseIcon({
+  isPlay,
+  animationDuration,
+}: Props): React.Node {
   return (
     <FelaComponent
       isPlay={isPlay}

@@ -69,6 +69,7 @@ import IconZoomOut from './icons/IconZoomOut';
 import IconZoomIn from './icons/IconZoomIn';
 import IconMarkerLogo from './icons/IconMarkerLogo';
 import IconMail from './icons/IconMail';
+import IconArrowDiagonal from './icons/IconArrowDiagonal';
 
 
 const gutterWidth = '1rem';
@@ -207,6 +208,7 @@ export default class Icons extends React.Component {
           <Cell name="IconZoomIn">{<IconZoomIn size={this.state.size} />}</Cell>
           <Cell name="IconMarkerLogo">{<IconMarkerLogo size={this.state.size} />}</Cell>
           <Cell name="IconMail">{<IconMail size={this.state.size} />}</Cell>
+          <Cell name="IconArrowDiagonal">{<IconArrowDiagonal size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );

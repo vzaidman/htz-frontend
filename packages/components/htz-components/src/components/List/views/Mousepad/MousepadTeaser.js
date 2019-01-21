@@ -2,15 +2,15 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
-import GridItem from '../../../Grid/GridItem';
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
+import CommentsCount from '../../../CommentsCount/CommentsCount';
+import GridItem from '../../../Grid/GridItem';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import CommentsCount from '../../../CommentsCount/CommentsCount';
-
-import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
-import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+import TeaserTime from '../../../TeaserTime/TeaserTime';
 
 const headerType = [ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ];
 
@@ -38,16 +38,22 @@ export default function MousepadTeaser({
             borderBottom: [
               {
                 until: 's',
-                value: isLast ? null : [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
+                value: isLast
+                  ? null
+                  : [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
               },
               {
                 from: 's',
-                value: hasBottomBorder ? [ '1px', 1, 'solid', theme.color('neutral', '-6'), ] : null,
+                value: hasBottomBorder
+                  ? [ '1px', 1, 'solid', theme.color('neutral', '-6'), ]
+                  : null,
               },
             ],
+            paddingTop: '1rem',
           }}
-          onClick={() => biAction({ index, articleId: itemData.representedContent, })}
-          gridMiscStyles={{ alignContent: 'stretch', }}
+          onClick={() => biAction({ index, articleId: itemData.representedContent, })
+          }
+          gridMiscStyles={{ alignItems: 'center', }}
         >
           <GridItem
             width={6}
@@ -66,19 +72,27 @@ export default function MousepadTeaser({
           <TeaserContent
             padding={[ 1, 2, 0, ]}
             footerPadding={[ 0, 2, 0, ]}
+            footerMiscStyles={{
+              marginTop: '0',
+              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+            }}
             data={itemData}
             renderContent={() => (
-              <TeaserHeader {...itemData} typeScale={headerType} kickerTypeScale={headerType} />
-            )}
-            renderFooter={() => (itemData.commentsCounts && itemData.commentsCounts > 1 ? (
-              <CommentsCount
-                commentsCount={itemData.commentsCounts}
-                miscStyles={{
-                  type: -2,
-                }}
+              <TeaserHeader
+                {...itemData}
+                typeScale={headerType}
+                kickerTypeScale={headerType}
               />
-            ) : null)
-            }
+            )}
+            renderFooter={() => (
+              <React.Fragment>
+                {itemData.publishDate || itemData.lastUpdate ? (
+                  <TeaserTime {...itemData} />
+                ) : null}
+                {' '}
+                <CommentsCount commentsCount={itemData.commentsCounts} />
+              </React.Fragment>
+            )}
           />
         </Teaser>
       )}

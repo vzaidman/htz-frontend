@@ -25,7 +25,9 @@ const MorboQuery = gql`
         exclusive
         exclusiveMobile
         inputTemplate
+        lastUpdate
         path
+        publishDate
         title
         titleMobile
         representedContent

@@ -12,7 +12,7 @@ import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import H from '../../../AutoLevels/H';
 import HtzLink from '../../../HtzLink/HtzLink';
-import IconArrow from '../../../Icon/icons/IconArrow';
+import IconArrowDiagonal from '../../../Icon/icons/IconArrowDiagonal';
 import IconBack from '../../../Icon/icons/IconBack';
 import IconComment from '../../../Icon/icons/IconComment';
 import Image from '../../../Image/Image';
@@ -66,23 +66,27 @@ export default function Mom({
           rule={({ theme, }) => ({
             marginBottom: '2rem',
             display: 'flex',
-            extend: [ theme.type(2), ],
+            alignItems: 'baseline',
           })}
           render={({ className, }) => (
             <HtzLink className={className} href={url}>
               <FelaComponent
                 style={theme => ({
-                  ...theme.type(3),
                   paddingStart: '1rem',
                   paddingEnd: '1rem',
                   paddingTop: '0.5rem',
                   paddingBottom: '0.5rem',
                   backgroundColor: theme.color('neutral', '-1'),
                   color: theme.color('quaternary'),
-                  height: 'fit-content',
                 })}
               >
-                <IconArrow miscStyles={{ transform: 'rotate(-45deg)', }} />
+                <IconArrowDiagonal
+                  size={3}
+                  miscStyles={{
+                    bottom: '-.0.5em',
+                    position: 'relative',
+                  }}
+                />
               </FelaComponent>
               <H>
                 <FelaComponent
@@ -90,9 +94,15 @@ export default function Mom({
                     color: theme.color('neutral', '-1'),
                     backgroundColor: theme.color('quaternary'),
                     boxDecorationBreak: 'clone',
-                    paddingEnd: '1rem',
-                    paddingStart: '1rem',
-                    paddingBottom: '1rem',
+                    paddingBottom: '.191em',
+                    paddingInlineEnd: '1rem',
+                    paddingInlineStart: '1rem',
+                    paddingTop: '.191em',
+                    verticalAlign: '-.05em',
+                    extend: [
+                      theme.type(2, { untilBp: 'xl', }),
+                      theme.type(1, { fromBp: 'xl', }),
+                    ],
                   })}
                   render="span"
                 >
@@ -355,13 +365,18 @@ function TeaserWithImg1({
         data={data}
         padding={[
           { until: 's', value: [ 1, 0, 0, 1, ], },
-          { from: 's', value: [ 1, 1, 0, 0, ], },
+          { from: 's', until: 'xl', value: [ 1, 1, 0, 0, ], },
+          { from: 'xl', value: [ 1, 1, 0, ], },
         ]}
         footerPadding={[
-          { until: 's', value: [ 2, 0, 1, 1, ], },
-          { from: 's', value: [ 2, 1, 1, 0, ], },
+          { until: 's', value: [ 1, 0, 1, 1, ], },
+          { from: 's', value: [ 1, 1, 1, 0, ], },
+          { from: 'xl', value: 1, },
         ]}
         isStacked={[ { from: 'xl', value: true, }, ]}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
         renderContent={() => (
           <TeaserHeader typeScale={headerTypeScale} {...data} />
         )}
@@ -370,7 +385,6 @@ function TeaserWithImg1({
             style={theme => ({
               color: theme.color('primary'),
               fontWeight: '700',
-              extend: [ theme.type(-3), ],
             })}
             render="span"
           >
@@ -384,7 +398,6 @@ function TeaserWithImg1({
 }
 
 TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
-
 function TeaserWithImg2({
   data,
   index,
@@ -441,14 +454,17 @@ function TeaserWithImg2({
           { from: 'xl', value: [ 1, 1, 0, ], },
         ]}
         footerPadding={[
-          { from: 's', until: 'l', value: [ 2, 1, 1, ], },
-          { from: 'l', until: 'xl', value: [ 2, 0, 1, 1, ], },
-          { from: 'xl', value: [ 2, 1, 1, ], },
+          { from: 's', until: 'l', value: [ 1, 1, 1, ], },
+          { from: 'l', until: 'xl', value: [ 1, 0, 1, 1, ], },
+          { from: 'xl', value: [ 1, 1, 1, ], },
         ]}
         isStacked={[
           { from: 's', until: 'l', value: true, },
           { from: 'xl', value: true, },
         ]}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
         renderContent={() => (
           <TeaserHeader typeScale={headerTypeScale} {...data} />
         )}
@@ -457,7 +473,6 @@ function TeaserWithImg2({
             style={theme => ({
               color: theme.color('primary'),
               fontWeight: '700',
-              extend: [ theme.type(-3), ],
             })}
             render="span"
           >
@@ -490,11 +505,14 @@ function TextualTeaser({
     >
       <TeaserContent
         data={data}
-        padding={[ 1, 1, 0, ]}
-        footerPadding={[
-          { until: 's', value: 1, },
-          { from: 's', value: [ 2, 1, 1, ], },
+        padding={[
+          { until: 's', value: [ 1, 1, 0, ], },
+          { from: 's', value: [ 2, 2, 0, ], },
         ]}
+        footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 1, 2, ], }, ]}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
         renderContent={() => (
           <TeaserHeader
             {...data}
@@ -514,7 +532,6 @@ function TextualTeaser({
             style={theme => ({
               color: theme.color('primary'),
               fontWeight: '700',
-              extend: [ theme.type(-3), ],
             })}
             render="span"
           >

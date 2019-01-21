@@ -27,13 +27,9 @@ type BackgroundColorType =
   | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
 
 type Props = {
-  /**
-   * is the list header horizontal on large viewports
-   */
+  /** is the list header horizontal on large viewports */
   isHorizontal: boolean,
-  /**
-   * Is the list's title padded at its inline start across breakpoints
-   */
+  /** Is the list's title padded at its inline start across breakpoints */
   hasTitlePadding: boolean,
   /**
    * The background color of the <ListViewHeader />.
@@ -54,24 +50,14 @@ type Props = {
    *     ```
    */
   backgroundColor: ?BackgroundColorType,
-  /**
-   * A list of links to display.
-   */
+  /** A list of links to display. */
   extraLinks: ?(ListExtraLinkType[]),
-  /**
-   * A commercial link and text.
-   */
+  /** A commercial link and text. */
   commercialLinks: ?(ListExtraLinkType[]),
-  /**
-   * A marketing tool, title and subTitle.
-   */
+  /** A marketing tool, title and subTitle. */
   marketingTeaser: ?ListMarketingTeaserType,
-
-  /**
-   * The List Title.
-   */
+  /** The List Title. */
   title: ?string,
-
   /**
    * A special property holding miscellaneous CSS values that
    * trump all default values. Processed by
@@ -79,8 +65,12 @@ type Props = {
    */
   miscStyles: ?StyleProps,
   /**
-   * URL that leads to section of list.
+   * A special property holding miscellaneous CSS values that
+   * trump all default values of the tile. Processed by
+   * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
+  titleMiscStyles: ?StyleProps,
+  /** URL that leads to section of list. */
   url: ?string,
   isCommercial: boolean,
 };
@@ -94,6 +84,7 @@ ListViewHeader.defaultProps = {
   marketingTeaser: null,
   extraLinks: null,
   miscStyles: null,
+  titleMiscStyles: null,
   title: null,
   url: null,
 };
@@ -107,6 +98,7 @@ export default function ListViewHeader({
   extraLinks,
   marketingTeaser,
   miscStyles,
+  titleMiscStyles,
   title,
   url,
 }: Props): React.Node {
@@ -123,9 +115,12 @@ export default function ListViewHeader({
           {title && (
             <FelaComponent
               style={{
-                color: isCommercial
-                  ? theme.color('commercial')
-                  : theme.color('primary'),
+                ...(isCommercial
+                  ? {
+                    color: theme.color('commercial'),
+                    fontFamily: theme.fontStacks.commercial,
+                  }
+                  : { color: theme.color('primary'), }),
                 fontWeight: 700,
                 extend: [
                   theme.type(2),
@@ -139,6 +134,10 @@ export default function ListViewHeader({
                       width: '100%',
                     }
                   ),
+                  // Trump all other styles with those defined in `miscStyles`
+                  ...(titleMiscStyles
+                    ? parseStyleProps(titleMiscStyles, theme.mq, theme.type)
+                    : []),
                 ],
               }}
               render={({ className: headerClass, }) => (url ? (
@@ -188,8 +187,7 @@ export default function ListViewHeader({
                   theme.type(-2, { from: 'xl', }),
                   ...(isHorizontal
                     ? []
-                    : [ theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }), ]
-                  ),
+                    : [ theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }), ]),
                 ],
               }}
               render="ul"
@@ -352,7 +350,14 @@ function listViewHeaderStyle({
         : [
           theme.mq(
             { from: 'l', },
-            borderTop('5px', 1, 'solid', isCommercial ? theme.color('commercial') : theme.color('primary'))
+            borderTop(
+              '5px',
+              1,
+              'solid',
+              isCommercial
+                ? theme.color('commercial')
+                : theme.color('primary')
+            )
           ),
           theme.mq({ from: 'l', }, { flexDirection: 'column', }),
         ]),

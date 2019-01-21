@@ -4,17 +4,17 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
-import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
-import type { ListDataType, } from '../../../..';
+import type { ClickTrackerBannerWrapperType, } from '../../../../flowTypes/ClickTrackerBannerWrapperType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
-import ListView from '../../../ListView/ListView';
-import GridItem from '../../../Grid/GridItem';
-import Grid from '../../../Grid/Grid';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
-import Image from '../../../Image/Image';
 import Debug from '../../../Debug/Debug';
-import BlockLink from '../../../BlockLink/BlockLink';
+import Grid from '../../../Grid/Grid';
+import GridItem from '../../../Grid/GridItem';
+import HtzLink from '../../../HtzLink/HtzLink';
+import Image from '../../../Image/Image';
+import ListView from '../../../ListView/ListView';
 
 type Props = {
   list: ListDataType,
@@ -75,18 +75,18 @@ function Leonardo({ list, }: Props): Node {
                             ],
                           }}
                         >
-                          <BlockLink href={link}>
+                          <HtzLink href={link}>
                             <Image
                               data={clicktrackerimage}
                               imgOptions={{
                                 transforms: {
                                   width: '227',
-                                  aspect: 'full',
+                                  aspect: 'landscape',
                                   quality: 'auto',
                                 },
                               }}
                             />
-                          </BlockLink>
+                          </HtzLink>
                         </FelaComponent>
                       );
                     }}

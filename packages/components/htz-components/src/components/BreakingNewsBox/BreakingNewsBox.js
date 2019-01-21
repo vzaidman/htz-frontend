@@ -81,15 +81,14 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
                   <GridItem miscStyles={{ flexGrow: 0, }}>
                     <FelaComponent
                       style={{
+                        alignItems: 'center',
                         backgroundColor: theme.color('primary'),
                         color: theme.color('white'),
-                        width: '16rem',
-                        height: '6rem',
                         display: 'flex',
+                        height: '5rem',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        fontWeight: 700,
-                        type: -1,
+                        width: '15rem',
+                        extend: [ theme.type(-1), ],
                       }}
                     >
                       {theme.breakingNewsStrip.title}
