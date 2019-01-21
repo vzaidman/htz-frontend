@@ -102,18 +102,21 @@ export default function Zapp({
       ) : null}
       {/* banner */}
       {list.dfp && list.dfp.length > 0 ? (
-        <GridItem
-          width={1}
-          miscStyles={{
-            display: [
-              { until: 's', value: 'block', },
-              { from: 's', value: 'none', },
-            ],
-          }}
-        >
-          {/* banner content */}
-          <GeneralAdSlot {...(list.dfp ? list.dfp[0] : {})} />
-        </GridItem>
+        list.dfp.map(banner => (
+          <GridItem
+            key={banner.contentId}
+            width={1}
+            miscStyles={{
+              display: [
+                { until: 's', value: 'block', },
+                { from: 's', value: 'none', },
+              ],
+            }}
+          >
+            {/* banner content */}
+            <GeneralAdSlot {...banner} />
+          </GridItem>
+        ))
       ) : null}
       {/* end banner */}
     </ListView>

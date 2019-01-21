@@ -159,36 +159,39 @@ export default function HawkingList({
       </GridItem>
 
       {/* BANNER */}
-      <GridItem
-        width={[
-          { from: 's', until: 'l', value: 1, },
-          { from: 'l', until: 'xl', value: 3 / 12, },
-        ]}
-        miscStyles={{
-          marginTop: [ { from: 's', until: 'l', value: '4rem', }, ],
-          display: [
-            { until: 's', value: 'none', },
-            { from: 'xl', value: 'none', },
-          ],
-        }}
-      >
-        <FelaComponent
-          style={theme => ({
-            extend: [
-              theme.mq(
-                { from: 's', until: 'l', },
-                {
-                  marginTop: 4,
-                }
-              ),
-            ],
-          })}
-        >
-          {dfp && dfp.length > 0 ? (
-            <GeneralAdSlot {...(dfp ? dfp[0] : {})} />
-          ) : null}
-        </FelaComponent>
-      </GridItem>
+      {dfp && dfp.length > 0 ? (
+        dfp.map(banner => (
+          <GridItem
+            key={banner.contentId}
+            width={[
+              { from: 's', until: 'l', value: 1, },
+              { from: 'l', until: 'xl', value: 3 / 12, },
+            ]}
+            miscStyles={{
+              marginTop: [ { from: 's', until: 'l', value: '4rem', }, ],
+              display: [
+                { until: 's', value: 'none', },
+                { from: 'xl', value: 'none', },
+              ],
+            }}
+          >
+            <FelaComponent
+              style={theme => ({
+                extend: [
+                  theme.mq(
+                    { from: 's', until: 'l', },
+                    {
+                      marginTop: 4,
+                    }
+                  ),
+                ],
+              })}
+            >
+              <GeneralAdSlot {...banner} />
+            </FelaComponent>
+          </GridItem>
+        ))
+      ) : null}
     </ListView>
   );
 }

@@ -107,21 +107,24 @@ export default function Slugs({
 
       {/* DFP ! */}
       {dfp && dfp.length > 0 ? (
-        <GridItem
-          width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
-          miscStyles={{
-            marginBottom: [
-              { until: 's', value: '2rem', },
-              { from: 's', value: '4rem', },
-            ],
-            marginTop: [
-              { until: 's', value: '2rem', },
-              { from: 's', until: 'xl', value: '4rem', },
-            ],
-          }}
-        >
-          <GeneralAdSlot {...dfp[0]} />
-        </GridItem>
+        dfp.map(banner => (
+          <GridItem
+            key={banner.contentId}
+            width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
+            miscStyles={{
+              marginBottom: [
+                { until: 's', value: '2rem', },
+                { from: 's', value: '4rem', },
+              ],
+              marginTop: [
+                { until: 's', value: '2rem', },
+                { from: 's', until: 'xl', value: '4rem', },
+              ],
+            }}
+          >
+            <GeneralAdSlot {...banner} />
+          </GridItem>
+        ))
       ) : null}
     </ListView>
   );

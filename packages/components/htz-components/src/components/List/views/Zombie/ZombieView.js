@@ -483,27 +483,30 @@ export default class Zombie extends React.Component<Props, State> {
                   </Grid>
                 </GridItem>
                 {dfp && dfp.length > 0 ? (
-                  <GridItem
-                    width={[
-                      { until: 'l', value: 1, },
-                      { from: 'xl', value: 4 / 10, },
-                    ]}
-                    miscStyles={{
-                      paddingStart: [ { until: 's', value: '2rem', }, ],
-                      paddingEnd: [ { until: 's', value: '2rem', }, ],
-                      marginTop: [ { until: 'l', value: '4rem', }, ],
-                      marginBottom: [ { until: 's', value: '4rem', }, ],
-                      display: [
-                        { until: 'l', value: 'block', },
-                        { from: 'l', until: 'xl', value: 'none', },
-                        { from: 'xl', value: 'block', },
-                      ],
-                      width: [ { until: 's', value: '300px', }, ],
-                      height: [ { until: 's', value: '250px', }, ],
-                    }}
-                  >
-                    <GeneralAdSlot {...dfp[0]} />
-                  </GridItem>
+                  dfp.map(banner => (
+                    <GridItem
+                      key={banner.contentId}
+                      width={[
+                        { until: 'l', value: 1, },
+                        { from: 'xl', value: 4 / 10, },
+                      ]}
+                      miscStyles={{
+                        paddingStart: [ { until: 's', value: '2rem', }, ],
+                        paddingEnd: [ { until: 's', value: '2rem', }, ],
+                        marginTop: [ { until: 'l', value: '4rem', }, ],
+                        marginBottom: [ { until: 's', value: '4rem', }, ],
+                        display: [
+                          { until: 'l', value: 'block', },
+                          { from: 'l', until: 'xl', value: 'none', },
+                          { from: 'xl', value: 'block', },
+                        ],
+                        width: [ { until: 's', value: '300px', }, ],
+                        height: [ { until: 's', value: '250px', }, ],
+                      }}
+                    >
+                      <GeneralAdSlot {...banner} />
+                    </GridItem>
+                  ))
                 ) : null}
               </Grid>
             </GridItem>

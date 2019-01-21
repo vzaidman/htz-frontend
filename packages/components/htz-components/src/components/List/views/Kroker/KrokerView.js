@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { FelaTheme, } from 'react-fela';
 
 import BreakingNewsBox from '../../../BreakingNewsBox/BreakingNewsBox';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
@@ -105,90 +104,89 @@ function ListItems({
   biAction,
 }: ListItemsProps): React.Node {
   return (
-    <FelaTheme
-      render={theme => (
+    <Grid
+      rowSpacing={[
+        { until: 's', value: { amount: 1, }, },
+        { from: 's', until: 'l', value: { amount: 4, }, },
+      ]}
+    >
+      <GridItem
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 10, }, ]}
+        miscStyles={{ display: 'flex', }}
+      >
         <Grid
-          rowSpacing={[
-            { until: 's', value: { amount: 1, }, },
-            { from: 's', until: 'l', value: { amount: 4, }, },
-          ]}
+          gutter={4}
+          rowSpacing={[ { until: 's', value: { amount: 1, }, }, ]}
         >
           <GridItem
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 10, }, ]}
-            miscStyles={{ display: 'flex', }}
+            width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
           >
-            <Grid
-              gutter={4}
-              rowSpacing={[ { until: 's', value: { amount: 1, }, }, ]}
-            >
-              <GridItem
-                width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
-              >
-                {/* item 1 */}
-                <MainTeaser
-                  itemData={items[0]}
-                  lazyLoadImages={lazyLoadImages}
-                  biAction={biAction}
-                />
-              </GridItem>
-              <GridItem
-                width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}
-              >
-                {/* item 2 */}
-                <VerticalImageTeaser
-                  itemData={items[1]}
-                  lazyLoadImages={lazyLoadImages}
-                  biAction={biAction}
-                  displayFlags={{ commentsCount: true, }}
-                />
-              </GridItem>
-            </Grid>
+            {/* item 1 */}
+            <MainTeaser
+              itemData={items[0]}
+              lazyLoadImages={lazyLoadImages}
+              biAction={biAction}
+            />
           </GridItem>
           <GridItem
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 3 / 10, }, ]}
-            miscStyles={{
-              display: [ { from: 'l', value: 'flex', }, ],
-            }}
+            width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}
           >
-            {/* items 3 - 5 */}
-            <Grid
-              gutter={4}
-              rowSpacing={[
-                { until: 's', value: { amount: 1, }, },
-                { from: 'l', value: { amount: 1, }, },
-              ]}
-            >
-              {items.slice(2, 5).map((item, index) => (
-                <GridItem
-                  width={[
-                    { until: 's', value: 1, },
-                    { from: 's', until: 'l', value: 1 / 3, },
-                    { from: 'l', value: 1, },
-                  ]}
-                  key={item.contentId}
-                >
-                  <VerticalTeaser
-                    itemData={item}
-                    biAction={biAction}
-                    displayFlags={{ commentsCount: true, }}
-                  />
-                </GridItem>
-              ))}
-            </Grid>
+            {/* item 2 */}
+            <VerticalImageTeaser
+              itemData={items[1]}
+              lazyLoadImages={lazyLoadImages}
+              biAction={biAction}
+              displayFlags={{ commentsCount: true, }}
+            />
           </GridItem>
-          {/* banner */}
-          {dfp && dfp.length > 0 ? (
-            <GridItem
-              width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
-              miscStyles={{ display: 'flex', }}
-            >
-              {/* banner content */}
-              <GeneralAdSlot {...(dfp ? dfp[0] : {})} miscStyles={{ width: '100%', }} />
-            </GridItem>
-          ) : null}
-          {/* end banner */}
         </Grid>
-      )}
-    />
+      </GridItem>
+      <GridItem
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 3 / 10, }, ]}
+        miscStyles={{
+          display: [ { from: 'l', value: 'flex', }, ],
+        }}
+      >
+        {/* items 3 - 5 */}
+        <Grid
+          gutter={4}
+          rowSpacing={[
+            { until: 's', value: { amount: 1, }, },
+            { from: 'l', value: { amount: 1, }, },
+          ]}
+        >
+          {items.slice(2, 5).map(item => (
+            <GridItem
+              width={[
+                { until: 's', value: 1, },
+                { from: 's', until: 'l', value: 1 / 3, },
+                { from: 'l', value: 1, },
+              ]}
+              key={item.contentId}
+            >
+              <VerticalTeaser
+                itemData={item}
+                biAction={biAction}
+                displayFlags={{ commentsCount: true, }}
+              />
+            </GridItem>
+          ))}
+        </Grid>
+      </GridItem>
+      {/* banner */}
+      {dfp && dfp.length > 0 ? (
+        dfp.map(banner => (
+          <GridItem
+            key={banner.contentId}
+            width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
+            miscStyles={{ display: 'flex', }}
+          >
+            {/* banner content */}
+            <GeneralAdSlot {...banner} miscStyles={{ width: '100%', }} />
+          </GridItem>
+        ))
+      ) : null}
+      {/* end banner */}
+    </Grid>
   );
 }

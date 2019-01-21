@@ -191,13 +191,16 @@ export default function Panucci({
 
       {/* banner */}
       {dfp && dfp.length > 0 ? (
-        <GridItem
-          width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-          miscStyles={{ marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ], }}
-        >
-          {/* banner content */}
-          <GeneralAdSlot {...(dfp ? dfp[0] : {})} />
-        </GridItem>
+        dfp.map(banner => (
+          <GridItem
+            key={banner.contentId}
+            width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+            miscStyles={{ marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ], }}
+          >
+            {/* banner content */}
+            <GeneralAdSlot {...banner} />
+          </GridItem>
+        ))
       ) : null}
       {/* end banner */}
     </ListView>
