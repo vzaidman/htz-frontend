@@ -34,7 +34,10 @@ function Beavis({
   const { title, dfp, } = list;
   return (
     <ListView
-      gutter={4}
+      padding={[
+        { until: 's', value: [ 0, 2, ], },
+        { from: 's', value: [ 0, 4, ], },
+      ]}
       isHorizontal={[
         { until: 'l', value: true, },
         { from: 'l', value: false, },

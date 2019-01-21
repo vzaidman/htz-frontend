@@ -34,7 +34,7 @@ function Butthead({
   const { title, dfp, } = list;
   return (
     <ListView
-      gutter={4}
+      padding={[ 0, 4, ]}
       miscStyles={{
         display: [ { until: 'l', value: 'none', }, ],
       }}
