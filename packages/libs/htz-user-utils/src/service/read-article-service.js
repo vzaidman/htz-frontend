@@ -7,8 +7,11 @@ type RaData = {
   uniqueArticles: Array<string>,
 };
 
+const localStorageKey = 'raData';
 
-function getThisMonthData(raValue: ?string, thisMonth: number): ?RaData {
+
+function getThisMonthData(thisMonth: number): ?RaData {
+  const raValue = localStorage.getItem(localStorageKey);
   if (raValue == null) {
     return null;
   }
@@ -26,18 +29,19 @@ function createRaData(thisMonth: number): RaData {
   };
 }
 
+function getThisMonth(): number {
+  return (new Date().getMonth()) + 1;
+}
+
 function uniq<T>(arr: Array<T>): Array<T> {
   return [ ...new Set(arr), ];
 }
 
-const localStorageKey = 'raData';
-
 
 function update(articleId: string): null {
-  const thisMonth = (new Date().getMonth()) + 1; // (0 - 11) =>  (1 - 12)
+  const thisMonth = getThisMonth(); // (0 - 11) =>  (1 - 12)
   try {
-    const raValue = localStorage.getItem(localStorageKey);
-    const raData = getThisMonthData(raValue, thisMonth) || createRaData(thisMonth);
+    const raData = getThisMonthData(thisMonth) || createRaData(thisMonth);
     raData.uniqueArticles = uniq([ ...raData.uniqueArticles, articleId, ]);
     localStorage.setItem(localStorageKey, JSON.stringify(raData));
     setCookie('ra', raData.uniqueArticles.length);
@@ -49,6 +53,21 @@ function update(articleId: string): null {
 }
 
 
+function getArticleCount(): ?number {
+  const defaultValue = null;
+  try {
+    const data = getThisMonthData(getThisMonth());
+    return data
+      ? data.uniqueArticles.length
+      : defaultValue;
+  }
+  catch (error) {
+    return defaultValue;
+  }
+}
+
+
 export default {
   update,
+  getArticleCount,
 };

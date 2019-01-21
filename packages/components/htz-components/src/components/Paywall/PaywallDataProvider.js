@@ -1,12 +1,19 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
+import { ReadArticleService, } from '@haaretz/htz-user-utils';
 import Query from '../ApolloBoundary/Query';
 import NoSSR from '../NoSSR/NoSSR';
 
 const paywallDataQuery = gql`
-  query getPaywallData {
-    paywall {
+  query getPaywallData(
+    $articleCount: Int!
+    $platform: String!
+  ) {
+    paywall(
+      articleCount: $articleCount
+      platform: $platform
+      ) {
       slotLocation
       colorScheme
       title
@@ -20,6 +27,12 @@ const paywallDataQuery = gql`
         url
       }
     }
+  }
+`;
+
+const getPlatform = gql`
+  query GetPlatform {
+      platform @client
   }
 `;
 
@@ -49,20 +62,35 @@ type Props = {
 
 const PaywallDataProvider = ({ children, }: Props): React.Node => (
   <NoSSR>
-    <Query query={paywallDataQuery}>
+    <Query query={getPlatform}>
       {({ data, loading, error, }) => {
         if (error) {
           console.log('[PaywallDataProvider] error %o', error);
         }
-        if (loading || error) {
-          return null;
-        }
         return loading || error
           ? null
-          : children(data.paywall);
-      }
-      }
+          : (
+            <Query
+              query={paywallDataQuery}
+              variables={{
+                articleCount: ReadArticleService.getArticleCount() || 1,
+                platform: data.platform, // todo: convert 'web' to 'desktop'
+              }}
+            >
+              {({ data, loading, error, }) => {
+                if (error) {
+                  console.log('[PaywallDataProvider] error %o', error);
+                }
+                return loading || error
+                  ? null
+                  : children(data.paywall);
+              }
+              }
+            </Query>
+          );
+      }}
     </Query>
+
   </NoSSR>
 );
 

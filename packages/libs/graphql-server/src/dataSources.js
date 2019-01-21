@@ -59,22 +59,42 @@ class PapiAPI extends RESTDataSource {
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  async getPaywallData() {
-    return {
-      slotLocation: 'popup',
-      colorScheme: 'primary',
-      title: 'כל התכנים, בכל מכשיר, בכל זמן',
-      text: 'הארץ בדיגיטל החל מ-4.90שח בחודש הראשון',
-      confirm: {
-        text: 'לרכישה',
-        url: 'https://promotions.haaretz.co.il/promotions-page/sale-htz',
-      },
-      deny: {
-        text: 'כבר מנויים על הארץ? לחצו כאן והתחברו לאתר',
-        url: '',
-      },
+  async getPaywallData({ articleCount, platform, }) {
+    const path = 'json/cmlink/Haaretz.Paywall.Super.Container';
+    const useragent = platform === 'web'
+      ? 'desktop'
+      : platform;
+    const params = {
+      referrer: 'direct',
+      showArticleMode: true, // article opened/closed: true = open | false = closed
+      isSuperContent: false, // isSuperContent (need to take from PAPI)
+      userType: 'anonymous', // https://github.com/Haaretz/HTZ-HEB/blob/master/webapp-dispatcher/src/main/webapp/tm/js/resp/body_scripts/internal/utils/paywall2.js :line 52
+      useragent, // desktop | mobile
+      articleCount,
+      json: true,
     };
+    console.log('paywall params: ', params);
+
+    return this.get(path, params)
+      .then(res => {
+        console.log('paywall response: ', res);
+        return {
+          slotLocation: res.basicInfo.slotLocation,
+          colorScheme: res.visualInfo.bgColor.includes('secondary')
+            ? 'secondary'
+            : 'primary',
+          title: res.visualInfo.boldText,
+          text: res.visualInfo.plainText,
+          confirm: {
+            text: res.visualInfo.yesText,
+            url: res.visualInfo.yesLink,
+          },
+          deny: {
+            text: res.visualInfo.noText,
+            url: res.visualInfo.noLink,
+          },
+        };
+      });
   }
 
   // mutations

@@ -97,7 +97,10 @@ const RootQuery = new GraphQLObjectType({
 
     paywall: {
       type: Paywall,
-      args: {},
+      args: {
+        articleCount: { type: new GraphQLNonNull(GraphQLInt), },
+        platform: { type: new GraphQLNonNull(GraphQLString), },
+      },
       resolve(parentValue, args, { dataSources, }) {
         return dataSources.PapiAPI.getPaywallData(args);
       },
