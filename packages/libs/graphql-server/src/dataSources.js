@@ -59,18 +59,18 @@ class PapiAPI extends RESTDataSource {
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 
-  async getPaywallData({ isSuperContent, useragent, articleCount, }) {
+  async getPaywallData({ isSuperContent, userType, useragent, articleCount, }) {
     const path = 'json/cmlink/Haaretz.Paywall.Super.Container';
     const params = {
       referrer: 'direct',
       showArticleMode: true, // article opened/closed: true = open | false = closed
       isSuperContent,
-      userType: 'anonymous', // https://github.com/Haaretz/HTZ-HEB/blob/master/webapp-dispatcher/src/main/webapp/tm/js/resp/body_scripts/internal/utils/paywall2.js :line 52
+      userType,
       useragent, // desktop | mobile
       articleCount,
       json: true,
     };
-    console.log('paywall params: ', params, { useragent, });
+    console.log('paywall params: ', params);
 
     return this.get(path, params)
       .then(res => {

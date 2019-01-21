@@ -8,11 +8,13 @@ import NoSSR from '../NoSSR/NoSSR';
 const paywallDataQuery = gql`
   query getPaywallData(
     $isSuperContent: Boolean!
+    $userType: String!
     $useragent: String!
     $articleCount: Int!
   ) {
     paywall(
       isSuperContent: $isSuperContent
+      userType: $userType
       useragent: $useragent
       articleCount: $articleCount
       ) {
@@ -35,6 +37,9 @@ const paywallDataQuery = gql`
 const getPaywallArgs = gql`
   query GetPaywallArgs {
       isSuperContent @client
+      user @client {
+        type
+      }
       platform @client
   }
 `;
@@ -77,6 +82,7 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
               query={paywallDataQuery}
               variables={{
                 isSuperContent: data.isSuperContent || false,
+                userType: (data.user && data.user.type) || 'anonymous',
                 useragent: data.platform === 'web'
                   ? 'desktop'
                   : data.platform,
