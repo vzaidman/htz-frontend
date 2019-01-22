@@ -242,7 +242,7 @@ function Teaser1({
                   { until: 's', value: 1, },
                   { from: 's', until: 'l', value: 2, },
                   { from: 'l', until: 'xl', value: 3, },
-                  { from: 'xl', value: 2, },
+                  { from: 'xl', value: 1, },
                 ]}
                 {...data}
               />

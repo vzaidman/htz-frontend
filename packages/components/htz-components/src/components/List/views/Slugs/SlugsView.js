@@ -72,7 +72,7 @@ export default function Slugs({
         width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
       >
         {/* Main teaser */}
-        <Grid gutter={4} miscStyles={{ paddingBottom: '3rem', }}>
+        <Grid gutter={4}>
           <GridItem
             width={[
               { until: 'l', value: 1, },
@@ -105,29 +105,31 @@ export default function Slugs({
         </Grid>
       </GridItem>
 
-      {/* DFP ! */}
-      {dfp && dfp.length > 0 ? (
-        dfp.map(banner => (
+      {/* DFP */}
+      {dfp && dfp.length > 0
+        ? dfp.map(banner => (
           <GridItem
             key={banner.contentId}
             width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
-            miscStyles={{
-              marginBottom: [
-                { until: 's', value: '2rem', },
-                { from: 's', value: '4rem', },
-              ],
-              marginTop: [
-                { until: 's', value: '2rem', },
-                { from: 's', until: 'xl', value: '4rem', },
-              ],
-            }}
           >
-            <GeneralAdSlot {...banner} />
+            <GeneralAdSlot {...banner} styleRule={bannerStyle} />
           </GridItem>
         ))
-      ) : null}
+        : null}
     </ListView>
   );
+}
+
+function bannerStyle({ theme, }) {
+  return {
+    extend: [
+      theme.mq({ until: 's', }, { ':not(:empty)': { marginTop: '2rem', }, }),
+      theme.mq(
+        { from: 's', until: 'xl', },
+        { ':not(:empty)': { marginTop: '4rem', }, }
+      ),
+    ],
+  };
 }
 
 // /////////////////////////////////////////////////////////////////////

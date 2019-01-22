@@ -159,8 +159,8 @@ export default function HawkingList({
       </GridItem>
 
       {/* BANNER */}
-      {dfp && dfp.length > 0 ? (
-        dfp.map(banner => (
+      {dfp && dfp.length > 0
+        ? dfp.map(banner => (
           <GridItem
             key={banner.contentId}
             width={[
@@ -191,7 +191,7 @@ export default function HawkingList({
             </FelaComponent>
           </GridItem>
         ))
-      ) : null}
+        : null}
     </ListView>
   );
 }
@@ -230,7 +230,7 @@ function HawkingMainTeaser({
           }
           data={item}
           gutter={0}
-          isStacked
+          isStacked={[ { until: 's', value: true, }, { from: 'xl', value: true, }, ]}
         >
           <TeaserMedia
             data={item}
@@ -261,13 +261,20 @@ function HawkingMainTeaser({
               { from: 's', until: 'l', value: 4 / 12, },
               { from: 'l', until: 'xl', value: 2 / 7, },
             ]}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 2, 1, 1, ]}
+            padding={[
+              { until: 'xl', value: [ 1, 1, 0, ], },
+              { from: 'xl', value: [ 1, 2, 0, ], },
+            ]}
+            footerPadding={[ { until: 'xl', value: 1, }, { from: 'xl', value: [ 1, 2, ], }, ]}
             isStacked
             renderContent={data => (
               <TeaserHeader
                 {...data}
-                typeScale={[ { until: 's', value: 1, }, { from: 's', value: 2, }, ]}
+                typeScale={[
+                  { until: 's', value: 1, },
+                  { from: 's', until: 'l', value: 2, },
+                  { from: 'l', value: 1, },
+                ]}
               />
             )}
             renderFooter={() => (

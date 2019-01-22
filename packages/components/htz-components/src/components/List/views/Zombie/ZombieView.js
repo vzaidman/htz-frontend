@@ -180,19 +180,19 @@ export default class Zombie extends React.Component<Props, State> {
                   <FelaComponent
                     style={{
                       height: '100%',
-                      backgroundColor: theme.color('neutral', '-10'),
+                      backgroundColor: theme.color('white'),
                       extend: [
                         borderTop(
                           '1px',
                           0,
                           'solid',
-                          theme.color('neutral', '-2')
+                          theme.color('neutral', '-3')
                         ),
                         borderBottom(
                           '1px',
                           0,
                           'solid',
-                          theme.color('neutral', '-2')
+                          theme.color('neutral', '-3')
                         ),
                       ],
                     }}
@@ -207,7 +207,7 @@ export default class Zombie extends React.Component<Props, State> {
                             <FelaComponent
                               style={{ ...theme.type(-2), fontWeight: '700', }}
                             >
-                              {stocks['142'].name}
+                              {stocks['142'] && stocks['142'].name}
                             </FelaComponent>
                             <FelaComponent
                               style={{
@@ -226,20 +226,22 @@ export default class Zombie extends React.Component<Props, State> {
                               }}
                               render="span"
                             >
-                              {stocks['142'].value}
+                              {stocks['142'] && stocks['142'].value}
                             </FelaComponent>
                             <FelaComponent
                               style={stockYieldStyle(
                                 theme,
-                                stocks['142'].change
+                                stocks['142'] && stocks['142'].change
                               )}
                               render="span"
                             >
-                              {stocks['142'].change
-                                ? `${
-                                  stocks['142'].change > 0 ? '+' : '-'
-                                }${numToHebrewString(
-                                  Math.abs(stocks['142'].change)
+                              {stocks['142'] && stocks['142'].change
+                                ? `${stocks['142']
+                                    && (stocks['142'].change > 0
+                                      ? '+'
+                                      : '-')}${numToHebrewString(
+                                  stocks['142']
+                                      && Math.abs(stocks['142'].change)
                                 )}%`
                                 : ''}
                             </FelaComponent>
@@ -253,7 +255,7 @@ export default class Zombie extends React.Component<Props, State> {
                             <FelaComponent
                               style={{ ...theme.type(-2), fontWeight: '700', }}
                             >
-                              {stocks['137'].name}
+                              {stocks['137'] && stocks['137'].name}
                             </FelaComponent>
                             <FelaComponent
                               style={{
@@ -272,20 +274,23 @@ export default class Zombie extends React.Component<Props, State> {
                               }}
                               render="span"
                             >
-                              {stocks['137'].value}
+                              {stocks['137'] && stocks['137'].value}
                             </FelaComponent>
                             <FelaComponent
                               style={stockYieldStyle(
                                 theme,
-                                stocks['137'].change
+                                stocks['137'] && stocks['137'].change
                               )}
                               render="span"
                             >
-                              {stocks['137'].change
-                                ? `${
-                                  stocks['137'].change > 0 ? '+' : '-'
-                                }${numToHebrewString(
-                                  Math.abs(stocks['137'].change)
+                              {stocks['137'] && stocks['137'].change
+                                ? `${stocks['137']
+                                    && (stocks['137'].change > 0
+                                      ? '+'
+                                      : '-')}${numToHebrewString(
+                                  Math.abs(
+                                    stocks['137'] && stocks['137'].change
+                                  )
                                 )}%`
                                 : ''}
                             </FelaComponent>
@@ -299,7 +304,7 @@ export default class Zombie extends React.Component<Props, State> {
                             <FelaComponent
                               style={{ ...theme.type(-2), fontWeight: '700', }}
                             >
-                              {stocks[9001].name}
+                              {stocks[9001] && stocks[9001].name}
                             </FelaComponent>
                             <FelaComponent
                               style={{
@@ -318,20 +323,23 @@ export default class Zombie extends React.Component<Props, State> {
                               }}
                               render="span"
                             >
-                              {stocks[9001].value}
+                              {stocks[9001] && stocks[9001].value}
                             </FelaComponent>
                             <FelaComponent
                               style={stockYieldStyle(
                                 theme,
-                                stocks[9001].change
+                                stocks[9001] && stocks[9001].change
                               )}
                               render="span"
                             >
-                              {stocks[9001].change
-                                ? `${
-                                  stocks[9001].change > 0 ? '+' : '-'
-                                }${numToHebrewString(
-                                  Math.abs(stocks[9001].change)
+                              {stocks[9001] && stocks[9001].change
+                                ? `${stocks[9001]
+                                    && (stocks[9001].change > 0
+                                      ? '+'
+                                      : '-')}${numToHebrewString(
+                                  Math.abs(
+                                    stocks[9001] && stocks[9001].change
+                                  )
                                 )}%`
                                 : ''}
                             </FelaComponent>
@@ -345,7 +353,8 @@ export default class Zombie extends React.Component<Props, State> {
                             <FelaComponent
                               style={{ ...theme.type(-2), fontWeight: '700', }}
                             >
-                              {stocks['29.10.@CCO'].name}
+                              {stocks['29.10.@CCO']
+                                && stocks['29.10.@CCO'].name}
                             </FelaComponent>
                             <FelaComponent
                               style={{
@@ -364,20 +373,29 @@ export default class Zombie extends React.Component<Props, State> {
                               }}
                               render="span"
                             >
-                              {stocks['29.10.@CCO'].value}
+                              {stocks['29.10.@CCO']
+                                && stocks['29.10.@CCO'].value}
                             </FelaComponent>
                             <FelaComponent
                               style={stockYieldStyle(
                                 theme,
-                                stocks['29.10.@CCO'].change
+                                stocks['29.10.@CCO']
+                                  && stocks['29.10.@CCO'].change
                               )}
                               render="span"
                             >
-                              {stocks['29.10.@CCO'].change
+                              {stocks['29.10.@CCO']
+                              && stocks['29.10.@CCO'].change
                                 ? `${
-                                  stocks['29.10.@CCO'].change > 0 ? '+' : '-'
+                                  stocks['29.10.@CCO']
+                                    && stocks['29.10.@CCO'].change > 0
+                                    ? '+'
+                                    : '-'
                                 }${numToHebrewString(
-                                  Math.abs(stocks['29.10.@CCO'].change)
+                                  Math.abs(
+                                    stocks['29.10.@CCO']
+                                        && stocks['29.10.@CCO'].change
+                                  )
                                 )}%`
                                 : ''}
                             </FelaComponent>
@@ -391,26 +409,36 @@ export default class Zombie extends React.Component<Props, State> {
                             <FelaComponent
                               style={{ ...theme.type(-2), fontWeight: '700', }}
                             >
-                              {stocks['30.10.!DJI'].name}
+                              {stocks['30.10.!DJI']
+                                && stocks['30.10.!DJI'].name}
                             </FelaComponent>
                             <FelaComponent
                               style={{ color: theme.color('neutral', '-3'), }}
                               render="span"
                             >
-                              {stocks['30.10.!DJI'].value}
+                              {stocks['30.10.!DJI']
+                                && stocks['30.10.!DJI'].value}
                             </FelaComponent>
                             <FelaComponent
                               style={stockYieldStyle(
                                 theme,
-                                stocks['30.10.!DJI'].change
+                                stocks['30.10.!DJI']
+                                  && stocks['30.10.!DJI'].change
                               )}
                               render="span"
                             >
-                              {stocks['30.10.!DJI'].change
+                              {stocks['30.10.!DJI']
+                              && stocks['30.10.!DJI'].change
                                 ? `${
-                                  stocks['30.10.!DJI'].change > 0 ? '+' : '-'
+                                  stocks['30.10.!DJI']
+                                    && stocks['30.10.!DJI'].change > 0
+                                    ? '+'
+                                    : '-'
                                 }${numToHebrewString(
-                                  Math.abs(stocks['30.10.!DJI'].change)
+                                  Math.abs(
+                                    stocks['30.10.!DJI']
+                                        && stocks['30.10.!DJI'].change
+                                  )
                                 )}%`
                                 : ''}
                             </FelaComponent>
@@ -482,8 +510,8 @@ export default class Zombie extends React.Component<Props, State> {
                     </GridItem>
                   </Grid>
                 </GridItem>
-                {dfp && dfp.length > 0 ? (
-                  dfp.map(banner => (
+                {dfp && dfp.length > 0
+                  ? dfp.map(banner => (
                     <GridItem
                       key={banner.contentId}
                       width={[
@@ -507,7 +535,7 @@ export default class Zombie extends React.Component<Props, State> {
                       <GeneralAdSlot {...banner} />
                     </GridItem>
                   ))
-                ) : null}
+                  : null}
               </Grid>
             </GridItem>
           </ListView>
@@ -529,7 +557,6 @@ type TeaserProps = {
 };
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
-
 function MainTeaser({
   biAction,
   data,
@@ -577,7 +604,10 @@ function MainTeaser({
 
           <TeaserContent
             data={data}
-            padding={[ 1, 1, 0, ]}
+            padding={[
+              { until: 'xl', value: [ 1, 1, 0, ], },
+              { from: 'xl', value: [ 1, 2, 0, ], },
+            ]}
             isStacked
             footerColor={[ 'neutral', '-3', ]}
             footerPadding={[
@@ -587,7 +617,11 @@ function MainTeaser({
             footerMiscStyles={{ type: -3, }}
             renderContent={() => (
               <TeaserHeader
-                typeScale={[ { until: 's', value: 1, }, { from: 's', value: 2, }, ]}
+                typeScale={[
+                  { until: 's', value: 1, },
+                  { from: 's', until: 'xl', value: 2, },
+                  { from: 'xl', value: 1, },
+                ]}
                 {...data}
               />
             )}

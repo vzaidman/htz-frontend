@@ -190,19 +190,30 @@ export default function Panucci({
       {/* end list items */}
 
       {/* banner */}
-      {dfp && dfp.length > 0 ? (
-        dfp.map(banner => (
+      {dfp && dfp.length > 0
+        ? dfp.map(banner => (
           <GridItem
             key={banner.contentId}
             width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-            miscStyles={{ marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ], }}
           >
             {/* banner content */}
-            <GeneralAdSlot {...banner} />
+            <GeneralAdSlot {...banner} styleRule={bannerStyle} />
           </GridItem>
         ))
-      ) : null}
+        : null}
       {/* end banner */}
     </ListView>
   );
+}
+
+function bannerStyle({ theme, }) {
+  return {
+    extend: [
+      theme.mq({ until: 's', }, { ':not(:empty)': { marginTop: '2rem', }, }),
+      theme.mq(
+        { from: 's', until: 'xl', },
+        { ':not(:empty)': { marginTop: '4rem', }, }
+      ),
+    ],
+  };
 }

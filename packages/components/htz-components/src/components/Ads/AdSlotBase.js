@@ -45,13 +45,13 @@ class AdSlotBase extends Component {
         <React.Fragment>
           {this.state.debugJsx}
           <FelaComponent
-            customClass={`js-dfp-ad ${this.props.className}`}
             rule={this.props.styleRule}
             render={({ className, }) => (
               <div
                 id={this.props.id}
                 data-audtarget={audianceTarget}
-                className={className}
+                className={`js-dfp-ad ${this.props.className
+                  || ''} ${className}`}
               />
             )}
           />

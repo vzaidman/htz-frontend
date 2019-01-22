@@ -34,10 +34,7 @@ export default function KrokerView({
   const { items, dfp, } = list;
   return (
     <ListView
-      gutter={{
-        onServerRender: 0,
-        queries: [ { until: 's', value: 0, }, { from: 's', value: 4, }, ],
-      }}
+      gutter={4}
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
       marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
       rowSpacing={[ { until: 's', value: { amount: 1, nUp: 1, }, }, ]}
@@ -114,10 +111,7 @@ function ListItems({
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 10, }, ]}
         miscStyles={{ display: 'flex', }}
       >
-        <Grid
-          gutter={4}
-          rowSpacing={[ { until: 's', value: { amount: 1, }, }, ]}
-        >
+        <Grid gutter={4} rowSpacing={[ { until: 's', value: { amount: 1, }, }, ]}>
           <GridItem
             width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
           >
@@ -174,8 +168,8 @@ function ListItems({
         </Grid>
       </GridItem>
       {/* banner */}
-      {dfp && dfp.length > 0 ? (
-        dfp.map(banner => (
+      {dfp && dfp.length > 0
+        ? dfp.map(banner => (
           <GridItem
             key={banner.contentId}
             width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
@@ -185,7 +179,7 @@ function ListItems({
             <GeneralAdSlot {...banner} miscStyles={{ width: '100%', }} />
           </GridItem>
         ))
-      ) : null}
+        : null}
       {/* end banner */}
     </Grid>
   );

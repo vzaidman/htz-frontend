@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import { borderTop, borderBottom, } from '@haaretz/htz-css-tools';
+import { borderVertical, } from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
@@ -38,7 +38,7 @@ function Leonardo({ list, }: Props): Node {
           ]}
           miscStyles={{
             display: [ { until: 's', value: 'none', }, ],
-            borderTop: [
+            borderVertical: [
               {
                 from: 's',
                 until: 'l',
@@ -57,37 +57,18 @@ function Leonardo({ list, }: Props): Node {
                     render={(banner: ClickTrackerBannerType) => {
                       const { clicktrackerimage, link, } = banner;
                       return (
-                        <FelaComponent
-                          style={{
-                            extend: [
-                              borderTop(
-                                '1px',
-                                0,
-                                'solid',
-                                theme.color('neutral', '-5')
-                              ),
-                              borderBottom(
-                                '1px',
-                                0,
-                                'solid',
-                                theme.color('neutral', '-5')
-                              ),
-                            ],
-                          }}
-                        >
-                          <HtzLink href={link}>
-                            <Image
-                              data={clicktrackerimage}
-                              imgOptions={{
-                                transforms: {
-                                  width: '227',
-                                  aspect: 'landscape',
-                                  quality: 'auto',
-                                },
-                              }}
-                            />
-                          </HtzLink>
-                        </FelaComponent>
+                        <HtzLink href={link}>
+                          <Image
+                            data={clicktrackerimage}
+                            imgOptions={{
+                              transforms: {
+                                width: '227',
+                                aspect: 'landscape',
+                                quality: 'auto',
+                              },
+                            }}
+                          />
+                        </HtzLink>
                       );
                     }}
                   />
