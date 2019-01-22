@@ -44,11 +44,11 @@ function RecipeArticle({ articleId, slots, }) {
             },
           } = data.page;
 
-          const { contentId, imgArray, aspects, } = ogImage || {};
+          const { contentId, imgArray, } = ogImage || {};
           const ogImageUrl = ogImage
             ? buildUrl(
               contentId,
-              { ...imgArray[0], aspects, },
+              { ...imgArray[0], },
               {
                 width: '1200',
                 aspect: 'full',
