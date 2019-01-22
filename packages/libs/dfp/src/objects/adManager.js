@@ -7,6 +7,8 @@ import AdSlot from './adSlot';
 import { getBreakpoint, getBreakpointName, } from '../utils/breakpoints';
 import { retrieveSsoGroupKey, storeSsoGroupKey, } from '../services/ssoGroup';
 import { getCountry, } from '../services/ipInfo';
+import { getCampaignId, } from '../services/gStat';
+
 
 let breakpoints;
 let debug = null;
@@ -658,6 +660,7 @@ export default class AdManager {
       if (this.pageType.includes('hp')) {
         // Homepage targeting only
         pubads.setTargeting('country', getCountry());
+        pubads.setTargeting('gstat_campaign_id', getCampaignId());
       }
 
       // User targeting
