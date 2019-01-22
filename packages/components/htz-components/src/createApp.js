@@ -14,7 +14,6 @@ const createApp = (AdditionalComponent = () => null) => class NextApp extends Ap
 
   componentDidMount() {
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      console.timeEnd('!!!time:');
       window.setTimeout(() => {
         const hider = document.getElementById('chartbeat-flicker-control-style');
         console.warn('!!!cdm createApp');

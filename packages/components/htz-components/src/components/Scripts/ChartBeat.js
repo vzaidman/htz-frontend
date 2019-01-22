@@ -42,8 +42,6 @@ class ChartBeat extends Component {
       innerHtml: this.loadConfiguration(),
       attributes: { type: 'text/javascript', 'data-cfasync': 'false' },
     });
-    console.warn('!!! <ChartBeat />');
-    // console.timeEnd('!!!time:');
   }
   omitFlicker = () => `
         window.setTimeout(function() {

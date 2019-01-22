@@ -30,7 +30,6 @@ function HomePageSlotsLayout({
   slots: { preHeader, header, postHeader, postMain, footer, main, },
 }: Props): React.Node {
   const getElements = slot => slot.map(element => {
-    console.warn('!!!elemet: ', element);
     const Element = componentFromInputTemplate(element.inputTemplate);
     const { properties, ...elementWithoutProperties } = element;
     if (element.inputTemplate === 'com.tm.FooterElement') {

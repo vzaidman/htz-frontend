@@ -25,28 +25,29 @@ class InitPixel extends Component {
     return (
       <Query query={GET_HOST_NAME}>
         {({ data: { hostname, }, }) => {
-          //   todo: update this if we use in other sites
-          const pixelId = hostname.includes('themarker.com')
-            ? '288453064669123'
-            : '1465233127023021';
+          // todo: check if no need for this pixelId
+          // const pixelId = hostname.includes('themarker.com')
+          //   ? '288453064669123'
+          //   : '1465233127023021';
 
-          const pixelId2 = hostname.includes('themarker.com') ? 'update this' : '801998859871552';
+          // todo: update this if we use in other sites
+          const pixelId = hostname.includes('themarker.com') ? 'update this' : '801998859871552';
           return (
             <Head>
               <script
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: `  
-                          !function(f,b,e,v,n,t,s)
-                          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                          n.queue=[];t=b.createElement(e);t.async=!0;
-                          t.src=v;s=b.getElementsByTagName(e)[0];
-                          s.parentNode.insertBefore(t,s)}(window, document,'script',
-                          'https://connect.facebook.net/en_US/fbevents.js');
-                          fbq('init', ${pixelId});
-                          fbq('init', ${pixelId2});
+                           !function(f,b,e,v,n,t,s){
+                              if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                            n.queue=[];t=b.createElement(e);t.async=!0;
+                            t.src=v;s=b.getElementsByTagName(e)[0];
+                            s.parentNode.insertBefore(t,s)}(window, document,'script',
+                            'https://connect.facebook.net/en_US/fbevents.js');
+                            fbq('init', ${pixelId});
+                            fbq('track', 'PageView');
                         `,
                 }}
               />
@@ -55,12 +56,41 @@ class InitPixel extends Component {
                 dangerouslySetInnerHTML={{
                   __html: `
                           <img height="1" width="1" style="display:none"
-                            src="https://www.facebook.com/tr?pixelId=${pixelId}&noscript=1"
+                            src="https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1"
                           />
                         `,
                 }}
               />
             </Head>
+            // <Head>
+            //   <script
+            //     // eslint-disable-next-line react/no-danger
+            //     dangerouslySetInnerHTML={{
+            //       __html: `
+            //               !function(f,b,e,v,n,t,s)
+            //               {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            //               n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            //               if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            //               n.queue=[];t=b.createElement(e);t.async=!0;
+            //               t.src=v;s=b.getElementsByTagName(e)[0];
+            //               s.parentNode.insertBefore(t,s)}(window, document,'script',
+            //               'https://connect.facebook.net/en_US/fbevents.js');
+            //               fbq('init', ${pixelId});
+            //               fbq('init', ${pixelId2});
+            //             `,
+            //     }}
+            //   />
+            //   <noscript
+            //     // eslint-disable-next-line react/no-danger
+            //     dangerouslySetInnerHTML={{
+            //       __html: `
+            //               <img height="1" width="1" style="display:none"
+            //                 src="https://www.facebook.com/tr?pixelId=${pixelId}&noscript=1"
+            //               />
+            //             `,
+            //     }}
+            //   />
+            // </Head>
           );
         }}
       </Query>
