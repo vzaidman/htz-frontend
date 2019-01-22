@@ -52,6 +52,7 @@ import HtzLink from './components/HtzLink/HtzLink';
 import Image from './components/Image/Image';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import InitPixel from './components/Scripts/InitPixel';
+import ChartBeat from './components/Scripts/ChartBeat';
 import Interactive from './components/Interactive/Interactive';
 import LayoutContainer from './components/PageLayout/LayoutContainer';
 import LayoutRow from './components/PageLayout/LayoutRow';
@@ -404,6 +405,7 @@ export {
   setColor,
   stylesPropType,
   validateType,
+  ChartBeat,
   // BI
   BIAction,
   BIRequest,

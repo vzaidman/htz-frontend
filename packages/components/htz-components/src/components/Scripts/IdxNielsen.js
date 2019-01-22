@@ -87,7 +87,6 @@ class IdxNielsen extends Component {
 
   componentDidMount() {
     if (this.props.shouldRender) {
-      console.warn('!!! hello i am here!');
       const DeviceUtil = deviceUtil();
       window.idx = {
         lat: null,

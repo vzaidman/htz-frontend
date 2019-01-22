@@ -16,7 +16,6 @@ import MobileView from './elements/MobileMainContainer';
 import FirstImpressionPlaceHolder from '../Paragraph/FirstImpressionPlaceholder';
 import AccessListByIp from '../Scripts/AccessListByIp';
 import GoogleReMarketingTag from '../Scripts/GoogleReMarketingTag';
-import ChartBeat from '../Scripts/ChartBeat';
 import ChromePush from '../Scripts/ChromePush';
 import FirstImpression from '../Scripts/FirstImpression';
 import GStat from '../Scripts/GStat';
@@ -224,7 +223,6 @@ class Footer extends React.Component {
         />
         <AccessListByIp />
         <GoogleReMarketingTag />
-        <ChartBeat />
         <ChromePush />
         <FirstImpression />
         <GStat />

@@ -5,7 +5,7 @@ import config from 'config';
 import serialize from 'serialize-javascript';
 import SEO from './components/SEO/SEO';
 import criticalFontLoader from './utils/criticalFontLoader';
-
+// import ChartBeat from './components/Scripts/ChartBeat';
 
 const polyFillSrc = 'https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated';
 
@@ -87,61 +87,84 @@ const createDocument = ({
     ));
   }
 
-  renderData() {
-    return (
-      <script
-          // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: `__HTZ_DATA__=${serialize(this.props.appData)};`,
-        }}
-      />
+    chartbeatConfig = () => (
+      <script type="text/javascript">
+        {`
+              var _sf_async_config = _sf_async_config || {};
+              /** ChartBeat CONFIGURATION START **/
+              _sf_async_config.uid = 5952;
+              _sf_async_config.domain = ${'haaretz.co.il'};
+              _sf_async_config.flickerControl = true;
+              _sf_async_config.useCanonical = true;
+              _sf_async_config.useCanonicalDomain = true;
+              /** ChartBeat CONFIGURATION END **/
+            `}
+      </script>
     );
-  }
 
-  render() {
-    const criticalFont = this.props.criticalFontElements;
-    return (
-      <html lang={this.props.lang} dir={this.props.isRtl ? 'rtl' : 'ltr'}>
-        <Head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-          {/* dont add link to manifest on purchase-page app  */}
-          {hasToggleableTheme ? null : (
-            <link rel="manifest" href="/static/manifest/manifest.json" />
-          )}
+    renderData() {
+      return (
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `__HTZ_DATA__=${serialize(this.props.appData)};`,
+          }}
+        />
+      );
+    }
 
-          {criticalFont.preload}
-          <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
-          {criticalFont.style}
-          {criticalFont.script}
-          {this.renderStyles()}
-          {this.renderData()}
-          {process.env.CONNECTION_PRESET === 'stage' ? (
-            <meta
-              name="google-site-verification"
-              content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
-            />
-          ) : null}
+    render() {
+      const criticalFont = this.props.criticalFontElements;
+      return (
+        <html lang={this.props.lang} dir={this.props.isRtl ? 'rtl' : 'ltr'}>
+          <Head>
+            <meta charSet="utf-8" />
+            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+            {/* dont add link to manifest on purchase-page app  */}
+            {hasToggleableTheme ? null : (
+              <link rel="manifest" href="/static/manifest/manifest.json" />
+            )}
 
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
+            {criticalFont.preload}
+            <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
+            {criticalFont.style}
+            {criticalFont.script}
+            {this.renderStyles()}
+            {this.renderData()}
+            {this.chartbeatConfig()}
+            {process.env.CONNECTION_PRESET === 'stage' ? (
+              <meta
+                name="google-site-verification"
+                content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
+              />
+            ) : null}
+
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
                 :-moz-focusring {
                   outline: 2px dotted #0B7EB5;
                 }
                 `,
-            }}
-          />
-        </Head>
-        <body>
-          <Main />
-          <script src={polyFillSrc} />
-          <NextScript />
-        </body>
-      </html>
-    );
-  }
+              }}
+            />
+            <style id="chartbeat-flicker-control-style" type="text/css">
+              {`body {
+               visibility: hidden !important;
+            }`}
+            </style>
+
+            <script async src="//static.chartbeat.com/js/chartbeat_mab.js" />
+          </Head>
+          <body className="custom-body">
+            <Main />
+            <script src={polyFillSrc} />
+            <NextScript />
+          </body>
+        </html>
+      );
+    }
 };
 
 export default createDocument;

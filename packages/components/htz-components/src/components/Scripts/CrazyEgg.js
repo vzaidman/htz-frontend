@@ -17,7 +17,6 @@ class CrazyEgg extends Component {
   };
 
   componentDidMount() {
-    console.warn('!!! here r u 2: ');
     if (this.props.shouldRender) {
       appendScript({
         id: 'carzy_egg',
