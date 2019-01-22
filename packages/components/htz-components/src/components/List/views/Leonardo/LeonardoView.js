@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
-import { FelaComponent, FelaTheme, } from 'react-fela';
-import { borderVertical, } from '@haaretz/htz-css-tools';
+import { FelaTheme, } from 'react-fela';
 
 import type { Node, } from 'react';
 import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTrackerBannerType';
@@ -30,20 +29,35 @@ function Leonardo({ list, }: Props): Node {
       render={theme => (
         <ListView
           innerBackgroundColor="white"
+          gutter={0}
           marginTop={0}
           padding={[
-            { from: 's', until: 'l', value: [ 2, 4, 4, ], },
-            { from: 'l', until: 'xl', value: [ 4, 12, 8, ], },
-            { from: 'xl', value: [ 4, 20, 8, ], },
+            { from: 's', until: 'l', value: [ 2, 0, 4, ], },
+            { from: 'l', value: [ 4, 0, 6, ], },
           ]}
           miscStyles={{
             display: [ { until: 's', value: 'none', }, ],
-            borderVertical: [
+            borderTop: [
               {
                 from: 's',
                 until: 'l',
                 value: [ '2px', 2, 'solid', theme.color('bg'), ],
               },
+              { from: 'l', value: [ '2px', 4, 'solid', theme.color('bg'), ], },
+            ],
+          }}
+          gridMiscStyles={{
+            paddingInlineEnd: [
+              { from: 's', until: 'l', value: 4, },
+              { from: 'l', until: 'xl', value: 12, },
+              { from: 'xl', value: 20, },
+            ],
+            paddingInlineStart: [
+              { from: 's', until: 'l', value: 4, },
+              { from: 'l', until: 'xl', value: 12, },
+              { from: 'xl', value: 20, },
+            ],
+            borderBottom: [
               { from: 'l', value: [ '2px', 4, 'solid', theme.color('bg'), ], },
             ],
           }}

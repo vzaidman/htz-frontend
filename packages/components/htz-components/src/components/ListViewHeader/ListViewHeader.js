@@ -179,12 +179,13 @@ export default function ListViewHeader({
               style={{
                 marginTop: '1rem',
                 color: theme.color('neutral', '-3'),
-                fontWeight: 700,
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
-                  theme.type(-1, { until: 'xl', }),
-                  theme.type(-2, { from: 'xl', }),
+                  theme.mq({ until: 'l', }, { fontWeight: '700', }),
+                  theme.type(-1, { fromBp: 's', untilBp: 'l', }),
+                  theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
+                  theme.type(-2, { fromBp: 'xl', lines: 4, }),
                   ...(isHorizontal
                     ? []
                     : [ theme.mq({ until: 'l', }, { marginInlineStart: 'auto', }), ]),
@@ -261,24 +262,28 @@ export default function ListViewHeader({
               ) : (
                 !isHorizontal
                 && commercialLinks && (
-                  <ul>
+                  <FelaComponent
+                    style={{
+                      color: theme.color('commercial'),
+                      fontFamily: theme.fontStacks
+                        ? theme.fontStacks.commercial
+                        : undefined,
+                      extend: [
+                        theme.mq({ until: 'l', }, { display: 'none', }),
+                        theme.type(0, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
+                        theme.type(-2, { fromBp: 'xl', lines: 4, }),
+                      ],
+                    }}
+                    render="ul"
+                  >
                     {commercialLinks.map((commercialLink, idx) => (
                       <FelaComponent
                         style={theme => ({
-                          color: theme.color('commercial'),
-                          fontFamily: theme.fontStacks
-                            ? theme.fontStacks.commercial
-                            : undefined,
                           marginBottom:
                             idx < commercialLinks.length - 1 ? '1rem' : '0',
 
                           '&:hover': { textDecoration: 'underline', },
                           '&:focus': { textDecoration: 'underline', },
-
-                          extend: [
-                            theme.type(-1, { until: 'xl', }),
-                            theme.type(-2, { from: 'xl', }),
-                          ],
                         })}
                         key={commercialLink.contentId}
                         render="li"
@@ -288,7 +293,7 @@ export default function ListViewHeader({
                         </HtzLink>
                       </FelaComponent>
                     ))}
-                  </ul>
+                  </FelaComponent>
                 )
               )}
             </FelaComponent>
@@ -352,7 +357,7 @@ function listViewHeaderStyle({
             { from: 'l', },
             borderTop(
               '5px',
-              1,
+              2,
               'solid',
               isCommercial
                 ? theme.color('commercial')

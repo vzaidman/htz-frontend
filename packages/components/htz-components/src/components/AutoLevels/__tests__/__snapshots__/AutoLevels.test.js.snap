@@ -14,7 +14,7 @@ exports[`<AutoLevels> renders correctly H and Sections with correct heading leve
         Should be h4
       </h4>
       <h5>
-        Should be h5 because of offSet
+        Should be h5 because of offset
       </h5>
       <h5>
         Should be h5 because of fragment

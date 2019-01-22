@@ -143,10 +143,9 @@ export default function Wong({
                         { until: 'xl', value: -1, },
                         { from: 'xl', value: -2, },
                       ]}
-                      miscStyles={{
-                        marginTop: '1rem',
-                      }}
+                      miscStyles={{}}
                       kickerMiscStyles={{
+                        marginBottom: '1rem',
                         marginInlineStart: [ { until: 's', value: '-2rem', }, ],
                       }}
                       kickerInnerMiscStyles={{

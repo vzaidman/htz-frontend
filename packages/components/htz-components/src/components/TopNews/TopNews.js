@@ -38,8 +38,8 @@ function TopNews({ newsItems, contentName, }: Props): React.Node {
             paddingInlineStart: '4rem',
             extend: [
               theme.mq({ until: 'l', }, { display: 'none', }),
-              theme.type(-1, { until: 'xl', }),
-              theme.type(-2, { from: 'xl', }),
+              theme.type(-1, { untilBp: 'xl', lines: 4, }),
+              theme.type(-2, { fromBp: 'xl', }),
               borderBottom('2px', topBottomPadding, 'solid', theme.color('bg')),
             ],
           })}
@@ -58,33 +58,40 @@ function TopNews({ newsItems, contentName, }: Props): React.Node {
                   </H>
                 )}
               />
-              {newsItems
-                && newsItems.map((link, idx) => {
-                  const isLast = idx === newsItems.length - 1;
-                  const hoverFocusStyle = {
-                    textDecoration: 'underline',
-                    textDecorationColor: theme.color('primary', '-2'),
-                  };
-                  return (
-                    <HtzLink href={link.href}>
+              <FelaComponent style={{ display: 'inline-block', }} render="ul">
+                {newsItems
+                  && newsItems.map((link, idx) => {
+                    const isLast = idx === newsItems.length - 1;
+                    const hoverFocusStyle = {
+                      textDecoration: 'underline',
+                      textDecorationColor: theme.color('primary', '-2'),
+                    };
+                    return (
                       <FelaComponent
                         key={link.contentName}
-                        style={{
-                          fontWeight: '700',
-                          color: theme.color(
-                            ...(isLast ? [ 'primary', '+1', ] : [ 'neutral', ])
-                          ),
-                          '&:hover': hoverFocusStyle,
-                          '&:focus': hoverFocusStyle,
-                        }}
-                        render="span"
+                        style={{ display: 'inline-block', }}
+                        render="li"
                       >
-                        {link.contentName}
+                        <FelaComponent
+                          style={{
+                            fontWeight: '700',
+                            color: theme.color(
+                              ...(isLast ? [ 'primary', '+1', ] : [ 'neutral', ])
+                            ),
+                            '&:hover': hoverFocusStyle,
+                            '&:focus': hoverFocusStyle,
+                          }}
+                          render={({ className, }) => (
+                            <HtzLink href={link.href} className={className}>
+                              {link.contentName}
+                            </HtzLink>
+                          )}
+                        />
+                        {isLast ? null : ' | '}
                       </FelaComponent>
-                      {isLast ? null : ' | '}
-                    </HtzLink>
-                  );
-                })}
+                    );
+                  })}
+              </FelaComponent>
             </Section>
           )}
         />

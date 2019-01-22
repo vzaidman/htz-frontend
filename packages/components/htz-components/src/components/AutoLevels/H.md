@@ -44,20 +44,20 @@ The user is responsible for creating the main heading `<h1 />`>
 </div>
 ```
 
-**Usage With offSet**
+**Usage With offset**
 
-`offSet` prop allows manipulating the heading level
+`offset` prop allows manipulating the heading level
 
 ```jsx
 <div>
   <h1>h1 is the user's responsibility</h1>
-  <H offSet={1}>I should be a h2 but I was offSet to be a h3</H>
+  <H offset={1}>I should be a h2 but I was offset to be a h3</H>
   <p>Some content....</p>
   <Section>
-    <H offSet={3}>I should be a h3 but I was offSet to be h6 </H>
+    <H offset={3}>I should be a h3 but I was offset to be h6 </H>
     <p>Some content....</p>
     <Section>
-      <H offSet={-2}>I should be a h4 but I was offSet to be h2</H>
+      <H offset={-2}>I should be a h4 but I was offset to be h2</H>
       <p>Some content....</p>
     </Section>
   </Section>
@@ -66,18 +66,18 @@ The user is responsible for creating the main heading `<h1 />`>
 
 **Usage with Section props**
 
-`offSet` prop allows manipulating the heading level
+`offset` prop allows manipulating the heading level
 
 ```jsx
 <div>
   <h1>h1 is the user's responsibility</h1>
-  <H offSet={1}>I should be a h2 but I was offSet to be a h3</H>
+  <H offset={1}>I should be a h2 but I was offset to be a h3</H>
   <p>Some content....</p>
   <Section>
-    <H offSet={3}>I should be a h3 but I was offSet to be h6 </H>
+    <H offset={3}>I should be a h3 but I was offset to be h6 </H>
     <p>Some content....</p>
     <Section>
-      <H offSet={-2}>I should be a h4 but I was offSet to be h2</H>
+      <H offset={-2}>I should be a h4 but I was offset to be h2</H>
       <p>Some content....</p>
     </Section>
   </Section>

@@ -13,7 +13,7 @@ describe('<AutoLevels>', () => {
           <H>Should be h3</H>
           <Section tagName="div">
             <H>Should be h4</H>
-            <H offSet={1}>Should be h5 because of offSet</H>
+            <H offset={1}>Should be h5 because of offset</H>
             <Section isFragment>
               <H>Should be h5 because of fragment</H>
             </Section>

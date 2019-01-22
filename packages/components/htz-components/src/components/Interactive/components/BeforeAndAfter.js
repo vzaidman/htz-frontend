@@ -128,10 +128,10 @@ export default class BeforeAndAfter extends React.Component {
     e.preventDefault();
     const wrapperWidth = this.wrapper.offsetWidth;
     const wrapperX = this.wrapper.offsetLeft;
-    const offSetX = this.wrapper.getBoundingClientRect().left;
+    const offsetX = this.wrapper.getBoundingClientRect().left;
     const sliderOffset = this.slider.offsetWidth;
     // prettier-ignore
-    const sliderRelativeX = ((e.clientX - offSetX) - wrapperX) + (sliderOffset * 0.5);
+    const sliderRelativeX = ((e.clientX - offsetX) - wrapperX) + (sliderOffset * 0.5);
     // prettier-ignore
     const newLineX = (sliderRelativeX / wrapperWidth) * 100;
     this.setState({
@@ -140,7 +140,9 @@ export default class BeforeAndAfter extends React.Component {
   };
 
   render() {
-    const { properties: { elementsList, }, } = this.props;
+    const {
+      properties: { elementsList, },
+    } = this.props;
     return elementsList && elementsList.length >= 2 ? (
       <FelaComponent
         style={{

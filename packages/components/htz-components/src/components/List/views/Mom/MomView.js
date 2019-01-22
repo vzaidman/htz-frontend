@@ -88,34 +88,48 @@ export default function Mom({
                   }}
                 />
               </FelaComponent>
-              <H>
-                <FelaComponent
-                  style={theme => ({
-                    color: theme.color('neutral', '-1'),
-                    backgroundColor: theme.color('quaternary'),
-                    boxDecorationBreak: 'clone',
-                    paddingBottom: '.191em',
-                    paddingInlineEnd: '1rem',
-                    paddingInlineStart: '1rem',
-                    paddingTop: '.191em',
-                    verticalAlign: '-.05em',
-                    extend: [
-                      theme.type(2, { untilBp: 'xl', }),
-                      theme.type(1, { fromBp: 'xl', }),
-                    ],
-                  })}
-                  render="span"
-                >
-                  <FelaComponent
-                    style={{
-                      position: 'relative',
-                    }}
-                    render="span"
-                  >
-                    {title}
-                  </FelaComponent>
-                </FelaComponent>
-              </H>
+              <FelaComponent
+                style={theme => ({
+                  position: 'relative',
+                  top: '1px',
+                  extend: [
+                    theme.type(2, { untilBp: 'xl', }),
+                    theme.type(1, { fromBp: 'xl', }),
+                  ],
+                })}
+                render={({ className, theme, }) => (
+                  <H className={className}>
+                    <FelaComponent
+                      style={{
+                        color: theme.color('neutral', '-1'),
+                        backgroundColor: theme.color('quaternary'),
+                        boxDecorationBreak: 'clone',
+                        paddingInlineEnd: '1rem',
+                        paddingInlineStart: '1rem',
+                        extend: [
+                          theme.mq(
+                            { until: 'xl', },
+                            {
+                              paddingBottom: '1px',
+                              paddingTop: '2px',
+                            }
+                          ),
+                          theme.mq(
+                            { from: 'xl', },
+                            {
+                              paddingBottom: '3px',
+                              paddingTop: '5px',
+                            }
+                          ),
+                        ],
+                      }}
+                      render="span"
+                    >
+                      {title}
+                    </FelaComponent>
+                  </H>
+                )}
+              />
             </HtzLink>
           )}
         />
@@ -487,6 +501,7 @@ function TeaserWithImg2({
 
 type TextualTeaserPropTypes = TeaserProps & { isLargeText: boolean, };
 
+// eslint-disable-next-line react/default-props-match-prop-types
 TextualTeaser.defaultProps = { lazyLoadImages: undefined, isLargeText: false, };
 function TextualTeaser({
   data,

@@ -26,9 +26,9 @@ type TeaserHeaderProps = {
    */
   attrs: ?attrFlowType,
   /**
-   * The offSet of the `h` element from the calculated heading level.
-   * e.g: the calculated level is 3 and the offSet is 1, the heading level will be 4.
-   * The offSet can be negative.
+   * The offset of the `h` element from the calculated heading level.
+   * e.g: the calculated level is 3 and the offset is 1, the heading level will be 4.
+   * The offset can be negative.
    * The final Heading level can be between 2 and 6,
    * e.g the calculated level is 10, the heading level will be 6.
    */

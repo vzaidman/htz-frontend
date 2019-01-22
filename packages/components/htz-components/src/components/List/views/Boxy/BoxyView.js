@@ -47,11 +47,6 @@ export default function Boxy({ list, }: Props): Node {
           >
             <LayoutContainer
               miscStyles={{
-                maxWidth: [
-                  { from: 's', until: 'm', value: '100%', },
-                  { from: 'm', until: 'l', value: '100%', },
-                  { from: 'l', until: 'xl', value: '100%', },
-                ],
                 // Hide yellow strip when it overflows from the bottom
                 // because of subpixel rendering
                 overflow: 'hidden',
@@ -190,7 +185,7 @@ function getEmbedProps(media: HTMLEmbedDataType): Object {
     };
 }
 
-const getMediaProps = (media: MediaType): ?Object => {
+function getMediaProps(media: MediaType): ?Object {
   if (isImage(media)) {
     return getImageProps(media);
   }
@@ -198,7 +193,7 @@ const getMediaProps = (media: MediaType): ?Object => {
     return getEmbedProps(media);
   }
   return null;
-};
+}
 
 // /////////////////////////////////////////////////////////////////////
 //                               STYLE                                //
@@ -214,10 +209,10 @@ function textWrapperStyle(theme) {
       // The text is outside the flow of the verticle rhythm,
       // so it is okay to use uneven numbers for `lines` to
       // keep the background lines nice
-      theme.type(3, { lines: 5.5, untilBp: 'l', }),
-      theme.type(4, { lines: 6.4, fromBp: 'l', untilBp: 'xl', }),
-      theme.type(3, { lines: 5.4, fromBp: 'xl', }),
-      theme.mq({ until: 'l', }, { bottom: '1px', }),
+      theme.type(3, { lines: 6, untilBp: 'l', }),
+      theme.type(4, { lines: 7, fromBp: 'l', untilBp: 'xl', }),
+      theme.type(3, { lines: 6, fromBp: 'xl', }),
+      theme.mq({ until: 'l', }, { bottom: '-1px', }),
       theme.mq({ from: 'l', }, { bottom: '0', }),
     ],
   };
@@ -225,14 +220,27 @@ function textWrapperStyle(theme) {
 
 function innerTextStyle(theme) {
   return {
-    fontWeight: '400',
     padding: '1rem',
     backgroundColor: rgba(theme.color('quaternary', 'base'), 0.85),
     display: 'inline',
     boxDecorationBreak: 'clone',
-    paddingTop: '0.15em',
     paddingRight: '1rem',
     paddingLeft: '1rem',
-    paddingBottom: '0.15em',
+    extend: [
+      theme.mq(
+        { until: 'l', },
+        {
+          paddingBottom: '3px',
+          paddingTop: '3px',
+        }
+      ),
+      theme.mq(
+        { from: 'l', },
+        {
+          paddingBottom: '4px',
+          paddingTop: '4px',
+        }
+      ),
+    ],
   };
 }
