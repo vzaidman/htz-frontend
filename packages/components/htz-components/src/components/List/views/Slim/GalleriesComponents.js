@@ -56,7 +56,7 @@ export function MainGallery({ item, }: MainGalleryProps): Node {
             itemsLength,
             moving,
             size: -1,
-            creditSize: -3,
+            creditSize: -1,
             prefixContent: `${index + 1}/${itemsLength}`,
             wrapperMiscStyles: {
               paddingInlineEnd: [
@@ -71,7 +71,7 @@ export function MainGallery({ item, }: MainGalleryProps): Node {
             },
             captionMiscStyles: {
               flexGrow: '1',
-              justifyContent: 'space-between',
+              // justifyContent: 'space-between',
               paddingStart: '0',
             },
           });
@@ -89,8 +89,14 @@ export function MainGallery({ item, }: MainGalleryProps): Node {
                 position={100}
                 {...getCaptionProps(previousImage, previousItemIndex)}
               />
-              <CaptionElement position={0} {...getCaptionProps(image, displayItemNum)} />
-              <CaptionElement position={-100} {...getCaptionProps(nextImage, nextItemIndex)} />
+              <CaptionElement
+                position={0}
+                {...getCaptionProps(image, displayItemNum)}
+              />
+              <CaptionElement
+                position={-100}
+                {...getCaptionProps(nextImage, nextItemIndex)}
+              />
             </FelaComponent>
           );
         }}
@@ -104,6 +110,7 @@ export function MainGallery({ item, }: MainGalleryProps): Node {
 export function RelatedGallery({ item, miscStyles, biAction, }: RelatedGalleryProps): Node {
   return (
     <GridItem
+      gutter={4}
       width={[
         { until: 'l', value: 1 / 2, },
         { from: 'l', until: 'xl', value: 1 / 3, },
@@ -152,7 +159,10 @@ export function RelatedGallery({ item, miscStyles, biAction, }: RelatedGalleryPr
           renderContent={() => (
             <TeaserHeader
               {...item}
-              typeScale={0}
+              typeScale={[
+                { until: 'xl', value: 0, },
+                { from: 'xl', value: -1, },
+              ]}
               miscStyles={{
                 paddingBottom: '4rem',
               }}

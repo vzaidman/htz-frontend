@@ -75,7 +75,7 @@ const iconStyle = ({ theme, isFullScreen, hide, }) => ({
   padding: '1rem',
   opacity: hide ? '0' : '1',
   width: '100%',
-  zIndex: '1',
+  zIndex: '6',
   extend: [
     { transitionProperty: 'opacity', },
     theme.getDuration('transition', 0),
@@ -214,7 +214,7 @@ class FullScreenMedia extends React.Component {
             onMouseLeave={!isFullScreen ? () => this.toggleHide(true) : null}
           >
             {!isFullScreen ? (
-              <Icon isFullScreen={false} hide={this.state.hide} onClick={this.toggleFullScreen} />
+              <Icon isFullScreen={false} hide={this.state.hide} />
             ) : null}
             <div />
             <FelaComponent

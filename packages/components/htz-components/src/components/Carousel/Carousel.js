@@ -76,6 +76,7 @@ const Items = createComponent(itemsStyle);
 
 const currentItemsStyle = ({ moving, direction, }) => ({
   position: 'static',
+  zIndex: 1,
 });
 const CurrentItems = createComponent(currentItemsStyle, Items, props => Object.keys(props)
 );

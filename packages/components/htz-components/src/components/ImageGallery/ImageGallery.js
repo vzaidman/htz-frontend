@@ -355,6 +355,7 @@ const Gallery = ({
                             start: '0',
                             transform: 'translateY(-50%)',
                             width: '100%',
+                            zIndex: 2,
                             extend: [ isFullScreen ? { display: 'none', } : {}, ],
                           }}
                         >
@@ -367,6 +368,9 @@ const Gallery = ({
                                 color: theme.color('neutral', '-1'),
                                 backgroundColor: rgba(theme.color('quaternary'), 0.8),
                                 start: '0',
+                                ':focus': {
+                                  outline: 'none',
+                                },
                               }}
                               render={({ className, }) => (
                                 <button
@@ -397,6 +401,9 @@ const Gallery = ({
                                 end: '0',
                                 color: theme.color('neutral', '-1'),
                                 backgroundColor: rgba(theme.color('quaternary'), 0.8),
+                                ':focus': {
+                                  outline: 'none',
+                                },
                               }}
                               render={({ className, }) => (
                                 <button
