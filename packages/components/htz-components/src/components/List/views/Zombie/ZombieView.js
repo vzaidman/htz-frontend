@@ -487,7 +487,7 @@ export default class Zombie extends React.Component<Props, State> {
                     <GridItem
                       key={banner.contentId}
                       width={[
-                        { until: 'l', value: 1, },
+                        { until: 's', value: 1, },
                         { from: 'xl', value: 4 / 10, },
                       ]}
                       miscStyles={{
@@ -496,8 +496,8 @@ export default class Zombie extends React.Component<Props, State> {
                         marginTop: [ { until: 'l', value: '4rem', }, ],
                         marginBottom: [ { until: 's', value: '4rem', }, ],
                         display: [
-                          { until: 'l', value: 'block', },
-                          { from: 'l', until: 'xl', value: 'none', },
+                          { until: 's', value: 'block', },
+                          { from: 's', until: 'xl', value: 'none', },
                           { from: 'xl', value: 'block', },
                         ],
                         width: [ { until: 's', value: '300px', }, ],
