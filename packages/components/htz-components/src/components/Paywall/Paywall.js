@@ -17,7 +17,7 @@ const mapper = {
   'bot-persist': PaywallBottom,
   top: PaywallTop,
   popup: PaywallPopup,
-  midpage: PaywallMidpage,
+  'mid-page': PaywallMidpage,
 };
 
 function selectLayout(slotLocation: SlotLocation): ?PaywallLayout {

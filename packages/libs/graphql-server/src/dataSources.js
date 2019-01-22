@@ -75,8 +75,19 @@ class PapiAPI extends RESTDataSource {
     return this.get(path, params)
       .then(res => {
         console.log('paywall response: ', res);
+        const slotMapping = {
+          'bot-persist': 'bot-persist',
+          top: 'top',
+          'pop-small': 'popup',
+          popup: 'popup',
+          mid: 'mid-page',
+          'mid-page': 'mid-page',
+        };
+        const slotLocation = res.basicInfo.slotLocation;
         return {
-          slotLocation: res.basicInfo.slotLocation,
+          slotLocation: slotLocation in slotMapping
+            ? slotMapping[slotLocation]
+            : null,
           colorScheme: res.visualInfo.bgColor.includes('secondary')
             ? 'secondary'
             : 'primary',

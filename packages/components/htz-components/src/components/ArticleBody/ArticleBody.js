@@ -272,7 +272,7 @@ const wrapperStyle = ({ miscStyles, theme, }) => ({
 function ArticleBody({ body, miscStyles, tagsList, showNewsletter, }) {
   return body && body.length > 0 ? (
     <FelaComponent miscStyles={miscStyles} rule={wrapperStyle}>
-      <Paywall layouts={[ 'midpage', ]} />
+      <Paywall layouts={[ 'mid-page', ]} />
       {body.map((component, i) => buildComponent(component, i, i === body.length - 1, showNewsletter)
       )}
       {tagsList && tagsList.length ? <Tags tagsList={tagsList} /> : null}

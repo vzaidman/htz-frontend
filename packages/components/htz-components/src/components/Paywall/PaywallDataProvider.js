@@ -53,7 +53,7 @@ export type SlotLocation =
   | 'bot-persist'
   | 'top'
   | 'popup'
-  | 'midpage';
+  | 'mid-page';
 
 export type PaywallData = {
   slotLocation: SlotLocation,
