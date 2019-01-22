@@ -34,7 +34,7 @@ function HomePageSlotsLayout({
     const { properties, ...elementWithoutProperties } = element;
     if (element.inputTemplate === 'com.tm.FooterElement') {
       return (
-        <Element {...elementWithoutProperties} {...properties} shouldRenderScripts={false} />
+        <Element {...elementWithoutProperties} {...properties} shouldRenderScripts />
       );
     }
     return <Element {...elementWithoutProperties} {...properties} />;

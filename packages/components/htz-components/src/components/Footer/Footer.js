@@ -116,7 +116,7 @@ class Footer extends React.Component {
   };
 
   static defaultProps = {
-    shouldRenderScripts: true,
+    shouldRenderScripts: false,
   };
 
   state = {
