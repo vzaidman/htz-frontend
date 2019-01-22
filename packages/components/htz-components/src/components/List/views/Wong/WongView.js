@@ -2,29 +2,26 @@
 import * as React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
+
+import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
+import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType';
+import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
+import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import { isTeaser, isImage, isEmbed, } from '../../../../utils/validateType.js';
+import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
+import CommentsCount from '../../../CommentsCount/CommentsCount';
 import GridItem from '../../../Grid/GridItem';
-import getMediaComponent from '../../../../utils/getMediaComponent';
+import HtzLink from '../../../HtzLink/HtzLink';
+import IconBack from '../../../Icon/icons/IconBack';
+import Picture from '../../../Image/Picture';
 import Teaser from '../../../Teaser/Teaser';
+import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserSubtitle from '../../../TeaserSubtitle/TeaserSubtitle';
-import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
-import Picture from '../../../Image/Picture';
-import type { ListDataType, } from '../../../../flowTypes/ListDataType';
-import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
-import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType';
-import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
-import CommentsCount from '../../../CommentsCount/CommentsCount';
-import HtzLink from '../../../HtzLink/HtzLink';
-import {
-  isTeaser,
-  isImage,
-  isEmbed,
-  //  isGallery,
-} from '../../../../utils/validateType.js';
-import IconBack from '../../../Icon/icons/IconBack';
+import getMediaComponent from '../../../../utils/getMediaComponent';
 
 type Props = {
   gutter: ?number,
@@ -217,45 +214,60 @@ export default function Wong({
                           // related articles should show up to
                           // 3 articles on xl bp, 2 articles for s-l bp, and none for s bp
                           (article, idx) => (idx < 3 ? (
-                            <li key={article.contentId}>
-                              <FelaComponent
-                                style={{
-                                  color: theme.color('link', 'base'),
-                                  display: 'block',
-                                  paddingInlineStart: relatedPadding,
+                            <AboveBlockLink key={article.contentId}>
+                              {({ className: aboveBlockLinkClassName, }) => (
+                                <li className={aboveBlockLinkClassName}>
+                                  <FelaComponent
+                                    style={{
+                                      color: theme.color('link', 'base'),
+                                      display: 'block',
+                                      paddingInlineStart: relatedPadding,
 
-                                  '&:visited': {
-                                    color: theme.color('link', 'base'),
-                                  },
-                                  extend: [
-                                    theme.mq(
-                                      { until: 'xl', },
-                                      idx === 2 ? { display: 'none', } : {}
-                                    ),
-                                    theme.type(-1, { untilBp: 'xl', }),
-                                    theme.type(-2, { fromBp: 'xl', }),
-                                  ],
-                                }}
-                                render={({ className, }) => (
-                                  <HtzLink
-                                    href={article.path}
-                                    className={className}
-                                  >
-                                    <IconBack
-                                      size={[
-                                        { until: 'xl', value: 2, },
-                                        { from: 'xl', value: 1.5, },
-                                      ]}
-                                      miscStyles={{
-                                        marginInlineStart: `-${relatedPadding}`,
-                                        marginInlineEnd: '0.5rem',
-                                      }}
-                                    />
-                                    {article.title}
-                                  </HtzLink>
-                                )}
-                              />
-                            </li>
+                                      ':visited': {
+                                        color: theme.color('link', 'base'),
+                                      },
+                                      ':hover': {
+                                        color: theme.color('link', 'base'),
+                                        textDecoration: 'underline',
+                                      },
+                                      ':focus': {
+                                        color: theme.color('link', 'base'),
+                                        textDecoration: 'underline',
+                                        outline: 'none',
+                                      },
+                                      extend: [
+                                        theme.mq(
+                                          { until: 'xl', },
+                                          idx === 2 ? { display: 'none', } : {}
+                                        ),
+                                        theme.type(-1, { untilBp: 'xl', }),
+                                        theme.type(-2, { fromBp: 'xl', }),
+                                      ],
+                                    }}
+                                    render={({
+                                      className: linkClassName,
+                                    }) => (
+                                      <HtzLink
+                                        href={article.path}
+                                        className={linkClassName}
+                                      >
+                                        <IconBack
+                                          size={[
+                                            { until: 'xl', value: 2, },
+                                            { from: 'xl', value: 1.5, },
+                                          ]}
+                                          miscStyles={{
+                                            marginInlineStart: `-${relatedPadding}`,
+                                            marginInlineEnd: '0.5rem',
+                                          }}
+                                        />
+                                        {article.title}
+                                      </HtzLink>
+                                    )}
+                                  />
+                                </li>
+                              )}
+                            </AboveBlockLink>
                           ) : null)
                         )}
                       </FelaComponent>
