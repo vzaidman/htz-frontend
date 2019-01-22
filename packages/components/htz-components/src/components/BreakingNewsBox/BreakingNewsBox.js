@@ -59,7 +59,7 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
         variables={{ cid: 'Haaretz.Element.BreakingNewsBoxElement', }}
       >
         {({ data, loading, error, }) => {
-          if (loading || error || !(data && data.breakingNewsBox)) {
+          if (loading || error || !(data && data.breakingNewsBox && data.breakingNewsBox.items)) {
             return null;
           }
 
