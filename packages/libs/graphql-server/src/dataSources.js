@@ -83,6 +83,23 @@ class PapiAPI extends RESTDataSource {
           mid: 'mid-page',
           'mid-page': 'mid-page',
         };
+        const responsiveFields = params.useragent === 'mobile'
+          ? {
+            title: res.visualInfo.boldTextMobile,
+            text: res.visualInfo.plainTextMobile,
+            confirm: {
+              text: res.visualInfo.yesTextMobile,
+              url: res.visualInfo.yesLinkMobile,
+            },
+          }
+          : {
+            title: res.visualInfo.boldText,
+            text: res.visualInfo.plainText,
+            confirm: {
+              text: res.visualInfo.yesText,
+              url: res.visualInfo.yesLink,
+            },
+          };
         const slotLocation = res.basicInfo.slotLocation;
         return {
           slotLocation: slotLocation in slotMapping
@@ -91,12 +108,7 @@ class PapiAPI extends RESTDataSource {
           colorScheme: res.visualInfo.bgColor.includes('secondary')
             ? 'secondary'
             : 'primary',
-          title: res.visualInfo.boldText,
-          text: res.visualInfo.plainText,
-          confirm: {
-            text: res.visualInfo.yesText,
-            url: res.visualInfo.yesLink,
-          },
+          ...responsiveFields,
           deny: {
             text: res.visualInfo.noText,
             url: res.visualInfo.noLink,
