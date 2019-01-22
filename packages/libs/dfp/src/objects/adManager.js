@@ -6,6 +6,7 @@ import ConflictResolver from './conflictResolver';
 import AdSlot from './adSlot';
 import { getBreakpoint, getBreakpointName, } from '../utils/breakpoints';
 import { retrieveSsoGroupKey, storeSsoGroupKey, } from '../services/ssoGroup';
+import { getCountry, } from '../services/ipInfo';
 
 let breakpoints;
 let debug = null;
@@ -653,6 +654,11 @@ export default class AdManager {
       pubads.setTargeting('react', [ true, ]);
 
       pubads.setTargeting('pageType', [ this.pageType, ]);
+
+      if (this.pageType.includes('hp')) {
+        // Homepage targeting only
+        pubads.setTargeting('country', getCountry());
+      }
 
       // User targeting
       if (this.user.type) {
