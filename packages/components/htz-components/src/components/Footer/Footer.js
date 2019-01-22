@@ -15,8 +15,8 @@ import MobileView from './elements/MobileMainContainer';
 // ///////////////////////////////////////////////////////////////////
 import FirstImpressionPlaceHolder from '../Paragraph/FirstImpressionPlaceholder';
 import AccessListByIp from '../Scripts/AccessListByIp';
-import GoogleReMarketingTag from '../Scripts/GoogleReMarketingTag';
-import ChromePush from '../Scripts/ChromePush';
+import UniversitiesPush from '../Scripts/UniversitiesPush';
+
 import FirstImpression from '../Scripts/FirstImpression';
 import GStat from '../Scripts/GStat';
 import IdxNielsen from '../Scripts/IdxNielsen';
@@ -222,8 +222,10 @@ class Footer extends React.Component {
           }}
         />
         <AccessListByIp />
-        <GoogleReMarketingTag />
-        <ChromePush />
+        {/* Moved to Head */}
+        {/* <GoogleReMarketingTag /> */}
+        {/* <ChromePush /> */}
+        <UniversitiesPush />
         <FirstImpression />
         <GStat />
         <FirstImpressionPlaceHolder />

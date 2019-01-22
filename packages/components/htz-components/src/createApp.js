@@ -1,6 +1,5 @@
 /* global window document */
 import App, { Container, } from 'next/app';
-// import Head from 'next/head';
 import React from 'react';
 import { ApolloProvider, } from 'react-apollo';
 import { LevelProvider, } from './components/AutoLevels/LevelContext';
@@ -16,11 +15,10 @@ const createApp = (AdditionalComponent = () => null) => class NextApp extends Ap
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       window.setTimeout(() => {
         const hider = document.getElementById('chartbeat-flicker-control-style');
-        console.warn('!!!cdm createApp');
         if (hider) {
           hider.parentNode.removeChild(hider);
         }
-      }, 1500);
+      }, 1000);
     }
   }
 
