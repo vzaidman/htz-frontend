@@ -58,11 +58,14 @@ function GridElement({
           <ListViewHeader isHorizontal title={title} />
         </GridItem>
       ) : null}
-      {items.map(({ content, width, }) => (
+      {items.map(({ content, width, miscStyles, }) => (
         <GridItem
           key={content.contentId}
           width={width}
-          miscStyles={{ display: 'flex', }}
+          miscStyles={{
+            display: 'flex',
+            ...(miscStyles || {}),
+          }}
         >
           {isClickTrackerWrapper(content) ? (
             <ClickTracker {...content} />
