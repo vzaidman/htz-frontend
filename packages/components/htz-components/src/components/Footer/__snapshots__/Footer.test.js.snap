@@ -8,6 +8,12 @@ exports[`<Footer />  Desktop view DOM elements  Render desktop Footer element co
   <div
     className="FI_PH"
   />
+  <div
+    className="OUTBRAIN"
+    data-ob-template="haaretz-heb"
+    data-src="DROP_PERMALINK_HERE"
+    data-widget-id="AR_34"
+  />
 </div>
 `;
 
@@ -821,6 +827,12 @@ exports[`<Footer />  Mobile view DOM elements  Render mobile Footer element corr
   </footer>
   <div
     className="FI_PH"
+  />
+  <div
+    className="OUTBRAIN"
+    data-ob-template="haaretz-heb"
+    data-src="DROP_PERMALINK_HERE"
+    data-widget-id="AR_34"
   />
 </div>
 `;

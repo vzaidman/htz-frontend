@@ -11,17 +11,6 @@ const createApp = (AdditionalComponent = () => null) => class NextApp extends Ap
     super.componentDidCatch(error, errorInfo);
   }
 
-  componentDidMount() {
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      window.setTimeout(() => {
-        const hider = document.getElementById('chartbeat-flicker-control-style');
-        if (hider) {
-          hider.parentNode.removeChild(hider);
-        }
-      }, 1000);
-    }
-  }
-
   render() {
     const { Component, initialProps, apolloClient, router, } = this.props;
     return (

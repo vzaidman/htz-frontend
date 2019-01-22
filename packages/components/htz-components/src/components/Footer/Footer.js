@@ -14,6 +14,7 @@ import FooterHead from './elements/FooterHead';
 import MobileView from './elements/MobileMainContainer';
 // ///////////////////////////////////////////////////////////////////
 import FirstImpressionPlaceHolder from '../Paragraph/FirstImpressionPlaceholder';
+import OutbrainPlaceholder from '../Paragraph/OutbrainPlaceholder';
 import AccessListByIp from '../Scripts/AccessListByIp';
 import UniversitiesPush from '../Scripts/UniversitiesPush';
 
@@ -21,6 +22,8 @@ import FirstImpression from '../Scripts/FirstImpression';
 import GStat from '../Scripts/GStat';
 import IdxNielsen from '../Scripts/IdxNielsen';
 import CrazyEgg from '../Scripts/CrazyEgg';
+import OutbrainTVR from '../Scripts/OutbrainTVR';
+import ChartBeat from '../Scripts/ChartBeat';
 
 const GET_FOOTER_ITEMS = gql`
   query FooterQuery($listId: String!) {
@@ -222,15 +225,15 @@ class Footer extends React.Component {
           }}
         />
         <AccessListByIp />
-        {/* Moved to Head */}
-        {/* <GoogleReMarketingTag /> */}
-        {/* <ChromePush /> */}
+        <ChartBeat shouldRender={shouldRenderScripts} />
         <UniversitiesPush />
         <FirstImpression />
         <GStat />
         <FirstImpressionPlaceHolder />
         <IdxNielsen shouldRender={shouldRenderScripts} />
         <CrazyEgg shouldRender={shouldRenderScripts} />
+        <OutbrainTVR />
+        <OutbrainPlaceholder />
       </Fragment>
     );
   }

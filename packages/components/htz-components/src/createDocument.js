@@ -1,8 +1,10 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import Document, { Head, Main, NextScript, } from 'next/document';
 import { renderToSheetList, } from 'fela-dom';
 import config from 'config';
 import serialize from 'serialize-javascript';
+import { breakUrl, } from '@haaretz/app-utils';
 import SEO from './components/SEO/SEO';
 import criticalFontLoader from './utils/criticalFontLoader';
 // import ChartBeat from './components/Scripts/ChartBeat';
@@ -69,6 +71,7 @@ const createDocument = ({
       isRtl,
       lang,
       host,
+      url: req.url,
       criticalFontElements,
     };
   }
@@ -76,7 +79,6 @@ const createDocument = ({
   renderStyles() {
     return this.props.sheetList.map(({ type, rehydration, support, media, css, }) => (
       <style
-          // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: css, }}
         data-fela-rehydration={rehydration}
         data-fela-support={support}
@@ -88,24 +90,47 @@ const createDocument = ({
   }
 
     chartbeatConfig = () => (
-      <script type="text/javascript">
-        {`
-              var _sf_async_config = _sf_async_config || {};
-              /** ChartBeat CONFIGURATION START **/
-              _sf_async_config.uid = 5952;
-              _sf_async_config.domain = ${'haaretz.co.il'};
-              _sf_async_config.flickerControl = true;
-              _sf_async_config.useCanonical = true;
-              _sf_async_config.useCanonicalDomain = true;
-              /** ChartBeat CONFIGURATION END **/
-            `}
-      </script>
+      <React.Fragment>
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+          var _sf_async_config = _sf_async_config || {};
+          /** ChartBeat CONFIGURATION START **/
+          _sf_async_config.uid = 5952;
+          _sf_async_config.domain = ${'haaretz.co.il'};
+          _sf_async_config.flickerControl = true;
+          _sf_async_config.useCanonical = true;
+          _sf_async_config.useCanonicalDomain = true;
+          /** ChartBeat CONFIGURATION END **/
+        `,
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{ __html: 'body { visibility: hidden !important; }', }}
+          id="chartbeatFlickerControlStyle"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                window.setTimeout(() => {
+                  const hider = document.getElementById('chartbeatFlickerControlStyle');
+                   console.log('!!!hider', hider);
+                  if (hider) {
+                    hider.parentNode.removeChild(hider);
+                  }
+                }, 1000);
+              }`,
+          }}
+        />
+        <script async src="//static.chartbeat.com/js/chartbeat_mab.js" />
+      </React.Fragment>
     );
 
     renderData() {
       return (
         <script
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `__HTZ_DATA__=${serialize(this.props.appData)};`,
           }}
@@ -115,6 +140,7 @@ const createDocument = ({
 
     render() {
       const criticalFont = this.props.criticalFontElements;
+      const { path, } = breakUrl(this.props.url);
       return (
         <html lang={this.props.lang} dir={this.props.isRtl ? 'rtl' : 'ltr'}>
           <Head>
@@ -125,21 +151,13 @@ const createDocument = ({
             {hasToggleableTheme ? null : (
               <link rel="manifest" href="/static/manifest/manifest.json" />
             )}
-
             {criticalFont.preload}
-            <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
+            {/* ************************* *
+             *       STYLE ELEMENTS      *
+             * ************************* */}
             {criticalFont.style}
-            {criticalFont.script}
             {this.renderStyles()}
-            {this.renderData()}
-            {this.chartbeatConfig()}
-            {process.env.CONNECTION_PRESET === 'stage' ? (
-              <meta
-                name="google-site-verification"
-                content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
-              />
-            ) : null}
-
+            {/* TODO: This should be in the theme's static rules */}
             <style
               dangerouslySetInnerHTML={{
                 __html: `
@@ -149,15 +167,25 @@ const createDocument = ({
                 `,
               }}
             />
-            <style id="chartbeat-flicker-control-style" type="text/css">
-              {`body {
-               visibility: hidden !important;
-            }`}
-            </style>
 
-            <script async src="//static.chartbeat.com/js/chartbeat_mab.js" />
+            {/* ************************* *
+             *      SCRIPT ELEMENTS      *
+             * ************************* */}
+            {criticalFont.script}
+
+            {/* ChartBeat scripts should only render on homepage */}
+            {path !== '/' ? null : this.chartbeatConfig()}
+
+            <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
+            {this.renderData()}
+            {process.env.CONNECTION_PRESET === 'stage' ? (
+              <meta
+                name="google-site-verification"
+                content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
+              />
+            ) : null}
           </Head>
-          <body className="custom-body">
+          <body>
             <Main />
             <script src={polyFillSrc} />
             <NextScript />

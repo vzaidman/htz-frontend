@@ -14,7 +14,6 @@ import {
   RouteChangeListener,
   UserInjector,
   Query,
-  ChartBeat,
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
@@ -52,7 +51,6 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
               <meta property="article:publisher" content="https://www.facebook.com/haaretz" />
               <meta property="fb:pages" content="109551402519" />
             </Head>
-            <ChartBeat />
             <ScrollListener />
             <RouteChangeListener />
             <UserInjector />
