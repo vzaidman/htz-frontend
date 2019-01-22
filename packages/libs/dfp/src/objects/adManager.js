@@ -662,14 +662,17 @@ export default class AdManager {
         pubads.setTargeting('country', getCountry());
         pubads.setTargeting('gstat_campaign_id', getCampaignId());
       }
+      else if (this.pageType.includes('article')) {
+        // Article page only
+        if (this.user.type) {
+          pubads.setTargeting('UserType', [ this.user.type, ]);
+        }
+        if (this.user.gender) {
+          pubads.setTargeting('urgdr', [ this.user.gender, ]);
+        }
+      }
 
       // User targeting
-      if (this.user.type) {
-        pubads.setTargeting('UserType', [ this.user.type, ]);
-      }
-      if (this.user.htz_type) {
-        pubads.setTargeting('htz_user_type', [ this.user.htz_type, ]);
-      }
       if (this.user.tm_type) {
         pubads.setTargeting('tm_user_type', [ this.user.tm_type, ]);
       }
@@ -678,9 +681,6 @@ export default class AdManager {
       }
       if (this.user.age) {
         pubads.setTargeting('age', [ this.user.age, ]);
-      }
-      if (this.user.gender) {
-        pubads.setTargeting('urgdr', [ this.user.gender, ]);
       }
       if (this.user.sso) {
         handleSsoGroupTargeting(pubads, this.user.sso.userId, this.DEBUG);
