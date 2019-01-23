@@ -1,6 +1,22 @@
 export default {
   title: 'בלוגים',
   view: 'Panucci',
+  commercialLinks: [
+    {
+      href: '#!',
+      toolTip: 'זבל שיווקי',
+      inputTemplate: 'com.tm.Link',
+      contentId: '1.279808',
+      contentName: 'זבל שיווקי',
+    },
+    {
+      href: '#!',
+      toolTip: 'תוכן מקודם',
+      inputTemplate: 'com.tm.Link',
+      contentId: '1.2790808',
+      contentName: 'תוכן מקודם',
+    },
+  ],
   extraLinks: [
     {
       href: '2.1772',

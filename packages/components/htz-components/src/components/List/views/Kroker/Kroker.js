@@ -13,6 +13,9 @@ const KrokerQuery = gql`
     list(listId: $listId, history: $history) {
       title
       url
+      commercialLinks {
+        ...Link
+      }
       extraLinks {
         ...Link
       }

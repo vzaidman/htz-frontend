@@ -10,6 +10,11 @@ const DonbotQuery = gql`
   query DonbotQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      commercialLinks {
+        href
+        contentName
+        contentId
+      }
       extraLinks {
         href
         contentName
