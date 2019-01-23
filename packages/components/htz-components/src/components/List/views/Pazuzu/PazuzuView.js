@@ -67,40 +67,36 @@ export default function Pazuzu({
 }: Props): React.Node {
   const { items = [], } = list || {};
   return (
-    <FelaTheme
-      render={theme => (
-        <GridItem
-          gutter={gutter}
-          width={width}
-          miscStyles={{
-            marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
-          }}
-        >
-          <ListView disableWrapper gutter={0} marginTop={0}>
-            {items && items[0] ? (
-              <PazuzuTeaser
-                lazyLoadImages={lazyLoadImages}
-                isStackedOnXl={isStackedOnXl}
-                isSecondItem={false}
-                item={items[0]}
-              />
-            ) : (
-              <Debug>There is no data for the first teaser in this list</Debug>
-            )}
-            {items && items[1] ? (
-              <PazuzuTeaser
-                lazyLoadImages={lazyLoadImages}
-                isStackedOnXl={isStackedOnXl}
-                isSecondItem
-                item={items[1]}
-              />
-            ) : (
-              <Debug>There is no data for the second teaser in this list</Debug>
-            )}
-          </ListView>
-        </GridItem>
-      )}
-    />
+    <GridItem
+      gutter={gutter}
+      width={width}
+      miscStyles={{
+        marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
+      }}
+    >
+      <ListView disableWrapper gutter={0} marginTop={0}>
+        {items && items[0] ? (
+          <PazuzuTeaser
+            lazyLoadImages={lazyLoadImages}
+            isStackedOnXl={isStackedOnXl}
+            isSecondItem={false}
+            item={items[0]}
+          />
+        ) : (
+          <Debug>There is no data for the first teaser in this list</Debug>
+        )}
+        {items && items[1] ? (
+          <PazuzuTeaser
+            lazyLoadImages={lazyLoadImages}
+            isStackedOnXl={isStackedOnXl}
+            isSecondItem
+            item={items[1]}
+          />
+        ) : (
+          <Debug>There is no data for the second teaser in this list</Debug>
+        )}
+      </ListView>
+    </GridItem>
   );
 }
 

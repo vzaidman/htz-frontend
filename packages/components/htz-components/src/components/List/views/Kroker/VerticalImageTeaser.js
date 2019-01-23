@@ -63,7 +63,7 @@ export default function VerticalImageTeaser({
           <TeaserMedia
             isStacked={[ { from: 's', value: true, }, ]}
             data={itemData}
-            width={[ { until: 's', value: 17, }, ]}
+            width={[ { until: 's', value: 18, }, ]}
           >
             <Picture
               lazyLoad={lazyLoadImages}

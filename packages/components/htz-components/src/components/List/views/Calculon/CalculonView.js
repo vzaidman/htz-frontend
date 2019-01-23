@@ -285,7 +285,7 @@ function Teaser2({
           <TeaserMedia
             data={data}
             width={[
-              { until: 's', value: 17, },
+              { until: 's', value: 18, },
               { from: 'l', until: 'xl', value: 2 / 5, },
             ]}
             isStacked={[
@@ -384,7 +384,7 @@ function Teaser3({
           <TeaserMedia
             data={data}
             width={[
-              { until: 's', value: 17, },
+              { until: 's', value: 18, },
               { from: 's', until: 'l', value: 4 / 12, },
               { from: 'l', until: 'xl', value: 2 / 5, },
               { from: 'xl', value: 2 / 4, },

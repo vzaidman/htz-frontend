@@ -45,7 +45,7 @@ export default function ZappItem({
     >
       <TeaserMedia
         width={[
-          { until: 's', value: 4 / 12, },
+          { until: 's', value: 17, },
           { from: 's', until: 'l', value: 5 / 12, },
         ]}
         data={data}
@@ -64,9 +64,9 @@ export default function ZappItem({
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: '122',
+                  sizes: '102',
                   aspect: 'square',
-                  widths: [ 122, 244, ],
+                  widths: [ 102, 244, ],
                 },
                 sources: [
                   {
