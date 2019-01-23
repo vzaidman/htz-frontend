@@ -50,6 +50,9 @@ export function TabButton({ isActive, children, ...props }: TabButtonProps) {
           outline: 'none',
           backgroundColor: theme.color('quaternary'),
         },
+        extend: [
+          theme.type(0, { until: 's', }),
+        ],
       })}
       render={({ className, }) => (
         <button type="button" className={className} {...props}>
@@ -78,9 +81,14 @@ function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): No
         <Tabs
           activeTab={startAt}
           miscStyles={{
-            backgroundColor: theme.color('neutral', '-10'),
-            paddingStart: '2rem',
-            paddingEnd: '2rem',
+            ...theme.mq(
+              { from: 's', },
+              {
+                backgroundColor: theme.color('neutral', '-10'),
+                paddingStart: '2rem',
+                paddingEnd: '2rem',
+              }
+            ),
           }}
         >
           {({ setActiveTab, activeTab, }) => {
@@ -92,8 +100,15 @@ function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): No
                   miscStyles={{
                     color: theme.color('neutral', '-3'),
                     display: 'flex',
+                    backgroundColor: theme.color('neutral', '-10'),
+                    marginBottom: [ { until: 's', value: '2px', }, ],
                     ...theme.type(-1),
-                    ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-6')),
+                    ...theme.mq(
+                      { from: 's', },
+                      {
+                        ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-6')),
+                      }
+                    ),
                   }}
                 >
                   {elements.map(
@@ -167,7 +182,15 @@ function WrappedTabs({ withoutWrapper, ...props }: Props): Node {
           )
           : (
             <ListView>
-              <GridItem width={1} stretchContent>
+              <GridItem
+                width={1}
+                stretchContent
+                miscStyles={{
+                  marginBottom: [
+                    { until: 'l', value: '1rem', },
+                  ],
+                }}
+              >
                 <ListViewHeader title={props.title} />
               </GridItem>
               <GridItem width={1} stretchContent>

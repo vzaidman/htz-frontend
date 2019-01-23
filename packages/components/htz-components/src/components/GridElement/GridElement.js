@@ -54,7 +54,15 @@ function GridElement({
       }
     >
       {showTitle && title ? (
-        <GridItem width={1} stretchContent>
+        <GridItem
+          width={1}
+          stretchContent
+          miscStyles={{
+            marginBottom: [
+              { until: 'l', value: '1rem', },
+            ],
+          }}
+        >
           <ListViewHeader isHorizontal title={title} />
         </GridItem>
       ) : null}

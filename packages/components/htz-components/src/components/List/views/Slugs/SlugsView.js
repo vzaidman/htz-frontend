@@ -187,6 +187,9 @@ function MainTeaser({
           <TeaserContent
             data={data}
             padding={[ 1, 2, 0, ]}
+            footerPadding={[
+              { until: 's', value: [ 0, 2, 2, ], },
+            ]}
             footerColor={[ 'neutral', '-3', ]}
             isStacked
             gridItemMiscStyles={{ alignItems: 'center', }}
@@ -198,6 +201,7 @@ function MainTeaser({
                 {...data}
                 isCentered
                 typeScale={[
+                  { until: 's', value: 1, },
                   { from: 'l', until: 'xl', value: 2, },
                   { from: 'xl', value: 3, },
                 ]}
@@ -271,7 +275,14 @@ function TwoUpTeaser({
             footerMiscStyles={{
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
             }}
-            renderContent={() => <TeaserHeader {...data} />}
+            renderContent={() => (
+              <TeaserHeader
+                {...data}
+                typeScale={[
+                  { until: 's', value: -1, },
+                ]}
+              />
+            )}
             renderFooter={() => <Footer data={data} />}
           />
         </Teaser>
@@ -299,15 +310,25 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
       <TeaserContent
         data={data}
         padding={[
-          { until: 's', value: [ 1, 1, 0, ], },
+          { until: 's', value: [ 1, 2, 0, ], },
           { from: 's', value: [ 2, 2, 0, ], },
         ]}
-        footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 1, 2, ], }, ]}
+        footerPadding={[
+          { until: 's', value: [ 1, 2, ], },
+          { from: 's', value: [ 1, 2, ], },
+        ]}
         footerColor={[ 'neutral', '-3', ]}
         footerMiscStyles={{
           type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
         }}
-        renderContent={() => <TeaserHeader {...data} />}
+        renderContent={() => (
+          <TeaserHeader
+            {...data}
+            typeScale={[
+              { until: 's', value: -1, },
+            ]}
+          />
+        )}
         renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
       />
     </Teaser>

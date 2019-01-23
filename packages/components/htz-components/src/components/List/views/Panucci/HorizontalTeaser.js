@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
-import { isTeaser, } from '../../../../utils/validateType.js';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
@@ -41,7 +40,7 @@ export default function HorizontalTeaser({
     { from: 'xl', value: -1, },
   ];
 
-  return isTeaser(itemData) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -60,7 +59,12 @@ export default function HorizontalTeaser({
               { from: 'l', until: 'xl', value: 2 / 5, },
               { from: 'xl', value: 1 / 2, },
             ]}
-            miscStyles={{ paddingInlineEnd: '2rem', }}
+            miscStyles={{
+              paddingInlineEnd: [
+                { until: 's', value: '1rem', },
+                { from: 's', value: '2rem', },
+              ],
+            }}
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -107,5 +111,5 @@ export default function HorizontalTeaser({
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }

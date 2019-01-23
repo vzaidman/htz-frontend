@@ -72,6 +72,8 @@ type Props = {
   titleMiscStyles: ?StyleProps,
   /** URL that leads to section of list. */
   url: ?string,
+  /** Is it vertical list. */
+  isVertical: boolean,
   isCommercial: boolean,
 };
 
@@ -79,7 +81,8 @@ ListViewHeader.defaultProps = {
   isCommercial: false,
   isHorizontal: false,
   hasTitlePadding: false,
-  backgroundColor: null,
+  backgroundColor: [ { until: 's', value: [ 'neutral', '-10', ], }, ],
+  isVertical: false,
   commercialLinks: null,
   marketingTeaser: null,
   extraLinks: null,
@@ -92,6 +95,7 @@ ListViewHeader.defaultProps = {
 export default function ListViewHeader({
   isCommercial,
   isHorizontal,
+  isVertical,
   hasTitlePadding,
   backgroundColor,
   commercialLinks,
@@ -106,6 +110,7 @@ export default function ListViewHeader({
     <FelaComponent
       backgroundColor={backgroundColor}
       isHorizontal={isHorizontal}
+      isVertical={isVertical}
       hasTitlePadding={hasTitlePadding}
       miscStyles={miscStyles}
       isCommercial={isCommercial}
@@ -132,6 +137,7 @@ export default function ListViewHeader({
                     {
                       display: 'flex',
                       width: '100%',
+                      alignItems: 'center',
                     }
                   ),
                   // Trump all other styles with those defined in `miscStyles`
@@ -155,7 +161,7 @@ export default function ListViewHeader({
                       <H className={headerClass}>
                         {title}
                         <IconBack
-                          size={6}
+                          size={isVertical ? 6 : 7}
                           miscStyles={{
                             marginInlineStart: 'auto',
                             paddingTop: '1rem',
@@ -306,6 +312,7 @@ export default function ListViewHeader({
 
 function listViewHeaderStyle({
   theme,
+  isVertical,
   isCommercial,
   backgroundColor,
   isHorizontal,
@@ -331,12 +338,16 @@ function listViewHeaderStyle({
         : []),
       theme.mq(
         { until: 's', },
-        borderTop(
-          '1px',
-          1,
-          'solid',
-          isCommercial ? theme.color('commercial') : theme.color('primary')
-        )
+        {
+          ...borderTop(
+            '1px',
+            0,
+            'solid',
+            isCommercial ? theme.color('commercial') : theme.color('primary')
+          ),
+          height: isVertical ? '6rem' : '7rem',
+          alignItems: 'center',
+        }
       ),
       theme.mq(
         { from: 's', until: isHorizontal ? null : 'l', },

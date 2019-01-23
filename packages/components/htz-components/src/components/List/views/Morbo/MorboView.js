@@ -227,48 +227,50 @@ function Teaser234({
   biAction,
 }: TeaserPropsType): React.Node {
   return (
-    <FelaTheme
-      render={theme => (
-        <Teaser
-          data={data}
-          gutter={0}
-          onClick={
-            biAction
-              ? () => biAction({ index: 1, articleId: data.contentId, })
-              : null
-          }
-        >
-          <TeaserContent
-            data={data}
-            width={1}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 1, 1, ]}
-            footerMiscStyles={{
-              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
-            }}
-            renderContent={() => (
-              <TeaserHeader
-                typeScale={[
-                  { until: 's', value: -1, },
-                  { from: 's', until: 'l', value: 0, },
-                  { from: 'l', until: 'xl', value: 0, },
-                  { from: 'xl', value: -1, },
-                ]}
-                {...data}
-              />
-            )}
-            renderFooter={() => (
-              <React.Fragment>
-                {data.publishDate || data.lastUpdate ? (
-                  <TeaserTime {...data} />
-                ) : null}
-                {' '}
-                <CommentsCount commentsCount={data.commentsCounts} />
-              </React.Fragment>
-            )}
+    <Teaser
+      data={data}
+      gutter={0}
+      onClick={
+        biAction
+          ? () => biAction({ index: 1, articleId: data.contentId, })
+          : null
+      }
+    >
+      <TeaserContent
+        data={data}
+        width={1}
+        padding={[
+          { until: 's', value: [ 1, 2, 0, ], },
+          { from: 's', value: [ 1, 1, 0, ], },
+        ]}
+        footerPadding={[
+          { until: 's', value: [ 1, 2, ], },
+          { from: 's', value: [ 1, 1, ], },
+        ]}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
+        renderContent={() => (
+          <TeaserHeader
+            typeScale={[
+              { until: 's', value: -1, },
+              { from: 's', until: 'l', value: 0, },
+              { from: 'l', until: 'xl', value: 0, },
+              { from: 'xl', value: -1, },
+            ]}
+            {...data}
           />
-        </Teaser>
-      )}
-    />
+        )}
+        renderFooter={() => (
+          <React.Fragment>
+            {data.publishDate || data.lastUpdate ? (
+              <TeaserTime {...data} />
+            ) : null}
+            {' '}
+            <CommentsCount commentsCount={data.commentsCounts} />
+          </React.Fragment>
+        )}
+      />
+    </Teaser>
   );
 }

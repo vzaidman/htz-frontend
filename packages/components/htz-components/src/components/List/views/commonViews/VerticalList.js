@@ -60,6 +60,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, title,
             {list || title ? (
               <ListViewHeader
                 url={list ? list.url : null}
+                isVertical
                 hasTitlePadding
                 isHorizontal
                 title={title || (list ? list.title : '')}

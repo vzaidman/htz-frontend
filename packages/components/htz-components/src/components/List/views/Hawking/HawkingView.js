@@ -58,6 +58,7 @@ export default function HawkingList({
       <GridItem
         stretchContent
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+        miscStyles={{ marginBottom: [ { until: 's', value: '1rem', }, ], }}
       >
         <ListViewHeader
           title={list.title}
@@ -138,6 +139,7 @@ export default function HawkingList({
             miscStyles={{
               display: 'flex',
               justifyContent: [ { until: 's', value: 'center', }, ],
+              marginTop: [ { until: 's', value: '6rem', }, ],
             }}
             width={[
               { until: 's', value: 1, },
@@ -323,8 +325,14 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
           <TeaserContent
             data={item}
             width={1}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={[ 1, 1, 1, ]}
+            padding={[
+              { until: 's', value: [ 1, 2, 0, ], },
+              { from: 's', value: [ 1, 1, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: [ 1, 2, ], },
+              { from: 's', value: [ 1, 1, ], },
+            ]}
             footerMiscStyles={{
               fontWeight: '700',
               type: -3,

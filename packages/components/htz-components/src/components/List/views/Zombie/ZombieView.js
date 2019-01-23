@@ -182,17 +182,39 @@ export default class Zombie extends React.Component<Props, State> {
                       height: '100%',
                       backgroundColor: theme.color('white'),
                       extend: [
-                        borderTop(
-                          '1px',
-                          0,
-                          'solid',
-                          theme.color('neutral', '-3')
+                        theme.mq(
+                          { until: 'l', },
+                          {
+                            ...borderTop(
+                              '2px',
+                              0,
+                              'solid',
+                              theme.color('neutral', '-5')
+                            ),
+                            ...borderBottom(
+                              '2px',
+                              0,
+                              'solid',
+                              theme.color('neutral', '-5')
+                            ),
+                          }
                         ),
-                        borderBottom(
-                          '1px',
-                          0,
-                          'solid',
-                          theme.color('neutral', '-3')
+                        theme.mq(
+                          { from: 'l', },
+                          {
+                            ...borderTop(
+                              '1px',
+                              0,
+                              'solid',
+                              theme.color('neutral', '-3')
+                            ),
+                            ...borderBottom(
+                              '1px',
+                              0,
+                              'solid',
+                              theme.color('neutral', '-3')
+                            ),
+                          }
                         ),
                       ],
                     }}
@@ -213,6 +235,7 @@ export default class Zombie extends React.Component<Props, State> {
                               style={{
                                 color: theme.color('neutral', '-3'),
                                 extend: [
+                                  theme.type(-2, { until: 's', }),
                                   parseComponentProp(
                                     'display',
                                     [
@@ -647,8 +670,14 @@ function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
       >
         <TeaserContent
           data={data}
-          padding={[ 1, 1, 0, ]}
-          footerPadding={[ 2, 1, 1, ]}
+          padding={[
+            { until: 's', value: [ 1, 2, 0, ], },
+            { from: 's', value: [ 1, 1, 0, ], },
+          ]}
+          footerPadding={[
+            { until: 's', value: [ 1, 2, ], },
+            { from: 's', value: [ 1, 1, ], },
+          ]}
           footerMiscStyles={{ type: -3, }}
           renderContent={() => (
             <TeaserHeader {...data} typeScale={headerTypo} />
@@ -677,10 +706,7 @@ function Footer({ data, showAuthors, }: FooterProps): React.Node {
           <TeaserTime {...data} />
         </React.Fragment>
       ) : null}
-      <CommentsCount
-        commentsCount={data.commentsCounts}
-        miscStyles={{ marginInlineStart: '1rem', }}
-      />
+      <CommentsCount commentsCount={data.commentsCounts} />
     </React.Fragment>
   );
 }
@@ -777,7 +803,10 @@ function stockYieldStyle(theme: Object, change?: ?number): Object {
     position: 'relative',
     textAlign: 'start',
     extend: [
-      theme.mq({ until: 'm', }, { display: 'inline-block', marginTop: '1rem', }),
+      theme.type(0, { until: 's', }),
+      theme.mq({ until: 's', }, { marginTop: '0', }),
+      theme.mq({ from: 's', until: 'm', }, { marginTop: '1rem', }),
+      theme.mq({ until: 'm', }, { display: 'inline-block', }),
     ],
   };
 }

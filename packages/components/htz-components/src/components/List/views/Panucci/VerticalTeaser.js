@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
-import { isTeaser, } from '../../../../utils/validateType.js';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
@@ -29,7 +28,7 @@ export default function VerticlaTeaser({
   displayFlags,
   biAction,
 }: Props): React.Node {
-  return isTeaser(itemData) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -42,8 +41,14 @@ export default function VerticlaTeaser({
         >
           <TeaserContent
             data={itemData}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={1}
+            padding={[
+              { until: 's', value: [ 1, 2, 0, ], },
+              { from: 's', value: [ 1, 1, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: [ 1, 2, ], },
+              { from: 's', value: [ 1, 1, ], },
+            ]}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
               <TeaserHeader
@@ -59,5 +64,5 @@ export default function VerticlaTeaser({
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }

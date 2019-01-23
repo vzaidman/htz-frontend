@@ -12,7 +12,11 @@ import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 
-const headerType = [ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ];
+const headerType = [
+  { until: 's', value: -1, },
+  { from: 's', until: 'xl', value: 0, },
+  { from: 'xl', value: -1, },
+];
 
 type Props = {
   biAction: ListBiActionType,
@@ -35,6 +39,9 @@ export default function MousepadTeaser({
         <Teaser
           data={itemData}
           miscStyles={{
+            padding: [
+              { until: 's', value: [ 0, 1, ], },
+            ],
             borderBottom: [
               {
                 until: 's',
@@ -70,8 +77,14 @@ export default function MousepadTeaser({
             {index}
           </GridItem>
           <TeaserContent
-            padding={[ 1, 2, 0, ]}
-            footerPadding={[ 0, 2, 0, ]}
+            padding={[
+              { until: 's', value: [ 1, 3, 1, 2, ], },
+              { from: 's', value: [ 1, 2, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: [ 0, 3, 0, 2, ], },
+              { from: 's', value: [ 0, 2, ], },
+            ]}
             footerMiscStyles={{
               marginTop: '0',
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
@@ -84,15 +97,7 @@ export default function MousepadTeaser({
                 kickerTypeScale={headerType}
               />
             )}
-            renderFooter={() => (
-              <React.Fragment>
-                {itemData.publishDate || itemData.lastUpdate ? (
-                  <TeaserTime {...itemData} />
-                ) : null}
-                {' '}
-                <CommentsCount commentsCount={itemData.commentsCounts} />
-              </React.Fragment>
-            )}
+            renderFooter={() => <CommentsCount commentsCount={itemData.commentsCounts} />}
           />
         </Teaser>
       )}

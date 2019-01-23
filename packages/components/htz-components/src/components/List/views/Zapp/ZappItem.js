@@ -89,10 +89,13 @@ export default function ZappItem({
       <TeaserContent
         data={data}
         padding={[
-          { until: 's', value: [ 1, 1, 0, ], },
+          { until: 's', value: hideImageOnMobile ? [ 2, 2, 0, 2, ] : [ 2, 1, 0, ], },
           { from: 's', value: [ 1, 0, 0, ], },
         ]}
-        footerPadding={[ 1, 1, 1, ]}
+        footerPadding={[
+          { until: 's', value: [ 1, hideImageOnMobile ? 2 : 1, 1, ], },
+          { from: 's', value: [ 1, 1, 1, ], },
+        ]}
         isStacked={[ { from: 'l', value: true, }, ]}
         gridItemMiscStyles={{
           display: [ { from: 's', until: 'l', value: 'block', }, ],

@@ -1,5 +1,5 @@
-import React from 'react';
 // @flow
+import React from 'react';
 import { FelaTheme, } from 'react-fela';
 
 import type { Node, } from 'react';
@@ -8,6 +8,7 @@ import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import Image from '../../../Image/Image';
+import Picture from '../../../Image/Picture';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
@@ -22,11 +23,12 @@ import TeaserTime from '../../../TeaserTime/TeaserTime';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import getImageAssets from '../../../../utils/getImageAssets';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
+import getPictureAssets from '../../../../utils/getPictureAssets';
 
 type Props = {
   list: ListDataType,
   lazyLoadImages: boolean,
-  biAction: ?ListBiActionType,
+  biAction: ListBiActionType,
   gaAction: ?() => void,
 };
 
@@ -58,6 +60,7 @@ export default function DonbotList({
       <GridItem
         stretchContent
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+        miscStyles={{ marginBottom: [ { until: 's', value: '1rem', }, ], }}
       >
         <ListViewHeader
           title={list.title}
@@ -194,7 +197,7 @@ export default function DonbotList({
 type TeaserProps = {
   item: TeaserDataType,
   lazyLoadImages?: boolean,
-  biAction: ?ListBiActionType,
+  biAction: ListBiActionType,
   index: number,
 };
 
@@ -204,7 +207,7 @@ function DonbotMainTeaser({
   item,
   lazyLoadImages,
   biAction,
-}: TeaserProps): React.Node {
+}: TeaserProps): Node {
   const articleId = item.contentId;
   return (
     <FelaTheme
@@ -216,21 +219,30 @@ function DonbotMainTeaser({
           isStacked
         >
           <TeaserMedia data={item} isStacked>
-            <Image
+            <Picture
               lazyLoad={lazyLoadImages}
-              imgOptions={getImageAssets({
+              {...getPictureAssets({
                 bps: theme.bps,
-                aspect: 'headline',
-                sizes: [
-                  { from: 'xl', size: '590px', },
-                  { from: 'l', size: '476px', },
-                  { from: 'm', size: '720px', },
-                  { from: 's', size: '552px', },
-                  { size: 'calc(100vw - 4rem)', },
+                imgData: item.image,
+                defaultImgOptions: {
+                  sizes: 'calc(100vw - 4rem)',
+                  aspect: 'square',
+                  widths: [ 360, ],
+                },
+                sources: [
+                  {
+                    aspect: 'headline',
+                    from: 's',
+                    sizes: [
+                      { from: 'xl', size: '590px', },
+                      { from: 'l', size: '476px', },
+                      { from: 'm', size: '720px', },
+                      { from: 's', size: '552px', },
+                    ],
+                    widths: [ 720, 590, 552, 476, ],
+                  },
                 ],
-                widths: [ 720, 590, 552, 476, 360, ],
               })}
-              data={item.image}
             />
           </TeaserMedia>
 
@@ -372,7 +384,7 @@ function Footer({
   data,
   hasCommentsOnMobile,
   hasRankOnMobile,
-}: FooterProps): React.Node {
+}: FooterProps): Node {
   return (
     <React.Fragment>
       {data.authors ? (

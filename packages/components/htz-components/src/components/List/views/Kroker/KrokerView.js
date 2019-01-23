@@ -59,7 +59,12 @@ export default function KrokerView({
       <GridItem
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
       >
-        <Grid rowSpacing={{ amount: 2, }}>
+        <Grid
+          rowSpacing={[
+            { until: 's', value: { amount: 0, }, },
+            { from: 's', value: { amount: 2, }, },
+          ]}
+        >
           {/* breaking news element */}
           <GridItem
             width={1}

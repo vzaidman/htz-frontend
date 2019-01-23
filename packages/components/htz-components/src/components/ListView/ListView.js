@@ -89,7 +89,7 @@ const defaultProps = {
   ...sectionDefaultProps,
   innerBackgroundColor: 'transparent',
   outerBackgroundColor: null,
-  marginTop: [ { until: 's', value: 4, }, { from: 's', value: 8, }, ],
+  marginTop: [ { until: 's', value: 6, }, { from: 's', value: 8, }, ],
   miscStyles: null,
   padding: null,
 };

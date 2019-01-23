@@ -49,11 +49,11 @@ export default function VerticlaTeaser({
             data={itemData}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             padding={[
-              { until: 's', value: [ 1, 1, 0, ], },
+              { until: 's', value: [ 1, 2, 0, ], },
               { from: 's', value: 0, },
             ]}
             footerPadding={[
-              { until: 's', value: 1, },
+              { until: 's', value: [ 1, 2, ], },
               { from: 's', value: [ 1, 0, 0, ], },
             ]}
             renderContent={() => (

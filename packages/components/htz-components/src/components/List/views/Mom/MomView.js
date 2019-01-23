@@ -50,12 +50,12 @@ export default function Mom({
   return (
     <ListView
       innerBackgroundColor={[ 'primary', '-4', ]}
-      marginTop={[ { until: 's', value: 4, }, { from: 's', value: 0, }, ]}
+      // marginTop={[ { until: 's', value: 4, }, { from: 's', value: 0, }, ]}
       miscStyles={{
         paddingBottom: listViewPadding,
         paddingInlineStart: listViewPadding,
         paddingInlineEnd: listViewPadding,
-        paddingTop: listViewPadding,
+        paddingTop: [ { from: 's', value: '4rem', }, ],
       }}
     >
       {/* LIST TITLE */}
@@ -81,7 +81,10 @@ export default function Mom({
                 })}
               >
                 <IconArrowDiagonal
-                  size={3}
+                  size={[
+                    { until: 's', value: 4, },
+                    { from: 's', value: 3, },
+                  ]}
                   miscStyles={{
                     bottom: '-.0.5em',
                     position: 'relative',
@@ -326,7 +329,7 @@ function TeaserWithImg1({
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data) ? (
+  return (
     <Teaser
       data={data}
       gutter={2}
@@ -336,7 +339,7 @@ function TeaserWithImg1({
       <TeaserMedia
         data={data}
         width={[
-          { until: 's', value: 20, },
+          { until: 's', value: 19, },
           { from: 's', until: 'l', value: 8 / 12, },
           { from: 'l', until: 'xl', value: 4 / 6, },
         ]}
@@ -353,9 +356,9 @@ function TeaserWithImg1({
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: '108px',
-                  aspect: 'regular',
-                  widths: [ 108, 216, ],
+                  sizes: '102px',
+                  aspect: 'square',
+                  widths: [ 102, ],
                 },
                 sources: [
                   {
@@ -408,7 +411,7 @@ function TeaserWithImg1({
         )}
       />
     </Teaser>
-  ) : null;
+  );
 }
 
 TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
@@ -521,10 +524,10 @@ function TextualTeaser({
       <TeaserContent
         data={data}
         padding={[
-          { until: 's', value: [ 1, 1, 0, ], },
+          { until: 's', value: [ 1, 2, 0, ], },
           { from: 's', value: [ 2, 2, 0, ], },
         ]}
-        footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 1, 2, ], }, ]}
+        footerPadding={[ 1, 2, ]}
         footerMiscStyles={{
           type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
         }}
