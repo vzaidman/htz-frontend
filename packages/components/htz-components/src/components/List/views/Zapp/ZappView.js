@@ -33,10 +33,7 @@ export default function Zapp({
   return (
     <ListView
       gutter={4}
-      innerBackgroundColor={[
-        { until: 's', value: 'transparent', },
-        { from: 's', value: 'white', },
-      ]}
+      innerBackgroundColor={[ { until: 's', value: 'transparent', }, { from: 's', value: 'white', }, ]}
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
       marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
       rowSpacing={[
@@ -60,14 +57,22 @@ export default function Zapp({
           display: [ { from: 's', value: 'none', }, ],
         }}
       >
-        {list.clickTrackers ? (
-          <ZappPromotedContent
-            data={list.clickTrackers[0]}
-            lazyLoadImages={lazyLoadImages}
-            index={1}
-            biAction={biAction}
-          />
-        ) : null}
+        {/* banner */}
+        {list.dfp && list.dfp.length > 0
+          ? list.dfp.map(banner => (
+            <GridItem
+              key={banner.contentId}
+              width={1}
+              miscStyles={{
+                display: [ { until: 's', value: 'block', }, { from: 's', value: 'none', }, ],
+              }}
+            >
+              {/* banner content */}
+              <GeneralAdSlot {...banner} />
+            </GridItem>
+          ))
+          : null}
+        {/* end banner */}
       </GridItem>
       {numOfItems > 1 ? (
         <GridItem width={width}>
@@ -100,25 +105,6 @@ export default function Zapp({
           />
         </GridItem>
       ) : null}
-      {/* banner */}
-      {list.dfp && list.dfp.length > 0 ? (
-        list.dfp.map(banner => (
-          <GridItem
-            key={banner.contentId}
-            width={1}
-            miscStyles={{
-              display: [
-                { until: 's', value: 'block', },
-                { from: 's', value: 'none', },
-              ],
-            }}
-          >
-            {/* banner content */}
-            <GeneralAdSlot {...banner} />
-          </GridItem>
-        ))
-      ) : null}
-      {/* end banner */}
     </ListView>
   );
 }

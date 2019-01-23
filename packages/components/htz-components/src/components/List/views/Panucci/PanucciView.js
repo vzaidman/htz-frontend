@@ -194,7 +194,8 @@ export default function Panucci({
         ? dfp.map(banner => (
           <GridItem
             key={banner.contentId}
-            width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+            width={[ { until: 'l', value: 1, }, { from: 'l', until: 'xl', value: 2 / 12, }, { from: 'xl', value: 4 / 12, }, ]}
+            miscStyles={{ marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ], }}
           >
             {/* banner content */}
             <GeneralAdSlot {...banner} styleRule={bannerStyle} />
