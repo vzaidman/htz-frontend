@@ -35,7 +35,6 @@ function GstatFunc(user) {
 
         if (!lastModifiedDateTime || lastModifiedDateTime < date) {
           const domain = /^[\w-]+(\.[\w.]+)/.exec(window.location.hostname);
-          console.log('domain from gstat, !@!@!@ ', domain);
           if (domain.length < 2) return;
           const url = `https://${paywallStatDomain
             + domain[1]
