@@ -60,6 +60,7 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
               <React.Fragment>
                 <AriaLive />
                 <DeviceTypeInjector />
+                <div id="maavaron" />
                 <FelaComponent
                   style={{
                     display: 'flex',
