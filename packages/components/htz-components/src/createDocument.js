@@ -98,7 +98,7 @@ const createDocument = ({
           var _sf_async_config = _sf_async_config || {};
           /** ChartBeat CONFIGURATION START **/
           _sf_async_config.uid = 5952;
-          _sf_async_config.domain = ${'haaretz.co.il'};
+          _sf_async_config.domain = "haaretz.co.il";
           _sf_async_config.flickerControl = true;
           _sf_async_config.useCanonical = true;
           _sf_async_config.useCanonicalDomain = true;

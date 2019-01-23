@@ -37,10 +37,10 @@ function GstatFunc(user) {
           const domain = /^[\w-]+(\.[\w.]+)/.exec(window.location.hostname);
           console.log('domain from gstat, !@!@!@ ', domain);
           if (domain.length < 2) return;
-          const url = `https://${paywallStatDomain +
-            domain[1] +
-            APP_NAME +
-            GSTAT_SERVLET}?ssoId=${ssoId}`;
+          const url = `https://${paywallStatDomain
+            + domain[1]
+            + APP_NAME
+            + GSTAT_SERVLET}?ssoId=${ssoId}`;
           fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -65,6 +65,7 @@ class GStat extends Component {
   static propTypes = {
     user: PropTypes.shape({}).isRequired,
   };
+
   componentDidMount() {
     const { user, } = this.props;
     GstatFunc(user);

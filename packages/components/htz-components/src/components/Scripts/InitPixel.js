@@ -43,7 +43,7 @@ class InitPixel extends Component {
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', ${facebookPixelId});
+                fbq('init', '${facebookPixelId}');
                 fbq('track', 'PageView');
             `,
           }}
@@ -52,10 +52,10 @@ class InitPixel extends Component {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `
-                        <img height="1" width="1" style="display:none"
-                          src="https://www.facebook.com/tr?id=${facebookPixelId}&ev=PageView&noscript=1"
-                        />
-                      `,
+                <img height="1" width="1" style="display:none"
+                  src="https://www.facebook.com/tr?id=${facebookPixelId}&ev=PageView&noscript=1"
+                />
+              `,
           }}
         />
       </React.Fragment>
@@ -76,7 +76,7 @@ class InitPixel extends Component {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', ${googlePixelId});
+                gtag('config', '${googlePixelId}');
             `,
           }}
         />
@@ -112,7 +112,7 @@ class InitPixel extends Component {
                 if (document.cookie && document.cookie != '') {
                   var cookies = document.cookie.split(';');
                   for (var i = 0; i < cookies.length; i++) {
-                    var cookie = (cookies[i]).trim();			
+                    var cookie = (cookies[i]).trim();
                     // Does this cookie string begin with the name we want?
                     if (cookie.substring(0, cookieName.length + 1) == (cookieName + '=')) {
                       cookieValue = unescape(cookie.substring(cookieName.length + 1));
@@ -140,10 +140,10 @@ class InitPixel extends Component {
 
               Pushwoosh.push(['init', {
                   logLevel: 'info', // possible values: error, info, debug
-                  applicationCode: ${applicationCode}, // you application code from Pushwoosh Control Panel
-                  safariWebsitePushID: ${safariWebsitePushID}, //  unique reverse-domain string, obtained in you Apple Developer Portal
-                  defaultNotificationTitle: ${defaultNotificationTitle}, // sets a default title for push notifications
-                  defaultNotificationImage: ${defaultNotificationImage}, // URL to custom custom notification image
+                  applicationCode: '${applicationCode}', // you application code from Pushwoosh Control Panel
+                  safariWebsitePushID: '${safariWebsitePushID}', //  unique reverse-domain string, obtained in you Apple Developer Portal
+                  defaultNotificationTitle: '${defaultNotificationTitle}', // sets a default title for push notifications
+                  defaultNotificationImage: '${defaultNotificationImage}', // URL to custom custom notification image
                   autoSubscribe: true, // or false. If true, promts a user to subscribe for pushes upon SDK initialization
                   userId: ssoId,
                   tags: {
