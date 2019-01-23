@@ -23,8 +23,8 @@ const mapSlotIdToComponent = slotId => {
   return defualtComponent;
 };
 
-const GeneralAdSlot = ({ miscStyles, ...props }) => (
-  <Zen miscStyles={miscStyles} animate>
+const GeneralAdSlot = ({ wrapperMiscStyles, ...props }) => (
+  <Zen miscStyles={wrapperMiscStyles} animate>
     {
       mapSlotIdToComponent(props.id)(props)
     }

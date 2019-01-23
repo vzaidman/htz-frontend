@@ -10,6 +10,6 @@ export default gql`
     hideOnSite
     id
     inputTemplate
-    style
+    miscStyles
   }
 `;

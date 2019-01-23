@@ -176,7 +176,7 @@ function ListItems({
             miscStyles={{ display: 'flex', }}
           >
             {/* banner content */}
-            <GeneralAdSlot {...banner} miscStyles={{ width: '100%', }} />
+            <GeneralAdSlot {...banner} wrapperMiscStyles={{ width: '100%', }} />
           </GridItem>
         ))
         : null}
