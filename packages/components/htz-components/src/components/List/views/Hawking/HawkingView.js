@@ -175,20 +175,7 @@ export default function HawkingList({
               ],
             }}
           >
-            <FelaComponent
-              style={theme => ({
-                extend: [
-                  theme.mq(
-                    { from: 's', until: 'l', },
-                    {
-                      marginTop: 4,
-                    }
-                  ),
-                ],
-              })}
-            >
-              <GeneralAdSlot {...banner} />
-            </FelaComponent>
+            <GeneralAdSlot {...banner} />
           </GridItem>
         ))
         : null}
