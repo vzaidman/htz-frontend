@@ -55,7 +55,7 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
             <RouteChangeListener />
             <UserInjector />
             <DfpInjector path="/" pageType="htz_hp" />
-            <GoogleAnalytics withEC />
+            <GoogleAnalytics withEC withPageView />
             <StyleProvider renderer={styleRenderer} theme={htzTheme}>
               <React.Fragment>
                 <AriaLive />
