@@ -2,6 +2,7 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import Debug from '../Debug/Debug';
 
 const propTypes = {
@@ -40,18 +41,27 @@ class AdSlotBase extends Component {
 
   render() {
     if (this.state.shouldRender) {
-      const { audianceTarget, } = this.props;
+      const { audianceTarget, miscStyles, } = this.props;
       return (
         <React.Fragment>
           {this.state.debugJsx}
           <FelaComponent
             rule={this.props.styleRule}
             render={({ className, }) => (
-              <div
-                id={this.props.id}
-                data-audtarget={audianceTarget}
-                className={`js-dfp-ad ${this.props.className
-                  || ''} ${className}`}
+              <FelaComponent
+                style={theme => ({
+                  extend: [
+                    ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []),
+                  ],
+                })}
+                render={({ className: papiStyles, }) => (
+                  <div
+                    id={this.props.id}
+                    data-audtarget={audianceTarget}
+                    className={`js-dfp-ad ${this.props.className
+                      || ''} ${className} ${papiStyles}`}
+                  />
+                )}
               />
             )}
           />

@@ -7,5 +7,5 @@ export type DfpBannerType = {
   inputTemplate: 'com.polobase.DfpBannerElement',
   contentId: string,
   contentName: string,
-  __typename?: string,
+  miscStyles: ?Object,
 }

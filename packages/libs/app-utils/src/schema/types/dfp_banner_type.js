@@ -1,4 +1,5 @@
 import { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLID, } from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
 
 const DfpBannerType = new GraphQLObjectType({
   name: 'DfpBanner',
@@ -10,7 +11,7 @@ const DfpBannerType = new GraphQLObjectType({
     hideOnSite: { type: GraphQLBoolean, },
     id: { type: GraphQLString, },
     inputTemplate: { type: GraphQLString, },
-    style: { type: GraphQLString, },
+    miscStyles: { type: GraphQLJSON, },
     position: { type: GraphQLString, },
   }),
 });
