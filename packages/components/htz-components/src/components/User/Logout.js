@@ -1,3 +1,4 @@
+/* global document */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UserService, } from '@haaretz/htz-user-utils';
@@ -20,10 +21,11 @@ class Logout extends React.Component {
   render() {
     return (
       <UserDispenser
-        render={({ isLoggedIn, user, plantImages, handleImgOnload, }) => this.props.render({
-          logout: this.getLogoutFunction(user, plantImages, handleImgOnload),
-        })
-        }
+        render={({ isLoggedIn, user, plantImages, handleImgOnload, }) => {
+          const logout = this.getLogoutFunction(user, plantImages, handleImgOnload);
+          const logoutAndReload = () => logout().then(reloadPage);
+          return this.props.render({ logout: logoutAndReload, });
+        }}
       />
     );
   }
@@ -31,5 +33,14 @@ class Logout extends React.Component {
 
 Logout.propTypes = propTypes;
 Logout.defaultProps = defaultProps;
+
+function reloadPage() {
+  try {
+    document.location.reload();
+  }
+  catch (error) {
+    // fails silently
+  }
+}
 
 export default Logout;
