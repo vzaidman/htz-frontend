@@ -133,206 +133,136 @@ export default class Zombie extends React.Component<Props, State> {
     const { title, extraLinks, items, dfp, } = list;
 
     return (
-      <FelaTheme
-        render={theme => (
-          <ListView
-            padding={[
-              { until: 's', value: [ 0, 2, ], },
-              { from: 's', value: [ 0, 4, ], },
-            ]}
-          >
-            {/* Title */}
-            <GridItem
-              width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-              miscStyles={{
-                marginBottom: [
-                  { until: 's', value: '1rem', },
-                  { from: 's', until: 'l', value: '2rem', },
-                ],
-              }}
-              stretchContent
-            >
-              <ListViewHeader title={title} extraLinks={extraLinks} />
-            </GridItem>
+      <ListView
+        padding={[
+          { until: 's', value: [ 0, 2, ], },
+          { from: 's', value: [ 0, 4, ], },
+        ]}
+      >
+        {/* Title */}
+        <GridItem
+          width={[
+            { until: 'l', value: 1, },
+            { from: 'l', value: 2 / 12, },
+          ]}
+          miscStyles={{
+            marginBottom: [
+              { until: 's', value: '1rem', },
+              { from: 's', until: 'l', value: '2rem', },
+            ],
+          }}
+          stretchContent
+        >
+          <ListViewHeader
+            title={title}
+            extraLinks={extraLinks}
+          />
+        </GridItem>
 
-            {/* Content */}
+        {/* Content */}
+        <GridItem
+          width={[
+            { until: 'l', value: 1, },
+            { from: 'l', value: 10 / 12, },
+          ]}
+          stretchContent
+        >
+          <Grid gutter={4}>
+            {/* Stocks */}
+            {stocks && <Stocks stocks={stocks} />}
+            {/* Teasers */}
             <GridItem
-              width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
-              stretchContent
+              miscStyles={{
+                order: [ { from: 'l', until: 'xl', value: -1, }, ],
+              }}
+              width={[
+                { until: 'l', value: 1, },
+                { from: 'l', until: 'xl', value: 8 / 10, },
+                { from: 'xl', value: 6 / 10, },
+              ]}
             >
               <Grid gutter={4}>
-                {/* Stocks */}
                 <GridItem
-                  stretchContent
                   width={[
-                    { until: 'l', value: 1, },
-                    { from: 'l', until: 'xl', value: 2 / 10, },
-                    { from: 'xl', value: 1, },
+                    { until: 's', value: 1, },
+                    { from: 's', until: 'l', value: 6 / 12, },
+                    { from: 'l', until: 'xl', value: 5 / 8, },
+                    { from: 'xl', value: 3 / 6, },
+                  ]}
+                >
+                  <MainTeaser
+                    data={items[0]}
+                    biAction={biAction}
+                    lazyLoadImages={lazyLoadImages}
+                  />
+                </GridItem>
+                <GridItem
+                  width={[
+                    { until: 's', value: 1, },
+                    { from: 's', until: 'l', value: 6 / 12, },
+                    { from: 'l', until: 'xl', value: 3 / 8, },
+                    { from: 'xl', value: 3 / 6, },
                   ]}
                   miscStyles={{
-                    marginBottom: [
-                      { until: 's', value: '1rem', },
-                      { from: 's', until: 'l', value: '2rem', },
-                      { from: 'xl', value: '4rem', },
-                    ],
+                    marginTop: [ { until: 's', value: '1rem', }, ],
+                    display: 'flex',
                   }}
                 >
-                  <FelaComponent
-                    style={{
-                      height: '100%',
-                      backgroundColor: theme.color('white'),
-                      extend: [
-                        theme.mq(
-                          { until: 'l', },
-                          {
-                            ...borderTop(
-                              '2px',
-                              0,
-                              'solid',
-                              theme.color('neutral', '-5')
-                            ),
-                            ...borderBottom(
-                              '2px',
-                              0,
-                              'solid',
-                              theme.color('neutral', '-5')
-                            ),
-                          }
-                        ),
-                        theme.mq(
-                          { from: 'l', },
-                          {
-                            ...borderTop(
-                              '1px',
-                              0,
-                              'solid',
-                              theme.color('neutral', '-3')
-                            ),
-                            ...borderBottom(
-                              '1px',
-                              0,
-                              'solid',
-                              theme.color('neutral', '-3')
-                            ),
-                          }
-                        ),
-                      ],
-                    }}
+                  <Grid
+                    gutter={0}
+                    rowSpacing={[
+                      { until: 's', value: { amount: 1, }, },
+                      { from: 's', value: { amount: 4, }, },
+                    ]}
                   >
-                    {stocks ? (
-                      <Grid
-                        gutter={0}
-                        miscStyles={{
-                          height: [ { from: 'l', until: 'xl', value: '100%', }, ],
-                          ':before': [
-                            { until: 'l', value: startRule(theme), },
-                            { from: 'l', until: 'xl', value: null, },
-                            { from: 'xl', value: startRule(theme), },
-                          ],
-                        }}
-                      >
-                        <Stock {...stocks['142']} />
-                        <Stock {...stocks['137']} hideOnM />
-                        <Stock {...stocks['9001']} />
-                        <Stock {...stocks['29.10.@CCO']} />
-                        <Stock {...stocks['30.10.!DJI']} hideOnM />
-                      </Grid>
-                    ) // TODO: placeholder instead of null
-                      : null}
-                  </FelaComponent>
-                </GridItem>
-
-                <GridItem
-                  width={[
-                    { until: 'l', value: 1, },
-                    { from: 'l', until: 'xl', value: 8 / 10, },
-                    { from: 'xl', value: 6 / 10, },
-                  ]}
-                >
-                  <Grid gutter={4}>
-                    <GridItem
-                      width={[
-                        { until: 's', value: 1, },
-                        { from: 's', until: 'l', value: 6 / 12, },
-                        { from: 'l', until: 'xl', value: 5 / 8, },
-                        { from: 'xl', value: 3 / 6, },
-                      ]}
-                    >
-                      <MainTeaser
-                        data={items[0]}
-                        biAction={biAction}
-                        lazyLoadImages={lazyLoadImages}
-                      />
-                    </GridItem>
-                    <GridItem
-                      width={[
-                        { until: 's', value: 1, },
-                        { from: 's', until: 'l', value: 6 / 12, },
-                        { from: 'l', until: 'xl', value: 3 / 8, },
-                        { from: 'xl', value: 3 / 6, },
-                      ]}
-                      miscStyles={{
-                        marginTop: [ { until: 's', value: '1rem', }, ],
-                        display: 'flex',
-                      }}
-                    >
-                      <Grid
-                        gutter={0}
-                        rowSpacing={[
-                          { until: 's', value: { amount: 1, }, },
-                          { from: 's', value: { amount: 4, }, },
-                        ]}
-                      >
-                        <TextualTeaser
-                          data={items[1]}
-                          index={1}
-                          biAction={biAction}
-                        />
-                        <TextualTeaser
-                          data={items[2]}
-                          index={2}
-                          biAction={biAction}
-                        />
-                        <TextualTeaser
-                          data={items[3]}
-                          index={3}
-                          biAction={biAction}
-                        />
-                      </Grid>
-                    </GridItem>
+                    <TextualTeaser
+                      data={items[1]}
+                      index={1}
+                      biAction={biAction}
+                    />
+                    <TextualTeaser
+                      data={items[2]}
+                      index={2}
+                      biAction={biAction}
+                    />
+                    <TextualTeaser
+                      data={items[3]}
+                      index={3}
+                      biAction={biAction}
+                    />
                   </Grid>
                 </GridItem>
-                {dfp && dfp.length > 0
-                  ? dfp.map(banner => (
-                    <GridItem
-                      key={banner.contentId}
-                      width={[
-                        { until: 's', value: 1, },
-                        { from: 'xl', value: 4 / 10, },
-                      ]}
-                      miscStyles={{
-                        paddingStart: [ { until: 's', value: '2rem', }, ],
-                        paddingEnd: [ { until: 's', value: '2rem', }, ],
-                        marginTop: [ { until: 'l', value: '4rem', }, ],
-                        marginBottom: [ { until: 's', value: '4rem', }, ],
-                        display: [
-                          { until: 's', value: 'block', },
-                          { from: 's', until: 'xl', value: 'none', },
-                          { from: 'xl', value: 'block', },
-                        ],
-                        width: [ { until: 's', value: '300px', }, ],
-                        height: [ { until: 's', value: '250px', }, ],
-                      }}
-                    >
-                      <GeneralAdSlot {...banner} />
-                    </GridItem>
-                  ))
-                  : null}
               </Grid>
             </GridItem>
-          </ListView>
-        )}
-      />
+            {dfp && dfp.length > 0
+              ? dfp.map(banner => (
+                <GridItem
+                  key={banner.contentId}
+                  width={[
+                    { until: 's', value: 1, },
+                    { from: 'xl', value: 4 / 10, },
+                  ]}
+                  miscStyles={{
+                    paddingStart: [ { until: 's', value: '2rem', }, ],
+                    paddingEnd: [ { until: 's', value: '2rem', }, ],
+                    marginTop: [ { until: 'l', value: '4rem', }, ],
+                    marginBottom: [ { until: 's', value: '4rem', }, ],
+                    display: [
+                      { until: 's', value: 'block', },
+                      { from: 's', until: 'xl', value: 'none', },
+                      { from: 'xl', value: 'block', },
+                    ],
+                    width: [ { until: 's', value: '300px', }, ],
+                    height: [ { until: 's', value: '250px', }, ],
+                  }}
+                >
+                  <GeneralAdSlot {...banner} />
+                </GridItem>
+              ))
+              : null}
+          </Grid>
+        </GridItem>
+      </ListView>
     );
   }
 }
@@ -483,7 +413,7 @@ function Footer({ data, showAuthors, }: FooterProps): Node {
 }
 
 // /////////////////////////////////////////////////////////////////////
-//                               STOCK                                //
+//                               STOCKS                               //
 // /////////////////////////////////////////////////////////////////////
 
 type StockProps = StockType & {
@@ -542,6 +472,96 @@ function Stock({ name, value, change, hideOnM, }: StockProps): Node {
               </Grid>
             </GridItem>
           </Grid>
+        </GridItem>
+      )}
+    />
+  );
+}
+
+type StocksProps = {
+  stocks: StocksType,
+}
+
+function Stocks({ stocks, }: StocksProps): Node {
+  return (
+    <FelaTheme
+      render={theme => (
+        <GridItem
+          gutter={4}
+          stretchContent
+          width={[
+            { until: 'l', value: 1, },
+            { from: 'l', until: 'xl', value: 2 / 10, },
+            { from: 'xl', value: 1, },
+          ]}
+          miscStyles={{
+            marginBottom: [
+              { until: 's', value: '1rem', },
+              { from: 's', until: 'l', value: '2rem', },
+              { from: 'xl', value: '4rem', },
+            ],
+          }}
+        >
+          <FelaComponent
+            style={{
+              height: '100%',
+              backgroundColor: theme.color('white'),
+              extend: [
+                theme.mq(
+                  { until: 'l', },
+                  {
+                    ...borderTop(
+                      '2px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-5')
+                    ),
+                    ...borderBottom(
+                      '2px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-5')
+                    ),
+                  }
+                ),
+                theme.mq(
+                  { from: 'l', },
+                  {
+                    ...borderTop(
+                      '1px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-3')
+                    ),
+                    ...borderBottom(
+                      '1px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-3')
+                    ),
+                  }
+                ),
+              ],
+            }}
+          >
+            <Grid
+              gutter={0}
+              miscStyles={{
+                height: [ { from: 'l', until: 'xl', value: '100%', }, ],
+                ':before': [
+                  { until: 'l', value: startRule(theme), },
+                  { from: 'l', until: 'xl', value: null, },
+                  { from: 'xl', value: startRule(theme), },
+                ],
+              }}
+            >
+              <Stock {...stocks['142']} />
+              <Stock {...stocks['137']} hideOnM />
+              <Stock {...stocks['9001']} />
+              <Stock {...stocks['29.10.@CCO']} />
+              <Stock {...stocks['30.10.!DJI']} hideOnM />
+            </Grid>
+          </FelaComponent>
         </GridItem>
       )}
     />
