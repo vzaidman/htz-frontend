@@ -5,7 +5,7 @@ import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
 import ZappItem from './ZappItem';
-import ZappPromotedContent from './ZappPromotedContent';
+// import ZappPromotedContent from './ZappPromotedContent';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -79,7 +79,7 @@ export default function Zapp({
           <ZappItem
             data={list.items[1]}
             lazyLoadImages={lazyLoadImages}
-            index={2}
+            index={1}
             biAction={biAction}
           />
         </GridItem>
@@ -89,7 +89,7 @@ export default function Zapp({
           <ZappItem
             data={list.items[2]}
             lazyLoadImages={lazyLoadImages}
-            index={3}
+            index={2}
             biAction={biAction}
           />
         </GridItem>
@@ -100,7 +100,7 @@ export default function Zapp({
             data={list.items[3]}
             lazyLoadImages={lazyLoadImages}
             hideImageOnMobile
-            index={4}
+            index={3}
             biAction={biAction}
           />
         </GridItem>

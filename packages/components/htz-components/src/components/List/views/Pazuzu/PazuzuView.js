@@ -6,6 +6,7 @@ import type { ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
 
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Debug from '../../../Debug/Debug';
@@ -49,6 +50,7 @@ type Props = {
    */
   width: ?(number | ComponentPropResponsiveObject<number>[]),
   list: ListDataType,
+  biAction: ListBiActionType,
 };
 
 Pazuzu.defaultProps = {
@@ -64,6 +66,7 @@ export default function Pazuzu({
   width,
   list,
   lazyLoadImages,
+  biAction,
 }: Props): React.Node {
   const { items = [], } = list || {};
   return (
@@ -81,6 +84,7 @@ export default function Pazuzu({
             isStackedOnXl={isStackedOnXl}
             isSecondItem={false}
             item={items[0]}
+            biAction={biAction}
           />
         ) : (
           <Debug>There is no data for the first teaser in this list</Debug>
@@ -91,6 +95,7 @@ export default function Pazuzu({
             isStackedOnXl={isStackedOnXl}
             isSecondItem
             item={items[1]}
+            biAction={biAction}
           />
         ) : (
           <Debug>There is no data for the second teaser in this list</Debug>
@@ -105,6 +110,7 @@ type PazuzuTeaserPropTypes = {
   isStackedOnXl: boolean,
   isSecondItem: boolean,
   lazyLoadImages: boolean,
+  biAction: ListBiActionType,
 };
 
 PazuzuTeaser.defaultProps = { lazyLoadImages: false, };
@@ -113,6 +119,7 @@ function PazuzuTeaser({
   isStackedOnXl,
   isSecondItem,
   lazyLoadImages,
+  biAction,
 }: PazuzuTeaserPropTypes): React.Node {
   const stackingSettings = isStackedOnXl
     ? true
@@ -135,11 +142,15 @@ function PazuzuTeaser({
             isStacked={stackingSettings}
             gutter={0}
             gridMiscStyles={{ flexWrap: 'nowrap', }}
+            onClick={() => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+            }
           >
             <TeaserMedia
               data={item}
               isStacked={stackingSettings}
               width={isStackedOnXl ? null : [ { from: 'xl', value: 48, }, ]}
+              onClick={() => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+              }
             >
               {isStackedOnXl ? (
                 <Picture
@@ -199,10 +210,7 @@ function PazuzuTeaser({
                 ...(isStackedOnXl
                   ? {}
                   : {
-                    marginTop: [
-                      { until: 'xl', value: 'auto', },
-                      { from: 'xl', value: '0', },
-                    ],
+                    marginTop: [ { until: 'xl', value: 'auto', }, { from: 'xl', value: '0', }, ],
                   }),
                 type: [
                   { until: 's', value: -3, },
@@ -223,14 +231,16 @@ function PazuzuTeaser({
                     { from: 's', until: 'l', value: 2, },
                     { from: 'l', value: 1, },
                   ]}
+                  onClick={() => biAction({
+                    index: isSecondItem ? 1 : 0,
+                    articleId: item.representedContent,
+                  })
+                  }
                 />
               )}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors
-                    authors={item.authors}
-                    miscStyles={{ fontWeight: 'bold', }}
-                  />
+                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}

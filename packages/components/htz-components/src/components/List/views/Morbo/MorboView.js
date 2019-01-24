@@ -73,7 +73,7 @@ export default function Morbo({
                 { from: 'xl', value: 4 / 12, },
               ]}
             >
-              <Teaser1 data={teaser1Data} />
+              <Teaser1 data={teaser1Data} biAction={biAction} />
             </GridItem>
 
             {/* Item 2 */}
@@ -86,7 +86,7 @@ export default function Morbo({
                 { from: 'xl', value: 3 / 12, },
               ]}
             >
-              <Teaser234 data={teaser2Data} />
+              <Teaser234 data={teaser2Data} biAction={biAction} />
             </GridItem>
 
             {/* Item 3 */}
@@ -99,7 +99,7 @@ export default function Morbo({
                 { from: 'xl', value: 2 / 12, },
               ]}
             >
-              <Teaser234 data={teaser3Data} />
+              <Teaser234 data={teaser3Data} biAction={biAction} />
             </GridItem>
 
             {/* Item 4 */}
@@ -111,7 +111,7 @@ export default function Morbo({
                 { from: 'xl', value: 3 / 12, },
               ]}
             >
-              <Teaser234 data={teaser4Data} />
+              <Teaser234 data={teaser4Data} biAction={biAction} />
             </GridItem>
           </Grid>
         </Section>
@@ -137,11 +137,7 @@ const teaserDefaultProps = {
 
 Teaser1.defaultProps = teaserDefaultProps;
 
-function Teaser1({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return (
     <FelaTheme
       render={theme => (
@@ -149,9 +145,7 @@ function Teaser1({
           data={data}
           gutter={0}
           onClick={
-            biAction
-              ? () => biAction({ index: 0, articleId: data.contentId, })
-              : null
+            biAction ? () => biAction({ index: 0, articleId: data.representedContent, }) : null
           }
           gridMiscStyles={{ flexWrap: 'nowrap', }}
         >
@@ -163,6 +157,9 @@ function Teaser1({
               { from: 'l', until: 'xl', value: 2 / 7, },
               { from: 'xl', value: 1 / 2, },
             ]}
+            onClick={
+              biAction ? () => biAction({ index: 0, articleId: data.representedContent, }) : null
+            }
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -178,10 +175,7 @@ function Teaser1({
                   {
                     aspect: 'regular',
                     from: 's',
-                    sizes: [
-                      { from: 'xl', size: '192px', },
-                      { from: 's', size: '168px', },
-                    ],
+                    sizes: [ { from: 'xl', size: '192px', }, { from: 's', size: '168px', }, ],
                     widths: [ 320, 192, 168, ],
                   },
                 ],
@@ -192,12 +186,12 @@ function Teaser1({
             data={data}
             padding={[ 1, 1, 0, ]}
             footerPadding={[ 1, 1, ]}
-            width={[
-              { from: 'l', until: 'xl', value: 5 / 7, },
-              { from: 'xl', value: 1 / 2, },
-            ]}
+            width={[ { from: 'l', until: 'xl', value: 5 / 7, }, { from: 'xl', value: 1 / 2, }, ]}
             renderContent={() => (
               <TeaserHeader
+                onClick={
+                  biAction ? () => biAction({ index: 0, articleId: data.representedContent, }) : null
+                }
                 typeScale={[
                   { until: 'xl', value: 0, },
                   { from: 'xl', value: -1, },
@@ -206,10 +200,7 @@ function Teaser1({
               />
             )}
             renderFooter={() => (
-              <CommentsCount
-                commentsCount={data.commentsCounts}
-                miscStyles={{ type: -3, }}
-              />
+              <CommentsCount commentsCount={data.commentsCounts} miscStyles={{ type: -3, }} />
             )}
           />
         </Teaser>
@@ -219,20 +210,12 @@ function Teaser1({
 }
 
 Teaser234.defaultProps = teaserDefaultProps;
-function Teaser234({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserPropsType): React.Node {
+function Teaser234({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.Node {
   return (
     <Teaser
       data={data}
       gutter={0}
-      onClick={
-        biAction
-          ? () => biAction({ index: 1, articleId: data.contentId, })
-          : null
-      }
+      onClick={biAction ? () => biAction({ index: 1, articleId: data.contentId, }) : null}
     >
       <TeaserContent
         data={data}
@@ -258,14 +241,15 @@ function Teaser234({
               { from: 'l', until: 'xl', value: 0, },
               { from: 'xl', value: -1, },
             ]}
+            onClick={
+              biAction ? () => biAction({ index: 1, articleId: data.representedContent, }) : null
+            }
             {...data}
           />
         )}
         renderFooter={() => (
           <React.Fragment>
-            {data.publishDate || data.lastUpdate ? (
-              <TeaserTime {...data} />
-            ) : null}
+            {data.publishDate || data.lastUpdate ? <TeaserTime {...data} /> : null}
             {' '}
             <CommentsCount commentsCount={data.commentsCounts} />
           </React.Fragment>

@@ -2,10 +2,7 @@
 
 import * as React from 'react';
 
-import type {
-  ComponentPropResponsiveObject,
-  StyleProps,
-} from '@haaretz/htz-css-tools';
+import type { ComponentPropResponsiveObject, StyleProps, } from '@haaretz/htz-css-tools';
 
 import AboveBlockLink from '../BlockLink/AboveBlockLink';
 import GridItem from '../Grid/GridItem';
@@ -48,6 +45,14 @@ type TeaserMediaPropsType = {
    */
   disableAnchor: boolean,
   isStacked: IsStackedType,
+  /**
+   * pass an `onClick` event to the blockLink.
+   * Useful for bi actions and events
+   *
+   * Should also be passed to underlying links, e.g.,
+   * around the title and image
+   */
+  onClick: ?(evt: SyntheticMouseEvent<HTMLElement>) => void,
   children: React.Node,
   /**
    * miscellaneous styles on the wrapper `<GridItem />`
@@ -61,6 +66,7 @@ TeaserMedia.defaultProps = {
   disableAnchor: false,
   isStacked: false,
   width: null,
+  onClick: null,
   miscStyles: null,
 };
 
@@ -71,6 +77,7 @@ export default function TeaserMedia({
   children,
   disableAnchor,
   isStacked,
+  onClick,
   miscStyles,
 }: TeaserMediaPropsType): React.Node {
   return (
@@ -89,15 +96,14 @@ export default function TeaserMedia({
               children
             ) : (
               <HtzLink
+                onClick={onClick}
                 href={
-                  data.inputTemplate
-                  === 'com.polobase.ClickTrackerBannerElement'
+                  data.inputTemplate === 'com.polobase.ClickTrackerBannerElement'
                     ? data.link
                     : data.path
                 }
                 target={
-                  data.inputTemplate
-                  === 'com.polobase.ClickTrackerBannerElement'
+                  data.inputTemplate === 'com.polobase.ClickTrackerBannerElement'
                     ? data.linkTarget
                     : null
                 }

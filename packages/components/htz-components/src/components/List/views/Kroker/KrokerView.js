@@ -38,15 +38,10 @@ export default function KrokerView({
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
       marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
       rowSpacing={[ { until: 's', value: { amount: 1, nUp: 1, }, }, ]}
-      innerBackgroundColor={[
-        { until: 's', value: 'transparent', },
-        { from: 's', value: 'white', },
-      ]}
+      innerBackgroundColor={[ { until: 's', value: 'transparent', }, { from: 's', value: 'white', }, ]}
     >
       {/* list header */}
-      <GridItem
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-      >
+      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}>
         <ListViewHeader
           url={list.url}
           extraLinks={list.extraLinks}
@@ -56,14 +51,9 @@ export default function KrokerView({
       </GridItem>
 
       {/* breaking news +  items */}
-      <GridItem
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
-      >
+      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}>
         <Grid
-          rowSpacing={[
-            { until: 's', value: { amount: 0, }, },
-            { from: 's', value: { amount: 2, }, },
-          ]}
+          rowSpacing={[ { until: 's', value: { amount: 0, }, }, { from: 's', value: { amount: 2, }, }, ]}
         >
           {/* breaking news element */}
           <GridItem
@@ -98,13 +88,7 @@ type ListItemsProps = {
   gaAction: ?() => void,
   biAction: ?ListBiActionType,
 };
-function ListItems({
-  items,
-  dfp,
-  lazyLoadImages,
-  gaAction,
-  biAction,
-}: ListItemsProps): React.Node {
+function ListItems({ items, dfp, lazyLoadImages, gaAction, biAction, }: ListItemsProps): React.Node {
   return (
     <Grid
       rowSpacing={[
@@ -117,19 +101,11 @@ function ListItems({
         miscStyles={{ display: 'flex', }}
       >
         <Grid gutter={4} rowSpacing={[ { until: 's', value: { amount: 1, }, }, ]}>
-          <GridItem
-            width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
-          >
+          <GridItem width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}>
             {/* item 1 */}
-            <MainTeaser
-              itemData={items[0]}
-              lazyLoadImages={lazyLoadImages}
-              biAction={biAction}
-            />
+            <MainTeaser itemData={items[0]} lazyLoadImages={lazyLoadImages} biAction={biAction} />
           </GridItem>
-          <GridItem
-            width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}
-          >
+          <GridItem width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}>
             {/* item 2 */}
             <VerticalImageTeaser
               itemData={items[1]}
@@ -149,10 +125,7 @@ function ListItems({
         {/* items 3 - 5 */}
         <Grid
           gutter={4}
-          rowSpacing={[
-            { until: 's', value: { amount: 1, }, },
-            { from: 'l', value: { amount: 1, }, },
-          ]}
+          rowSpacing={[ { until: 's', value: { amount: 1, }, }, { from: 'l', value: { amount: 1, }, }, ]}
         >
           {items.slice(2, 5).map(item => (
             <GridItem

@@ -14,6 +14,7 @@ export const WongQuery = gql`
           inputTemplate
           commentsCounts
           contentId
+          representedContent
           title
           titleMobile
           subtitle

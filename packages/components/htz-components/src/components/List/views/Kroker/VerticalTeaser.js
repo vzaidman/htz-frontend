@@ -34,11 +34,7 @@ export default function VerticlaTeaser({
     <FelaTheme
       render={theme => (
         <Teaser
-          onClick={
-            biAction
-              ? () => biAction({ index: 2, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 2, articleId: itemData.representedContent, }) : null}
           miscStyles={{
             borderBottom: [
               {
@@ -65,11 +61,12 @@ export default function VerticlaTeaser({
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null
+                }
               />
             )}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

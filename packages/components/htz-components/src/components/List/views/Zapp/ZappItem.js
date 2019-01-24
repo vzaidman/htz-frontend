@@ -40,7 +40,7 @@ export default function ZappItem({
   return (
     <Teaser
       data={data}
-      onClick={() => biAction({ index, articleId: data.contentId, })}
+      onClick={() => biAction({ index, articleId: data.representedContent, })}
       isStacked={[ { from: 'l', value: true, }, ]}
     >
       <TeaserMedia
@@ -51,10 +51,9 @@ export default function ZappItem({
         data={data}
         isStacked={[ { from: 'l', value: true, }, ]}
         miscStyles={{
-          ...(hideImageOnMobile
-            ? { display: [ { until: 's', value: 'none', }, ], }
-            : {}),
+          ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
         }}
+        onClick={() => biAction({ index, articleId: data.representedContent, })}
       >
         <FelaTheme
           render={theme => (
@@ -109,7 +108,7 @@ export default function ZappItem({
               { from: 's', until: 'l', value: 1, },
               { from: 'l', value: 0, },
             ]}
-            onClick={() => biAction({ index, articleId: data.contentId, })}
+            onClick={() => biAction({ index, articleId: data.representedContent, })}
           />
         )}
         renderFooter={() => (

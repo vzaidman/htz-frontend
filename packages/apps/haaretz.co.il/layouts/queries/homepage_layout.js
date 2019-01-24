@@ -90,6 +90,7 @@ export default gql`
   fragment ItemInList on TeaserInList {
     commentsCounts
     contentId
+    representedContent
     exclusive
     exclusiveMobile
     firstParagraph

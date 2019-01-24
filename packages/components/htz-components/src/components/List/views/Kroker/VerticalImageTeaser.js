@@ -47,9 +47,7 @@ export default function VerticalImageTeaser({
           data={itemData}
           isStacked={[ { from: 's', value: true, }, ]}
           onClick={
-            biAction
-              ? () => biAction({ index: 1, articleId: itemData.contentId, })
-              : null
+            biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null
           }
           miscStyles={{
             borderBottom: [
@@ -64,6 +62,9 @@ export default function VerticalImageTeaser({
             isStacked={[ { from: 's', value: true, }, ]}
             data={itemData}
             width={[ { until: 's', value: 19, }, ]}
+            onClick={
+              biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null
+            }
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -102,12 +103,15 @@ export default function VerticalImageTeaser({
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction
+                    ? () => biAction({ index: 1, articleId: itemData.representedContent, })
+                    : null
+                }
               />
             )}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

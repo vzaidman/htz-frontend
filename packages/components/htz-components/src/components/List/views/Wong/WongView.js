@@ -7,6 +7,8 @@ import type { GalleryDataType, } from '../../../../flowTypes/GalleryDataType';
 import type { HTMLEmbedDataType, } from '../../../../flowTypes/HTMLEmbedDataType';
 import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
+import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
+
 import { isImage, isEmbed, } from '../../../../utils/validateType.js';
 import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
@@ -50,6 +52,7 @@ type Props = {
    * />
    */
   width: ?(number | ComponentPropResponsiveObject<number>[]),
+  biAction: ?ListBiActionType,
   lazyLoadImages: boolean,
 };
 
@@ -57,6 +60,7 @@ Wong.defaultProps = {
   gutter: null,
   isConrad: false,
   lazyLoadImages: false,
+  biAction: null,
   width: null,
 };
 
@@ -65,6 +69,7 @@ export default function Wong({
   gutter,
   lazyLoadImages,
   list: { items, },
+  biAction,
   width,
 }: Props): React.Node {
   const item = items[0];
@@ -78,11 +83,7 @@ export default function Wong({
         <GridItem
           gutter={gutter}
           width={width}
-          rule={
-            isConrad
-              ? null
-              : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]
-          }
+          rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]}
         >
           <Teaser
             gutter={0}
@@ -91,11 +92,11 @@ export default function Wong({
             gridMiscStyles={{
               justifyContent: [ { from: 'xl', value: 'flex-end', }, ],
             }}
+            onClick={
+              biAction ? () => biAction({ index: 0, articleId: item.representedContent, }) : null
+            }
             miscStyles={{
-              margin: [
-                { until: 's', value: '0 -2rem', },
-                { fom: 's', value: '0', },
-              ],
+              margin: [ { until: 's', value: '0 -2rem', }, { fom: 's', value: '0', }, ],
             }}
           >
             <TeaserMedia
@@ -106,10 +107,11 @@ export default function Wong({
                 { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
               ]}
               miscStyles={{
-                paddingInlineEnd: [
-                  { from: 'xl', value: isConrad ? 0 : '2rem', },
-                ],
+                paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '2rem', }, ],
               }}
+              onClick={
+                biAction ? () => biAction({ index: 0, articleId: item.representedContent, }) : null
+              }
             >
               <MediaComponent {...mediaProps} lazyLoad={lazyLoadImages} />
             </TeaserMedia>
@@ -144,10 +146,7 @@ export default function Wong({
                       { from: 'l', until: 'xl', value: 5, },
                       { from: 'xl', value: isConrad ? 5 : 4, },
                     ]}
-                    kickerTypeScale={[
-                      { until: 'xl', value: -1, },
-                      { from: 'xl', value: -2, },
-                    ]}
+                    kickerTypeScale={[ { until: 'xl', value: -1, }, { from: 'xl', value: -2, }, ]}
                     miscStyles={{}}
                     kickerMiscStyles={{
                       marginBottom: '1rem',
@@ -157,6 +156,11 @@ export default function Wong({
                       paddingInlineStart: [ { until: 's', value: '2rem', }, ],
                       paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
                     }}
+                    onClick={
+                      biAction
+                        ? () => biAction({ index: 0, articleId: item.representedContent, })
+                        : null
+                    }
                   />
                   <TeaserSubtitle
                     {...item}
@@ -193,10 +197,7 @@ export default function Wong({
               }}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors
-                    authors={item.authors}
-                    miscStyles={{ fontWeight: 'bold', }}
-                  />
+                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}
@@ -209,9 +210,7 @@ export default function Wong({
                       style={{
                         marginTop: '1rem',
                         fontWeight: '700',
-                        extend: [
-                          theme.mq({ until: 's', }, { display: 'none', }),
-                        ],
+                        extend: [ theme.mq({ until: 's', }, { display: 'none', }), ],
                       }}
                       render="ul"
                     >
@@ -249,22 +248,28 @@ export default function Wong({
                                       theme.type(-2, { fromBp: 'xl', }),
                                     ],
                                   }}
-                                  render={({
-                                    className: linkClassName,
-                                  }) => (
+                                  render={({ className: linkClassName, }) => (
                                     <HtzLink
                                       href={article.path}
                                       className={linkClassName}
+                                      onClick={
+                                          biAction
+                                            ? () => biAction({
+                                              index: idx,
+                                              articleId: article.contentId,
+                                            })
+                                            : null
+                                        }
                                     >
                                       <IconBack
                                         size={[
-                                          { until: 'xl', value: 2, },
-                                          { from: 'xl', value: 1.5, },
-                                        ]}
+                                            { until: 'xl', value: 2, },
+                                            { from: 'xl', value: 1.5, },
+                                          ]}
                                         miscStyles={{
-                                          marginInlineStart: `-${relatedPadding}`,
-                                          marginInlineEnd: '0.5rem',
-                                        }}
+                                            marginInlineStart: `-${relatedPadding}`,
+                                            marginInlineEnd: '0.5rem',
+                                          }}
                                       />
                                       {article.title}
                                     </HtzLink>

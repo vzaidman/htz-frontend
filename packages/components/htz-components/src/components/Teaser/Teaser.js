@@ -2,10 +2,7 @@
 
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
-import type {
-  ComponentPropResponsiveObject,
-  StyleProps,
-} from '@haaretz/htz-css-tools';
+import type { ComponentPropResponsiveObject, StyleProps, } from '@haaretz/htz-css-tools';
 
 import type { FillHeightType, } from '../Card/cardStyle';
 import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
@@ -62,10 +59,10 @@ type TeaserPropTypes = {
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
-  /** 
-   * Should the Teaser forcefully occupy the entire height of its container 
+  /**
+   * Should the Teaser forcefully occupy the entire height of its container
    * Takes a boolean or an array of resposive objects
-  */
+   */
   fillHeight: FillHeightType,
   /**
    * indicates if the card is elevated.
@@ -179,11 +176,9 @@ export default function Teaser({
 //                               UTILS                                //
 // /////////////////////////////////////////////////////////////////////
 
-type StackingOpts = "column" | "row";
+type StackingOpts = 'column' | 'row';
 type StackingSettings = {
-  flexDirection:
-    | StackingOpts
-    | Array<{ from: ?string, until: ?string, value: StackingOpts, }>,
+  flexDirection: StackingOpts | Array<{ from: ?string, until: ?string, value: StackingOpts, }>,
 };
 
 function setStacking(options: IsStackedType): StackingSettings {

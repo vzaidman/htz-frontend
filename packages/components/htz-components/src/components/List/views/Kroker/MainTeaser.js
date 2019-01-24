@@ -31,11 +31,7 @@ const headerType = [
   { from: 'xl', value: -1, },
 ];
 
-export default function MainTeaser({
-  itemData,
-  lazyLoadImages,
-  biAction,
-}: Props): React.Node {
+export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
@@ -50,13 +46,13 @@ export default function MainTeaser({
               },
             ],
           }}
-          onClick={
-            biAction
-              ? () => biAction({ index: 0, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null}
         >
-          <TeaserMedia data={itemData} isStacked>
+          <TeaserMedia
+            data={itemData}
+            isStacked
+            onClick={biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null}
+          >
             <Image
               data={itemData.image}
               lazyLoad={lazyLoadImages}
@@ -77,19 +73,16 @@ export default function MainTeaser({
           <TeaserContent
             isStacked
             data={itemData}
-            padding={[
-              { until: 's', value: [ 1, 1, 0, ], },
-              { from: 's', value: [ 1, 0, 0, ], },
-            ]}
-            footerPadding={[
-              { until: 's', value: 1, },
-              { from: 's', value: [ 1, 0, 0, ], },
-            ]}
+            padding={[ { until: 's', value: [ 1, 1, 0, ], }, { from: 's', value: [ 1, 0, 0, ], }, ]}
+            footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 1, 0, 0, ], }, ]}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null
+                }
               />
             )}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}

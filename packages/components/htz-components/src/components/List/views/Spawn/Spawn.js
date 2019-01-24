@@ -28,6 +28,7 @@ const SpawnQuery = gql`
           firstParagraph
           commentsCounts
           contentId
+          representedContent
           title
           titleMobile
           subtitle
