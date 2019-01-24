@@ -195,7 +195,15 @@ export default function Panucci({
           <GridItem
             key={banner.contentId}
             width={[ { until: 'l', value: 1, }, { from: 'l', until: 'xl', value: 2 / 12, }, { from: 'xl', value: 4 / 12, }, ]}
-            miscStyles={{ marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ], }}
+            miscStyles={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: [
+                { until: 's', value: '1rem', },
+                { from: 's', until: 'l', value: '4rem', },
+              ],
+            }}
           >
             {/* banner content */}
             <GeneralAdSlot {...banner} styleRule={bannerStyle} />
