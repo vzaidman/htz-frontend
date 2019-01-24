@@ -7,6 +7,7 @@ import type {
   StyleProps,
 } from '@haaretz/htz-css-tools';
 
+import type { FillHeightType, } from '../Card/cardStyle';
 import type { ClickTrackerBannerType, } from '../../flowTypes/ClickTrackerBannerType';
 import type { TeaserDataType, } from '../../flowTypes/TeaserDataType';
 import type { attrFlowType, } from '../../flowTypes/attrTypes';
@@ -61,6 +62,11 @@ type TeaserPropTypes = {
     | [string, ]
     | [string, string, ]
     | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[],
+  /** 
+   * Should the Teaser forcefully occupy the entire height of its container 
+   * Takes a boolean or an array of resposive objects
+  */
+  fillHeight: FillHeightType,
   /**
    * indicates if the card is elevated.
    */
@@ -85,6 +91,7 @@ type TeaserPropTypes = {
 Teaser.defaultProps = {
   children: null,
   onClick: null,
+  fillHeight: true,
   isClickTracker: false,
   attrs: null,
   backgroundColor: null,
@@ -106,6 +113,7 @@ export default function Teaser({
   // Card props
   attrs,
   backgroundColor,
+  fillHeight,
   isElevated,
   isStacked,
   miscStyles,
@@ -122,7 +130,7 @@ export default function Teaser({
     <ErrorBoundary>
       <Card
         tagName="article"
-        fillHeight
+        fillHeight={fillHeight}
         miscStyles={{ position: 'relative', ...(miscStyles || {}), }}
         {...{ backgroundColor, isElevated, attrs, }}
       >

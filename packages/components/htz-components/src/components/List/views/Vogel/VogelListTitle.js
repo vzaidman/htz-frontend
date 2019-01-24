@@ -16,13 +16,12 @@ VogelListTitle.defaultProps = {
   url: null,
 };
 
-export default function VogelListTitle({
-  title,
-  gutter,
-  url,
-}: Props): React.Node {
+export default function VogelListTitle({ title, gutter, url, }: Props): React.Node {
   return (
-    <GridItem gutter={gutter} miscStyles={{ flexGrow: '0', flexShrink: '1', }}>
+    <GridItem
+      gutter={gutter}
+      miscStyles={{ flexGrow: '0', flexShrink: '1', paddingBottom: [ { until: 's', value: 1, }, ], }}
+    >
       <FelaComponent
         style={theme => ({
           color: theme.color('primary'),

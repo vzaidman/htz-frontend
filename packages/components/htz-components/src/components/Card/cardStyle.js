@@ -12,7 +12,7 @@ type BackgroundColorType =
   | [string, string, ]
   | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
 
-type FillHeightType = boolean | ComponentPropResponsiveObject<boolean>[];
+export type FillHeightType = boolean | ComponentPropResponsiveObject<boolean>[];
 
 export type cardStyleOptions = {
   /** A Fela theme object */
