@@ -100,13 +100,10 @@ class ShareBar extends React.Component<Props, State> {
             <FelaComponent style={{ display: 'flex', }}>
               <Query query={IS_MOUSE_STORY}>
                 {({ data: { isMouseStory, isCommentsNumberLoaded, }, }) => {
-                  const buttons = [ 'zen', ];
-                  const hiddenButtons = [ 'print', ];
+                  const buttons = [ 'zen', 'print' ];
+                  const hiddenButtons = [];
                   if (!isMouseStory) {
-                    buttons.push('comments');
-                    if (isCommentsNumberLoaded && !this.barWidth && this.barEl) {
-                      this.barWidth = this.barEl.offsetWidth;
-                    }
+                    buttons.push('comments');                    
                   }
                   else if (!this.barWidth) {
                     setTimeout(() => {
@@ -124,72 +121,7 @@ class ShareBar extends React.Component<Props, State> {
                         elementUrl={canonicalUrl}
                         buttons={[ ...buttons, ]}
                         size={4.5}
-                      />
-                      <FelaComponent
-                        style={{
-                          ...(!this.barWidth
-                            ? {
-                              position: 'absolute',
-                              right: '100%',
-                            }
-                            : {}),
-                        }}
-                        render={({ className, }) => (
-                          <div
-                            className={className}
-                            ref={el => {
-                              if (!this.barEl) this.barEl = el;
-                            }}
-                          >
-                            <ActionButtons
-                              elementName={title}
-                              elementUrl={canonicalUrl}
-                              miscStyles={{
-                                maxWidth: this.barWidth
-                                  ? isOpen
-                                    ? `${this.barWidth}px`
-                                    : '0'
-                                  : 'auto',
-                                transitionProperty: 'max-width',
-                                ...theme.getDelay('transition', -1),
-                                ...theme.getDuration('transition', -1),
-                                ...theme.getTimingFunction('transition', 'linear'),
-                                overflow: 'hidden',
-                              }}
-                              buttons={[
-                                ...hiddenButtons,
-                                {
-                                  name: 'save',
-                                  buttonStyles: isArticleSaved => ({
-                                    ...(isArticleSaved
-                                      ? {
-                                        color: theme.color('neutral', '-10'),
-                                        backgroundColor: theme.color('primary'),
-                                        ':hover': {
-                                          color: theme.color('neutral', '-10'),
-                                          backgroundColor: theme.color('secondary'),
-                                        },
-                                      }
-                                      : {}),
-                                  }),
-                                },
-                              ]}
-                              size={4.5}
-                            />
-                          </div>
-                        )}
-                      />
-
-                      <Button
-                        onClick={this.toggleOpen}
-                        title={!isOpen ? 'אפשרויות נוספות' : null}
-                        miscStyles={{
-                          color: theme.color('primary'),
-                          minWidth: '5rem',
-                        }}
-                      >
-                        <PlusClose isOpen={isOpen} size={3} color="primary" />
-                      </Button>
+                      />                     
                     </React.Fragment>
                   );
                 }}
