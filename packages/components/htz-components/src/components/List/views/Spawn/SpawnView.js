@@ -422,16 +422,15 @@ function Editorial({
                       right: '0',
                     },
                     extend: [
-                      theme.type(-2, { from: 'xl', }),
+                      theme.type(0, { fromBp: 's', untilBp: 'l', }),
+                      theme.type(-2, { fromBp: 'xl', }),
                       theme.mq({ until: 's', }, { display: 'none', }),
                       theme.mq({ from: 's', until: 'l', }, { height: '16rem', }),
                       theme.mq({ from: 'l', }, { height: '18rem', }),
                     ],
                   }}
                 >
-                  {data.firstParagraph
-                    ? data.firstParagraph.replace(/&quot;/g, '"')
-                    : ''}
+                  {data.firstParagraph}
                 </FelaComponent>
                 <FelaComponent
                   render="footer"
@@ -556,11 +555,8 @@ type OpEdTeaserPropTypes = TeaserPropTypes & {
   isStackedFromS: boolean,
 };
 
-OpEdTeaser.defaultProps = {
-  lazyLoadImages: true,
-  isStackedFromS: false,
-  hasMarginTop: false,
-};
+// eslint-disable-next-line react/default-props-match-prop-types
+OpEdTeaser.defaultProps = { lazyLoadImages: true, isStackedFromS: false, hasMarginTop: false, };
 
 function OpEdTeaser({
   biAction,
@@ -624,6 +620,7 @@ function OpEdTeaser({
                   flexBasis: [ { from: 's', value: 'auto', }, ],
                   flexGrow: [ { from: 's', value: '0', }, ],
                   flexShrink: [ { from: 's', value: '0', }, ],
+                  alignSelf: [ { from: 's', until: 'l', value: 'center', }, ],
                 }
                 : {}),
             }}
@@ -638,10 +635,17 @@ function OpEdTeaser({
                 width: '17rem',
                 extend: [
                   theme.mq(
-                    { until: 'l', },
+                    { until: 's', },
                     {
                       height: '15rem',
                       width: '15rem',
+                    }
+                  ),
+                  theme.mq(
+                    { from: 's', until: 'l', },
+                    {
+                      height: '16rem',
+                      width: '16rem',
                     }
                   ),
                 ],
@@ -677,7 +681,12 @@ function OpEdTeaser({
             isStacked={isStackedFromS ? [ { from: 's', value: true, }, ] : false}
             gridItemMiscStyles={{
               ...(isStackedFromS
-                ? { textAlign: [ { from: 's', value: 'center', }, ], }
+                ? {
+                  textAlign: [
+                    { from: 's', until: 'l', value: 'start', },
+                    { from: 'l', value: 'center', },
+                  ],
+                }
                 : {}),
               justifyContent: isStackedFromS
                 ? [ { until: 's', value: 'center', }, ]

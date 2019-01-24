@@ -222,41 +222,34 @@ export default class Zombie extends React.Component<Props, State> {
                     {stocks ? (
                       <Grid gutter={0} miscStyles={{ height: '100%', }}>
                         <GridItem
+                          gutter={2}
+                          rule
                           miscStyles={stockWrapperStyle(theme)}
                           width={stockWidth}
                         >
-                          <FelaComponent style={stockStyle(theme)}>
-                            <FelaComponent
-                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                          <Grid miscStyle={stockStyle(theme)} gutter={1}>
+                            <GridItem
+                              width={1}
+                              miscStyles={stockNameStyle(theme)}
                             >
                               {stocks['142'] && stocks['142'].name}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={{
-                                color: theme.color('neutral', '-3'),
-                                extend: [
-                                  theme.type(-2, { until: 's', }),
-                                  parseComponentProp(
-                                    'display',
-                                    [
-                                      { until: 's', value: 'block', },
-                                      { from: 's', value: 'inline', },
-                                    ],
-                                    theme.mq,
-                                    (prop, value) => ({ [prop]: value, })
-                                  ),
-                                ],
-                              }}
-                              render="span"
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockValueStyle(theme)}
                             >
                               {stocks['142'] && stocks['142'].value}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={stockYieldStyle(
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockYieldStyle(
                                 theme,
                                 stocks['142'] && stocks['142'].change
                               )}
-                              render="span"
                             >
                               {stocks['142'] && stocks['142'].change
                                 ? `${stocks['142']
@@ -267,44 +260,38 @@ export default class Zombie extends React.Component<Props, State> {
                                       && Math.abs(stocks['142'].change)
                                 )}%`
                                 : ''}
-                            </FelaComponent>
-                          </FelaComponent>
+                            </GridItem>
+                          </Grid>
                         </GridItem>
                         <GridItem
+                          gutter={2}
+                          rule
                           miscStyles={stockWrapperStyle(theme, true)}
                           width={stockWidth}
                         >
-                          <FelaComponent style={stockStyle(theme)}>
-                            <FelaComponent
-                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                          <Grid miscStyle={stockStyle(theme)} gutter={1}>
+                            <GridItem
+                              width={1}
+                              miscStyles={stockNameStyle(theme)}
                             >
                               {stocks['137'] && stocks['137'].name}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={{
-                                color: theme.color('neutral', '-3'),
-                                extend: [
-                                  parseComponentProp(
-                                    'display',
-                                    [
-                                      { until: 's', value: 'block', },
-                                      { from: 's', value: 'inline', },
-                                    ],
-                                    theme.mq,
-                                    (prop, value) => ({ [prop]: value, })
-                                  ),
-                                ],
-                              }}
-                              render="span"
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockValueStyle(theme)}
                             >
                               {stocks['137'] && stocks['137'].value}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={stockYieldStyle(
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockYieldStyle(
                                 theme,
                                 stocks['137'] && stocks['137'].change
                               )}
-                              render="span"
                             >
                               {stocks['137'] && stocks['137'].change
                                 ? `${stocks['137']
@@ -316,44 +303,38 @@ export default class Zombie extends React.Component<Props, State> {
                                   )
                                 )}%`
                                 : ''}
-                            </FelaComponent>
-                          </FelaComponent>
+                            </GridItem>
+                          </Grid>
                         </GridItem>
                         <GridItem
+                          gutter={2}
+                          rule={[ { until: 'l', value: false, }, { from: 'l', value: true, }, ]}
                           miscStyles={stockWrapperStyle(theme)}
                           width={stockWidth}
                         >
-                          <FelaComponent style={stockStyle(theme)}>
-                            <FelaComponent
-                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                          <Grid miscStyle={stockStyle(theme)} gutter={1}>
+                            <GridItem
+                              width={1}
+                              miscStyles={stockNameStyle(theme)}
                             >
                               {stocks[9001] && stocks[9001].name}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={{
-                                color: theme.color('neutral', '-3'),
-                                extend: [
-                                  parseComponentProp(
-                                    'display',
-                                    [
-                                      { until: 's', value: 'block', },
-                                      { from: 's', value: 'inline', },
-                                    ],
-                                    theme.mq,
-                                    (prop, value) => ({ [prop]: value, })
-                                  ),
-                                ],
-                              }}
-                              render="span"
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockValueStyle(theme)}
                             >
                               {stocks[9001] && stocks[9001].value}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={stockYieldStyle(
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockYieldStyle(
                                 theme,
                                 stocks[9001] && stocks[9001].change
                               )}
-                              render="span"
                             >
                               {stocks[9001] && stocks[9001].change
                                 ? `${stocks[9001]
@@ -365,42 +346,37 @@ export default class Zombie extends React.Component<Props, State> {
                                   )
                                 )}%`
                                 : ''}
-                            </FelaComponent>
-                          </FelaComponent>
+                            </GridItem>
+                          </Grid>
                         </GridItem>
                         <GridItem
+                          gutter={2}
+                          rule={[ { until: 'l', value: false, }, { from: 'l', value: true, }, ]}
                           miscStyles={stockWrapperStyle(theme)}
                           width={stockWidth}
                         >
-                          <FelaComponent style={stockStyle(theme, false, true)}>
-                            <FelaComponent
-                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                          <Grid style={stockStyle(theme, false, true)} gutter={1}>
+                            <GridItem
+                              width={1}
+                              miscStyles={stockNameStyle(theme)}
                             >
                               {stocks['29.10.@CCO']
                                 && stocks['29.10.@CCO'].name}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={{
-                                color: theme.color('neutral', '-3'),
-                                extend: [
-                                  parseComponentProp(
-                                    'display',
-                                    [
-                                      { until: 's', value: 'block', },
-                                      { from: 's', value: 'inline', },
-                                    ],
-                                    theme.mq,
-                                    (prop, value) => ({ [prop]: value, })
-                                  ),
-                                ],
-                              }}
-                              render="span"
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockValueStyle(theme)}
                             >
                               {stocks['29.10.@CCO']
                                 && stocks['29.10.@CCO'].value}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={stockYieldStyle(
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockYieldStyle(
                                 theme,
                                 stocks['29.10.@CCO']
                                   && stocks['29.10.@CCO'].change
@@ -421,34 +397,41 @@ export default class Zombie extends React.Component<Props, State> {
                                   )
                                 )}%`
                                 : ''}
-                            </FelaComponent>
-                          </FelaComponent>
+                            </GridItem>
+                          </Grid>
                         </GridItem>
                         <GridItem
+                          gutter={2}
+                          rule={[ { until: 'l', value: false, }, { from: 'l', value: true, }, ]}
                           miscStyles={stockWrapperStyle(theme, true)}
                           width={stockWidth}
                         >
-                          <FelaComponent style={stockStyle(theme, false)}>
-                            <FelaComponent
-                              style={{ ...theme.type(-2), fontWeight: '700', }}
+                          <Grid style={stockStyle(theme, false)} gutter={1}>
+                            <GridItem
+                              width={1}
+                              miscStyles={stockNameStyle(theme)}
                             >
                               {stocks['30.10.!DJI']
                                 && stocks['30.10.!DJI'].name}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={{ color: theme.color('neutral', '-3'), }}
-                              render="span"
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockValueStyle(theme)}
                             >
                               {stocks['30.10.!DJI']
                                 && stocks['30.10.!DJI'].value}
-                            </FelaComponent>
-                            <FelaComponent
-                              style={stockYieldStyle(
+                            </GridItem>
+                            <GridItem
+                              width={[
+                                { until: 's', value: 1, },
+                              ]}
+                              miscStyles={stockYieldStyle(
                                 theme,
                                 stocks['30.10.!DJI']
                                   && stocks['30.10.!DJI'].change
                               )}
-                              render="span"
                             >
                               {stocks['30.10.!DJI']
                               && stocks['30.10.!DJI'].change
@@ -464,8 +447,8 @@ export default class Zombie extends React.Component<Props, State> {
                                   )
                                 )}%`
                                 : ''}
-                            </FelaComponent>
-                          </FelaComponent>
+                            </GridItem>
+                          </Grid>
                         </GridItem>
                       </Grid>
                     ) // TODO: placeholder instead of null
@@ -628,14 +611,15 @@ function MainTeaser({
           <TeaserContent
             data={data}
             padding={[
-              { until: 'xl', value: [ 1, 1, 0, ], },
-              { from: 'xl', value: [ 1, 2, 0, ], },
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: [ 1, 2, 0, ], },
             ]}
             isStacked
             footerColor={[ 'neutral', '-3', ]}
             footerPadding={[
               { until: 's', value: 1, },
-              { from: 's', value: [ 2, 1, 1, ], },
+              { from: 's', until: 'l', value: [ 2, 2, 1, ], },
+              { from: 'l', value: [ 2, 1, 1, ], },
             ]}
             footerMiscStyles={{ type: -3, }}
             renderContent={() => (
@@ -672,11 +656,12 @@ function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
           data={data}
           padding={[
             { until: 's', value: [ 1, 2, 0, ], },
-            { from: 's', value: [ 1, 1, 0, ], },
+            { from: 's', until: 'l', value: [ 2, 2, 0, ], },
+            { from: 'l', value: [ 1, 1, 0, ], },
           ]}
           footerPadding={[
-            { until: 's', value: [ 1, 2, ], },
-            { from: 's', value: [ 1, 1, ], },
+            { until: 'l', value: [ 1, 2, ], },
+            { from: 'l', value: [ 1, 1, ], },
           ]}
           footerMiscStyles={{ type: -3, }}
           renderContent={() => (
@@ -722,8 +707,56 @@ function numToHebrewString(num: number): string {
   });
 }
 
+function stockNameStyle(theme) {
+  return ({
+    fontWeight: '700',
+    ...theme.type(-2, { untilBp: 's', }),
+    ...theme.type(-1, { fromBp: 's', untilBp: 'l', }),
+    ...theme.type(-2, { fromBp: 'l', }),
+  });
+}
+
+function stockValueStyle(theme) {
+  return ({
+    order: [ { from: 's', until: 'l', value: 1, }, ],
+    flexBasis: 'auto',
+    color: theme.color('neutral', '-3'),
+    ...theme.type(-2, { untilBp: 's', }),
+    ...theme.type(0, { fromBp: 's', untilBp: 'l', }),
+    ...parseComponentProp(
+      'display',
+      [
+        { until: 's', value: 'block', },
+        { from: 's', value: 'inline', },
+      ],
+      theme.mq,
+      (prop, value) => ({ [prop]: value, })
+    ),
+  });
+}
+
+function stockYieldStyle(theme: Object, change?: ?number): Object {
+  return {
+    color:
+      change && change < 0 ? theme.color('negative') : theme.color('positive'),
+    direction: 'ltr',
+    fontWeight: '700',
+    paddingEnd: '1rem',
+    position: 'relative',
+    textAlign: 'start',
+    flexBasis: 'auto',
+    flexShrink: [ { from: 's', until: 'l', value: 1, }, ],
+    flexGrow: [ { from: 's', until: 'l', value: 0, }, ],
+    ...theme.type(0, { untilBp: 'l', }),
+  };
+}
+
 function stockWrapperStyle(theme: Object, hideOnM: boolean = false): Object {
   return {
+    padding: [
+      { until: 's', value: '2rem 1rem', },
+      { from: 's', until: 'l', value: '2rem', },
+    ],
     ...theme.type(-1),
     ...(hideOnM
       ? {
@@ -745,68 +778,48 @@ function stockStyle(
     paddingEnd: '2rem',
     paddingBottom: '1rem',
     height: '100%',
-    extend: [
-      parseComponentProp(
-        'paddingTop',
-        [
-          { until: 'l', value: '1rem', },
-          { from: 'l', until: 'xl', value: '2rem', },
-          { from: 'xl', value: '1rem', },
-        ],
-        theme.mq,
-        (prop, value) => ({ [prop]: value, })
-      ),
-      parseComponentProp(
-        'paddingStart',
-        [
-          { until: 's', value: '1rem', },
-          { from: 's', until: 'l', value: '2rem', },
-          { from: 'l', until: 'xl', value: '1rem', },
-          { from: 'xl', value: '2rem', },
-        ],
-        theme.mq,
-        (prop, value) => ({ [prop]: value, })
-      ),
-      ...(border
-        ? [
-          ...[
-            !hideOnM
-              ? theme.mq(
-                { until: 'l', },
-                borderEnd('1px', 'solid', theme.color('neutral', '-5'))
-              )
-              : [],
-          ],
-          theme.mq(
-            { from: 'l', until: 'xl', },
-            {
-              ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-5')),
-            }
-          ),
-          theme.mq(
-            { from: 'xl', },
-            borderEnd('1px', 'solid', theme.color('neutral', '-5'))
-          ),
-        ]
-        : []),
-    ],
-  };
-}
 
-function stockYieldStyle(theme: Object, change?: ?number): Object {
-  return {
-    color:
-      change && change < 0 ? theme.color('negative') : theme.color('positive'),
-    direction: 'ltr',
-    fontWeight: '700',
-    paddingEnd: '1rem',
-    position: 'relative',
-    textAlign: 'start',
-    extend: [
-      theme.type(0, { until: 's', }),
-      theme.mq({ until: 's', }, { marginTop: '0', }),
-      theme.mq({ from: 's', until: 'm', }, { marginTop: '1rem', }),
-      theme.mq({ until: 'm', }, { display: 'inline-block', }),
-    ],
+    ...parseComponentProp(
+      'paddingTop',
+      [
+        { until: 'l', value: '1rem', },
+        { from: 'l', until: 'xl', value: '2rem', },
+        { from: 'xl', value: '1rem', },
+      ],
+      theme.mq,
+      (prop, value) => ({ [prop]: value, })
+    ),
+    ...parseComponentProp(
+      'paddingStart',
+      [
+        { until: 's', value: '1rem', },
+        { from: 's', until: 'l', value: '2rem', },
+        { from: 'l', until: 'xl', value: '1rem', },
+        { from: 'xl', value: '2rem', },
+      ],
+      theme.mq,
+      (prop, value) => ({ [prop]: value, })
+    ),
+    ...(border && [
+      ...[
+        !hideOnM
+          ? theme.mq(
+            { until: 'l', },
+            borderEnd('1px', 'solid', theme.color('neutral', '-5'))
+          )
+          : [],
+      ],
+      theme.mq(
+        { from: 'l', until: 'xl', },
+        {
+          ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-5')),
+        }
+      ),
+      theme.mq(
+        { from: 'xl', },
+        borderEnd('1px', 'solid', theme.color('neutral', '-5'))
+      ),
+    ]),
+
   };
 }

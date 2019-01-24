@@ -25,7 +25,11 @@ export default function VerticlaTeaser({
   displayFlags,
   biAction,
 }: Props): React.Node {
-  const headerType = [ { until: 's', value: -1, }, { from: 's', value: -1, }, ];
+  const headerType = [
+    { until: 's', value: -1, },
+    { from: 's', until: 'l', value: 0, },
+    { from: 'l', value: -1, },
+  ];
   return (
     <FelaTheme
       render={theme => (

@@ -188,6 +188,7 @@ export default function ListViewHeader({
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
+                  theme.mq({ from: 's', until: 'l', }, { direction: 'ltr', paddingStart: '2rem', }),
                   theme.mq({ until: 'l', }, { fontWeight: '700', }),
                   theme.type(-1, { fromBp: 's', untilBp: 'l', }),
                   theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 4, }),

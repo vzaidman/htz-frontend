@@ -20,7 +20,6 @@ import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getImageAssets from '../../../../utils/getImageAssets';
-import { isTeaser, } from '../../../../utils/validateType';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 type Props = {
@@ -152,7 +151,7 @@ function MainTeaser({
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -201,7 +200,7 @@ function MainTeaser({
                 {...data}
                 isCentered
                 typeScale={[
-                  { until: 's', value: 1, },
+                  { until: 'l', value: 1, },
                   { from: 'l', until: 'xl', value: 2, },
                   { from: 'xl', value: 3, },
                 ]}
@@ -212,7 +211,7 @@ function MainTeaser({
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }
 
 TwoUpTeaser.defaultProps = { lazyLoadImages: true, };
@@ -224,7 +223,7 @@ function TwoUpTeaser({
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data) ? (
+  return (
     <FelaTheme
       render={theme => (
         <Teaser
@@ -280,6 +279,7 @@ function TwoUpTeaser({
                 {...data}
                 typeScale={[
                   { until: 's', value: -1, },
+                  { from: 's', until: 'l', value: 1, },
                 ]}
               />
             )}
@@ -288,14 +288,14 @@ function TwoUpTeaser({
         </Teaser>
       )}
     />
-  ) : null;
+  );
 }
 
 TextualTeaser.defaultProps = { lazyLoadImages: true, index: 3, };
 function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data) ? (
+  return (
     <Teaser
       data={data}
       onClick={() => biAction({ index: 3, articleId, })}
@@ -326,13 +326,14 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
             {...data}
             typeScale={[
               { until: 's', value: -1, },
+              { from: 's', until: 'l', value: 1, },
             ]}
           />
         )}
         renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
       />
     </Teaser>
-  ) : null;
+  );
 }
 
 type TwoUpProps = {

@@ -46,7 +46,7 @@ export default function ZappItem({
       <TeaserMedia
         width={[
           { until: 's', value: 17, },
-          { from: 's', until: 'l', value: 5 / 12, },
+          { from: 's', until: 'l', value: 6 / 12, },
         ]}
         data={data}
         isStacked={[ { from: 'l', value: true, }, ]}
@@ -75,8 +75,8 @@ export default function ZappItem({
                     sizes: [
                       { from: 'xl', size: '295px', },
                       { from: 'l', size: '238px', },
-                      { from: 'm', size: '320px', },
-                      { from: 's', size: '250px', },
+                      { from: 'm', size: '348px', },
+                      { from: 's', size: '264px', },
                     ],
                     widths: [ 500, 320, 295, 250, 238, ],
                   },
@@ -90,7 +90,8 @@ export default function ZappItem({
         data={data}
         padding={[
           { until: 's', value: hideImageOnMobile ? [ 2, 2, 0, 2, ] : [ 2, 1, 0, ], },
-          { from: 's', value: [ 1, 0, 0, ], },
+          { from: 's', until: 'l', value: [ 1, 2, 0, ], },
+          { from: 'l', value: [ 1, 0, 0, ], },
         ]}
         footerPadding={[
           { until: 's', value: [ 1, hideImageOnMobile ? 2 : 1, 1, ], },
@@ -103,7 +104,11 @@ export default function ZappItem({
         renderContent={() => (
           <TeaserHeader
             {...data}
-            typeScale={[ { until: 's', value: -1, }, { from: 's', value: 0, }, ]}
+            typeScale={[
+              { until: 's', value: -1, },
+              { from: 's', until: 'l', value: 1, },
+              { from: 'l', value: 0, },
+            ]}
             onClick={() => biAction({ index, articleId: data.contentId, })}
           />
         )}

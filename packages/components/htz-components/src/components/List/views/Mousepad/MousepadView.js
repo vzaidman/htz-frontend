@@ -27,7 +27,7 @@ export default function Mousepad({
   return (
     <ListView disableWrapper innerBackgroundColor="white" marginTop={0}>
       <GridItem width={1}>
-        <Grid gutter={4} miscStyles={{ paddingBottom: '1rem', }}>
+        <Grid gutter={4}>
           {list.items.map((item, index) => {
             const count = index + 1;
             const order = index < listMiddle ? 1 + index * 2 : 2 + (index - listMiddle) * 2; // CSS flex-box order calculation

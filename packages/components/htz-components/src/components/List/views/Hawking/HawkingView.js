@@ -326,12 +326,12 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
             data={item}
             width={1}
             padding={[
-              { until: 's', value: [ 1, 2, 0, ], },
-              { from: 's', value: [ 1, 1, 0, ], },
+              { until: 'l', value: [ 1, 2, 0, ], },
+              { from: 'l', value: [ 1, 1, 0, ], },
             ]}
             footerPadding={[
-              { until: 's', value: [ 1, 2, ], },
-              { from: 's', value: [ 1, 1, ], },
+              { until: 'l', value: [ 1, 2, ], },
+              { from: 'l', value: [ 1, 1, ], },
             ]}
             footerMiscStyles={{
               fontWeight: '700',

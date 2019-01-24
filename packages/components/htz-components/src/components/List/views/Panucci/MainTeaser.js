@@ -65,8 +65,16 @@ export default function MainTeaser({
           </TeaserMedia>
           <TeaserContent
             data={itemData}
-            padding={[ 1, 1, 0, ]}
-            footerPadding={1}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', until: 'l', value: [ 1, 2, 0, ], },
+              { from: 'l', value: [ 1, 1, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: 1, },
+              { from: 's', until: 'l', value: [ 1, 2, ], },
+              { from: 'l', value: 1, },
+            ]}
             isStacked
             renderContent={() => (
               <TeaserHeader

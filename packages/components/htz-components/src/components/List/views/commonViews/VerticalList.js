@@ -67,7 +67,8 @@ export default function VerticalList({ list, gaAction, biAction, banners, title,
                 backgroundColor={[ 'white', ]}
                 isCommercial={isCommercial}
                 titleMiscStyles={{
-                  ...theme.type(0),
+                  ...theme.type(0, { untilBp: 's', }),
+                  ...theme.type(1, { fromBp: 's', untilBp: 'l', }),
                 }}
               />
             ) : null}
@@ -135,7 +136,7 @@ export default function VerticalList({ list, gaAction, biAction, banners, title,
 // /////////////////////////////////////////////////////////////////////
 
 type FirstTeaserProps = {
-  lazyLoadImages?: boolean,
+  lazyLoadImages?: boolean, // eslint-disable-line react/no-unused-prop-types
   itemData: TeaserDataType | ClickTrackerBannerType,
   biAction: ?ListBiActionType,
 };
@@ -211,10 +212,8 @@ type VerticalListTeaserProps = FirstTeaserProps & {
   isLast: boolean,
 };
 
-VerticalListTeaser.defaultProps = {
-  isLast: false,
-  lazyLoadImages: true,
-};
+// eslint-disable-next-line react/default-props-match-prop-types
+VerticalListTeaser.defaultProps = { isLast: false, lazyLoadImages: true, };
 
 function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalListTeaserProps) {
   return (

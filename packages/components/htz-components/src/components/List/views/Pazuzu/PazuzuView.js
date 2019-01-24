@@ -220,7 +220,8 @@ function PazuzuTeaser({
                   {...item}
                   typeScale={[
                     { until: 's', value: -1, },
-                    { from: 's', value: 1, },
+                    { from: 's', until: 'l', value: 2, },
+                    { from: 'l', value: 1, },
                   ]}
                 />
               )}

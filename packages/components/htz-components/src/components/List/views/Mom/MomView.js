@@ -32,7 +32,11 @@ type Props = {
   lazyLoadImages: boolean,
 };
 
-const headerTypeScale = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
+const headerTypeScale = [
+  { until: 's', value: -1, },
+  { from: 's', until: 'l', value: 1, },
+  { from: 'l', value: 0, },
+];
 
 Mom.defaultProps = { lazyLoadImages: true, };
 export default function Mom({
@@ -382,12 +386,14 @@ function TeaserWithImg1({
         data={data}
         padding={[
           { until: 's', value: [ 1, 0, 0, 1, ], },
-          { from: 's', until: 'xl', value: [ 1, 1, 0, 0, ], },
+          { from: 's', until: 'l', value: [ 2, 2, 0, 0, ], },
+          { from: 'l', until: 'xl', value: [ 1, 1, 0, 0, ], },
           { from: 'xl', value: [ 1, 1, 0, ], },
         ]}
         footerPadding={[
           { until: 's', value: [ 1, 0, 1, 1, ], },
-          { from: 's', value: [ 1, 1, 1, 0, ], },
+          { from: 's', until: 'l', value: [ 1, 2, 1, 0, ], },
+          { from: 'l', value: [ 1, 1, 1, 0, ], },
           { from: 'xl', value: 1, },
         ]}
         isStacked={[ { from: 'xl', value: true, }, ]}
@@ -466,12 +472,12 @@ function TeaserWithImg2({
       <TeaserContent
         data={data}
         padding={[
-          { from: 's', until: 'l', value: [ 1, 1, 0, ], },
+          { from: 's', until: 'l', value: [ 2, 2, 0, ], },
           { from: 'l', until: 'xl', value: [ 1, 0, 0, 1, ], },
           { from: 'xl', value: [ 1, 1, 0, ], },
         ]}
         footerPadding={[
-          { from: 's', until: 'l', value: [ 1, 1, 1, ], },
+          { from: 's', until: 'l', value: [ 1, 2, 1, ], },
           { from: 'l', until: 'xl', value: [ 1, 0, 1, 1, ], },
           { from: 'xl', value: [ 1, 1, 1, ], },
         ]}

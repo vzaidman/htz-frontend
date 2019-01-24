@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import Query from '../ApolloBoundary/Query';
 import Grid from '../Grid/Grid';
@@ -69,10 +70,24 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
                   backgroundColor: theme.color('primary'),
                   color: theme.color('white'),
                   display: 'flex',
-                  height: '5rem',
                   justifyContent: 'center',
                   width: '15rem',
-                  extend: [ theme.type(-1), ],
+                  fontWeight: '700',
+                  extend: [
+                    theme.type(0, { fromBp: 's', untilBp: 'l', }),
+                    theme.type(-1, { fromBp: 'l', }),
+                    {
+                      ...parseComponentProp(
+                        'height',
+                        [
+                          { from: 's', until: 'l', value: '6rem', },
+                          { from: 'l', value: '5rem', },
+                        ],
+                        theme.mq,
+                        (prop, value) => ({ [prop]: value, })
+                      ),
+                    },
+                  ],
                 }}
               >
                 {theme.breakingNewsStrip.title}

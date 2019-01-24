@@ -161,6 +161,7 @@ export default function Wong({
                   <TeaserSubtitle
                     {...item}
                     typeScale={[
+                      { from: 's', until: 'l', value: 0, },
                       { until: 'xl', value: -1, },
                       { from: 'xl', value: -2, },
                     ]}

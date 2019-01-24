@@ -10,11 +10,10 @@ import GridItem from '../../../Grid/GridItem';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
-import TeaserTime from '../../../TeaserTime/TeaserTime';
 
 const headerType = [
-  { until: 's', value: -1, },
-  { from: 's', until: 'xl', value: 0, },
+  { until: 'l', value: -1, },
+  { from: 'l', until: 'xl', value: 0, },
   { from: 'xl', value: -1, },
 ];
 
@@ -40,7 +39,7 @@ export default function MousepadTeaser({
           data={itemData}
           miscStyles={{
             padding: [
-              { until: 's', value: [ 0, 1, ], },
+              { until: 'l', value: [ 0, 1, ], },
             ],
             borderBottom: [
               {
@@ -78,12 +77,12 @@ export default function MousepadTeaser({
           </GridItem>
           <TeaserContent
             padding={[
-              { until: 's', value: [ 1, 3, 1, 2, ], },
-              { from: 's', value: [ 1, 2, 0, ], },
+              { until: 'l', value: [ 1, 3, 1, 2, ], },
+              { from: 'l', value: [ 1, 2, 0, ], },
             ]}
             footerPadding={[
-              { until: 's', value: [ 0, 3, 0, 2, ], },
-              { from: 's', value: [ 0, 2, ], },
+              { until: 'l', value: [ 0, 3, 0, 2, ], },
+              { from: 'l', value: [ 0, 2, ], },
             ]}
             footerMiscStyles={{
               marginTop: '0',

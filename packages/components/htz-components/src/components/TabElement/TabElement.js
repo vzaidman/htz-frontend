@@ -51,7 +51,7 @@ export function TabButton({ isActive, children, ...props }: TabButtonProps) {
           backgroundColor: theme.color('quaternary'),
         },
         extend: [
-          theme.type(0, { until: 's', }),
+          theme.type(0, { until: 'l', }),
         ],
       })}
       render={({ className, }) => (
@@ -82,7 +82,7 @@ function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): No
           activeTab={startAt}
           miscStyles={{
             ...theme.mq(
-              { from: 's', },
+              { from: 'l', },
               {
                 backgroundColor: theme.color('neutral', '-10'),
                 paddingStart: '2rem',
@@ -101,10 +101,10 @@ function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): No
                     color: theme.color('neutral', '-3'),
                     display: 'flex',
                     backgroundColor: theme.color('neutral', '-10'),
-                    marginBottom: [ { until: 's', value: '2px', }, ],
+                    marginBottom: [ { until: 'l', value: '2px', }, ],
                     ...theme.type(-1),
                     ...theme.mq(
-                      { from: 's', },
+                      { from: 'l', },
                       {
                         ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-6')),
                       }

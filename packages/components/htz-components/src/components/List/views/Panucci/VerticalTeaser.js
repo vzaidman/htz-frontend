@@ -20,7 +20,11 @@ type Props = {
 
 VerticlaTeaser.defautlProps = { biAction: null, };
 
-const headerType = [ { until: 's', value: -1, }, { from: 's', value: 0, }, ];
+const headerType = [
+  { until: 's', value: -1, },
+  { from: 's', until: 'l', value: 1, },
+  { from: 'l', value: 0, },
+];
 
 export default function VerticlaTeaser({
   itemData,
@@ -42,12 +46,12 @@ export default function VerticlaTeaser({
           <TeaserContent
             data={itemData}
             padding={[
-              { until: 's', value: [ 1, 2, 0, ], },
-              { from: 's', value: [ 1, 1, 0, ], },
+              { until: 'l', value: [ 1, 2, 0, ], },
+              { from: 'l', value: [ 1, 1, 0, ], },
             ]}
             footerPadding={[
-              { until: 's', value: [ 1, 2, ], },
-              { from: 's', value: [ 1, 1, ], },
+              { until: 'l', value: [ 1, 2, ], },
+              { from: 'l', value: [ 1, 1, ], },
             ]}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
