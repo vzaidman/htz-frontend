@@ -73,7 +73,7 @@ class ToolBar extends React.Component {
           isOpen={this.state.isOpen}
           rule={toolBarWrapper}
           render={({ className, theme, }) => (
-            <FelaComponent style={{ display: 'flex', }}>
+            <FelaComponent style={{ display: 'flex', zIndex: 1, }}>
               <FelaComponent
                 style={{
                   backgroundColor: rgba(theme.color('neutral'), 0.85),

@@ -10,7 +10,6 @@ import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
 import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
 import IconBack from '../Icon/icons/IconBack';
-import { buildImgOptions, } from '../ArticleBody/ArticleBody';
 
 const propTypes = {
   /**
@@ -79,6 +78,46 @@ const defaultProps = {
   exitFullScreenAction: null,
   startAt: 0,
 };
+
+const buildImgOptions = (aspect, isFullScreen) => ({
+  sizes: isFullScreen
+    ? '100vw'
+    : '(min-width:1280px) 800px,(min-width:1024px) 490px,(min-width:600px) 540px, calc(100vw - 6rem)',
+  transforms: [
+    {
+      width: '350',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '490',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '600',
+      aspect,
+      quality: 'auto',
+    },
+
+    {
+      width: '700',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '1024',
+      aspect,
+      quality: 'auto',
+    },
+    {
+      width: '1280',
+      aspect,
+      quality: 'auto',
+    },
+  ],
+});
+
 
 const captionWrapperStyle = ({
   theme,
