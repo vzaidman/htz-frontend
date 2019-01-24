@@ -668,7 +668,7 @@ function OpEdTeaser({
                   size={17}
                   color={[ 'primary', '-3', ]}
                   miscStyles={{
-                    transform: 'translateY(1rem)',
+                    transform: 'translateY(.1em)',
                   }}
                 />
               )}
