@@ -9,7 +9,7 @@ import SEO from './components/SEO/SEO';
 import criticalFontLoader from './utils/criticalFontLoader';
 // import ChartBeat from './components/Scripts/ChartBeat';
 
-const polyFillSrc = 'https://cdn.polyfill.io/v2/polyfill.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated';
+const polyFillSrc = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.findIndex,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated';
 
 /**
  * The returned class should be exported as the default export in the
