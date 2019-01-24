@@ -38,7 +38,7 @@ function SEO({ host, polyFillSrc, }) {
         href="//www.googletagservices.com/tag/js/gpt.js"
         as="script"
       />
-      <link rel="preload" href={polyFillSrc} as="script" />
+      <link rel="preload" corssOrigin="anonymous" href={polyFillSrc} as="script" />
 
       {/* <!-- FAVICONS --> */}
       <link rel="shortcut icon" href={`/static/${site}/images/favicon.ico`} />

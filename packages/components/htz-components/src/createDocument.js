@@ -9,7 +9,7 @@ import SEO from './components/SEO/SEO';
 import criticalFontLoader from './utils/criticalFontLoader';
 // import ChartBeat from './components/Scripts/ChartBeat';
 
-const polyFillSrc = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.findIndex,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated&flags=gated&unknow=true';
+const polyfillSrc = 'https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Object.entries,Array.prototype.entries,fetch,IntersectionObserver,Array.prototype.find,Array.prototype.findIndex,Array.prototype.includes,Function.name,Array.prototype.@@iterator&flags=gated&flags=gated&unknown=polyfill';
 
 /**
  * The returned class should be exported as the default export in the
@@ -176,7 +176,7 @@ const createDocument = ({
             {/* ChartBeat scripts should only render on homepage */}
             {path !== '/' ? null : this.chartbeatConfig()}
 
-            <SEO host={this.props.host} polyFillSrc={polyFillSrc} />
+            <SEO host={this.props.host} polyFillSrc={polyfillSrc} />
             {this.renderData()}
             {process.env.CONNECTION_PRESET === 'stage' ? (
               <meta
@@ -187,7 +187,7 @@ const createDocument = ({
           </Head>
           <body>
             <Main />
-            <script src={polyFillSrc} />
+            <script crossOrigin="anonymous" src={polyfillSrc} />
             <NextScript />
           </body>
         </html>
