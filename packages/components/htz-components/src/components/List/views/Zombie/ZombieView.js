@@ -1,13 +1,13 @@
 // @flow
+import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import {
   borderTop,
   borderBottom,
-  borderEnd,
   parseComponentProp,
 } from '@haaretz/htz-css-tools';
-import * as React from 'react';
 
+import type { Node, } from 'react';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
@@ -220,236 +220,22 @@ export default class Zombie extends React.Component<Props, State> {
                     }}
                   >
                     {stocks ? (
-                      <Grid gutter={0} miscStyles={{ height: '100%', }}>
-                        <GridItem
-                          gutter={2}
-                          rule
-                          miscStyles={stockWrapperStyle(theme)}
-                          width={stockWidth}
-                        >
-                          <Grid miscStyle={stockStyle(theme)} gutter={1}>
-                            <GridItem
-                              width={1}
-                              miscStyles={stockNameStyle(theme)}
-                            >
-                              {stocks['142'] && stocks['142'].name}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockValueStyle(theme)}
-                            >
-                              {stocks['142'] && stocks['142'].value}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockYieldStyle(
-                                theme,
-                                stocks['142'] && stocks['142'].change
-                              )}
-                            >
-                              {stocks['142'] && stocks['142'].change
-                                ? `${stocks['142']
-                                    && (stocks['142'].change > 0
-                                      ? '+'
-                                      : '-')}${numToHebrewString(
-                                  stocks['142']
-                                      && Math.abs(stocks['142'].change)
-                                )}%`
-                                : ''}
-                            </GridItem>
-                          </Grid>
-                        </GridItem>
-                        <GridItem
-                          gutter={2}
-                          rule
-                          miscStyles={stockWrapperStyle(theme, true)}
-                          width={stockWidth}
-                        >
-                          <Grid miscStyle={stockStyle(theme)} gutter={1}>
-                            <GridItem
-                              width={1}
-                              miscStyles={stockNameStyle(theme)}
-                            >
-                              {stocks['137'] && stocks['137'].name}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockValueStyle(theme)}
-                            >
-                              {stocks['137'] && stocks['137'].value}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockYieldStyle(
-                                theme,
-                                stocks['137'] && stocks['137'].change
-                              )}
-                            >
-                              {stocks['137'] && stocks['137'].change
-                                ? `${stocks['137']
-                                    && (stocks['137'].change > 0
-                                      ? '+'
-                                      : '-')}${numToHebrewString(
-                                  Math.abs(
-                                    stocks['137'] && stocks['137'].change
-                                  )
-                                )}%`
-                                : ''}
-                            </GridItem>
-                          </Grid>
-                        </GridItem>
-                        <GridItem
-                          gutter={2}
-                          rule={[ { until: 'l', value: false, }, { from: 'l', value: true, }, ]}
-                          miscStyles={stockWrapperStyle(theme)}
-                          width={stockWidth}
-                        >
-                          <Grid miscStyle={stockStyle(theme)} gutter={1}>
-                            <GridItem
-                              width={1}
-                              miscStyles={stockNameStyle(theme)}
-                            >
-                              {stocks[9001] && stocks[9001].name}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockValueStyle(theme)}
-                            >
-                              {stocks[9001] && stocks[9001].value}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockYieldStyle(
-                                theme,
-                                stocks[9001] && stocks[9001].change
-                              )}
-                            >
-                              {stocks[9001] && stocks[9001].change
-                                ? `${stocks[9001]
-                                    && (stocks[9001].change > 0
-                                      ? '+'
-                                      : '-')}${numToHebrewString(
-                                  Math.abs(
-                                    stocks[9001] && stocks[9001].change
-                                  )
-                                )}%`
-                                : ''}
-                            </GridItem>
-                          </Grid>
-                        </GridItem>
-                        <GridItem
-                          gutter={2}
-                          rule={[ { until: 'l', value: false, }, { from: 'l', value: true, }, ]}
-                          miscStyles={stockWrapperStyle(theme)}
-                          width={stockWidth}
-                        >
-                          <Grid style={stockStyle(theme, false, true)} gutter={1}>
-                            <GridItem
-                              width={1}
-                              miscStyles={stockNameStyle(theme)}
-                            >
-                              {stocks['29.10.@CCO']
-                                && stocks['29.10.@CCO'].name}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockValueStyle(theme)}
-                            >
-                              {stocks['29.10.@CCO']
-                                && stocks['29.10.@CCO'].value}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockYieldStyle(
-                                theme,
-                                stocks['29.10.@CCO']
-                                  && stocks['29.10.@CCO'].change
-                              )}
-                              render="span"
-                            >
-                              {stocks['29.10.@CCO']
-                              && stocks['29.10.@CCO'].change
-                                ? `${
-                                  stocks['29.10.@CCO']
-                                    && stocks['29.10.@CCO'].change > 0
-                                    ? '+'
-                                    : '-'
-                                }${numToHebrewString(
-                                  Math.abs(
-                                    stocks['29.10.@CCO']
-                                        && stocks['29.10.@CCO'].change
-                                  )
-                                )}%`
-                                : ''}
-                            </GridItem>
-                          </Grid>
-                        </GridItem>
-                        <GridItem
-                          gutter={2}
-                          rule={[ { until: 'l', value: false, }, { from: 'l', value: true, }, ]}
-                          miscStyles={stockWrapperStyle(theme, true)}
-                          width={stockWidth}
-                        >
-                          <Grid style={stockStyle(theme, false)} gutter={1}>
-                            <GridItem
-                              width={1}
-                              miscStyles={stockNameStyle(theme)}
-                            >
-                              {stocks['30.10.!DJI']
-                                && stocks['30.10.!DJI'].name}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockValueStyle(theme)}
-                            >
-                              {stocks['30.10.!DJI']
-                                && stocks['30.10.!DJI'].value}
-                            </GridItem>
-                            <GridItem
-                              width={[
-                                { until: 's', value: 1, },
-                              ]}
-                              miscStyles={stockYieldStyle(
-                                theme,
-                                stocks['30.10.!DJI']
-                                  && stocks['30.10.!DJI'].change
-                              )}
-                            >
-                              {stocks['30.10.!DJI']
-                              && stocks['30.10.!DJI'].change
-                                ? `${
-                                  stocks['30.10.!DJI']
-                                    && stocks['30.10.!DJI'].change > 0
-                                    ? '+'
-                                    : '-'
-                                }${numToHebrewString(
-                                  Math.abs(
-                                    stocks['30.10.!DJI']
-                                        && stocks['30.10.!DJI'].change
-                                  )
-                                )}%`
-                                : ''}
-                            </GridItem>
-                          </Grid>
-                        </GridItem>
+                      <Grid
+                        gutter={0}
+                        miscStyles={{
+                          height: [ { from: 'l', until: 'xl', value: '100%', }, ],
+                          ':before': [
+                            { until: 'l', value: startRule(theme), },
+                            { from: 'l', until: 'xl', value: null, },
+                            { from: 'xl', value: startRule(theme), },
+                          ],
+                        }}
+                      >
+                        <Stock {...stocks['142']} />
+                        <Stock {...stocks['137']} hideOnM />
+                        <Stock {...stocks['9001']} />
+                        <Stock {...stocks['29.10.@CCO']} />
+                        <Stock {...stocks['30.10.!DJI']} hideOnM />
                       </Grid>
                     ) // TODO: placeholder instead of null
                       : null}
@@ -568,7 +354,7 @@ function MainTeaser({
   data,
   index,
   lazyLoadImages,
-}: TeaserProps): React.Node {
+}: TeaserProps): Node {
   const articleId = data.contentId;
 
   return (
@@ -642,7 +428,7 @@ function MainTeaser({
 
 TextualTeaser.defaultProps = { lazyLoadImages: false, };
 
-function TextualTeaser({ biAction, data, index, }: TeaserProps): React.Node {
+function TextualTeaser({ biAction, data, index, }: TeaserProps): Node {
   const articleId = data.contentId;
   return (
     <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
@@ -678,7 +464,7 @@ type FooterProps = { data: TeaserDataType, showAuthors: boolean, };
 
 Footer.defaultProps = { showAuthors: false, };
 
-function Footer({ data, showAuthors, }: FooterProps): React.Node {
+function Footer({ data, showAuthors, }: FooterProps): Node {
   return (
     <React.Fragment>
       {showAuthors && data.authors ? (
@@ -697,6 +483,72 @@ function Footer({ data, showAuthors, }: FooterProps): React.Node {
 }
 
 // /////////////////////////////////////////////////////////////////////
+//                               STOCK                                //
+// /////////////////////////////////////////////////////////////////////
+
+type StockProps = StockType & {
+  hideOnM: boolean,
+}
+
+Stock.defaultProps = {
+  hideOnM: false,
+};
+
+function Stock({ name, value, change, hideOnM, }: StockProps): Node {
+  return (
+    <FelaTheme
+      render={theme => (
+        <GridItem
+          gutter={2}
+          rule={[ { until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
+          miscStyles={stockWrapperStyle(theme, hideOnM)}
+          width={stockWidth}
+        >
+          <Grid miscStyles={stockStyle(theme)} gutter={1}>
+            <GridItem
+              width={[
+                { until: 'l', value: 1, },
+                { from: 'xl', value: 1, },
+              ]}
+              miscStyles={stockNameStyle(theme)}
+            >
+              {name}
+            </GridItem>
+            <GridItem
+              width={[
+                { until: 'l', value: 1, },
+                { from: 'xl', value: 1, },
+              ]}
+            >
+              <Grid gutter={1}>
+                <GridItem
+                  width={[
+                    { until: 's', value: 1, },
+                  ]}
+                  miscStyles={stockYieldStyle(theme, change)}
+                >
+                  {change
+                    ? `${change > 0 ? '+' : '-'}${numToHebrewString(Math.abs(change))}`
+                    : ''}
+                </GridItem>
+                <GridItem
+                  width={[
+                    { until: 's', value: 1, },
+                  ]}
+                  miscStyles={stockValueStyle(theme)}
+                >
+                  {value}
+                </GridItem>
+              </Grid>
+            </GridItem>
+          </Grid>
+        </GridItem>
+      )}
+    />
+  );
+}
+
+// /////////////////////////////////////////////////////////////////////
 //                          STYLE and UTILS                           //
 // /////////////////////////////////////////////////////////////////////
 
@@ -707,55 +559,59 @@ function numToHebrewString(num: number): string {
   });
 }
 
-function stockNameStyle(theme) {
+function startRule(theme: Object): Object {
   return ({
-    fontWeight: '700',
-    ...theme.type(-2, { untilBp: 's', }),
-    ...theme.type(-1, { fromBp: 's', untilBp: 'l', }),
-    ...theme.type(-2, { fromBp: 'l', }),
+    content: '""',
+    width: '1px',
+    backgroundColor: theme.color('neutral', '-5'),
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    height: '100%',
+    display: [ { from: 'l', until: 'xl', value: 'none', }, ],
   });
 }
 
-function stockValueStyle(theme) {
+function stockNameStyle(theme: Object): Object {
   return ({
-    order: [ { from: 's', until: 'l', value: 1, }, ],
+    fontWeight: '700',
+    flexGrow: 0,
+    ...theme.type(-2, { untilBp: 's', }),
+    ...theme.type(-1, { fromBp: 's', untilBp: 'xl', }),
+    ...theme.type(-2, { fromBp: 'xl', }),
+  });
+}
+
+function stockValueStyle(theme: Object): Object {
+  return ({
     flexBasis: 'auto',
     color: theme.color('neutral', '-3'),
     ...theme.type(-2, { untilBp: 's', }),
-    ...theme.type(0, { fromBp: 's', untilBp: 'l', }),
-    ...parseComponentProp(
-      'display',
-      [
-        { until: 's', value: 'block', },
-        { from: 's', value: 'inline', },
-      ],
-      theme.mq,
-      (prop, value) => ({ [prop]: value, })
-    ),
+    ...theme.type(0, { fromBp: 's', untilBp: 'xl', }),
   });
 }
 
 function stockYieldStyle(theme: Object, change?: ?number): Object {
   return {
+    order: [ { until: 's', value: 1, }, ],
+    flexGrow: 0,
     color:
       change && change < 0 ? theme.color('negative') : theme.color('positive'),
     direction: 'ltr',
     fontWeight: '700',
-    paddingEnd: '1rem',
-    position: 'relative',
     textAlign: 'start',
     flexBasis: 'auto',
-    flexShrink: [ { from: 's', until: 'l', value: 1, }, ],
-    flexGrow: [ { from: 's', until: 'l', value: 0, }, ],
-    ...theme.type(0, { untilBp: 'l', }),
+    ...theme.type(0, { untilBp: 'xl', }),
   };
 }
 
 function stockWrapperStyle(theme: Object, hideOnM: boolean = false): Object {
   return {
     padding: [
-      { until: 's', value: '2rem 1rem', },
+      { until: 's', value: '1rem 1rem', },
       { from: 's', until: 'l', value: '2rem', },
+      { from: 'l', until: 'xl', value: '2rem 1rem 0', },
+      { from: 'xl', value: '0 2rem', },
     ],
     ...theme.type(-1),
     ...(hideOnM
@@ -769,16 +625,10 @@ function stockWrapperStyle(theme: Object, hideOnM: boolean = false): Object {
   };
 }
 
-function stockStyle(
-  theme: Object,
-  border: boolean = true,
-  hideOnM: boolean = false
-) {
+function stockStyle(theme: Object) {
   return {
-    paddingEnd: '2rem',
     paddingBottom: '1rem',
     height: '100%',
-
     ...parseComponentProp(
       'paddingTop',
       [
@@ -789,37 +639,12 @@ function stockStyle(
       theme.mq,
       (prop, value) => ({ [prop]: value, })
     ),
-    ...parseComponentProp(
-      'paddingStart',
-      [
-        { until: 's', value: '1rem', },
-        { from: 's', until: 'l', value: '2rem', },
-        { from: 'l', until: 'xl', value: '1rem', },
-        { from: 'xl', value: '2rem', },
-      ],
-      theme.mq,
-      (prop, value) => ({ [prop]: value, })
+    ...theme.mq(
+      { from: 'l', until: 'xl', },
+      {
+        flexDirection: 'column',
+        ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-5')),
+      }
     ),
-    ...(border && [
-      ...[
-        !hideOnM
-          ? theme.mq(
-            { until: 'l', },
-            borderEnd('1px', 'solid', theme.color('neutral', '-5'))
-          )
-          : [],
-      ],
-      theme.mq(
-        { from: 'l', until: 'xl', },
-        {
-          ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-5')),
-        }
-      ),
-      theme.mq(
-        { from: 'xl', },
-        borderEnd('1px', 'solid', theme.color('neutral', '-5'))
-      ),
-    ]),
-
   };
 }
