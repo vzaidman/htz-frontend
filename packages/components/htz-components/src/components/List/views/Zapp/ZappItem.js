@@ -95,7 +95,7 @@ export default function ZappItem({
         ]}
         footerPadding={[
           { until: 's', value: [ 1, hideImageOnMobile ? 2 : 1, 1, ], },
-          { from: 's', value: [ 1, 1, 1, ], },
+          { from: 's', until: 'xl', value: [ 1, 1, 1, ], },
         ]}
         isStacked={[ { from: 'l', value: true, }, ]}
         gridItemMiscStyles={{
