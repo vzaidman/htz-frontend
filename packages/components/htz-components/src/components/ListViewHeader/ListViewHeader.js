@@ -12,6 +12,8 @@ import * as React from 'react';
 import Query from '../ApolloBoundary/Query';
 import type { ListExtraLinkType, } from '../../flowTypes/ListExtraLinkType';
 import type { ListMarketingTeaserType, } from '../../flowTypes/ListMarketingTeaserType';
+import type { ListBiActionType, } from '../../flowTypes/ListBiActionType';
+
 import Button from '../Button/Button';
 import H from '../AutoLevels/H';
 import HtzLink from '../HtzLink/HtzLink';
@@ -76,6 +78,13 @@ type Props = {
   /** Is it vertical list. */
   isVertical: boolean,
   isCommercial: boolean,
+  /**
+   * Useful for bi actions and events
+   *
+   * Should also be passed to underlying links, e.g.,
+   * around the title and image
+   */
+  biAction: ?ListBiActionType,
 };
 
 ListViewHeader.defaultProps = {
@@ -91,6 +100,7 @@ ListViewHeader.defaultProps = {
   titleMiscStyles: null,
   title: null,
   url: null,
+  biAction: null,
 };
 
 export default function ListViewHeader({
@@ -106,6 +116,7 @@ export default function ListViewHeader({
   titleMiscStyles,
   title,
   url,
+  biAction,
 }: Props): React.Node {
   return (
     <FelaComponent
@@ -149,12 +160,7 @@ export default function ListViewHeader({
               render={({ className: headerClass, }) => (url ? (
                 <FelaComponent
                   style={{
-                    extend: [
-                      theme.mq(
-                        { until: 's', },
-                        { display: 'flex', width: '100%', }
-                      ),
-                    ],
+                    extend: [ theme.mq({ until: 's', }, { display: 'flex', width: '100%', }), ],
                   }}
                   render={({ className: linkClassName, }) => (
                     <HtzLink className={linkClassName} href={url}>
@@ -206,13 +212,12 @@ export default function ListViewHeader({
               {extraLinks.map((item, idx) => (
                 <FelaComponent
                   style={{
-                    extend: [
-                      theme.mq({ until: 'l', }, { display: 'inline-block', }),
-                    ],
+                    extend: [ theme.mq({ until: 'l', }, { display: 'inline-block', }), ],
                   }}
                   render="li"
                   key={item.contentId}
                 >
+<<<<<<< HEAD
                   <FelaComponent
                     style={{
                       ':hover': {
@@ -225,6 +230,16 @@ export default function ListViewHeader({
                       </HtzLink>
                     )}
                   />
+=======
+                  <HtzLink
+                    href={item.href}
+                    onClick={
+                      biAction ? () => biAction({ index: idx, articleId: item.contentId, }) : null
+                    }
+                  >
+                    {item.linkText || item.contentName}
+                  </HtzLink>
+>>>>>>> feat(hp bi actions part2): homepage bi action part2
                   {idx !== extraLinks.length - 1 && (
                     <FelaComponent
                       style={{
@@ -297,9 +312,7 @@ export default function ListViewHeader({
                   <FelaComponent
                     style={{
                       color: theme.color('commercial'),
-                      fontFamily: theme.fontStacks
-                        ? theme.fontStacks.commercial
-                        : undefined,
+                      fontFamily: theme.fontStacks ? theme.fontStacks.commercial : undefined,
                       extend: [
                         theme.mq({ until: 'l', }, { display: 'none', }),
                         theme.type(0, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
@@ -311,8 +324,7 @@ export default function ListViewHeader({
                     {commercialLinks.map((commercialLink, idx) => (
                       <FelaComponent
                         style={theme => ({
-                          marginBottom:
-                            idx < commercialLinks.length - 1 ? '1rem' : '0',
+                          marginBottom: idx < commercialLinks.length - 1 ? '1rem' : '0',
 
                           '&:hover': { textDecoration: 'underline', },
                           '&:focus': { textDecoration: 'underline', },
@@ -320,7 +332,14 @@ export default function ListViewHeader({
                         key={commercialLink.contentId}
                         render="li"
                       >
-                        <HtzLink href={commercialLink.href}>
+                        <HtzLink
+                          href={commercialLink.href}
+                          onClick={
+                            biAction
+                              ? () => biAction({ index: idx, articleId: commercialLink.contentId, })
+                              : null
+                          }
+                        >
                           {commercialLink.contentName}
                         </HtzLink>
                       </FelaComponent>
@@ -396,9 +415,7 @@ function listViewHeaderStyle({
               '5px',
               2,
               'solid',
-              isCommercial
-                ? theme.color('commercial')
-                : theme.color('primary')
+              isCommercial ? theme.color('commercial') : theme.color('primary')
             )
           ),
           theme.mq({ from: 'l', }, { flexDirection: 'column', }),

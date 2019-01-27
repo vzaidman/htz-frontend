@@ -36,34 +36,25 @@ export default function VerticlaTeaser({
     <FelaTheme
       render={theme => (
         <Teaser
-          onClick={
-            biAction
-              ? () => biAction({ index: 2, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 2, articleId: itemData.representedContent, }) : null}
           data={itemData}
         >
           <TeaserContent
             data={itemData}
-            padding={[
-              { until: 'l', value: [ 1, 2, 0, ], },
-              { from: 'l', value: [ 1, 1, 0, ], },
-            ]}
-            footerPadding={[
-              { until: 'l', value: [ 1, 2, ], },
-              { from: 'l', value: [ 1, 1, ], },
-            ]}
+            padding={[ { until: 'l', value: [ 1, 2, 0, ], }, { from: 'l', value: [ 1, 1, 0, ], }, ]}
+            footerPadding={[ { until: 'l', value: [ 1, 2, ], }, { from: 'l', value: [ 1, 1, ], }, ]}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction ? () => biAction({ index: 2, articleId: itemData.representedContent, }) : null
+                }
               />
             )}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

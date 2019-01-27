@@ -44,17 +44,14 @@ export default function VerticalImageTeaser({
       render={theme => (
         <Teaser
           data={itemData}
-          onClick={
-            biAction
-              ? () => biAction({ index: 1, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null}
           isStacked={[ { from: 's', value: true, }, ]}
         >
           <TeaserMedia
             data={itemData}
             width={[ { until: 's', value: 18, }, ]}
             isStacked={[ { from: 's', value: true, }, ]}
+            onClick={biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null}
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -91,12 +88,13 @@ export default function VerticalImageTeaser({
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null
+                }
               />
             )}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

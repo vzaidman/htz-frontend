@@ -28,24 +28,20 @@ MainTeaser.defaultProps = {
 
 const headerType = [ { until: 'xl', value: 1, }, { from: 'xl', value: 0, }, ];
 
-export default function MainTeaser({
-  itemData,
-  lazyLoadImages,
-  biAction,
-}: Props): React.Node {
+export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={itemData}
-          onClick={
-            biAction
-              ? () => biAction({ index: 0, articleId: itemData.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null}
           isStacked
         >
-          <TeaserMedia data={itemData} isStacked>
+          <TeaserMedia
+            data={itemData}
+            onClick={biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null}
+            isStacked
+          >
             <Image
               data={itemData.image}
               lazyLoad={lazyLoadImages}
@@ -81,6 +77,9 @@ export default function MainTeaser({
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null
+                }
               />
             )}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}

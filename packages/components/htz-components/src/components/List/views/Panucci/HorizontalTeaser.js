@@ -46,9 +46,7 @@ export default function HorizontalTeaser({
       render={theme => (
         <Teaser
           onClick={
-            biAction
-              ? () => biAction({ index, articleId: itemData.contentId, })
-              : null
+            biAction ? () => biAction({ index, articleId: itemData.representedContent, }) : null
           }
           data={itemData}
         >
@@ -60,11 +58,11 @@ export default function HorizontalTeaser({
               { from: 'l', until: 'xl', value: 2 / 5, },
               { from: 'xl', value: 1 / 2, },
             ]}
+            onClick={
+              biAction ? () => biAction({ index, articleId: itemData.representedContent, }) : null
+            }
             miscStyles={{
-              paddingInlineEnd: [
-                { until: 'l', value: '1rem', },
-                { from: 'l', value: '2rem', },
-              ],
+              paddingInlineEnd: [ { until: 'l', value: '1rem', }, { from: 'l', value: '2rem', }, ],
             }}
           >
             <Picture
@@ -103,11 +101,14 @@ export default function HorizontalTeaser({
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction
+                    ? () => biAction({ index, articleId: itemData.representedContent, })
+                    : null
+                }
               />
             )}
-            renderFooter={() => (
-              <TeaserFooter data={itemData} displayFlags={displayFlags} />
-            )}
+            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
           />
         </Teaser>
       )}

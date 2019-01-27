@@ -281,7 +281,7 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
     <Teaser
       data={data}
       gutter={2}
-      onClick={() => biAction({ index, articleId, })}
+      onClick={biAction ? () => biAction({ index, articleId, }) : null}
       isStacked={[ { from: 'xl', value: true, }, ]}
     >
       <TeaserMedia
@@ -292,7 +292,7 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           { from: 'l', until: 'xl', value: 4 / 6, },
         ]}
         isStacked={[ { from: 'xl', value: true, }, ]}
-        onClick={() => biAction({ index, articleId, })}
+        onClick={biAction ? () => biAction({ index, articleId, }) : null}
         miscStyles={{
           order: [ { from: 's', until: 'xl', value: '1', }, ],
         }}
@@ -349,7 +349,7 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           <TeaserHeader
             typeScale={headerTypeScale}
             {...data}
-            onClick={() => biAction({ index, articleId, })}
+            onClick={biAction ? () => biAction({ index, articleId, }) : null}
           />
         )}
         renderFooter={() => (
@@ -377,14 +377,14 @@ function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps)
     <Teaser
       data={data}
       gutter={2}
-      onClick={() => biAction({ index, articleId, })}
+      onClick={biAction ? () => biAction({ index, articleId, }) : null}
       isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
     >
       <TeaserMedia
         data={data}
         width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
         isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
-        onClick={() => biAction({ index, articleId, })}
+        onClick={biAction ? () => biAction({ index, articleId, }) : null}
       >
         <FelaTheme
           render={theme => (
@@ -428,7 +428,7 @@ function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           <TeaserHeader
             typeScale={headerTypeScale}
             {...data}
-            onClick={() => biAction({ index, articleId, })}
+            onClick={biAction ? () => biAction({ index, articleId, }) : null}
           />
         )}
         renderFooter={() => (
@@ -473,12 +473,7 @@ function TextualTeaser({ data, index, biAction, isLargeText, }: TextualTeaserPro
           <TeaserHeader
             {...data}
             typeScale={
-              isLargeText
-                ? headerTypeScale
-                : [
-                  { until: 'l', value: 0, },
-                  { from: 'l', value: -1, },
-                ]
+              isLargeText ? headerTypeScale : [ { until: 'l', value: 0, }, { from: 'l', value: -1, }, ]
             }
             onClick={() => biAction({ index, articleId, })}
           />

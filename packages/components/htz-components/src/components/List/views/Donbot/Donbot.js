@@ -29,6 +29,7 @@ const DonbotQuery = gql`
       items {
         ... on TeaserInList {
           contentId
+          representedContent
           title
           titleMobile
           subtitle

@@ -56,6 +56,7 @@ export default function Panucci({
           url={list.url}
           extraLinks={list.extraLinks}
           title={list.title}
+          biAction={biAction}
         />
       </GridItem>
       {/* end header */}

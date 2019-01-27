@@ -174,7 +174,7 @@ function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Nod
         <Teaser
           data={data}
           gutter={0}
-          onClick={() => biAction({ index: 0, articleId, })}
+          onClick={biAction ? () => biAction({ index: 0, articleId, }) : null}
           isStacked
           miscStyles={{
             marginInlineEnd: [ { from: 's', until: 'l', value: 'auto', }, ],
@@ -182,7 +182,11 @@ function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Nod
             maxWidth: [ { from: 's', until: 'l', value: '68rem', }, ],
           }}
         >
-          <TeaserMedia data={data} isStacked onClick={() => biAction({ index: 0, articleId, })}>
+          <TeaserMedia
+            data={data}
+            isStacked
+            onClick={biAction ? () => biAction({ index: 0, articleId, }) : null}
+          >
             <Image
               lazyLoad={lazyLoadImages}
               imgOptions={getImageAssets({
@@ -219,7 +223,7 @@ function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Nod
                   { from: 'l', until: 'xl', value: 2, },
                   { from: 'xl', value: 3, },
                 ]}
-                onClick={() => biAction({ index: 0, articleId, })}
+                onClick={biAction ? () => biAction({ index: 0, articleId, }) : null}
               />
             )}
             renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
@@ -240,7 +244,7 @@ function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): R
         <Teaser
           data={data}
           gutter={0}
-          onClick={() => biAction({ index, articleId, })}
+          onClick={biAction ? () => biAction({ index, articleId, }) : null}
           isStacked={[ { until: 's', value: true, }, ]}
         >
           <TeaserMedia
@@ -251,7 +255,7 @@ function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): R
               { from: 'xl', value: 9 / 16, },
             ]}
             isStacked={[ { until: 's', value: true, }, ]}
-            onClick={() => biAction({ index, articleId, })}
+            onClick={biAction ? () => biAction({ index, articleId, }) : null}
           >
             <Image
               lazyLoad={lazyLoadImages}
@@ -284,7 +288,7 @@ function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): R
               <TeaserHeader
                 {...data}
                 typeScale={[ { until: 's', value: 0, }, { from: 's', until: 'l', value: 1, }, ]}
-                onClick={() => biAction({ index, articleId, })}
+                onClick={biAction ? () => biAction({ index, articleId, }) : null}
               />
             )}
             renderFooter={() => <Footer data={data} />}
@@ -302,7 +306,7 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
   return (
     <Teaser
       data={data}
-      onClick={() => biAction({ index: 3, articleId, })}
+      onClick={biAction ? () => biAction({ index: 3, articleId, }) : null}
       miscStyles={{
         alignItems: 'stretch',
         display: 'flex',
@@ -323,7 +327,7 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
           <TeaserHeader
             {...data}
             typeScale={[ { until: 's', value: 0, }, { from: 's', until: 'l', value: 1, }, ]}
-            onClick={() => biAction({ index: 3, articleId, })}
+            onClick={biAction ? () => biAction({ index: 3, articleId, }) : null}
           />
         )}
         renderFooter={() => <Footer data={data} hasCommentsOnMobile />}

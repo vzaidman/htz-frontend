@@ -142,14 +142,20 @@ function PazuzuTeaser({
             isStacked={stackingSettings}
             gutter={0}
             gridMiscStyles={{ flexWrap: 'nowrap', }}
-            onClick={() => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+            onClick={
+              biAction
+                ? () => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+                : null
             }
           >
             <TeaserMedia
               data={item}
               isStacked={stackingSettings}
               width={isStackedOnXl ? null : [ { from: 'xl', value: 48, }, ]}
-              onClick={() => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+              onClick={
+                biAction
+                  ? () => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+                  : null
               }
             >
               {isStackedOnXl ? (
@@ -231,10 +237,13 @@ function PazuzuTeaser({
                     { from: 's', until: 'l', value: 2, },
                     { from: 'l', value: 1, },
                   ]}
-                  onClick={() => biAction({
-                    index: isSecondItem ? 1 : 0,
-                    articleId: item.representedContent,
-                  })
+                  onClick={
+                    biAction
+                      ? () => biAction({
+                        index: isSecondItem ? 1 : 0,
+                        articleId: item.representedContent,
+                      })
+                      : null
                   }
                 />
               )}

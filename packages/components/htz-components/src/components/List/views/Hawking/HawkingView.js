@@ -36,12 +36,7 @@ HawkingList.defaultProps = {
   lazyLoadImages: true,
 };
 
-export default function HawkingList({
-  list,
-  biAction,
-  gaAction,
-  lazyLoadImages,
-}: Props): Node {
+export default function HawkingList({ list, biAction, gaAction, lazyLoadImages, }: Props): Node {
   const { items, clickTrackers, dfp, } = list;
 
   const mainTeaser = items && items.length > 0 && items[0];
@@ -50,10 +45,7 @@ export default function HawkingList({
   const teaser3 = items && items.length > 3 && items[3];
 
   return (
-    <ListView
-      gutter={4}
-      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
-    >
+    <ListView gutter={4} padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}>
       {/* LIST HEADER */}
       <GridItem
         stretchContent
@@ -64,6 +56,7 @@ export default function HawkingList({
           title={list.title}
           extraLinks={list.extraLinks}
           marketingTeaser={list.marketingTeaser}
+          biAction={biAction}
         />
       </GridItem>
 
@@ -83,9 +76,7 @@ export default function HawkingList({
           ]}
         >
           {/* MAIN TEASER */}
-          <GridItem
-            width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 4 / 10, }, ]}
-          >
+          <GridItem width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 4 / 10, }, ]}>
             {mainTeaser && (
               <HawkingMainTeaser
                 item={mainTeaser}
@@ -117,19 +108,13 @@ export default function HawkingList({
               }}
             >
               <GridItem miscStyles={{ flexBasis: 'auto', }} stretchContent>
-                {teaser1 && (
-                  <HawkingTeaser index={1} item={teaser1} biAction={biAction} />
-                )}
+                {teaser1 && <HawkingTeaser index={1} item={teaser1} biAction={biAction} />}
               </GridItem>
               <GridItem miscStyles={{ flexBasis: 'auto', }} stretchContent>
-                {teaser2 && (
-                  <HawkingTeaser index={2} item={teaser2} biAction={biAction} />
-                )}
+                {teaser2 && <HawkingTeaser index={2} item={teaser2} biAction={biAction} />}
               </GridItem>
               <GridItem miscStyles={{ flexBasis: 'auto', }} stretchContent>
-                {teaser3 && (
-                  <HawkingTeaser index={3} item={teaser3} biAction={biAction} />
-                )}
+                {teaser3 && <HawkingTeaser index={3} item={teaser3} biAction={biAction} />}
               </GridItem>
             </Grid>
           </GridItem>
@@ -171,10 +156,7 @@ export default function HawkingList({
             ]}
             miscStyles={{
               marginTop: [ { from: 's', until: 'l', value: '4rem', }, ],
-              display: [
-                { until: 's', value: 'none', },
-                { from: 'xl', value: 'none', },
-              ],
+              display: [ { until: 's', value: 'none', }, { from: 'xl', value: 'none', }, ],
             }}
           >
             <GeneralAdSlot {...banner} />
@@ -202,21 +184,12 @@ HawkingMainTeaser.defaultProps = {
   index: 0,
 };
 
-function HawkingMainTeaser({
-  item,
-  lazyLoadImages,
-  biAction,
-  index,
-}: TeaserProps): Node {
+function HawkingMainTeaser({ item, lazyLoadImages, biAction, index, }: TeaserProps): Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
-          onClick={
-            biAction
-              ? () => biAction({ index, articleId: item.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index, articleId: item.representedContent, }) : null}
           data={item}
           gutter={0}
           isStacked={[ { until: 's', value: true, }, { from: 'xl', value: true, }, ]}
@@ -227,6 +200,9 @@ function HawkingMainTeaser({
               { from: 's', until: 'l', value: 8 / 12, },
               { from: 'l', until: 'xl', value: 5 / 7, },
             ]}
+            onClick={
+              biAction ? () => biAction({ index, articleId: item.representedContent, }) : null
+            }
             isStacked
           >
             <Image
@@ -250,10 +226,7 @@ function HawkingMainTeaser({
               { from: 's', until: 'l', value: 4 / 12, },
               { from: 'l', until: 'xl', value: 2 / 7, },
             ]}
-            padding={[
-              { until: 'xl', value: [ 1, 1, 0, ], },
-              { from: 'xl', value: [ 1, 2, 0, ], },
-            ]}
+            padding={[ { until: 'xl', value: [ 1, 1, 0, ], }, { from: 'xl', value: [ 1, 2, 0, ], }, ]}
             footerPadding={[ { until: 'xl', value: 1, }, { from: 'xl', value: [ 1, 2, ], }, ]}
             isStacked
             renderContent={data => (
@@ -264,6 +237,9 @@ function HawkingMainTeaser({
                   { from: 's', until: 'l', value: 2, },
                   { from: 'l', value: 1, },
                 ]}
+                onClick={
+                  biAction ? () => biAction({ index, articleId: item.representedContent, }) : null
+                }
               />
             )}
             renderFooter={() => (
@@ -285,9 +261,7 @@ function HawkingMainTeaser({
                   render="span"
                 >
                   {' | '}
-                  <TeaserTime
-                    publishDate={item.publishDate && new Date(item.publishDate)}
-                  />
+                  <TeaserTime publishDate={item.publishDate && new Date(item.publishDate)} />
                 </FelaComponent>
                 <CommentsCount
                   commentsCount={item.commentsCounts}
@@ -314,36 +288,30 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
       render={theme => (
         <Teaser
           data={item}
-          onClick={
-            biAction
-              ? () => biAction({ index, articleId: item.contentId, })
-              : null
-          }
+          onClick={biAction ? () => biAction({ index, articleId: item.representedContent, }) : null}
           miscStyles={{ flexGrow: '1', }}
           gridMiscStyles={{ alignContent: 'stretch', }}
         >
           <TeaserContent
             data={item}
             width={1}
-            padding={[
-              { until: 'l', value: [ 1, 2, 0, ], },
-              { from: 'l', value: [ 1, 1, 0, ], },
-            ]}
-            footerPadding={[
-              { until: 'l', value: [ 1, 2, ], },
-              { from: 'l', value: [ 1, 1, ], },
-            ]}
+            padding={[ { until: 'l', value: [ 1, 2, 0, ], }, { from: 'l', value: [ 1, 1, 0, ], }, ]}
+            footerPadding={[ { until: 'l', value: [ 1, 2, ], }, { from: 'l', value: [ 1, 1, ], }, ]}
             footerMiscStyles={{
               fontWeight: '700',
               type: -3,
               color: theme.color('neutral', '-3'),
             }}
             renderContent={data => (
-              <TeaserHeader {...data} typeScale={[ { until: 's', value: 0, }, ]} />
+              <TeaserHeader
+                {...data}
+                typeScale={[ { until: 's', value: 0, }, ]}
+                onClick={
+                  biAction ? () => biAction({ index, articleId: item.representedContent, }) : null
+                }
+              />
             )}
-            renderFooter={() => (
-              <CommentsCount commentsCount={item.commentsCounts} />
-            )}
+            renderFooter={() => <CommentsCount commentsCount={item.commentsCounts} />}
           />
         </Teaser>
       )}

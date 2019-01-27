@@ -50,7 +50,11 @@ function VogelItem({
         <Teaser
           fillHeight={false}
           data={data}
-          onClick={biAction ? () => biAction({ index, articleId: data.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index, articleId: data.representedContent || data.contentId, })
+              : null
+          }
           miscStyles={{
             ...(hideOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
             flexGrow: '1',
@@ -66,6 +70,11 @@ function VogelItem({
               miscStyles={{
                 ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
               }}
+              onClick={
+                biAction
+                  ? () => biAction({ index, articleId: data.representedContent || data.contentId, })
+                  : null
+              }
               isStacked
             >
               <Image
@@ -118,6 +127,11 @@ function VogelItem({
                   { from: 'xl', value: -2, },
                 ]}
                 miscStyles={{ fontWeight: 'normal', }}
+                onClick={
+                  biAction
+                    ? () => biAction({ index, articleId: data.representedContent || data.contentId, })
+                    : null
+                }
               />
             )}
           />

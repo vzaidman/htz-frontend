@@ -70,6 +70,7 @@ export default function VerticalList({
             {list || title ? (
               <ListViewHeader
                 url={list ? list.url : null}
+                biAction={biAction}
                 isVertical
                 hasTitlePadding
                 isHorizontal
@@ -169,7 +170,10 @@ function VerticalListFirstTeaser({
           data={itemData}
           onClick={
             biAction
-              ? () => biAction({ index: 0, articleId: itemData.contentId, })
+              ? () => biAction({
+                index: 0,
+                articleId: itemData.contentId,
+              })
               : null
           }
           miscStyles={{ flexGrow: '1', flexShrink: '0', }}
@@ -181,6 +185,14 @@ function VerticalListFirstTeaser({
             data={itemData}
             width={1}
             isClickTracker={isClickTracker(itemData)}
+            onClick={
+              biAction
+                ? () => biAction({
+                  index: 0,
+                  articleId: itemData.contentId,
+                })
+                : null
+            }
             isStacked
           >
             <Image
@@ -233,6 +245,14 @@ function VerticalListFirstTeaser({
                   { until: 's', value: 0, },
                   { from: 's', value: -1, },
                 ]}
+                onClick={
+                  biAction
+                    ? () => biAction({
+                      index: 0,
+                      articleId: itemData.contentId,
+                    })
+                    : null
+                }
               />
             )}
           />
@@ -262,7 +282,10 @@ function VerticalListTeaser({
       data={itemData}
       onClick={
         biAction
-          ? () => biAction({ index, articleId: itemData.contentId, })
+          ? () => biAction({
+            index: isLast ? index + 1 : index,
+            articleId: itemData.contentId,
+          })
           : null
       }
       miscStyles={{ flexGrow: '1', flexShrink: '0', }}
@@ -317,6 +340,14 @@ function VerticalListTeaser({
                   { from: 'xl', value: -2, },
                 ]}
                 miscStyles={{ fontWeight: '400', }}
+                onClick={
+                  biAction
+                    ? () => biAction({
+                      index: isLast ? index + 1 : index,
+                      articleId: itemData.contentId,
+                    })
+                    : null
+                }
               />
             )}
           />
