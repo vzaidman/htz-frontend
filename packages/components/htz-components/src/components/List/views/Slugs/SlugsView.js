@@ -69,6 +69,7 @@ export default function Slugs({
       {/* TEASERS */}
       <GridItem
         width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
+        miscStyle={{ display: 'flex', }}
       >
         {/* Main teaser */}
         <Grid gutter={4}>
@@ -203,9 +204,7 @@ function MainTeaser({
           <TeaserContent
             data={data}
             padding={[ 1, 2, 0, ]}
-            footerPadding={[
-              { until: 's', value: [ 0, 2, 2, ], },
-            ]}
+            footerPadding={[ 1, 2, ]}
             footerColor={[ 'neutral', '-3', ]}
             isStacked
             gridItemMiscStyles={{ alignItems: 'center', }}
