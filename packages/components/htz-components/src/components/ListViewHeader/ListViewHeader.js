@@ -9,7 +9,7 @@ import {
 } from '@haaretz/htz-css-tools';
 import { FelaComponent, } from 'react-fela';
 import * as React from 'react';
-
+import Query from '../ApolloBoundary/Query';
 import type { ListExtraLinkType, } from '../../flowTypes/ListExtraLinkType';
 import type { ListMarketingTeaserType, } from '../../flowTypes/ListMarketingTeaserType';
 import Button from '../Button/Button';
@@ -19,6 +19,7 @@ import IconAlefLogoTransparent from '../Icon/icons/IconAlefLogoTransparent';
 import IconBack from '../Icon/icons/IconBack';
 import Section from '../AutoLevels/Section';
 import setColor from '../../utils/setColor';
+import { getUser, } from './getUser';
 
 type BackgroundColorType =
   | string
@@ -187,7 +188,10 @@ export default function ListViewHeader({
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
-                  theme.mq({ from: 's', until: 'l', }, { direction: 'ltr', paddingStart: '2rem', }),
+                  theme.mq(
+                    { from: 's', until: 'l', },
+                    { direction: 'ltr', paddingStart: '2rem', }
+                  ),
                   theme.mq({ until: 'l', }, { fontWeight: '700', }),
                   theme.type(-1, { fromBp: 's', untilBp: 'l', }),
                   theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
@@ -246,34 +250,47 @@ export default function ListViewHeader({
               }}
             >
               {!isHorizontal && marketingTeaser && marketingTeaser.href ? (
-                <Section>
-                  <IconAlefLogoTransparent color="secondary" size={3} />
-                  <FelaComponent
-                    style={{ color: theme.color('secondary'), }}
-                    render={({ className: marketingHeaderClassName, }) => (
-                      <H className={marketingHeaderClassName}>
-                        {marketingTeaser.title}
-                      </H>
-                    )}
-                  />
+                <Query query={getUser}>
+                  {({ loading, error, data, }) => {
+                    if (loading) return null;
+                    if (error) return null;
+                    if (data && data.user.type !== 'paying') {
+                      return (
+                        <Section>
+                          <IconAlefLogoTransparent color="secondary" size={3} />
+                          <FelaComponent
+                            style={{ color: theme.color('secondary'), }}
+                            render={({
+                              className: marketingHeaderClassName,
+                            }) => (
+                              <H className={marketingHeaderClassName}>
+                                {marketingTeaser.title}
+                              </H>
+                            )}
+                          />
 
-                  <FelaComponent
-                    style={{
-                      color: theme.color('secondary'),
-                      extend: [ theme.type(-1), ],
-                    }}
-                  >
-                    {marketingTeaser.subtitle}
-                  </FelaComponent>
-                  <Button
-                    variant="salesOpaque"
-                    boxModel={{ hp: 4, vp: 0.5, }}
-                    miscStyles={{ marginTop: '2rem', type: -1, }}
-                    href={marketingTeaser.href}
-                  >
-                    {marketingTeaser.cta}
-                  </Button>
-                </Section>
+                          <FelaComponent
+                            style={{
+                              color: theme.color('secondary'),
+                              extend: [ theme.type(-1), ],
+                            }}
+                          >
+                            {marketingTeaser.subtitle}
+                          </FelaComponent>
+                          <Button
+                            variant="salesOpaque"
+                            boxModel={{ hp: 4, vp: 0.5, }}
+                            miscStyles={{ marginTop: '2rem', type: -1, }}
+                            href={marketingTeaser.href}
+                          >
+                            {marketingTeaser.cta}
+                          </Button>
+                        </Section>
+                      );
+                    }
+                    return null;
+                  }}
+                </Query>
               ) : (
                 !isHorizontal
                 && commercialLinks && (
