@@ -116,7 +116,6 @@ const createDocument = ({
               if (typeof window !== 'undefined') {
                 window.setTimeout(() => {
                   const hider = document.getElementById('chartbeatFlickerControlStyle');
-                   console.log('!!!hider', hider);
                   if (hider) {
                     hider.parentNode.removeChild(hider);
                   }

@@ -39,29 +39,28 @@ function HomePageSlotsLayout({
     }
     return <Element {...elementWithoutProperties} {...properties} />;
   });
-  const rowBgc = 'white';
 
   return (
     <React.Fragment>
       <BIRequest />
-      {preHeader ? <LayoutRow bgc={rowBgc}>{getElements(preHeader)}</LayoutRow> : null}
+      {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside HeaderSlot Component because its miscStyles depend on state */}
-      <HeaderSlot rowBgc={rowBgc} content={header} includeMadorimNavigation />
+      <HeaderSlot content={header} includeMadorimNavigation />
       {postHeader ? (
-        <LayoutRow bgc={rowBgc}>
+        <LayoutRow>
           <LayoutContainer>{getElements(postHeader)}</LayoutContainer>
         </LayoutRow>
       ) : null}
-      <LayoutRow bgc={rowBgc} tagName="main" id="pageRoot" miscStyles={{ flexGrow: 1, }}>
+      <LayoutRow tagName="main" id="pageRoot" miscStyles={{ flexGrow: 1, }}>
         <MainSlot main={main} />
       </LayoutRow>
       {postMain ? (
-        <LayoutRow bgc={rowBgc} miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
+        <LayoutRow miscStyles={{ display: [ { until: 's', value: 'none', }, ], }}>
           <React.Fragment>{getElements(postMain)}</React.Fragment>
         </LayoutRow>
       ) : null}
-      {footer ? <LayoutRow bgc={rowBgc}>{getElements(footer)}</LayoutRow> : null}
-      <LayoutRow bgc={rowBgc} idName="modalsRoot" />
+      {footer ? <LayoutRow>{getElements(footer)}</LayoutRow> : null}
+      <LayoutRow idName="modalsRoot" />
     </React.Fragment>
   );
 }
