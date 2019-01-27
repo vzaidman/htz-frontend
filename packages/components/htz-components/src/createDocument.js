@@ -99,18 +99,18 @@ const createDocument = ({
           /** ChartBeat CONFIGURATION START **/
           _sf_async_config.uid = 5952;
           _sf_async_config.domain = "haaretz.co.il";
-          _sf_async_config.flickerControl = true;
+          _sf_async_config.flickerControl = false;
           _sf_async_config.useCanonical = true;
           _sf_async_config.useCanonicalDomain = true;
           /** ChartBeat CONFIGURATION END **/
         `,
           }}
         />
-        <style
+        {/* <style
           dangerouslySetInnerHTML={{ __html: 'body { visibility: hidden !important; }', }}
           id="chartbeatFlickerControlStyle"
-        />
-        <script
+        /> */}
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
               if (typeof window !== 'undefined') {
@@ -122,7 +122,7 @@ const createDocument = ({
                 }, 1000);
               }`,
           }}
-        />
+        /> */}
         <script async src="//static.chartbeat.com/js/chartbeat_mab.js" />
       </React.Fragment>
     );
