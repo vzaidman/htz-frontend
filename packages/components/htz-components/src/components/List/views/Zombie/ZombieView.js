@@ -181,29 +181,28 @@ export default class Zombie extends React.Component<Props, State> {
                     <TextualTeaser data={items[3]} index={3} biAction={biAction} />
                   </Grid>
                 </GridItem>
-                {dfp && dfp.length > 0
-                  ? dfp.map(banner => (
-                    <GridItem
-                      key={banner.contentId}
-                      width={[ { until: 's', value: 1, }, { from: 'xl', value: 4 / 10, }, ]}
-                      miscStyles={{
-                        paddingStart: [ { until: 's', value: '2rem', }, ],
-                        paddingEnd: [ { until: 's', value: '2rem', }, ],
-                        display: [
-                          { until: 's', value: 'block', },
-                          { from: 's', until: 'xl', value: 'none', },
-                          { from: 'xl', value: 'flex', },
-                        ],
-                        alignItems: [ { from: 'xl', value: 'center', }, ],
-                        justifyContent: [ { from: 'xl', value: 'center', }, ],
-                      }}
-                    >
-                      <GeneralAdSlot {...banner} styleRule={bannerStyle} />
-                    </GridItem>
-                  ))
-                  : null}
               </Grid>
             </GridItem>
+            {dfp && dfp.length > 0
+              ? dfp.map(banner => (
+                <GridItem
+                  key={banner.contentId}
+                  width={[ { until: 's', value: 1, }, { from: 'xl', value: 4 / 10, }, ]}
+                  miscStyles={{
+                    display: [
+                      { until: 's', value: 'block', },
+                      { from: 's', until: 'xl', value: 'none', },
+                      { from: 'xl', value: 'flex', },
+                    ],
+                    alignItems: [ { from: 'xl', value: 'center', }, ],
+                    justifyContent: [ { from: 'xl', value: 'center', }, ],
+                    width: [ { until: 's', value: '300px', }, ],
+                  }}
+                >
+                  <GeneralAdSlot {...banner} styleRule={bannerStyle} />
+                </GridItem>
+              ))
+              : null}
           </Grid>
         </GridItem>
       </ListView>
@@ -576,7 +575,6 @@ function bannerStyle({ theme, }) {
         {
           ':not(:empty)': {
             marginTop: '5rem',
-            marginBottom: '5rem',
             '&::before': {
               content: '"- פרסומת -"',
               color: theme.color('neutral', -3),

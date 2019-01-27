@@ -61,7 +61,7 @@ export default function MainBlock({
           ],
           display: [ { until: 's', value: 'none', }, { from: 'l', value: 'flex', }, ],
           alignItems: [ { from: 'l', value: 'center', }, ],
-          justifyContent: [ { from: 'l', value: 'center', }, ],
+          justifyContent: [ { from: 'l', until: 'xl', value: 'flex-end', }, { from: 'xl', value: 'center', }, ],
           order: [
             { from: 'l', until: 'xl', value: 5, },
             ...(isWideMain ? [ { from: 'xl', value: 5, }, ] : []),
