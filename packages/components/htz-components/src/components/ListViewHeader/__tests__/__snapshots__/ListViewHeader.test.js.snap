@@ -26,18 +26,18 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  commerci
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
   >
     <h2
-      className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-o htz-p"
+      className="htz-ai htz-aj htz-ak htz-al htz-am htz-o htz-p"
     >
       test title
     </h2>
     <div
-      className="htz-ar htz-as"
+      className="htz-an htz-ao"
     >
       <ul
-        className="htz-at htz-au htz-as htz-av htz-aw htz-ax htz-ay"
+        className="htz-ap htz-aq htz-ao htz-ar htz-as htz-at htz-au"
       >
         <li
-          className="htz-az htz-ba htz-bb"
+          className="htz-av htz-aw htz-ax"
         >
           <a
             className={null}
@@ -48,7 +48,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  commerci
           </a>
         </li>
         <li
-          className="htz-bc htz-ba htz-bb"
+          className="htz-ay htz-aw htz-ax"
         >
           <a
             className={null}
@@ -64,7 +64,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  commerci
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title and  commercialLinks prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-ar{margin-top:auto}.htz-at{color:#bd1c87}.htz-au{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-az{margin-bottom:1rem}.htz-bc{margin-bottom:0}.htz-ba:hover{text-decoration:underline}.htz-bb:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ao{padding-right:1rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{width:100%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}}@media (max-width: 79.9375em){.htz-ak{font-size:3.5rem}.htz-al{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-am{font-size:3.4285714285714284rem}.htz-an{line-height:1.1666666666666667em}.htz-ax{font-size:2rem}.htz-ay{line-height:4rem}}@media (max-width: 63.9375em){.htz-as{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-av{font-size:2.6666666666666665rem}.htz-aw{line-height:4rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title and  commercialLinks prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-an{margin-top:auto}.htz-ap{color:#bd1c87}.htz-aq{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-av{margin-bottom:1rem}.htz-ay{margin-bottom:0}.htz-aw:hover{text-decoration:underline}.htz-ax:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ak{padding-right:1rem}.htz-al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-am{width:100%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}}@media (max-width: 63.9375em){.htz-ao{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ar{font-size:2.6666666666666665rem}.htz-as{line-height:4rem}}@media (min-width: 80em){.htz-at{font-size:2rem}.htz-au{line-height:4rem}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title and  extra links prop 1`] = `
 <div>
@@ -72,82 +72,82 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  extra li
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
   >
     <h2
-      className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-o htz-p"
+      className="htz-ai htz-aj htz-ak htz-al htz-am htz-o htz-p"
     >
       test title
     </h2>
     <ul
-      className="htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az"
     >
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.7666"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.2490"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.470"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="1.628"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.8286"
           onClick={null}
         >
@@ -159,7 +159,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  extra li
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title and  extra links prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-ar{margin-top:1rem}.htz-as{color:#787878}.htz-bg{display:inline-block}.htz-bh{margin-right:1rem}.htz-bi{margin-left:1rem}.htz-bf:hover{color:#2D2D2D}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ao{padding-right:1rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{width:100%}.htz-at{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-au{direction:ltr}.htz-av{padding-right:2rem}.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bj{display:none}}@media (max-width: 79.9375em){.htz-ak{font-size:3.5rem}.htz-al{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-am{font-size:3.4285714285714284rem}.htz-an{line-height:1.1666666666666667em}.htz-bc{font-size:2rem}.htz-bd{line-height:4rem}}@media (max-width: 63.9375em){.htz-ay{font-weight:700}.htz-az{margin-right:auto}.htz-be{display:inline-block}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ba{font-size:2.3333333333333335rem}.htz-bb{line-height:4rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title and  extra links prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-an{margin-top:1rem}.htz-ao{color:#787878}.htz-bc{display:inline-block}.htz-bd{margin-right:1rem}.htz-be{margin-left:1rem}.htz-bb:hover{color:#2D2D2D}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ak{padding-right:1rem}.htz-al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-am{width:100%}.htz-ap{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-aq{direction:ltr}.htz-ar{padding-right:2rem}.htz-as{font-size:2.3333333333333335rem}.htz-at{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bf{display:none}}@media (max-width: 63.9375em){.htz-au{font-weight:700}.htz-av{margin-right:auto}.htz-ba{display:inline-block}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:4rem}}@media (min-width: 80em){.htz-ay{font-size:2rem}.htz-az{line-height:4rem}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title prop 1`] = `
 <div>
@@ -167,7 +167,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title prop 1`] = `
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
   >
     <h2
-      className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-o htz-p"
+      className="htz-ai htz-aj htz-ak htz-al htz-am htz-o htz-p"
     >
       test title
     </h2>
@@ -175,7 +175,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title prop 1`] = `
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ao{padding-right:1rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{width:100%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}}@media (max-width: 79.9375em){.htz-ak{font-size:3.5rem}.htz-al{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-am{font-size:3.4285714285714284rem}.htz-an{line-height:1.1666666666666667em}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ak{padding-right:1rem}.htz-al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-am{width:100%}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 1`] = `
 <div>
@@ -183,82 +183,82 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
   >
     <h2
-      className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-o htz-p"
+      className="htz-ai htz-aj htz-ak htz-al htz-am htz-o htz-p"
     >
       test title
     </h2>
     <ul
-      className="htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az"
     >
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.7666"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.2490"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.470"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="1.628"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.8286"
           onClick={null}
         >
@@ -267,13 +267,13 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
       </li>
     </ul>
     <div
-      className="htz-bk htz-bl"
+      className="htz-bg htz-bh"
     >
       <ul
-        className="htz-bm htz-bn htz-bl htz-bo htz-bb htz-bc htz-bd"
+        className="htz-bi htz-bj htz-bh htz-bk htz-ax htz-ay htz-az"
       >
         <li
-          className="htz-bp htz-bq htz-br"
+          className="htz-bl htz-bm htz-bn"
         >
           <a
             className={null}
@@ -284,7 +284,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
           </a>
         </li>
         <li
-          className="htz-bs htz-bq htz-br"
+          className="htz-bo htz-bm htz-bn"
         >
           <a
             className={null}
@@ -300,7 +300,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-ar{margin-top:1rem}.htz-as{color:#787878}.htz-bg{display:inline-block}.htz-bh{margin-right:1rem}.htz-bi{margin-left:1rem}.htz-bk{margin-top:auto}.htz-bm{color:#bd1c87}.htz-bn{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-bp{margin-bottom:1rem}.htz-bs{margin-bottom:0}.htz-bf:hover{color:#2D2D2D}.htz-bq:hover{text-decoration:underline}.htz-br:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ao{padding-right:1rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{width:100%}.htz-at{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-au{direction:ltr}.htz-av{padding-right:2rem}.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bj{display:none}}@media (max-width: 79.9375em){.htz-ak{font-size:3.5rem}.htz-al{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-am{font-size:3.4285714285714284rem}.htz-an{line-height:1.1666666666666667em}.htz-bc{font-size:2rem}.htz-bd{line-height:4rem}}@media (max-width: 63.9375em){.htz-ay{font-weight:700}.htz-az{margin-right:auto}.htz-be{display:inline-block}.htz-bl{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ba{font-size:2.3333333333333335rem}.htz-bb{line-height:4rem}.htz-bo{font-size:2.6666666666666665rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-an{margin-top:1rem}.htz-ao{color:#787878}.htz-bc{display:inline-block}.htz-bd{margin-right:1rem}.htz-be{margin-left:1rem}.htz-bg{margin-top:auto}.htz-bi{color:#bd1c87}.htz-bj{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-bl{margin-bottom:1rem}.htz-bo{margin-bottom:0}.htz-bb:hover{color:#2D2D2D}.htz-bm:hover{text-decoration:underline}.htz-bn:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ak{padding-right:1rem}.htz-al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-am{width:100%}.htz-ap{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-aq{direction:ltr}.htz-ar{padding-right:2rem}.htz-as{font-size:2.3333333333333335rem}.htz-at{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bf{display:none}}@media (max-width: 63.9375em){.htz-au{font-weight:700}.htz-av{margin-right:auto}.htz-ba{display:inline-block}.htz-bh{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:4rem}.htz-bk{font-size:2.6666666666666665rem}}@media (min-width: 80em){.htz-ay{font-size:2rem}.htz-az{line-height:4rem}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and marketingTeaser prop 1`] = `
 <div>
@@ -308,82 +308,82 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
   >
     <h2
-      className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-o htz-p"
+      className="htz-ai htz-aj htz-ak htz-al htz-am htz-o htz-p"
     >
       test title
     </h2>
     <ul
-      className="htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az"
     >
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.7666"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.2490"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.470"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="1.628"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.8286"
           onClick={null}
         >
@@ -392,11 +392,11 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
       </li>
     </ul>
     <div
-      className="htz-bk htz-bl"
+      className="htz-bg htz-bh"
     >
       <section>
         <svg
-          className="htz-bm htz-bn htz-bo htz-bp"
+          className="htz-bi htz-bj htz-bk htz-bl"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
@@ -408,28 +408,28 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
           />
         </svg>
         <h2
-          className="htz-bn"
+          className="htz-bj"
         >
           כל התכנים בכל מכשיר
         </h2>
         <div
-          className="htz-bn htz-bq htz-br htz-bs htz-bt"
+          className="htz-bj htz-bm htz-bn htz-bo htz-bp"
         >
           הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון
         </div>
         <a
-          className="htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-bf htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-bq htz-br htz-bs htz-bt htz-dw htz-dx htz-dy htz-dz"
+          className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-bb htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-bm htz-bn htz-bo htz-bp htz-ds htz-dt htz-du htz-dv"
           href="https://www.haaretz.co.il/1.2222222222"
           id={null}
           onClick={null}
         >
           <span
-            className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg"
+            className="htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec"
           >
             לרכישה
           </span>
           <span
-            className="htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es htz-et"
+            className="htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep"
           />
         </a>
       </section>
@@ -438,7 +438,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and marketingTeaser prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-ar{margin-top:1rem}.htz-as{color:#787878}.htz-bg{display:inline-block}.htz-bh{margin-right:1rem}.htz-bi{margin-left:1rem}.htz-bk{margin-top:auto}.htz-bm{vertical-align:-0.15em}.htz-bn{color:#00537A}.htz-bo{fill:#FFF}.htz-bp{font-size:3rem}.htz-bu{align-items:center}.htz-bv{-webkit-appearance:none}.htz-bw{-moz-appearance:none}.htz-bx{appearance:none}.htz-by{cursor:pointer}.htz-bz{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ca{font-weight:bold}.htz-cb{font-size:inherit}.htz-cc{justify-content:center}.htz-cd{position:relative}.htz-ce{transform:scale(1)}.htz-cf{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cg{text-decoration:none}.htz-ch{white-space:nowrap}.htz-ci::moz-focus-inner{border:0}.htz-cj::moz-focus-inner{padding:0}.htz-de{border-bottom-width:1px}.htz-df{border-bottom-style:solid}.htz-dg{padding-bottom:calc(0.5rem - 1px)}.htz-dh{border-top-width:1px}.htz-di{border-top-style:solid}.htz-dj{padding-top:calc(0.5rem - 1px)}.htz-dk{border-right-width:1px}.htz-dl{border-right-style:solid}.htz-dm{padding-right:4rem}.htz-dn{border-left-width:1px}.htz-do{border-left-style:solid}.htz-dp{padding-left:4rem}.htz-dq{border-radius:0}.htz-dr{background-color:#FFA500}.htz-ds{border-color:rgba(0,0,0,0)}.htz-dt{color:#2D2D2D}.htz-dv{margin-top:2rem}.htz-dw{-webkit-box-align:center}.htz-dx{-webkit-box-pack:center}.htz-dy{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dz{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ea{opacity:1}.htz-eb{transition-property:opacity}.htz-ec{transition-duration:0.16666666666666666s}.htz-ed{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ee{transition-delay:.3s}.htz-ef{-webkit-transition-property:opacity}.htz-eg{-moz-transition-property:opacity}.htz-eh{background-color:rgba(200,200,200, 0.3)}.htz-ei{height:100%}.htz-ej{right:0}.htz-ek{position:absolute}.htz-el{top:0}.htz-em{transform:scaleX(0)}.htz-en{transform-origin:right}.htz-eo{width:100%}.htz-ep{animation-direction:alternate}.htz-eq{animation-iteration-count:infinite}.htz-er{animation-duration:1s}.htz-es{animation-delay:0.75s}.htz-et{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-du:visited{color:#2D2D2D}.htz-bf:hover{color:#2D2D2D}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{background-color:#ED8600}.htz-cn:hover{border-color:rgba(0,0,0,0)}.htz-co:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cq:focus{outline:none}.htz-cr:focus{text-decoration:none}.htz-cs:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ct:focus{background-color:#ED8600}.htz-cu:focus{border-color:rgba(0,0,0,0)}.htz-cv:focus{color:#2D2D2D}.htz-cw:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cy:active{outline:none}.htz-cz:active{text-decoration:none}.htz-da:active{transition-duration:0s}.htz-db:active{background-color:#FA9600}.htz-dc:active{border-color:rgba(0,0,0,0)}.htz-dd:active{color:#2D2D2D}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ao{padding-right:1rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{width:100%}.htz-at{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-au{direction:ltr}.htz-av{padding-right:2rem}.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bj{display:none}}@media (max-width: 79.9375em){.htz-ak{font-size:3.5rem}.htz-al{line-height:1.4285714285714286em}.htz-bq{font-size:2.3333333333333335rem}.htz-br{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-am{font-size:3.4285714285714284rem}.htz-an{line-height:1.1666666666666667em}.htz-bc{font-size:2rem}.htz-bd{line-height:4rem}.htz-bs{font-size:2.2857142857142856rem}.htz-bt{line-height:1.3125em}}@media (max-width: 63.9375em){.htz-ay{font-weight:700}.htz-az{margin-right:auto}.htz-be{display:inline-block}.htz-bl{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ba{font-size:2.3333333333333335rem}.htz-bb{line-height:4rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and marketingTeaser prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-an{margin-top:1rem}.htz-ao{color:#787878}.htz-bc{display:inline-block}.htz-bd{margin-right:1rem}.htz-be{margin-left:1rem}.htz-bg{margin-top:auto}.htz-bi{vertical-align:-0.15em}.htz-bj{color:#00537A}.htz-bk{fill:#FFF}.htz-bl{font-size:3rem}.htz-bq{align-items:center}.htz-br{-webkit-appearance:none}.htz-bs{-moz-appearance:none}.htz-bt{appearance:none}.htz-bu{cursor:pointer}.htz-bv{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bw{font-weight:bold}.htz-bx{font-size:inherit}.htz-by{justify-content:center}.htz-bz{position:relative}.htz-ca{transform:scale(1)}.htz-cb{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cc{text-decoration:none}.htz-cd{white-space:nowrap}.htz-ce::moz-focus-inner{border:0}.htz-cf::moz-focus-inner{padding:0}.htz-da{border-bottom-width:1px}.htz-db{border-bottom-style:solid}.htz-dc{padding-bottom:calc(0.5rem - 1px)}.htz-dd{border-top-width:1px}.htz-de{border-top-style:solid}.htz-df{padding-top:calc(0.5rem - 1px)}.htz-dg{border-right-width:1px}.htz-dh{border-right-style:solid}.htz-di{padding-right:4rem}.htz-dj{border-left-width:1px}.htz-dk{border-left-style:solid}.htz-dl{padding-left:4rem}.htz-dm{border-radius:0}.htz-dn{background-color:#FFA500}.htz-do{border-color:rgba(0,0,0,0)}.htz-dp{color:#2D2D2D}.htz-dr{margin-top:2rem}.htz-ds{-webkit-box-align:center}.htz-dt{-webkit-box-pack:center}.htz-du{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dv{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{opacity:1}.htz-dx{transition-property:opacity}.htz-dy{transition-duration:0.16666666666666666s}.htz-dz{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ea{transition-delay:.3s}.htz-eb{-webkit-transition-property:opacity}.htz-ec{-moz-transition-property:opacity}.htz-ed{background-color:rgba(200,200,200, 0.3)}.htz-ee{height:100%}.htz-ef{right:0}.htz-eg{position:absolute}.htz-eh{top:0}.htz-ei{transform:scaleX(0)}.htz-ej{transform-origin:right}.htz-ek{width:100%}.htz-el{animation-direction:alternate}.htz-em{animation-iteration-count:infinite}.htz-en{animation-duration:1s}.htz-eo{animation-delay:0.75s}.htz-ep{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dq:visited{color:#2D2D2D}.htz-bb:hover{color:#2D2D2D}.htz-cg:hover{text-decoration:none}.htz-ch:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ci:hover{background-color:#ED8600}.htz-cj:hover{border-color:rgba(0,0,0,0)}.htz-ck:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cl:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:focus{outline:none}.htz-cn:focus{text-decoration:none}.htz-co:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{background-color:#ED8600}.htz-cq:focus{border-color:rgba(0,0,0,0)}.htz-cr:focus{color:#2D2D2D}.htz-cs:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ct:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cu:active{outline:none}.htz-cv:active{text-decoration:none}.htz-cw:active{transition-duration:0s}.htz-cx:active{background-color:#FA9600}.htz-cy:active{border-color:rgba(0,0,0,0)}.htz-cz:active{color:#2D2D2D}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ak{padding-right:1rem}.htz-al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-am{width:100%}.htz-ap{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-aq{direction:ltr}.htz-ar{padding-right:2rem}.htz-as{font-size:2.3333333333333335rem}.htz-at{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bf{display:none}}@media (max-width: 63.9375em){.htz-au{font-weight:700}.htz-av{margin-right:auto}.htz-ba{display:inline-block}.htz-bh{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:4rem}}@media (min-width: 80em){.htz-ay{font-size:2rem}.htz-az{line-height:4rem}.htz-bo{font-size:2.2857142857142856rem}.htz-bp{line-height:1.3125em}}@media (max-width: 79.9375em){.htz-bm{font-size:2.3333333333333335rem}.htz-bn{line-height:1.2857142857142858em}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop 1`] = `
 <div>
@@ -446,82 +446,82 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, 
     className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah"
   >
     <h2
-      className="htz-ai htz-aj htz-ak htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-o htz-p"
+      className="htz-ai htz-aj htz-ak htz-al htz-am htz-o htz-p"
     >
       test title
     </h2>
     <ul
-      className="htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba htz-bb htz-bc htz-bd"
+      className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az"
     >
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.7666"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.2490"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.470"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="1.628"
           onClick={null}
         >
           קצרי רוח
         </a>
         <span
-          className="htz-bg htz-bh htz-bi htz-bj"
+          className="htz-bc htz-bd htz-be htz-bf"
         >
           |
         </span>
       </li>
       <li
-        className="htz-be"
+        className="htz-ba"
       >
         <a
-          className="htz-bf"
+          className="htz-bb"
           href="2.8286"
           onClick={null}
         >
@@ -530,11 +530,11 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, 
       </li>
     </ul>
     <div
-      className="htz-bk htz-bl"
+      className="htz-bg htz-bh"
     >
       <section>
         <svg
-          className="htz-bm htz-bn htz-bo htz-bp"
+          className="htz-bi htz-bj htz-bk htz-bl"
           height="1em"
           viewBox="0 0 256 256"
           width="1em"
@@ -546,28 +546,28 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, 
           />
         </svg>
         <h2
-          className="htz-bn"
+          className="htz-bj"
         >
           כל התכנים בכל מכשיר
         </h2>
         <div
-          className="htz-bn htz-bq htz-br htz-bs htz-bt"
+          className="htz-bj htz-bm htz-bn htz-bo htz-bp"
         >
           הארץ בדיגיטל החל מ-4.90 ₪ בחודש הראשון
         </div>
         <a
-          className="htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-ck htz-cl htz-cm htz-cn htz-bf htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-ds htz-dt htz-du htz-dv htz-bq htz-br htz-bs htz-bt htz-dw htz-dx htz-dy htz-dz"
+          className="htz-bq htz-br htz-bs htz-bt htz-bu htz-bv htz-bw htz-bx htz-by htz-bz htz-ca htz-cb htz-cc htz-cd htz-ce htz-cf htz-cg htz-ch htz-ci htz-cj htz-bb htz-ck htz-cl htz-cm htz-cn htz-co htz-cp htz-cq htz-cr htz-cs htz-ct htz-cu htz-cv htz-cw htz-cx htz-cy htz-cz htz-da htz-db htz-dc htz-dd htz-de htz-df htz-dg htz-dh htz-di htz-dj htz-dk htz-dl htz-dm htz-dn htz-do htz-dp htz-dq htz-dr htz-bm htz-bn htz-bo htz-bp htz-ds htz-dt htz-du htz-dv"
           href="https://www.haaretz.co.il/1.2222222222"
           id={null}
           onClick={null}
         >
           <span
-            className="htz-ea htz-eb htz-ec htz-ed htz-ee htz-ef htz-eg"
+            className="htz-dw htz-dx htz-dy htz-dz htz-ea htz-eb htz-ec"
           >
             לרכישה
           </span>
           <span
-            className="htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep htz-eq htz-er htz-es htz-et"
+            className="htz-ed htz-ee htz-ef htz-eg htz-eh htz-ei htz-ej htz-ek htz-el htz-em htz-en htz-eo htz-ep"
           />
         </a>
       </section>
@@ -576,4 +576,4 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, 
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-ar{margin-top:1rem}.htz-as{color:#787878}.htz-bg{display:inline-block}.htz-bh{margin-right:1rem}.htz-bi{margin-left:1rem}.htz-bk{margin-top:auto}.htz-bm{vertical-align:-0.15em}.htz-bn{color:#00537A}.htz-bo{fill:#FFF}.htz-bp{font-size:3rem}.htz-bu{align-items:center}.htz-bv{-webkit-appearance:none}.htz-bw{-moz-appearance:none}.htz-bx{appearance:none}.htz-by{cursor:pointer}.htz-bz{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-ca{font-weight:bold}.htz-cb{font-size:inherit}.htz-cc{justify-content:center}.htz-cd{position:relative}.htz-ce{transform:scale(1)}.htz-cf{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cg{text-decoration:none}.htz-ch{white-space:nowrap}.htz-ci::moz-focus-inner{border:0}.htz-cj::moz-focus-inner{padding:0}.htz-de{border-bottom-width:1px}.htz-df{border-bottom-style:solid}.htz-dg{padding-bottom:calc(0.5rem - 1px)}.htz-dh{border-top-width:1px}.htz-di{border-top-style:solid}.htz-dj{padding-top:calc(0.5rem - 1px)}.htz-dk{border-right-width:1px}.htz-dl{border-right-style:solid}.htz-dm{padding-right:4rem}.htz-dn{border-left-width:1px}.htz-do{border-left-style:solid}.htz-dp{padding-left:4rem}.htz-dq{border-radius:0}.htz-dr{background-color:#FFA500}.htz-ds{border-color:rgba(0,0,0,0)}.htz-dt{color:#2D2D2D}.htz-dv{margin-top:2rem}.htz-dw{-webkit-box-align:center}.htz-dx{-webkit-box-pack:center}.htz-dy{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dz{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-ea{opacity:1}.htz-eb{transition-property:opacity}.htz-ec{transition-duration:0.16666666666666666s}.htz-ed{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ee{transition-delay:.3s}.htz-ef{-webkit-transition-property:opacity}.htz-eg{-moz-transition-property:opacity}.htz-eh{background-color:rgba(200,200,200, 0.3)}.htz-ei{height:100%}.htz-ej{right:0}.htz-ek{position:absolute}.htz-el{top:0}.htz-em{transform:scaleX(0)}.htz-en{transform-origin:right}.htz-eo{width:100%}.htz-ep{animation-direction:alternate}.htz-eq{animation-iteration-count:infinite}.htz-er{animation-duration:1s}.htz-es{animation-delay:0.75s}.htz-et{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-du:visited{color:#2D2D2D}.htz-bf:hover{color:#2D2D2D}.htz-ck:hover{text-decoration:none}.htz-cl:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:hover{background-color:#ED8600}.htz-cn:hover{border-color:rgba(0,0,0,0)}.htz-co:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cq:focus{outline:none}.htz-cr:focus{text-decoration:none}.htz-cs:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ct:focus{background-color:#ED8600}.htz-cu:focus{border-color:rgba(0,0,0,0)}.htz-cv:focus{color:#2D2D2D}.htz-cw:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cx:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cy:active{outline:none}.htz-cz:active{text-decoration:none}.htz-da:active{transition-duration:0s}.htz-db:active{background-color:#FA9600}.htz-dc:active{border-color:rgba(0,0,0,0)}.htz-dd:active{color:#2D2D2D}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ao{padding-right:1rem}.htz-ap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aq{width:100%}.htz-at{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-au{direction:ltr}.htz-av{padding-right:2rem}.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bj{display:none}}@media (max-width: 79.9375em){.htz-ak{font-size:3.5rem}.htz-al{line-height:1.4285714285714286em}.htz-bq{font-size:2.3333333333333335rem}.htz-br{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-am{font-size:3.4285714285714284rem}.htz-an{line-height:1.1666666666666667em}.htz-bc{font-size:2rem}.htz-bd{line-height:4rem}.htz-bs{font-size:2.2857142857142856rem}.htz-bt{line-height:1.3125em}}@media (max-width: 63.9375em){.htz-ay{font-weight:700}.htz-az{margin-right:auto}.htz-be{display:inline-block}.htz-bl{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-ba{font-size:2.3333333333333335rem}.htz-bb{line-height:4rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks, commercialLinks and marketingTeaser prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-ae{-webkit-box-orient:horizontal}.htz-af{-webkit-box-direction:normal}.htz-ag{-webkit-box-flex:1}.htz-ah{-webkit-box-pack:right}.htz-ai{color:#0B7EB5}.htz-aj{font-weight:700}.htz-an{margin-top:1rem}.htz-ao{color:#787878}.htz-bc{display:inline-block}.htz-bd{margin-right:1rem}.htz-be{margin-left:1rem}.htz-bg{margin-top:auto}.htz-bi{vertical-align:-0.15em}.htz-bj{color:#00537A}.htz-bk{fill:#FFF}.htz-bl{font-size:3rem}.htz-bq{align-items:center}.htz-br{-webkit-appearance:none}.htz-bs{-moz-appearance:none}.htz-bt{appearance:none}.htz-bu{cursor:pointer}.htz-bv{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-bw{font-weight:bold}.htz-bx{font-size:inherit}.htz-by{justify-content:center}.htz-bz{position:relative}.htz-ca{transform:scale(1)}.htz-cb{transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-cc{text-decoration:none}.htz-cd{white-space:nowrap}.htz-ce::moz-focus-inner{border:0}.htz-cf::moz-focus-inner{padding:0}.htz-da{border-bottom-width:1px}.htz-db{border-bottom-style:solid}.htz-dc{padding-bottom:calc(0.5rem - 1px)}.htz-dd{border-top-width:1px}.htz-de{border-top-style:solid}.htz-df{padding-top:calc(0.5rem - 1px)}.htz-dg{border-right-width:1px}.htz-dh{border-right-style:solid}.htz-di{padding-right:4rem}.htz-dj{border-left-width:1px}.htz-dk{border-left-style:solid}.htz-dl{padding-left:4rem}.htz-dm{border-radius:0}.htz-dn{background-color:#FFA500}.htz-do{border-color:rgba(0,0,0,0)}.htz-dp{color:#2D2D2D}.htz-dr{margin-top:2rem}.htz-ds{-webkit-box-align:center}.htz-dt{-webkit-box-pack:center}.htz-du{-webkit-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dv{-moz-transition:all 0.16666666666666666s cubic-bezier(0, 0, .2, 0) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(0, 0, .2, 0)}.htz-dw{opacity:1}.htz-dx{transition-property:opacity}.htz-dy{transition-duration:0.16666666666666666s}.htz-dz{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-ea{transition-delay:.3s}.htz-eb{-webkit-transition-property:opacity}.htz-ec{-moz-transition-property:opacity}.htz-ed{background-color:rgba(200,200,200, 0.3)}.htz-ee{height:100%}.htz-ef{right:0}.htz-eg{position:absolute}.htz-eh{top:0}.htz-ei{transform:scaleX(0)}.htz-ej{transform-origin:right}.htz-ek{width:100%}.htz-el{animation-direction:alternate}.htz-em{animation-iteration-count:infinite}.htz-en{animation-duration:1s}.htz-eo{animation-delay:0.75s}.htz-ep{animation-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-dq:visited{color:#2D2D2D}.htz-bb:hover{color:#2D2D2D}.htz-cg:hover{text-decoration:none}.htz-ch:hover{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ci:hover{background-color:#ED8600}.htz-cj:hover{border-color:rgba(0,0,0,0)}.htz-ck:hover{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cl:hover{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cm:focus{outline:none}.htz-cn:focus{text-decoration:none}.htz-co:focus{transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cp:focus{background-color:#ED8600}.htz-cq:focus{border-color:rgba(0,0,0,0)}.htz-cr:focus{color:#2D2D2D}.htz-cs:focus{-webkit-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-ct:focus{-moz-transition:all 0.16666666666666666s cubic-bezier(.55, 0, .1, 1) , transform .3s cubic-bezier(.55, 0, .1, 1) .3s, backgroundColor .25s cubic-bezier(.55, 0, .1, 1)}.htz-cu:active{outline:none}.htz-cv:active{text-decoration:none}.htz-cw:active{transition-duration:0s}.htz-cx:active{background-color:#FA9600}.htz-cy:active{border-color:rgba(0,0,0,0)}.htz-cz:active{color:#2D2D2D}@media (max-width: 37.4375em){.htz-e{background-color:#FFF}.htz-f{position:relative}.htz-g:before{background-color:#0B7EB5}.htz-h:before{content:\\"\\"}.htz-i:before{height:1px}.htz-j:before{position:absolute}.htz-k:before{width:100%}.htz-l:before{right:0}.htz-m:before{top:0}.htz-n{height:7rem}.htz-o{align-items:center}.htz-p{-webkit-box-align:center}.htz-ak{padding-right:1rem}.htz-al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-am{width:100%}.htz-ap{display:none}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-q{border-top-width:2px}.htz-r{border-top-style:solid}.htz-s{border-top-color:#0B7EB5}.htz-t{padding-top:calc(1rem - 2px)}.htz-u{padding-bottom:1rem}.htz-aq{direction:ltr}.htz-ar{padding-right:2rem}.htz-as{font-size:2.3333333333333335rem}.htz-at{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-v{border-top-width:5px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(2rem - 5px)}.htz-z{flex-direction:column}.htz-ab{-webkit-box-orient:vertical}.htz-ac{-webkit-box-direction:normal}.htz-bf{display:none}}@media (max-width: 63.9375em){.htz-au{font-weight:700}.htz-av{margin-right:auto}.htz-ba{display:inline-block}.htz-bh{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:4rem}}@media (min-width: 80em){.htz-ay{font-size:2rem}.htz-az{line-height:4rem}.htz-bo{font-size:2.2857142857142856rem}.htz-bp{line-height:1.3125em}}@media (max-width: 79.9375em){.htz-bm{font-size:2.3333333333333335rem}.htz-bn{line-height:1.2857142857142858em}}"`;

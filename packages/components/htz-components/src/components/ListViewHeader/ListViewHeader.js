@@ -128,7 +128,6 @@ export default function ListViewHeader({
                   : { color: theme.color('primary'), }),
                 fontWeight: 700,
                 extend: [
-                  theme.type(2),
                   isHorizontal && hasTitlePadding
                     ? { paddingInlineStart: '1rem', }
                     : theme.mq({ until: 's', }, { paddingInlineStart: '1rem', }),
