@@ -1,7 +1,11 @@
 // @flow
 import React from 'react';
 import { FelaComponent, FelaTheme, } from 'react-fela';
-import { borderTop, borderBottom, parseComponentProp, } from '@haaretz/htz-css-tools';
+import {
+  borderTop,
+  borderBottom,
+  parseComponentProp,
+} from '@haaretz/htz-css-tools';
 
 import type { Node, } from 'react';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
@@ -20,7 +24,6 @@ import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
-import TeaserTime from '../../../TeaserTime/TeaserTime';
 import pictureAssetProps from '../../../../utils/getPictureAssets';
 
 type StockType = {
@@ -30,11 +33,11 @@ type StockType = {
 };
 
 type StocksType = {
-  '142': StockType,
-  '137': StockType,
-  '9001': StockType,
-  '29.10.@CCO': StockType,
-  '30.10.!DJI': StockType,
+  "142": StockType,
+  "137": StockType,
+  "9001": StockType,
+  "29.10.@CCO": StockType,
+  "30.10.!DJI": StockType,
 };
 
 export type Props = {
@@ -82,29 +85,41 @@ export default class Zombie extends React.Component<Props, State> {
       })
       .then(res => res.json())
       .then(json => {
-        const stocksIds: Array<string> = [ '142', '137', '9001', '29.10.@CCO', '30.10.!DJI', ];
-        const stocks: StocksType = Object.keys(json).reduce((result: StocksType, source) => {
-          const parssedSource = json[source].DataSource
-            ? json[source].DataSource.reduce((relevantSources, sourceInfo) => {
-              const id = sourceInfo[5];
-              const sourceInfoObj: ?StockType = stocksIds.includes(id)
-                ? {
-                  name: sourceInfo[1],
-                  value: sourceInfo[3],
-                  change: sourceInfo[4],
-                }
-                : null;
-              return ({
-                ...relevantSources,
-                ...(sourceInfoObj ? { [id]: sourceInfoObj, } : {}),
-              }: StocksType);
-            }, {})
-            : null;
-          return ({
-            ...result,
-            ...(parssedSource ? { ...parssedSource, } : {}),
-          }: StocksType);
-        }, ({}: any));
+        const stocksIds: Array<string> = [
+          '142',
+          '137',
+          '9001',
+          '29.10.@CCO',
+          '30.10.!DJI',
+        ];
+        const stocks: StocksType = Object.keys(json).reduce(
+          (result: StocksType, source) => {
+            const parssedSource = json[source].DataSource
+              ? json[source].DataSource.reduce(
+                (relevantSources, sourceInfo) => {
+                  const id = sourceInfo[5];
+                  const sourceInfoObj: ?StockType = stocksIds.includes(id)
+                    ? {
+                      name: sourceInfo[1],
+                      value: sourceInfo[3],
+                      change: sourceInfo[4],
+                    }
+                    : null;
+                  return ({
+                    ...relevantSources,
+                    ...(sourceInfoObj ? { [id]: sourceInfoObj, } : {}),
+                  }: StocksType);
+                },
+                {}
+              )
+              : null;
+            return ({
+              ...result,
+              ...(parssedSource ? { ...parssedSource, } : {}),
+            }: StocksType);
+          },
+          ({}: any)
+        );
         this.setState({
           stocks,
         });
@@ -118,12 +133,17 @@ export default class Zombie extends React.Component<Props, State> {
     const { title, extraLinks, items, dfp, } = list;
 
     return (
-      <ListView padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}>
+      <ListView
+        padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
+      >
         {/* Title */}
         <GridItem
           width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
           miscStyles={{
-            marginBottom: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '2rem', }, ],
+            marginBottom: [
+              { until: 's', value: '1rem', },
+              { from: 's', until: 'l', value: '2rem', },
+            ],
           }}
           stretchContent
         >
@@ -131,7 +151,10 @@ export default class Zombie extends React.Component<Props, State> {
         </GridItem>
 
         {/* Content */}
-        <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]} stretchContent>
+        <GridItem
+          width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
+          stretchContent
+        >
           <Grid gutter={4}>
             {/* Stocks */}
             {stocks && <Stocks stocks={stocks} />}
@@ -155,7 +178,11 @@ export default class Zombie extends React.Component<Props, State> {
                     { from: 'xl', value: 3 / 6, },
                   ]}
                 >
-                  <MainTeaser data={items[0]} biAction={biAction} lazyLoadImages={lazyLoadImages} />
+                  <MainTeaser
+                    data={items[0]}
+                    biAction={biAction}
+                    lazyLoadImages={lazyLoadImages}
+                  />
                 </GridItem>
                 <GridItem
                   width={[
@@ -176,9 +203,21 @@ export default class Zombie extends React.Component<Props, State> {
                       { from: 's', value: { amount: 4, }, },
                     ]}
                   >
-                    <TextualTeaser data={items[1]} index={1} biAction={biAction} />
-                    <TextualTeaser data={items[2]} index={2} biAction={biAction} />
-                    <TextualTeaser data={items[3]} index={3} biAction={biAction} />
+                    <TextualTeaser
+                      data={items[1]}
+                      index={1}
+                      biAction={biAction}
+                    />
+                    <TextualTeaser
+                      data={items[2]}
+                      index={2}
+                      biAction={biAction}
+                    />
+                    <TextualTeaser
+                      data={items[3]}
+                      index={3}
+                      biAction={biAction}
+                    />
                   </Grid>
                 </GridItem>
               </Grid>
@@ -187,7 +226,10 @@ export default class Zombie extends React.Component<Props, State> {
               ? dfp.map(banner => (
                 <GridItem
                   key={banner.contentId}
-                  width={[ { until: 's', value: 1, }, { from: 'xl', value: 4 / 10, }, ]}
+                  width={[
+                    { until: 's', value: 1, },
+                    { from: 'xl', value: 4 / 10, },
+                  ]}
                   miscStyles={{
                     display: [
                       { until: 's', value: 'block', },
@@ -222,7 +264,12 @@ type TeaserProps = {
 };
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
-function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): Node {
+function MainTeaser({
+  biAction,
+  data,
+  index,
+  lazyLoadImages,
+}: TeaserProps): Node {
   const itemId = data.representedContent == null ? data.contentId : data.representedContent;
 
   return (
@@ -231,12 +278,16 @@ function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): No
         <Teaser
           data={data}
           gutter={0}
-          onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+          onClick={
+            biAction ? () => biAction({ index, articleId: itemId, }) : null
+          }
           isStacked
         >
           <TeaserMedia
             data={data}
-            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+            onClick={
+              biAction ? () => biAction({ index, articleId: itemId, }) : null
+            }
             isStacked
           >
             <Picture
@@ -268,7 +319,10 @@ function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): No
 
           <TeaserContent
             data={data}
-            padding={[ { until: 's', value: [ 1, 1, 0, ], }, { from: 's', value: [ 1, 2, 0, ], }, ]}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: [ 1, 2, 0, ], },
+            ]}
             isStacked
             footerColor={[ 'neutral', '-3', ]}
             footerPadding={[
@@ -284,7 +338,9 @@ function MainTeaser({ biAction, data, index, lazyLoadImages, }: TeaserProps): No
                   { from: 's', until: 'xl', value: 2, },
                   { from: 'xl', value: 1, },
                 ]}
-                onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+                onClick={
+                  biAction ? () => biAction({ index, articleId: itemId, }) : null
+                }
                 {...data}
               />
             )}
@@ -316,13 +372,18 @@ function TextualTeaser({ biAction, data, index, }: TeaserProps): Node {
             { from: 's', until: 'l', value: [ 2, 2, 0, ], },
             { from: 'l', value: [ 1, 1, 0, ], },
           ]}
-          footerPadding={[ { until: 'l', value: [ 1, 2, ], }, { from: 'l', value: [ 1, 1, ], }, ]}
+          footerPadding={[
+            { until: 'l', value: [ 1, 2, ], },
+            { from: 'l', value: [ 1, 1, ], },
+          ]}
           footerMiscStyles={{ type: -3, }}
           renderContent={() => (
             <TeaserHeader
               {...data}
               typeScale={headerTypo}
-              onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+              onClick={
+                biAction ? () => biAction({ index, articleId: itemId, }) : null
+              }
             />
           )}
           renderFooter={() => <Footer data={data} />}
@@ -340,11 +401,15 @@ function Footer({ data, showAuthors, }: FooterProps): Node {
   return (
     <React.Fragment>
       {showAuthors && data.authors ? (
-        <React.Fragment>
-          <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
-          <span> | </span>
-          <TeaserTime {...data} />
-        </React.Fragment>
+        <span style={{ marginInlineEnd: '1rem', }}>
+          <TeaserAuthors
+            authors={data.authors}
+            miscStyles={{ fontWeight: 'bold', }}
+          />
+          {data.commentsCounts && data.commentsCounts > 4 ? (
+            <span> | </span>
+          ) : null}
+        </span>
       ) : null}
       <CommentsCount commentsCount={data.commentsCounts} />
     </React.Fragment>
@@ -380,15 +445,24 @@ function Stock({ name, value, change, hideOnM, }: StockProps): Node {
             >
               {name}
             </GridItem>
-            <GridItem width={[ { until: 'l', value: 1, }, { from: 'xl', value: 1, }, ]}>
+            <GridItem
+              width={[ { until: 'l', value: 1, }, { from: 'xl', value: 1, }, ]}
+            >
               <Grid gutter={1}>
                 <GridItem
                   width={[ { until: 's', value: 1, }, ]}
                   miscStyles={stockYieldStyle(theme, change)}
                 >
-                  {change ? `${change > 0 ? '+' : '-'}${numToHebrewString(Math.abs(change))}` : ''}
+                  {change
+                    ? `${change > 0 ? '+' : '-'}${numToHebrewString(
+                      Math.abs(change)
+                    )}`
+                    : ''}
                 </GridItem>
-                <GridItem width={[ { until: 's', value: 1, }, ]} miscStyles={stockValueStyle(theme)}>
+                <GridItem
+                  width={[ { until: 's', value: 1, }, ]}
+                  miscStyles={stockValueStyle(theme)}
+                >
                   {value}
                 </GridItem>
               </Grid>
@@ -432,15 +506,35 @@ function Stocks({ stocks, }: StocksProps): Node {
                 theme.mq(
                   { until: 'l', },
                   {
-                    ...borderTop('2px', 0, 'solid', theme.color('neutral', '-5')),
-                    ...borderBottom('2px', 0, 'solid', theme.color('neutral', '-5')),
+                    ...borderTop(
+                      '2px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-5')
+                    ),
+                    ...borderBottom(
+                      '2px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-5')
+                    ),
                   }
                 ),
                 theme.mq(
                   { from: 'l', },
                   {
-                    ...borderTop('1px', 0, 'solid', theme.color('neutral', '-3')),
-                    ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-3')),
+                    ...borderTop(
+                      '1px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-3')
+                    ),
+                    ...borderBottom(
+                      '1px',
+                      0,
+                      'solid',
+                      theme.color('neutral', '-3')
+                    ),
                   }
                 ),
               ],
@@ -517,7 +611,8 @@ function stockYieldStyle(theme: Object, change?: ?number): Object {
   return {
     order: [ { until: 's', value: 1, }, ],
     flexGrow: 0,
-    color: change && change < 0 ? theme.color('negative') : theme.color('positive'),
+    color:
+      change && change < 0 ? theme.color('negative') : theme.color('positive'),
     direction: 'ltr',
     fontWeight: '700',
     textAlign: 'start',
@@ -537,7 +632,10 @@ function stockWrapperStyle(theme: Object, hideOnM: boolean = false): Object {
     ...theme.type(-1),
     ...(hideOnM
       ? {
-        display: [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ],
+        display: [
+          { until: 'l', value: 'none', },
+          { from: 'l', value: 'block', },
+        ],
       }
       : {}),
   };
