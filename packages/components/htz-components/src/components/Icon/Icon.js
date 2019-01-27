@@ -70,6 +70,9 @@ import IconZoomIn from './icons/IconZoomIn';
 import IconMarkerLogo from './icons/IconMarkerLogo';
 import IconMail from './icons/IconMail';
 import IconArrowDiagonal from './icons/IconArrowDiagonal';
+import IconHaaretzHomepageMasthead from './icons/IconHaaretzHomepageMasthead';
+import IconHourglassRunningOut from './icons/IconHourglassRunningOut';
+import IconHourglass from './icons/IconHourglass';
 
 
 const gutterWidth = '1rem';
@@ -209,6 +212,9 @@ export default class Icons extends React.Component {
           <Cell name="IconMarkerLogo">{<IconMarkerLogo size={this.state.size} />}</Cell>
           <Cell name="IconMail">{<IconMail size={this.state.size} />}</Cell>
           <Cell name="IconArrowDiagonal">{<IconArrowDiagonal size={this.state.size} />}</Cell>
+          <Cell name="IconHaaretzHomepageMasthead">{<IconHaaretzHomepageMasthead size={this.state.size} />}</Cell>
+          <Cell name="IconHourglassRunningOut">{<IconHourglassRunningOut size={this.state.size} />}</Cell>
+          <Cell name="IconHourglass">{<IconHourglass size={this.state.size} />}</Cell>
         </Wrapper>
       </div>
     );
