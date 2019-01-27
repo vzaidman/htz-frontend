@@ -210,9 +210,18 @@ export default function ListViewHeader({
                   render="li"
                   key={item.contentId}
                 >
-                  <HtzLink href={item.href}>
-                    {item.linkText || item.contentName}
-                  </HtzLink>
+                  <FelaComponent
+                    style={{
+                      ':hover': {
+                        color: theme.color('neutral', -1),
+                      },
+                    }}
+                    render={({ className, }) => (
+                      <HtzLink href={item.href} className={className}>
+                        {item.linkText || item.contentName}
+                      </HtzLink>
+                    )}
+                  />
                   {idx !== extraLinks.length - 1 && (
                     <FelaComponent
                       style={{
