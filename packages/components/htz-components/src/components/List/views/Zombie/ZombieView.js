@@ -251,8 +251,6 @@ export default class Zombie extends React.Component<Props, State> {
                         ],
                         alignItems: [ { from: 'xl', value: 'center', }, ],
                         justifyContent: [ { from: 'xl', value: 'center', }, ],
-                        width: [ { until: 's', value: '300px', }, ],
-                        height: [ { until: 's', value: '250px', }, ],
                       }}
                     >
                       <GeneralAdSlot {...banner} styleRule={bannerStyle} />
@@ -690,4 +688,3 @@ function bannerStyle({ theme, }) {
     ],
   };
 }
-

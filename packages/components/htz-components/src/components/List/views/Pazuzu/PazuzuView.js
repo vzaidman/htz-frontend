@@ -71,7 +71,7 @@ export default function Pazuzu({
       gutter={gutter}
       width={width}
       miscStyles={{
-        marginTop: [ { until: 's', value: 1, }, { from: 's', value: 4, }, ],
+        marginTop: [ { until: 's', value: 2, }, { from: 's', value: 4, }, ],
       }}
     >
       <ListView disableWrapper gutter={0} marginTop={0}>

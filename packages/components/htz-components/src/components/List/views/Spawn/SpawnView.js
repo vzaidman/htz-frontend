@@ -587,7 +587,7 @@ function OpEdTeaser({
             ...(hasMarginTop
               ? {
                 marginTop: [
-                  { until: 's', value: '1rem', },
+                  // { until: 's', value: '1rem', },
                   { from: 's', until: 'l', value: '4rem', },
                 ],
               }
