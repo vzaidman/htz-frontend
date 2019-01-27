@@ -107,7 +107,15 @@ function create(initialState, appDefaultState, req) {
 
   const inMemoryCache = new InMemoryCache({
     fragmentMatcher: customFragmentMatcher,
-    dataIdFromObject: ({ __typename, contentId, }) => (contentId ? `${__typename}:${contentId}` : null),
+    dataIdFromObject: ({ __typename, contentId, inputTemplate, }) => {
+      let cacheKey = contentId ? `${__typename}:${contentId}` : null;
+
+      if (inputTemplate && inputTemplate === 'com.tm.TeaserData') {
+        cacheKey = null;
+      }
+
+      return cacheKey;
+    },
   }).restore(initialState || {});
 
   // try creating a user from initial request (server only)

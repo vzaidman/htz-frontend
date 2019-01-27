@@ -43,7 +43,6 @@ type Props = {
 };
 
 export default function Boxy(props: Props): React.Node {
-  console.log('Boxy.js');
   return (
     <ListDataGetter query={BoxyQuery} view="Boxy" {...props}>
       {dataProps => <BoxyView {...dataProps} />}
