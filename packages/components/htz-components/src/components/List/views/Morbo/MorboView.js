@@ -239,11 +239,13 @@ function Teaser234({
         width={1}
         padding={[
           { until: 'l', value: [ 1, 2, 0, ], },
-          { from: 'l', value: [ 1, 1, 0, ], },
+          { from: 'l', until: 'xl', value: [ 1, 1, 0, ], },
+          { from: 'xl', value: [ 2, 2, 0, ], },
         ]}
         footerPadding={[
           { until: 'l', value: [ 1, 2, ], },
-          { from: 'l', value: [ 1, 1, ], },
+          { from: 'l', until: 'xl', value: [ 1, 1, ], },
+          { from: 'xl', value: [ 2, 2, ], },
         ]}
         footerMiscStyles={{
           type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
