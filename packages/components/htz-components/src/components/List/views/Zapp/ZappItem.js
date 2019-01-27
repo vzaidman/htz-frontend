@@ -45,7 +45,7 @@ export default function ZappItem({
     >
       <TeaserMedia
         width={[
-          { until: 's', value: 17, },
+          { until: 's', value: 18, },
           { from: 's', until: 'l', value: 6 / 12, },
         ]}
         data={data}
@@ -64,9 +64,9 @@ export default function ZappItem({
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: '102',
+                  sizes: '108',
                   aspect: 'square',
-                  widths: [ 102, 244, ],
+                  widths: [ 108, 244, ],
                 },
                 sources: [
                   {
@@ -89,7 +89,7 @@ export default function ZappItem({
       <TeaserContent
         data={data}
         padding={[
-          { until: 's', value: hideImageOnMobile ? [ 2, 2, 0, 2, ] : [ 2, 1, 0, ], },
+          { until: 's', value: hideImageOnMobile ? [ 1, 2, 0, 2, ] : [ 1, 1, 0, ], },
           { from: 's', until: 'l', value: [ 1, 2, 0, ], },
           { from: 'l', value: [ 1, 0, 0, ], },
         ]}
@@ -105,7 +105,7 @@ export default function ZappItem({
           <TeaserHeader
             {...data}
             typeScale={[
-              { until: 's', value: -1, },
+              { until: 's', value: 0, },
               { from: 's', until: 'l', value: 1, },
               { from: 'l', value: 0, },
             ]}

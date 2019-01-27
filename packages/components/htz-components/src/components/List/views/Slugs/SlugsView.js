@@ -278,7 +278,7 @@ function TwoUpTeaser({
               <TeaserHeader
                 {...data}
                 typeScale={[
-                  { until: 's', value: -1, },
+                  { until: 's', value: 0, },
                   { from: 's', until: 'l', value: 1, },
                 ]}
               />
@@ -325,7 +325,7 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
           <TeaserHeader
             {...data}
             typeScale={[
-              { until: 's', value: -1, },
+              { until: 's', value: 0, },
               { from: 's', until: 'l', value: 1, },
             ]}
           />

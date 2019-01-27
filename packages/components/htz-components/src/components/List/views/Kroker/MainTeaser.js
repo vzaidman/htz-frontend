@@ -26,7 +26,7 @@ MainTeaser.defaultProps = {
 };
 
 const headerType = [
-  { until: 's', value: -1, },
+  { until: 's', value: 0, },
   { from: 's', until: 'xl', value: 0, },
   { from: 'xl', value: -1, },
 ];

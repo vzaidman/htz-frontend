@@ -21,7 +21,7 @@ type Props = {
 VerticlaTeaser.defautlProps = { biAction: null, };
 
 const headerType = [
-  { until: 's', value: -1, },
+  { until: 's', value: 0, },
   { from: 's', until: 'l', value: 1, },
   { from: 'l', value: 0, },
 ];

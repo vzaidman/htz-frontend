@@ -35,7 +35,8 @@ export default function HorizontalTeaser({
   index,
 }: Props): React.Node {
   const headerType = [
-    { until: 'l', value: -1, },
+    { until: 's', value: 0, },
+    { from: 's', until: 'l', value: -1, },
     { from: 'l', value: 0, },
     { from: 'xl', value: -1, },
   ];
@@ -72,9 +73,9 @@ export default function HorizontalTeaser({
                 bps: theme.bps,
                 imgData: itemData.image,
                 defaultImgOptions: {
-                  sizes: '17rem',
+                  sizes: '18rem',
                   aspect: 'square',
-                  widths: [ 102, 204, ],
+                  widths: [ 108, 204, ],
                 },
                 sources: [
                   {

@@ -286,7 +286,7 @@ function Teaser2({
           <TeaserMedia
             data={data}
             width={[
-              { until: 's', value: 18, },
+              { until: 's', value: 19, },
               { from: 'l', until: 'xl', value: 2 / 5, },
             ]}
             isStacked={[
@@ -304,10 +304,10 @@ function Teaser2({
                     { from: 'l', size: '158px', },
                     { from: 'm', size: '240px', },
                     { from: 's', size: '184px', },
-                    { size: '17rem', },
+                    { size: '18rem', },
                   ],
                   aspect: 'square',
-                  widths: [ 102, 158, 184, 204, 240, 400, ],
+                  widths: [ 108, 158, 184, 204, 240, 400, ],
                 },
                 sources: [
                   {
@@ -349,7 +349,7 @@ function Teaser2({
             renderContent={() => (
               <TeaserHeader
                 typeScale={[
-                  { until: 's', value: -1, },
+                  { until: 's', value: 0, },
                   { from: 'xl', value: -1, },
                 ]}
                 {...data}
@@ -385,7 +385,7 @@ function Teaser3({
           <TeaserMedia
             data={data}
             width={[
-              { until: 's', value: 18, },
+              { until: 's', value: 19, },
               { from: 's', until: 'l', value: 4 / 12, },
               { from: 'l', until: 'xl', value: 2 / 5, },
               { from: 'xl', value: 2 / 4, },
@@ -399,10 +399,10 @@ function Teaser3({
                 defaultImgOptions: {
                   sizes: [
                     { from: 'l', until: 'xl', size: '158px', },
-                    { size: '17rem', },
+                    { size: '18rem', },
                   ],
                   aspect: 'square',
-                  widths: [ 102, 158, 204, ],
+                  widths: [ 108, 158, 204, ],
                 },
                 sources: [
                   {
@@ -452,7 +452,7 @@ function Teaser3({
             renderContent={() => (
               <TeaserHeader
                 typeScale={[
-                  { until: 's', value: -1, },
+                  { until: 's', value: 0, },
                   { from: 'xl', value: -1, },
                 ]}
                 {...data}
@@ -526,7 +526,7 @@ function Teaser4({
         renderContent={() => (
           <TeaserHeader
             typeScale={[
-              { until: 's', value: -1, },
+              { until: 's', value: 0, },
               { from: 'xl', value: -1, },
             ]}
             {...data}
@@ -576,7 +576,7 @@ function Teaser5({
         }}
         renderContent={() => (
           <TeaserHeader
-            typeScale={[ { until: 's', value: -1, }, { from: 'xl', value: -1, }, ]}
+            typeScale={[ { until: 's', value: 0, }, { from: 'xl', value: -1, }, ]}
             {...data}
           />
         )}

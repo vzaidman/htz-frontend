@@ -28,7 +28,7 @@ VerticalImageTeaser.defaultProps = {
 };
 
 const headerType = [
-  { until: 's', value: -1, },
+  { until: 's', value: 0, },
   { from: 's', until: 'xl', value: 0, },
   { from: 'xl', value: -1, },
 ];
@@ -63,7 +63,7 @@ export default function VerticalImageTeaser({
           <TeaserMedia
             isStacked={[ { from: 's', value: true, }, ]}
             data={itemData}
-            width={[ { until: 's', value: 18, }, ]}
+            width={[ { until: 's', value: 19, }, ]}
           >
             <Picture
               lazyLoad={lazyLoadImages}
@@ -72,9 +72,9 @@ export default function VerticalImageTeaser({
                   bps: theme.bps,
                   imgData: itemData.image,
                   defaultImgOptions: {
-                    sizes: '102px',
+                    sizes: '108px',
                     aspect: 'square',
-                    widths: [ 102, 204, ],
+                    widths: [ 108, 204, ],
                   },
                   sources: [
                     {
@@ -95,8 +95,8 @@ export default function VerticalImageTeaser({
           <TeaserContent
             isStacked={[ { from: 's', value: true, }, ]}
             data={itemData}
-            padding={[ 1, 0, 0, ]}
-            footerPadding={[ 1, 0, 0, ]}
+            padding={[ 1, 0, 0, 1, ]}
+            footerPadding={[ 1, 0, 0, 1, ]}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}

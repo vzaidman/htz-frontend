@@ -158,7 +158,7 @@ function Teaser1({
           <TeaserMedia
             data={data}
             width={[
-              { until: 's', value: 17, },
+              { until: 's', value: 18, },
               { from: 's', until: 'l', value: 28, },
               { from: 'l', until: 'xl', value: 2 / 7, },
               { from: 'xl', value: 1 / 2, },
@@ -170,9 +170,9 @@ function Teaser1({
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: [ { size: '102px', }, ],
+                  sizes: [ { size: '108px', }, ],
                   aspect: 'square',
-                  widths: [ 102, 204, ],
+                  widths: [ 108, 204, ],
                 },
                 sources: [
                   {
@@ -199,9 +199,7 @@ function Teaser1({
             renderContent={() => (
               <TeaserHeader
                 typeScale={[
-                  { until: 's', value: -1, },
-                  { from: 's', until: 'l', value: 0, },
-                  { from: 'l', until: 'xl', value: 0, },
+                  { until: 'xl', value: 0, },
                   { from: 'xl', value: -1, },
                 ]}
                 {...data}
@@ -253,7 +251,7 @@ function Teaser234({
         renderContent={() => (
           <TeaserHeader
             typeScale={[
-              { until: 's', value: -1, },
+              { until: 's', value: 0, },
               { from: 's', until: 'l', value: 0, },
               { from: 'l', until: 'xl', value: 0, },
               { from: 'xl', value: -1, },

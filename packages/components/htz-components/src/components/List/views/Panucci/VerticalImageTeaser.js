@@ -27,7 +27,8 @@ VerticalImageTeaser.defaultProps = {
   biAction: null,
 };
 const headerType = [
-  { until: 'l', value: -1, },
+  { until: 's', value: 0, },
+  { from: 's', until: 'l', value: -1, },
   { from: 'l', until: 'xl', value: 0, },
   { from: 'xl', value: -1, },
 ];
@@ -52,7 +53,7 @@ export default function VerticalImageTeaser({
         >
           <TeaserMedia
             data={itemData}
-            width={[ { until: 's', value: 17, }, ]}
+            width={[ { until: 's', value: 18, }, ]}
             isStacked={[ { from: 's', value: true, }, ]}
           >
             <Picture
@@ -61,9 +62,9 @@ export default function VerticalImageTeaser({
                 bps: theme.bps,
                 imgData: itemData.image,
                 defaultImgOptions: {
-                  sizes: '102px',
+                  sizes: '108px',
                   aspect: 'square',
-                  widths: [ 102, 104, ],
+                  widths: [ 108, 104, ],
                 },
                 sources: [
                   {

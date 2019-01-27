@@ -196,8 +196,14 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
                 title={isClickTracker(itemData) ? itemData.text || '' : itemData.title}
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
-                typeScale={-1}
-                kickerTypeScale={-1}
+                typeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', value: -1, },
+                ]}
+                kickerTypeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', value: -1, },
+                ]}
               />
             )}
           />
@@ -250,8 +256,15 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
                 title={isClickTracker(itemData) ? itemData.text || '' : itemData.title}
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
-                typeScale={[ { until: 'xl', value: -1, }, { from: 'xl', value: -2, }, ]}
-                kickerTypeScale={-1}
+                typeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', until: 'xl', value: -1, },
+                  { from: 'xl', value: -2, },
+                ]}
+                kickerTypeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', value: -1, },
+                ]}
                 miscStyles={{ fontWeight: '400', }}
               />
             )}

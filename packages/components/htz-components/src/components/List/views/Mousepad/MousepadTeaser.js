@@ -12,7 +12,8 @@ import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 
 const headerType = [
-  { until: 'l', value: -1, },
+  { until: 's', value: 0, },
+  { from: 's', until: 'l', value: -1, },
   { from: 'l', until: 'xl', value: 0, },
   { from: 'xl', value: -1, },
 ];

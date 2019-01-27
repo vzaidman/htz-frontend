@@ -107,8 +107,16 @@ function VogelItem({
             renderContent={teaserData => (
               <TeaserHeader
                 {...teaserData}
-                typeScale={[ { until: 'xl', value: -1, }, { from: 'xl', value: -2, }, ]}
-                kickerTypeScale={[ { until: 'xl', value: -1, }, { from: 'xl', value: -2, }, ]}
+                typeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', until: 'xl', value: -1, },
+                  { from: 'xl', value: -2, },
+                ]}
+                kickerTypeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', until: 'xl', value: -1, },
+                  { from: 'xl', value: -2, },
+                ]}
                 miscStyles={{ fontWeight: 'normal', }}
               />
             )}

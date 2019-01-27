@@ -43,7 +43,7 @@ export default function Boxy({ list, }: Props): Node {
         return (
           <LayoutRow
             bgc={color('neutral', '-2')}
-            misStyles={{ marginTop: [ { until: 's', value: 4, }, ], }}
+            miscStyles={{ marginTop: [ { until: 's', value: 6, }, ], }}
           >
             <LayoutContainer
               miscStyles={{

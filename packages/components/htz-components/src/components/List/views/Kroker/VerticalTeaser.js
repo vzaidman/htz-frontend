@@ -26,7 +26,7 @@ export default function VerticlaTeaser({
   biAction,
 }: Props): React.Node {
   const headerType = [
-    { until: 's', value: -1, },
+    { until: 's', value: 0, },
     { from: 's', until: 'l', value: 0, },
     { from: 'l', value: -1, },
   ];

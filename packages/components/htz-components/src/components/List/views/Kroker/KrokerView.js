@@ -178,7 +178,7 @@ function ListItems({
           <GridItem
             key={banner.contentId}
             width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 10, }, ]}
-            miscStyles={{ display: 'flex', }}
+            miscStyles={{ display: 'flex', marginTop: '0 !important', }}
           >
             {/* banner content */}
             <GeneralAdSlot {...banner} wrapperMiscStyles={{ width: '100%', }} />

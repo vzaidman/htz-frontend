@@ -396,11 +396,11 @@ function Editorial({
                 <TeaserHeader
                   {...data}
                   typeScale={[
-                    { until: 's', value: -1, },
+                    { until: 's', value: 0, },
                     { from: 's', until: 'xl', value: 3, },
                     { from: 'xl', value: 2, },
                   ]}
-                  miscStyle={{ marginTop: [ { from: 's', value: '1rem', }, ], }}
+                  miscStyles={{ marginTop: [ { from: 's', value: '1rem', }, ], }}
                 />
                 <FelaComponent
                   render="p"
@@ -717,7 +717,7 @@ function OpEdTeaser({
                 <TeaserHeader
                   {...data}
                   typeScale={[
-                    { until: 's', value: -1, },
+                    { until: 's', value: 0, },
                     { from: 'xl', value: -1, },
                   ]}
                 />

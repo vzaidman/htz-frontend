@@ -339,7 +339,7 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
               color: theme.color('neutral', '-3'),
             }}
             renderContent={data => (
-              <TeaserHeader {...data} typeScale={[ { until: 's', value: -1, }, ]} />
+              <TeaserHeader {...data} typeScale={[ { until: 's', value: 0, }, ]} />
             )}
             renderFooter={() => (
               <CommentsCount commentsCount={item.commentsCounts} />

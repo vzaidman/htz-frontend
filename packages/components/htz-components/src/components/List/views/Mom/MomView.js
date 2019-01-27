@@ -6,7 +6,6 @@ import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 
-import { isTeaser, } from '../../../../utils/validateType';
 import Debug from '../../../Debug/Debug';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -33,7 +32,7 @@ type Props = {
 };
 
 const headerTypeScale = [
-  { until: 's', value: -1, },
+  { until: 's', value: 0, },
   { from: 's', until: 'l', value: 1, },
   { from: 'l', value: 0, },
 ];
@@ -343,7 +342,7 @@ function TeaserWithImg1({
       <TeaserMedia
         data={data}
         width={[
-          { until: 's', value: 19, },
+          { until: 's', value: 20, },
           { from: 's', until: 'l', value: 8 / 12, },
           { from: 'l', until: 'xl', value: 4 / 6, },
         ]}
@@ -360,9 +359,9 @@ function TeaserWithImg1({
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: '102px',
+                  sizes: '108px',
                   aspect: 'square',
-                  widths: [ 102, ],
+                  widths: [ 108, ],
                 },
                 sources: [
                   {
@@ -429,7 +428,7 @@ function TeaserWithImg2({
 }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
-  return isTeaser(data) ? (
+  return (
     <Teaser
       data={data}
       gutter={2}
@@ -505,7 +504,7 @@ function TeaserWithImg2({
         )}
       />
     </Teaser>
-  ) : null;
+  );
 }
 
 type TextualTeaserPropTypes = TeaserProps & { isLargeText: boolean, };
@@ -519,7 +518,7 @@ function TextualTeaser({
   isLargeText,
 }: TextualTeaserPropTypes): React.Node {
   const articleId = data.contentId;
-  return isTeaser(data) ? (
+  return (
     <Teaser
       data={data}
       gutter={2}
@@ -544,8 +543,7 @@ function TextualTeaser({
               isLargeText
                 ? headerTypeScale
                 : [
-                  { until: 's', value: -1, },
-                  { from: 's', until: 'l', value: 0, },
+                  { until: 'l', value: 0, },
                   { from: 'l', value: -1, },
                 ]
             }
@@ -565,5 +563,5 @@ function TextualTeaser({
         )}
       />
     </Teaser>
-  ) : null;
+  );
 }
