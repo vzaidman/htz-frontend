@@ -18,7 +18,11 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
-import { isClickTracker, isClickTrackerWrapper, isTeaser, } from '../../../../utils/validateType';
+import {
+  isClickTracker,
+  isClickTrackerWrapper,
+  isTeaser,
+} from '../../../../utils/validateType';
 
 type Props = {
   list: ?ListDataType,
@@ -35,7 +39,13 @@ VerticalList.defaultProps = {
   biAction: null,
 };
 
-export default function VerticalList({ list, gaAction, biAction, banners, title, }: Props) {
+export default function VerticalList({
+  list,
+  gaAction,
+  biAction,
+  banners,
+  title,
+}: Props) {
   const isCommercial: boolean = !!banners;
   const firstItem = banners
     ? banners[0]
@@ -73,7 +83,10 @@ export default function VerticalList({ list, gaAction, biAction, banners, title,
               />
             ) : null}
           </GridItem>
-          <GridItem miscStyles={{ flexGrow: '1', flexBasis: 'auto', }} stretchContent>
+          <GridItem
+            miscStyles={{ flexGrow: '1', flexBasis: 'auto', }}
+            stretchContent
+          >
             {firstItem ? (
               isClickTrackerWrapper(firstItem) ? (
                 <ClickTracker
@@ -143,16 +156,24 @@ type FirstTeaserProps = {
 
 VerticalListFirstTeaser.defaultProps = { lazyLoadImages: true, };
 
-function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstTeaserProps) {
+function VerticalListFirstTeaser({
+  lazyLoadImages,
+  itemData,
+  biAction,
+}: FirstTeaserProps) {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           fillHeight={false}
           data={itemData}
-          onClick={biAction ? () => biAction({ index: 0, articleId: itemData.contentId, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 0, articleId: itemData.contentId, })
+              : null
+          }
           miscStyles={{ flexGrow: '1', flexShrink: '0', }}
-          gridMiscStyles={{ alignContent: 'stretch', }}
+          gridMiscStyles={{ alignContent: 'stretch', flexWrap: 'nowrap', }}
           isClickTracker={isClickTracker(itemData)}
           isStacked
         >
@@ -164,7 +185,11 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
           >
             <Image
               lazyLoad={lazyLoadImages}
-              data={isClickTracker(itemData) ? itemData.clicktrackerimage : itemData.image}
+              data={
+                isClickTracker(itemData)
+                  ? itemData.clicktrackerimage
+                  : itemData.image
+              }
               imgOptions={getImageAssets({
                 aspect: 'headline',
                 bps: theme.bps,
@@ -181,7 +206,10 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
           </TeaserMedia>
           <TeaserContent
             data={itemData}
-            padding={[ { until: 's', value: [ 2, 0, ], }, { from: 's', value: [ 1, 0, ], }, ]}
+            padding={[
+              { until: 's', value: [ 2, 0, ], },
+              { from: 's', value: [ 1, 0, ], },
+            ]}
             isStacked
             gridItemMiscStyles={{
               paddingInlineEnd: '1rem',
@@ -193,13 +221,14 @@ function VerticalListFirstTeaser({ lazyLoadImages, itemData, biAction, }: FirstT
             }}
             renderContent={() => (
               <TeaserHeader
-                title={isClickTracker(itemData) ? itemData.text || '' : itemData.title}
+                title={
+                  isClickTracker(itemData)
+                    ? itemData.text || ''
+                    : itemData.title
+                }
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
-                typeScale={[
-                  { until: 's', value: 0, },
-                  { from: 's', value: -1, },
-                ]}
+                typeScale={[ { until: 's', value: 0, }, { from: 's', value: -1, }, ]}
                 kickerTypeScale={[
                   { until: 's', value: 0, },
                   { from: 's', value: -1, },
@@ -221,12 +250,21 @@ type VerticalListTeaserProps = FirstTeaserProps & {
 // eslint-disable-next-line react/default-props-match-prop-types
 VerticalListTeaser.defaultProps = { isLast: false, lazyLoadImages: true, };
 
-function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalListTeaserProps) {
+function VerticalListTeaser({
+  itemData,
+  biAction,
+  index,
+  isLast,
+}: VerticalListTeaserProps) {
   return (
     <Teaser
       fillHeight={false}
       data={itemData}
-      onClick={biAction ? () => biAction({ index, articleId: itemData.contentId, }) : null}
+      onClick={
+        biAction
+          ? () => biAction({ index, articleId: itemData.contentId, })
+          : null
+      }
       miscStyles={{ flexGrow: '1', flexShrink: '0', }}
       gridMiscStyles={{ alignContent: 'stretch', flexDirection: 'column', }}
       isClickTracker={isClickTracker(itemData)}
@@ -235,7 +273,10 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
         render={theme => (
           <TeaserContent
             data={itemData}
-            padding={[ { until: 's', value: [ 2, 0, ], }, { from: 's', value: [ 1, 0, ], }, ]}
+            padding={[
+              { until: 's', value: [ 2, 0, ], },
+              { from: 's', value: [ 1, 0, ], },
+            ]}
             gridItemMiscStyles={{
               flexBasis: 'auto',
               flexGrow: 1,
@@ -247,13 +288,22 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
               ...(isLast
                 ? {}
                 : {
-                  borderBottom: [ '1px', 1, 'solid', theme.color('neutral', '-5'), ],
+                  borderBottom: [
+                    '1px',
+                    1,
+                    'solid',
+                    theme.color('neutral', '-5'),
+                  ],
                 }),
               fontWeight: [ { from: 'xl', value: 700, }, ],
             }}
             renderContent={() => (
               <TeaserHeader
-                title={isClickTracker(itemData) ? itemData.text || '' : itemData.title}
+                title={
+                  isClickTracker(itemData)
+                    ? itemData.text || ''
+                    : itemData.title
+                }
                 path={isClickTracker(itemData) ? itemData.link : itemData.path}
                 offset={1}
                 typeScale={[
@@ -263,7 +313,8 @@ function VerticalListTeaser({ itemData, biAction, index, isLast, }: VerticalList
                 ]}
                 kickerTypeScale={[
                   { until: 's', value: 0, },
-                  { from: 's', value: -1, },
+                  { from: 's', until: 'xl', value: -1, },
+                  { from: 'xl', value: -2, },
                 ]}
                 miscStyles={{ fontWeight: '400', }}
               />
