@@ -39,10 +39,15 @@ export default function ListDataGetter({
 }: ListDataGetterProps): React.Node {
   const isSsr = listData && listData.loadPriority === 'ssr';
 
+  // Because of the problems with mix of Client and Server side render
+  // we need a white-list to ensure that the Client-side lists of the
+  // article page will not be blocked by the next condition.
+  const clientSideLists: Array<string> = [ 'leela', 'farnsworth', 'bender', 'zoidberg', ];
+
   // TODO: Figure out why mixing client-side rendered lists and
   //       server-side rendered lists breaks the page and remove
   //       this line
-  if (!isSsr) return null;
+  if (!isSsr && !clientSideLists.includes(view.toLowerCase())) return null;
 
   return (
     <Query query={query} variables={variables} skip={isSsr}>
