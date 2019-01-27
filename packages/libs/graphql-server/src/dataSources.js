@@ -208,6 +208,10 @@ class SsoAPI extends RESTDataSource {
     return this.context.ssoService;
   }
 
+  async getUserExpiredDate(userData) {
+    return this.get('sso/r/getSubscriptionDetails', userData);
+  }
+
   // TODO: check that this function works well
   async overrideMobilePhone({ mobile, ssoId, userName, }) {
     const { prefix, suffix, } = UserTransformations.mobileNumberParser(mobile);

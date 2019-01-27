@@ -107,6 +107,16 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
+    userExpired: {
+      type: GraphQLJSON,
+      args: {
+        ssoid: { type: new GraphQLNonNull(GraphQLString), },
+        product: { type: new GraphQLNonNull(GraphQLString), },
+      },
+      resolve(parentValue, args, { dataSources, }) {
+        return dataSources.SsoAPI.getUserExpiredDate(args);
+      },
+    },
     // reset password currently only used by purchase page, will be used by more apps later
     resetPassword: {
       args: { userName: { type: new GraphQLNonNull(GraphQLString), }, },

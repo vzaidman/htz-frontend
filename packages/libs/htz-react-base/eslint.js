@@ -40,15 +40,9 @@ module.exports = {
     /* Warn when referencing an undefined variable */
     'no-undef': [ 2, ],
     /* Forbid expressions that are never used */
-    'no-unused-expressions': [
-      2,
-      { allowShortCircuit: true, allowTernary: true, },
-    ],
+    'no-unused-expressions': [ 2, { allowShortCircuit: true, allowTernary: true, }, ],
     /* Throw when declaring a variable without using it */
-    'no-unused-vars': [
-      2,
-      { vars: 'local', args: 'none', ignoreRestSiblings: true, },
-    ],
+    'no-unused-vars': [ 2, { vars: 'local', args: 'none', ignoreRestSiblings: true, }, ],
     'no-warning-comments': [ 1, { terms: [ 'fixme', 'todo', ], location: 'start', }, ],
     'object-curly-newline': 0,
     'prefer-destructuring': 0,
@@ -91,12 +85,7 @@ module.exports = {
     /* Arrow function rules */
     'arrow-parens': [ 'error', 'as-needed', ],
     /* disallow certain syntax forms */
-    'no-restricted-syntax': [
-      2,
-      'DebuggerStatement',
-      'LabeledStatement',
-      'WithStatement',
-    ],
+    'no-restricted-syntax': [ 2, 'DebuggerStatement', 'LabeledStatement', 'WithStatement', ],
     /* Allow __HTZ_DATA__ name */
     'no-underscore-dangle': [ 'error', { allow: [ '__HTZ_DATA__', ], }, ],
 
@@ -126,25 +115,15 @@ module.exports = {
     /* eslint/react related rules */
     'react/jsx-filename-extension': [ 1, { extensions: [ '.js', '.jsx', ], }, ],
     'react/destructuring-assignment': 'off',
-    'react/require-default-props': [
-      'error',
-      { forbidDefaultForRequired: false, },
-    ],
-    'react/default-props-match-prop-types': [
-      'error',
-      { allowRequiredDefaults: true, },
-    ],
+    'react/require-default-props': [ 'error', { forbidDefaultForRequired: false, }, ],
+    'react/default-props-match-prop-types': [ 'error', { allowRequiredDefaults: true, }, ],
 
     /* eslint/jsx-11y related rules */
     'jsx-a11y/anchor-is-valid': 0,
 
     // Flow-type rules
     'flowtype/delimiter-dangle': [ 'error', 'always', ],
-    'flowtype/space-after-type-colon': [
-      'error',
-      'always',
-      { allowLineBreak: true, },
-    ],
+    'flowtype/space-after-type-colon': [ 'error', 'always', { allowLineBreak: true, }, ],
   },
 
   overrides: [

@@ -17,6 +17,8 @@ import A11yDialog from './components/A11yDialog/A11yDialog';
 import A11yError from './components/A11yError/A11yError';
 import AboveBlockLink from './components/BlockLink/AboveBlockLink';
 import ActionButtons from './components/ActionButtons/ActionButtons';
+import Astronaut from './components/illustrations/Astronaut/Astronaut';
+
 import ApolloConsumer from './components/ApolloBoundary/ApolloConsumer';
 import AriaDescription from './components/AriaDescription/AriaDescription';
 import AriaLive from './components/AriaLive/AriaLive';
@@ -62,6 +64,7 @@ import MainBlock from './components/HomePageMainBlock/MainBlock.js';
 import Masthead from './components/Masthead/Masthead';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
+import MarketingNotificationProvider from './components/MarketingNotifications/MarketingNotificationProvider';
 import Mutation from './components/ApolloBoundary/Mutation';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
@@ -247,6 +250,7 @@ export {
   A11yError,
   AboveBlockLink,
   ActionButtons,
+  Astronaut,
   ApolloConsumer,
   AriaDescription,
   AriaLive,
@@ -291,6 +295,7 @@ export {
   Masthead,
   Media,
   MobileQuickRegistration,
+  MarketingNotificationProvider,
   Mutation,
   NavigationMenu,
   Newsletter,

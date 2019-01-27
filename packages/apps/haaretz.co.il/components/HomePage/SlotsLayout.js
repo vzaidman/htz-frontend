@@ -6,6 +6,7 @@ import {
   LayoutContainer,
   componentFromInputTemplate,
   HeaderSlot,
+  MarketingNotificationProvider,
   BIRequest,
 } from '@haaretz/htz-components';
 
@@ -42,6 +43,7 @@ function HomePageSlotsLayout({
 
   return (
     <React.Fragment>
+      <MarketingNotificationProvider />
       <BIRequest />
       {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside HeaderSlot Component because its miscStyles depend on state */}

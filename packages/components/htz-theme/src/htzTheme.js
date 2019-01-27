@@ -60,6 +60,7 @@ import {
   zoominText,
   zoomoutText,
   selectAriaLabel,
+  marketingTools,
 } from './consts/i18n';
 
 // methods
@@ -142,6 +143,7 @@ const htzTheme = Object.freeze({
   zoominText,
   zoomoutText,
   selectAriaLabel,
+  marketingTools,
   // Methods
   color: getColor,
   getDelay,

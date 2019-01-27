@@ -97,9 +97,7 @@ export const commentFormI18n = Object.freeze({
   buttons: Object.freeze({
     sendBtnTxt: 'שלחו',
     cancelBtnTxt: 'בטלו',
-    toggleUserBtnText: identified => (identified
-      ? 'להוספת תגובה אנונימית לחצו כאן'
-      : 'להוספת תגובה מזוהה לחצו כאן'),
+    toggleUserBtnText: identified => (identified ? 'להוספת תגובה אנונימית לחצו כאן' : 'להוספת תגובה מזוהה לחצו כאן'),
   }),
   labels: Object.freeze({
     nameLabelTxt: 'שם',
@@ -107,8 +105,7 @@ export const commentFormI18n = Object.freeze({
   }),
   notes: Object.freeze({
     nameNoteTxt: 'הזינו שם שיוצג כמחבר התגובה',
-    commentNoteTxt:
-      'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
+    commentNoteTxt: 'בשליחת תגובה זו הנני מצהיר שהינני מסכים/ה עם תנאי השימוש של אתר הארץ',
   }),
   errorNotes: Object.freeze({
     nameErrorNoteTxt: 'חובה להזין שם',
@@ -134,11 +131,9 @@ export const commentSentI18n = Object.freeze({
   texts: Object.freeze({
     commentRecievedBoldText: 'תגובתך נקלטה בהצלחה, ',
     commentRecievedText: 'ותפורסם על פי מדיניות המערכת.',
-    commentRecievedTextSecondRow:
-      'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
+    commentRecievedTextSecondRow: 'באפשרותך לקבל התראה בדוא"ל כאשר תגובתך תאושר ותפורסם',
     commentRecievedBoldTextThankYouPage: 'תודה!',
-    commentRecievedTextThankYouPage:
-      'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
+    commentRecievedTextThankYouPage: 'תגובתך נקלטה בהצלחה ותפורסם על פי מדיניות המערכת',
   }),
 });
 export const commentsSectionI18n = Object.freeze({
@@ -180,8 +175,7 @@ export const footerMobileListsI18n = Object.freeze({
     }),
     Object.freeze({
       text: 'פרסמו באתר',
-      link:
-        'mailto:advertisinghaaretz@haaretz.co.il',
+      link: 'mailto:advertisinghaaretz@haaretz.co.il',
     }),
     Object.freeze({
       text: 'שירות למנויים',
@@ -368,4 +362,22 @@ export const breakingNewsStrip = Object.freeze({
   play: 'הפעל',
   toPrevItem: 'למבזק קודם',
   toNextItem: 'למבזק הבא',
+});
+
+export const marketingTools = Object.freeze({
+  EmailConfirmation: {
+    buttonText: 'לחצו כאן',
+    buttonTextAfterClick: 'תודה',
+    text1: 'זה באמת אתם?',
+    text2: 'כדי לקרוא בחינם 6 כתבות בחודש יש לבצע אימות',
+    text2AfterClick: 'יש לאשר את ההודעה מתוך תיבת האימייל שלך',
+
+  },
+  Weekly: {
+    buttonText: 'לפרטים נוספים',
+    text1: 'כל תכני הארץ בכל מכשיר בכל זמן',
+    text2: 'פחות פרסומות ובאנרים',
+    weeklyLink: '',
+    url: 'https://promotions.haaretz.co.il/promotions-page/product?offer=sale-htz&_ga=2.36776032.1903070321.1547973707-1620996918.1546958670',
+  },
 });

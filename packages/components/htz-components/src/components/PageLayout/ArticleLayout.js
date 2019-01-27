@@ -141,7 +141,6 @@ const ArticlePageLayout = ({
           );
         }}
       </Query>
-      <LayoutRow bgc={rowBgc} idName="modalsRoot" />
     </Fragment>
   );
 };
