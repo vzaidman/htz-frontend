@@ -126,6 +126,7 @@ export default function Spawn({
                   index={2}
                   isStackedFromS
                   lazyLoadImages={lazyLoadImages}
+                  isFooterBottom
                 />
               ) : (
                 <Debug>There is no data for this teaser</Debug>
@@ -146,6 +147,7 @@ export default function Spawn({
                   index={3}
                   isStackedFromS
                   lazyLoadImages={lazyLoadImages}
+                  isFooterBottom
                 />
               ) : (
                 <Debug>There is no data for this teaser</Debug>
@@ -166,6 +168,7 @@ export default function Spawn({
                   index={4}
                   isStackedFromS
                   lazyLoadImages={lazyLoadImages}
+                  isFooterBottom
                 />
               ) : (
                 <Debug>There is no data for this teaser</Debug>
@@ -553,10 +556,11 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
 type OpEdTeaserPropTypes = TeaserPropTypes & {
   hasMarginTop: boolean,
   isStackedFromS: boolean,
+  isFooterBottom: boolean,
 };
 
 // eslint-disable-next-line react/default-props-match-prop-types
-OpEdTeaser.defaultProps = { lazyLoadImages: true, isStackedFromS: false, hasMarginTop: false, };
+OpEdTeaser.defaultProps = { lazyLoadImages: true, isStackedFromS: false, hasMarginTop: false, isFooterBottom: false, };
 
 function OpEdTeaser({
   biAction,
@@ -564,6 +568,7 @@ function OpEdTeaser({
   hasMarginTop,
   index,
   isStackedFromS,
+  isFooterBottom,
   lazyLoadImages,
 }: OpEdTeaserPropTypes): React.Node {
   return (
@@ -697,6 +702,15 @@ function OpEdTeaser({
             footerMiscStyles={{
               marginTop: isStackedFromS ? [ { until: 's', value: '0', }, ] : '0',
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+              ...(isFooterBottom
+                ? {
+                  position: [ { from: 'xl', value: 'absolute', }, ],
+                  bottom: [ { from: 'xl', value: '1rem', }, ],
+                  left: [ { from: 'xl', value: 0, }, ],
+                  right: [ { from: 'xl', value: 0, }, ],
+                }
+                : {}
+              ),
             }}
             renderContent={() => (
               <React.Fragment>
