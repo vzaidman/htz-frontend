@@ -194,10 +194,7 @@ export default function ListViewHeader({
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
-                  theme.mq(
-                    { from: 's', until: 'l', },
-                    { direction: 'ltr', paddingStart: '2rem', }
-                  ),
+                  theme.mq({ from: 's', until: 'l', }, { direction: 'ltr', paddingStart: '2rem', }),
                   theme.mq({ until: 'l', }, { fontWeight: '700', }),
                   theme.type(-1, { fromBp: 's', untilBp: 'l', }),
                   theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
@@ -217,7 +214,6 @@ export default function ListViewHeader({
                   render="li"
                   key={item.contentId}
                 >
-<<<<<<< HEAD
                   <FelaComponent
                     style={{
                       ':hover': {
@@ -225,21 +221,19 @@ export default function ListViewHeader({
                       },
                     }}
                     render={({ className, }) => (
-                      <HtzLink href={item.href} className={className}>
+                      <HtzLink
+                        href={item.href}
+                        className={className}
+                        onClick={
+                          biAction
+                            ? () => biAction({ index: idx, articleId: item.contentId, })
+                            : null
+                        }
+                      >
                         {item.linkText || item.contentName}
                       </HtzLink>
                     )}
                   />
-=======
-                  <HtzLink
-                    href={item.href}
-                    onClick={
-                      biAction ? () => biAction({ index: idx, articleId: item.contentId, }) : null
-                    }
-                  >
-                    {item.linkText || item.contentName}
-                  </HtzLink>
->>>>>>> feat(hp bi actions part2): homepage bi action part2
                   {idx !== extraLinks.length - 1 && (
                     <FelaComponent
                       style={{
@@ -275,12 +269,8 @@ export default function ListViewHeader({
                           <IconAlefLogoTransparent color="secondary" size={3} />
                           <FelaComponent
                             style={{ color: theme.color('secondary'), }}
-                            render={({
-                              className: marketingHeaderClassName,
-                            }) => (
-                              <H className={marketingHeaderClassName}>
-                                {marketingTeaser.title}
-                              </H>
+                            render={({ className: marketingHeaderClassName, }) => (
+                              <H className={marketingHeaderClassName}>{marketingTeaser.title}</H>
                             )}
                           />
 
