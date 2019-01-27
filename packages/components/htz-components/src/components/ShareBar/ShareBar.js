@@ -100,10 +100,10 @@ class ShareBar extends React.Component<Props, State> {
             <FelaComponent style={{ display: 'flex', }}>
               <Query query={IS_MOUSE_STORY}>
                 {({ data: { isMouseStory, isCommentsNumberLoaded, }, }) => {
-                  const buttons = [ 'zen', 'print' ];
+                  const buttons = [ 'zen', 'print', 'save', ];
                   const hiddenButtons = [];
                   if (!isMouseStory) {
-                    buttons.push('comments');                    
+                    buttons.push('comments');
                   }
                   else if (!this.barWidth) {
                     setTimeout(() => {
@@ -121,7 +121,7 @@ class ShareBar extends React.Component<Props, State> {
                         elementUrl={canonicalUrl}
                         buttons={[ ...buttons, ]}
                         size={4.5}
-                      />                     
+                      />
                     </React.Fragment>
                   );
                 }}
