@@ -142,13 +142,13 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
                   sizes="(min-width:1280px) 1280px, 100vw"
                   srcSet={
                     Array [
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_440,w_375,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 375w",
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_499,w_425,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 425w",
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_704,w_600,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 600w",
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_901,w_768,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 768w",
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_1206,w_1028,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1028w",
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_1502,w_1280,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1280w",
-                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_2252,w_1920,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1920w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_440,w_375,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 375w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_499,w_425,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 425w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_704,w_600,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 600w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_901,w_768,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 768w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_1206,w_1028,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1028w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_1502,w_1280,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1280w",
+                      "https://images.haarets.co.il/image/upload/x_958,y_8,w_1242,h_1457,c_crop/q_auto,h_2252,w_1920,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1920w",
                     ]
                   }
                 />
@@ -157,13 +157,13 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
                   sizes="(min-width:1280px) 1280px, 100vw"
                   srcSet={
                     Array [
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 375w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_184,w_425,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 425w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_259,w_600,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 600w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_332,w_768,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 768w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_444,w_1028,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1028w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_553,w_1280,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1280w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_829,w_1920,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1920w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 375w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_184,w_425,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 425w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_259,w_600,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 600w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_332,w_768,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 768w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_444,w_1028,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1028w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_553,w_1280,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1280w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_829,w_1920,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1920w",
                     ]
                   }
                 />
@@ -171,16 +171,16 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
                   alt="יונה יהב, היום"
                   className="htz-bb htz-bc htz-m htz-bd htz-b"
                   sizes="(min-width:1280px) 1280px, 100vw"
-                  src="https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg"
+                  src="https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg"
                   srcSet={
                     Array [
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 375w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_184,w_425,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 425w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_259,w_600,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 600w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_332,w_768,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 768w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_444,w_1028,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1028w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_553,w_1280,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1280w",
-                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_829,w_1920,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1920w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 375w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_184,w_425,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 425w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_259,w_600,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 600w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_332,w_768,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 768w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_444,w_1028,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1028w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_553,w_1280,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1280w",
+                      "https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_829,w_1920,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg 1920w",
                     ]
                   }
                   title="יונה יהב, היום, צילום: רמי שלוש"

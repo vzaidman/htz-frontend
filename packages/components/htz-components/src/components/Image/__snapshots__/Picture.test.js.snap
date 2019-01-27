@@ -10,7 +10,7 @@ exports[`<Picture /> Render picture element correctly 1`] = `
         media="screen and (min-width: 600px) and (max-width: 1023px) and (orientation: landscape)"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg 1045w",
+            "https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg 1045w",
           ]
         }
       />
@@ -19,9 +19,9 @@ exports[`<Picture /> Render picture element correctly 1`] = `
         sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 280px"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 145w",
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_309,w_645,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 645w",
-            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_480,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 945w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto:best,h_100,w_145,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 145w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_309,w_645,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 645w",
+            "https://images.haarets.co.il/image/upload/w_394,h_200,x_33,y_0,c_crop/q_auto,h_480,w_945,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1515097953/1.5599867.4030303706.gif 945w",
           ]
         }
         type="image/webp"
@@ -30,10 +30,10 @@ exports[`<Picture /> Render picture element correctly 1`] = `
         alt="this alt from data"
         className="htz-h htz-i htz-j htz-k htz-b"
         sizes="(min-width:1420px) 610px,(min-width:1320px) 500px, 280px"
-        src="https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg"
+        src="https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg 1045w",
+            "https://images.haarets.co.il/image/upload/w_1680,h_1260,x_0,y_0,c_crop/q_auto,h_784,w_1045,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1516524320/1.5748461.2092337187.jpg 1045w",
           ]
         }
         title="צילום: this is title/credit"
@@ -55,7 +55,7 @@ exports[`<Picture /> Render picture sources with animated gifs correctly 1`] = `
         media="(max-width: 767px)"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.webp 1045w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.webp 1045w",
           ]
         }
         type="image/webp"
@@ -64,18 +64,18 @@ exports[`<Picture /> Render picture sources with animated gifs correctly 1`] = `
         media="(max-width: 767px)"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.gif 1045w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.gif 1045w",
           ]
         }
       />
       <img
         alt="סיכות של קמפיים #METOO"
         className="htz-g htz-h htz-i htz-j htz-b"
-        src="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
+        src="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 745w",
-            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 945w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 745w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 945w",
           ]
         }
         title="צילום: LUCY NICHOLSON/רויטרס"
@@ -97,7 +97,7 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         media="(max-width: 767px)"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 1045w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_883,x_0,y_70,c_crop/q_auto,h_451,w_1045,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 1045w",
           ]
         }
       />
@@ -105,9 +105,9 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         media="(max-width: 1279px)"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto:best,h_433,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 745w",
-            "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto,h_549,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 945w",
-            "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto,h_706,w_1215,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 1215w",
+            "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto:best,h_433,w_745,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 745w",
+            "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto,h_549,w_945,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 945w",
+            "https://images.haarets.co.il/image/upload/w_2033,h_1181,x_15,y_77,c_crop/q_auto,h_706,w_1215,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1518001678/1.5803155.392731171.jpg 1215w",
           ]
         }
         type="image/jpeg2000"
@@ -116,9 +116,9 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         media="(min-width: 1280px) and (orientation: landscape)"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto:best,h_148,w_345,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 345w",
-            "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto,h_309,w_645,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 645w",
-            "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto,h_406,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 945w",
+            "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto:best,h_148,w_345,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 345w",
+            "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto,h_309,w_645,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 645w",
+            "https://images.haarets.co.il/image/upload/w_1325,h_569,x_0,y_90,c_crop/q_auto,h_406,w_945,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1518084212/1.5804697.3063850623.gif 945w",
           ]
         }
         type="image/webp"
@@ -128,11 +128,11 @@ exports[`<Picture /> Render picture with mixed aspects 1`] = `
         aria-hidden={true}
         className="htz-i htz-j htz-k htz-l htz-b"
         role="presentation"
-        src="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
+        src="https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg"
         srcSet={
           Array [
-            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 745w",
-            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 945w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto:best,h_434,w_745,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 745w",
+            "https://images.haarets.co.il/image/upload/w_2048,h_1192,x_0,y_74,c_crop/q_auto,h_550,w_945,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1517913716/1.5791650.2196292809.jpg 945w",
           ]
         }
         title="צילום: LUCY NICHOLSON/רויטרס"

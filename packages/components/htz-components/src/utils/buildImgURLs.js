@@ -191,7 +191,7 @@ export function buildUrl(contentId, data, options = {}) {
   )},c_fill,f_auto`;
 
   const { transforms, flags, } = settings;
-  const baseFlags = `/fl_any_format.preserve_transparency.progressive:${
+  const baseFlags = `/fl_lossy.any_format.preserve_transparency.progressive:${
     settings.isProgressive ? 'steep' : 'none'
   }`;
   // eslint-disable-next-line eqeqeq
