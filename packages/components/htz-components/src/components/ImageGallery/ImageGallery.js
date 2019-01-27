@@ -369,6 +369,7 @@ const Gallery = ({
                           display: 'flex',
                           flexWrap: 'nowrap',
                           position: 'relative',
+                          paddingBottom: '8rem',
                           extend: [
                             theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
                             theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
@@ -465,6 +466,10 @@ const Gallery = ({
                         <FelaComponent
                           style={{
                             display: 'none',
+                            position: 'absolute',
+                            bottom: '0',
+                            start: '50%',
+                            transform: 'translateX(50%)',
                             extend: [
                               theme.mq(
                                 { from: 'm', misc: 'landscape', },
