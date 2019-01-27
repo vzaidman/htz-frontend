@@ -16,6 +16,7 @@ type Props = {
   text2: string,
   buttonUrl: string,
   onClose: ?() => void,
+  onSubmit: ?() => void,
 };
 
 WeeklyNotification.defaultProps = {
@@ -31,6 +32,7 @@ export default function WeeklyNotification({
   text2,
   buttonUrl,
   onClose,
+  onSubmit,
 }: Props): Node {
   return (
     <A11yDialog
@@ -63,6 +65,7 @@ export default function WeeklyNotification({
                 <Button
                   variant={style.buttonVariant}
                   href={buttonUrl}
+                  onSubmit={onSubmit}
                   miscStyles={style.button(theme)}
                 >
                   {buttonText}

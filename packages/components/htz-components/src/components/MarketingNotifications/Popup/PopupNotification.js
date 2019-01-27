@@ -17,6 +17,7 @@ type Props = {
   text2: ?string,
   buttonUrl: ?string,
   onClose: ?() => void,
+  onSubmit: ?() => void,
   icon: 'IconHourglass' | 'IconHourglassRunningOut',
 };
 
@@ -41,6 +42,7 @@ export default function PopupNotification({
   buttonUrl,
   onClose,
   icon,
+  onSubmit,
 }: Props): Node {
   return (
     <A11yDialog
@@ -70,6 +72,7 @@ export default function PopupNotification({
                 <Button
                   variant={style.buttonVariant}
                   href={buttonUrl}
+                  onClick={onSubmit}
                   miscStyles={style.button(theme)}
                 >
                   {buttonText}

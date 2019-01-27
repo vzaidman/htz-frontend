@@ -3,6 +3,7 @@
 import React from 'react';
 import type { Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
+import ReactGA from 'react-ga';
 import * as style from './BottomStripStyle';
 import Button from '../../Button/Button';
 import IconClose from '../../Icon/icons/IconClose';
@@ -16,6 +17,7 @@ type Props = {
   text2: ?string,
   buttonUrl: ?string,
   color: 'yellow' | 'blue' | 'lightblue',
+  onSubmit: ?() => void,
 };
 
 type State = {
@@ -78,11 +80,12 @@ export default class BottomStripNotification extends React.Component<Props, Stat
           : 0,
       shouldRender: true,
     });
+    ReactGA.ga('ec:addPromo', { name: 'Header - Blue Strip', id: 'hp-header-blue-strip', position: 'Header', });
   }
 
   render(): Node {
     if (!this.state.shouldRender) return null;
-    const { buttonText, text1, text2, buttonUrl, color, } = this.props;
+    const { buttonText, text1, text2, buttonUrl, color, onSubmit, } = this.props;
     const isSmall = this.state.mode === 'small';
     return (
       <WrappedScroll
@@ -131,6 +134,7 @@ export default class BottomStripNotification extends React.Component<Props, Stat
                       <Button
                         variant={style.buttonVariant}
                         href={buttonUrl}
+                        onClick={onSubmit}
                         miscStyles={style.button(theme, isSmall)}
                       >
                         {buttonText}

@@ -5,10 +5,12 @@ import type { Node, } from 'react';
 import { FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 import { CookieUtils, } from '@haaretz/htz-user-utils';
+import ReactGA from 'react-ga';
 import Query from '../ApolloBoundary/Query';
 import MarketingNotification from './MarketingNotification';
 import NoSSR from '../NoSSR/NoSSR';
 import UserDispenser from '../User/UserDispenser';
+import * as gaData from './ga_data';
 
 const GET_NOTIFICATION_DATA: Object = gql`
   query GetNotificationData($path: String!, $ssoid: String!, $product: String!) {
@@ -113,8 +115,8 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
     }
 
     if (!preHeader) return null;
-    // const debug = {timeToExired: 13, userType: 'regular', };
-    const debug = null;
+    const debug = { timeToExired: 13, userType: 'regular', };
+    //const debug = null;
     const { timeToExired, medPopupAllOptions, userType, } = this.getMadPopupBasicDataBlocks(
       debug,
       userExpiredJson,
@@ -183,6 +185,13 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
         const expire = new Date(expireMs);
         setCookie('anonPopup', 'popup', '/', 'haaretz.co.il', expire);
       }}
+      onSubmit={() => {
+        ReactGA.ga('ec:setAction', 'promo_click');
+        ReactGA.ga('send', 'event', 'Internal Promotions', 'click', gaData.Weekly.name);
+        const expireMs = Date.now() + 7 * 24 * 3600 * 10000; // 7 days
+        const expire = new Date(expireMs);
+        setCookie('anonPopup', 'popup', '/', 'haaretz.co.il', expire);
+      }}
     />
   );
 
@@ -201,9 +210,22 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
             : 'IconHourglass'
           : null
       }
+      promoCode={
+        (timeToExired > 0 ? 'befor' : 'after')
+        + foundedPopupContent.daysFromExpiration
+        + foundedPopupContent.subscriberType
+      }
       text1={foundedPopupContent.text}
       buttonUrl={foundedPopupContent.buttonLink}
       text2={popupBoldText}
+      onSubmit={() => {
+        const promoCode = (timeToExired > 0 ? 'befor' : 'after')
+          + foundedPopupContent.daysFromExpiration
+          + foundedPopupContent.subscriberType;
+        
+        ReactGA.ga('ec:setAction', 'promo_click');
+        ReactGA.ga('send', 'event', 'Internal Promotions', 'click', gaData.Popup[promoCode].name);
+      }}
     />
   );
 
@@ -271,6 +293,16 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
                         buttonText={topStripData.actionText}
                         text1={this.striptText ? this.striptText : topStripData.text}
                         buttonUrl={topStripData.actionUrl}
+                        onSubmit={() => {
+                          ReactGA.ga('ec:setAction', 'promo_click');
+                          ReactGA.ga(
+                            'send',
+                            'event',
+                            'Internal Promotions',
+                            'click',
+                            gaData.Strip.name
+                          );
+                        }}
                       />
                     ) : null;
 
@@ -282,6 +314,16 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
                         text2={bottomStripData.text2}
                         color={bottomStripData.theme}
                         buttonUrl={bottomStripData.actionUrl}
+                        onSubmit={() => {
+                          ReactGA.ga('ec:setAction', 'promo_click');
+                          ReactGA.ga(
+                            'send',
+                            'event',
+                            'Internal Promotions',
+                            'click',
+                            gaData.BottomStrip.name
+                          );
+                        }}
                       />
                     ) : null;
 

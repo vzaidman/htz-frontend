@@ -11,6 +11,7 @@ type Props = {
   text1: ?string,
   buttonUrl: ?string,
   closeNotification: (?Object) => void,
+  onSubmit: ?()=> void,
 };
 
 MarketingNotificationInner.defaultProps = {
@@ -25,6 +26,7 @@ export default function MarketingNotificationInner({
   text1,
   buttonUrl,
   closeNotification,
+  onSubmit,
 }: Props): Node {
   return (
     <FelaComponent
@@ -36,6 +38,7 @@ export default function MarketingNotificationInner({
             <Button
               variant={style.buttonVariant}
               href={buttonUrl}
+              onClick={onSubmit}
               miscStyles={style.button(theme)}
             >
               {buttonText}

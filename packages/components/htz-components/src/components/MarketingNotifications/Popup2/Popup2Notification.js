@@ -14,6 +14,7 @@ type Props = {
   text2: ?string,
   buttonUrl: ?string,
   onClose: ?() => void,
+  onSubmit: ?()=> void,
 };
 
 Popup2.defaultProps = {
@@ -31,6 +32,7 @@ export default function Popup2({
   text2,
   buttonUrl,
   onClose,
+  onSubmit,
 }: Props): Node {
   return (
     <A11yDialog
@@ -60,6 +62,7 @@ export default function Popup2({
                 <Button
                   variant={style.buttonVariant}
                   href={buttonUrl}
+                  onClick={onSubmit}
                   miscStyles={style.button(theme)}
                 >
                   {buttonText}
