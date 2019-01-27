@@ -204,7 +204,7 @@ function textWrapperStyle(theme) {
     position: 'absolute',
     right: '0',
     zIndex: '2',
-    maxWidth: '70%',
+    maxWidth: '90%',
     extend: [
       // The text is outside the flow of the verticle rhythm,
       // so it is okay to use uneven numbers for `lines` to
@@ -221,7 +221,7 @@ function textWrapperStyle(theme) {
 function innerTextStyle(theme) {
   return {
     padding: '1rem',
-    backgroundColor: rgba(theme.color('quaternary', 'base'), 0.85),
+    backgroundColor: rgba(theme.color('quaternary', 'base'), 0.95),
     display: 'inline',
     boxDecorationBreak: 'clone',
     paddingRight: '1rem',
