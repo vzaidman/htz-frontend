@@ -110,6 +110,11 @@ export default function Slugs({
           <GridItem
             key={banner.contentId}
             width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 2 / 12, }, ]}
+            miscStyles={{
+              display: [ { from: 'l', value: 'flex', }, ],
+              alignItems: [ { from: 'l', value: 'center', }, ],
+              justifyContent: [ { from: 'l', value: 'center', }, ],
+            }}
           >
             <GeneralAdSlot {...banner} styleRule={bannerStyle} />
           </GridItem>
@@ -122,7 +127,19 @@ export default function Slugs({
 function bannerStyle({ theme, }) {
   return {
     extend: [
-      theme.mq({ until: 's', }, { ':not(:empty)': { marginTop: '2rem', }, }),
+      theme.mq({ until: 's', }, { ':not(:empty)': {
+        marginTop: '5rem',
+        '&::before': {
+          content: '"- פרסומת -"',
+          color: theme.color('neutral', -3),
+          display: 'block',
+          paddingTop: '0rem',
+          paddingBottom: '0rem',
+          textAlign: 'center',
+          ...theme.type(-2),
+        },
+      },
+      }),
       theme.mq(
         { from: 's', until: 'xl', },
         { ':not(:empty)': { marginTop: '4rem', }, }

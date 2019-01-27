@@ -233,34 +233,34 @@ export default class Zombie extends React.Component<Props, State> {
                     />
                   </Grid>
                 </GridItem>
+                {dfp && dfp.length > 0
+                  ? dfp.map(banner => (
+                    <GridItem
+                      key={banner.contentId}
+                      width={[
+                        { until: 's', value: 1, },
+                        { from: 'xl', value: 4 / 10, },
+                      ]}
+                      miscStyles={{
+                        paddingStart: [ { until: 's', value: '2rem', }, ],
+                        paddingEnd: [ { until: 's', value: '2rem', }, ],
+                        display: [
+                          { until: 's', value: 'block', },
+                          { from: 's', until: 'xl', value: 'none', },
+                          { from: 'xl', value: 'flex', },
+                        ],
+                        alignItems: [ { from: 'xl', value: 'center', }, ],
+                        justifyContent: [ { from: 'xl', value: 'center', }, ],
+                        width: [ { until: 's', value: '300px', }, ],
+                        height: [ { until: 's', value: '250px', }, ],
+                      }}
+                    >
+                      <GeneralAdSlot {...banner} styleRule={bannerStyle} />
+                    </GridItem>
+                  ))
+                  : null}
               </Grid>
             </GridItem>
-            {dfp && dfp.length > 0
-              ? dfp.map(banner => (
-                <GridItem
-                  key={banner.contentId}
-                  width={[
-                    { until: 's', value: 1, },
-                    { from: 'xl', value: 4 / 10, },
-                  ]}
-                  miscStyles={{
-                    paddingStart: [ { until: 's', value: '2rem', }, ],
-                    paddingEnd: [ { until: 's', value: '2rem', }, ],
-                    marginTop: [ { until: 'l', value: '4rem', }, ],
-                    marginBottom: [ { until: 's', value: '4rem', }, ],
-                    display: [
-                      { until: 's', value: 'block', },
-                      { from: 's', until: 'xl', value: 'none', },
-                      { from: 'xl', value: 'block', },
-                    ],
-                    width: [ { until: 's', value: '300px', }, ],
-                    height: [ { until: 's', value: '250px', }, ],
-                  }}
-                >
-                  <GeneralAdSlot {...banner} />
-                </GridItem>
-              ))
-              : null}
           </Grid>
         </GridItem>
       </ListView>
@@ -669,3 +669,25 @@ function stockStyle(theme: Object) {
     ),
   };
 }
+
+function bannerStyle({ theme, }) {
+  return {
+    extend: [
+      theme.mq({ until: 's', }, { ':not(:empty)': {
+        marginTop: '5rem',
+        marginBottom: '5rem',
+        '&::before': {
+          content: '"- פרסומת -"',
+          color: theme.color('neutral', -3),
+          display: 'block',
+          paddingTop: '0rem',
+          paddingBottom: '0rem',
+          textAlign: 'center',
+          ...theme.type(-2),
+        },
+      },
+      }),
+    ],
+  };
+}
+

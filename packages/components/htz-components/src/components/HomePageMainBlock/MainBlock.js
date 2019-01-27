@@ -55,23 +55,17 @@ export default function MainBlock({
             },
             {
               from: 's',
+              until: 'l',
               value: 4,
             },
           ],
-          paddingInlineStart: [
-            { from: 'l', until: 'xl', value: '4rem', },
-            { from: 'xl', value: '4rem', },
-          ],
-          paddingInlineEnd: [
-            { from: 'l', until: 'xl', value: '2rem', },
-            { from: 'xl', value: '4rem', },
-          ],
+          display: [ { until: 's', value: 'none', }, { from: 'l', value: 'flex', }, ],
+          alignItems: [ { from: 'l', value: 'center', }, ],
+          justifyContent: [ { from: 'l', value: 'center', }, ],
           order: [
             { from: 'l', until: 'xl', value: 5, },
             ...(isWideMain ? [ { from: 'xl', value: 5, }, ] : []),
-          ],
-          display: [ { until: 's', value: 'none', }, ],
-        }}
+          ], }}
       >
         <GeneralAdSlot {...slotB} />
       </GridItem>
@@ -84,6 +78,7 @@ export default function MainBlock({
             { from: 'l', until: 'xl', value: 8 / 12, },
             { from: 'xl', value: isWideMain ? 8 / 12 : 1, },
           ],
+
         }}
       />
     </ListView>

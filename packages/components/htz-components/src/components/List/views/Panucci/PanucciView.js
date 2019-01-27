@@ -195,14 +195,11 @@ export default function Panucci({
           <GridItem
             key={banner.contentId}
             width={[ { until: 'l', value: 1, }, { from: 'l', until: 'xl', value: 2 / 12, }, { from: 'xl', value: 4 / 12, }, ]}
-            miscStyles={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: [
-                { until: 's', value: '1rem', },
-                { from: 's', until: 'l', value: '4rem', },
-              ],
+            miscStyles={{ 
+              marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ],
+              display: [ { from: 'l', value: 'flex', }, ],
+              alignItems: [ { from: 'l', value: 'center', }, ],
+              justifyContent: [ { from: 'l', value: 'center', }, ],
             }}
           >
             {/* banner content */}
@@ -220,7 +217,7 @@ function bannerStyle({ theme, }) {
     extend: [
       theme.mq({ until: 's', }, { ':not(:empty)': { marginTop: '2rem', }, }),
       theme.mq(
-        { from: 's', until: 'xl', },
+        { from: 's', until: 'l', },
         { ':not(:empty)': { marginTop: '4rem', }, }
       ),
     ],

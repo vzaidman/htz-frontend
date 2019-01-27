@@ -65,6 +65,7 @@ export default function Zapp({
               width={1}
               miscStyles={{
                 display: [ { until: 's', value: 'block', }, { from: 's', value: 'none', }, ],
+                marginTop: [ { until: 's', value: '2rem', }, ],
               }}
             >
               {/* banner content */}
