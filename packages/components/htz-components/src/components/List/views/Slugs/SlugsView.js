@@ -71,8 +71,14 @@ export default function Slugs({
         width={[ { until: 'xl', value: 1, }, { from: 'xl', value: 10 / 12, }, ]}
         miscStyle={{ display: 'flex', }}
       >
-        {/* Main teaser */}
-        <Grid gutter={4}>
+        <Grid
+          gutter={4}
+          miscStyles={{
+            height: [ { from: 'xl', value: '100%', }, ],
+          }}
+        >
+
+          {/* Main teaser */}
           <GridItem
             width={[
               { until: 'l', value: 1, },
