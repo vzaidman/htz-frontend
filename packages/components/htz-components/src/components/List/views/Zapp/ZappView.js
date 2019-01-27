@@ -16,7 +16,7 @@ type ZappPropTypes = {
   list: ListDataType,
   lazyLoadImages: boolean,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 Zapp.defaultProps = {

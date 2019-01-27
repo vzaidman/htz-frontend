@@ -22,7 +22,7 @@ type ZappItemProps = {
   lazyLoadImages: boolean,
   hideImageOnMobile: boolean,
   index: number,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 ZappItem.defaultProps = {
@@ -37,23 +37,22 @@ export default function ZappItem({
   index,
   biAction,
 }: ZappItemProps): React.Node {
+  const itemId = data.representedContent == null ? data.contentId : data.representedContent;
+
   return (
     <Teaser
       data={data}
-      onClick={() => biAction({ index, articleId: data.representedContent, })}
+      onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       isStacked={[ { from: 'l', value: true, }, ]}
     >
       <TeaserMedia
-        width={[
-          { until: 's', value: 18, },
-          { from: 's', until: 'l', value: 6 / 12, },
-        ]}
+        width={[ { until: 's', value: 18, }, { from: 's', until: 'l', value: 6 / 12, }, ]}
         data={data}
         isStacked={[ { from: 'l', value: true, }, ]}
         miscStyles={{
           ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
         }}
-        onClick={() => biAction({ index, articleId: data.representedContent, })}
+        onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       >
         <FelaTheme
           render={theme => (
@@ -108,7 +107,9 @@ export default function ZappItem({
               { from: 's', until: 'l', value: 1, },
               { from: 'l', value: 0, },
             ]}
-            onClick={() => biAction({ index, articleId: data.representedContent, })}
+            onClick={
+              biAction ? () => biAction({ index, articleId: itemId, }) : null
+            }
           />
         )}
         renderFooter={() => (

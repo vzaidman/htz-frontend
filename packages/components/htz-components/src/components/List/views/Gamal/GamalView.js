@@ -10,7 +10,7 @@ type Props = {
   list: ListDataType,
   listId: string,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 export default function Gamal(props: Props) {

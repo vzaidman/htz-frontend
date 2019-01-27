@@ -21,7 +21,7 @@ type ZappPromotedContentProps = {
   data: ClickTrackerBannerWrapperType,
   lazyLoadImages: boolean,
   index: number,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 ZappPromotedContent.defaultProps = {
@@ -50,7 +50,11 @@ export default function ZappPromotedContent({
               <BlockLink
                 href={banner.link}
                 target={banner.linkTarget}
-                onClick={() => biAction({ index, articleId: data.contentId, })}
+                onClick={
+                  biAction
+                    ? () => biAction({ index, articleId: data.contentId, })
+                    : null
+                }
               >
                 <Grid gutter={0}>
                   <GridItem width={4 / 12}>
@@ -86,7 +90,10 @@ export default function ZappPromotedContent({
                             <HtzLink
                               href={banner.link}
                               target={banner.linkTarget}
-                              onClick={() => biAction({ index, articleId: data.contentId, })
+                              onClick={
+                                biAction
+                                  ? () => biAction({ index, articleId: data.contentId, })
+                                  : null
                               }
                             >
                               <H className={className}>{banner.text}</H>

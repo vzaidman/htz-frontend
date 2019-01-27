@@ -69,6 +69,7 @@ export const teaserForGamal = gql`
     contentId
     exclusive
     exclusiveMobile
+    representedContent
     title
     titleMobile
     path

@@ -13,6 +13,7 @@ const ZappQuery = gql`
         inputTemplate
         commentsCounts
         contentId
+        representedContent
         title
         titleMobile
         subtitle

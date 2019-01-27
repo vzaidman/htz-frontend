@@ -46,7 +46,7 @@ const authorRule: ({ theme: Object, }) => Object = ({ theme, }) => ({
 
 type Props = {
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   /**
    * data object from polopoly
    */
@@ -79,7 +79,9 @@ export default function Bender({ list, lazyLoadImages, gaAction, biAction, }: Pr
         <BlockLink
           href={item.path}
           miscStyles={itemRule}
-          onClick={() => biAction({ index: i, articleId: item.representedContent, })}
+          onClick={
+            biAction ? () => biAction({ index: i, articleId: item.representedContent, }) : null
+          }
         >
           <Section isFragment>
             <FelaComponent

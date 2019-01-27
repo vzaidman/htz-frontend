@@ -11,7 +11,7 @@ type ListComponentProps = {
   list: Object,
   listId: string,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   lazyLoadImages: boolean,
 };
 export type ListDataGetterProps = {
@@ -61,7 +61,7 @@ export default function ListDataGetter({
         return (
           <EventTracker>
             {({ biAction, gaAction, HtzReactGA, }) => {
-              const clickAction = ({ index, articleId, }) => biAction({
+              const clickAction = ({ index, articleId, }) => biAction && biAction({
                 actionCode: 109,
                 additionalInfo: {
                   ArticleId: articleId,

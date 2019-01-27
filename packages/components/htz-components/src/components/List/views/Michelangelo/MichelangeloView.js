@@ -12,7 +12,7 @@ type Props = {
   list: ListDataType,
   listId: string,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 function Michelangelo({ list, ...props }: Props): Node {

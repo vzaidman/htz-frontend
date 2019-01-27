@@ -22,7 +22,7 @@ type MainGalleryProps = {
 };
 
 type MobileGalleryTeaserProps = MainGalleryProps & {
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 type RelatedGalleryProps = MobileGalleryTeaserProps & {
@@ -89,14 +89,8 @@ export function MainGallery({ item, }: MainGalleryProps): Node {
                 position={100}
                 {...getCaptionProps(previousImage, previousItemIndex)}
               />
-              <CaptionElement
-                position={0}
-                {...getCaptionProps(image, displayItemNum)}
-              />
-              <CaptionElement
-                position={-100}
-                {...getCaptionProps(nextImage, nextItemIndex)}
-              />
+              <CaptionElement position={0} {...getCaptionProps(image, displayItemNum)} />
+              <CaptionElement position={-100} {...getCaptionProps(nextImage, nextItemIndex)} />
             </FelaComponent>
           );
         }}
@@ -126,7 +120,7 @@ export function RelatedGallery({ item, miscStyles, biAction, }: RelatedGalleryPr
         gutter={2}
         isRev={false}
         backgroundColor={[ 'transparent', ]}
-        onClick={() => biAction({ index: 0, articleId: item.contentId, })}
+        onClick={biAction ? () => biAction({ index: 0, articleId: item.contentId, }) : null}
       >
         <TeaserMedia
           data={item}
@@ -159,10 +153,7 @@ export function RelatedGallery({ item, miscStyles, biAction, }: RelatedGalleryPr
           renderContent={() => (
             <TeaserHeader
               {...item}
-              typeScale={[
-                { until: 'xl', value: 0, },
-                { from: 'xl', value: -1, },
-              ]}
+              typeScale={[ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ]}
               miscStyles={{
                 paddingBottom: '4rem',
               }}
@@ -196,8 +187,8 @@ export class MobileGalleryTeaser extends React.Component<MobileGalleryTeaserProp
               isRev={false}
               backgroundColor={[ 'neutral', ]}
               onClick={event => {
+                if (biAction) biAction({ index: 0, articleId: item.contentId, actionCode: 128, });
                 event.preventDefault();
-                biAction({ index: 0, articleId: item.contentId, actionCode: 128, });
                 this.setState({
                   showGallery: true,
                 });
@@ -206,7 +197,15 @@ export class MobileGalleryTeaser extends React.Component<MobileGalleryTeaserProp
                 display: [ { from: 's', value: 'none', }, ],
               }}
             >
-              <TeaserMedia data={item} width={1}>
+              <TeaserMedia
+                data={item}
+                width={1}
+                onClick={
+                  biAction
+                    ? () => biAction({ index: 0, articleId: item.contentId, actionCode: 128, })
+                    : null
+                }
+              >
                 {item.media && isGallery(item.media) && item.media.images ? (
                   <Image
                     data={item.media.images[0]}
@@ -253,7 +252,16 @@ export class MobileGalleryTeaser extends React.Component<MobileGalleryTeaserProp
                     >
                       <IconCamera color={[ 'neutral', ]} size={4} />
                     </FelaComponent>
-                    <TeaserHeader {...item} typeScale={-1} isCentered />
+                    <TeaserHeader
+                      {...item}
+                      typeScale={-1}
+                      isCentered
+                      onClick={
+                        biAction
+                          ? () => biAction({ index: 0, articleId: item.contentId, actionCode: 128, })
+                          : null
+                      }
+                    />
                   </Fragment>
                 )}
                 renderFooter={() => (item.media && isGallery(item.media) && item.media.images

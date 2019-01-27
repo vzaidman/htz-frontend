@@ -25,7 +25,7 @@ import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 type Props = {
   list: ListDataType,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   lazyLoadImages: boolean,
 };
 
@@ -160,7 +160,7 @@ type TeaserProps = {
   data: TeaserDataType,
   index: 0 | 1 | 2 | 3,
   lazyLoadImages?: boolean,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
@@ -340,7 +340,7 @@ type TwoUpProps = {
   data1: TeaserDataType,
   data2: TeaserDataType,
   lazyLoadImages: boolean,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 TwoUp.defaultProps = { lazyLoadImages: true, };

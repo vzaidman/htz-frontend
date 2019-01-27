@@ -29,7 +29,7 @@ const listItemStyle = {
 type ClickTrackerProps = {
   item: ClickTrackerBannerWrapperType,
   index: number,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 function ClickTrackerItem({ item, index, biAction, }: ClickTrackerProps): Node {
@@ -50,7 +50,7 @@ function ClickTrackerItem({ item, index, biAction, }: ClickTrackerProps): Node {
                   borderEnd: [ '5px', 0, 'solid', theme.color('neutral', '-4'), ],
                 }}
                 href={link}
-                onClick={() => biAction({ index, articleId: item.contentId, })}
+                onClick={biAction ? () => biAction({ index, articleId: item.contentId, }) : null}
               >
                 <PromotedItem
                   title={text}
@@ -72,11 +72,12 @@ function ClickTrackerItem({ item, index, biAction, }: ClickTrackerProps): Node {
 type ItemProps = {
   data: TeaserDataType,
   index: number,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   listLength: number,
 };
 
 function Item({ data, index, biAction, listLength, }: ItemProps): Node {
+
   return (
     <FelaTheme
       render={theme => (
@@ -90,7 +91,7 @@ function Item({ data, index, biAction, listLength, }: ItemProps): Node {
               : {}),
           }}
           href={data.path}
-          onClick={() => biAction({ index, articleId: data.representedContent, })}
+          onClick={biAction ? () => biAction({ index, articleId: data.contentId, }) : null}
         >
           <Section isFragment>
             <FelaComponent
@@ -141,7 +142,7 @@ function Item({ data, index, biAction, listLength, }: ItemProps): Node {
 
 type Props = {
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   /**
    * data object from polopoly
    */

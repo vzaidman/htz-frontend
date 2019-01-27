@@ -12,7 +12,7 @@ type VogelViewPropTypes = {
   list: ListDataType,
   lazyLoadImages: boolean,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 VogelView.defaultProps = {

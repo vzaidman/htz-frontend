@@ -28,7 +28,7 @@ import getPictureAssets from '../../../../utils/getPictureAssets';
 type Props = {
   list: ListDataType,
   lazyLoadImages: boolean,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   gaAction: ?() => void,
 };
 
@@ -176,7 +176,7 @@ export default function DonbotList({ list, biAction, gaAction, lazyLoadImages, }
 type TeaserProps = {
   item: TeaserDataType,
   lazyLoadImages?: boolean,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   index: number,
 };
 

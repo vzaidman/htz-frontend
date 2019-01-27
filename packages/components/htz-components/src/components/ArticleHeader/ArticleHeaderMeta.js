@@ -146,13 +146,14 @@ class ArticleHeaderMeta extends React.Component {
           this.alertsToggleBtnRef.current.focus();
         }
         else {
-          biAction({
-            actionCode: 91,
-            additionalInfo: {
-              writer_id: this.props.authors[0].contentId,
-              platform,
-            },
-          });
+          biAction
+            && biAction({
+              actionCode: 91,
+              additionalInfo: {
+                writer_id: this.props.authors[0].contentId,
+                platform,
+              },
+            });
         }
       }
     );
@@ -271,13 +272,16 @@ class ArticleHeaderMeta extends React.Component {
                                     key={author.contentId || author.name}
                                     contentName={author.name || author.contentName}
                                     url={author.url}
-                                    onClick={() => biAction({
-                                      actionCode: 109,
-                                      additionalInfo: {
-                                        writer_id: author.contentId || author.contentName,
-                                        platform,
-                                      },
-                                    })
+                                    onClick={
+                                      biAction
+                                        ? () => biAction({
+                                          actionCode: 109,
+                                          additionalInfo: {
+                                            writer_id: author.contentId || author.contentName,
+                                            platform,
+                                          },
+                                        })
+                                        : null
                                     }
                                     miscStyles={{
                                       ':after': {

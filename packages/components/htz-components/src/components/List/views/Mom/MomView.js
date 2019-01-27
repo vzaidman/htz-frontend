@@ -27,7 +27,7 @@ import getPictureAssets from '../../../../utils/getPictureAssets';
 type Props = {
   list: ListDataType,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   lazyLoadImages: boolean,
 };
 
@@ -146,7 +146,12 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
             }}
           >
             {items[0] ? (
-              <TeaserWithImg1 data={items[0]} index={0} {...{ biAction, lazyLoadImages, }} />
+              <TeaserWithImg1
+                data={items[0]}
+                index={0}
+                biAction={biAction}
+                lazyLoadImages={lazyLoadImages}
+              />
             ) : (
               <Debug>There is no data for the first teaser in this list</Debug>
             )}
@@ -181,14 +186,14 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
                 }}
               >
                 {items[1] ? (
-                  <TextualTeaser data={items[1]} {...{ biAction, index: 1, }} />
+                  <TextualTeaser data={items[1]} biAction={biAction} index={1} />
                 ) : (
                   <Debug>This is no data for the second teaser in this list</Debug>
                 )}
               </GridItem>
               <GridItem stretchContent width={[ { from: 's', until: 'xl', value: 1 / 2, }, ]}>
                 {items[2] ? (
-                  <TextualTeaser data={items[2]} {...{ biAction, index: 2, }} />
+                  <TextualTeaser data={items[2]} biAction={biAction} index={2} />
                 ) : (
                   <Debug>This is no data for the third teaser in this list</Debug>
                 )}
@@ -208,7 +213,12 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
             }}
           >
             {items[3] ? (
-              <TeaserWithImg2 data={items[3]} index={3} {...{ biAction, lazyLoadImages, }} />
+              <TeaserWithImg2
+                data={items[3]}
+                index={3}
+                biAction={biAction}
+                lazyLoadImages={lazyLoadImages}
+              />
             ) : (
               <Debug>This is no data for the fourth teaser in this list</Debug>
             )}
@@ -226,7 +236,7 @@ export default function Mom({ list, gaAction, biAction, lazyLoadImages, }: Props
             }}
           >
             {items[4] ? (
-              <TextualTeaser data={items[4]} {...{ biAction, index: 4, }} isLargeText />
+              <TextualTeaser data={items[4]} biAction={biAction} index={4} isLargeText />
             ) : (
               <Debug>This is no data for the fifth teaser in this list</Debug>
             )}
@@ -269,19 +279,18 @@ type TeaserProps = {
   data: TeaserDataType,
   index: number,
   lazyLoadImages?: boolean,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 TeaserWithImg1.defaultProps = { lazyLoadImages: true, };
 
 function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
-  const articleId = data.contentId;
-
+  const itemId = data.representedContent == null ? data.contentId : data.representedContent;
   return (
     <Teaser
       data={data}
       gutter={2}
-      onClick={biAction ? () => biAction({ index, articleId, }) : null}
+      onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       isStacked={[ { from: 'xl', value: true, }, ]}
     >
       <TeaserMedia
@@ -292,7 +301,7 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           { from: 'l', until: 'xl', value: 4 / 6, },
         ]}
         isStacked={[ { from: 'xl', value: true, }, ]}
-        onClick={biAction ? () => biAction({ index, articleId, }) : null}
+        onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
         miscStyles={{
           order: [ { from: 's', until: 'xl', value: '1', }, ],
         }}
@@ -349,7 +358,7 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           <TeaserHeader
             typeScale={headerTypeScale}
             {...data}
-            onClick={biAction ? () => biAction({ index, articleId, }) : null}
+            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
           />
         )}
         renderFooter={() => (
@@ -371,20 +380,20 @@ function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps)
 
 TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
 function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
-  const articleId = data.contentId;
+  const itemId = data.representedContent == null ? data.contentId : data.representedContent;
 
   return (
     <Teaser
       data={data}
       gutter={2}
-      onClick={biAction ? () => biAction({ index, articleId, }) : null}
+      onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
     >
       <TeaserMedia
         data={data}
         width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
         isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
-        onClick={biAction ? () => biAction({ index, articleId, }) : null}
+        onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       >
         <FelaTheme
           render={theme => (
@@ -428,7 +437,7 @@ function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps)
           <TeaserHeader
             typeScale={headerTypeScale}
             {...data}
-            onClick={biAction ? () => biAction({ index, articleId, }) : null}
+            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
           />
         )}
         renderFooter={() => (
@@ -453,12 +462,11 @@ type TextualTeaserPropTypes = TeaserProps & { isLargeText: boolean, };
 // eslint-disable-next-line react/default-props-match-prop-types
 TextualTeaser.defaultProps = { lazyLoadImages: undefined, isLargeText: false, };
 function TextualTeaser({ data, index, biAction, isLargeText, }: TextualTeaserPropTypes): React.Node {
-  const articleId = data.contentId;
   return (
     <Teaser
       data={data}
       gutter={2}
-      onClick={() => biAction({ index, articleId, })}
+      onClick={biAction ? () => biAction({ index, articleId: data.representedContent, }) : null}
       miscStyles={{ flexGrow: '1', }}
       gridItemMiscStyles={{ alignContent: 'stretch', }}
     >
@@ -475,7 +483,9 @@ function TextualTeaser({ data, index, biAction, isLargeText, }: TextualTeaserPro
             typeScale={
               isLargeText ? headerTypeScale : [ { until: 'l', value: 0, }, { from: 'l', value: -1, }, ]
             }
-            onClick={() => biAction({ index, articleId, })}
+            onClick={
+              biAction ? () => biAction({ index, articleId: data.representedContent, }) : null
+            }
           />
         )}
         renderFooter={() => (

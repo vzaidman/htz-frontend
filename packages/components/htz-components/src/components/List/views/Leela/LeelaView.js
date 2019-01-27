@@ -94,7 +94,7 @@ export function PromotedItem({
 
 type Props = {
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   /**
    * data object from polopoly
    */
@@ -143,7 +143,9 @@ function Leela({ list, lazyLoadImages, gaAction, biAction, }: Props): Node {
                           borderEnd: [ '4px', 0, 'solid', theme.color('neutral', '-4'), ],
                         }}
                         href={link}
-                        onClick={() => biAction({ index, articleId: item.contentId, })}
+                        onClick={
+                            biAction ? () => biAction({ index, articleId: item.contentId, }) : null
+                          }
                       >
                         <PromotedItem title={text} image={clicktrackerimage} path={link} />
                       </BlockLink>

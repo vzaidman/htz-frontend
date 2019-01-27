@@ -13,7 +13,7 @@ type Props = {
   list: ListDataType,
   lazyLoadImages: boolean,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 export default function Mousepad({

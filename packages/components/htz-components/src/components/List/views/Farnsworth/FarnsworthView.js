@@ -22,7 +22,7 @@ const imgOptions: Object = {
 
 type Props = {
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   /**
    * data object from polopoly
    */
@@ -57,7 +57,9 @@ function Farnsworth({ list, lazyLoadImages, gaAction, biAction, }: Props): Node 
         <ListItem key={item.contentId}>
           <BlockLink
             href={item.path}
-            onClick={() => biAction({ index, articleId: item.representedContent, })}
+            onClick={
+                biAction ? () => biAction({ index, articleId: item.representedContent, }) : null
+              }
           >
             <FelaComponent style={{ marginBottom: '2rem', }}>
               <Image data={item.image} imgOptions={imgOptions} lazyLoad={lazyLoadImages} />

@@ -20,7 +20,7 @@ type VogelItemPropTypes = {
   hideSeparatorOnMobile: boolean,
   hideOnMobile: boolean,
   index: number,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 VogelItem.defaultProps = {
@@ -91,6 +91,11 @@ function VogelItem({
                   ],
                   widths: [ 230, 460, 184, 368, 156, 302, ],
                 })}
+                onClick={
+                  biAction
+                    ? () => biAction({ index, articleId: data.representedContent || data.contentId, })
+                    : null
+                }
               />
             </TeaserMedia>
           ) : null}

@@ -15,7 +15,7 @@ type Props = {
   list: ListDataType,
   listId: string,
   gaAction: () => void,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 function Slim({ list, listId, gaAction, biAction, }: Props) {

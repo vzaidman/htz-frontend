@@ -50,7 +50,7 @@ type Props = {
    */
   width: ?(number | ComponentPropResponsiveObject<number>[]),
   list: ListDataType,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 Pazuzu.defaultProps = {
@@ -110,7 +110,7 @@ type PazuzuTeaserPropTypes = {
   isStackedOnXl: boolean,
   isSecondItem: boolean,
   lazyLoadImages: boolean,
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
 };
 
 PazuzuTeaser.defaultProps = { lazyLoadImages: false, };

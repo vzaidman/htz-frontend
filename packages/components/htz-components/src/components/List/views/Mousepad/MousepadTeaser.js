@@ -19,7 +19,7 @@ const headerType = [
 ];
 
 type Props = {
-  biAction: ListBiActionType,
+  biAction: ?ListBiActionType,
   itemData: TeaserDataType,
   index: number,
   hasBottomBorder: boolean,
@@ -39,26 +39,21 @@ export default function MousepadTeaser({
         <Teaser
           data={itemData}
           miscStyles={{
-            padding: [
-              { until: 'l', value: [ 0, 1, ], },
-            ],
+            padding: [ { until: 'l', value: [ 0, 1, ], }, ],
             borderBottom: [
               {
                 until: 's',
-                value: isLast
-                  ? null
-                  : [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
+                value: isLast ? null : [ '1px', 1, 'solid', theme.color('neutral', '-6'), ],
               },
               {
                 from: 's',
-                value: hasBottomBorder
-                  ? [ '1px', 1, 'solid', theme.color('neutral', '-6'), ]
-                  : null,
+                value: hasBottomBorder ? [ '1px', 1, 'solid', theme.color('neutral', '-6'), ] : null,
               },
             ],
             paddingTop: '1rem',
           }}
-          onClick={() => biAction({ index, articleId: itemData.representedContent, })
+          onClick={
+            biAction ? () => biAction({ index, articleId: itemData.representedContent, }) : null
           }
           gridMiscStyles={{ alignItems: 'center', }}
         >
@@ -77,14 +72,8 @@ export default function MousepadTeaser({
             {index}
           </GridItem>
           <TeaserContent
-            padding={[
-              { until: 'l', value: [ 1, 3, 1, 2, ], },
-              { from: 'l', value: [ 1, 2, 0, ], },
-            ]}
-            footerPadding={[
-              { until: 'l', value: [ 0, 3, 0, 2, ], },
-              { from: 'l', value: [ 0, 2, ], },
-            ]}
+            padding={[ { until: 'l', value: [ 1, 3, 1, 2, ], }, { from: 'l', value: [ 1, 2, 0, ], }, ]}
+            footerPadding={[ { until: 'l', value: [ 0, 3, 0, 2, ], }, { from: 'l', value: [ 0, 2, ], }, ]}
             footerMiscStyles={{
               marginTop: '0',
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
@@ -95,6 +84,11 @@ export default function MousepadTeaser({
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
+                onClick={
+                  biAction
+                    ? () => biAction({ index, articleId: itemData.representedContent, })
+                    : null
+                }
               />
             )}
             renderFooter={() => <CommentsCount commentsCount={itemData.commentsCounts} />}
