@@ -8,6 +8,8 @@ import {
   HeaderSlot,
   MarketingNotificationProvider,
   BIRequest,
+  UserDispenser,
+  GaDimensions,
 } from '@haaretz/htz-components';
 
 import MainSlot from './MainSlot';
@@ -34,9 +36,7 @@ function HomePageSlotsLayout({
     const Element = componentFromInputTemplate(element.inputTemplate);
     const { properties, ...elementWithoutProperties } = element;
     if (element.inputTemplate === 'com.tm.FooterElement') {
-      return (
-        <Element {...elementWithoutProperties} {...properties} shouldRenderScripts />
-      );
+      return <Element {...elementWithoutProperties} {...properties} shouldRenderScripts />;
     }
     return <Element {...elementWithoutProperties} {...properties} />;
   });
@@ -63,6 +63,14 @@ function HomePageSlotsLayout({
       ) : null}
       {footer ? <LayoutRow>{getElements(footer)}</LayoutRow> : null}
       <LayoutRow idName="modalsRoot" />
+      <UserDispenser
+        render={({ user, }) => {
+          if (user) {
+            return <GaDimensions pageType="HomePage" userType={user.type} />;
+          }
+          return null;
+        }}
+      />
     </React.Fragment>
   );
 }
