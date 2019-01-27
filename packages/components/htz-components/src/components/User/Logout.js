@@ -35,12 +35,7 @@ Logout.propTypes = propTypes;
 Logout.defaultProps = defaultProps;
 
 function reloadPage() {
-  try {
-    document.location.reload();
-  }
-  catch (error) {
-    // fails silently
-  }
+  document.location.reload();
 }
 
 export default Logout;
