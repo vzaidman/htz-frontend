@@ -620,7 +620,7 @@ function OpEdTeaser({
                   flexBasis: [ { from: 's', value: 'auto', }, ],
                   flexGrow: [ { from: 's', value: '0', }, ],
                   flexShrink: [ { from: 's', value: '0', }, ],
-                  alignSelf: [ { from: 's', until: 'l', value: 'center', }, ],
+                  alignSelf: [ { from: 's', value: 'center', }, ],
                 }
                 : {}),
             }}
