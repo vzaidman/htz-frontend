@@ -11,7 +11,6 @@ import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
-import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
@@ -46,11 +45,16 @@ export default function ZappItem({
       isStacked={[ { from: 'l', value: true, }, ]}
     >
       <TeaserMedia
-        width={[ { until: 's', value: 18, }, { from: 's', until: 'l', value: 6 / 12, }, ]}
+        width={[
+          { until: 's', value: 18, },
+          { from: 's', until: 'l', value: 6 / 12, },
+        ]}
         data={data}
         isStacked={[ { from: 'l', value: true, }, ]}
         miscStyles={{
-          ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
+          ...(hideImageOnMobile
+            ? { display: [ { until: 's', value: 'none', }, ], }
+            : {}),
         }}
         onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       >
@@ -93,11 +97,20 @@ export default function ZappItem({
         ]}
         footerPadding={[
           { until: 's', value: [ 1, hideImageOnMobile ? 2 : 1, 1, ], },
-          { from: 's', until: 'xl', value: [ 1, 1, 1, ], },
+          { from: 's', until: 'l', value: [ 1, 2, 1, ], },
+          { from: 'l', until: 'xl', value: [ 1, 0, 1, ], },
         ]}
         isStacked={[ { from: 'l', value: true, }, ]}
         gridItemMiscStyles={{
           display: [ { from: 's', until: 'l', value: 'block', }, ],
+        }}
+        footerColor={[ 'neutral', '-3', ]}
+        footerMiscStyles={{
+          type: [
+            { until: 's', value: -2, },
+            { from: 's', until: 'xl', value: -2, },
+            { from: 'xl', value: -3, },
+          ],
         }}
         renderContent={() => (
           <TeaserHeader
@@ -114,32 +127,22 @@ export default function ZappItem({
         )}
         renderFooter={() => (
           <GridItem>
-            <TeaserAuthors
-              authors={data.authors}
-              miscStyles={{
-                fontWeight: 'bold',
-              }}
-            />
-            {data.authors ? ' | ' : null}
-            <TeaserTime {...data} />
-            {data.commentsCounts ? ' ' : null}
-            <CommentsCount commentsCount={data.commentsCounts} />
-            {data.rank != null ? (
-              <React.Fragment>
-                {' '}
-                <TeaserRank rank={data.rank} />
-              </React.Fragment>
+            {data.authors ? (
+              <span style={{ marginInlineEnd: '1rem', }}>
+                <TeaserAuthors
+                  authors={data.authors}
+                  miscStyles={{ fontWeight: 'bold', }}
+                />
+                {(data.commentsCounts && data.commentsCounts > 4)
+                || data.rank ? (
+                  <span> | </span>
+                  ) : null}
+              </span>
             ) : null}
+            <CommentsCount commentsCount={data.commentsCounts} />
+            {data.rank ? <TeaserRank rank={data.rank} /> : null}
           </GridItem>
         )}
-        footerColor={[ 'neutral', '-3', ]}
-        footerMiscStyles={{
-          type: [
-            { until: 's', value: -2, },
-            { from: 's', until: 'xl', value: -2, },
-            { from: 'xl', value: -3, },
-          ],
-        }}
       />
     </Teaser>
   );
