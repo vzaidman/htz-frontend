@@ -36,7 +36,7 @@ export default function Panucci({
   biAction,
   lazyLoadImages,
 }: Props): React.Node {
-  const { items, dfp, } = list;
+  const { items, dfp, extraLinks, ...restOfList } = list;
   return (
     <ListView
       gutter={4}
@@ -53,9 +53,8 @@ export default function Panucci({
         }}
       >
         <ListViewHeader
-          url={list.url}
-          extraLinks={list.extraLinks}
-          title={list.title}
+          {...restOfList}
+          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
           biAction={biAction}
         />
       </GridItem>

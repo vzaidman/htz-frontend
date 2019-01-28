@@ -31,7 +31,7 @@ export default function KrokerView({
   gaAction,
   biAction,
 }: Props): React.Node {
-  const { items, dfp, } = list;
+  const { items, dfp, extraLinks, ...restOfList } = list;
   return (
     <ListView
       gutter={4}
@@ -43,9 +43,8 @@ export default function KrokerView({
       {/* list header */}
       <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}>
         <ListViewHeader
-          url={list.url}
-          extraLinks={list.extraLinks}
-          title={list.title}
+          {...restOfList}
+          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
           backgroundColor="white"
         />
       </GridItem>

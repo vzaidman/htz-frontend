@@ -166,8 +166,8 @@ export default function Wong({
                     {...item}
                     typeScale={[
                       { from: 's', until: 'l', value: 0, },
-                      { until: 'xl', value: -1, },
-                      { from: 'xl', value: -2, },
+                      { until: 'xl', value: 0, },
+                      { from: 'xl', value: -1, },
                     ]}
                     miscStyles={{
                       display: [ { until: 's', value: 'none', }, ],
@@ -263,13 +263,13 @@ export default function Wong({
                                     >
                                       <IconBack
                                         size={[
-                                            { until: 'xl', value: 2, },
-                                            { from: 'xl', value: 1.5, },
-                                          ]}
+                                          { until: 'xl', value: 2, },
+                                          { from: 'xl', value: 1.5, },
+                                        ]}
                                         miscStyles={{
-                                            marginInlineStart: `-${relatedPadding}`,
-                                            marginInlineEnd: '0.5rem',
-                                          }}
+                                          marginInlineStart: `-${relatedPadding}`,
+                                          marginInlineEnd: '0.5rem',
+                                        }}
                                       />
                                       {article.title}
                                     </HtzLink>

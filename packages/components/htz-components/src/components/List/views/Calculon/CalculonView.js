@@ -44,7 +44,7 @@ export default function Calculon({
   biAction,
   gaAction,
 }: CalculonPropsType): React.Node {
-  const items = (list && list.items) || [];
+  const { items, extraLinks, ...restOfList } = list;
   const [ teaser1Data, teaser2Data, teaser3Data, teaser4Data, teaser5Data, ] = items;
   return (
     <ListView
@@ -60,7 +60,11 @@ export default function Calculon({
           marginBottom: [ { until: 's', value: '1rem', }, ],
         }}
       >
-        <ListViewHeader {...list} biAction={biAction} />
+        <ListViewHeader
+          {...restOfList}
+          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
+          biAction={biAction}
+        />
       </GridItem>
 
       {/* Items */}

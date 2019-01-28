@@ -40,8 +40,7 @@ export default function Slugs({
   biAction,
   lazyLoadImages,
 }: Props): React.Node {
-  const { items, dfp, } = list;
-  const { extraLinks, title, url, } = list;
+  const { items, dfp, extraLinks, ...restOfList } = list;
   return (
     <ListView
       gutter={4}
@@ -51,9 +50,9 @@ export default function Slugs({
       {/* List Meta Title */}
       <GridItem width={1}>
         <ListViewHeader
-          url={url}
-          title={title}
-          extraLinks={extraLinks}
+          {...restOfList}
+          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
+          biAction={biAction}
           isHorizontal
           miscStyles={{
             marginBottom: [

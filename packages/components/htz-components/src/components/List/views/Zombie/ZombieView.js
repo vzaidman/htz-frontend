@@ -130,7 +130,7 @@ export default class Zombie extends React.Component<Props, State> {
   render() {
     const { list, biAction, lazyLoadImages, } = this.props;
     const { stocks, } = this.state;
-    const { title, extraLinks, items, dfp, } = list;
+    const { items, dfp, ...restOfList } = list;
 
     return (
       <ListView
@@ -147,7 +147,7 @@ export default class Zombie extends React.Component<Props, State> {
           }}
           stretchContent
         >
-          <ListViewHeader title={title} extraLinks={extraLinks} />
+          <ListViewHeader {...restOfList} />
         </GridItem>
 
         {/* Content */}

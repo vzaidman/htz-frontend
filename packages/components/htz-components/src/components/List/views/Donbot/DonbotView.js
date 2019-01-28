@@ -43,7 +43,7 @@ export default function DonbotList({
   gaAction,
   lazyLoadImages,
 }: Props): Node {
-  const { items, } = list;
+  const { items, extraLinks, ...restOfList } = list;
   const mainTeaser = items && items.length > 0 && items[0];
   const teaser1 = items && items.length > 1 && items[1];
   const teaser2 = items && items.length > 2 && items[2];
@@ -62,9 +62,8 @@ export default function DonbotList({
         miscStyles={{ marginBottom: [ { until: 's', value: '1rem', }, ], }}
       >
         <ListViewHeader
-          title={list.title}
-          extraLinks={list.extraLinks}
-          marketingTeaser={list.marketingTeaser}
+          {...restOfList}
+          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
           biAction={biAction}
         />
       </GridItem>

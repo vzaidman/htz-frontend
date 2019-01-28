@@ -37,7 +37,7 @@ HawkingList.defaultProps = {
 };
 
 export default function HawkingList({ list, biAction, gaAction, lazyLoadImages, }: Props): Node {
-  const { items, clickTrackers, dfp, } = list;
+  const { items, clickTrackers, dfp, ...restOfList } = list;
 
   const mainTeaser = items && items.length > 0 && items[0];
   const teaser1 = items && items.length > 1 && items[1];
@@ -53,9 +53,7 @@ export default function HawkingList({ list, biAction, gaAction, lazyLoadImages, 
         miscStyles={{ marginBottom: [ { until: 's', value: '1rem', }, ], }}
       >
         <ListViewHeader
-          title={list.title}
-          extraLinks={list.extraLinks}
-          marketingTeaser={list.marketingTeaser}
+          {...restOfList}
           biAction={biAction}
         />
       </GridItem>
