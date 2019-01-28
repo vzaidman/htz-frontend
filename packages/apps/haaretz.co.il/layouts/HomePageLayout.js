@@ -48,9 +48,34 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
           <React.Fragment>
             <Head>
               <title>{seoData.metaTitle}</title>
-              <meta property="article:publisher" content="https://www.facebook.com/haaretz" />
+              <meta
+                property="article:publisher"
+                content="https://www.facebook.com/haaretz"
+              />
               <meta property="fb:pages" content="109551402519" />
-              <meta httpEquiv="refresh" content="300" />
+              {/*
+               * Refresh page every 5 mins
+               * TODO: Only refresh changed items and ads
+               */}
+              <script
+                type="text/javascript"
+                dangerouslySetInnerHTML={{
+                  __html: `
+if (window) {
+  const refreshTimer = setTimeout(
+    function() { typeof window != null &&  window.location.reload() },
+    ${1000 * 60 * 5}
+  );
+  window['__HTZ'] = {
+    cancelRefresh: function cancelRefresh() {
+      clearTimeout(refreshTimer);
+    },
+  }
+}
+            `,
+                }}
+              />
+
               <meta name="description" content={seoData.metaDescription} />
               <meta name="canonical" content={seoData.canonicalUrl} />
             </Head>
