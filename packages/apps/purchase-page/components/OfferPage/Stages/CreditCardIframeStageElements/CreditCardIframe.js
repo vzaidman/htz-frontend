@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import { Button, IconHtzLoader, IconTmLoader, Query, } from '@haaretz/htz-components';
+import ArrayLinesToString from '../../../ArrayLinesToString/ArrayLinesToString';
 
 const GET_HOST_NAME = gql`
   query {
@@ -57,6 +58,7 @@ class CreditCardIframe extends Component {
 
   handleFrameTasks = evt => {
     const msgData = evt.data;
+    console.log(msgData);
     if (msgData.type === 'cgmessage') {
       switch (msgData.command) {
         case 'resize_payment_form':
@@ -129,9 +131,10 @@ class CreditCardIframe extends Component {
                   }}
                   render={({ className, theme: { creditCardIframe, }, }) => (
                     <div>
-                      <div className={className}>
-                        {this.state.errorMessage || creditCardIframe.defaultErrorMessage}
-                      </div>
+                      <ArrayLinesToString
+                        className={className}
+                        data={this.state.errorMessage || creditCardIframe.defaultErrorMessage}
+                      />
                       <Button
                         variant="primaryOpaque"
                         onClick={() => this.setState({ errorMessage: null, error: false, })}
