@@ -112,7 +112,7 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
     userExpiredJson,
     isEmailValidated
   ) => {
-    if (isEmailValidated) {
+    if (!isEmailValidated) {
       return this.getEmailConfirmationJsx(theme);
     }
 
@@ -348,7 +348,7 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
                     return (
                       <React.Fragment>
                         {topStrip}
-                        {popupMarkup}
+                        {/* {popupMarkup} */}
                         {bottomStrip}
                       </React.Fragment>
                     );
