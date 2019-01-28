@@ -369,7 +369,7 @@ const Gallery = ({
                           display: 'flex',
                           flexWrap: 'nowrap',
                           position: 'relative',
-                          paddingBottom: '8rem',
+                          ...(isFullScreen ? { paddingBottom: '8rem', } : {}),
                           extend: [
                             theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
                             theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
