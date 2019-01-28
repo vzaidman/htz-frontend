@@ -119,7 +119,14 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
               <BlockLink
                 miscStyles={{
                   height: '100%',
-                  border: [ '1px', 0, 'solid', theme.color('neutral', '-4'), ],
+                  // HACK ALERT!!!
+                  // "0.1" in the line argument is to force a regular border
+                  // instead of an absolutely positioned pseudo element that
+                  // break the vertical rhythm.
+                  // We need this here because the image has a higher z-index
+                  // than the faux-border, and hides it.
+                  // This is a hack, do not use this.
+                  border: [ '1px', 0.1, 'solid', theme.color('neutral', '-4'), ],
                 }}
                 href={link}
                 onClick={

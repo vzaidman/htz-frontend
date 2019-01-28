@@ -60,11 +60,12 @@ export default function VerticalList({
         <ListView
           disableWrapper
           marginTop={0}
-          miscStyles={{
+          gridMiscStyles={{ flexDirection: 'column', flexGrow: '1', }}
+          sectionMiscStyles={{
+            display: 'flex',
+            flexGrow: '1',
             ...(isCommercial ? { fontFamily: theme.fontStacks.commercial, } : {}),
           }}
-          gridMiscStyles={{ flexDirection: 'column', flexGrow: '1', }}
-          sectionMiscStyles={{ display: 'flex', flexGrow: '1', }}
         >
           <GridItem miscStyles={{ flexGrow: '0', }}>
             {list || title ? (

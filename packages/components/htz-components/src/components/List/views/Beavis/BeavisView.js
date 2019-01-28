@@ -67,7 +67,7 @@ function Beavis({
                 ]
               }
             >
-              <Grid gutter={2}>
+              <Grid gutter={4}>
                 {
                   dfp[0]
                     ? (

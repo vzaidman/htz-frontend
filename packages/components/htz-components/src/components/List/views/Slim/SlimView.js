@@ -35,6 +35,9 @@ function Slim({ list, listId, gaAction, biAction, }: Props) {
             miscStyles={{
               display: [ { until: 's', value: 'none', }, ],
             }}
+            sectionMiscStyles={{
+              overflow: 'hidden',
+            }}
           >
             {
               items && items[0]

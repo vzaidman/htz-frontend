@@ -53,7 +53,7 @@ function Butthead({
             <GridItem
               width={1}
             >
-              <Grid gutter={2}>
+              <Grid gutter={4}>
                 {
                   dfp[0]
                     ? (
