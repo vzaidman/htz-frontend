@@ -13,7 +13,7 @@ import UserDispenser from '../User/UserDispenser';
 import * as gaData from './ga_data';
 
 const GET_NOTIFICATION_DATA: Object = gql`
-  query GetNotificationData($path: String!, $ssoid: String!, $product: String!) {
+  query GetNotificationData($path: String!, $ssoid: String!, $product: String!, $email: String!) {
     page(path: $path) {
       pageType
       slots {
@@ -22,6 +22,12 @@ const GET_NOTIFICATION_DATA: Object = gql`
       }
     }
     userExpired(ssoid: $ssoid, product: $product)
+
+    userByMail(id: $email) {
+      userStatus {
+        isEmailValidated
+      }
+    }
   }
 `;
 
@@ -99,24 +105,25 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
     return null;
   };
 
-  getPopup: (?Array<Object>, User, Object, string) => ?Node = (
+  getPopup: (?Array<Object>, User, Object, string, ?boolean) => ?Node = (
     preHeader,
     user,
     theme,
-    userExpiredJson
+    userExpiredJson,
+    isEmailValidated
   ) => {
-    if (window.sessionStorage.getItem('haaretzChk')) {
+    if (isEmailValidated) {
       return this.getEmailConfirmationJsx(theme);
     }
 
     const { getCookie, setCookie, } = CookieUtils;
-    if (!getCookie('anonPopup')) {
+    if (user.type !== 'paying' && !getCookie('anonPopup')) {
       return this.getWeeklyPopupJsx(theme, setCookie);
     }
 
     if (!preHeader) return null;
     const debug = { timeToExired: 13, userType: 'regular', };
-    //const debug = null;
+    // const debug = null;
     const { timeToExired, medPopupAllOptions, userType, } = this.getMadPopupBasicDataBlocks(
       debug,
       userExpiredJson,
@@ -222,12 +229,56 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
         const promoCode = (timeToExired > 0 ? 'befor' : 'after')
           + foundedPopupContent.daysFromExpiration
           + foundedPopupContent.subscriberType;
-        
+
         ReactGA.ga('ec:setAction', 'promo_click');
         ReactGA.ga('send', 'event', 'Internal Promotions', 'click', gaData.Popup[promoCode].name);
       }}
     />
   );
+
+  getTopStripJsx: (Array<Object>, string) => ?Node = (preHeader, userType) => {
+    if (userType === 'paying') return null;
+    const topStripData = preHeader.find(
+      item => item.inputTemplate === 'com.tm.promotion.banner.TopRuler'
+    );
+
+    if (!topStripData) return null;
+    return (
+      <MarketingNotification
+        notificationType="Strip"
+        buttonText={topStripData.actionText}
+        text1={this.striptText ? this.striptText : topStripData.text}
+        buttonUrl={topStripData.actionUrl}
+        onSubmit={() => {
+          ReactGA.ga('ec:setAction', 'promo_click');
+          ReactGA.ga('send', 'event', 'Internal Promotions', 'click', gaData.Strip.name);
+        }}
+      />
+    );
+  };
+
+  getBottomStripJsx: (Array<Object>, string) => ?Node = (footer, userType) => {
+    if (userType === 'paying') return null;
+    const bottomStripData = footer.find(
+      item => item.inputTemplate === 'com.tm.promotion.banner.BottomRuler'
+    );
+
+    if (!bottomStripData) return null;
+    return (
+      <MarketingNotification
+        notificationType="BottomStrip"
+        buttonText={bottomStripData.actionText}
+        text1={bottomStripData.text}
+        text2={bottomStripData.text2}
+        color={bottomStripData.theme}
+        buttonUrl={bottomStripData.actionUrl}
+        onSubmit={() => {
+          ReactGA.ga('ec:setAction', 'promo_click');
+          ReactGA.ga('send', 'event', 'Internal Promotions', 'click', gaData.BottomStrip.name);
+        }}
+      />
+    );
+  };
 
   updateUserMadPopupHistory: PopupContent => void = foundedPopupContent => {
     if (foundedPopupContent) this.medPopupHistory.push(foundedPopupContent.contentId);
@@ -263,69 +314,36 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
                     // ssoid of a 14-day trial user: '9023779854',
                     ssoid: user.id ? user.id : user.anonymousId,
                     product: '243',
+                    email: user.email,
                   }}
                 >
                   {({ error, loading, data, }) => {
                     if (error) return null;
                     if (loading) return null;
-                    if (user.type === 'paying') return null;
                     if (!data) return null;
 
                     const slots = data.page && data.page.slots;
                     if (!slots) return null;
 
                     const userExpiredJson = data.userExpired;
+
                     const preHeader = slots.preHeader;
 
-                    const popupMarkup = this.getPopup(preHeader, user, theme, userExpiredJson);
+                    const isEmailValidated = data.userByMail && data.userByMail.userStatus
+                      ? data.userByMail.userStatus.isEmailValidated
+                      : null;
 
-                    const bottomStripData = slots.footer.find(
-                      item => item.inputTemplate === 'com.tm.promotion.banner.BottomRuler'
+                    const popupMarkup = this.getPopup(
+                      preHeader,
+                      user,
+                      theme,
+                      userExpiredJson,
+                      isEmailValidated
                     );
 
-                    const topStripData = preHeader.find(
-                      item => item.inputTemplate === 'com.tm.promotion.banner.TopRuler'
-                    );
+                    const topStrip = this.getTopStripJsx(preHeader, user.type);
 
-                    const topStrip = topStripData ? (
-                      <MarketingNotification
-                        notificationType="Strip"
-                        buttonText={topStripData.actionText}
-                        text1={this.striptText ? this.striptText : topStripData.text}
-                        buttonUrl={topStripData.actionUrl}
-                        onSubmit={() => {
-                          ReactGA.ga('ec:setAction', 'promo_click');
-                          ReactGA.ga(
-                            'send',
-                            'event',
-                            'Internal Promotions',
-                            'click',
-                            gaData.Strip.name
-                          );
-                        }}
-                      />
-                    ) : null;
-
-                    const bottomStrip = bottomStripData ? (
-                      <MarketingNotification
-                        notificationType="BottomStrip"
-                        buttonText={bottomStripData.actionText}
-                        text1={bottomStripData.text}
-                        text2={bottomStripData.text2}
-                        color={bottomStripData.theme}
-                        buttonUrl={bottomStripData.actionUrl}
-                        onSubmit={() => {
-                          ReactGA.ga('ec:setAction', 'promo_click');
-                          ReactGA.ga(
-                            'send',
-                            'event',
-                            'Internal Promotions',
-                            'click',
-                            gaData.BottomStrip.name
-                          );
-                        }}
-                      />
-                    ) : null;
+                    const bottomStrip = this.getBottomStripJsx(slots.footer, user.type);
 
                     return (
                       <React.Fragment>

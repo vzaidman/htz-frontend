@@ -112,7 +112,7 @@ export default class BottomStripNotification extends React.Component<Props, Stat
                         <IconClose />
                       </ClickArea>
                     )}
-                    <FelaComponent isSmall={isSmall} color={colors[color]} rule={style.iconWrapper}>
+                    <FelaComponent isSmall={isSmall} color={colors[color]}>
                       <IconAlefLogoTransparent
                         miscStyles={style.icon(theme, isSmall, colors[color])}
                       />
