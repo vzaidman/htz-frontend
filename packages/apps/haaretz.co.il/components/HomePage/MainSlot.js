@@ -12,6 +12,8 @@ import {
   Error,
   Debug,
 } from '@haaretz/htz-components';
+import { parseComponentProp, } from '@haaretz/htz-css-tools';
+
 import type { MainSlotType, } from '../../flowTypes/MainSlotType';
 
 import List from './List/List';
@@ -36,6 +38,19 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
     <FelaComponent
       style={theme => ({
         backgroundColor: theme.color('primary', '-6'),
+        extend: [
+          parseComponentProp(
+            'paddingBottom',
+            [
+              { until: 's', value: '10rem', },
+              { from: 's', until: 'l', value: '8rem', },
+              { from: 'l', until: 'xl', value: '10rem', },
+              { from: 'xl', value: '9rem', },
+            ],
+            theme.mq,
+            (prop, value) => ({ [prop]: value, })
+          ),
+        ],
       })}
     >
       {main.map(

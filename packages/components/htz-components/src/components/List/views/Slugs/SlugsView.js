@@ -214,7 +214,7 @@ function MainTeaser({
 
           <TeaserContent
             data={data}
-            padding={[ 1, 2, 0, ]}
+            padding={[ 2, 2, 0, ]}
             footerPadding={[ 1, 2, ]}
             footerColor={[ 'neutral', '-3', ]}
             isStacked
@@ -228,8 +228,7 @@ function MainTeaser({
                 isCentered
                 typeScale={[
                   { until: 'l', value: 1, },
-                  { from: 'l', until: 'xl', value: 2, },
-                  { from: 'xl', value: 3, },
+                  { from: 'l', value: 2, },
                 ]}
                 onClick={
                   biAction ? () => biAction({ index: 0, articleId, }) : null
