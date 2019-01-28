@@ -22,6 +22,7 @@ class PapiAPI extends RESTDataSource {
     return this.context.serviceBase;
   }
 
+
   async getCmLink(path) {
     const fetchPath = `json/cmlink/${path}${path.includes('?') ? '&' : '?'}ts=
     ${new Date().getTime()}`;
