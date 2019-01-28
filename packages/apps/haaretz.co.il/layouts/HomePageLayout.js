@@ -33,12 +33,12 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
         if (loading) return null;
         if (error) logger.error(error);
         const {
-          homePage: { slots, },
+          homePage: { slots, seoData, },
         } = data;
-        const titleSEO = 'חדשות, ידיעות מהארץ והעולם - עיתון הארץ';
+
         client.writeData({
           data: {
-            title: titleSEO,
+            title: seoData.metaTitle,
             // place properties to reset in the client store when a new article is loaded
             isOsakaDisplayed: false,
           },
@@ -47,9 +47,12 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
         return (
           <React.Fragment>
             <Head>
-              <title>{titleSEO}</title>
+              <title>{seoData.metaTitle}</title>
               <meta property="article:publisher" content="https://www.facebook.com/haaretz" />
               <meta property="fb:pages" content="109551402519" />
+              <meta httpEquiv="refresh" content="300" />
+              <meta name="description" content={seoData.metaDescription} />
+              <meta name="canonical" content={seoData.canonicalUrl} />
             </Head>
             <ScrollListener />
             <RouteChangeListener />

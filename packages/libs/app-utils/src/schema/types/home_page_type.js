@@ -5,6 +5,7 @@ import GraphQLJSON from 'graphql-type-json';
 import TaxonomyItem from './taxonomy_item_type';
 import DfpConfigType from './dfp_config_type';
 import homepageMain from './home_page_main_type';
+import seoData from './seo_data_type';
 
 const HomePage = new GraphQLObjectType({
   name: 'Home',
@@ -15,9 +16,9 @@ const HomePage = new GraphQLObjectType({
     lineage: {
       type: new GraphQLList(TaxonomyItem),
     },
-    // seoData: {
-    //   type: seoData,
-    // },
+    seoData: {
+      type: seoData,
+    },
     slots: {
       type: new GraphQLObjectType({
         name: 'HomePageSlots',

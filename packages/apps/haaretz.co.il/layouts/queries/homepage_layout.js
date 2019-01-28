@@ -11,6 +11,11 @@ import {
 export default gql`
   query HomePageLayout {
     homePage {
+      seoData {
+        metaTitle
+        metaDescription
+        canonicalUrl
+      }
       slots {
         preHeader
         header
