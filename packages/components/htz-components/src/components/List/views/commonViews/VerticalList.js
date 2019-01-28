@@ -78,10 +78,6 @@ export default function VerticalList({
                 title={title || (list ? list.title : '')}
                 backgroundColor={[ 'white', ]}
                 isCommercial={isCommercial}
-                titleMiscStyles={{
-                  ...theme.type(0, { untilBp: 's', }),
-                  ...theme.type(1, { fromBp: 's', untilBp: 'l', }),
-                }}
               />
             ) : null}
           </GridItem>

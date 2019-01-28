@@ -160,7 +160,12 @@ export default function ListViewHeader({
               render={({ className: headerClass, }) => (url ? (
                 <FelaComponent
                   style={{
-                    extend: [ theme.mq({ until: 's', }, { display: 'flex', width: '100%', }), ],
+                    extend: [
+                      theme.mq(
+                        { until: 's', },
+                        { display: 'flex', width: '100%', }
+                      ),
+                    ],
                   }}
                   render={({ className: linkClassName, }) => (
                     <HtzLink className={linkClassName} href={url}>
@@ -194,7 +199,10 @@ export default function ListViewHeader({
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
-                  theme.mq({ from: 's', until: 'l', }, { direction: 'ltr', paddingStart: '2rem', }),
+                  theme.mq(
+                    { from: 's', until: 'l', },
+                    { direction: 'ltr', paddingStart: '2rem', }
+                  ),
                   theme.mq({ until: 'l', }, { fontWeight: '700', }),
                   theme.type(-1, { fromBp: 's', untilBp: 'l', }),
                   theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
@@ -209,7 +217,9 @@ export default function ListViewHeader({
               {extraLinks.map((item, idx) => (
                 <FelaComponent
                   style={{
-                    extend: [ theme.mq({ until: 'l', }, { display: 'inline-block', }), ],
+                    extend: [
+                      theme.mq({ until: 'l', }, { display: 'inline-block', }),
+                    ],
                   }}
                   render="li"
                   key={item.contentId}
@@ -226,7 +236,10 @@ export default function ListViewHeader({
                         className={className}
                         onClick={
                           biAction
-                            ? () => biAction({ index: idx, articleId: item.contentId, })
+                            ? () => biAction({
+                              index: idx,
+                              articleId: item.contentId,
+                            })
                             : null
                         }
                       >
@@ -269,8 +282,12 @@ export default function ListViewHeader({
                           <IconAlefLogoTransparent color="secondary" size={3} />
                           <FelaComponent
                             style={{ color: theme.color('secondary'), }}
-                            render={({ className: marketingHeaderClassName, }) => (
-                              <H className={marketingHeaderClassName}>{marketingTeaser.title}</H>
+                            render={({
+                              className: marketingHeaderClassName,
+                            }) => (
+                              <H className={marketingHeaderClassName}>
+                                {marketingTeaser.title}
+                              </H>
                             )}
                           />
 
@@ -302,7 +319,9 @@ export default function ListViewHeader({
                   <FelaComponent
                     style={{
                       color: theme.color('commercial'),
-                      fontFamily: theme.fontStacks ? theme.fontStacks.commercial : undefined,
+                      fontFamily: theme.fontStacks
+                        ? theme.fontStacks.commercial
+                        : undefined,
                       extend: [
                         theme.mq({ until: 'l', }, { display: 'none', }),
                         theme.type(0, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
@@ -314,7 +333,8 @@ export default function ListViewHeader({
                     {commercialLinks.map((commercialLink, idx) => (
                       <FelaComponent
                         style={theme => ({
-                          marginBottom: idx < commercialLinks.length - 1 ? '1rem' : '0',
+                          marginBottom:
+                            idx < commercialLinks.length - 1 ? '1rem' : '0',
 
                           '&:hover': { textDecoration: 'underline', },
                           '&:focus': { textDecoration: 'underline', },
@@ -326,7 +346,10 @@ export default function ListViewHeader({
                           href={commercialLink.href}
                           onClick={
                             biAction
-                              ? () => biAction({ index: idx, articleId: commercialLink.contentId, })
+                              ? () => biAction({
+                                index: idx,
+                                articleId: commercialLink.contentId,
+                              })
                               : null
                           }
                         >
@@ -359,6 +382,16 @@ function listViewHeaderStyle({
     flexGrow: '1',
     justifyContent: 'flex-start',
     extend: [
+      ...(isVertical
+        ? [
+          theme.type(2, { untilBp: 's', lines: 7, }),
+          theme.type(1, { fromBp: 's', untilBp: 'xl', }),
+          theme.type(0, { fromBp: 'xl', }),
+        ]
+        : [
+          theme.type(2, { untilBp: 's', lines: 7, }),
+          theme.type(2, { fromBp: 's', }),
+        ]),
       // eslint-disable-next-line space-infix-ops, no-mixed-operators
       ...(backgroundColor
         ? [
@@ -380,7 +413,6 @@ function listViewHeaderStyle({
             'solid',
             isCommercial ? theme.color('commercial') : theme.color('primary')
           ),
-          height: isVertical ? '6rem' : '7rem',
           alignItems: 'center',
         }
       ),
@@ -405,7 +437,9 @@ function listViewHeaderStyle({
               '5px',
               2,
               'solid',
-              isCommercial ? theme.color('commercial') : theme.color('primary')
+              isCommercial
+                ? theme.color('commercial')
+                : theme.color('primary')
             )
           ),
           theme.mq({ from: 'l', }, { flexDirection: 'column', }),
