@@ -11,10 +11,10 @@ const SpawnQuery = gql`
     list(listId: $listId, history: $history) {
       title
       url
-      commercialLinks {
+      extraLinks {
         ...Link
       }
-      extraLinks {
+      commercialLinks {
         ...Link
       }
       marketingTeaser {

@@ -16,6 +16,11 @@ const HawkingQuery = gql`
         contentName
         contentId
       }
+      commercialLinks {
+        href
+        contentName
+        contentId
+      }
       marketingTeaser {
         title
         subtitle

@@ -19,6 +19,14 @@ const ZombieQuery = gql`
         linkText
         toolTip
       }
+      commercialLinks {
+        contentId
+        contentName
+        href
+        inputTemplate
+        linkText
+        toolTip
+      }
       items {
         ...ImagesInTeaser
         contentId
