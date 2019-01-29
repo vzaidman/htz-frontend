@@ -22,7 +22,6 @@ const GET_NOTIFICATION_DATA: Object = gql`
       }
     }
     userExpired(ssoid: $ssoid, product: $product)
-
     userByMail(id: $email) {
       userStatus {
         isEmailValidated
@@ -306,7 +305,7 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
         <FelaTheme
           render={theme => (
             <UserDispenser
-              render={({ user, }) => (
+              render={({ isLoggedIn, user, }) => (
                 <Query
                   query={GET_NOTIFICATION_DATA}
                   variables={{
@@ -314,7 +313,7 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
                     // ssoid of a 14-day trial user: '9023779854',
                     ssoid: user.id ? user.id : user.anonymousId,
                     product: '243',
-                    email: user.email,
+                    email: isLoggedIn ? user.email : '',
                   }}
                 >
                   {({ error, loading, data, }) => {

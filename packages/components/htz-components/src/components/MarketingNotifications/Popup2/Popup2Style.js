@@ -6,6 +6,8 @@ export function wrapper(theme) {
   };
 }
 
+export const innerWrapper = {};
+
 export function text1(theme) {
   return {
     marginTop: '3rem',
