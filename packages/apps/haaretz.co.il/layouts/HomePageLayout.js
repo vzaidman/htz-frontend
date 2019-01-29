@@ -77,7 +77,7 @@ if (window) {
               />
 
               <meta name="description" content={seoData.metaDescription} />
-              <meta name="canonical" content={seoData.canonicalUrl} />
+              <link rel="canonical" href={seoData.canonicalUrl} />
             </Head>
             <ScrollListener />
             <RouteChangeListener />
