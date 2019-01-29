@@ -134,7 +134,19 @@ const ImageElement = ({ imageData, imgIsHidden, }) => {
               paddingTop: '8rem',
             }
           ),
-          theme.mq({ until: 'm', }, { maxWidth: '25rem', }),
+          theme.mq(
+            { from: 's', until: 'm', },
+            {
+              display: 'none',
+            }
+          ),
+          theme.mq(
+            { until: 's', },
+            {
+              maxWidth: '25rem',
+              margin: 'auto',
+            }
+          ),
         ],
       })}
       render={({ className, theme, }) => (
@@ -207,7 +219,7 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
       <FelaComponent
         render={({ className, theme, }) => (
           <GridItem
-            width={1 / 1}
+            width={1}
             miscStyles={{
               backgroundColor: [ { until: 'm', value: 'white', }, ],
               // todo: ask if borderBottm/borderTop function accepts media queries.
@@ -238,9 +250,9 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
             >
               <GridItem
                 width={[
-                  { until: 'm', value: 1 / 1, },
+                  { until: 'm', value: 1, },
                   { from: 'm', until: 'l', value: 1 / 4, },
-                  { from: 'l', value: 1 / 1, },
+                  { from: 'l', value: 1, },
                 ]}
                 miscStyles={{
                   order: [ { until: 'm', value: 1, }, ],
@@ -250,13 +262,13 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
               </GridItem>
               <GridItem
                 width={[
-                  { until: 'm', value: 1 / 1, },
+                  { until: 'm', value: 1, },
                   {
                     from: 'm',
                     until: 'l',
-                    value: displayIdImg ? 3 / 4 : 1 / 1,
+                    value: displayIdImg ? 3 / 4 : 1,
                   },
-                  { from: 'l', value: 1 / 1, },
+                  { from: 'l', value: 1, },
                 ]}
                 miscStyles={{
                   ...(!displayIdImg
@@ -290,9 +302,9 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
                     <GridItem
                       tagName="li"
                       width={[
-                        { until: 'm', value: 1 / 1, },
+                        { until: 'm', value: 1, },
                         { from: 'm', until: 'l', value: 1 / 2, },
-                        { from: 'l', value: 1 / 1, },
+                        { from: 'l', value: 1, },
                       ]}
                     >
                       <FelaComponent
@@ -344,9 +356,9 @@ function ReviewAmenities({ amenitiesItems, reviewImgData, reviewStars, reviewTyp
                     <GridItem
                       tagName="li"
                       width={[
-                        { until: 'm', value: 1 / 1, },
+                        { until: 'm', value: 1, },
                         { from: 'm', until: 'l', value: 1 / 2, },
-                        { from: 'l', value: 1 / 1, },
+                        { from: 'l', value: 1, },
                       ]}
                     >
                       <FelaComponent
