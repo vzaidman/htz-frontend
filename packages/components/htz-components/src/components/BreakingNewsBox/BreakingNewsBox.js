@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { FelaTheme, FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
-import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import Query from '../ApolloBoundary/Query';
 import Grid from '../Grid/Grid';
+import Button from '../Button/Button';
 import GridItem from '../Grid/GridItem';
 import StripController from './StripController';
 import BreakingNewsItem from './BreakingNewsItem';
@@ -64,34 +64,16 @@ export default class BreakingNewsBox extends React.Component<Props, State> {
             }}
           >
             <GridItem miscStyles={{ flexGrow: 0, }}>
-              <FelaComponent
-                style={{
-                  alignItems: 'center',
-                  backgroundColor: theme.color('primary'),
-                  color: theme.color('white'),
-                  display: 'flex',
-                  justifyContent: 'center',
-                  width: '15rem',
-                  fontWeight: '700',
-                  extend: [
-                    theme.type(0, { fromBp: 's', untilBp: 'l', }),
-                    theme.type(-1, { fromBp: 'l', }),
-                    {
-                      ...parseComponentProp(
-                        'height',
-                        [
-                          { from: 's', until: 'l', value: '6rem', },
-                          { from: 'l', value: '5rem', },
-                        ],
-                        theme.mq,
-                        (prop, value) => ({ [prop]: value, })
-                      ),
-                    },
-                  ],
-                }}
+              <Button
+                href={theme.breakingNewsStrip.url}
+                variant="primaryOpaque"
+                fontSize={[
+                  { until: 'l', value: 0, },
+                  { from: 'l', value: -1, },
+                ]}
               >
                 {theme.breakingNewsStrip.title}
-              </FelaComponent>
+              </Button>
             </GridItem>
             <Query
               query={GET_BREAKING_NEWS_DATA}

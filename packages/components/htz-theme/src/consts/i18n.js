@@ -357,6 +357,7 @@ export const articleLayoutI18n = Object.freeze({
 });
 
 export const breakingNewsStrip = Object.freeze({
+  url: 'https://www.haaretz.co.il/misc/breaking-news',
   title: 'מבזקים',
   pause: 'עצור',
   play: 'הפעל',
