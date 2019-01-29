@@ -45,10 +45,10 @@ export default function Panucci({
       {/* header */}
       <GridItem
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+        stretchContent
         miscStyles={{
           marginBottom: [
             { until: 'l', value: '1rem', },
-            { from: 's', value: '4rem', },
           ],
         }}
       >
@@ -195,7 +195,7 @@ export default function Panucci({
           <GridItem
             key={banner.contentId}
             width={[ { until: 'l', value: 1, }, { from: 'l', until: 'xl', value: 2 / 12, }, { from: 'xl', value: 4 / 12, }, ]}
-            miscStyles={{ 
+            miscStyles={{
               marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ],
               display: [ { from: 'l', value: 'flex', }, ],
               alignItems: [ { from: 'l', value: 'center', }, ],

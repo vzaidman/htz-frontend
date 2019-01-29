@@ -155,6 +155,8 @@ export const commentsSectionI18n = Object.freeze({
   }),
 });
 
+export const commercialListI18n = Object.freeze({ text: 'שיתופי פעולה', });
+
 export const footerMobileListsI18n = Object.freeze({
   MobileList: [
     Object.freeze({
@@ -372,13 +374,13 @@ export const marketingTools = Object.freeze({
     text1: 'זה באמת אתם?',
     text2: 'כדי לקרוא בחינם 6 כתבות בחודש יש לבצע אימות',
     text2AfterClick: 'יש לאשר את ההודעה מתוך תיבת האימייל שלך',
-
   },
   Weekly: {
     buttonText: 'לפרטים נוספים',
     text1: 'כל תכני הארץ בכל מכשיר בכל זמן',
     text2: 'פחות פרסומות ובאנרים',
     weeklyLink: '',
-    url: 'https://promotions.haaretz.co.il/promotions-page/product?offer=sale-htz&_ga=2.36776032.1903070321.1547973707-1620996918.1546958670',
+    url:
+      'https://promotions.haaretz.co.il/promotions-page/product?offer=sale-htz&_ga=2.36776032.1903070321.1547973707-1620996918.1546958670',
   },
 });

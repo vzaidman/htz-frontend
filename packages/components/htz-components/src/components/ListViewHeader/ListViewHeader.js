@@ -160,12 +160,7 @@ export default function ListViewHeader({
               render={({ className: headerClass, }) => (url ? (
                 <FelaComponent
                   style={{
-                    extend: [
-                      theme.mq(
-                        { until: 's', },
-                        { display: 'flex', width: '100%', }
-                      ),
-                    ],
+                    extend: [ theme.mq({ until: 's', }, { display: 'flex', width: '100%', }), ],
                   }}
                   render={({ className: linkClassName, }) => (
                     <HtzLink className={linkClassName} href={url}>
@@ -199,10 +194,7 @@ export default function ListViewHeader({
                 ...(isHorizontal ? { marginInlineStart: 'auto', } : {}),
                 extend: [
                   theme.mq({ until: 's', }, { display: 'none', }),
-                  theme.mq(
-                    { from: 's', until: 'l', },
-                    { direction: 'ltr', paddingStart: '2rem', }
-                  ),
+                  theme.mq({ from: 's', until: 'l', }, { direction: 'ltr', paddingStart: '2rem', }),
                   theme.mq({ until: 'l', }, { fontWeight: '700', }),
                   theme.type(-1, { fromBp: 's', untilBp: 'l', }),
                   theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
@@ -217,9 +209,7 @@ export default function ListViewHeader({
               {extraLinks.map((item, idx) => (
                 <FelaComponent
                   style={{
-                    extend: [
-                      theme.mq({ until: 'l', }, { display: 'inline-block', }),
-                    ],
+                    extend: [ theme.mq({ until: 'l', }, { display: 'inline-block', }), ],
                   }}
                   render="li"
                   key={item.contentId}
@@ -282,12 +272,8 @@ export default function ListViewHeader({
                           <IconAlefLogoTransparent color="secondary" size={3} />
                           <FelaComponent
                             style={{ color: theme.color('secondary'), }}
-                            render={({
-                              className: marketingHeaderClassName,
-                            }) => (
-                              <H className={marketingHeaderClassName}>
-                                {marketingTeaser.title}
-                              </H>
+                            render={({ className: marketingHeaderClassName, }) => (
+                              <H className={marketingHeaderClassName}>{marketingTeaser.title}</H>
                             )}
                           />
 
@@ -319,45 +305,55 @@ export default function ListViewHeader({
                   <FelaComponent
                     style={{
                       color: theme.color('commercial'),
-                      fontFamily: theme.fontStacks
-                        ? theme.fontStacks.commercial
-                        : undefined,
-                      extend: [
-                        theme.mq({ until: 'l', }, { display: 'none', }),
-                        theme.type(0, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
-                        theme.type(-2, { fromBp: 'xl', lines: 4, }),
-                      ],
+                      extend: [ theme.type(-1), ],
+                      fontFamily: theme.fontStacks ? theme.fontStacks.commercial : undefined,
                     }}
-                    render="ul"
-                  >
-                    {commercialLinks.map((commercialLink, idx) => (
-                      <FelaComponent
-                        style={theme => ({
-                          marginBottom:
-                            idx < commercialLinks.length - 1 ? '1rem' : '0',
+                    render={({ className: commercialHeaderClassName, }) => (
+                      <React.Fragment>
+                        <H className={commercialHeaderClassName}>{theme.commercialListI18n.text}</H>
 
-                          '&:hover': { textDecoration: 'underline', },
-                          '&:focus': { textDecoration: 'underline', },
-                        })}
-                        key={commercialLink.contentId}
-                        render="li"
-                      >
-                        <HtzLink
-                          href={commercialLink.href}
-                          onClick={
-                            biAction
-                              ? () => biAction({
-                                index: idx,
-                                articleId: commercialLink.contentId,
-                              })
-                              : null
-                          }
+                        <FelaComponent
+                          style={{
+                            color: theme.color('neutral', '-3'),
+                            fontFamily: theme.fontStacks ? theme.fontStacks.commercial : undefined,
+                            extend: [
+                              theme.mq({ until: 'l', }, { display: 'none', }),
+                              theme.type(0, { fromBp: 'l', untilBp: 'xl', lines: 4, }),
+                              theme.type(-2, { fromBp: 'xl', lines: 4, }),
+                            ],
+                          }}
+                          render="ul"
                         >
-                          {commercialLink.contentName}
-                        </HtzLink>
-                      </FelaComponent>
-                    ))}
-                  </FelaComponent>
+                          {commercialLinks.map((commercialLink, idx) => (
+                            <FelaComponent
+                              style={theme => ({
+                                marginBottom: idx < commercialLinks.length - 1 ? '1rem' : '0',
+
+                                '&:hover': { textDecoration: 'underline', },
+                                '&:focus': { textDecoration: 'underline', },
+                              })}
+                              key={commercialLink.contentId}
+                              render="li"
+                            >
+                              <HtzLink
+                                href={commercialLink.href}
+                                onClick={
+                                  biAction
+                                    ? () => biAction({
+                                      index: idx,
+                                      articleId: commercialLink.contentId,
+                                    })
+                                    : null
+                                }
+                              >
+                                {commercialLink.contentName}
+                              </HtzLink>
+                            </FelaComponent>
+                          ))}
+                        </FelaComponent>
+                      </React.Fragment>
+                    )}
+                  />
                 )
               )}
             </FelaComponent>
@@ -388,10 +384,7 @@ function listViewHeaderStyle({
           theme.type(1, { fromBp: 's', untilBp: 'xl', }),
           theme.type(0, { fromBp: 'xl', }),
         ]
-        : [
-          theme.type(2, { untilBp: 's', lines: 7, }),
-          theme.type(2, { fromBp: 's', }),
-        ]),
+        : [ theme.type(2, { untilBp: 's', lines: 7, }), theme.type(2, { fromBp: 's', }), ]),
       // eslint-disable-next-line space-infix-ops, no-mixed-operators
       ...(backgroundColor
         ? [
@@ -437,9 +430,7 @@ function listViewHeaderStyle({
               '5px',
               2,
               'solid',
-              isCommercial
-                ? theme.color('commercial')
-                : theme.color('primary')
+              isCommercial ? theme.color('commercial') : theme.color('primary')
             )
           ),
           theme.mq({ from: 'l', }, { flexDirection: 'column', }),

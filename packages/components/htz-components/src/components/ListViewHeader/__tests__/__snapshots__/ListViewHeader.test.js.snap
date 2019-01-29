@@ -33,11 +33,16 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  commerci
     <div
       className="htz-as htz-at"
     >
+      <h2
+        className="htz-au htz-av htz-aw htz-ax htz-ay htz-az"
+      >
+        שיתופי פעולה
+      </h2>
       <ul
-        className="htz-au htz-av htz-at htz-aw htz-ax htz-ay htz-az"
+        className="htz-ba htz-av htz-at htz-bb htz-bc htz-bd htz-be"
       >
         <li
-          className="htz-ba htz-bb htz-bc"
+          className="htz-bf htz-bg htz-bh"
         >
           <a
             className={null}
@@ -48,7 +53,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  commerci
           </a>
         </li>
         <li
-          className="htz-bd htz-bb htz-bc"
+          className="htz-bi htz-bg htz-bh"
         >
           <a
             className={null}
@@ -64,7 +69,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title and  commerci
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title and  commercialLinks prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-aj{-webkit-box-orient:horizontal}.htz-ak{-webkit-box-direction:normal}.htz-al{-webkit-box-flex:1}.htz-am{-webkit-box-pack:right}.htz-an{color:#0B7EB5}.htz-ao{font-weight:700}.htz-as{margin-top:auto}.htz-au{color:#bd1c87}.htz-av{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-ba{margin-bottom:1rem}.htz-bd{margin-bottom:0}.htz-bb:hover{text-decoration:underline}.htz-bc:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{font-size:3.5rem}.htz-f{line-height:7rem}.htz-g{background-color:#FFF}.htz-h{position:relative}.htz-i:before{background-color:#0B7EB5}.htz-j:before{content:\\"\\"}.htz-k:before{height:1px}.htz-l:before{position:absolute}.htz-m:before{width:100%}.htz-n:before{right:0}.htz-o:before{top:0}.htz-p{align-items:center}.htz-q{-webkit-box-align:center}.htz-ap{padding-right:1rem}.htz-aq{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ar{width:100%}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-r{font-size:3.5rem}.htz-s{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-t{font-size:3.4285714285714284rem}.htz-u{line-height:1.1666666666666667em}.htz-ay{font-size:2rem}.htz-az{line-height:4rem}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-v{border-top-width:2px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(1rem - 2px)}.htz-z{padding-bottom:1rem}}@media (min-width: 64em){.htz-ab{border-top-width:5px}.htz-ac{border-top-style:solid}.htz-ae{border-top-color:#0B7EB5}.htz-af{padding-top:calc(2rem - 5px)}.htz-ag{flex-direction:column}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}}@media (max-width: 63.9375em){.htz-at{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-aw{font-size:2.6666666666666665rem}.htz-ax{line-height:4rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title and  commercialLinks prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-aj{-webkit-box-orient:horizontal}.htz-ak{-webkit-box-direction:normal}.htz-al{-webkit-box-flex:1}.htz-am{-webkit-box-pack:right}.htz-an{color:#0B7EB5}.htz-ao{font-weight:700}.htz-as{margin-top:auto}.htz-au{color:#bd1c87}.htz-av{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-ba{color:#787878}.htz-bf{margin-bottom:1rem}.htz-bi{margin-bottom:0}.htz-bg:hover{text-decoration:underline}.htz-bh:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{font-size:3.5rem}.htz-f{line-height:7rem}.htz-g{background-color:#FFF}.htz-h{position:relative}.htz-i:before{background-color:#0B7EB5}.htz-j:before{content:\\"\\"}.htz-k:before{height:1px}.htz-l:before{position:absolute}.htz-m:before{width:100%}.htz-n:before{right:0}.htz-o:before{top:0}.htz-p{align-items:center}.htz-q{-webkit-box-align:center}.htz-ap{padding-right:1rem}.htz-aq{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ar{width:100%}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-r{font-size:3.5rem}.htz-s{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-t{font-size:3.4285714285714284rem}.htz-u{line-height:1.1666666666666667em}.htz-ay{font-size:2.2857142857142856rem}.htz-az{line-height:1.3125em}.htz-bd{font-size:2rem}.htz-be{line-height:4rem}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-v{border-top-width:2px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(1rem - 2px)}.htz-z{padding-bottom:1rem}}@media (min-width: 64em){.htz-ab{border-top-width:5px}.htz-ac{border-top-style:solid}.htz-ae{border-top-color:#0B7EB5}.htz-af{padding-top:calc(2rem - 5px)}.htz-ag{flex-direction:column}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}}@media (max-width: 63.9375em){.htz-at{display:none}}@media (max-width: 79.9375em){.htz-aw{font-size:2.3333333333333335rem}.htz-ax{line-height:1.2857142857142858em}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-bb{font-size:2.6666666666666665rem}.htz-bc{line-height:4rem}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title and  extra links prop 1`] = `
 <div>
@@ -269,11 +274,16 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
     <div
       className="htz-bl htz-bm"
     >
+      <h2
+        className="htz-bn htz-bo htz-bp htz-bq htz-br htz-bs"
+      >
+        שיתופי פעולה
+      </h2>
       <ul
-        className="htz-bn htz-bo htz-bm htz-bp htz-bc htz-bd htz-be"
+        className="htz-at htz-bo htz-bm htz-bt htz-bc htz-bd htz-be"
       >
         <li
-          className="htz-bq htz-br htz-bs"
+          className="htz-bu htz-bv htz-bw"
         >
           <a
             className={null}
@@ -284,7 +294,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
           </a>
         </li>
         <li
-          className="htz-bt htz-br htz-bs"
+          className="htz-bx htz-bv htz-bw"
         >
           <a
             className={null}
@@ -300,7 +310,7 @@ exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks a
 </div>
 `;
 
-exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-aj{-webkit-box-orient:horizontal}.htz-ak{-webkit-box-direction:normal}.htz-al{-webkit-box-flex:1}.htz-am{-webkit-box-pack:right}.htz-an{color:#0B7EB5}.htz-ao{font-weight:700}.htz-as{margin-top:1rem}.htz-at{color:#787878}.htz-bh{display:inline-block}.htz-bi{margin-right:1rem}.htz-bj{margin-left:1rem}.htz-bl{margin-top:auto}.htz-bn{color:#bd1c87}.htz-bo{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-bq{margin-bottom:1rem}.htz-bt{margin-bottom:0}.htz-bg:hover{color:#2D2D2D}.htz-br:hover{text-decoration:underline}.htz-bs:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{font-size:3.5rem}.htz-f{line-height:7rem}.htz-g{background-color:#FFF}.htz-h{position:relative}.htz-i:before{background-color:#0B7EB5}.htz-j:before{content:\\"\\"}.htz-k:before{height:1px}.htz-l:before{position:absolute}.htz-m:before{width:100%}.htz-n:before{right:0}.htz-o:before{top:0}.htz-p{align-items:center}.htz-q{-webkit-box-align:center}.htz-ap{padding-right:1rem}.htz-aq{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ar{width:100%}.htz-au{display:none}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-r{font-size:3.5rem}.htz-s{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-t{font-size:3.4285714285714284rem}.htz-u{line-height:1.1666666666666667em}.htz-bd{font-size:2rem}.htz-be{line-height:4rem}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-v{border-top-width:2px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(1rem - 2px)}.htz-z{padding-bottom:1rem}.htz-av{direction:ltr}.htz-aw{padding-right:2rem}.htz-ax{font-size:2.3333333333333335rem}.htz-ay{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-ab{border-top-width:5px}.htz-ac{border-top-style:solid}.htz-ae{border-top-color:#0B7EB5}.htz-af{padding-top:calc(2rem - 5px)}.htz-ag{flex-direction:column}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-bk{display:none}}@media (max-width: 63.9375em){.htz-az{font-weight:700}.htz-ba{margin-right:auto}.htz-bf{display:inline-block}.htz-bm{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-bb{font-size:2.3333333333333335rem}.htz-bc{line-height:4rem}.htz-bp{font-size:2.6666666666666665rem}}"`;
+exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and  commercialLink prop 2`] = `".htz-a{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-b{flex-direction:row}.htz-c{flex-grow:1}.htz-d{justify-content:flex-start}.htz-aj{-webkit-box-orient:horizontal}.htz-ak{-webkit-box-direction:normal}.htz-al{-webkit-box-flex:1}.htz-am{-webkit-box-pack:right}.htz-an{color:#0B7EB5}.htz-ao{font-weight:700}.htz-as{margin-top:1rem}.htz-at{color:#787878}.htz-bh{display:inline-block}.htz-bi{margin-right:1rem}.htz-bj{margin-left:1rem}.htz-bl{margin-top:auto}.htz-bn{color:#bd1c87}.htz-bo{font-family:\\"Helvetica Neue\\",Helvetica,Arial,sans-serif}.htz-bu{margin-bottom:1rem}.htz-bx{margin-bottom:0}.htz-bg:hover{color:#2D2D2D}.htz-bv:hover{text-decoration:underline}.htz-bw:focus{text-decoration:underline}@media (max-width: 37.4375em){.htz-e{font-size:3.5rem}.htz-f{line-height:7rem}.htz-g{background-color:#FFF}.htz-h{position:relative}.htz-i:before{background-color:#0B7EB5}.htz-j:before{content:\\"\\"}.htz-k:before{height:1px}.htz-l:before{position:absolute}.htz-m:before{width:100%}.htz-n:before{right:0}.htz-o:before{top:0}.htz-p{align-items:center}.htz-q{-webkit-box-align:center}.htz-ap{padding-right:1rem}.htz-aq{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-ar{width:100%}.htz-au{display:none}}@media (min-width: 37.5em) and (max-width: 79.9375em){.htz-r{font-size:3.5rem}.htz-s{line-height:1.4285714285714286em}}@media (min-width: 80em){.htz-t{font-size:3.4285714285714284rem}.htz-u{line-height:1.1666666666666667em}.htz-bd{font-size:2rem}.htz-be{line-height:4rem}.htz-br{font-size:2.2857142857142856rem}.htz-bs{line-height:1.3125em}}@media (min-width: 37.5em) and (max-width: 63.9375em){.htz-v{border-top-width:2px}.htz-w{border-top-style:solid}.htz-x{border-top-color:#0B7EB5}.htz-y{padding-top:calc(1rem - 2px)}.htz-z{padding-bottom:1rem}.htz-av{direction:ltr}.htz-aw{padding-right:2rem}.htz-ax{font-size:2.3333333333333335rem}.htz-ay{line-height:1.2857142857142858em}}@media (min-width: 64em){.htz-ab{border-top-width:5px}.htz-ac{border-top-style:solid}.htz-ae{border-top-color:#0B7EB5}.htz-af{padding-top:calc(2rem - 5px)}.htz-ag{flex-direction:column}.htz-ah{-webkit-box-orient:vertical}.htz-ai{-webkit-box-direction:normal}.htz-bk{display:none}}@media (max-width: 63.9375em){.htz-az{font-weight:700}.htz-ba{margin-right:auto}.htz-bf{display:inline-block}.htz-bm{display:none}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-bb{font-size:2.3333333333333335rem}.htz-bc{line-height:4rem}.htz-bt{font-size:2.6666666666666665rem}}@media (max-width: 79.9375em){.htz-bp{font-size:2.3333333333333335rem}.htz-bq{line-height:1.2857142857142858em}}"`;
 
 exports[`<ListViewHeader> DOM element renders correctly with title, extraLinks and marketingTeaser prop 1`] = `
 <div>
