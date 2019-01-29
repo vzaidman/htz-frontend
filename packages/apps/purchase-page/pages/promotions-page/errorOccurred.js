@@ -5,11 +5,12 @@ import { pagePropTypes, } from '@haaretz/app-utils';
 import { FelaComponent, } from 'react-fela';
 import gql from 'graphql-tag';
 import ReactGA from 'react-ga';
-import { IconCheck, LayoutContainer, UserDispenser, Query, pixelEvent, } from '@haaretz/htz-components';
+import { IconSadSmiley, LayoutContainer, UserDispenser, Query, pixelEvent, } from '@haaretz/htz-components';
 import MainLayout from '../../layouts/MainLayout';
 import OfferPageDataGetter from '../../components/OfferPage/OfferPageDataGetter';
 import ThankYouStage from '../../components/OfferPage/Stages/ThankYouStage';
 import StageTransition from '../../components/OfferPage/StageTransition/StageTransition';
+import ArrayLinesToString from '../../components/ArrayLinesToString/ArrayLinesToString';
 
 
 const GET_HOSTNAME = gql`
@@ -39,46 +40,43 @@ const GET_FB_PAYLOAD = gql`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ThankYouElement = ({ product, userMessage, fbFullRedirectUri, }) => (
+const ErrorOccurredElement = ({ product, userMessage, fbFullRedirectUri, }) => (
   <FelaComponent style={{ textAlign: 'center', }}>
-    <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem', }}>
+    <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem',  }}>
       <StageTransition
         chosenSubscription={product}
         stage="thankYou"
         displayPhones={false}
         headerElement={(
           <Fragment>
-            <IconCheck color="positive" size={10} />
+            <IconSadSmiley color="negative" size={10} />
             <FelaComponent
               style={theme => ({
+                maxWidth: '70rem',
+                marginLeft: 'auto',
+                marginRight: 'auto',
                 marginTop: '3rem',
-                extend: [ theme.type(3), ],
+                extend: [ theme.type(2), ],
               })}
               render={({
                 className,
                 theme: {
-                  thankYou: { afterPurchase, secondaryHeader, },
+                  generalError: { message, },
                 },
               }) => (
-                <div className={className}>
-                  {product ? (
-                    <p>{afterPurchase(product)}</p>
-                  ) : userMessage ? (
-                    userMessage.map(line => <p>{line}</p>)
-                  ) : null}
-                </div>
+                <ArrayLinesToString className={className} data={message} />
               )}
             />
           </Fragment>
-)}
-        stageElement={<ThankYouStage fbFullRedirectUri={fbFullRedirectUri} />}
+        )}
+        stageElement={<ThankYouStage fbFullRedirectUri={fbFullRedirectUri} hasNewsletter={false} />}
       />
     </LayoutContainer>
   </FelaComponent>
 );
 
 
-class StageThankYou extends React.Component {
+class StageErrorOccurred extends React.Component {
   componentDidMount() {
     pixelEvent('track', 'PageView');
     // remove 'HtzRusr' cookie or TmRusr
@@ -148,7 +146,7 @@ class StageThankYou extends React.Component {
                       }`
                       : null;
                     return productId ? (
-                      <ThankYouElement product={productId} fbFullRedirectUri={fbFullRedirectUri} />
+                      <ErrorOccurredElement product={productId} fbFullRedirectUri={fbFullRedirectUri} />
                     ) : (
                       <OfferPageDataGetter
                         render={({
@@ -161,7 +159,7 @@ class StageThankYou extends React.Component {
                           if (loading) return <div> Loading...</div>;
                           if (error) return <div> Error...</div>;
                           return (
-                            <ThankYouElement
+                            <ErrorOccurredElement
                               userMessage={userMessage}
                               fbFullRedirectUri={fbFullRedirectUri}
                             />
@@ -180,8 +178,8 @@ class StageThankYou extends React.Component {
   }
 }
 
-StageThankYou.propTypes = pagePropTypes;
+StageErrorOccurred.propTypes = pagePropTypes;
 
-StageThankYou.defaultProps = {};
+StageErrorOccurred.defaultProps = {};
 
-export default StageThankYou;
+export default StageErrorOccurred;

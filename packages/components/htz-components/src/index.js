@@ -148,6 +148,7 @@ import IconQuote from './components/Icon/icons/IconQuote';
 import IconRamatGan from './components/Icon/icons/IconRamatGan';
 import IconReading from './components/Icon/icons/IconReading';
 import IconRss from './components/Icon/icons/IconRss';
+import IconSadSmiley from './components/Icon/icons/IconSadSmiley';
 import IconSafePayment from './components/Icon/icons/IconSafePayment';
 import IconSave from './components/Icon/icons/IconSave';
 import IconSearch from './components/Icon/icons/IconSearch';
@@ -378,6 +379,7 @@ export {
   IconRamatGan,
   IconReading,
   IconRss,
+  IconSadSmiley,
   IconSafePayment,
   IconSave,
   IconSearch,

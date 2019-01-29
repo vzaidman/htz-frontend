@@ -492,6 +492,10 @@ export const textInputI18n = Object.freeze({
   requiredShort: '*',
 });
 
+export const generalError = Object.freeze({
+  message: [ 'אופס! אירעה תקלה', 'לא ניתן לסיים את התהליך כעת. אנא נסו לבצע את התהליך שנית בעוד מספר דקות. במידה והבעיה חוזרת על עצמה, אנא פנו לשירות לקוחות.', ],
+});
+
 export const thankYou = Object.freeze({
   afterPurchase: product => {
     const item = product === 'HTZ'
