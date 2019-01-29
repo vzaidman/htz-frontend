@@ -3,6 +3,7 @@ import * as React from 'react';
 import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import { FelaComponent, } from 'react-fela';
+import { createMapper, } from '@haaretz/app-utils';
 import PaywallDataProvider from './PaywallDataProvider';
 import PaywallBottom from './Layout/PaywallBottom/PaywallBottom';
 import PaywallTop from './Layout/PaywallTop/PaywallTop';
@@ -13,17 +14,15 @@ import type { SlotLocation, PaywallData, } from './PaywallDataProvider';
 type PaywallLayout = React.ComponentType<PaywallData>;
 
 
-const mapper = {
+const slotMapper = createMapper({
   'bot-persist': PaywallBottom,
   top: PaywallTop,
   popup: PaywallPopup,
   'mid-page': PaywallMidpage,
-};
+}, null); // default
 
-function selectLayout(slotLocation: SlotLocation): ?PaywallLayout {
-  return slotLocation in mapper
-    ? mapper[slotLocation]
-    : null; // default
+function selectLayout(slotLocation: ?SlotLocation): ?PaywallLayout {
+  return slotMapper(slotLocation);
 }
 
 

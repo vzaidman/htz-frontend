@@ -56,7 +56,7 @@ export type SlotLocation =
   | 'mid-page';
 
 export type PaywallData = {
-  slotLocation: SlotLocation,
+  slotLocation: ?SlotLocation,
   colorScheme: 'primary' | 'secondary',
   title: string,
   text: string,

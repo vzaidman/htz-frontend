@@ -10,6 +10,7 @@ import {
   areaGraphMap,
   assetMap,
   assetsMap,
+  createMapper,
 } from '@haaretz/app-utils';
 import querystring from 'querystring';
 
@@ -75,14 +76,14 @@ class PapiAPI extends RESTDataSource {
     return this.get(path, params)
       .then(res => {
         console.log('paywall response: ', res);
-        const slotMapping = {
+        const slotMapper = createMapper({
           'bot-persist': 'bot-persist',
           top: 'top',
           'pop-small': 'popup',
           popup: 'popup',
           mid: 'mid-page',
           'mid-page': 'mid-page',
-        };
+        });
         const responsiveFields = params.useragent === 'mobile'
           ? {
             title: res.visualInfo.boldTextMobile,
@@ -100,11 +101,8 @@ class PapiAPI extends RESTDataSource {
               url: res.visualInfo.yesLink,
             },
           };
-        const slotLocation = res.basicInfo.slotLocation;
         return {
-          slotLocation: slotLocation in slotMapping
-            ? slotMapping[slotLocation]
-            : null,
+          slotLocation: slotMapper(res.basicInfo.slotLocation),
           colorScheme: res.visualInfo.bgColor.includes('secondary')
             ? 'secondary'
             : 'primary',

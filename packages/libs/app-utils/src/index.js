@@ -7,6 +7,7 @@ import createLogger from './utils/createLogger';
 import jsonGenerator from './jsonGenerator/jsonGenerator';
 import intersperse from './utils/intersperse';
 import { b64EncodeUnicode, b64DecodeUnicode, } from './utils/base64Handler';
+import createMapper from './utils/createMapper';
 
 // JSON Maps
 import assetMap from './jsonGenerator/jsonMaps/asset';
@@ -61,6 +62,7 @@ export {
   schema,
   jsonGenerator,
   intersperse,
+  createMapper,
   b64EncodeUnicode,
   b64DecodeUnicode,
   // JSON Maps
