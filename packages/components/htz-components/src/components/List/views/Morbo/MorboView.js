@@ -176,7 +176,7 @@ function Teaser1({
                 defaultImgOptions: {
                   sizes: [ { size: '108px', }, ],
                   aspect: 'square',
-                  widths: [ 108, 204, ],
+                  widths: [ 108, 216, ],
                 },
                 sources: [
                   {
@@ -184,6 +184,7 @@ function Teaser1({
                     from: 's',
                     sizes: [
                       { from: 'xl', size: '192px', },
+                      { from: 'l', size: '160px', },
                       { from: 's', size: '168px', },
                     ],
                     widths: [ 320, 192, 168, ],

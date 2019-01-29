@@ -296,21 +296,21 @@ function MainTeaser({
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: '108px',
+                  sizes: 'calc(100vw - 4rem)',
                   aspect: 'headline',
-                  widths: [ 108, 216, ],
+                  widths: [ 352, 400, 575, ],
                 },
                 sources: [
                   {
                     from: 's',
                     aspect: 'regular',
                     sizes: [
-                      { from: 'xl', size: '280px', },
-                      { from: 'l', size: '292px', },
-                      { from: 'm', size: '350px', },
-                      { from: 's', size: '364px', },
+                      { from: 'xl', size: '281px', },
+                      { from: 'l', size: '393px', },
+                      { from: 'm', size: '348px', },
+                      { from: 's', size: '264px', },
                     ],
-                    widths: [ 280, 292, 350, 364, ],
+                    widths: [ 528, 393, 348, 281, 264, ],
                   },
                 ],
               })}

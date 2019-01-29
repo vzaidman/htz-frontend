@@ -269,7 +269,7 @@ function Comic({ data, lazyLoadImages, }: ComicPropTypes): React.Node {
               imgOptions={getImageAssets({
                 bps: theme.bps,
                 aspect: 'headline',
-                sizes: [ { size: 'calc(100vw - 4rem)', }, ],
+                sizes: [ { size: 'calc(100vw - 6rem)', }, ],
                 widths: [ 599, 500, 400, ],
               })}
             />

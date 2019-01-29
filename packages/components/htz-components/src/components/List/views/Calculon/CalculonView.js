@@ -190,13 +190,13 @@ function Teaser1({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
                 bps: theme.bps,
                 aspect: 'headline',
                 sizes: [
-                  { from: 'xl', size: '621px', },
-                  { from: 'l', size: '591px', },
-                  { from: 'm', size: '504px', },
-                  { from: 's', size: '392px', },
+                  { from: 'xl', size: '597px', },
+                  { from: 'l', size: '567px', },
+                  { from: 'm', size: '472px', },
+                  { from: 's', size: '360px', },
                   { size: 'calc(100vw - 4rem)', },
                 ],
-                widths: [ 621, 591, 504, 392, 400, ],
+                widths: [ 597, 567, 472, 360, 400, ],
               })}
               onClick={
                 biAction ? () => biAction({ index: 0, articleId: data.representedContent, }) : null
@@ -272,20 +272,20 @@ function Teaser2({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
                 imgData: data.image,
                 defaultImgOptions: {
                   sizes: [
-                    { from: 'l', size: '158px', },
-                    { from: 'm', size: '240px', },
-                    { from: 's', size: '184px', },
+                    { from: 'l', size: '154px', },
+                    { from: 'm', size: '224px', },
+                    { from: 's', size: '168px', },
                     { size: '18rem', },
                   ],
                   aspect: 'square',
-                  widths: [ 108, 158, 184, 204, 240, 400, ],
+                  widths: [ 108, 154, 168, 204, 224, 400, ],
                 },
                 sources: [
                   {
                     aspect: 'vertical',
                     from: 'xl',
-                    sizes: '188px',
-                    widths: [ 188, ],
+                    sizes: '178px',
+                    widths: [ 178, ],
                   },
                 ],
               })}
@@ -362,26 +362,26 @@ function Teaser3({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
                 bps: theme.bps,
                 imgData: data.image,
                 defaultImgOptions: {
-                  sizes: [ { from: 'l', until: 'xl', size: '158px', }, { size: '18rem', }, ],
+                  sizes: [ { from: 'l', until: 'xl', size: '154px', }, { size: '18rem', }, ],
                   aspect: 'square',
-                  widths: [ 108, 158, 204, ],
+                  widths: [ 108, 154, 216, ],
                 },
                 sources: [
                   {
                     aspect: 'regular',
                     from: 'xl',
-                    sizes: '202px',
-                    widths: [ 202, ],
+                    sizes: '189px',
+                    widths: [ 189, ],
                   },
                   {
                     aspect: 'regular',
                     from: 's',
                     until: 'l',
                     sizes: [
-                      { from: 's', until: 'm', size: '188px', },
-                      { from: 'm', until: 'l', size: '256px', },
+                      { from: 's', until: 'm', size: '180px', },
+                      { from: 'm', until: 'l', size: '236px', },
                     ],
-                    widths: [ 188, 376, 256, 512, ],
+                    widths: [ 180, 376, 236, 512, ],
                   },
                 ],
               })}
@@ -447,7 +447,7 @@ function Teaser4({ data, lazyLoadImages, biAction, }: TeaserPropsType): React.No
           data={data.image}
           lazyLoad={lazyLoadImages}
           imgOptions={{
-            transforms: { aspect: 'regular', width: 198, },
+            transforms: { aspect: 'regular', width: 189, },
           }}
         />
       </TeaserMedia>
