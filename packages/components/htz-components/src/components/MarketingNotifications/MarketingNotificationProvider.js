@@ -121,8 +121,8 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
     }
 
     if (!preHeader) return null;
-    const debug = { timeToExired: 13, userType: 'regular', };
-    // const debug = null;
+    // const debug = { timeToExired: 13, userType: 'regular', };
+    const debug = null;
     const { timeToExired, medPopupAllOptions, userType, } = this.getMadPopupBasicDataBlocks(
       debug,
       userExpiredJson,
