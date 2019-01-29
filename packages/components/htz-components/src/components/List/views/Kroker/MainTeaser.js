@@ -31,7 +31,11 @@ const headerType = [
   { from: 'xl', value: -1, },
 ];
 
-export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Props): React.Node {
+export default function MainTeaser({
+  itemData,
+  lazyLoadImages,
+  biAction,
+}: Props): React.Node {
   return (
     <FelaTheme
       render={theme => (
@@ -46,12 +50,23 @@ export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Prop
               },
             ],
           }}
-          onClick={biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null}
+          onClick={
+            biAction
+              ? () => biAction({ index: 0, articleId: itemData.representedContent, })
+              : null
+          }
         >
           <TeaserMedia
             data={itemData}
             isStacked
-            onClick={biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null}
+            onClick={
+              biAction
+                ? () => biAction({
+                  index: 0,
+                  articleId: itemData.representedContent,
+                })
+                : null
+            }
           >
             <Image
               data={itemData.image}
@@ -60,28 +75,39 @@ export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Prop
                 bps: theme.bps,
                 aspect: 'headline',
                 sizes: [
-                  { from: 'xl', size: '295px', },
-                  { from: 'l', size: '238px', },
-                  { from: 'm', size: '372px', },
-                  { from: 's', size: '288px', },
+                  { from: 'xl', size: '281px', },
+                  { from: 'l', size: '226px', },
+                  { from: 'm', size: '423px', },
+                  { from: 's', size: '322px', },
                   { size: 'calc(100vw - 4rem)', },
                 ],
-                widths: [ 238, 288, 295, 372, 744, ],
+                widths: [ 226, 281, 322, 390, 423, 600, ],
               })}
             />
           </TeaserMedia>
           <TeaserContent
             isStacked
             data={itemData}
-            padding={[ { until: 's', value: [ 1, 1, 0, ], }, { from: 's', value: [ 1, 0, 0, ], }, ]}
-            footerPadding={[ { until: 's', value: 1, }, { from: 's', value: [ 1, 0, 0, ], }, ]}
+            padding={[
+              { until: 's', value: [ 1, 1, 0, ], },
+              { from: 's', value: [ 1, 0, 0, ], },
+            ]}
+            footerPadding={[
+              { until: 's', value: 1, },
+              { from: 's', value: [ 1, 0, 0, ], },
+            ]}
             renderContent={() => (
               <TeaserHeader
                 {...itemData}
                 typeScale={headerType}
                 kickerTypeScale={headerType}
                 onClick={
-                  biAction ? () => biAction({ index: 0, articleId: itemData.representedContent, }) : null
+                  biAction
+                    ? () => biAction({
+                      index: 0,
+                      articleId: itemData.representedContent,
+                    })
+                    : null
                 }
               />
             )}

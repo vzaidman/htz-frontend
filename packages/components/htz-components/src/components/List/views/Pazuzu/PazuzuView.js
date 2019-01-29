@@ -144,7 +144,10 @@ function PazuzuTeaser({
             gridMiscStyles={{ flexWrap: 'nowrap', }}
             onClick={
               biAction
-                ? () => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+                ? () => biAction({
+                  index: isSecondItem ? 1 : 0,
+                  articleId: item.representedContent,
+                })
                 : null
             }
           >
@@ -154,7 +157,10 @@ function PazuzuTeaser({
               width={isStackedOnXl ? null : [ { from: 'xl', value: 48, }, ]}
               onClick={
                 biAction
-                  ? () => biAction({ index: isSecondItem ? 1 : 0, articleId: item.representedContent, })
+                  ? () => biAction({
+                    index: isSecondItem ? 1 : 0,
+                    articleId: item.representedContent,
+                  })
                   : null
               }
             >
@@ -178,8 +184,8 @@ function PazuzuTeaser({
                       {
                         aspect: 'landscape',
                         from: 'xl',
-                        sizes: [ { size: '314px', }, ],
-                        widths: [ 314, ],
+                        sizes: [ { size: '389px', }, ],
+                        widths: [ 389, ],
                       },
                     ],
                   })}
@@ -198,7 +204,7 @@ function PazuzuTeaser({
                       { from: 's', size: '264px', },
                       { size: 'calc(50vw - 4.5rem)', },
                     ],
-                    widths: [ 265, 315, 350, 600, ],
+                    widths: [ 200, 265, 315, 350, 600, ],
                   })}
                 />
               )}
@@ -216,7 +222,10 @@ function PazuzuTeaser({
                 ...(isStackedOnXl
                   ? {}
                   : {
-                    marginTop: [ { until: 'xl', value: 'auto', }, { from: 'xl', value: '0', }, ],
+                    marginTop: [
+                      { until: 'xl', value: 'auto', },
+                      { from: 'xl', value: '0', },
+                    ],
                   }),
                 type: [
                   { until: 's', value: -3, },
@@ -249,7 +258,10 @@ function PazuzuTeaser({
               )}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
+                  <TeaserAuthors
+                    authors={item.authors}
+                    miscStyles={{ fontWeight: 'bold', }}
+                  />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}

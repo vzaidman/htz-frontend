@@ -47,7 +47,9 @@ export default function VerticalImageTeaser({
           data={itemData}
           isStacked={[ { from: 's', value: true, }, ]}
           onClick={
-            biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null
+            biAction
+              ? () => biAction({ index: 1, articleId: itemData.representedContent, })
+              : null
           }
           miscStyles={{
             borderBottom: [
@@ -63,7 +65,12 @@ export default function VerticalImageTeaser({
             data={itemData}
             width={[ { until: 's', value: 19, }, ]}
             onClick={
-              biAction ? () => biAction({ index: 1, articleId: itemData.representedContent, }) : null
+              biAction
+                ? () => biAction({
+                  index: 1,
+                  articleId: itemData.representedContent,
+                })
+                : null
             }
           >
             <Picture
@@ -75,18 +82,19 @@ export default function VerticalImageTeaser({
                   defaultImgOptions: {
                     sizes: '108px',
                     aspect: 'square',
-                    widths: [ 108, 204, ],
+                    widths: [ 108, 216, ],
                   },
                   sources: [
                     {
                       from: 's',
                       aspect: 'headline',
                       sizes: [
-                        { from: 'xl', size: '180px', },
-                        { from: 'l', size: '225px', },
-                        { from: 's', size: '166px', },
+                        { from: 'xl', size: '178px', },
+                        { from: 'l', size: '143px', },
+                        { from: 'm', size: '274px', },
+                        { from: 's', size: '207px', },
                       ],
-                      widths: [ 166, 180, 225, ],
+                      widths: [ 143, 178, 207, 274, 414, 548, ],
                     },
                   ],
                 })
@@ -105,13 +113,18 @@ export default function VerticalImageTeaser({
                 kickerTypeScale={headerType}
                 onClick={
                   biAction
-                    ? () => biAction({ index: 1, articleId: itemData.representedContent, })
+                    ? () => biAction({
+                      index: 1,
+                      articleId: itemData.representedContent,
+                    })
                     : null
                 }
               />
             )}
             footerMiscStyles={{ type: -3, color: theme.color('neutral', '-3'), }}
-            renderFooter={() => <TeaserFooter data={itemData} displayFlags={displayFlags} />}
+            renderFooter={() => (
+              <TeaserFooter data={itemData} displayFlags={displayFlags} />
+            )}
           />
         </Teaser>
       )}

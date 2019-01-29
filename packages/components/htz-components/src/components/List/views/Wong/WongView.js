@@ -16,6 +16,7 @@ import GridItem from '../../../Grid/GridItem';
 import HtzLink from '../../../HtzLink/HtzLink';
 import IconBack from '../../../Icon/icons/IconBack';
 import Picture from '../../../Image/Picture';
+import Image from '../../../Image/Image';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
@@ -24,6 +25,8 @@ import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import TeaserSubtitle from '../../../TeaserSubtitle/TeaserSubtitle';
 import TeaserTime from '../../../TeaserTime/TeaserTime';
 import getMediaComponent from '../../../../utils/getMediaComponent';
+import getPictureAssets from '../../../../utils/getPictureAssets';
+import getImageAssets from '../../../../utils/getImageAssets';
 
 type Props = {
   gutter: ?number,
@@ -74,220 +77,259 @@ export default function Wong({
 }: Props): React.Node {
   const item = items[0];
   const media = item.media || null;
-  const MediaComponent = getMediaComponent(media && media.kind, Picture);
-  const mediaProps = getMediaProps(media, isConrad);
+  const MediaComponent = getMediaComponent(
+    media && media.kind,
+    isConrad ? Image : Picture
+  );
   const relatedPadding = '2rem';
   return (
     <FelaTheme
-      render={theme => (
-        <GridItem
-          gutter={gutter}
-          width={width}
-          rule={isConrad ? null : [ { from: 'xl', value: { color: [ 'neutral', '-4', ], width: 1, }, }, ]}
-        >
-          <Teaser
-            gutter={0}
-            data={item}
-            isRev={[ { from: 'xl', value: !isConrad, }, ]}
-            gridMiscStyles={{
-              justifyContent: [ { from: 'xl', value: 'flex-end', }, ],
-            }}
-            onClick={
-              biAction ? () => biAction({ index: 0, articleId: item.representedContent, }) : null
+      render={theme => {
+        const mediaProps = getMediaProps(media, isConrad, theme);
+        return (
+          <GridItem
+            gutter={gutter}
+            width={width}
+            rule={
+              isConrad
+                ? null
+                : [
+                  {
+                    from: 'xl',
+                    value: { color: [ 'neutral', '-4', ], width: 1, },
+                  },
+                ]
             }
-            miscStyles={{
-              margin: [ { until: 's', value: '0 -2rem', }, { fom: 's', value: '0', }, ],
-            }}
           >
-            <TeaserMedia
+            <Teaser
+              gutter={0}
               data={item}
-              width={[
-                { until: 'l', value: 1, },
-                { from: 'l', until: 'xl', value: 7 / 12, },
-                { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
-              ]}
-              miscStyles={{
-                paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '2rem', }, ],
+              isRev={[ { from: 'xl', value: !isConrad, }, ]}
+              gridMiscStyles={{
+                justifyContent: [ { from: 'xl', value: 'flex-end', }, ],
               }}
               onClick={
-                biAction ? () => biAction({ index: 0, articleId: item.representedContent, }) : null
+                biAction
+                  ? () => biAction({ index: 0, articleId: item.representedContent, })
+                  : null
               }
-            >
-              <MediaComponent {...mediaProps} lazyLoad={lazyLoadImages} />
-            </TeaserMedia>
-            <TeaserContent
-              width={[
-                { until: 'l', value: 1, },
-                { from: 'l', until: 'xl', value: 5 / 12, },
-                { from: 'xl', value: isConrad ? 1 / 2 : 3 / 7, },
-              ]}
-              data={item}
-              padding={[
-                { until: 's', value: [ 0, 2, 0, 0, ], },
-                { from: 's', until: 'l', value: [ 3, 0, 0, 0, ], },
-                { from: 'l', until: 'xl', value: [ 0, 2, 0, 0, ], },
-                { from: 'xl', value: isConrad ? [ 0, 2, 0, ] : [ 0, 0, 0, 2, ], },
-              ]}
               miscStyles={{
-                marginTop:
-                  item && (item.exclusive || item.exclusiveMobile)
-                    ? [ { until: 's', value: '-3rem', }, ]
-                    : undefined,
-              }}
-              renderContent={() => (
-                <React.Fragment>
-                  <TeaserHeader
-                    kickerIsBlock
-                    isH1
-                    {...item}
-                    typeScale={[
-                      { until: 's', value: 1, },
-                      { from: 's', until: 'l', value: 6, },
-                      { from: 'l', until: 'xl', value: 5, },
-                      { from: 'xl', value: isConrad ? 5 : 4, },
-                    ]}
-                    kickerTypeScale={[ { until: 'xl', value: -1, }, { from: 'xl', value: -2, }, ]}
-                    miscStyles={{}}
-                    kickerMiscStyles={{
-                      marginBottom: '1rem',
-                      marginInlineStart: [ { until: 's', value: '-2rem', }, ],
-                    }}
-                    kickerInnerMiscStyles={{
-                      paddingInlineStart: [ { until: 's', value: '2rem', }, ],
-                      paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
-                    }}
-                    onClick={
-                      biAction
-                        ? () => biAction({ index: 0, articleId: item.representedContent, })
-                        : null
-                    }
-                  />
-                  <TeaserSubtitle
-                    {...item}
-                    typeScale={[
-                      { from: 's', until: 'l', value: 0, },
-                      { until: 'xl', value: 0, },
-                      { from: 'xl', value: -1, },
-                    ]}
-                    miscStyles={{
-                      display: [ { until: 's', value: 'none', }, ],
-                      marginTop: [ { from: 's', value: '1rem', }, ],
-                      fontWeight: 400,
-                    }}
-                  />
-                </React.Fragment>
-              )}
-              footerPadding={[
-                { until: 's', value: [ 1, 2, ], },
-                { from: 's', until: 'l', value: [ 1, 0, ], },
-                { from: 'l', until: 'xl', value: [ 1, 2, 0, 0, ], },
-                isConrad
-                  ? { from: 'xl', value: [ 1, 2, 0, 0, ], }
-                  : { from: 'xl', value: [ 1, 0, 0, 2, ], },
-              ]}
-              footerMiscStyles={{
-                marginTop: '0',
-                display: 'block',
-                color: theme.color('neutral', '-3'),
-                type: [
-                  { until: 's', value: -3, },
-                  { from: 's', until: 'xl', value: -2, },
-                  { from: 'xl', value: -3, },
+                margin: [
+                  { until: 's', value: '0 -2rem', },
+                  { fom: 's', value: '0', },
                 ],
               }}
-              renderFooter={() => (
-                <React.Fragment>
-                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
-                  {' | '}
-                  <TeaserTime {...item} />
-                  {' '}
-                  <CommentsCount
-                    commentsCount={item.commentsCounts}
-                    size={[ { from: 's', until: 'l', value: 2, }, ]}
-                  />
-                  {item.relatedArticles && (
-                    <FelaComponent
-                      style={{
-                        marginTop: '1rem',
-                        fontWeight: '700',
-                        extend: [ theme.mq({ until: 's', }, { display: 'none', }), ],
+            >
+              <TeaserMedia
+                data={item}
+                width={[
+                  { until: 'l', value: 1, },
+                  { from: 'l', until: 'xl', value: 7 / 12, },
+                  { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
+                ]}
+                miscStyles={{
+                  paddingInlineEnd: [
+                    { from: 'xl', value: isConrad ? 0 : '2rem', },
+                  ],
+                }}
+                onClick={
+                  biAction
+                    ? () => biAction({
+                      index: 0,
+                      articleId: item.representedContent,
+                    })
+                    : null
+                }
+              >
+                <MediaComponent {...mediaProps} lazyLoad={lazyLoadImages} />
+              </TeaserMedia>
+              <TeaserContent
+                width={[
+                  { until: 'l', value: 1, },
+                  { from: 'l', until: 'xl', value: 5 / 12, },
+                  { from: 'xl', value: isConrad ? 1 / 2 : 3 / 7, },
+                ]}
+                data={item}
+                padding={[
+                  { until: 's', value: [ 0, 2, 0, 0, ], },
+                  { from: 's', until: 'l', value: [ 3, 0, 0, 0, ], },
+                  { from: 'l', until: 'xl', value: [ 0, 2, 0, 0, ], },
+                  { from: 'xl', value: isConrad ? [ 0, 2, 0, ] : [ 0, 0, 0, 2, ], },
+                ]}
+                miscStyles={{
+                  marginTop:
+                    item && (item.exclusive || item.exclusiveMobile)
+                      ? [ { until: 's', value: '-3rem', }, ]
+                      : undefined,
+                }}
+                renderContent={() => (
+                  <React.Fragment>
+                    <TeaserHeader
+                      kickerIsBlock
+                      isH1
+                      {...item}
+                      typeScale={[
+                        { until: 's', value: 1, },
+                        { from: 's', until: 'l', value: 6, },
+                        { from: 'l', until: 'xl', value: 5, },
+                        { from: 'xl', value: isConrad ? 5 : 4, },
+                      ]}
+                      kickerTypeScale={[
+                        { until: 'xl', value: -1, },
+                        { from: 'xl', value: -2, },
+                      ]}
+                      miscStyles={{}}
+                      kickerMiscStyles={{
+                        marginBottom: '1rem',
+                        marginInlineStart: [ { until: 's', value: '-2rem', }, ],
                       }}
-                      render="ul"
-                    >
-                      {item.relatedArticles.map(
-                        // related articles should show up to
-                        // 3 articles on xl bp, 2 articles for s-l bp, and none for s bp
-                        (article, idx) => (idx < 3 ? (
-                          <AboveBlockLink key={article.contentId}>
-                            {({ className: aboveBlockLinkClassName, }) => (
-                              <li className={aboveBlockLinkClassName}>
-                                <FelaComponent
-                                  style={{
-                                    color: theme.color('link', 'base'),
-                                    display: 'block',
-                                    paddingInlineStart: relatedPadding,
+                      kickerInnerMiscStyles={{
+                        paddingInlineStart: [ { until: 's', value: '2rem', }, ],
+                        paddingInlineEnd: [ { until: 's', value: '2rem', }, ],
+                      }}
+                      onClick={
+                        biAction
+                          ? () => biAction({
+                            index: 0,
+                            articleId: item.representedContent,
+                          })
+                          : null
+                      }
+                    />
+                    <TeaserSubtitle
+                      {...item}
+                      typeScale={[
+                        { from: 's', until: 'l', value: 0, },
+                        { until: 'xl', value: 0, },
+                        { from: 'xl', value: -1, },
+                      ]}
+                      miscStyles={{
+                        display: [ { until: 's', value: 'none', }, ],
+                        marginTop: [ { from: 's', value: '1rem', }, ],
+                        fontWeight: 400,
+                      }}
+                    />
+                  </React.Fragment>
+                )}
+                footerPadding={[
+                  { until: 's', value: [ 1, 2, ], },
+                  { from: 's', until: 'l', value: [ 1, 0, ], },
+                  { from: 'l', until: 'xl', value: [ 1, 2, 0, 0, ], },
+                  isConrad
+                    ? { from: 'xl', value: [ 1, 2, 0, 0, ], }
+                    : { from: 'xl', value: [ 1, 0, 0, 2, ], },
+                ]}
+                footerMiscStyles={{
+                  marginTop: '0',
+                  display: 'block',
+                  color: theme.color('neutral', '-3'),
+                  type: [
+                    { until: 's', value: -3, },
+                    { from: 's', until: 'xl', value: -2, },
+                    { from: 'xl', value: -3, },
+                  ],
+                }}
+                renderFooter={() => (
+                  <React.Fragment>
+                    <TeaserAuthors
+                      authors={item.authors}
+                      miscStyles={{ fontWeight: 'bold', }}
+                    />
+                    {' | '}
+                    <TeaserTime {...item} />
+                    {' '}
+                    <CommentsCount
+                      commentsCount={item.commentsCounts}
+                      size={[ { from: 's', until: 'l', value: 2, }, ]}
+                    />
+                    {item.relatedArticles && (
+                      <FelaComponent
+                        style={{
+                          marginTop: '1rem',
+                          fontWeight: '700',
+                          extend: [
+                            theme.mq({ until: 's', }, { display: 'none', }),
+                          ],
+                        }}
+                        render="ul"
+                      >
+                        {item.relatedArticles.map(
+                          // related articles should show up to
+                          // 3 articles on xl bp, 2 articles for s-l bp, and none for s bp
+                          (article, idx) => (idx < 3 ? (
+                            <AboveBlockLink key={article.contentId}>
+                              {({ className: aboveBlockLinkClassName, }) => (
+                                <li className={aboveBlockLinkClassName}>
+                                  <FelaComponent
+                                    style={{
+                                      color: theme.color('link', 'base'),
+                                      display: 'block',
+                                      paddingInlineStart: relatedPadding,
 
-                                    ':visited': {
-                                      color: theme.color('link', 'base'),
-                                    },
-                                    ':hover': {
-                                      color: theme.color('link', 'base'),
-                                      textDecoration: 'underline',
-                                    },
-                                    ':focus': {
-                                      color: theme.color('link', 'base'),
-                                      textDecoration: 'underline',
-                                      outline: 'none',
-                                    },
-                                    extend: [
-                                      theme.mq(
-                                        { until: 'xl', },
-                                        idx === 2 ? { display: 'none', } : {}
-                                      ),
-                                      theme.type(-1, { untilBp: 'xl', }),
-                                      theme.type(-2, { fromBp: 'xl', }),
-                                    ],
-                                  }}
-                                  render={({ className: linkClassName, }) => (
-                                    <HtzLink
-                                      href={article.path}
-                                      className={linkClassName}
-                                      onClick={
-                                          biAction
-                                            ? () => biAction({
-                                              index: idx,
-                                              articleId: article.contentId,
-                                            })
-                                            : null
-                                        }
-                                    >
-                                      <IconBack
-                                        size={[
-                                          { until: 'xl', value: 2, },
-                                          { from: 'xl', value: 1.5, },
-                                        ]}
-                                        miscStyles={{
-                                          marginInlineStart: `-${relatedPadding}`,
-                                          marginInlineEnd: '0.5rem',
-                                        }}
-                                      />
-                                      {article.title}
-                                    </HtzLink>
-                                  )}
-                                />
-                              </li>
-                            )}
-                          </AboveBlockLink>
-                        ) : null)
-                      )}
-                    </FelaComponent>
-                  )}
-                </React.Fragment>
-              )}
-            />
-          </Teaser>
-        </GridItem>
-      )}
+                                      ':visited': {
+                                        color: theme.color('link', 'base'),
+                                      },
+                                      ':hover': {
+                                        color: theme.color('link', 'base'),
+                                        textDecoration: 'underline',
+                                      },
+                                      ':focus': {
+                                        color: theme.color('link', 'base'),
+                                        textDecoration: 'underline',
+                                        outline: 'none',
+                                      },
+                                      extend: [
+                                        theme.mq(
+                                          { until: 'xl', },
+                                          idx === 2 ? { display: 'none', } : {}
+                                        ),
+                                        theme.type(-1, { untilBp: 'xl', }),
+                                        theme.type(-2, { fromBp: 'xl', }),
+                                      ],
+                                    }}
+                                    render={({
+                                      className: linkClassName,
+                                    }) => (
+                                      <HtzLink
+                                        href={article.path}
+                                        className={linkClassName}
+                                        onClick={
+                                            biAction
+                                              ? () => biAction({
+                                                index: idx,
+                                                articleId: article.contentId,
+                                              })
+                                              : null
+                                          }
+                                      >
+                                        <IconBack
+                                            size={[
+                                              { until: 'xl', value: 2, },
+                                              { from: 'xl', value: 1.5, },
+                                            ]}
+                                            miscStyles={{
+                                              marginInlineStart: `-${relatedPadding}`,
+                                              marginInlineEnd: '0.5rem',
+                                            }}
+                                          />
+                                        {article.title}
+                                      </HtzLink>
+                                    )}
+                                  />
+                                </li>
+                              )}
+                            </AboveBlockLink>
+                          ) : null)
+                        )}
+                      </FelaComponent>
+                    )}
+                  </React.Fragment>
+                )}
+              />
+            </Teaser>
+          </GridItem>
+        );
+      }}
     />
   );
 }
@@ -296,74 +338,49 @@ export default function Wong({
 //                               UTILS                                //
 // /////////////////////////////////////////////////////////////////////
 
-function getSourceOptions(aspect: string): Object {
-  return {
-    sizes: '(min-width:1280px) 1280px, 100vw',
-    transforms: [
-      {
-        width: '375',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '425',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '600',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '768',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1028',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1280',
-        aspect,
-        quality: 'auto',
-      },
-      {
-        width: '1920',
-        aspect,
-        quality: 'auto',
-      },
-    ],
-  };
-}
-
-function getImageProps(media: ImageDataType, isConrad: boolean): Object {
-  return {
-    defaultImg: {
-      sourceOptions: getSourceOptions('regular'),
+function getImageProps(
+  media: ImageDataType,
+  isConrad: boolean,
+  theme: Object
+): Object {
+  return isConrad
+    ? {
       data: media,
-    },
-    sources: [
-      {
-        until: 's',
-        sourceOptions: getSourceOptions('regular'),
-        data: media,
+      imgOptions: getImageAssets({
+        bps: theme.bps,
+        aspect: 'headline',
+        sizes: [
+          { from: 'xl', size: '604px', },
+          { from: 'l', size: '570px', },
+          { from: 'm', size: '720px', },
+          { from: 's', size: '552px', },
+          { size: 'calc(100vw)', },
+        ],
+        widths: [ 375, 469, 570, 604, 720, ],
+      }),
+    }
+    : getPictureAssets({
+      bps: theme.bps,
+      imgData: media,
+      defaultImgOptions: {
+        sizes: [ { from: 'xl', size: '469px', }, { size: '100vw', }, ],
+        aspect: 'regular',
+        widths: [ 375, 469, 600, ],
       },
-      {
-        from: 's',
-        until: 'xl',
-        sourceOptions: getSourceOptions('headline'),
-        data: media,
-      },
-      {
-        from: 'xl',
-        sourceOptions: getSourceOptions(isConrad ? 'headline' : 'regular'),
-        data: media,
-      },
-    ],
-  };
+      sources: [
+        {
+          from: 's',
+          until: 'xl',
+          aspect: 'headline',
+          sizes: [
+            { from: 'l', size: '570px', },
+            { from: 'm', size: '720px', },
+            { size: '552px', },
+          ],
+          widths: [ 570, 772, 1000, ],
+        },
+      ],
+    });
 }
 
 function getEmbedProps(media: HTMLEmbedDataType): Object {
@@ -399,10 +416,11 @@ function getEmbedProps(media: HTMLEmbedDataType): Object {
 
 function getMediaProps(
   media: ?(ImageDataType | HTMLEmbedDataType | GalleryDataType),
-  isConrad: boolean
+  isConrad: boolean,
+  theme: Object
 ): ?Object {
   if (media) {
-    if (isImage(media)) return getImageProps(media, isConrad);
+    if (isImage(media)) return getImageProps(media, isConrad, theme);
     if (isEmbed(media)) return getEmbedProps(media);
     // if (isGallery(media)) return getGalleryProps(media);
   }

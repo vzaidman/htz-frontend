@@ -68,19 +68,19 @@ export default function ZappItem({
                 defaultImgOptions: {
                   sizes: '108',
                   aspect: 'square',
-                  widths: [ 108, 244, ],
+                  widths: [ 108, 216, ],
                 },
                 sources: [
                   {
                     from: 's',
                     aspect: 'headline',
                     sizes: [
-                      { from: 'xl', size: '295px', },
-                      { from: 'l', size: '238px', },
-                      { from: 'm', size: '348px', },
-                      { from: 's', size: '264px', },
+                      { from: 'xl', size: '280px', },
+                      { from: 'l', size: '226px', },
+                      { from: 'm', size: '360px', },
+                      { from: 's', size: '276px', },
                     ],
-                    widths: [ 500, 320, 295, 250, 238, ],
+                    widths: [ 226, 276, 280, 360, 552, 720, ],
                   },
                 ],
               })}
