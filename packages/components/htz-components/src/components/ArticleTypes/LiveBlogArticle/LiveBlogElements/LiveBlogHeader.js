@@ -7,6 +7,7 @@ import LiveBlogHeaderMeta from './LiveBlogHeaderMeta';
 import HeadlineElement from '../../../HeadlineElement/HeadlineElement';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
 import ShareBar from '../../../ShareBar/ShareBar';
+import Paywall from '../../../Paywall/Paywall';
 
 Header.propTypes = {
   /**
@@ -138,6 +139,14 @@ function Header({
           >
             <ShareBar title={title} canonicalUrl={canonicalUrl} />
           </FelaComponent>
+          <Paywall
+            layouts={[ 'top', ]}
+            miscStyles={{
+              order: [ { until: 's', value: -3, }, ],
+              marginTop: [ { from: 's', value: '2rem', }, ],
+              marginBottom: [ { from: 's', value: '2rem', }, ],
+            }}
+          />
           {headlineElement ? (
             <Fragment>
               {/* Live update banner in M/S breaks */}
