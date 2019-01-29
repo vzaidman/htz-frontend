@@ -31,6 +31,7 @@ import {
   newsletterI18n,
   textInputI18n,
   thankYou,
+  generalError,
   changePayment,
 } from './consts/i18n';
 
@@ -148,6 +149,7 @@ const purchasePageTheme = host => Object.freeze({
   newsletterI18n,
   textInputI18n,
   thankYou,
+  generalError,
   changePayment,
 
   // Methods

@@ -14,6 +14,7 @@ export const friendlyRoutes = {
   stage4: 'method',
   stage5: 'payment',
   thankYou: 'thankYou',
+  errorOccurred: 'errorOccurred',
 };
 const polopolyPromotionsPage = config.has('polopolyPromotionsPagePath')
   ? config.get('polopolyPromotionsPagePath')
@@ -53,6 +54,8 @@ async function getPageToRender(req, logger, DEV = false) {
     const stageToRender = Math.floor(pageNumber) === 7
       ? 'thankYou'
       : Math.floor(pageNumber) === 3 ? 'stage2' : 'stage1';
+
+      console.log(`TEST ${stageToRender}`);
     globalStageToRender = stageToRender;
     DEV && logger.debug('pageNumber from async await', pageNumber);
     DEV && logger.debug('stageToRender ', stageToRender);
@@ -95,6 +98,13 @@ export default function purchase(app, server, DEV = false) {
     '/payment-change/thankYou',
     (req, res) => {
       app.render(req, res, '/payment-change/thankYou', req.query);
+    }
+  );
+
+  server.get(
+    '/promotions-page/errorOccurred',
+    (req, res) => {
+      app.render(req, res, '/promotions-page/errorOccurred', req.query);
     }
   );
 
@@ -151,6 +161,23 @@ export default function purchase(app, server, DEV = false) {
       : await getPageToRender(req, logger, DEV);
     if (pageToRender === 'thankYou' || req.query.msg === 'thank_user') {
       return render(req, res, 'thankYou');
+    }
+    return redirect(req, res, pageToRender);
+  });
+
+  /* Offers thankYou */
+  server.get(`${appPrefix}/errorOccurred`, async (req, res) => {
+    DEV
+    && logger.debug(
+      'globalStageToRender from stage thankYou before fetch',
+      globalStageToRender
+    );
+    DEV && logger.debug('isRedirect from stage errorOccurred', isRedirect);
+    const pageToRender = isRedirect && globalStageToRender
+      ? globalStageToRender
+      : await getPageToRender(req, logger, DEV);
+    if (pageToRender === 'errorOccurred') {
+      return render(req, res, 'errorOccurred');
     }
     return redirect(req, res, pageToRender);
   });

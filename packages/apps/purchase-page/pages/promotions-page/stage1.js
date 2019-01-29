@@ -63,6 +63,8 @@ class Stage1 extends React.Component {
               if (loading) return <div />;
               if (error) return <div> Error...</div>;
               const { slots, pageNumber, } = data.purchasePage;
+              console.log(`STAGE1-DATA ${JSON.stringify(data)}`);
+              console.log(`STAGE2-DATA ${data.purchasePage}`);
               return Math.floor(pageNumber) === 7 ? (
                 <Redirect destination="thankYou" replace />
               ) : Math.floor(pageNumber) === 3 ? (
