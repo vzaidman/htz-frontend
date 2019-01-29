@@ -76,13 +76,20 @@ class PapiAPI extends RESTDataSource {
     return this.get(path, params)
       .then(res => {
         console.log('paywall response: ', res);
-        const slotMapper = createMapper({
+        const slotMapper = createMapper({ // maps as following with null as default
           'bot-persist': 'bot-persist',
           top: 'top',
           'pop-small': 'popup',
           popup: 'popup',
           mid: 'mid-page',
           'mid-page': 'mid-page',
+        }, null);
+        const linkMapper = createMapper({ // maps as following, pass original value if no match is found
+          freetrial: 'https://www.haaretz.co.il/misc/onboarding-offer',
+          'freetrial-direct': 'https://www.haaretz.co.il/misc/onboarding-offer',
+          linkToLogin: 'https://promotions.haaretz.co.il/promotions-page/product',
+          none: '',
+          '': '',
         });
         const responsiveFields = params.useragent === 'mobile'
           ? {
@@ -90,7 +97,7 @@ class PapiAPI extends RESTDataSource {
             text: res.visualInfo.plainTextMobile,
             confirm: {
               text: res.visualInfo.yesTextMobile,
-              url: res.visualInfo.yesLinkMobile,
+              url: linkMapper(res.visualInfo.yesLinkMobile),
             },
           }
           : {
@@ -98,7 +105,7 @@ class PapiAPI extends RESTDataSource {
             text: res.visualInfo.plainText,
             confirm: {
               text: res.visualInfo.yesText,
-              url: res.visualInfo.yesLink,
+              url: linkMapper(res.visualInfo.yesLink),
             },
           };
         return {
@@ -109,7 +116,7 @@ class PapiAPI extends RESTDataSource {
           ...responsiveFields,
           deny: {
             text: res.visualInfo.noText,
-            url: res.visualInfo.noLink,
+            url: linkMapper(res.visualInfo.noLink),
           },
         };
       });
