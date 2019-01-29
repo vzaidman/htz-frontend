@@ -7,8 +7,8 @@ import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const FarnsworthQuery = gql`
-  query FarnsworthQuery($listId: String!, $history: [ID]) {
-    list(listId: $listId, history: $history) {
+  query FarnsworthQuery($listId: String!, $history: [ID], $section: String) {
+    list(listId: $listId, history: $history, section: $section) {
       title
       items {
         ... on TeaserInList {

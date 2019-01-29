@@ -1,10 +1,19 @@
 // @flow
 import * as React from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
+import gql from 'graphql-tag';
 import Query from '../ApolloBoundary/Query';
 import EventTracker from '../../utils/EventTracker';
 import type { ListBiActionType, } from '../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../flowTypes/ListDataType';
+
+const GET_SECTION: DocumentNode = gql`
+  query GetSection {
+    articleSection @client {
+      url
+    }
+  }
+`;
 
 type ListComponentProps = {
   // generalized this to avoid complexity of dfp/teaser/clicktracker
@@ -50,36 +59,47 @@ export default function ListDataGetter({
   if (!isSsr && !clientSideLists.includes(view.toLowerCase())) return null;
 
   return (
-    <Query query={query} variables={variables} skip={isSsr}>
+    <Query
+      query={GET_SECTION}
+    >
       {({ data, loading, error, }) => {
         if (loading) return null;
         if (error) return null;
-        const { title, items, lazyLoadImages, contentId, ...restList } = isSsr
-          ? listData
-          : data.list;
-        items && updateListDuplication(items);
+        const { url, } = data.articleSection || {};
         return (
-          <EventTracker>
-            {({ biAction, gaAction, HtzReactGA, }) => {
-              const clickAction = ({ index, articleId, }) => biAction && biAction({
-                actionCode: 109,
-                additionalInfo: {
-                  ArticleId: articleId,
-                  ListId: contentId,
-                  NoInList: index + 1,
-                  ViewName: view,
-                },
-              });
-              return children({
-                list: { items, title, ...restList, },
-                listId: contentId,
-                gaAction,
-                biAction: clickAction,
-                lazyLoadImages,
-                ...viewProps,
-              });
+          <Query query={query} variables={{ ...variables, section: url || '/', }} skip={isSsr}>
+            {({ data, loading, error, }) => {
+              if (loading) return null;
+              if (error) return null;
+              const { title, items, lazyLoadImages, contentId, ...restList } = isSsr
+                ? listData
+                : data.list;
+              items && updateListDuplication(items);
+              return (
+                <EventTracker>
+                  {({ biAction, gaAction, HtzReactGA, }) => {
+                    const clickAction = ({ index, articleId, }) => biAction && biAction({
+                      actionCode: 109,
+                      additionalInfo: {
+                        ArticleId: articleId,
+                        ListId: contentId,
+                        NoInList: index + 1,
+                        ViewName: view,
+                      },
+                    });
+                    return children({
+                      list: { items, title, ...restList, },
+                      listId: contentId,
+                      gaAction,
+                      biAction: clickAction,
+                      lazyLoadImages,
+                      ...viewProps,
+                    });
+                  }}
+                </EventTracker>
+              );
             }}
-          </EventTracker>
+          </Query>
         );
       }}
     </Query>

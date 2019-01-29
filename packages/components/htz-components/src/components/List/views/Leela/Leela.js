@@ -7,8 +7,8 @@ import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 
 const LeelaQuery = gql`
-  query LeelaQuery($listId: String!, $history: [ID]) {
-    list(listId: $listId, history: $history) {
+  query LeelaQuery($listId: String!, $history: [ID], $section: String) {
+    list(listId: $listId, history: $history, section: $section) {
       title
       clickTrackers {
         ...ClickTrackerBannersWrapper

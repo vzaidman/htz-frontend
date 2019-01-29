@@ -44,10 +44,10 @@ class PapiAPI extends RESTDataSource {
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 
-  async getList({ listId, history, }) {
+  async getList({ listId, history, section, }) {
     const fetchPath = `papi/cmlink${
       listId.startsWith('/') ? '' : '/'
-    }${listId}?exploded=true&exclude=${history ? history.join(',') : ''}`;
+    }${listId}?exploded=true${history ? `&exclude=${history.join(',')}` : ''}${section ? `&section=${section}` : ''}`;
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 

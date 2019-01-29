@@ -53,6 +53,7 @@ const RootQuery = new GraphQLObjectType({
     list: {
       type: List,
       args: {
+        section: { type: GraphQLString, },
         listId: { type: new GraphQLNonNull(GraphQLString), },
         history: { type: new GraphQLList(GraphQLID), },
       },
