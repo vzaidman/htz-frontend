@@ -174,10 +174,7 @@ export default function Wong({
                         { from: 'l', until: 'xl', value: 5, },
                         { from: 'xl', value: isConrad ? 5 : 4, },
                       ]}
-                      kickerTypeScale={[
-                        { until: 'xl', value: -1, },
-                        { from: 'xl', value: -2, },
-                      ]}
+                      kickerTypeScale={-1}
                       miscStyles={{}}
                       kickerMiscStyles={{
                         marginBottom: '1rem',
@@ -303,15 +300,15 @@ export default function Wong({
                                           }
                                       >
                                         <IconBack
-                                            size={[
-                                              { until: 'xl', value: 2, },
-                                              { from: 'xl', value: 1.5, },
-                                            ]}
-                                            miscStyles={{
-                                              marginInlineStart: `-${relatedPadding}`,
-                                              marginInlineEnd: '0.5rem',
-                                            }}
-                                          />
+                                          size={[
+                                            { until: 'xl', value: 2, },
+                                            { from: 'xl', value: 1.5, },
+                                          ]}
+                                          miscStyles={{
+                                            marginInlineStart: `-${relatedPadding}`,
+                                            marginInlineEnd: '0.5rem',
+                                          }}
+                                        />
                                         {article.title}
                                       </HtzLink>
                                     )}
