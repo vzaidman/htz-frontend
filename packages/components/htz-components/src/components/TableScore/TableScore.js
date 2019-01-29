@@ -5,7 +5,7 @@ import type { Node, } from 'react';
 
 import SoccerLeaguesTable from './SoccerTableScore/SoccerLeagues/SoccerLeaguesTable';
 import SoccerGroupsTable from './SoccerTableScore/SoccerGroups/SoccerGroupsTable';
-import NBATableScore from './NBATableScore/AllTable/NBATableScore';
+import NBATableScore from './NBATableScore/NBATableScore';
 
 type Props = {
   tableType: string,

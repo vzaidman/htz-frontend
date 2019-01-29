@@ -2,8 +2,8 @@
 import * as React from 'react';
 import type { ChildrenArray, Node, } from 'react';
 import FelaTheme from 'react-fela/lib/FelaTheme';
-import IconBack from '../../../Icon/icons/IconBack';
-import ClickArea from '../../../ClickArea/ClickArea';
+import IconBack from '../../Icon/icons/IconBack';
+import ClickArea from '../../ClickArea/ClickArea';
 
 type Options = {
   children: ChildrenArray<Node> | Node,

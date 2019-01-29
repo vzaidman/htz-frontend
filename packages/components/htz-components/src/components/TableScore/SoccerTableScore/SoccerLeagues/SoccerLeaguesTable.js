@@ -5,7 +5,7 @@ import type { ChildrenArray, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import TableHeader from '../Header/TableHeader';
 import TableBody from './Body/LeaguesTableBody';
-import ToggleState from './Body/ToggleButton';
+import ToggleButton from '../../ToggleButton/ToggleButton';
 import { fetchLeagues, } from '../../SoccerData/fetchUtils';
 
 
@@ -16,7 +16,7 @@ type Props = {
 }
 
 type State = {
-  isOpen: boolean,
+  isOpen: ?boolean,
   league: string,
   leagueData: ?Array<Object>,
 }
@@ -53,7 +53,7 @@ const fetchFromLeagues: string => Object = league => new Promise((resolve, rejec
 export default class SoccerLeaguesTable extends React.Component<Props, State> {
   // Is all score board open
   state = {
-    isOpen: false,
+    isOpen: null,
     league: '',
     leagueData: null,
   };
@@ -62,7 +62,7 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
   static getDerivedStateFromProps(props: Props, state: State) {
     const isOpenFromProps = !!props.isOpen;
 
-    return (state.league === '')
+    return (state.league === '' && state.isOpen == null)
       ? {
         league: props.league,
         isOpen: isOpenFromProps,
@@ -109,12 +109,12 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
           <TableBody isOpen={isOpen} leagueData={leagueData} />
         </Table>
         <div style={CenteredElement}>
-          <ToggleState
+          <ToggleButton
             rotateDeg={btnArrowDir}
             handleClick={this.handleToggle}
           >
             {btnTitle}
-          </ToggleState>
+          </ToggleButton>
         </div>
 
       </div>

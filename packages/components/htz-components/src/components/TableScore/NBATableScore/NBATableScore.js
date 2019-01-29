@@ -3,11 +3,11 @@
 import React from 'react';
 import type { ChildrenArray, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import TableHeader from '../Header/TableHeader';
-import TableBody from '../Body/TableBody';
-import ToggleState from '../Body/ToggleButton';
-import CoastBar from '../Header/CoastBar';
-import { fetchEast, fetchWest, } from '../../NBAData/fetchUtils';
+import TableHeader from './Header/TableHeader';
+import TableBody from './Body/TableBody';
+import ToggleButton from '../ToggleButton/ToggleButton';
+import CoastBar from './Header/CoastBar';
+import { fetchEast, fetchWest, } from '../NBAData/fetchUtils';
 
 // Flow Types
 
@@ -120,12 +120,12 @@ export default class NBATableScore extends React.Component<Props, State> {
           <TableBody isOpen={isOpen} data={bodyData} />
         </Table>
         <div style={CenteredElement}>
-          <ToggleState
+          <ToggleButton
             rotateDeg={btnArrowDir}
             handleClick={this.handleToggle}
           >
             {btnTitle}
-          </ToggleState>
+          </ToggleButton>
         </div>
       </div>
     );

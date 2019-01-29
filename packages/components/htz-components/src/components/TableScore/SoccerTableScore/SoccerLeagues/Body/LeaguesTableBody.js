@@ -12,7 +12,7 @@ const mq: (Object, Object) => Object = createMqFunc();
 
 
 type Props = {
-  isOpen: boolean,
+  isOpen: ?boolean,
   leagueData: Array<Object>,
 }
 
@@ -34,7 +34,7 @@ const AllRowsStyle: Object => Object = ({ theme, minWidth, animationCount, borde
       style: 'solid',
       color: theme.color(borderColor[0], borderColor[1]),
     }),
-    theme.type(0),
+    theme.type(-1),
   ],
   ...mq({
     from: '0px',
