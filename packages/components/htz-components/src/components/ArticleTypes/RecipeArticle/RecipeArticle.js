@@ -21,6 +21,7 @@ import { buildUrl, } from '../../../utils/buildImgURLs';
 
 import RecipeArticleQuery from './queries/recipe_article';
 import ArticleGallery from '../../ArticleGallery/ArticleGallery';
+import Paywall from '../../Paywall/Paywall';
 
 function RecipeArticle({ articleId, slots, }) {
   return (
@@ -116,6 +117,15 @@ function RecipeArticle({ articleId, slots, }) {
                         extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
                       }}
                     >
+                      <ArticleLayoutRow>
+                        <Paywall
+                          layouts={[ 'top', ]}
+                          miscStyles={{
+                            maxWidth: '90rem',
+                            margin: 'auto',
+                          }}
+                        />
+                      </ArticleLayoutRow>
                       {article.map(element => {
                         if (
                           element.inputTemplate === 'com.htz.ArticleHeaderElement'
