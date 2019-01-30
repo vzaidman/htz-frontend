@@ -6,6 +6,7 @@ import {
   embed,
   image,
   imageGallery,
+  content,
 } from '@haaretz/app-utils';
 
 export default gql`
@@ -93,6 +94,9 @@ export default gql`
             message
             errorCode
             kind
+          }
+          ... on Content {
+            ...Content
           }
         }
       }
@@ -234,4 +238,5 @@ export default gql`
   ${embed}
   ${image}
   ${imageGallery}
+  ${content}
 `;

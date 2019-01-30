@@ -73,4 +73,5 @@ export default {
   isImage,
   isEmbed,
   isGallery,
+  isMiddleRuller,
 };

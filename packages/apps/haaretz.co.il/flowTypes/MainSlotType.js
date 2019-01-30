@@ -9,7 +9,7 @@ import type {
   ErrorType,
 } from '@haaretz/htz-components';
 
-type MainSlotElement =
+export type MainSlotElement =
   | ClickTrackerBannerWrapperType
   | DfpBannerType
   | GridElementType

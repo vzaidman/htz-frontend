@@ -8,15 +8,83 @@ import {
   ClickTracker,
   TabElement,
   TopNews,
+  validateType,
   Error,
   Debug,
   MarketingNotification,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
-import type { MainSlotType, } from '../../flowTypes/MainSlotType';
+import type { MainSlotElement, MainSlotType, } from '../../flowTypes/MainSlotType';
 
 import List from './List/List';
+
+const {
+  isDfp,
+  isList,
+  isMainBlock,
+  isTabElement,
+  isGridElement,
+  isError,
+  isHeaderNewsGroup,
+  isClickTrackerWrapper,
+  isMiddleRuller,
+} = validateType;
+
+const componentType: Object = new Map([
+  [ 'com.htz.PageMainBlockElement', (element: MainSlotElement) => (
+    isMainBlock(element)
+      ? <MainBlock key={element.contentId} List={List} data={element} />
+      : null
+  ), ],
+  [ 'com.tm.element.List', (element: MainSlotElement) => (
+    isList(element)
+      ? <List key={element.contentId} {...element} />
+      : null
+  ), ],
+  [ 'com.polobase.ClickTrackerBannersWrapper', (element: MainSlotElement) => (
+    isClickTrackerWrapper(element)
+      ? <ClickTracker key={element.contentId} {...element} />
+      : null
+  ), ],
+  [ 'com.polobase.DfpBannerElement', (element: MainSlotElement) => (
+    isDfp(element)
+      ? <GeneralAdSlot key={element.contentId} {...element} />
+      : null
+  ), ],
+  [ 'com.tm.TabViewElement', (element: MainSlotElement) => (
+    isTabElement(element)
+      ? <TabElement key={element.contentId} List={List} {...element} />
+      : null
+  ), ],
+  [ 'com.tm.GridElementGroup', (element: MainSlotElement) => (
+    isGridElement(element)
+      ? <GridElement key={element.contentId} List={List} {...element} />
+      : null
+  ), ],
+  [ 'com.tm.HeaderNewsGroup', (element: MainSlotElement) => (
+    isHeaderNewsGroup(element)
+      ? <TopNews key={element.contentId} {...element} />
+      : null
+  ), ],
+  [ 'com.tm.promotion.banner.MiddleRuler', (element: MainSlotElement) => (
+    isMiddleRuller(element)
+      ? (
+        <MarketingNotification
+          notificationType="MiddleRuller"
+          buttonText=""
+          text1={element.text}
+          buttonUrl={element.actionUrl}
+        />
+      )
+      : null
+  ), ],
+  [ 'error', (element: MainSlotElement) => (
+    isError(element)
+      ? <Error key={element.contentId} {...element} />
+      : null
+  ), ],
+]);
 
 type Props = {
   main: MainSlotType,
@@ -43,42 +111,14 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
       })}
     >
       {main.map(element => {
-        switch (element.inputTemplate) {
-          case 'com.htz.PageMainBlockElement':
-            return <MainBlock key={element.contentId} List={List} data={element} />;
-          case 'com.tm.element.List':
-            return <List key={element.contentId} {...element} />;
-          case 'com.polobase.ClickTrackerBannersWrapper':
-            return <ClickTracker key={element.contentId} {...element} />;
-          case 'com.polobase.DfpBannerElement':
-            return <GeneralAdSlot key={element.contentId} {...element} />;
-          case 'com.tm.TabViewElement':
-            return <TabElement key={element.contentId} List={List} {...element} />;
-          case 'com.tm.GridElementGroup':
-            return <GridElement key={element.contentId} List={List} {...element} />;
-          case 'com.tm.HeaderNewsGroup':
-            return <TopNews key={element.contentId} {...element} />;
-          case 'com.tm.promotion.banner.MiddleRuler':
-            return (
-              <MarketingNotification
-                notificationType="MiddleRuller"
-                buttonText=""
-                text1={element.text}
-                buttonUrl={element.actionUrl}
-                
-              />
-            );
-          default:
-            if (element.kind === 'error') {
-              return <Error key={element.contentId} {...element} />;
-            }
-            return (
-              <Debug key={element.contentId}>
-                {`Element of type '${element.kind
-                  || element.inputTemplate}' is not supported in HomePage`}
-              </Debug>
-            );
-        }
+        const getComponent = componentType.get(element.kind || element.inputTemplate);
+        return getComponent
+          ? getComponent(element)
+          : (
+            <Debug key={element.contentId}>
+              {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
+            </Debug>
+          );
       })}
     </FelaComponent>
   );
