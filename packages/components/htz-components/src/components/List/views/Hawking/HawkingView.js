@@ -336,6 +336,7 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
               }
               miscStyles={{
                 flexGrow: '1',
+                type: -1,
                 ...(untilIos11 ? { height: 'initial', } : {}),
               }}
               gridMiscStyles={{ alignContent: 'stretch', }}

@@ -50,7 +50,10 @@ function GridElement({
         <StickyListViewHeader
           width={1}
           miscStyles={{
-            marginBottom: [ { until: 'l', value: '1rem', }, ],
+            marginBottom: '1rem',
+            // marginBottom: [
+            //   { until: 'l', value: '1rem', },
+            // ],
           }}
           isHorizontal
           title={title}
