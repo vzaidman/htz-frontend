@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
-import { borderBottom, } from '@haaretz/htz-css-tools';
+import { borderVertical, } from '@haaretz/htz-css-tools';
 
 import H from '../AutoLevels/H';
 import HtzLink from '../HtzLink/HtzLink';
@@ -23,24 +23,22 @@ type Props = {
 };
 
 function TopNews({ newsItems, contentName, }: Props): React.Node {
-  const topBottomPadding = 1;
   return (
     <LayoutRow>
       <LayoutContainer
         tagname="section"
         namedBgc="white"
-        miscStyles={{ paddingBottom: '2rem', }}
+        miscStyles={{ paddingBottom: '4rem', }}
       >
         <FelaComponent
           style={theme => ({
             paddingInlineEnd: '4rem',
-            paddingTop: `${topBottomPadding}rem`,
             paddingInlineStart: '4rem',
             extend: [
               theme.mq({ until: 'l', }, { display: 'none', }),
               theme.type(-1, { untilBp: 'xl', lines: 4, }),
               theme.type(-2, { fromBp: 'xl', }),
-              borderBottom('2px', topBottomPadding, 'solid', theme.color('bg')),
+              borderVertical('2px', 1, 'solid', theme.color('bg')),
             ],
           })}
           render={({ theme, className, }) => (
@@ -81,8 +79,8 @@ function TopNews({ newsItems, contentName, }: Props): React.Node {
                             '&:hover': hoverFocusStyle,
                             '&:focus': hoverFocusStyle,
                           }}
-                          render={({ className, }) => (
-                            <HtzLink href={link.href} className={className}>
+                          render={({ className: linkClassName, }) => (
+                            <HtzLink href={link.href} className={linkClassName}>
                               {link.contentName}
                             </HtzLink>
                           )}
