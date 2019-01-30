@@ -36,6 +36,7 @@ import TopNews from '../components/TopNews/TopNews';
 import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
 import withDfpSideEffect from '../components/Dfp/withDfpSideEffect';
+import TableScore from '../components/TableScore/TableScore';
 
 const tagsFromTagElement = ({ tagsList, }) => tagsList.map(x => x.contentName);
 
@@ -98,6 +99,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.polobase.DfpBannerElement', GeneralAdSlot, ],
   [ 'com.htz.magazineArticleDfpBannerElement', GeneralAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
+  [ 'com.tm.TableScore', TableScore, ],
   [ 'error', Error, ],
   [ null, null, ],
 ]);
