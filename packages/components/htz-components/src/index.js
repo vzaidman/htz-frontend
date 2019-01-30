@@ -66,6 +66,7 @@ import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import MarketingNotificationProvider from './components/MarketingNotifications/MarketingNotificationProvider';
 import MarketingNotification from './components/MarketingNotifications/MarketingNotification';
+import MobileListWrapper from './components/MobileListWrapper/MobileListWrapper';
 import Mutation from './components/ApolloBoundary/Mutation';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
@@ -300,6 +301,7 @@ export {
   MobileQuickRegistration,
   MarketingNotificationProvider,
   MarketingNotification,
+  MobileListWrapper,
   Mutation,
   NavigationMenu,
   Newsletter,

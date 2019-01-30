@@ -83,6 +83,19 @@ export default gql`
           ... on TabViewElements {
             ...TabViewElements
           }
+          ... on MobileListWrapper {
+            contentName
+            contentId
+            inputTemplate
+            lists {
+              ... on Content {
+                ...Content
+              }
+              ... on List {
+                ...HomePageList
+              }
+            }
+          }
           ... on MiddleRuler {
              inputTemplate
              text

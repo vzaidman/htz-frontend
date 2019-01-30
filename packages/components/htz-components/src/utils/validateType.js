@@ -39,6 +39,10 @@ export function isTabElement(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.TabViewElement';
 }
 
+export function isMobileListWrapper(item: TestObject): %checks {
+  return item.inputTemplate === 'com.polobase.whtzMobileSiteListsWrapper';
+}
+
 export function isTeaser(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.TeaserData';
 }
@@ -62,6 +66,7 @@ export function isGallery(media: KindObject): %checks {
 export default {
   isClickTracker,
   isClickTrackerWrapper,
+  isMobileListWrapper,
   isDfp,
   isGridElement,
   isHeaderNewsGroup,

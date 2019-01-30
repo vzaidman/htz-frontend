@@ -12,6 +12,7 @@ import dfpBanner from './dfp_banner_type';
 import clickTrackerBannersWrapper from './click_tracker_banner_wrapper_type';
 import Content from './content_type';
 import HeaderNewsGroup from './header_news_group_type';
+import mobileListWrapper from './mobile_list_wrapper_type';
 import nullFallback from './null_fallback_type';
 
 const Article = new GraphQLList(
@@ -27,6 +28,7 @@ const Article = new GraphQLList(
       TabViewElement,
       dfpBanner,
       clickTrackerBannersWrapper,
+      mobileListWrapper,
       Content,
       nullFallback,
     ],

@@ -12,7 +12,7 @@ import List from './list_type';
 import getSchema from '../getSchema';
 
 const MobileListWrapper = new GraphQLObjectType({
-  name: 'List',
+  name: 'MobileListWrapper',
   fields: () => ({
     contentName: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
@@ -20,7 +20,7 @@ const MobileListWrapper = new GraphQLObjectType({
     lists: {
       type: new GraphQLList(
         new GraphQLUnionType({
-          name: 'ListItems',
+          name: 'MobileListWrapperItems',
           types: [ Content, List, ],
           resolveType: value => getSchema(value.inputTemplate) || Content,
         })

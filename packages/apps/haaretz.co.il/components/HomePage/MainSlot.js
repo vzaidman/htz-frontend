@@ -12,6 +12,7 @@ import {
   Error,
   Debug,
   MarketingNotification,
+  MobileListWrapper,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -28,6 +29,7 @@ const {
   isError,
   isHeaderNewsGroup,
   isClickTrackerWrapper,
+  isMobileListWrapper,
   isMiddleRuller,
 } = validateType;
 
@@ -65,6 +67,11 @@ const componentType: Object = new Map([
   [ 'com.tm.HeaderNewsGroup', (element: MainSlotElement) => (
     isHeaderNewsGroup(element)
       ? <TopNews key={element.contentId} {...element} />
+      : null
+  ), ],
+  [ 'com.polobase.whtzMobileSiteListsWrapper', (element: MainSlotElement) => (
+    isMobileListWrapper(element)
+      ? <MobileListWrapper key={element.contentId} {...element} />
       : null
   ), ],
   [ 'com.tm.promotion.banner.MiddleRuler', (element: MainSlotElement) => (
