@@ -677,6 +677,9 @@ export default class AdManager {
       }
 
       // User targeting
+      if (this.user.htz_type) {
+        pubads.setTargeting('htz_user_type', [ this.user.htz_type, ]);
+      }
       if (this.user.tm_type) {
         pubads.setTargeting('tm_user_type', [ this.user.tm_type, ]);
       }
