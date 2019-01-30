@@ -73,19 +73,19 @@ export default function HorizontalTeaser({
                 defaultImgOptions: {
                   sizes: '18rem',
                   aspect: 'square',
-                  widths: [ 108, 204, ],
+                  widths: [ 108, 216, ],
                 },
                 sources: [
                   {
                     from: 's',
                     aspect: 'regular',
                     sizes: [
-                      { from: 'xl', size: '173px', },
-                      { from: 'l', size: '145px', },
-                      { from: 'm', size: '224px', },
-                      { from: 's', size: '168px', },
+                      { from: 'xl', size: '178px', },
+                      { from: 'l', size: '146px', },
+                      { from: 'm', size: '230px', },
+                      { from: 's', size: '174px', },
                     ],
-                    widths: [ 350, 224, 175, 145, 168, ],
+                    widths: [ 350, 230, 178, 146, 174, ],
                   },
                 ],
               })}

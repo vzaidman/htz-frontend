@@ -234,12 +234,13 @@ function HawkingMainTeaser({
                 bps: theme.bps,
                 aspect: 'headline',
                 sizes: [
-                  { from: 'xl', size: '402px', },
-                  { from: 'l', size: '416px', },
-                  { from: 's', size: '510px', },
+                  { from: 'xl', size: '384px', },
+                  { from: 'l', size: '400px', },
+                  { from: 'm', size: '480px', },
+                  { from: 's', size: '368px', },
                   { size: 'calc(100vw - 4rem)', },
                 ],
-                widths: [ 296, 320, 402, 416, 510, 580, 1024, ],
+                widths: [ 296, 350, 400, 368, 592, 960, ],
               })}
             />
           </TeaserMedia>

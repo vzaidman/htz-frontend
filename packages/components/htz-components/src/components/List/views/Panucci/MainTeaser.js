@@ -49,13 +49,13 @@ export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Prop
                 bps: theme.bps,
                 aspect: 'headline',
                 sizes: [
-                  { from: 'xl', size: '295px', },
-                  { from: 'l', size: '238px', },
-                  { from: 'm', size: '372px', },
-                  { from: 's', size: '288px', },
+                  { from: 'xl', size: '384px', },
+                  { from: 'l', size: '393px', },
+                  { from: 'm', size: '472px', },
+                  { from: 's', size: '360px', },
                   { size: 'calc(100vw - 4rem)', },
                 ],
-                widths: [ 238, 288, 295, 372, 744, ],
+                widths: [ 360, 384, 393, 472, 575, 720, ],
               })}
             />
           </TeaserMedia>

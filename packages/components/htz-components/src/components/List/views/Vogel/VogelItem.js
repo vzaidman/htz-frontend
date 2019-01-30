@@ -84,12 +84,12 @@ function VogelItem({
                   aspect: 'headline',
                   bps: theme.bps,
                   sizes: [
-                    { from: 'xl', size: '218px', },
-                    { from: 'l', size: '238px', },
-                    { from: 'm', size: '240px', },
-                    { from: 's', size: '184px', },
+                    { from: 'xl', size: '219px', },
+                    { from: 'l', size: '226px', },
+                    { from: 'm', size: '224px', },
+                    { size: '168px', },
                   ],
-                  widths: [ 230, 460, 184, 368, 156, 302, ],
+                  widths: [ 168, 226, 336, 452, ],
                 })}
                 onClick={
                   biAction

@@ -61,18 +61,19 @@ export default function VerticalImageTeaser({
                 defaultImgOptions: {
                   sizes: '108px',
                   aspect: 'square',
-                  widths: [ 108, 104, ],
+                  widths: [ 108, 216, ],
                 },
                 sources: [
                   {
                     from: 's',
                     aspect: 'regular',
                     sizes: [
-                      { from: 'xl', size: '180px', },
-                      { from: 'l', size: '225px', },
-                      { from: 's', size: '166px', },
+                      { from: 'xl', size: '178px', },
+                      { from: 'l', size: '226px', },
+                      { from: 'm', size: '224px', },
+                      { from: 's', size: '168px', },
                     ],
-                    widths: [ 166, 180, 225, ],
+                    widths: [ 168, 180, 226, 336, 448, ],
                   },
                 ],
               })}
