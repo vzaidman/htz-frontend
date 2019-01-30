@@ -17,6 +17,7 @@ export default gql`
         metaDescription
         canonicalUrl
       }
+      pageDateTimeString
       slots {
         preHeader
         header

@@ -12,10 +12,6 @@ export default function MastheadUserTools() {
         alignItems: 'stretch',
         display: 'flex',
         marginStart: 'auto',
-        extend: [
-          theme.mq({ until: 's', }, { display: 'none', }),
-          theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
-        ],
       })}
       render={({ className, }) => (
         <div className={className}>

@@ -128,7 +128,9 @@ exports[`<WelcomePage> DOM element renders correctly with shouldRender prop pass
         >
           <ErrorBoundary
             FallbackComponent={null}
-          />
+          >
+            <Debug />
+          </ErrorBoundary>
         </Mutation>
         <Query
           query={
@@ -272,7 +274,9 @@ exports[`<WelcomePage> DOM element renders correctly with shouldRender prop pass
         >
           <ErrorBoundary
             FallbackComponent={null}
-          />
+          >
+            <Debug />
+          </ErrorBoundary>
         </Query>
       </UserDispenser>
     </WelcomePage>

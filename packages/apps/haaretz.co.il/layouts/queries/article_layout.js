@@ -6,6 +6,7 @@ export default gql`
     page(path: $path) {
       pageType
       ...PageBreadcrumbs
+      pageDateTimeString
       slots {
         preHeader
         header

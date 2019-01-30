@@ -26,6 +26,7 @@ const initialState = () => ({
   platform: null,
   readingListArray: [],
   zenMode: false,
+  pageDateTimeString: null,
 });
 
 export default withData(createApp(InitPixel), initialState);

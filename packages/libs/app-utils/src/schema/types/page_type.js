@@ -38,6 +38,9 @@ const Page = new GraphQLObjectType({
     seoData: {
       type: seoData,
     },
+    pageDateTimeString: {
+      type: new GraphQLList(GraphQLString),
+    },
     slots: {
       type: new GraphQLObjectType({
         name: 'ArticleSlots',

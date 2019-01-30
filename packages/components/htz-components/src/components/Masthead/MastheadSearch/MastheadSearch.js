@@ -11,31 +11,21 @@ import TextInput from '../../TextInput/TextInput';
 class HeaderSearch extends React.Component {
   static propTypes = {
     /**
-     * A boolean from header if the searchbar input is open.
-     */
-    searchIsOpen: PropTypes.bool.isRequired,
-    /**
      * A callback to toggle searchbar state on `NavigationHeader` component.
      */
     onClick: PropTypes.func.isRequired,
-    setSearchState: PropTypes.func,
-  };
-
-  static defaultProps = {
-    setSearchState: () => {},
   };
 
   state = {
+    isSearchOpen: false,
     query: '',
     isHovered: false,
   };
 
-  componentDidUpdate(prevState, prevProps) {
-    if (this.props.searchIsOpen !== prevProps.searchIsOpen) {
-      this.props.searchIsOpen
-        ? document.addEventListener('keydown', this.handleGlobalKeydown)
-        : document.removeEventListener('keydown', this.handleGlobalKeydown);
-    }
+  componentDidUpdate(prevProps, prevState) {
+    this.state.isSearchOpen
+      ? document.addEventListener('keydown', this.handleGlobalKeydown)
+      : document.removeEventListener('keydown', this.handleGlobalKeydown);
   }
 
   focusOnInput = inputRef => inputRef && inputRef.focus();
@@ -47,11 +37,11 @@ class HeaderSearch extends React.Component {
   handleGlobalKeydown = e => {
     const key = e.which || e.keyCode;
     if (key === 27) {
-      this.props.setSearchState(false);
+      this.toggleSearch();
       this.searchButton.focus();
     }
     else if (key === 13) {
-      this.props.setSearchState(true);
+      this.toggleSearch();
     }
   };
 
@@ -62,21 +52,27 @@ class HeaderSearch extends React.Component {
   submitHandler = (event, searchUrl) => {
     event.preventDefault();
     Router.push(searchUrl || '#');
+  };
+
+  toggleSearch() {
+    const { isSearchOpen, } = this.state;
+    const { onClick, } = this.props;
+    this.setState(
+      { isSearchOpen: !isSearchOpen, },
+      () => (onClick ? onClick(this.state.isSearchOpen) : null)
+    );
   }
 
   render() {
     const { isHovered, } = this.state;
-    const { onClick, searchIsOpen, } = this.props;
     return (
       <FelaComponent
         style={theme => ({
           display: 'flex',
-          flexGrow: searchIsOpen ? '1' : '0',
+          flexGrow: this.state.isSearchOpen ? '1' : '0',
           overflow: 'hidden',
           extend: [
             theme.getTransition(1, 'swiftOut'),
-            theme.mq({ until: 's', }, { display: 'none', }),
-            theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
           ],
         })}
         render={({
@@ -102,16 +98,18 @@ class HeaderSearch extends React.Component {
                 fontWeight: '700',
                 justifyContent: 'center',
                 minWidth: '6rem',
-                padding: '1rem',
                 position: 'relative',
                 zIndex: '1',
-                ...(searchIsOpen
+                ...(this.state.isSearchOpen
                   ? {
                     backgroundColor: color('headerSearch', 'bgHover'),
                     color: color('headerSearch', 'textOpenOrHover'),
                   }
                   : {}),
                 extend: [
+                  {
+                    padding: [ 2, 1, ],
+                  },
                   type(-1),
                   isHovered
                     ? {
@@ -127,18 +125,20 @@ class HeaderSearch extends React.Component {
               render={({ className, }) => (
                 <button
                   className={className}
-                  onClick={onClick}
+                  onClick={() => {
+                    this.toggleSearch();
+                  }}
                   ref={el => {
                     this.searchButton = el;
                   }}
-                  aria-expanded={searchIsOpen}
+                  aria-expanded={this.state.isSearchOpen}
                   onMouseEnter={this.handleMouseEnter}
                   onMouseLeave={this.handleMouseLeave}
                   onFocus={this.handleMouseEnter}
                   onBlur={this.handleMouseLeave}
                   type="button"
                 >
-                  {searchIsOpen ? (
+                  {this.state.isSearchOpen ? (
                     <IconClose size={3.5} color="white" fill="primary" />
                   ) : (
                     <Fragment>
@@ -156,7 +156,7 @@ class HeaderSearch extends React.Component {
                 </button>
               )}
             />
-            {searchIsOpen ? (
+            {this.state.isSearchOpen ? (
               <FelaComponent
                 style={{ display: 'flex', }}
                 render={({ className, }) => (

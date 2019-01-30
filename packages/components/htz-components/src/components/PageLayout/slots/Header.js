@@ -4,7 +4,7 @@ import { FelaComponent, } from 'react-fela';
 
 import Osaka from '../../Osaka/OsakaController';
 import HtzLink from '../../HtzLink/HtzLink';
-import IconHaaretzLogo from '../../Icon/icons/IconHaaretzLogo';
+import IconHaaretzHomepageMasthead from '../../Icon/icons/IconHaaretzHomepageMasthead';
 import IconMarkerLogo from '../../Icon/icons/IconMarkerLogo';
 import getComponent from '../../../utils/componentFromInputTemplate';
 
@@ -56,7 +56,7 @@ const Logo = ({ host, }) => (
     render={({ className, }) => (
       <HtzLink href="/" className={className}>
         {host === 'haaretz.co.il' ? (
-          <IconHaaretzLogo size={4} />
+          <IconHaaretzHomepageMasthead size={4} fill="primary" />
         ) : host === 'theMarker.com' ? (
           <IconMarkerLogo size={4} />
         ) : null}

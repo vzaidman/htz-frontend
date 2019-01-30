@@ -32,13 +32,15 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         if (error) logger.error(error);
-        const {
-          homePage: { slots, seoData, },
+        const {          
+          homePage: { slots, seoData, pageDateTimeString, pageType, },
         } = data;
 
         client.writeData({
           data: {
             title: seoData.metaTitle,
+            pageDateTimeString,
+            pageType,
             // place properties to reset in the client store when a new article is loaded
             isOsakaDisplayed: false,
           },

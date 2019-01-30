@@ -119,7 +119,7 @@ class ArticleLayout extends React.Component {
           if (error) logger.error(error);
           if (data && data.page) {
             const {
-              page: { pageType, slots, lineage, jsonld, },
+              page: { pageType, slots, lineage, jsonld, pageDateTimeString, },
             } = data;
             const articleId = lineage[0].contentId;
             this.setState({
@@ -132,6 +132,8 @@ class ArticleLayout extends React.Component {
               data: {
                 articleId,
                 title: titleSEO,
+                pageDateTimeString,
+                pageType,
                 // place properties to reset in the client store when a new article is loaded
                 isOsakaDisplayed: false,
               },

@@ -17,7 +17,9 @@ const iconStyle = ({ color, fill, size, miscStyles, theme, }) => ({
     // a `fill` attribute.
     ...(fill
       ? [ parseComponentProp('fill', fill, theme.mq, setColor, theme.color), ]
-      : [ { fill: theme.color('white'), }, ]),
+      : miscStyles && miscStyles.fill
+        ? [ parseComponentProp('fill', miscStyles.fill, theme.mq, setColor, theme.color), ]
+        : [ { fill: theme.color('white'), }, ]),
 
     // Set the width and height of an icon. The svgs' "height" attribute is
     // set to 1em, and the "width" is set in ems based on the icon's aspect ratio.

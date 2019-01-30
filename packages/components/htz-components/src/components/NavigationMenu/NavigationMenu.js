@@ -7,10 +7,8 @@ import NavigationQuery from './navigationQuery';
 import DropdownList from '../DropdownList/DropdownList';
 import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
-import {
-  dropdownItemStyle,
-  dropdownListStyle,
-} from '../Masthead/mastheadDropdownListStyle';
+import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
+import UserDispenser from '../User/UserDispenser';
 
 const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   border: 'none',
@@ -19,10 +17,10 @@ const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   fontWeight: '700',
   height: '100%',
   // this padding affects all the items in the masthead
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
-  paddingRight: '1rem',
-  paddingLeft: '1rem',
+  // paddingTop: '2rem',
+  // paddingBottom: '2rem',
+  // paddingRight: '1rem',
+  // paddingLeft: '1rem',
   ...(isOpen
     ? {
       backgroundColor: theme.color('secondary'),
@@ -46,8 +44,6 @@ const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
       : {},
     theme.type(-1),
     theme.getTransition(1, 'swiftOut'),
-    theme.mq({ until: 's', }, { display: 'none', }),
-    theme.mq({ until: 'm', misc: 'landscape', }, { display: 'none', }),
   ],
 });
 
@@ -130,8 +126,7 @@ class NavigationMenu extends React.Component {
           const { isHovered, } = this.state;
           const { items, sites, promotions, } = this.props.menuSections;
 
-          const combinedItems = items
-            && items.map(item => <Item key={`item ${item.name}`} {...item} />);
+          const combinedItems = items && items.map(item => <Item key={`item ${item.name}`} {...item} />);
 
           const combinedSites = sites
             && sites.map(site => (
@@ -201,9 +196,7 @@ class NavigationMenu extends React.Component {
                             <Hamburger
                               isOpen={isOpen}
                               color={{
-                                close: isHovered
-                                  ? [ 'neutral', '-10', ]
-                                  : [ 'neutral', '-3', ],
+                                close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
                                 open: [ 'neutral', '-10', ],
                               }}
                               size={2.5}
@@ -237,7 +230,7 @@ class NavigationMenu extends React.Component {
 }
 
 // eslint-disable-next-line react/prop-types
-export default ({ contentId, userType, }) => (
+export default ({ contentId, }) => (
   <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
@@ -245,7 +238,11 @@ export default ({ contentId, userType, }) => (
       const {
         navMenu: { menu, },
       } = data;
-      return <NavigationMenu menuSections={menu} userType={userType} />;
+      return (
+        <UserDispenser
+          render={({ user, }) => <NavigationMenu menuSections={menu} userType={user.type} />}
+        />
+      );
     }}
   </Query>
 );

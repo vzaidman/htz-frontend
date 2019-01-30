@@ -6,6 +6,7 @@ import { borderBottom, } from '@haaretz/htz-css-tools';
 import Query from '../ApolloBoundary/Query';
 import MastheadSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
+
 // eslint-disable-next-line import/no-named-as-default
 import LayoutRow from '../PageLayout/LayoutRow';
 import LayoutContainer from '../PageLayout/LayoutContainer';
@@ -14,6 +15,7 @@ import MobileNavigation from '../MobileNavigationMenu/MobileNavigationMain';
 import WrappedScroll from '../Scroll/Scroll';
 import UserDispenser from '../User/UserDispenser';
 import MadorimNavigation from './MadorimNavigation';
+import LogoAndDate from './LogoAndDate';
 
 const hostQuery = gql`
   query Hostname($path: String!) {
@@ -174,7 +176,13 @@ class Masthead extends Component {
                       )}
                     />
                     <MastheadSearch searchIsOpen={searchIsOpen} onClick={this.toggleSearchState} />
-                    {searchIsOpen ? null : <Logo host={host} />}
+                    {searchIsOpen ? null : (
+                      <LogoAndDate
+                        logoType="htz-homepage"
+                        datetimeMiscStyles={{ display: [ { until: 'l', value: 'none', }, ], }}
+                        logoMiscStyles={{ fill: 'red', }}
+                      />
+                    )}
                     {searchIsOpen ? null : <MastheadUserTools y={y} />}
                   </FelaComponent>
                   {includeMadorimNavigation && <MadorimNavigation contentId={contentId} />}
