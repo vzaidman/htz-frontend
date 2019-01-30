@@ -16,7 +16,7 @@ module.exports = {
       generate: '/generate',
       validate: '/validate',
     },
-    payment: 'https://dev-payment.haaretz.co.il',
+    payment: 'https://ms-purchase-dev.haaretz.co.il',
     image: 'https://images.haarets.co.il/image',
     userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
     htzFunction: 'https://ms-apps-dev.haaretz.co.il/htz-function',

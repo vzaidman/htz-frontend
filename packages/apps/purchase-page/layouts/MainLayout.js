@@ -45,6 +45,10 @@ const propTypes = {
    */
   isThankYou: PropTypes.bool,
   /**
+   * Is it the error page.
+   */
+  isError: PropTypes.bool,
+  /**
    * Did the user pay.
    */
   userPaid: PropTypes.bool,
@@ -59,6 +63,7 @@ const defaultProps = {
   displayBackButton: true,
   renderHeader: true,
   isThankYou: false,
+  isError: false,
   userPaid: true,
   footerHasIllustration: true,
 };
@@ -82,6 +87,7 @@ function MainLayout({
   displayBackButton,
   renderHeader,
   isThankYou,
+  isError,
   userPaid,
   footerHasIllustration,
 }) {
@@ -123,7 +129,7 @@ function MainLayout({
                               displayBackButton={displayBackButton}
                               stage={stage}
                             />
-                            <UserBanner ignoreQueryParam={isThankYou} />
+                            <UserBanner ignoreQueryParam={isThankYou || isError} />
                           </Fragment>
                         )}
                         <StyledContentWrapper>{children}</StyledContentWrapper>

@@ -496,6 +496,18 @@ export const generalError = Object.freeze({
   message: [ 'אופס! אירעה תקלה', 'לא ניתן לסיים את התהליך כעת. אנא נסו לבצע את התהליך שנית בעוד מספר דקות. במידה והבעיה חוזרת על עצמה, אנא פנו לשירות לקוחות.', ],
 });
 
+export const userHasDebt = Object.freeze({
+  message: [ 'תשלום חוב', 'לא ניתן לרכוש מינוי ללא אישור גביה של החוב הקיים. אנא חזרו למסך אישור החב ואשרו את גבייתו.', ],
+});
+
+export const userHasProduct = Object.freeze({
+  message: [ 'מוצר קיים', 'אתם כבר מנויים למוצר זה.', ],
+});
+
+export const paypalError = Object.freeze({
+  message: [ 'אופס! אירעה תקלה', 'לא התקבלה תשובה מ-Paypal. אנא חכו מספר דקות לפני שתנסו שנית.', ],
+});
+
 export const thankYou = Object.freeze({
   afterPurchase: product => {
     const item = product === 'HTZ'
