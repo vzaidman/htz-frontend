@@ -159,7 +159,7 @@ export default function Wong({
                 miscStyles={{
                   marginTop:
                     item && (item.exclusive || item.exclusiveMobile)
-                      ? [ { until: 's', value: '-3rem', }, ]
+                      ? [ { until: 's', value: '-4rem', }, ]
                       : undefined,
                 }}
                 renderContent={() => (
@@ -169,13 +169,15 @@ export default function Wong({
                       isH1
                       {...item}
                       typeScale={[
-                        { until: 's', value: 1, },
+                        { until: 's', value: 2, },
                         { from: 's', until: 'l', value: 6, },
                         { from: 'l', until: 'xl', value: 5, },
                         { from: 'xl', value: isConrad ? 5 : 4, },
                       ]}
-                      kickerTypeScale={-1}
-                      miscStyles={{}}
+                      kickerTypeScale={[
+                        { until: 's', value: 0, },
+                        { from: 's', value: -1, },
+                      ]}
                       kickerMiscStyles={{
                         marginBottom: '1rem',
                         marginInlineStart: [ { until: 's', value: '-2rem', }, ],
@@ -300,15 +302,15 @@ export default function Wong({
                                           }
                                       >
                                         <IconBack
-                                          size={[
-                                            { until: 'xl', value: 2, },
-                                            { from: 'xl', value: 1.5, },
-                                          ]}
-                                          miscStyles={{
-                                            marginInlineStart: `-${relatedPadding}`,
-                                            marginInlineEnd: '0.5rem',
-                                          }}
-                                        />
+                                            size={[
+                                              { until: 'xl', value: 2, },
+                                              { from: 'xl', value: 1.5, },
+                                            ]}
+                                            miscStyles={{
+                                              marginInlineStart: `-${relatedPadding}`,
+                                              marginInlineEnd: '0.5rem',
+                                            }}
+                                          />
                                         {article.title}
                                       </HtzLink>
                                     )}
