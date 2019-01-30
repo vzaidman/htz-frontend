@@ -63,6 +63,7 @@ class PapiAPI extends RESTDataSource {
   async getPaywallData() {
     return {
       slotLocation: 'popup',
+      colorScheme: 'primary',
       title: 'כל התכנים, בכל מכשיר, בכל זמן',
       text: 'הארץ בדיגיטל החל מ-4.90שח בחודש הראשון',
       confirm: {
