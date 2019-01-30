@@ -10,9 +10,9 @@ import type { PaywallData, } from '../../PaywallDataProvider';
 
 type Props = PaywallData;
 
-export default function PaywallTop({ title, text, confirm, }: Props): React.Node {
+export default function PaywallTop({ colorScheme, title, text, confirm, }: Props): React.Node {
   return (
-    <PaywallTopContainer>
+    <PaywallTopContainer colorScheme={colorScheme}>
       <PaywallAstronaut
         style={[
           {
@@ -31,7 +31,7 @@ export default function PaywallTop({ title, text, confirm, }: Props): React.Node
         style={theme => ({
           display: 'flex',
           alignItems: 'center',
-          color: '#00537a',
+          color: theme.color('secondary'),
           padding: '2rem',
           extend: [
             theme.mq({ until: 's', }, { marginRight: '-1rem', }),

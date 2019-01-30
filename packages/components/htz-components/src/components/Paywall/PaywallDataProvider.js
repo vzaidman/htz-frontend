@@ -8,6 +8,7 @@ const paywallDataQuery = gql`
   query getPaywallData {
     paywall {
       slotLocation
+      colorScheme
       title
       text
       confirm {
@@ -35,6 +36,7 @@ export type SlotLocation =
 
 export type PaywallData = {
   slotLocation: SlotLocation,
+  colorScheme: 'primary' | 'secondary',
   title: string,
   text: string,
   confirm: PaywallLink,

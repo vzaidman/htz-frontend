@@ -10,9 +10,9 @@ import type { PaywallData, } from '../../PaywallDataProvider';
 
 type Props = PaywallData;
 
-export default function PaywallBottom({ title, text, confirm, }: Props): React.Node {
+export default function PaywallBottom({ colorScheme, title, text, confirm, }: Props): React.Node {
   return (
-    <PaywallBottomContainer>
+    <PaywallBottomContainer colorScheme={colorScheme}>
       <PaywallAstronaut
         style={[
           {
@@ -35,12 +35,19 @@ export default function PaywallBottom({ title, text, confirm, }: Props): React.N
         ]}
       />
       <FelaComponent
-        style={{
+        style={theme => ({
           display: 'flex',
           alignItems: 'center',
-          color: 'white',
           padding: '2rem',
-        }}
+          ...theme.mq({ until: 'm', }, {
+            color: theme.color('secondary'),
+          }),
+          ...theme.mq({ from: 'm', }, {
+            color: colorScheme !== 'secondary' // primary is default
+              ? theme.color('white')
+              : theme.color('secondary', '+1'),
+          }),
+        })}
         render={
           ({ className, }) => (
             <div className={className}>

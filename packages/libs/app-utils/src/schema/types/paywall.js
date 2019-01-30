@@ -17,6 +17,9 @@ const Paywall = new GraphQLObjectType({
     slotLocation: {
       type: GraphQLString,
     },
+    colorScheme: {
+      type: GraphQLString,
+    },
     title: {
       type: GraphQLString,
     },
