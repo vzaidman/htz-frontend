@@ -58,7 +58,6 @@ class CreditCardIframe extends Component {
 
   handleFrameTasks = evt => {
     const msgData = evt.data;
-    console.log(msgData);
     if (msgData.type === 'cgmessage') {
       switch (msgData.command) {
         case 'resize_payment_form':
