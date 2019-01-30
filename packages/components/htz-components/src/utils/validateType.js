@@ -19,6 +19,10 @@ export function isGridElement(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.GridElementGroup';
 }
 
+export function isMiddleRuller(item: TestObject): %checks {
+  return item.inputTemplate === 'com.tm.promotion.banner.MiddleRuler';
+}
+
 export function isHeaderNewsGroup(item: TestObject): %checks {
   return item.inputTemplate === 'com.tm.HeaderNewsGroup';
 }

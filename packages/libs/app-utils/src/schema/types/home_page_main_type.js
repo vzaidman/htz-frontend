@@ -4,6 +4,7 @@ import { GraphQLList, GraphQLUnionType, } from 'graphql';
 import getSchema from '../getSchema';
 import MainBlock from './main_block_type';
 import List from './list_type';
+import MiddleRuller from './middle_ruller_type';
 import GridElementGroup from './grid_element_group_type';
 import ElementGroup from './element_group_type';
 import TabViewElement from './tab_view_element_type';
@@ -22,6 +23,7 @@ const Article = new GraphQLList(
       List,
       GridElementGroup,
       ElementGroup,
+      MiddleRuller,
       TabViewElement,
       dfpBanner,
       clickTrackerBannersWrapper,

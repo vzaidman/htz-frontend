@@ -1,5 +1,5 @@
 export const Strip = {
-  name: 'Header - Blue Strip',
+  name: 'סטריפ עליון',
   id: 'hp-header-blue-strip',
   position: 'Header',
 };
@@ -29,9 +29,16 @@ export const Weekly = {
   position: 'Hp Pop up all over the screen',
 };
 export const BottomStrip = {
-  name: 'Footer - Ruler',
+  name: 'רולר תחתון',
   id: 'hp-ruler',
   position: 'Footer Floating Ruler',
 };
+
+export const MiddleRuller = {
+  name: 'סטריפ חוצה צהוב',
+  id: 'hp-middle-ruller',
+  position: 'hp after tarbut',
+};
+
 
 export const EmailConfirmation = {};

@@ -65,6 +65,7 @@ import Masthead from './components/Masthead/Masthead';
 import Media from './components/Media/Media';
 import MobileQuickRegistration from './components/MobileQuickRegistration/MobileQuickRegistration';
 import MarketingNotificationProvider from './components/MarketingNotifications/MarketingNotificationProvider';
+import MarketingNotification from './components/MarketingNotifications/MarketingNotification';
 import Mutation from './components/ApolloBoundary/Mutation';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
 import Newsletter from './components/Newsletter/Newsletter';
@@ -237,6 +238,7 @@ import type { DfpBannerType, } from './flowTypes/DfpBannerType';
 import type { GridElementType, } from './flowTypes/GridElementType';
 import type { ListDataType, } from './flowTypes/ListDataType';
 import type { TabsElementType, } from './flowTypes/TabsElementType';
+import type { MiddleRulerType, } from './flowTypes/MiddleRulerType';
 
 export {
   // ArticleTypes
@@ -296,6 +298,7 @@ export {
   Media,
   MobileQuickRegistration,
   MarketingNotificationProvider,
+  MarketingNotification,
   Mutation,
   NavigationMenu,
   Newsletter,
@@ -456,5 +459,6 @@ export type {
   DfpBannerType,
   GridElementType,
   ListDataType,
+  MiddleRulerType,
   TabsElementType,
 };

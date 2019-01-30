@@ -4,6 +4,7 @@ import type {
   DfpBannerType,
   GridElementType,
   ListDataType,
+  MiddleRulerType,
   TabsElementType,
   ErrorType,
 } from '@haaretz/htz-components';
@@ -13,6 +14,7 @@ type MainSlotElement =
   | DfpBannerType
   | GridElementType
   | ListDataType
+  | MiddleRulerType
   | TabsElementType
   | ErrorType
 

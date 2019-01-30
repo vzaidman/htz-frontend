@@ -12,6 +12,7 @@ type NotificationType =
   | 'Popup2'
   | 'BottomStrip'
   | 'EmailConfirmation'
+  | 'MiddleRuller'
   | 'Weekly';
 
 type Props = {
@@ -67,24 +68,31 @@ class MarketingNotification extends React.Component<Props> {
     } = this.props;
 
     let Element;
+    const importOptions = {
+      loading: () => null,
+      ssr: false,
+    };
     switch (notificationType) {
       case 'Strip':
-        Element = dynamic(() => import('./Strip/StripNotification'));
+        Element = dynamic(() => import('./Strip/StripNotification'), importOptions);
+        break;
+      case 'MiddleRuller':
+        Element = dynamic(() => import('./MiddleRuller/MiddleRullerNotification'), importOptions);
         break;
       case 'Popup':
-        Element = dynamic(() => import('./Popup/PopupNotification'));
+        Element = dynamic(() => import('./Popup/PopupNotification'), importOptions);
         break;
       case 'Popup2':
-        Element = dynamic(() => import('./Popup2/Popup2Notification'));
+        Element = dynamic(() => import('./Popup2/Popup2Notification'), importOptions);
         break;
       case 'Weekly':
-        Element = dynamic(() => import('./Weekly/WeeklyNotification'));
+        Element = dynamic(() => import('./Weekly/WeeklyNotification'), importOptions);
         break;
       case 'BottomStrip':
-        Element = dynamic(() => import('./BottomStrip/BottomStripNotification'));
+        Element = dynamic(() => import('./BottomStrip/BottomStripNotification'), importOptions);
         break;
       case 'EmailConfirmation':
-        Element = dynamic(() => import('./EmailConfirmation/EmailConfirmationNotification'));
+        Element = dynamic(() => import('./EmailConfirmation/EmailConfirmationNotification'), importOptions);
         break;
       default:
         return null;

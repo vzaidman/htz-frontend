@@ -21,12 +21,14 @@ import MainBlock from './types/main_block_type';
 import TabViewElement from './types/tab_view_element_type';
 import HeaderNewsGroup from './types/header_news_group_type';
 import nullFallback from './types/null_fallback_type';
+import MiddleRuller from './types/middle_ruller_type';
 
 const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
   [ 'com.polobase.DfpBannerElement', dfpBanner, ],
   [ 'com.htz.magazineArticleDfpBannerElement', dfpBanner, ],
   [ 'com.tm.ElementGroup', elementGroup, ],
+  [ 'com.tm.promotion.banner.MiddleRuler', MiddleRuller, ],
   [ 'embed', embed, ],
   [ 'com.tm.GridElementGroup', gridElementGroup, ],
   [ 'com.tm.HeaderNewsGroup', HeaderNewsGroup, ],

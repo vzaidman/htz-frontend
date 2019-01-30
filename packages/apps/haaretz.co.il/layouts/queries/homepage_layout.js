@@ -82,6 +82,13 @@ export default gql`
           ... on TabViewElements {
             ...TabViewElements
           }
+          ... on MiddleRuler {
+             inputTemplate
+             text
+             actionUrl
+             contentId
+             contentName
+          }
           ... on NullFallback {
             message
             errorCode
