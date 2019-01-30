@@ -20,6 +20,7 @@ import ReviewAmenities from './ReviewArticleElements/ReviewAmenities';
 import { buildUrl, } from '../../../utils/buildImgURLs';
 import ReviewArticleQuery from './queries/review_article';
 import ArticleGallery from '../../ArticleGallery/ArticleGallery';
+import Paywall from '../../Paywall/Paywall';
 
 function ReviewArticle({ articleId, slots, }) {
   return (
@@ -109,6 +110,15 @@ function ReviewArticle({ articleId, slots, }) {
                         extend: [ theme.mq({ from: 'l', }, { width: 'calc(100% - 300px - 8rem)', }), ],
                       }}
                     >
+                      <ArticleLayoutRow>
+                        <Paywall
+                          layouts={[ 'top', ]}
+                          miscStyles={{
+                            maxWidth: '90rem',
+                            margin: 'auto',
+                          }}
+                        />
+                      </ArticleLayoutRow>
                       {article.map(element => {
                         if (
                           element.inputTemplate === 'com.htz.ArticleHeaderElement'
