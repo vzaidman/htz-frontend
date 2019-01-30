@@ -70,6 +70,7 @@ export default function Slugs({
       >
         <Grid
           gutter={4}
+          rowSpacing={[ { until: 's', value: { amount: 2, }, }, ]}
           miscStyles={{
             height: [ { from: 'xl', value: '100%', }, ],
           }}
@@ -225,10 +226,7 @@ function MainTeaser({
               <TeaserHeader
                 {...data}
                 isCentered
-                typeScale={[
-                  { until: 'l', value: 1, },
-                  { from: 'l', value: 2, },
-                ]}
+                typeScale={[ { until: 'l', value: 1, }, { from: 'l', value: 2, }, ]}
                 onClick={
                   biAction ? () => biAction({ index: 0, articleId, }) : null
                 }
@@ -334,7 +332,7 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
         display: 'flex',
         flexGrow: '1',
         height: 'auto',
-        marginTop: [ { until: 's', value: '1rem', }, { from: 's', value: '4rem', }, ],
+        marginTop: [ { until: 's', value: '2rem', }, { from: 's', value: '4rem', }, ],
       }}
     >
       <TeaserContent
@@ -387,10 +385,7 @@ function TwoUp({
       gutter={1}
       miscStyles={{
         flexGrow: '0',
-        marginTop: [
-          { until: 's', value: '1rem', },
-          { from: 's', until: 'l', value: '4rem', },
-        ],
+        marginTop: [ { from: 's', until: 'l', value: '4rem', }, ],
       }}
     >
       <GridItem width={[ { until: 's', value: 1 / 2, }, { from: 's', value: 1, }, ]}>

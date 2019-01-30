@@ -190,14 +190,14 @@ export default class Zombie extends React.Component<Props, State> {
                     { from: 'xl', value: 3 / 6, },
                   ]}
                   miscStyles={{
-                    marginTop: [ { until: 's', value: '1rem', }, ],
+                    marginTop: [ { until: 's', value: '2rem', }, ],
                     display: 'flex',
                   }}
                 >
                   <Grid
                     gutter={0}
                     rowSpacing={[
-                      { until: 's', value: { amount: 1, }, },
+                      { until: 's', value: { amount: 2, }, },
                       { from: 's', value: { amount: 4, }, },
                     ]}
                   >

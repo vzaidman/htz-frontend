@@ -72,7 +72,7 @@ export default function HawkingList({
         <Grid
           gutter={4}
           rowSpacing={[
-            { until: 's', value: { amount: 1, }, },
+            { until: 's', value: { amount: 2, }, },
             { from: 's', until: 'xl', value: { amount: 4, }, },
           ]}
         >
@@ -102,7 +102,7 @@ export default function HawkingList({
             <Grid
               gutter={0}
               rowSpacing={[
-                { until: 's', value: { amount: 1, }, },
+                { until: 's', value: { amount: 2, }, },
                 { from: 's', value: { amount: 4, }, },
               ]}
               miscStyles={{

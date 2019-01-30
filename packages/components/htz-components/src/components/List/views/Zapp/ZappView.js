@@ -33,11 +33,14 @@ export default function Zapp({
   return (
     <ListView
       gutter={4}
-      innerBackgroundColor={[ { until: 's', value: 'transparent', }, { from: 's', value: 'white', }, ]}
+      innerBackgroundColor={[
+        { until: 's', value: 'transparent', },
+        { from: 's', value: 'white', },
+      ]}
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
-      marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
+      marginTop={[ { until: 's', value: 2, }, { from: 's', value: 0, }, ]}
       rowSpacing={[
-        { until: 's', value: { amount: 1, }, },
+        { until: 's', value: { amount: 2, }, },
         { from: 's', until: 'l', value: { amount: 4, }, },
       ]}
     >
@@ -64,7 +67,10 @@ export default function Zapp({
               key={banner.contentId}
               width={1}
               miscStyles={{
-                display: [ { until: 's', value: 'block', }, { from: 's', value: 'none', }, ],
+                display: [
+                  { until: 's', value: 'block', },
+                  { from: 's', value: 'none', },
+                ],
               }}
             >
               {/* banner content */}

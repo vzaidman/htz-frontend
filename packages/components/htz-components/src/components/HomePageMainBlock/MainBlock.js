@@ -28,7 +28,7 @@ export default function MainBlock({
       gutter={0}
       innerBackgroundColor={[ { until: 's', value: 'transparent', }, ]}
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
-      marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
+      marginTop={0}
     >
       <List
         {...slotA}
@@ -59,13 +59,20 @@ export default function MainBlock({
               value: 4,
             },
           ],
-          display: [ { until: 's', value: 'none', }, { from: 'l', value: 'flex', }, ],
+          display: [
+            { until: 's', value: 'none', },
+            { from: 'l', value: 'flex', },
+          ],
           alignItems: [ { from: 'l', value: 'center', }, ],
-          justifyContent: [ { from: 'l', until: 'xl', value: 'flex-end', }, { from: 'xl', value: 'center', }, ],
+          justifyContent: [
+            { from: 'l', until: 'xl', value: 'flex-end', },
+            { from: 'xl', value: 'center', },
+          ],
           order: [
             { from: 'l', until: 'xl', value: 5, },
             ...(isWideMain ? [ { from: 'xl', value: 5, }, ] : []),
-          ], }}
+          ],
+        }}
       >
         <GeneralAdSlot {...slotB} />
       </GridItem>
@@ -78,7 +85,6 @@ export default function MainBlock({
             { from: 'l', until: 'xl', value: 8 / 12, },
             { from: 'xl', value: isWideMain ? 8 / 12 : 1, },
           ],
-
         }}
       />
     </ListView>

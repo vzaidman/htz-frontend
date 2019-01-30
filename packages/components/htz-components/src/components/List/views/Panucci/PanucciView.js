@@ -64,7 +64,7 @@ export default function Panucci({
       >
         <Grid
           rowSpacing={[
-            { until: 's', value: { amount: 1, nUp: 1, }, },
+            { until: 's', value: { amount: 2, nUp: 1, }, },
             { from: 's', value: { amount: 4, nUp: 1, }, },
           ]}
         >
@@ -72,7 +72,7 @@ export default function Panucci({
             <Grid
               gutter={4}
               rowSpacing={[
-                { until: 's', value: { amount: 1, nUp: 1, }, },
+                { until: 's', value: { amount: 2, nUp: 1, }, },
                 { from: 's', value: { amount: 0, nUp: 1, }, },
               ]}
             >
@@ -117,7 +117,7 @@ export default function Panucci({
           <GridItem width={1}>
             <Grid
               rowSpacing={[
-                { until: 's', value: { amount: 1, nUp: 1, }, },
+                { until: 's', value: { amount: 2, nUp: 1, }, },
                 { from: 's', value: { amount: 0, nUp: 1, }, },
               ]}
             >
@@ -151,7 +151,7 @@ export default function Panucci({
               >
                 <Grid
                   rowSpacing={[
-                    { until: 's', value: { amount: 1, nUp: 1, }, },
+                    { until: 's', value: { amount: 2, nUp: 1, }, },
                     { from: 's', value: { amount: 4, nUp: 1, }, },
                   ]}
                 >
@@ -194,10 +194,6 @@ export default function Panucci({
               { from: 'xl', value: 4 / 12, },
             ]}
             miscStyles={{
-              marginTop: [
-                { until: 's', value: '1rem', },
-                { from: 's', until: 'l', value: '4rem', },
-              ],
               display: [ { from: 'l', value: 'flex', }, ],
               alignItems: [ { from: 'l', value: 'center', }, ],
               justifyContent: [ { from: 'l', value: 'center', }, ],
@@ -216,10 +212,19 @@ export default function Panucci({
 function bannerStyle({ theme, }) {
   return {
     extend: [
-      theme.mq({ until: 's', }, { ':not(:empty)': { marginTop: '2rem', }, }),
+      theme.mq(
+        { until: 's', },
+        {
+          marginTop: '2rem',
+          '&:empty': { display: 'none', },
+        }
+      ),
       theme.mq(
         { from: 's', until: 'l', },
-        { ':not(:empty)': { marginTop: '4rem', }, }
+        {
+          marginTop: '4rem',
+          '&:empty': { display: 'none', },
+        }
       ),
     ],
   };

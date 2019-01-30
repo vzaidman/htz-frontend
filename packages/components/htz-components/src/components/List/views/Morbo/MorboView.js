@@ -55,10 +55,9 @@ export default function Morbo({
           <Grid
             gutter={4}
             rowSpacing={[
-              { until: 's', value: { amount: 1, }, },
+              { until: 's', value: { amount: 2, }, },
               { from: 's', until: 'l', value: { amount: 4, }, },
               { from: 'l', until: 'xl', value: { amount: 4, nUp: 2, }, },
-              { from: 'xl', value: { amount: 0, }, },
             ]}
           >
             {/* Item 1 */}

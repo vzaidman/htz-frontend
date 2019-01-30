@@ -60,7 +60,11 @@ export default function VerticalList({
         <ListView
           disableWrapper
           marginTop={0}
-          gridMiscStyles={{ flexDirection: 'column', flexGrow: '1', }}
+          gridMiscStyles={{
+            flexDirection: 'column',
+            flexGrow: '1',
+            flexWrap: 'nowrap',
+          }}
           sectionMiscStyles={{
             display: 'flex',
             flexGrow: '1',
@@ -81,7 +85,11 @@ export default function VerticalList({
             />
           ) : null}
           <GridItem
-            miscStyles={{ flexGrow: '1', flexBasis: 'auto', }}
+            miscStyles={{
+              flexGrow: '1',
+              flexBasis: 'auto',
+              flexWrap: 'nowrap',
+            }}
             stretchContent
           >
             {firstItem ? (

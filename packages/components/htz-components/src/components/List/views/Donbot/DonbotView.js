@@ -72,7 +72,7 @@ export default function DonbotList({
         <Grid
           gutter={4}
           rowSpacing={[
-            { until: 's', value: { amount: 1, }, },
+            { until: 's', value: { amount: 2, }, },
             { from: 's', until: 'xl', value: { amount: 4, }, },
           ]}
         >
@@ -97,7 +97,7 @@ export default function DonbotList({
             <Grid
               gutter={0}
               rowSpacing={[
-                { until: 's', value: { amount: 1, nUp: 2, }, },
+                { until: 's', value: { amount: 2, nUp: 2, }, },
                 { from: 's', value: { amount: 4, nUp: 2, }, },
               ]}
             >
@@ -106,7 +106,7 @@ export default function DonbotList({
                 width={1 / 2}
                 miscStyles={{
                   paddingInlineEnd: [
-                    { until: 's', value: 0.5, },
+                    { until: 's', value: 1, },
                     { from: 's', value: 2, },
                   ],
                 }}
@@ -125,7 +125,7 @@ export default function DonbotList({
                 width={1 / 2}
                 miscStyles={{
                   paddingInlineStart: [
-                    { until: 's', value: 0.5, },
+                    { until: 's', value: 1, },
                     { from: 's', value: 2, },
                   ],
                 }}
@@ -144,7 +144,7 @@ export default function DonbotList({
                 width={1 / 2}
                 miscStyles={{
                   paddingInlineEnd: [
-                    { until: 's', value: 0.5, },
+                    { until: 's', value: 1, },
                     { from: 's', value: 2, },
                   ],
                 }}
@@ -163,7 +163,7 @@ export default function DonbotList({
                 width={1 / 2}
                 miscStyles={{
                   paddingInlineStart: [
-                    { until: 's', value: 0.5, },
+                    { until: 's', value: 1, },
                     { from: 's', value: 2, },
                   ],
                 }}
@@ -345,9 +345,9 @@ function DonbotTeaser({
                   { from: 'l', size: '143px', },
                   { from: 'm', size: '343px', },
                   { from: 's', size: '264px', },
-                  { size: 'calc(50vw - 5rem)', },
+                  { size: 'calc(50vw - 6rem)', },
                 ],
-                widths: [ 500, 350, 270, 180, 150, ],
+                widths: [ 500, 350, 270, 200, 180, 150, ],
               })}
               data={item.image}
             />

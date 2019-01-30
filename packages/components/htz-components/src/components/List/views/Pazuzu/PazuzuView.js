@@ -132,7 +132,7 @@ function PazuzuTeaser({
           gutter={0}
           miscStyles={{
             [isSecondItem ? 'paddingInlineStart' : 'paddingInlineEnd']: [
-              { until: 's', value: '0.5rem', },
+              { until: 's', value: '1rem', },
               { from: 's', value: '2rem', },
             ],
           }}
@@ -175,10 +175,10 @@ function PazuzuTeaser({
                         { from: 'l', size: '314px', },
                         { from: 'm', size: '348px', },
                         { from: 's', size: '264px', },
-                        { size: 'calc(50vw - 4.5rem)', },
+                        { size: 'calc(50vw - 6rem)', },
                       ],
                       aspect: 'headline',
-                      widths: [ 265, 315, 350, 600, ],
+                      widths: [ 162, 265, 324, 350, 600, ],
                     },
                     sources: [
                       {

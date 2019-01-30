@@ -86,7 +86,7 @@ export default function Spawn({
           <Grid
             gutter={4}
             rowSpacing={[
-              { until: 's', value: { amount: 1, }, },
+              { until: 's', value: { amount: 2, }, },
               { from: 's', until: 'l', value: { amount: 4, }, },
               { from: 'l', value: { amount: 4, nUp: 4, }, },
             ]}
@@ -263,7 +263,7 @@ function Comic({ data, lazyLoadImages, }: ComicPropTypes): React.Node {
             flexBasis: '100%',
             minWidth: '100%',
             flexShrink: '0',
-            marginBottom: '1rem',
+            marginBottom: '2rem',
             marginTop: '1rem',
             position: 'relative',
           }}
@@ -594,7 +594,7 @@ function OpEdTeaser({
             ...(hasMarginTop
               ? {
                 marginTop: [
-                  // { until: 's', value: '1rem', },
+                  { until: 's', value: '1rem', },
                   { from: 's', until: 'l', value: '4rem', },
                 ],
               }

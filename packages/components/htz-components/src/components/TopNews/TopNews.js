@@ -28,7 +28,10 @@ function TopNews({ newsItems, contentName, }: Props): React.Node {
       <LayoutContainer
         tagname="section"
         namedBgc="white"
-        miscStyles={{ paddingBottom: '4rem', }}
+        miscStyles={{
+          paddingBottom: '4rem',
+          display: [ { until: 'l', value: 'none', }, ],
+        }}
       >
         <FelaComponent
           style={theme => ({

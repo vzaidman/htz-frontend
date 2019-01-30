@@ -104,7 +104,7 @@ function ListItems({
   return (
     <Grid
       rowSpacing={[
-        { until: 's', value: { amount: 1, }, },
+        { until: 's', value: { amount: 2, }, },
         { from: 's', until: 'l', value: { amount: 4, }, },
       ]}
     >
@@ -112,7 +112,7 @@ function ListItems({
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 10, }, ]}
         miscStyles={{ display: 'flex', }}
       >
-        <Grid gutter={4} rowSpacing={[ { until: 's', value: { amount: 1, }, }, ]}>
+        <Grid gutter={4} rowSpacing={[ { until: 's', value: { amount: 2, }, }, ]}>
           <GridItem
             width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
           >
@@ -146,7 +146,7 @@ function ListItems({
         <Grid
           gutter={4}
           rowSpacing={[
-            { until: 's', value: { amount: 1, }, },
+            { until: 's', value: { amount: 2, }, },
             { from: 'l', value: { amount: 1, }, },
           ]}
         >
