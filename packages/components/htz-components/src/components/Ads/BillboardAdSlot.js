@@ -10,7 +10,16 @@ import AdSlotBase from './AdSlotBase';
 
 function BillboardAdSlot(props: DfpBannerType): Node {
   return (
-    <FelaComponent style={{ minHeight: '150px', }}>
+    <FelaComponent
+      style={theme => ({
+        extend: [
+          theme.mq(
+            { from: 's', },
+            { minHeight: '150px', }
+          ),
+        ],
+      })}
+    >
       <AdSlotBase {...props} />
     </FelaComponent>
   );
