@@ -426,6 +426,7 @@ function Editorial({
                     },
                     extend: [
                       theme.type(0, { fromBp: 's', untilBp: 'l', }),
+                      theme.type(-1, { fromBp: 'l', untilBp: 'xl', lines: 3.5, }),
                       theme.type(-2, { fromBp: 'xl', }),
                       theme.mq({ until: 's', }, { display: 'none', }),
                       theme.mq({ from: 's', until: 'l', }, { height: '16rem', }),

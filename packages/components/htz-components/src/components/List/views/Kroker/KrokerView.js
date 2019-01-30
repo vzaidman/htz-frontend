@@ -58,7 +58,9 @@ export default function KrokerView({
         <Grid
           rowSpacing={[
             { until: 's', value: { amount: 0, }, },
-            { from: 's', value: { amount: 2, }, },
+            { from: 's', until: 'l', value: { amount: 2, }, },
+            { from: 'l', until: 'xl', value: { amount: 4, }, },
+            { from: 'xl', value: { amount: 2, }, },
           ]}
         >
           {/* breaking news element */}
@@ -72,7 +74,10 @@ export default function KrokerView({
           </GridItem>
 
           {/* list items */}
-          <GridItem width={1}>
+          <GridItem
+            width={1}
+            // miscStyles={{ marginTop: [ { from: 'm', until: 'l', value: '4rem', }, ], }}
+          >
             <ListItems
               items={items}
               dfp={dfp}

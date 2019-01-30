@@ -88,16 +88,16 @@ export default function Wong({
           <GridItem
             gutter={gutter}
             width={width}
-            rule={
-              isConrad
-                ? null
-                : [
-                  {
-                    from: 'xl',
-                    value: { color: [ 'neutral', '-4', ], width: 1, },
-                  },
-                ]
-            }
+            // rule={
+            //   isConrad
+            //     ? null
+            //     : [
+            //       {
+            //         from: 'xl',
+            //         value: { color: [ 'neutral', '-4', ], width: 1, },
+            //       },
+            //     ]
+            // }
           >
             <Teaser
               gutter={0}

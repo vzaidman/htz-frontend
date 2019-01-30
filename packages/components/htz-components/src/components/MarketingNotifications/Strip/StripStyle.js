@@ -13,7 +13,7 @@ export function wrapper(theme) {
           width: '100%',
           display: 'none',
           padding: '1rem 2rem',
-          lignHeight: '130%',
+          lineHeight: '130%',
         }
       ),
     ],
@@ -36,12 +36,12 @@ export function text1(theme) {
 
 export function button(theme) {
   return {
+    marginInlineStart: '2rem',
     ...theme.mq(
       { from: 'm', },
       {
         paddingTop: '0.5rem',
         paddingBottom: '0.5rem',
-        marginInlineStart: '2rem',
       }
     ),
   };
