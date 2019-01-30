@@ -22,6 +22,7 @@ import {
 } from '@haaretz/htz-components';
 
 import styleRenderer from '../components/styleRenderer/styleRenderer';
+import ArticleChartbeatConfig from '../components/ChartBeat/ArticleChartbeatConfig';
 import ArticleInitQuery from './queries/article_layout';
 
 const logger = createLogger();
@@ -141,15 +142,22 @@ class ArticleLayout extends React.Component {
             const isPremiumContent = standardArticleElement
               ? standardArticleElement.isPremiumContent
               : null;
+
+            const authorsArr = slots.article
+              .find(item => item.authors);
+
+            const authors = authorsArr.authors ? authorsArr.authors.map(item => item.contentName).join(', ') : 'No Authors';
+
             return (
               <Fragment>
                 <Head>
                   <title>{titleSEO}</title>
+                  {ArticleChartbeatConfig(lineage[1].name, authors)}
                 </Head>
                 {// render <PremiumContentMeta/> only when isPremiumContent is defined
-                  isPremiumContent !== null ? (
-                    <PremiumContentMeta isPremiumContent={isPremiumContent} />
-                  ) : null}
+                isPremiumContent !== null ? (
+                  <PremiumContentMeta isPremiumContent={isPremiumContent} />
+                ) : null}
                 <ScrollListener />
                 <RouteChangeListener />
                 <UserInjector />
@@ -176,13 +184,7 @@ class ArticleLayout extends React.Component {
               </Fragment>
             );
           }
-          return (
-            <Error
-              errorCode={1}
-              kind="error"
-              message="PApi is down, Call Avi Kaufman."
-            />
-          );
+          return <Error errorCode={1} kind="error" message="PApi is down, Call Avi Kaufman." />;
         }}
       </Query>
     );

@@ -14,6 +14,9 @@ export default gql`
         footer
         article {
           ... on ArticleData {
+            authors {
+              contentName
+            }
             isPremiumContent
             inputTemplate
           }
