@@ -7,6 +7,7 @@ import ArticleImage from '../../../ArticleBodyImage/ArticleBodyImage';
 import Caption from '../../../Caption/Caption';
 import NoSSR from '../../../NoSSR/NoSSR';
 import buildImgOptions from './magazineArticleBodyBuildImgOptions';
+import { parseLayout, } from '../utils';
 
 const propTypes = {
   /**
@@ -143,31 +144,7 @@ const buildComponent = (context, index, isLastItem, magazineLayout) => {
           render={theme => (
             <Component
               {...context}
-              miscStyles={{
-                marginRight: 'auto',
-                marginLeft: 'auto',
-                maxWidth: [
-                  { until: 's', value: magazineLayout.maxWidth.s, },
-                  { from: 's', until: 'm', value: magazineLayout.maxWidth.m, },
-                  { from: 'm', until: 'l', value: magazineLayout.maxWidth.ml, },
-                  { from: 'l', until: 'xl', value: magazineLayout.maxWidth.l, },
-                  { from: 'xl', value: magazineLayout.maxWidth.xl, },
-                ],
-                paddingInlineStart: [
-                  { until: 's', value: magazineLayout.innerPadding.s, },
-                  { from: 's', until: 'm', value: magazineLayout.innerPadding.m, },
-                  { from: 'm', until: 'l', value: magazineLayout.innerPadding.ml.start, },
-                  { from: 'l', until: 'xl', value: magazineLayout.innerPadding.l.start, },
-                  { from: 'xl', value: magazineLayout.innerPadding.xl, },
-                ],
-                paddingInlineEnd: [
-                  { until: 's', value: magazineLayout.innerPadding.s, },
-                  { from: 's', until: 'm', value: magazineLayout.innerPadding.m, },
-                  { from: 'm', until: 'l', value: magazineLayout.innerPadding.ml.end, },
-                  { from: 'l', until: 'xl', value: magazineLayout.innerPadding.l.end, },
-                  { from: 'xl', value: magazineLayout.innerPadding.xl, },
-                ],
-              }}
+              miscStyles={parseLayout(magazineLayout)}
               {...(uniqueId === 'p' || uniqueId === 'a' || uniqueId === 'h4'
                 ? {
                   renderFirstImpression: !isLastItem,
