@@ -22,15 +22,16 @@ function GstatFunc(user) {
       const yy = d.getFullYear();
       // schedule one request per a day begin on six o'clock
       const schedulerDate = new Date(yy, mm, dd, 6, 0, 0);
-      const date = schedulerDate.getTime();
+      const date = hh < 6
+        ? new Date(schedulerDate.getTime() - (1000 * 60 * 60 * 24))
+        : schedulerDate;
 
-      if (hh < 6) {
-        date.setDate(schedulerDate.getDate() - 1);
-      }
       if (typeof ssoId !== 'undefined' && typeof Storage !== 'undefined') {
         if (localStorage.GstatCampaign) {
           GstatCampaign = JSON.parse(localStorage.GstatCampaign);
-          lastModifiedDateTime = GstatCampaign.lastModifiedDateTime;
+          lastModifiedDateTime = GstatCampaign.lastModifiedDateTime
+            ? new Date(GstatCampaign.lastModifiedDateTime)
+            : null;
         }
 
         if (!lastModifiedDateTime || lastModifiedDateTime < date) {
@@ -40,15 +41,16 @@ function GstatFunc(user) {
             + domain[1]
             + APP_NAME
             + GSTAT_SERVLET}?ssoId=${ssoId}`;
-          fetch(url)
+          fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', },
+          })
             .then(response => response.json())
             .then(data => {
-              GstatCampaign.lastModifiedDateTime = date;
-              GstatCampaign.CampaignNumber = data.campaignNumber;
               localStorage.removeItem('GstatCampaign');
               localStorage.GstatCampaign = JSON.stringify({
-                lastModifiedDateTime: GstatCampaign.lastModifiedDateTime,
-                CampaignNumber: GstatCampaign.CampaignNumber,
+                lastModifiedDateTime: date,
+                CampaignNumber: data.campaignNumber,
               });
             })
             .catch(error => console.log('error from gstat script fetch: ', error));
