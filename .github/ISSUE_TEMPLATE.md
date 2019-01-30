@@ -1,18 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Description](#description)
-  - [Toggling options](#toggling-options)
-  - [Measurement Requirements](#measurement-requirements)
-  - [SEO Requirements](#seo-requirements)
-  - [A11Y Concerns](#a11y-concerns)
-- [Links](#links)
-- [Testing Requirements](#testing-requirements)
-- [Work Time Estimation](#work-time-estimation)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 <!----------------------------------------------------------------------
 * Stage 1: to be filled in by project manager (and sometimes designer) *
 ----------------------------------------------------------------------->
