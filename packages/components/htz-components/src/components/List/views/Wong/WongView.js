@@ -302,15 +302,15 @@ export default function Wong({
                                           }
                                       >
                                         <IconBack
-                                            size={[
-                                              { until: 'xl', value: 2, },
-                                              { from: 'xl', value: 1.5, },
-                                            ]}
-                                            miscStyles={{
-                                              marginInlineStart: `-${relatedPadding}`,
-                                              marginInlineEnd: '0.5rem',
-                                            }}
-                                          />
+                                          size={[
+                                            { until: 'xl', value: 2, },
+                                            { from: 'xl', value: 1.5, },
+                                          ]}
+                                          miscStyles={{
+                                            marginInlineStart: `-${relatedPadding}`,
+                                            marginInlineEnd: '0.5rem',
+                                          }}
+                                        />
                                         {article.title}
                                       </HtzLink>
                                     )}

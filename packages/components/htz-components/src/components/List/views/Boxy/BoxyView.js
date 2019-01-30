@@ -221,7 +221,7 @@ function textWrapperStyle(theme) {
 function innerTextStyle(theme) {
   return {
     padding: '1rem',
-    backgroundColor: rgba(theme.color('quaternary', 'base'), 0.95),
+    backgroundColor: theme.color('quaternary', 'base'),
     display: 'inline',
     boxDecorationBreak: 'clone',
     paddingRight: '1rem',
