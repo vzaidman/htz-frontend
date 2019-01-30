@@ -11,7 +11,7 @@ import Image from '../../../Image/Image';
 import Picture from '../../../Image/Picture';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import ListView from '../../../ListView/ListView';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
@@ -56,17 +56,13 @@ export default function DonbotList({
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
     >
       {/* LIST HEADER */}
-      <GridItem
-        stretchContent
+      <StickyListViewHeader
+        {...restOfList}
+        extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
+        biAction={biAction}
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
         miscStyles={{ marginBottom: [ { until: 's', value: '1rem', }, ], }}
-      >
-        <ListViewHeader
-          {...restOfList}
-          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
-          biAction={biAction}
-        />
-      </GridItem>
+      />
 
       {/* LIST CONTENT */}
       <GridItem

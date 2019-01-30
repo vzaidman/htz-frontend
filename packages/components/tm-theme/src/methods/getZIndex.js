@@ -1,5 +1,7 @@
 const indices = {
   modal: 100000,
+  masthead: 10000,
+  stickyListViewHeader: 2,
   above: 1,
   base: 0,
   below: -1,

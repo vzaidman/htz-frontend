@@ -4,7 +4,7 @@ import * as React from 'react';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 import MainTeaser from './MainTeaser';
@@ -43,21 +43,15 @@ export default function Panucci({
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
     >
       {/* header */}
-      <GridItem
+      <StickyListViewHeader
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
-        stretchContent
+        {...restOfList}
+        extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
+        biAction={biAction}
         miscStyles={{
-          marginBottom: [
-            { until: 'l', value: '1rem', },
-          ],
+          marginBottom: [ { until: 'l', value: '1rem', }, ],
         }}
-      >
-        <ListViewHeader
-          {...restOfList}
-          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
-          biAction={biAction}
-        />
-      </GridItem>
+      />
       {/* end header */}
 
       {/* List items */}
@@ -194,9 +188,16 @@ export default function Panucci({
         ? dfp.map(banner => (
           <GridItem
             key={banner.contentId}
-            width={[ { until: 'l', value: 1, }, { from: 'l', until: 'xl', value: 2 / 12, }, { from: 'xl', value: 4 / 12, }, ]}
+            width={[
+              { until: 'l', value: 1, },
+              { from: 'l', until: 'xl', value: 2 / 12, },
+              { from: 'xl', value: 4 / 12, },
+            ]}
             miscStyles={{
-              marginTop: [ { until: 's', value: '1rem', }, { from: 's', until: 'l', value: '4rem', }, ],
+              marginTop: [
+                { until: 's', value: '1rem', },
+                { from: 's', until: 'l', value: '4rem', },
+              ],
               display: [ { from: 'l', value: 'flex', }, ],
               alignItems: [ { from: 'l', value: 'center', }, ],
               justifyContent: [ { from: 'l', value: 'center', }, ],

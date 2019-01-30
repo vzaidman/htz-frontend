@@ -8,7 +8,7 @@ import Grid from '../Grid/Grid';
 import GridItem from '../Grid/GridItem';
 import CsrList from '../List/List';
 import ListView from '../ListView/ListView';
-import ListViewHeader from '../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../ListViewHeader/StickyListViewHeader';
 import Debug from '../Debug/Debug';
 import ClickTracker from '../ClickTracker/ClickTrackerWrapper';
 import GeneralAdSlot from '../Ads/GeneralAdSlot';
@@ -54,17 +54,14 @@ function GridElement({
       }
     >
       {showTitle && title ? (
-        <GridItem
+        <StickyListViewHeader
           width={1}
-          stretchContent
           miscStyles={{
-            marginBottom: [
-              { until: 'l', value: '1rem', },
-            ],
+            marginBottom: [ { until: 'l', value: '1rem', }, ],
           }}
-        >
-          <ListViewHeader isHorizontal title={title} />
-        </GridItem>
+          isHorizontal
+          title={title}
+        />
       ) : null}
       {items.map(({ content, width, miscStyles, }) => (
         <GridItem

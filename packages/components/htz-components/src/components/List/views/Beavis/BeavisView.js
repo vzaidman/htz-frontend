@@ -8,7 +8,7 @@ import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 type BeavisPropsType = {
@@ -24,7 +24,6 @@ Beavis.defaultProps = {
   lazyLoadImages: true,
 };
 
-
 function Beavis({
   list,
   lazyLoadImages,
@@ -34,79 +33,47 @@ function Beavis({
   const { title, dfp, } = list;
   return (
     <ListView
-      padding={[
-        { until: 's', value: [ 0, 2, ], },
-        { from: 's', value: [ 0, 4, ], },
-      ]}
-      isHorizontal={[
-        { until: 'l', value: true, },
-        { from: 'l', value: false, },
-      ]}
+      padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
+      isHorizontal={[ { until: 'l', value: true, }, { from: 'l', value: false, }, ]}
     >
       {/* Header */}
-      <GridItem
-        width={
-          [
-            { until: 'l', value: 1, },
-            { from: 'l', value: 2 / 12, },
-          ]
-        }
-      >
-        <ListViewHeader title={title} isCommercial />
-      </GridItem>
+      <StickyListViewHeader
+        title={title}
+        isCommercial
+        width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
+      />
 
       {/* Items */}
-      {
-        dfp
-          ? (
-            <GridItem
-              width={
-                [
+      {dfp ? (
+        <GridItem
+          width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
+        >
+          <Grid gutter={4}>
+            {dfp[0] ? (
+              <GridItem
+                width={[
                   { until: 'l', value: 1, },
-                  { from: 'l', value: 10 / 12, },
-                ]
-              }
-            >
-              <Grid gutter={4}>
-                {
-                  dfp[0]
-                    ? (
-                      <GridItem
-                        width={
-                          [
-                            { until: 'l', value: 1, },
-                            { from: 'l', until: 'xl', value: 5 / 10, },
-                            { from: 'xl', value: 6 / 10, },
-                          ]
-                        }
-                      >
-                        <GeneralAdSlot {...dfp[0]} />
-                      </GridItem>
-                    )
-                    : null
-                }
-                {
-                  dfp[1]
-                    ? (
-                      <GridItem
-                        width={
-                          [
-                            { until: 'l', value: 1, },
-                            { from: 'l', until: 'xl', value: 5 / 10, },
-                            { from: 'xl', value: 4 / 10, },
-                          ]
-                        }
-                      >
-                        <GeneralAdSlot {...dfp[1]} />
-                      </GridItem>
-                    )
-                    : null
-                }
-              </Grid>
-            </GridItem>
-          )
-          : null
-      }
+                  { from: 'l', until: 'xl', value: 5 / 10, },
+                  { from: 'xl', value: 6 / 10, },
+                ]}
+              >
+                <GeneralAdSlot {...dfp[0]} />
+              </GridItem>
+            ) : null}
+            {dfp[1] ? (
+              <GridItem
+                width={[
+                  { until: 'l', value: 1, },
+                  { from: 'l', until: 'xl', value: 5 / 10, },
+                  { from: 'xl', value: 4 / 10, },
+                ]}
+              >
+                <GeneralAdSlot {...dfp[1]} />
+              </GridItem>
+            ) : null}
+          </Grid>
+        </GridItem>
+      ) : null}
     </ListView>
   );
 }

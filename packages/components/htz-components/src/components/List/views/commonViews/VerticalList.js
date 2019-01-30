@@ -11,7 +11,7 @@ import type { ClickTrackerBannerType, } from '../../../../flowTypes/ClickTracker
 import GridItem from '../../../Grid/GridItem';
 import Image from '../../../Image/Image';
 import ListView from '../../../ListView/ListView.js';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
@@ -67,20 +67,19 @@ export default function VerticalList({
             ...(isCommercial ? { fontFamily: theme.fontStacks.commercial, } : {}),
           }}
         >
-          <GridItem miscStyles={{ flexGrow: '0', }}>
-            {list || title ? (
-              <ListViewHeader
-                url={list ? list.url : null}
-                biAction={biAction}
-                isVertical
-                hasTitlePadding
-                isHorizontal
-                title={title || (list ? list.title : '')}
-                backgroundColor={[ 'white', ]}
-                isCommercial={isCommercial}
-              />
-            ) : null}
-          </GridItem>
+          {list || title ? (
+            <StickyListViewHeader
+              miscStyles={{ flexGrow: '0', flexShrink: '0', flexBasis: 'auto', }}
+              url={list ? list.url : null}
+              biAction={biAction}
+              isVertical
+              hasTitlePadding
+              isHorizontal
+              title={title || (list ? list.title : '')}
+              backgroundColor={[ 'white', ]}
+              isCommercial={isCommercial}
+            />
+          ) : null}
           <GridItem
             miscStyles={{ flexGrow: '1', flexBasis: 'auto', }}
             stretchContent

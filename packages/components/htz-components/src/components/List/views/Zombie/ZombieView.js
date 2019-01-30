@@ -17,7 +17,7 @@ import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import Picture from '../../../Image/Picture';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
@@ -137,7 +137,7 @@ export default class Zombie extends React.Component<Props, State> {
         padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
       >
         {/* Title */}
-        <GridItem
+        <StickyListViewHeader
           width={[ { until: 'l', value: 1, }, { from: 'l', value: 2 / 12, }, ]}
           miscStyles={{
             marginBottom: [
@@ -145,10 +145,8 @@ export default class Zombie extends React.Component<Props, State> {
               { from: 's', until: 'l', value: '2rem', },
             ],
           }}
-          stretchContent
-        >
-          <ListViewHeader {...restOfList} />
-        </GridItem>
+          {...restOfList}
+        />
 
         {/* Content */}
         <GridItem

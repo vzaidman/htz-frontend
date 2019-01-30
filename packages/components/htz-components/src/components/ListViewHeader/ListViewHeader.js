@@ -29,7 +29,7 @@ type BackgroundColorType =
   | [string, string, ]
   | ComponentPropResponsiveObject<string | [string, ] | [string, string, ]>[];
 
-type Props = {
+export type ListViewHeaderPropTypes = {
   /** is the list header horizontal on large viewports */
   isHorizontal: boolean,
   /** Is the list's title padded at its inline start across breakpoints */
@@ -62,13 +62,13 @@ type Props = {
   /** The List Title. */
   title: ?string,
   /**
-   * A special property holding miscellaneous CSS values that
+   * A special property applying miscellaneous CSS values that
    * trump all default values. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
   miscStyles: ?StyleProps,
   /**
-   * A special property holding miscellaneous CSS values that
+   * A special property applying miscellaneous CSS values that
    * trump all default values of the tile. Processed by
    * [`parseStyleProps`](https://Haaretz.github.io/htz-frontend/htz-css-tools#parsestyleprops)
    */
@@ -117,7 +117,7 @@ export default function ListViewHeader({
   title,
   url,
   biAction,
-}: Props): React.Node {
+}: ListViewHeaderPropTypes): React.Node {
   return (
     <FelaComponent
       backgroundColor={backgroundColor}

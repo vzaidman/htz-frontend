@@ -9,7 +9,7 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ClickTracker from '../../../ClickTracker/ClickTrackerWrapper';
@@ -55,14 +55,13 @@ export default function Donatello({ list, biAction, lazyLoadImages = true, }: Pr
               display: [ { until: 's', value: 'none', }, ],
             }}
           >
-            <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}>
-              <ListViewHeader
-                title={list.title}
-                backgroundColor={[ 'transparent', ]}
-                isCommercial
-                biAction={biAction}
-              />
-            </GridItem>
+            <StickyListViewHeader
+              title={list.title}
+              backgroundColor={[ 'transparent', ]}
+              isCommercial
+              biAction={biAction}
+              width={[ { until: 'l', value: 1, }, { from: 'l', value: 1 / 6, }, ]}
+            />
             <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 5 / 6, }, ]}>
               <Grid gutter={4}>
                 {items.map((item: ClickTrackerBannerWrapperType, index) => {

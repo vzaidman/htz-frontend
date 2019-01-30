@@ -10,7 +10,7 @@ import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import Picture from '../../../Image/Picture';
 import Section from '../../../AutoLevels/Section';
 import Teaser from '../../../Teaser/Teaser';
@@ -47,9 +47,7 @@ export default function Morbo({
       innerBackgroundColor="transparent"
     >
       {/* Header */}
-      <GridItem stretchContent width={1}>
-        <ListViewHeader isHorizontal {...list} />
-      </GridItem>
+      <StickyListViewHeader isHorizontal {...list} width={1} />
 
       {/* Items */}
       <GridItem stretchContent width={1} miscStyles={{ marginTop: '1rem', }}>

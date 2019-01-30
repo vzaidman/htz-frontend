@@ -8,7 +8,7 @@ import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 type ButtheadPropsType = {
@@ -23,7 +23,6 @@ Butthead.defaultProps = {
   gaAction: null,
   lazyLoadImages: true,
 };
-
 
 function Butthead({
   list,
@@ -40,47 +39,25 @@ function Butthead({
       }}
     >
       {/* Header */}
-      <GridItem
-        width={1}
-      >
-        <ListViewHeader title={title} isHorizontal isCommercial />
-      </GridItem>
+      <StickyListViewHeader title={title} isHorizontal isCommercial width={1} />
 
       {/* Items */}
-      {
-        dfp
-          ? (
-            <GridItem
-              width={1}
-            >
-              <Grid gutter={4}>
-                {
-                  dfp[0]
-                    ? (
-                      <GridItem
-                        width={1 / 2}
-                      >
-                        <GeneralAdSlot {...dfp[0]} />
-                      </GridItem>
-                    )
-                    : null
-                }
-                {
-                  dfp[1]
-                    ? (
-                      <GridItem
-                        width={1 / 2}
-                      >
-                        <GeneralAdSlot {...dfp[1]} />
-                      </GridItem>
-                    )
-                    : null
-                }
-              </Grid>
-            </GridItem>
-          )
-          : null
-      }
+      {dfp ? (
+        <GridItem width={1}>
+          <Grid gutter={4}>
+            {dfp[0] ? (
+              <GridItem width={1 / 2}>
+                <GeneralAdSlot {...dfp[0]} />
+              </GridItem>
+            ) : null}
+            {dfp[1] ? (
+              <GridItem width={1 / 2}>
+                <GeneralAdSlot {...dfp[1]} />
+              </GridItem>
+            ) : null}
+          </Grid>
+        </GridItem>
+      ) : null}
     </ListView>
   );
 }

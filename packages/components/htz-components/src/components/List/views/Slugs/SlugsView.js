@@ -11,7 +11,7 @@ import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
 import Image from '../../../Image/Image';
 import ListView from '../../../ListView/ListView';
-import ListViewHeader from '../../../ListViewHeader/ListViewHeader';
+import StickyListViewHeader from '../../../ListViewHeader/StickyListViewHeader';
 import Teaser from '../../../Teaser/Teaser';
 import TeaserAuthors from '../../../TeaserAuthors/TeaserAuthors';
 import TeaserContent from '../../../TeaserContent/TeaserContent';
@@ -48,21 +48,20 @@ export default function Slugs({
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
     >
       {/* List Meta Title */}
-      <GridItem width={1}>
-        <ListViewHeader
-          {...restOfList}
-          extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
-          biAction={biAction}
-          isHorizontal
-          miscStyles={{
-            marginBottom: [
-              { until: 's', value: '1rem', },
-              { from: 's', until: 'l', value: '5rem', },
-              { from: 'l', value: '2rem', },
-            ],
-          }}
-        />
-      </GridItem>
+      <StickyListViewHeader
+        width={1}
+        {...restOfList}
+        extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
+        biAction={biAction}
+        isHorizontal
+        miscStyles={{
+          marginBottom: [
+            { until: 's', value: '1rem', },
+            { from: 's', until: 'l', value: '5rem', },
+            { from: 'l', value: '2rem', },
+          ],
+        }}
+      />
 
       {/* TEASERS */}
       <GridItem

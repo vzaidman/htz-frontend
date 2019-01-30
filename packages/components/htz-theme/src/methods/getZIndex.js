@@ -1,5 +1,7 @@
 const indices = {
   modal: 100000,
+  masthead: 10000,
+  stickyListViewHeader: 2,
   above: 1,
   base: 0,
   below: -1,
@@ -42,7 +44,9 @@ export default function getZIndex(level, offset = 0, altIndices) {
     ? _getValue(levels, level)
     : typeof levels[level] === 'number'
       ? levels[level]
-      : levels[level] ? levels[level].base : null;
+      : levels[level]
+        ? levels[level].base
+        : null;
 
   if (value === null) {
     throw new Error(
