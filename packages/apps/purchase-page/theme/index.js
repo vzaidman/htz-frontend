@@ -32,6 +32,9 @@ import {
   textInputI18n,
   thankYou,
   generalError,
+  userHasDebt,
+  userHasProduct,
+  paypalError,
   changePayment,
 } from './consts/i18n';
 
@@ -150,6 +153,9 @@ const purchasePageTheme = host => Object.freeze({
   textInputI18n,
   thankYou,
   generalError,
+  userHasDebt,
+  userHasProduct,
+  paypalError,
   changePayment,
 
   // Methods

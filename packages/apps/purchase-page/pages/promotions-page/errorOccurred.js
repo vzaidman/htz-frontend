@@ -40,11 +40,10 @@ const GET_FB_PAYLOAD = gql`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ErrorOccurredElement = ({ product, userMessage, fbFullRedirectUri, }) => (
+const ErrorOccurredElement = ({ messageType, fbFullRedirectUri, }) => (
   <FelaComponent style={{ textAlign: 'center', }}>
-    <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem',  }}>
+    <LayoutContainer bgc="white" miscStyles={{ paddingTop: '6rem', }}>
       <StageTransition
-        chosenSubscription={product}
         stage="thankYou"
         displayPhones={false}
         headerElement={(
@@ -61,15 +60,27 @@ const ErrorOccurredElement = ({ product, userMessage, fbFullRedirectUri, }) => (
               render={({
                 className,
                 theme: {
-                  generalError: { message, },
+                  generalError: { message: generalError, },
+                  userHasDebt: { message: userHasDebt, },
+                  userHasProduct: { message: userHasProduct, },
+                  paypalError: { message: paypalError, },
                 },
-              }) => (
-                <ArrayLinesToString className={className} data={message} />
-              )}
+
+              }) => {
+                const message = (messageType === 'generalError') ? generalError
+                  : (messageType === 'userHasDebt') ? userHasDebt
+                    : (messageType === 'paypalError') ? paypalError
+                      : (messageType === 'userHasProduct') ? userHasProduct : [ '', ];
+
+                return (
+                  <ArrayLinesToString className={className} data={message} />
+                );
+              }
+              }
             />
           </Fragment>
         )}
-        stageElement={<ThankYouStage fbFullRedirectUri={fbFullRedirectUri} hasNewsletter={false} />}
+        stageElement={<ThankYouStage fbFullRedirectUri={fbFullRedirectUri} />}
       />
     </LayoutContainer>
   </FelaComponent>
@@ -101,27 +112,29 @@ class StageErrorOccurred extends React.Component {
   }
 
   static getInitialProps({ url, }) {
+    console.log('FROM_GET_INITIAL_PROPS: ', url);
     return { url, };
   }
 
   render() {
-    let productId = null;
     let fbRedirectUri = null;
     let accountLinkToken = null;
+    let queryMsgType = '';
+
 
     if (this.props.url.query) {
       const {
         url: {
-          query: { product, redirect_uri, account_linking_token, },
+          query: { redirect_uri, account_linking_token, messageType, },
         },
       } = this.props;
 
-      productId = product === '243' ? 'HTZ' : product === '273' ? 'TM' : product === '274' ? 'BOTH' : null;
       fbRedirectUri = redirect_uri;
       accountLinkToken = account_linking_token;
+      queryMsgType = messageType;
     }
     return (
-      <MainLayout isThankYou product={productId || false}>
+      <MainLayout>
         <UserDispenser
           render={({ user, }) => (
             <Query query={GET_HOSTNAME}>
@@ -145,9 +158,7 @@ class StageErrorOccurred extends React.Component {
                         data.fbSubscribePayload
                       }`
                       : null;
-                    return productId ? (
-                      <ErrorOccurredElement product={productId} fbFullRedirectUri={fbFullRedirectUri} />
-                    ) : (
+                    return (
                       <OfferPageDataGetter
                         render={({
                           data: {
@@ -160,7 +171,7 @@ class StageErrorOccurred extends React.Component {
                           if (error) return <div> Error...</div>;
                           return (
                             <ErrorOccurredElement
-                              userMessage={userMessage}
+                              messageType={queryMsgType}
                               fbFullRedirectUri={fbFullRedirectUri}
                             />
                           );

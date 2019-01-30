@@ -42,7 +42,7 @@ const contStyle = () => ({
   maxWidth: '87rem',
 });
 
-class StageThankYou extends React.Component {
+class StageCompletion extends React.Component {
   static propTypes = {
     fbFullRedirectUri: PropTypes.string,
   };
@@ -260,4 +260,4 @@ class StageThankYou extends React.Component {
   }
 }
 
-export default StageThankYou;
+export default StageCompletion;

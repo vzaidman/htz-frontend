@@ -104,7 +104,8 @@ export default function purchase(app, server, DEV = false) {
   server.get(
     '/promotions-page/errorOccurred',
     (req, res) => {
-      app.render(req, res, '/promotions-page/errorOccurred', req.query);
+      const query = req.query;
+      app.render(req, res, '/promotions-page/errorOccurred', query);
     }
   );
 
