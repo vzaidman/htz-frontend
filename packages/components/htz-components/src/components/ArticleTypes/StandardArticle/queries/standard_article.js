@@ -11,6 +11,7 @@ import {
   imageGallery,
   interactive,
   link,
+  tableScore,
   mobileQuickRegistration,
   newsLetter,
   paragraph,
@@ -92,6 +93,9 @@ export default gql`
               ... on Embed {
                 ...Embed
               }
+              ... on TableScore {
+                ...TableScore
+              }
               ... on HtmlElement {
                 ...HtmlElement
               }
@@ -164,6 +168,7 @@ export default gql`
   ${paragraph}
   ${quote}
   ${relatedArticles}
+  ${tableScore}
   ${breadcrumbs}
   ${seoData}
   ${seriesOrBlockArticles}

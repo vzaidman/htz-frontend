@@ -9,6 +9,7 @@ import content from './content_type';
 import dfpBanner from './dfp_banner_type';
 import elementGroup from './element_group_type';
 import embed from './embed_type';
+import tableScore from './table_score_type';
 import htmlElement from './html_element_type';
 import image from './image_type';
 import imageGallery from './image_gallery_type';
@@ -45,6 +46,7 @@ const ArticleBody = new GraphQLList(
       quote,
       tags,
       video,
+      tableScore,
       nullFallback,
     ],
     resolveType: value => getSchema(value.tag ? 'paragraph' : value.kind || value.inputTemplate)

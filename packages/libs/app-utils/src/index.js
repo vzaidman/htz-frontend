@@ -43,6 +43,7 @@ import quote from './fragments/quote/quote';
 import relatedArticles from './fragments/relatedArticles/relatedArticles';
 import seoData from './fragments/seoData/seoData';
 import seriesOrBlockArticles from './fragments/seriesOrBlockArticles/seriesOrBlockArticles';
+import tableScore from './fragments/tableScore/tableScore';
 import tabViewElements from './fragments/tabsElement/tabsElement';
 import tag from './fragments/tag/tag';
 import tags from './fragments/tags/tags';
@@ -100,6 +101,7 @@ export {
   relatedArticles,
   seoData,
   seriesOrBlockArticles,
+  tableScore,
   tabViewElements,
   tag,
   tags,
