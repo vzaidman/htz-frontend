@@ -569,6 +569,12 @@ export default class AdManager {
             ' called @',
             window.performance.now()
           );
+
+        if (this.adSlots && this.adSlots.has(id)) {
+          const adSlot = this.adSlots.get(id);
+          this.user.impressionManager.registerImpression(`${adSlot.id}${this.config.department}`);
+          this.user.impressionManager.registerImpression(`${adSlot.id}_all`);
+        }
         // if (this.adSlots.has(id)) {
         //   const adSlot = this.adSlots.get(id);
         //   adSlot.lastResolvedSize = resolvedSize;

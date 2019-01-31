@@ -15,7 +15,11 @@ function BillboardAdSlot(props: DfpBannerType): Node {
         extend: [
           theme.mq(
             { from: 's', },
-            { minHeight: '150px', }
+            { '&>:first-child :not(:empty)': { minHeight: '150px', }, },
+          ),
+          theme.mq(
+            { from: 'l', },
+            { '&>:first-child :not(:empty)': { paddingTop: '5rem', paddingBottom: '5rem', }, },
           ),
         ],
       })}
