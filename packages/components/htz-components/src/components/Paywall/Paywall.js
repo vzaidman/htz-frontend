@@ -4,7 +4,7 @@ import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import { FelaComponent, } from 'react-fela';
 import { createMapper, } from '@haaretz/app-utils';
-import PaywallDataProvider from './PaywallDataProvider';
+import PaywallDebugProvider from './PaywallDebugProvider';
 import PaywallBottom from './Layout/PaywallBottom/PaywallBottom';
 import PaywallTop from './Layout/PaywallTop/PaywallTop';
 import PaywallPopup from './Layout/PaywallPopup/PaywallPopup';
@@ -49,7 +49,7 @@ Paywall.defaultProps = {
  */
 export default function Paywall({ layouts, miscStyles, }: Props): React.Node {
   return (
-    <PaywallDataProvider>
+    <PaywallDebugProvider>
       {paywallData => {
         const Layout = selectLayout(paywallData.slotLocation);
         if (Layout != null) {
@@ -71,6 +71,6 @@ export default function Paywall({ layouts, miscStyles, }: Props): React.Node {
         }
         return null;
       }}
-    </PaywallDataProvider>
+    </PaywallDebugProvider>
   );
 }

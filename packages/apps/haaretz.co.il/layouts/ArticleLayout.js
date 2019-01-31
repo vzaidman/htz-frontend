@@ -19,7 +19,7 @@ import {
   Query,
   Error,
   pixelEvent,
-  PaywallDbgController,
+  PaywallDebugController,
   Paywall,
 } from '@haaretz/htz-components';
 
@@ -188,7 +188,7 @@ class ArticleLayout extends React.Component {
                       {render({ articleId: this.props.url.query.path, slots, pageType, })}
                     </FelaComponent>
                     <WelcomePage />
-                    <PaywallDbgController />
+                    <PaywallDebugController />
                     <Paywall layouts={[ 'bot-persist', 'popup', ]} />
                   </Fragment>
                 </StyleProvider>

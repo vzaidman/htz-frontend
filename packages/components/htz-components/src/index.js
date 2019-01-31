@@ -98,7 +98,7 @@ import TextLink from './components/TextLink/TextLink';
 import TopNews from './components/TopNews/TopNews';
 import Video from './components/Video/Video';
 import PremiumContentMeta from './components/PremiumContentMeta/PremiumContentMeta';
-import PaywallDbgController from './components/Paywall/PaywallDbgController';
+import PaywallDebugController from './components/Paywall/PaywallDebugController';
 import Paywall from './components/Paywall/Paywall';
 
 // Illustrations
@@ -340,7 +340,7 @@ export {
   TextLink,
   TopNews,
   Video,
-  PaywallDbgController,
+  PaywallDebugController,
   Paywall,
 
   // Illustrations

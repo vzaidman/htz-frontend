@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PaywallDataProvider from './PaywallDataProvider';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
 
-class PaywallDbgController extends React.Component {
+class PaywallDebugController extends React.Component {
   static propTypes = {
     initialData: PropTypes.shape({
       slotLocation: PropTypes.string,
@@ -40,7 +40,7 @@ class PaywallDbgController extends React.Component {
   }
 
   render() {
-    console.log('[PaywallDbgController] render. state:', this.state);
+    console.log('[PaywallDebugController] render. state:', this.state);
     return (
       <ApolloConsumer>
         {
@@ -59,14 +59,14 @@ class PaywallDbgController extends React.Component {
 }
 
 
-const PaywallDbgControllerWithData = props => (
+const PaywallDebugControllerWithData = props => (
   <PaywallDataProvider>
     {
       paywallData => (
-        <PaywallDbgController initialData={paywallData} {...props} />
+        <PaywallDebugController initialData={paywallData} {...props} />
       )
     }
   </PaywallDataProvider>
 );
 
-export default PaywallDbgControllerWithData;
+export default PaywallDebugControllerWithData;
