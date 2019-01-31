@@ -1,133 +1,113 @@
 /* eslint-disable react/no-unused-prop-types */
 // @flow
-import React from 'react';
-import type { ChildrenArray, Node, } from 'react';
-import { FelaComponent, } from 'react-fela';
+import * as React from 'react';
 import TableHeader from './Header/TableHeader';
 import TableBody from './Body/TableBody';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import CoastBar from './Header/CoastBar';
 import { fetchEast, fetchWest, } from '../NBAData/fetchUtils';
+import type { CoastType, } from '../TableScore';
 
-// Flow Types
+type NbaData = Array<{
+  loss: number,
+  name: string,
+  teamId: string,
+  win: number,
+  // percentage of wins
+  winPctv2: number,
+}>;
 
 type Props = {
-  coastType: string,
+  coastType: CoastType,
   isOpen: boolean,
-}
-type State = {
-  isOpen: boolean,
-  coastType: string,
-  eastData: Object,
-  westData: Object,
-}
-
-type Options = {
-  children: ChildrenArray<Node> | Node,
-}
-
-// Headers data
-const tableHeaders: Array<string> = [ 'קבוצה', 'ניצחונות', 'הפסדים', 'אחוז', ];
-
-
-const Container: Object = {
-  display: 'inline-block',
 };
 
+type State = {
+  isOpen: boolean,
+  coastType: ?CoastType,
+  data: ?NbaData,
+};
 
-const CenteredElement: Object = {
+type TableProps = { children: React.Node, };
+
+// Headers data
+const tableHeaders = [ 'קבוצה', 'ניצחונות', 'הפסדים', 'אחוז', ];
+
+const Container = { display: 'inline-block', };
+
+const CenteredElement = {
   position: 'relative',
   textAlign: 'center',
 };
 
-const fetchFromEats: () => Object = () => new Promise((resolve, reject) => (
-  fetchEast()
-    .then(data => resolve(data))
-    .catch(err => reject(err))
-));
+const fetchFromEast: () => Object = () => new Promise((resolve, reject) => fetchEast()
+  .then(data => resolve(data))
+  .catch(err => reject(err))
+);
 
-const fetchFromWest: () => Object = () => new Promise((resolve, reject) => (
-  fetchWest()
-    .then(data => resolve(data))
-    .catch(err => reject(err))
-));
+const fetchFromWest: () => Object = () => new Promise((resolve, reject) => fetchWest()
+  .then(data => resolve(data))
+  .catch(err => reject(err))
+);
 
-
-function Table({ children, }: Options): Node {
-  return (
-    <FelaComponent render="table" dir="rtl">{children}</FelaComponent>
-  );
+Table.defaultProps = { children: React.Node, };
+function Table({ children, direction, }: TableProps): React.Node {
+  return <table>{children}</table>;
 }
-
 
 export default class NBATableScore extends React.Component<Props, State> {
   state = {
     isOpen: false,
-    coastType: '',
-    eastData: Object,
-    westData: Object,
+    coastType: null,
+    data: null,
   };
 
   static getDerivedStateFromProps(props: Props, state: State) {
-    const isOpenFromProps = !!props.isOpen;
-    return state.coastType === ''
-      ? {
+    return state.coastType
+      ? state
+      : {
         coastType: props.coastType,
-        isOpen: isOpenFromProps,
-      }
-      : state;
+        isOpen: !!props.isOpen,
+      };
   }
 
+  handleToggle = () => this.setState(prev => ({ isOpen: !prev.isOpen, }));
 
-  handleToggle: () => void = () => this.setState(prev => ({ isOpen: !prev.isOpen, }));
-
-  toggleCoast: string => void = coast => this.setState({ coastType: coast, });
+  toggleCoast = (coast: CoastType) => this.setState({ coastType: coast, });
 
   // Render
-  render(): Node {
-    const { eastData, westData, isOpen, coastType, } = this.state;
+  render(): React.Node {
+    const { data, isOpen, coastType, } = this.state;
     // Title for toggle button
-    const btnTitle: string = isOpen ? 'הסתר' : 'טען עוד';
+    const btnTitle = isOpen ? 'הסתר' : 'טען עוד';
     // Rotate degree for toggle button
     const btnArrowDir: number = isOpen ? 90 : 270;
 
     // Validate data existence
-    if (eastData === Object || westData === Object) {
-      fetchFromEats()
-        .then(data => (
-          this.setState({
-            eastData: data,
-          })
-        ))
+    if (!data) {
+      const dataFetcher = coastType === 'east' ? fetchEast : fetchWest;
+
+      dataFetcher()
+        .then(data => this.setState({ data, }))
         .catch(error => console.log(error));
-      fetchFromWest()
-        .then(data => (
-          this.setState({
-            westData: data,
-          })
-        ));
-      return null;
     }
 
-    // Configure data by type
-    const bodyData: Object = coastType === 'east' ? eastData : westData;
-
-    return (
+    return data ? (
       <div style={Container}>
-        <CoastBar toggleCoast={this.toggleCoast} coastType={coastType} />
+        <CoastBar
+          toggleCoast={this.toggleCoast}
+          coastType={coastType || this.props.coastType}
+        />
         <Table>
           <TableHeader data={tableHeaders} />
-          <TableBody isOpen={isOpen} data={bodyData} />
+          <TableBody isOpen={isOpen} data={data} />
         </Table>
         <div style={CenteredElement}>
-          <ToggleButton
-            rotateDeg={btnArrowDir}
-            handleClick={this.handleToggle}
-          >
+          <ToggleButton rotateDeg={btnArrowDir} handleClick={this.handleToggle}>
             {btnTitle}
           </ToggleButton>
         </div>
       </div>
-    );
+    ) : null;
   }
 }
