@@ -45,28 +45,21 @@ export default function MarketingNotificationInner({
             style={style.wrapper}
             render={({ theme, className, }) => (
               <div className={className}>
-                <FelaComponent style={style.innerWrapper} render="span">
+                <ClickArea
+                  href={buttonUrl}
+                  onClick={() => {
+                    ReactGA.ga('ec:setAction', 'promo_click');
+                    ReactGA.ga('send', 'event', 'Internal Promotions', 'click', promo.name);
+                  }}
+                  miscStyles={style.innerWrapper}
+                >
                   <FelaComponent style={style.iconWrapper(theme)} render="span">
                     <IconAlefLogoTransparent miscStyles={style.icon(theme)} />
                   </FelaComponent>
                   <FelaComponent style={style.text1}>{text1}</FelaComponent>
-                  <ClickArea
-                    href={buttonUrl}
-                    onClick={() => {
-                      ReactGA.ga('ec:setAction', 'promo_click');
-                      ReactGA.ga(
-                        'send',
-                        'event',
-                        'Internal Promotions',
-                        'click',
-                        promo.name
-                      );
-                    }}
-                    miscStyles={style.button(theme)}
-                  >
-                    <IconArrow />
-                  </ClickArea>
-                </FelaComponent>
+
+                  <IconArrow miscStyles={style.button(theme)} />
+                </ClickArea>
               </div>
             )}
           />
