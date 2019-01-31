@@ -10,44 +10,88 @@ import {
 
 import LogoAndDate from './LogoAndDate';
 
+type SidesEnum = 'start' | 'end' | 'bottom' | 'sides' | 'all';
+
+const isPanelMached = (panelName, optionName) => {
+  if (!optionName) {
+    return false;
+  }
+  const disablePanels = Array.isArray(optionName) ? optionName : [ optionName, ];
+
+  return disablePanels.reduce((result, settings) => {
+    if (result) {
+      return result;
+    }
+
+    switch (panelName) {
+      case 'start':
+        return !!settings.match(/start|sides|all/);
+      case 'end':
+        return !!settings.match(/end|sides|all/);
+      case 'bottom':
+        return !!settings.match(/bottom|all/);
+      default:
+        return false;
+    }
+  }, false);
+};
+
 const wrapperStyle = ({ theme, miscStyles, }) => ({
+  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
+});
+
+const headerStyle = () => ({
   display: 'flex',
   position: 'relative',
   alignItems: 'flex-end',
   justifyContent: 'center',
-  extend: [ ...(miscStyles ? parseStyleProps(miscStyles, theme.mq, theme.type) : []), ],
 });
 
-const panelVisibility = (prop, isVisible) => (typeof isVisible === 'undefined' || !isVisible ? { display: 'none', } : { display: 'flex', });
+const panelVisibility = panelName => (prop, hiddenPanels) => (hiddenPanels && isPanelMached(panelName, hiddenPanels)
+  ? { display: 'none', }
+  : { display: 'flex', });
 
-const panelStyle = ({ theme, isFullWidth, showPanel, }) => ({
+const panelStyle = ({ theme, isFullWidth, panelName, panelsResponsiveHiding, }) => ({
   position: 'absolute',
+  bottom: 0,
   display: 'flex',
   alignItems: 'flex-end',
   flexDirection: 'row',
   width: isFullWidth ? '100%' : null,
-  extend: [ parseComponentProp('display', showPanel, theme.mq, panelVisibility), ],
+  extend: [
+    parseComponentProp('display', panelsResponsiveHiding, theme.mq, panelVisibility(panelName)),
+  ],
 });
 
-const startPanelStyle = ({ theme, isFullWidth, showStartPanel, }) => ({
-  ...panelStyle({ theme, isFullWidth, showPanel: showStartPanel, }),
+const startPanelStyle = ({ theme, isFullWidth, panelsResponsiveHiding, }) => ({
+  ...panelStyle({ theme, isFullWidth, panelName: 'start', panelsResponsiveHiding, }),
   insetInlineStart: 0,
 });
 
-const endPanelStyle = ({ theme, isFullWidth, showEndPanel, }) => ({
-  ...panelStyle({ theme, isFullWidth, showPanel: showEndPanel, }),
+const endPanelStyle = ({ theme, isFullWidth, panelsResponsiveHiding, }) => ({
+  ...panelStyle({ theme, isFullWidth, panelName: 'end', panelsResponsiveHiding, }),
   insetInlineEnd: 0,
+});
+
+const bottomPanelStyle = ({ theme, panelsResponsiveHiding, }) => ({
+  extend: [
+    parseComponentProp('display', panelsResponsiveHiding, theme.mq, panelVisibility('bottom')),
+  ],
 });
 
 type MastheadWrapperProps = {
   /**
-   * flag or responsive object array, defines if 'Start panel' is visible
+   * dont render specific panels.
    */
-  showStartPanel: ?boolean | ComponentPropResponsiveObject<boolean>,
+  disablePanels: ?SidesEnum | SidesEnum[],
   /**
-   * flag or responsive object array, defines if 'End panel' is visible
+   * dont render date-time element
    */
-  showEndPanel: ?boolean | ComponentPropResponsiveObject<boolean>,
+  disableDatetime: ?boolean,
+  /**
+   * configures hiding of panels in different break-points.
+   */
+  panelsResponsiveHiding: ?ComponentPropResponsiveObject<SidesEnum>[],
   /**
    * Render function for the 'Start Panel'.
    * The function will provided with two toggle functions: toggleOther, toggleMe
@@ -61,134 +105,179 @@ type MastheadWrapperProps = {
    */
   renderEndPanel: ?(() => void, () => void) => React.Node,
   /**
-   * Misc styles for the wrapper component
+   * Render function for the 'Bottom Panel'.
    */
-  miscStyles: StyleProps,
+  renderBottomPanel: ?() => React.Node,
   /**
-   * Misc styles for the logo component
+   * logo component to display.
    */
-  logoMiscStyles: StyleProps,
-  /**
-   * Misc styles for the date component
-   */
-  datetimeMiscStyles: StyleProps,
-  /**
-   * The logo component to display
-   */
-  logoComponent: React.Node,
+  logo: React.ElementType,
   /**
    * Logo size in rems (font-size)
    */
-  logoSize: ?number | ComponentPropResponsiveObject<number>,
+  logoSize: ?number | ComponentPropResponsiveObject<number>[],
+  /**
+   * Misc styles for the logo component
+   */
+  logoMiscStyles: ?StyleProps,
+  /**
+   * Misc styles for the wrapper component
+   */
+  miscStyles: ?StyleProps,
+  /**
+   * Misc styles for the logo component
+   */
+  datetimeMiscStyles: ?StyleProps,
 };
 
 type MastheadWrapperState = {
   isDisplayStartPanel: boolean,
   isDisplayEndPanel: boolean,
+  isDisplayBottomPanel: boolean,
 };
 
 export default class MastheadWrapper extends React.Component<
   MastheadWrapperProps,
   MastheadWrapperState
 > {
-  state = {
-    isDisplayStartPanel:
-      typeof this.props.showStartPanel === 'boolean' ? this.props.showStartPanel : true,
-    isDisplayEndPanel:
-      typeof this.props.showEndPanel === 'boolean' ? this.props.showEndPanel : true,
-  };
-
   static defaultProps = {
-    showStartPanel: true,
-    showEndPanel: true,
+    disablePanels: null,
+    panelsResponsiveHiding: null,
+    disableDatetime: false,
     renderStartPanel: null,
     renderEndPanel: null,
+    renderBottomPanel: null,
     logoSize: 4,
+    miscStyles: null,
+    datetimeMiscStyles: null,
   };
 
-  internalRenderStartPanel(renderFunc: (() => void, () => void) => React.Node): React.Node {
+  // eslint-disable-next-line react/sort-comp
+  isPanelDisabled = (panel: SidesEnum) => {
+    if (!this.props.disablePanels) {
+      return false;
+    }
+    return isPanelMached(panel, isPanelMached(this.props.disablePanels));
+  };
+
+  state = {
+    isDisplayStartPanel: this.props.disablePanels ? !this.isPanelDisabled('start') : true,
+    isDisplayEndPanel: this.props.disablePanels ? !this.isPanelDisabled('end') : true,
+    isDisplayBottomPanel: this.props.disablePanels ? !this.isPanelDisabled('bottom') : true,
+  };
+
+  internalRenderStartPanel = (renderFunc: (() => void, () => void) => React.Node): React.Node => {
     const toggleOther = this.toggleEndPanelVisibility;
     const toggleMe = this.toggleStartPanelVisibility;
 
+    if (!this.state.isDisplayStartPanel) {
+      return null;
+    }
     return this.state.isDisplayStartPanel ? (
       <FelaComponent
-        showStartPanel={this.props.showStartPanel}
         isFullWidth={!this.state.isDisplayEndPanel}
+        panelsResponsiveHiding={this.props.panelsResponsiveHiding}
         rule={startPanelStyle}
       >
         {renderFunc(toggleOther.bind(this), toggleMe.bind(this))}
       </FelaComponent>
     ) : null;
-  }
+  };
 
-  internalRenderEndPanel(renderFunc: (() => void, () => void) => React.Node): React.Node {
+  internalRenderEndPanel = (renderFunc: (() => void, () => void) => React.Node): React.Node => {
     const toggleOther = this.toggleStartPanelVisibility;
     const toggleMe = this.toggleEndPanelVisibility;
 
+    if (!this.state.isDisplayEndPanel) {
+      return null;
+    }
     return this.state.isDisplayEndPanel ? (
       <FelaComponent
-        showEndPanel={this.props.showEndPanel}
         isFullWidth={!this.state.isDisplayStartPanel}
+        panelsResponsiveHiding={this.props.panelsResponsiveHiding}
         rule={endPanelStyle}
       >
         {renderFunc(toggleOther.bind(this), toggleMe.bind(this))}
       </FelaComponent>
     ) : null;
-  }
+  };
 
-  togglePanelVisibility(panelName: 'start' | 'end', visibility: boolean) {
+  internalRenderBottomPanel = (renderFunc: () => React.Node): React.Node => {
+    if (!this.state.isDisplayBottomPanel) {
+      return null;
+    }
+    return (
+      <FelaComponent
+        panelsResponsiveHiding={this.props.panelsResponsiveHiding}
+        rule={bottomPanelStyle}
+      >
+        {renderFunc()}
+      </FelaComponent>
+    );
+  };
+
+  togglePanelVisibility = (panelName: 'start' | 'end', visibility: boolean) => {
     const newState = panelName === 'start'
       ? { isDisplayStartPanel: visibility, }
       : { isDisplayEndPanel: visibility, };
     this.setState(newState);
-  }
+  };
 
-  toggleStartPanelVisibility() {
+  toggleStartPanelVisibility = () => {
     const { isDisplayStartPanel, } = this.state;
     this.togglePanelVisibility('start', !isDisplayStartPanel);
-  }
+  };
 
-  toggleEndPanelVisibility() {
+  toggleEndPanelVisibility = () => {
     const { isDisplayEndPanel, } = this.state;
     this.togglePanelVisibility('end', !isDisplayEndPanel);
-  }
+  };
 
   render() {
     const {
       renderStartPanel,
       renderEndPanel,
-      logoComponent,
+      renderBottomPanel,
+      logo,
       logoSize,
       miscStyles,
       logoMiscStyles,
+      disableDatetime,
       datetimeMiscStyles,
     } = this.props;
 
     return (
       <FelaComponent render="div" miscStyles={miscStyles} rule={wrapperStyle}>
-        {renderStartPanel && this.state.isDisplayStartPanel
-          ? this.internalRenderStartPanel(renderStartPanel)
-          : null}
-        <FelaComponent
-          style={
-            this.state.isDisplayStartPanel && this.state.isDisplayEndPanel
-              ? {}
-              : {
-                visibility: 'hidden',
-                tabIndex: -1,
-              }
-          }
-        >
-          <LogoAndDate
-            logoComponent={logoComponent}
-            logoSize={logoSize}
-            logoMiscStyles={logoMiscStyles}
-            datetimeMiscStyles={{ display: [ { until: 'l', value: 'none', }, ], ...datetimeMiscStyles, }}
-          />
+        <FelaComponent render="div" style={headerStyle}>
+          {renderStartPanel && this.state.isDisplayStartPanel
+            ? this.internalRenderStartPanel(renderStartPanel)
+            : null}
+          <FelaComponent
+            style={
+              this.state.isDisplayStartPanel && this.state.isDisplayEndPanel
+                ? {}
+                : {
+                  visibility: 'hidden',
+                  tabIndex: -1,
+                }
+            }
+          >
+            <LogoAndDate
+              logoComponent={logo}
+              logoSize={logoSize}
+              logoMiscStyles={logoMiscStyles}
+              disableDatetime={disableDatetime}
+              datetimeMiscStyles={{
+                display: [ { until: 'l', value: 'none', }, ],
+                ...datetimeMiscStyles,
+              }}
+            />
+          </FelaComponent>
+          {renderEndPanel && this.state.isDisplayEndPanel
+            ? this.internalRenderEndPanel(renderEndPanel)
+            : null}
         </FelaComponent>
-        {renderEndPanel && this.state.isDisplayEndPanel
-          ? this.internalRenderEndPanel(renderEndPanel)
-          : null}
+        {renderBottomPanel ? this.internalRenderBottomPanel(renderBottomPanel) : null}
       </FelaComponent>
     );
   }

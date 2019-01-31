@@ -12,6 +12,7 @@ import {
 export default gql`
   query HomePageLayout {
     homePage {
+      pageType
       seoData {
         metaTitle
         metaDescription

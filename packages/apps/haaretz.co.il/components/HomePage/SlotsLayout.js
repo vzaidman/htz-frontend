@@ -10,6 +10,7 @@ import {
   BIRequest,
   UserDispenser,
   GaDimensions,
+  IconHaaretzHomepageMasthead,
 } from '@haaretz/htz-components';
 
 import MainSlot from './MainSlot';
@@ -47,7 +48,12 @@ function HomePageSlotsLayout({
       <BIRequest />
       {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
       {/* Layout row is inside HeaderSlot Component because its miscStyles depend on state */}
-      <HeaderSlot content={header} includeMadorimNavigation />
+      <HeaderSlot
+        pageType="homepage"
+        rowBgc="transparent"
+        content={header}
+        logo={IconHaaretzHomepageMasthead}
+      />
       {postHeader ? (
         <LayoutRow>
           <LayoutContainer>{getElements(postHeader)}</LayoutContainer>

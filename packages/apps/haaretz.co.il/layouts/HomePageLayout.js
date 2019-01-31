@@ -32,7 +32,7 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
       {({ loading, error, data, client, }) => {
         if (loading) return null;
         if (error) logger.error(error);
-        const {          
+        const {
           homePage: { slots, seoData, pageDateTimeString, pageType, },
         } = data;
 
@@ -50,10 +50,7 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
           <React.Fragment>
             <Head>
               <title>{seoData.metaTitle}</title>
-              <meta
-                property="article:publisher"
-                content="https://www.facebook.com/haaretz"
-              />
+              <meta property="article:publisher" content="https://www.facebook.com/haaretz" />
               <meta property="fb:pages" content="109551402519" />
               {/*
                * Refresh page every 5 mins

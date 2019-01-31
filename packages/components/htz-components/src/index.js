@@ -126,6 +126,8 @@ import IconFacebookLogo from './components/Icon/icons/IconFacebookLogo';
 import IconGPlus from './components/Icon/icons/IconGPlus';
 import IconGaniYoshua from './components/Icon/icons/IconGaniYoshua';
 import IconHaaretzFullLogo from './components/Icon/icons/IconHaaretzFullLogo';
+import IconHaaretzHomepageMasthead from './components/Icon/icons/IconHaaretzHomepageMasthead';
+
 import IconHaaretzLogo from './components/Icon/icons/IconHaaretzLogo';
 import IconHtzLoader from './components/Icon/icons/IconHtzLoader';
 import IconInfo from './components/Icon/icons/IconInfo';
@@ -360,6 +362,7 @@ export {
   IconGPlus,
   IconGaniYoshua,
   IconHaaretzFullLogo,
+  IconHaaretzHomepageMasthead,
   IconHaaretzLogo,
   IconHtzLoader,
   IconInfo,

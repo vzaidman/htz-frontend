@@ -57,9 +57,7 @@ class HeaderSearch extends React.Component {
   toggleSearch() {
     const { isSearchOpen, } = this.state;
     const { onClick, } = this.props;
-    this.setState(
-      { isSearchOpen: !isSearchOpen, },
-      () => (onClick ? onClick(this.state.isSearchOpen) : null)
+    this.setState({ isSearchOpen: !isSearchOpen, }, () => (onClick ? onClick(this.state.isSearchOpen) : null)
     );
   }
 
@@ -71,9 +69,7 @@ class HeaderSearch extends React.Component {
           display: 'flex',
           flexGrow: this.state.isSearchOpen ? '1' : '0',
           overflow: 'hidden',
-          extend: [
-            theme.getTransition(1, 'swiftOut'),
-          ],
+          extend: [ theme.getTransition(1, 'swiftOut'), ],
         })}
         render={({
           className,
@@ -96,6 +92,7 @@ class HeaderSearch extends React.Component {
                 color: color('headerSearch', 'text'),
                 display: 'flex',
                 fontWeight: '700',
+                paddingInlineEnd: '1rem',
                 justifyContent: 'center',
                 minWidth: '6rem',
                 position: 'relative',
@@ -107,10 +104,7 @@ class HeaderSearch extends React.Component {
                   }
                   : {}),
                 extend: [
-                  {
-                    padding: [ 2, 1, ],
-                  },
-                  type(-1),
+                  type(-1, { lines: 6, }),
                   isHovered
                     ? {
                       backgroundColor: isHovered
@@ -194,7 +188,7 @@ class HeaderSearch extends React.Component {
                               paddingInlineEnd: '6rem',
                               marginTop: '0',
                               paddingTop: '1rem',
-                              paddingBottom: '1.7rem',
+                              paddingBottom: '1rem',
                             }}
                           />
                         </FelaComponent>

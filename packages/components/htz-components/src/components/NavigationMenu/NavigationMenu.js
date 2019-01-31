@@ -15,26 +15,25 @@ const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   color: theme.color('neutral', '-3'),
   display: 'block',
   fontWeight: '700',
-  height: '100%',
   // this padding affects all the items in the masthead
-  // paddingTop: '2rem',
-  // paddingBottom: '2rem',
-  // paddingRight: '1rem',
-  // paddingLeft: '1rem',
+  // paddingTop: '1.5rem',
+  // paddingBottom: '1.5rem',
+  paddingRight: '1rem',
+  paddingLeft: '1rem',
   ...(isOpen
     ? {
       backgroundColor: theme.color('secondary'),
       color: theme.color('neutral', '-10'),
     }
     : {}),
-  // ':hover': {
-  //   backgroundColor: theme.color('primary'),
-  //   color: theme.color('neutral', '-10'),
-  // },
-  // ':focus': {
-  //   backgroundColor: theme.color('primary'),
-  //   color: theme.color('neutral', '-10'),
-  // },
+  ':hover': {
+    backgroundColor: theme.color('primary'),
+    color: theme.color('neutral', '-10'),
+  },
+  ':focus': {
+    backgroundColor: theme.color('primary'),
+    color: theme.color('neutral', '-10'),
+  },
   extend: [
     isHovered
       ? {
@@ -42,7 +41,7 @@ const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
         color: theme.color('neutral', '-10'),
       }
       : {},
-    theme.type(-1),
+    theme.type(-1, { lines: 6, }),
     theme.getTransition(1, 'swiftOut'),
   ],
 });

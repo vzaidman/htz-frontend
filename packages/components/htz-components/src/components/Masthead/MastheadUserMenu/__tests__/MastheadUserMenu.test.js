@@ -79,7 +79,7 @@ describe('<MastheadUserMenu', () => {
     it('renders correctly with no props', () => {
       const { component, styles, } = felaSnapshotter(
         <ApolloProvider client={client}>
-          <MastheadUserMenu userName={null} />
+          <MastheadUserMenu />
         </ApolloProvider>
       );
       expect(component).toMatchSnapshot();
@@ -88,49 +88,11 @@ describe('<MastheadUserMenu', () => {
     it('renders correctly with props', () => {
       const { component, styles, } = felaSnapshotter(
         <ApolloProvider client={client}>
-          <MastheadUserMenu userName="[USER]" />
+          <MastheadUserMenu />
         </ApolloProvider>
       );
       expect(component).toMatchSnapshot();
       expect(styles).toMatchSnapshot();
-    });
-    it('generate a link with no props', () => {
-      const output = felaMount(
-        <ApolloProvider client={client}>
-          <MastheadUserMenu userName={null} />
-        </ApolloProvider>,
-        mockTheme
-      );
-      expect(output.children().find('a').length).toBe(1);
-    });
-    it('generate a click and return a list with 4 li', () => {
-      const output = felaMount(
-        <ApolloProvider client={client}>
-          <MastheadUserMenu userName="[USER]" />
-        </ApolloProvider>,
-        mockTheme
-      );
-      const button = output.find('button');
-      expect(output.children().find('li').length).toBe(0);
-      button.simulate('click');
-      expect(output.children().find('li').length).toBe(4);
-      // todo: add different tests instead of snapshots
-      // expect(toJson(output)).toMatchSnapshot();
-    });
-    it('check that mouseEnter event and mouseLeave event change the state', () => {
-      const output = felaMount(
-        <ApolloProvider client={client}>
-          <MastheadUserMenu userName="[USER]" />
-        </ApolloProvider>,
-        mockTheme
-      );
-      const button = output.find('button');
-      button.simulate('mouseEnter');
-      let isHovered = output.find('UserButton').instance().state.isHovered;
-      expect(isHovered).toEqual(true);
-      button.simulate('mouseLeave');
-      isHovered = output.find('UserButton').instance().state.isHovered;
-      expect(isHovered).toEqual(false);
     });
   });
 });

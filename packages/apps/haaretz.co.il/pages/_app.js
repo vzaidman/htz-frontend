@@ -23,6 +23,7 @@ const initialState = () => ({
     __typename: 'PageGallery',
   },
   osakaCanRender: false,
+  pageType: null,
   platform: null,
   readingListArray: [],
   zenMode: false,

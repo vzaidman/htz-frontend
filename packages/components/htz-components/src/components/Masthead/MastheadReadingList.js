@@ -1,38 +1,30 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
-import HtzLink from '../HtzLink/HtzLink';
+import ClickArea from '../ClickArea/ClickArea';
+import hoverableButtonRule from '../ClickArea/hoverableButtonRule';
 import IconReading from '../Icon/icons/IconReading';
-
-const headerReadingButtonStyle = theme => ({
-  display: 'flex',
-  alignItems: 'center',
-  color: theme.color('primary'),
-  border: 'none',
-  paddingTop: '1rem',
-  paddingBottom: '1rem',
-  paddingInlineStart: '2rem',
-  paddingInlineEnd: '2rem',
-  ':hover': {
-    backgroundColor: theme.color('primary'),
-    color: theme.color('neutral', '-10'),
-  },
-  ':focus': {
-    backgroundColor: theme.color('primary'),
-    color: theme.color('neutral', '-10'),
-  },
-  extend: [ theme.getTransition(1, 'swiftOut'), ],
-});
+import HtzLink from '../HtzLink/HtzLink';
 
 export default function MastheadReadingList() {
   return (
     <FelaComponent
-      style={headerReadingButtonStyle}
+      rule={hoverableButtonRule}
       render={({ theme, className, }) => {
         const { url, } = theme.readingListMenuI18n;
         return (
-          <HtzLink className={className} href={url}>
-            <IconReading size={3.5} />
-          </HtzLink>
+          <FelaComponent
+            rule={hoverableButtonRule}
+            render={({ theme, className, }) => (
+              <HtzLink
+                className={className}
+                href={url}
+              >
+                <ClickArea href={url} tagName="span" size={6}>
+                  <IconReading size={3.5} />
+                </ClickArea>
+              </HtzLink>
+            )}
+          />
         );
       }}
     />

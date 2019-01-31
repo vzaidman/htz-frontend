@@ -20,7 +20,7 @@ import Interactive from '../components/Interactive/Interactive';
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
 // import Masthead from '../components/Masthead/Masthead';
-import Masthead from '../components/Masthead/HomePageMasthead';
+import Masthead from '../components/Masthead/Masthead';
 import MobileListWrapper from '../components/MobileListWrapper/MobileListWrapper';
 import MobileQuickRegistration from '../components/MobileQuickRegistration/MobileQuickRegistration';
 import Newsletter from '../components/Newsletter/Newsletter';

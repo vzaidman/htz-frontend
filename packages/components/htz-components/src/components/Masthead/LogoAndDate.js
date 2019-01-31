@@ -1,19 +1,22 @@
 // @flow
 import * as React from 'react';
 import { FelaComponent, } from 'react-fela';
-import { type StyleProps, } from '@haaretz/htz-css-tools';
+import { type StyleProps, type ComponentPropResponsiveObject, } from '@haaretz/htz-css-tools';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
 import PageDateTime from './PageDateTime';
+import HtzLink from '../HtzLink/HtzLink';
 
 type LogoAndDateProps = {
   logoMiscStyles: ?StyleProps,
-  logoComponent: React.Node,
-  logoSize: ?number | StyleProps,
+  logoComponent: ?React.ElementType,
+  disableDatetime: ?boolean,
+  logoSize: ?number | ComponentPropResponsiveObject<number>[],
   datetimeMiscStyles: ?StyleProps,
 };
 
 export default function LogoAndDate({
   logoComponent,
+  disableDatetime,
   logoSize,
   logoMiscStyles,
   datetimeMiscStyles,
@@ -28,10 +31,12 @@ export default function LogoAndDate({
         alignItems: 'center',
       }}
     >
-      {Logo && Logo instanceof React.Node ? (
-        <Logo size={logoSize} miscStyles={logoMiscStyles} />
+      {Logo ? (
+        <HtzLink href="/">
+          <Logo size={logoSize} miscStyles={logoMiscStyles} />
+        </HtzLink>
       ) : null}
-      <PageDateTime miscStyles={datetimeMiscStyles} />
+      {disableDatetime ? null : <PageDateTime miscStyles={datetimeMiscStyles} />}
     </FelaComponent>
   );
 }
@@ -40,5 +45,6 @@ LogoAndDate.defaultProps = {
   logoMiscStyles: null,
   datetimeMiscStyles: null,
   logoComponent: IconHaaretzLogo,
+  disableDatetime: false,
   logoSize: 4,
 };

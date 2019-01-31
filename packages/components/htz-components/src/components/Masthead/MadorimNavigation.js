@@ -41,7 +41,6 @@ export default function MadorimNavigation({ contentId, }: Props) {
               overflow: 'hidden',
               extend: [
                 borderTop('1px', 1, 'solid', theme.color('layout', 'rowBg')),
-                theme.mq({ until: 'l', }, { display: 'none', }),
               ],
             })}
           >
