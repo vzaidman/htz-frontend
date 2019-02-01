@@ -91,8 +91,7 @@ class UserButton extends React.Component {
                   fontWeight: '700',
                 }}
               >
-                {/* eslint-disable-next-line no-extra-boolean-cast */}
-                {!!userName ? userName : theme.userMenuI18n.noUserData}
+                {userName || theme.userMenuI18n.noUserData}
               </FelaComponent>
             </FelaComponent>
             <IconAvatar size={3.5} miscStyles={{ marginRight: '2rem', }} />

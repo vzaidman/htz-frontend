@@ -7,7 +7,10 @@ import Item from '../../DropdownList/DropdownItem';
 import HtzLink from '../../HtzLink/HtzLink';
 import Logout from '../../User/Logout';
 import UserButton from './UserButton';
-import { dropdownItemStyle, dropdownListStyle, } from '../mastheadDropdownListStyle';
+import {
+  dropdownItemStyle,
+  dropdownListStyle,
+} from '../mastheadDropdownListStyle';
 import UserDispenser from '../../User/UserDispenser';
 
 /**
@@ -27,9 +30,13 @@ export default class MastheadUserMenu extends React.Component {
                 render={theme => (
                   <HtzLink
                     href={theme.userMenuI18n.loginUrl}
-                    content={
-                      <UserButton isOpen={false} userName={this.props.userName} role="button" />
-                    }
+                    content={(
+                      <UserButton
+                        isOpen={false}
+                        userName={user.firstName}
+                        role="button"
+                      />
+)}
                   />
                 )}
               />
@@ -40,7 +47,9 @@ export default class MastheadUserMenu extends React.Component {
             <FelaTheme
               render={theme => {
                 const items = theme.userMenuI18n.menuItems;
-                const initialCombinedItems = items.map(item => <Item key={item.name} {...item} />);
+                const initialCombinedItems = items.map(item => (
+                  <Item key={item.name} {...item} />
+                ));
                 const combinedItems = [
                   ...initialCombinedItems,
                   <Logout
@@ -58,7 +67,8 @@ export default class MastheadUserMenu extends React.Component {
                           justifyContent: 'flex-start',
                         }}
                         // eslint-disable-next-line react/prop-types
-                        onClick={() => logout().then(() => this.props.onLogout())}
+                        onClick={() => logout().then(() => this.props.onLogout())
+                        }
                       >
                         <FelaComponent
                           render="span"
@@ -84,11 +94,11 @@ export default class MastheadUserMenu extends React.Component {
                           <UserButton
                             isOpen={isOpen}
                             onClick={toggleState}
-                            userName={this.props.userName}
+                            userName={user.firstName}
                             role="button"
                           />
                         ))}
-                        {isOpen && !!this.props.userName ? (
+                        {isOpen && !!user.firstName ? (
                           <FelaTheme
                             render={theme => (
                               <ListWrapper
