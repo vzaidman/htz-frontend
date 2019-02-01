@@ -4,7 +4,7 @@ import Link from 'next/link';
 import gql from 'graphql-tag';
 import { FelaComponent, } from 'react-fela';
 import { parseStyleProps, borderBottom, } from '@haaretz/htz-css-tools';
-import { IconBack, Query, } from '@haaretz/htz-components';
+import { IconBack, Query, Debug, } from '@haaretz/htz-components';
 
 import type { StyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
@@ -17,7 +17,7 @@ import SectionLink from '../SectionLink/SectionLink';
 type FieldType = {
   name: string,
   display: string,
-  sortingOrder: "ascend" | "descend",
+  sortingOrder: 'ascend' | 'descend',
   style?: (any => StyleProps) | null,
   value: Object => string,
 };
@@ -42,11 +42,15 @@ type Props = {
   etfCategory: ?string,
   etfCategoryPosition: ?string,
   extractData: ?(any) => Array<Asset>,
+  client: Object,
+  fetchMore: any => Promise<any>,
+  assetsList: Array<Asset>,
 };
 
 type State = {
+  assetsList: Array<Asset>,
   sortBy: ?string,
-  sortOrder: ?("ascend" | "descend"),
+  sortOrder: ?('ascend' | 'descend'),
   parentId: ?string,
   expirationBenchmarkDate: ?string,
   mtfCategory: ?string,
@@ -57,7 +61,7 @@ type State = {
 
 type SortIconsProps = {
   active: boolean,
-  sortOrder: "ascend" | "descend",
+  sortOrder: 'ascend' | 'descend',
 };
 
 type TableLinkProps = {
@@ -349,6 +353,7 @@ class SortableTable extends React.Component<Props, State> {
   };
 
   state = {
+    assetsList: this.props.assetsList,
     sortBy: null,
     sortOrder: null,
     parentId: null,
@@ -360,9 +365,9 @@ class SortableTable extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const getSortOrder: () => ?("ascend" | "descend") = () => {
+    const getSortOrder: () => ?('ascend' | 'descend') = () => {
       const selectedField: ?FieldType = nextProps.fields.find(
-        (field: FieldType) => field.name === nextProps.initialSort
+        (field: FieldType) => field.name === nextProps.initialSort,
       );
       return selectedField ? selectedField.sortingOrder : prevState.sortOrder;
     };
@@ -394,152 +399,189 @@ class SortableTable extends React.Component<Props, State> {
   }
 
   fetchData: ({
-    client: Object,
-    field?: FieldType,
-    props?: Props,
-  }) => Promise<any> = async ({ client, field = null, props = null, }) => {
-    const {
-      parentId,
-      assetsId,
-      count,
-      assetSubSection,
-      expirationBenchmarkDate,
-      mtfCategory,
-      mtfCategoryExposure,
-      etfCategory,
-      etfCategoryPosition,
-      fragment,
-    } = props || this.props;
-    this.setState(prevState => {
-      const sortBy = field ? field.name : prevState.sortBy;
-      const sortOrder = field
-        ? prevState.sortBy !== field.name
-          ? field.sortingOrder
-          : prevState.sortOrder === 'descend'
-            ? 'ascend'
-            : 'descend'
-        : prevState.sortOrder;
-
-      client
-        .query({
-          query: TableQuery(fragment),
-          variables: {
-            parentId,
-            assetsId,
-            count: assetsId ? assetsId.length : count,
-            sortBy,
-            sortOrder,
-            assetSubSection,
-            offset: 0,
-            expirationBenchmarkDate,
-            mtfCategory,
-            mtfCategoryExposure,
-            etfCategory,
-            etfCategoryPosition,
-          },
-        })
-        .then(() => this.setState({ sortBy, sortOrder, }));
-    });
-  };
+      client: Object,
+      field?: FieldType,
+      props?: Props,
+    }) => Promise<any> = async ({ client, field = null, props = null, }) => {
+      const {
+        parentId,
+        assetsId,
+        count,
+        assetSubSection,
+        expirationBenchmarkDate,
+        mtfCategory,
+        mtfCategoryExposure,
+        etfCategory,
+        etfCategoryPosition,
+        fragment,
+      } = props || this.props;
+      this.setState(prevState => {
+        const sortBy = field ? field.name : prevState.sortBy;
+        const sortOrder = field
+          ? prevState.sortBy !== field.name
+            ? field.sortingOrder
+            : prevState.sortOrder === 'descend'
+              ? 'ascend'
+              : 'descend'
+          : prevState.sortOrder;
+        client
+          .query({
+            query: TableQuery(fragment),
+            variables: {
+              parentId,
+              assetsId,
+              count: assetsId ? assetsId.length : count,
+              sortBy,
+              sortOrder,
+              assetSubSection,
+              offset: 0,
+              expirationBenchmarkDate,
+              mtfCategory,
+              mtfCategoryExposure,
+              etfCategory,
+              etfCategoryPosition,
+            },
+          })
+          .then(({ data: { assetsList, }, }) => this.setState({ assetsList, sortBy, sortOrder, }));
+      });
+    };
 
   render(): Node {
     const {
       fields,
       parentId,
-      assetsId,
       count,
-      assetSubSection,
-      expirationBenchmarkDate,
-      mtfCategory,
-      mtfCategoryExposure,
-      etfCategory,
-      etfCategoryPosition,
-      fragment,
+      fetchMore,
+      client,
       extractData,
       ...props
     } = this.props;
 
-    const { sortBy, sortOrder, } = this.state;
+    const { sortBy, sortOrder, assetsList, } = this.state;
+
+    const fetchAll = (offset: number) => fetchMore({
+      variables: {
+        offset,
+      },
+      updateQuery: (prev, { fetchMoreResult, }) => (fetchMoreResult
+        ? Object.assign({}, prev, {
+          assetsList: fetchMoreResult.assetsList,
+        })
+        : prev
+      ),
+    })
+      .then(({ data, }) => this.setState(prevState => {
+        const assetsList = data
+          ? [ ...prevState.assetsList, ...data.assetsList, ].sort(
+            (itemA, itemB) => {
+              const valueA = typeof itemA[sortBy] === 'string'
+                ? itemA[sortBy].toUpperCase()
+                : itemA[sortBy]; // ignore upper and lowercase
+              const valueB = typeof itemB[sortBy] === 'string'
+                ? itemB[sortBy].toUpperCase()
+                : itemB[sortBy]; // ignore upper and lowercase
+              if (valueA < valueB) {
+                return sortOrder === 'ascend' ? -1 : 1;
+              }
+              if (valueA > valueB) {
+                return sortOrder === 'ascend' ? 1 : -1;
+              }
+
+              // values must be equal
+              return 0;
+            },
+          )
+          : prevState.assetsList;
+        return ({
+          assetsList,
+        });
+      }));
+
+    const assets: Array<Asset> = extractData
+      ? extractData(assetsList)
+      : assetsList;
     return (
-      <Query
-        query={TableQuery(fragment)}
-        variables={{
-          parentId,
-          assetsId,
-          count: assetsId ? assetsId.length : count,
-          sortBy,
+      <Table
+        assets={assets}
+        fetchData={this.fetchData}
+        {...{
           sortOrder,
-          assetSubSection,
-          offset: 0,
-          expirationBenchmarkDate,
-          mtfCategory,
-          mtfCategoryExposure,
-          etfCategory,
-          etfCategoryPosition,
+          parentId,
+          fetchMore,
+          fields,
+          client,
+          count,
+          sortBy,
+          fetchAll,
         }}
-      >
-        {({ loading, error, data, fetchMore, client, }) => {
-          const fetchAll = (offset: number) => fetchMore({
-            variables: {
-              offset,
-            },
-            updateQuery: (prev, { fetchMoreResult, }) => {
-              const assets = fetchMoreResult
-                ? [ ...prev.assetsList, ...fetchMoreResult.assetsList, ].sort(
-                  (itemA, itemB) => {
-                    const valueA = typeof itemA[sortBy] === 'string'
-                      ? itemA[sortBy].toUpperCase()
-                      : itemA[sortBy]; // ignore upper and lowercase
-                    const valueB = typeof itemB[sortBy] === 'string'
-                      ? itemB[sortBy].toUpperCase()
-                      : itemB[sortBy]; // ignore upper and lowercase
-                    if (valueA < valueB) {
-                      return sortOrder === 'ascend' ? -1 : 1;
-                    }
-                    if (valueA > valueB) {
-                      return sortOrder === 'ascend' ? 1 : -1;
-                    }
-
-                    // values must be equal
-                    return 0;
-                  }
-                )
-                : null;
-              return fetchMoreResult
-                ? Object.assign({}, prev, {
-                  assetsList: assets,
-                })
-                : prev;
-            },
-          });
-
-          if (error) return null;
-          if (loading) return null;
-
-          const assets: Array<Asset> = extractData
-            ? extractData(data)
-            : data.assetsList;
-          return (
-            <Table
-              assets={assets}
-              fetchData={this.fetchData}
-              {...{
-                sortOrder,
-                parentId,
-                fetchMore,
-                fields,
-                client,
-                count,
-                sortBy,
-                fetchAll,
-              }}
-              {...props}
-            />
-          );
-        }}
-      </Query>
+        {...props}
+      />
     );
   }
 }
 
-export default SortableTable;
+export default (props: any) => {
+  const {
+    parentId,
+    assetsId,
+    count,
+    assetSubSection,
+    fragment,
+    expirationBenchmarkDate,
+    mtfCategory,
+    mtfCategoryExposure,
+    etfCategory,
+    etfCategoryPosition,
+  } = props;
+
+  const getSortOrder: () => ?('ascend' | 'descend') = () => {
+    const selectedField: ?FieldType = props.fields.find(
+      (field: FieldType) => field.name === props.initialSort,
+    );
+    return selectedField ? selectedField.sortingOrder : null;
+  };
+
+  const sortBy: string = props.initialSort;
+  const sortOrder = getSortOrder();
+
+  if (!sortOrder) {
+    return (
+      <Debug>
+        {'you must provide initial sort order'}
+      </Debug>
+    );
+  }
+
+  return (
+    <Query
+      query={TableQuery(fragment)}
+      variables={{
+        parentId,
+        assetsId,
+        count: assetsId ? assetsId.length : (count || 5),
+        sortBy,
+        sortOrder,
+        assetSubSection,
+        offset: 0,
+        expirationBenchmarkDate,
+        mtfCategory,
+        mtfCategoryExposure,
+        etfCategory,
+        etfCategoryPosition,
+      }}
+    >
+      {({ loading, error, data, fetchMore, client, }) => {
+        if (error) return null;
+        if (loading) return null;
+        return (
+          <SortableTable
+            assetsList={data.assetsList}
+            fetchMore={fetchMore}
+            client={client}
+            {...props}
+          />
+        );
+      }}
+    </Query>
+  );
+};
