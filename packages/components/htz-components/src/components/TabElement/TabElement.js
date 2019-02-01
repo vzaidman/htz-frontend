@@ -4,7 +4,10 @@ import { FelaComponent, FelaTheme, } from 'react-fela';
 import { borderBottom, } from '@haaretz/htz-css-tools';
 
 import type { ChildrenArray, Node, ComponentType, } from 'react';
-import type { TabsElementType, TabItemType, } from '../../flowTypes/TabsElementType';
+import type {
+  TabsElementType,
+  TabItemType,
+} from '../../flowTypes/TabsElementType';
 
 import Tabs from '../Tabs/Tabs';
 import TabList from '../TabList/TabList';
@@ -50,9 +53,7 @@ export function TabButton({ isActive, children, ...props }: TabButtonProps) {
           outline: 'none',
           backgroundColor: theme.color('quaternary'),
         },
-        extend: [
-          theme.type(0, { until: 'l', }),
-        ],
+        extend: [ theme.type(0, { until: 'l', }), ],
       })}
       render={({ className, }) => (
         <button type="button" className={className} {...props}>
@@ -66,14 +67,18 @@ export function TabButton({ isActive, children, ...props }: TabButtonProps) {
 type TabsElementProps = TabsElementType & {
   List?: ?ComponentType<any>,
   startAt: number,
-}
+};
 
 TabElement.defaultProps = {
   startAt: 1,
   List: null,
 };
 
-function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): Node {
+function TabElement({
+  elements,
+  List: SsrList,
+  startAt,
+}: TabsElementProps): Node {
   const List = SsrList || CsrList;
   return (
     <FelaTheme
@@ -82,11 +87,11 @@ function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): No
           activeTab={startAt}
           miscStyles={{
             ...theme.mq(
-              { from: 'l', },
+              { from: 's', },
               {
                 backgroundColor: theme.color('neutral', '-10'),
-                paddingStart: '2rem',
-                paddingEnd: '2rem',
+                paddingInlineStart: '2rem',
+                paddingInlineEnd: '2rem',
               }
             ),
           }}
@@ -106,52 +111,45 @@ function TabElement({ elements, List: SsrList, startAt, }: TabsElementProps): No
                     ...theme.mq(
                       { from: 'l', },
                       {
-                        ...borderBottom('1px', 0, 'solid', theme.color('neutral', '-6')),
+                        ...borderBottom(
+                          '1px',
+                          0,
+                          'solid',
+                          theme.color('neutral', '-6')
+                        ),
                       }
                     ),
                   }}
                 >
-                  {elements.map(
-                    (element, i: number) => (
-                      <Tab
-                        key={element.contentId}
-                        index={i}
-                        isActive={i === activeTab}
-                        controls={`tab-${element.contentId}`}
-                        presentation
-                        rule={tabRule}
-                        setActiveTab={index => setActiveTab(index)}
-                        render={TabButton}
-                      >
-                        {
-                          isList(element)
-                            ? <span>{element.title}</span>
-                            : null
-                        }
-                      </Tab>
-                    )
-                  )}
+                  {elements.map((element, i: number) => (
+                    <Tab
+                      key={element.contentId}
+                      index={i}
+                      isActive={i === activeTab}
+                      controls={`tab-${element.contentId}`}
+                      presentation
+                      rule={tabRule}
+                      setActiveTab={index => setActiveTab(index)}
+                      render={TabButton}
+                    >
+                      {isList(element) ? <span>{element.title}</span> : null}
+                    </Tab>
+                  ))}
                 </TabList>
                 <TabPanel id={`tab-${activeElement.contentId}`}>
-                  {
-                    isClickTrackerWrapper(activeElement)
-                      ? (
-                        <ClickTracker {...activeElement} />
-                      )
-                      : isDfp(activeElement)
-                        ? (
-                          <GeneralAdSlot {...activeElement} />
-                        )
-                        : isList(activeElement)
-                          ? (
-                            <List {...activeElement} />
-                          )
-                          : (
-                            <Debug>
-                              {`Element of type '${activeElement.inputTemplate}' is not supported in TabElement`}
-                            </Debug>
-                          )
-                  }
+                  {isClickTrackerWrapper(activeElement) ? (
+                    <ClickTracker {...activeElement} />
+                  ) : isDfp(activeElement) ? (
+                    <GeneralAdSlot {...activeElement} />
+                  ) : isList(activeElement) ? (
+                    <List {...activeElement} />
+                  ) : (
+                    <Debug>
+                      {`Element of type '${
+                        activeElement.inputTemplate
+                      }' is not supported in TabElement`}
+                    </Debug>
+                  )}
                 </TabPanel>
               </Fragment>
             );
@@ -172,33 +170,25 @@ WrappedTabs.defaultProps = {
 
 function WrappedTabs({ withoutWrapper, ...props }: Props): Node {
   return (
-    <FelaComponent
-      style={{ width: '100%', }}
-    >
-      {
-        withoutWrapper
-          ? (
+    <FelaComponent style={{ width: '100%', }}>
+      {withoutWrapper ? (
+        <TabElement {...props} />
+      ) : (
+        <ListView>
+          <GridItem
+            width={1}
+            stretchContent
+            miscStyles={{
+              marginBottom: [ { until: 'l', value: '1rem', }, ],
+            }}
+          >
+            <ListViewHeader title={props.title} />
+          </GridItem>
+          <GridItem width={1} stretchContent>
             <TabElement {...props} />
-          )
-          : (
-            <ListView>
-              <GridItem
-                width={1}
-                stretchContent
-                miscStyles={{
-                  marginBottom: [
-                    { until: 'l', value: '1rem', },
-                  ],
-                }}
-              >
-                <ListViewHeader title={props.title} />
-              </GridItem>
-              <GridItem width={1} stretchContent>
-                <TabElement {...props} />
-              </GridItem>
-            </ListView>
-          )
-      }
+          </GridItem>
+        </ListView>
+      )}
     </FelaComponent>
   );
 }
