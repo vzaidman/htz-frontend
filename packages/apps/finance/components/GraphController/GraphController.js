@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { Fragment, } from 'react';
 import type { Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { Select, } from '@haaretz/htz-components';
@@ -13,9 +13,10 @@ import StockStats from '../AssetStats/AssetStats';
 import Tabs from '../Tabs/Tabs';
 
 import type { GraphType, Period, } from '../AssetStats/AssetStats';
+import StaticGraph from '../Graph/StaticGraph';
 
 type Props = {
-  selectedStockId: string,
+  assetId: string,
   miscStyles: ?Object,
   width?: number,
   height?: number,
@@ -89,7 +90,7 @@ class GraphController extends React.Component<Props, State> {
 
   render(): Node {
     const { selectedPeriod, selectedIndex, } = this.state;
-    const { selectedStockId, miscStyles, width, height, margin, } = this.props;
+    const { assetId, miscStyles, width, height, margin, } = this.props;
 
     return (
       <FelaComponent
@@ -101,7 +102,7 @@ class GraphController extends React.Component<Props, State> {
           ],
         })}
         render={({ className, }) => (
-          <TabPanel className={className} id={`stock-${selectedStockId}`}>
+          <TabPanel className={className} id={`stock-${assetId}`}>
             <FelaComponent
               style={theme => ({
                 color: theme.color('neutral', '-5'),
@@ -210,16 +211,23 @@ class GraphController extends React.Component<Props, State> {
                     <StockStats
                       period={this.state.selectedPeriod}
                       graphType={this.state.selectedGraph.value}
-                      render={({ changeStats, }) => (selectedStockId ? (
-                        <Graph
-                          type={this.state.selectedGraph.value}
-                          indexId={selectedStockId}
-                          time={selectedPeriod}
-                          changeStats={changeStats}
-                          width={width}
-                          height={height}
-                          margin={margin}
-                        />
+                      render={({ changeStats, }) => (assetId ? (
+                        <Fragment>
+                          <StaticGraph
+                            type={this.state.selectedGraph.value}
+                            indexId={assetId}
+                            time={selectedPeriod}
+                          />
+                          <Graph
+                            type={this.state.selectedGraph.value}
+                            indexId={assetId}
+                            time={selectedPeriod}
+                            changeStats={changeStats}
+                            width={width}
+                            height={height}
+                            margin={margin}
+                          />
+                        </Fragment>
                       ) : null)
                       }
                       miscStyles={{

@@ -54,44 +54,44 @@ type Props = {
 function exchange({ url: { query: { assetId, section, }, asPath, }, }: Props): Node {
   const crypto: boolean = section === 'crypto';
   return (
-      <Query
-        partialRefetch
-        query={ExchangeQuery}
-        variables={{ assetId, }}
-      >
-        {({ loading, error, data, }) => {
-          if (error) return null;
-          if (loading) return null;
-          const {
-            asset: {
-              name,
-              value,
-              changePercentage,
-              fixedRate,
-              subType,
-              lastTradeTime,
-              volume,
-              dailyAvgVolume,
-              weeklyYield,
-              monthlyYield,
-              quarterlyYield,
-              yearlyYield,
-            },
-          } = data;
-          return (
-            <MainLayout
-              section={section}
-              title={crypto
-                ? `${name} - שער ${name} - מטבעות דיגיטלים - TheMarker Finance`
-                : `${name} -מט"ח – נתוני מסחר מטבע חוץ TheMarker Finance`
-              }
-              description={crypto
-                ? `${name} שערים עדכנים והיסטוריים של מטבע ${name} - כל המידע על מטבעות דיגיטליים ומטבעות קריפטוגרפים באתר TheMarker Finance`
-                : `${name} למידע על נתוני מסחר של מטבעות חוץ, שערי מט"ח, אופציות מט"ח, שערים יציגים ועוד , היכנסו לאתר TheMarker Finance`
-              }
-              path={asPath}
-            >
-              <FelaTheme
+    <Query
+      partialRefetch
+      query={ExchangeQuery}
+      variables={{ assetId, }}
+    >
+      {({ loading, error, data, }) => {
+        if (error) return null;
+        if (loading) return null;
+        const {
+          asset: {
+            name,
+            value,
+            changePercentage,
+            fixedRate,
+            subType,
+            lastTradeTime,
+            volume,
+            dailyAvgVolume,
+            weeklyYield,
+            monthlyYield,
+            quarterlyYield,
+            yearlyYield,
+          },
+        } = data;
+        return (
+          <MainLayout
+            section={section}
+            title={crypto
+              ? `${name} - שער ${name} - מטבעות דיגיטלים - TheMarker Finance`
+              : `${name} -מט"ח – נתוני מסחר מטבע חוץ TheMarker Finance`
+            }
+            description={crypto
+              ? `${name} שערים עדכנים והיסטוריים של מטבע ${name} - כל המידע על מטבעות דיגיטליים ומטבעות קריפטוגרפים באתר TheMarker Finance`
+              : `${name} למידע על נתוני מסחר של מטבעות חוץ, שערי מט"ח, אופציות מט"ח, שערים יציגים ועוד , היכנסו לאתר TheMarker Finance`
+            }
+            path={asPath}
+          >
+            <FelaTheme
               render={theme => (
                 <Fragment>
                   <PageRow lines={2}>
@@ -124,7 +124,7 @@ function exchange({ url: { query: { assetId, section, }, asPath, }, }: Props): N
                   </PageRow>
                   <PageRow>
                     <GraphController
-                      selectedStockId={assetId}
+                      assetId={assetId}
                       width={900}
                     />
                   </PageRow>

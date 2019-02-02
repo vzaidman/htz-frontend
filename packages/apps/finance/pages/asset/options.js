@@ -133,7 +133,7 @@ function options({
                     <RelatedAssets assets={relatedAssets} />
                   </PageRow>
                   <PageRow>
-                    <GraphController selectedStockId={assetId} width={900} />
+                    <GraphController assetId={assetId} width={900} />
                   </PageRow>
                   <PageRow>
                     <Grid

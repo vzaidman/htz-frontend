@@ -101,147 +101,205 @@ function etf({ url: { query: { section, assetId, }, asPath, }, }: Props): Node {
             path={asPath}
           >
             <FelaTheme
-            render={theme => (
-              <Fragment>
-                <PageRow lines={2}>
-                  <RowItem
-                    title={name}
+              render={theme => (
+                <Fragment>
+                  <PageRow lines={2}>
+                    <RowItem
+                      title={name}
+                      miscStyles={{
+                        ...theme.type(5),
+                      }}
+                    />
+                  </PageRow>
+                  <PageRow
                     miscStyles={{
-                      ...theme.type(5),
-                    }}
-                  />
-                </PageRow>
-                <PageRow
-                  miscStyles={{
-                    marginBottom: '2rem',
-                  }}
-                >
-                  <QuoteSummary
-                    valueData={[
-                      { title: 'שער', value: value.toString(), },
-                      { title: '% שינוי', value: changePercentage, },
-                      { title: 'שינוי באג׳', value: numeralChange, },
-                    ]}
-                    date={{ title: 'נכון ל:', value: lastTradeTime, }}
-                    assetInfo={[
-                      { title: 'סוג נייר:', value: subType, },
-                      { title: 'מספר נייר:', value: assetNumber, },
-                    ]}
-                  />
-                </PageRow>
-                <PageRow
-                  miscStyles={{
-                    marginBottom: '2rem',
-                  }}
-                >
-                  <RelatedAssets assets={relatedAssets} />
-                </PageRow>
-                <PageRow>
-                  <GraphController
-                    selectedStockId={assetId}
-                    width={900}
-                  />
-                </PageRow>
-                <PageRow>
-                  <Grid
-                    gutter={2}
-                    miscStyles={{
-                      paddingStart: '0rem',
-                      paddingEnd: '0rem',
+                      marginBottom: '2rem',
                     }}
                   >
-                    <GridItem
-                      width={1 / 3}
+                    <QuoteSummary
+                      valueData={[
+                        { title: 'שער', value: value.toString(), },
+                        { title: '% שינוי', value: changePercentage, },
+                        { title: 'שינוי באג׳', value: numeralChange, },
+                      ]}
+                      date={{ title: 'נכון ל:', value: lastTradeTime, }}
+                      assetInfo={[
+                        { title: 'סוג נייר:', value: subType, },
+                        { title: 'מספר נייר:', value: assetNumber, },
+                      ]}
+                    />
+                  </PageRow>
+                  <PageRow
+                    miscStyles={{
+                      marginBottom: '2rem',
+                    }}
+                  >
+                    <RelatedAssets assets={relatedAssets} />
+                  </PageRow>
+                  <PageRow>
+                    <GraphController
+                      assetId={assetId}
+                      width={900}
+                    />
+                  </PageRow>
+                  <PageRow>
+                    <Grid
+                      gutter={2}
+                      miscStyles={{
+                        paddingStart: '0rem',
+                        paddingEnd: '0rem',
+                      }}
                     >
-                      <RowItem
-                        title="נתוני המסחר"
+                      <GridItem
+                        width={1 / 3}
                       >
-                        <QuoteInfoTable
-                          id={assetId}
-                          tradingStatus
-                          fixed
-                          fields={[
-                            { name: 'value', display: 'שער אחרון', },
-                            { name: 'numeralChange', display: 'שינוי באגורות', },
-                            { name: 'changePercentage', display: 'שינוי ב-%', },
-                            { name: 'lastTradeTime', display: 'מועד עדכון אחרון', type: 'date', },
-                            { name: 'dailyLow', display: 'נמוך יומי', },
-                            { name: 'dailyHigh', display: 'גבוה יומי', },
-                            { name: 'volume', display: 'מחזור', },
-                          ]}
-                        />
-                      </RowItem>
-                    </GridItem>
-                    <GridItem
-                      width={2 / 3}
+                        <RowItem
+                          title="נתוני המסחר"
+                        >
+                          <QuoteInfoTable
+                            id={assetId}
+                            tradingStatus
+                            fixed
+                            fields={[
+                              { name: 'value', display: 'שער אחרון', },
+                              { name: 'numeralChange', display: 'שינוי באגורות', },
+                              { name: 'changePercentage', display: 'שינוי ב-%', },
+                              { name: 'lastTradeTime', display: 'מועד עדכון אחרון', type: 'date', },
+                              { name: 'dailyLow', display: 'נמוך יומי', },
+                              { name: 'dailyHigh', display: 'גבוה יומי', },
+                              { name: 'volume', display: 'מחזור', },
+                            ]}
+                          />
+                        </RowItem>
+                      </GridItem>
+                      <GridItem
+                        width={2 / 3}
+                      >
+                        <FelaComponent
+                          style={{
+                            display: 'flow',
+                            flowDirection: 'column',
+                          }}
+                        >
+                          <RowItem
+                            title="מחזורים"
+                          >
+                            <VolumeGraph
+                              theme={theme}
+                              data={[
+                                {
+                                  name: 'מחזור (א׳ שח)',
+                                  value: volume,
+                                },
+                                {
+                                  name: 'מחזור יומי ממוצע (שנה)',
+                                  value: dailyAvgVolume,
+                                },
+                              ]}
+                              miscStyles={{
+                                marginBottom: '2rem',
+                                paddingStart: '2rem',
+                                paddingEnd: '2rem',
+                              }}
+                            />
+                          </RowItem>
+                          <RowItem
+                            title="תשואות"
+                          >
+                            <YieldGraph
+                              theme={theme}
+                              data={[
+                                {
+                                  name: 'שבוע ',
+                                  value: weeklyYield,
+                                },
+                                {
+                                  name: 'חודש',
+                                  value: monthlyYield,
+                                },
+                                {
+                                  name: 'רבעון',
+                                  value: quarterlyYield,
+                                },
+                                {
+                                  name: 'שנה',
+                                  value: yearlyYield,
+                                },
+                              ]}
+                              miscStyles={{
+                                marginBottom: '2rem',
+                                paddingStart: '2rem',
+                                paddingEnd: '2rem',
+                              }}
+                            />
+                          </RowItem>
+                        </FelaComponent>
+                      </GridItem>
+                    </Grid>
+                  </PageRow>
+                  <PageRow>
+                    <RowItem
+                      title="מידע כללי"
+                      miscStyles={{ marginBottom: '2rem', }}
                     >
-                      <FelaComponent
-                        style={{
-                          display: 'flow',
-                          flowDirection: 'column',
+                      <Grid
+                        gutter={2}
+                        miscStyles={{
+                          paddingStart: '0rem',
+                          paddingEnd: '0rem',
                         }}
                       >
-                        <RowItem
-                          title="מחזורים"
+                        <GridItem
+                          width={1 / 2}
                         >
-                          <VolumeGraph
-                            theme={theme}
-                            data={[
-                              {
-                                name: 'מחזור (א׳ שח)',
-                                value: volume,
-                              },
-                              {
-                                name: 'מחזור יומי ממוצע (שנה)',
-                                value: dailyAvgVolume,
-                              },
-                            ]}
+                          <QuoteInfoTable
                             miscStyles={{
-                              marginBottom: '2rem',
-                              paddingStart: '2rem',
-                              paddingEnd: '2rem',
+                              height: '100%',
                             }}
+                            id={assetId}
+                            fields={[
+                              { name: 'currencyExposure', display: 'חשיפה (הצמדה) למטבע', },
+                              { name: 'etfType', display: 'סוג תעודה', },
+                              { name: 'etfIssuer', display: 'מנפיק התעודה', },
+                              { name: 'issueDate', display: 'תאריך הנפקה', type: 'date', },
+                              { name: 'conversionType', display: 'סוג המרה', },
+                              { name: 'baseAsset', display: 'נכס בסיס', },
+                              { name: 'conversionFee', display: 'עמלת המרה', },
+                            ]}
                           />
-                        </RowItem>
-                        <RowItem
-                          title="תשואות"
+                        </GridItem>
+                        <GridItem
+                          width={1 / 2}
                         >
-                          <YieldGraph
-                            theme={theme}
-                            data={[
-                              {
-                                name: 'שבוע ',
-                                value: weeklyYield,
-                              },
-                              {
-                                name: 'חודש',
-                                value: monthlyYield,
-                              },
-                              {
-                                name: 'רבעון',
-                                value: quarterlyYield,
-                              },
-                              {
-                                name: 'שנה',
-                                value: yearlyYield,
-                              },
-                            ]}
+                          <QuoteInfoTable
                             miscStyles={{
-                              marginBottom: '2rem',
-                              paddingStart: '2rem',
-                              paddingEnd: '2rem',
+                              whiteSpace: 'normal',
+                              height: '100%',
                             }}
+                            id={assetId}
+                            fields={[
+                              { name: 'retailTax', display: 'מס ליחידים', },
+                              { name: 'dividendPolicy', display: 'מדיניות דיבידנד', },
+                              { name: 'managementFee', display: 'דמי ניהול', },
+                              { name: 'accumulatedDividend', display: 'דיבידנד צבור', },
+                              { name: 'accumulatedInterest', display: 'ריבית צבורה', },
+                              { name: 'managementFeeFactor', display: 'מקדם דמי ניהול', },
+                            ]}
                           />
-                        </RowItem>
-                      </FelaComponent>
-                    </GridItem>
-                  </Grid>
-                </PageRow>
-                <PageRow>
-                  <RowItem
-                    title="מידע כללי"
-                    miscStyles={{ marginBottom: '2rem', }}
-                  >
+                        </GridItem>
+                      </Grid>
+                    </RowItem>
+                  </PageRow>
+                  <PageRow>
+                    <RowItem>
+                      <GeneralAdSlot
+                        id="Finance.TheMarker.com.Banner1"
+                        contentName="Finance.TheMarker.com.Banner1"
+                        audianceTarget="all"
+                      />
+                    </RowItem>
+                  </PageRow>
+                  <PageRow>
                     <Grid
                       gutter={2}
                       miscStyles={{
@@ -252,118 +310,60 @@ function etf({ url: { query: { section, assetId, }, asPath, }, }: Props): Node {
                       <GridItem
                         width={1 / 2}
                       >
-                        <QuoteInfoTable
-                          miscStyles={{
-                            height: '100%',
-                          }}
-                          id={assetId}
-                          fields={[
-                            { name: 'currencyExposure', display: 'חשיפה (הצמדה) למטבע', },
-                            { name: 'etfType', display: 'סוג תעודה', },
-                            { name: 'etfIssuer', display: 'מנפיק התעודה', },
-                            { name: 'issueDate', display: 'תאריך הנפקה', type: 'date', },
-                            { name: 'conversionType', display: 'סוג המרה', },
-                            { name: 'baseAsset', display: 'נכס בסיס', },
-                            { name: 'conversionFee', display: 'עמלת המרה', },
-                          ]}
-                        />
+                        <RowItem
+                          title="פרופיל התעודה"
+                          miscStyles={{ marginBottom: '1rem', }}
+                        >
+                          <FelaComponent
+                            render="p"
+                            style={{
+                              ...theme.type(-1),
+                              color: theme.color('neutral', '-3'),
+                              marginBottom: '1rem',
+                              marginTop: '1rem',
+                              textAlign: 'start',
+                            }}
+                          >
+                            {`תאריך שינוי מדיניות: ${
+                              new Date(policyChangeDate)
+                                .toLocaleString('it-It', {
+                                  day: '2-digit',
+                                  month: '2-digit',
+                                  year: 'numeric',
+                                })
+                            }`}
+                          </FelaComponent>
+                          <FelaComponent
+                            render="p"
+                          >
+                            {mtfEtfPolicy}
+                          </FelaComponent>
+                        </RowItem>
                       </GridItem>
                       <GridItem
                         width={1 / 2}
                       >
-                        <QuoteInfoTable
-                          miscStyles={{
-                            whiteSpace: 'normal',
-                            height: '100%',
-                          }}
-                          id={assetId}
-                          fields={[
-                            { name: 'retailTax', display: 'מס ליחידים', },
-                            { name: 'dividendPolicy', display: 'מדיניות דיבידנד', },
-                            { name: 'managementFee', display: 'דמי ניהול', },
-                            { name: 'accumulatedDividend', display: 'דיבידנד צבור', },
-                            { name: 'accumulatedInterest', display: 'ריבית צבורה', },
-                            { name: 'managementFeeFactor', display: 'מקדם דמי ניהול', },
-                          ]}
-                        />
+                        <RowItem
+                          title="חשיפת התעודה למדדים"
+                        >
+                          <QuoteAssetsTable
+                            assets={indexExposure}
+                            fields={[
+                              { value: 'name', display: 'נכס בסיס (שם הנכס)', miscStyles: { fontWeight: '700', }, },
+                              { value: 'assetBaseHoldingRatio', display: 'אחוז בנכס בסיס', },
+                            ]}
+                          />
+                        </RowItem>
                       </GridItem>
                     </Grid>
-                  </RowItem>
-                </PageRow>
-                <PageRow>
-                  <RowItem>
-                    <GeneralAdSlot
-                      id="Finance.TheMarker.com.Banner1"
-                      contentName="Finance.TheMarker.com.Banner1"
-                      audianceTarget="all"
-                    />
-                  </RowItem>
-                </PageRow>
-                <PageRow>
-                  <Grid
-                    gutter={2}
-                    miscStyles={{
-                      paddingStart: '0rem',
-                      paddingEnd: '0rem',
-                    }}
-                  >
-                    <GridItem
-                      width={1 / 2}
-                    >
-                      <RowItem
-                        title="פרופיל התעודה"
-                        miscStyles={{ marginBottom: '1rem', }}
-                      >
-                        <FelaComponent
-                          render="p"
-                          style={{
-                            ...theme.type(-1),
-                            color: theme.color('neutral', '-3'),
-                            marginBottom: '1rem',
-                            marginTop: '1rem',
-                            textAlign: 'start',
-                          }}
-                        >
-                          {`תאריך שינוי מדיניות: ${
-                            new Date(policyChangeDate)
-                              .toLocaleString('it-It', {
-                                day: '2-digit',
-                                month: '2-digit',
-                                year: 'numeric',
-                              })
-                          }`}
-                        </FelaComponent>
-                        <FelaComponent
-                          render="p"
-                        >
-                          {mtfEtfPolicy}
-                        </FelaComponent>
-                      </RowItem>
-                    </GridItem>
-                    <GridItem
-                      width={1 / 2}
-                    >
-                      <RowItem
-                        title="חשיפת התעודה למדדים"
-                      >
-                        <QuoteAssetsTable
-                          assets={indexExposure}
-                          fields={[
-                            { value: 'name', display: 'נכס בסיס (שם הנכס)', miscStyles: { fontWeight: '700', }, },
-                            { value: 'assetBaseHoldingRatio', display: 'אחוז בנכס בסיס', },
-                          ]}
-                        />
-                      </RowItem>
-                    </GridItem>
-                  </Grid>
-                </PageRow>
-              </Fragment>
-            )}
-          />
-        </MainLayout>
-      );
-    }}
-  </Query>
+                  </PageRow>
+                </Fragment>
+              )}
+            />
+          </MainLayout>
+        );
+      }}
+    </Query>
   );
 }
 

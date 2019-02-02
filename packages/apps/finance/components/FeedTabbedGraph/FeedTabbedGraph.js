@@ -19,7 +19,7 @@ type TabType = {
 
 type Asset = {
   name: string,
-  change: string,
+  change?: string,
   id: string,
 };
 
@@ -83,7 +83,7 @@ class FeedTabbedGraph extends React.Component<Props, State> {
   fetchData: number => Promise<any> = async period => {
     const { part, side, } = this.props;
     return (
-      fetch(`https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoney?part=${part}&side=${side}&period=${period}`, {
+      fetch(`https://apifinance.themarker.com/TheMarkerApi/HotMoney?part=${part}&side=${side}&period=${period}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', },
       })

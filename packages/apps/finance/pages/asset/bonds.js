@@ -73,41 +73,41 @@ const numToString: number => string = num => (
 
 function bonds({ url: { query: { assetId, section, }, asPath, }, }: Props): Node {
   return (
-      <Query
-        query={BondQuery}
-        variables={{ assetId, }}
-      >
-        {({ loading, error, data, }) => {
-          if (error) return null;
-          if (loading) return null;
-          const {
-            asset: {
-              name,
-              value,
-              changePercentage,
-              numeralChange,
-              subType,
-              assetNumber,
-              lastTradeTime,
-              relatedAssets,
-              volume,
-              dailyAvgVolume,
-              weeklyYield,
-              monthlyYield,
-              quarterlyYield,
-              yearlyYield,
-              shareHolders,
-              eventsPrediction,
-            },
-          } = data;
-          return (
-            <MainLayout
-              section={section}
-              title={`${name} -אג"ח - אגרות חוב - TheMarker Finance`}
-              description={`${name} - למידע עדכני על נתוני אג"ח - אגרות חוב, היכנסו לאתר TheMarker Finance`}
-              path={asPath}
-            >
-              <FelaTheme
+    <Query
+      query={BondQuery}
+      variables={{ assetId, }}
+    >
+      {({ loading, error, data, }) => {
+        if (error) return null;
+        if (loading) return null;
+        const {
+          asset: {
+            name,
+            value,
+            changePercentage,
+            numeralChange,
+            subType,
+            assetNumber,
+            lastTradeTime,
+            relatedAssets,
+            volume,
+            dailyAvgVolume,
+            weeklyYield,
+            monthlyYield,
+            quarterlyYield,
+            yearlyYield,
+            shareHolders,
+            eventsPrediction,
+          },
+        } = data;
+        return (
+          <MainLayout
+            section={section}
+            title={`${name} -אג"ח - אגרות חוב - TheMarker Finance`}
+            description={`${name} - למידע עדכני על נתוני אג"ח - אגרות חוב, היכנסו לאתר TheMarker Finance`}
+            path={asPath}
+          >
+            <FelaTheme
               render={theme => (
                 <Fragment>
                   <PageRow lines={2}>
@@ -141,7 +141,7 @@ function bonds({ url: { query: { assetId, section, }, asPath, }, }: Props): Node
                   </PageRow>
                   <PageRow>
                     <GraphController
-                      selectedStockId={assetId}
+                      assetId={assetId}
                       width={900}
                     />
                   </PageRow>

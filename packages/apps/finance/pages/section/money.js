@@ -252,7 +252,7 @@ function money({ url: { query: { section, }, asPath, }, }: Props): Node {
                       ]}
                       panel={({ selectedTab, }) => (
                         <FetchData
-                          url={`https://cors-escape.herokuapp.com/http://apifinance.themarker.com/TheMarkerApi/HotMoneyBottom?part=1&period=${selectedTab}`}
+                          url={`https://apifinance.themarker.com/TheMarkerApi/HotMoneyBottom?part=1&period=${selectedTab}`}
                           method="GET"
                           render={(data: any) => (
                             <StaticSortableTable

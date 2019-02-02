@@ -158,4 +158,5 @@ export type Asset = {
   expirationBenchmarkDates: Array<string>,
   theoreticalValue: number,
   theoreticalValueGap: number,
+  change?: string,
 };

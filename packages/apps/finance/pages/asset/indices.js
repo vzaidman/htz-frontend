@@ -130,7 +130,7 @@ function indices({ url: { query: { section, assetId, }, asPath, }, }: Props): No
                 </PageRow>
                 <PageRow>
                   <GraphController
-                    selectedStockId={assetId}
+                    assetId={assetId}
                     width={900}
                   />
                 </PageRow>
