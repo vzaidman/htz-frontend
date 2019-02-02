@@ -8,7 +8,7 @@ export default ({ assetId, part, }) => {
       { monthly: 2, quarterly: 7, yearly: 3, },
       (period, key, callback) => {
         fetch(
-          `http://apifinance.themarker.com/TheMarkerApi/HotMoneyCharts?indexId=${assetId}&part=${part}&period=${period}`,
+          `https://apifinance.themarker.com/TheMarkerApi/HotMoneyCharts?indexId=${assetId}&part=${part}&period=${period}`,
           {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', },

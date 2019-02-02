@@ -1,8 +1,10 @@
 import {
   GraphQLObjectType,
+  GraphQLUnionType,
+  GraphQLEnumType,
   GraphQLString,
   GraphQLFloat,
-  GraphQLList, GraphQLUnionType,
+  GraphQLList,
 } from 'graphql';
 
 import { GraphQLTimestamp, } from './finance_asset_type';
@@ -62,6 +64,14 @@ const financeGraph = new GraphQLObjectType({
       })
     ), },
   }),
+});
+
+export const graphType = new GraphQLEnumType({
+  name: 'GraphType',
+  values: {
+    line: { value: 'line', },
+    scatter: { value: 'scatter', },
+  },
 });
 
 export default financeGraph;

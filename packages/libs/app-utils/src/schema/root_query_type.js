@@ -10,7 +10,7 @@ import {
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
-import FinanceGraph from './types/finance/finance_graph_type';
+import FinanceGraph, { graphType, } from './types/finance/finance_graph_type';
 import FinanceAsset from './types/finance/finance_asset_type';
 import Footer from './types/footer_type';
 import NavMenu from './types/navMenu_type';
@@ -20,6 +20,7 @@ import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
 import HomePage from './types/home_page_type';
 import { GenerateOtp, } from './types/otp_operations_type';
+import periodType from './types/finance/finance_period_type';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -189,6 +190,18 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
+    staticGraph: {
+      type: GraphQLString,
+      args: {
+        period: { type: periodType, },
+        type: { type: graphType, },
+        assetId: { type: GraphQLString, },
+      },
+      resolve(parentValue, { assetId, period, type, }, { dataSources, }) {
+        return dataSources.StaticD3API.getLineGraph(assetId, period, type);
+      },
+    },
+
     asset: {
       type: FinanceAsset,
       args: {
@@ -235,8 +248,8 @@ const RootQuery = new GraphQLObjectType({
     financeGraph: {
       type: FinanceGraph,
       args: {
-        type: { type: GraphQLString, },
-        time: { type: GraphQLString, },
+        time: { type: periodType, },
+        type: { type: graphType, },
         assetId: { type: GraphQLString, },
       },
       resolve(parentValue, { type, time, assetId, }, { dataSources, }) {

@@ -9,8 +9,14 @@ module.exports = {
     ds: 'https://ms-apps-dev.haaretz.co.il/ds',
     newSso: 'https://ms-apps-dev.haaretz.co.il/sso',
     sso: 'https://devsso.haaretz.co.il',
-    image: 'https://images.haarets.co.il/image',
+    otp: {
+      base: 'https://ms-apps-dev.haaretz.co.il/otp',
+      generate: '/generate',
+      validate: '/validate',
+    },
     userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
+    htzFunction: 'https://ms-apps-dev.haaretz.co.il/htz-function',
+    image: 'https://images.haarets.co.il/image',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
     graphql: defer(function () {
       return `http${
@@ -20,7 +26,7 @@ module.exports = {
     d3: defer(function () {
       return `http${
         this.d3useSSL ? 's' : ''
-      }://${this.appFQDN}${this.d3exposedPort && this.d3Port ? `:${this.d3Port}` : ''}/`;
+      }://${this.appFQDN}${this.d3exposedPort && this.d3Port ? `:${this.d3Port}` : ''}`;
     }),
     alerts: 'https://dev-alerts.haaretz.co.il',
   },

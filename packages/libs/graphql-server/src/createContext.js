@@ -12,6 +12,7 @@ export default function createContext(headers) {
   const ssoService = config.get('service.sso');
   const newSsoService = config.get('service.newSso');
   const otpService = config.get('service.otp.base');
+  const staticD3 = config.get('service.d3');
   const functionService = config.get('service.htzFunction');
   const serviceBase = switchToDomain(hostname, config.get('service.base'));
   const cookies = headers ? new Cookies(headers.cookie) : null;
@@ -28,5 +29,6 @@ export default function createContext(headers) {
     polopolyPromotionsPage,
     preview,
     previewUserId,
+    staticD3,
   };
 }
