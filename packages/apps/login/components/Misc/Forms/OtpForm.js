@@ -14,7 +14,7 @@ import {
   getUser,
   retrieveHash,
 } from '../../../pages/queryutil/userDetailsOperations';
-import { getHost, handleGenerateOtpIO } from '../../../util/requestUtil';
+import { getHost, handleGenerateOtpIO, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
@@ -75,7 +75,7 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
       );
   }
   else {
-    login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+    login({ client, host, loginWithMobile, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
   }
 };
 
