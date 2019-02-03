@@ -2,7 +2,7 @@
 /* global document */
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { ReadArticleService, } from '@haaretz/htz-user-utils';
+import { ReadArticleService, CookieUtils, } from '@haaretz/htz-user-utils';
 import Query from '../ApolloBoundary/Query';
 import NoSSR from '../NoSSR/NoSSR';
 
@@ -83,35 +83,44 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
       {({ data, loading, error, }) => {
         if (error) {
           console.log('[PaywallDataProvider] error %o', error);
+          return null;
         }
-        return loading || error
-          ? null
-          : (
-            <Query
-              query={paywallDataQuery}
-              variables={{
-                referrer: isNewsletterRef(document.referrer)
-                  ? 'newsletter'
-                  : 'direct',
-                isSuperContent: data.isSuperContent || false,
-                userType: (data.user && data.user.type) || 'anonymous',
-                useragent: data.platform === 'web'
-                  ? 'desktop'
-                  : data.platform,
-                articleCount: ReadArticleService.getArticleCount() || 1,
-              }}
-            >
-              {({ data, loading, error, }) => {
-                if (error) {
-                  console.log('[PaywallDataProvider] error %o', error);
-                }
-                return loading || error
-                  ? null
-                  : children(data.paywall);
+        if (loading) {
+          return null;
+        }
+        const tmssoData = CookieUtils.getCookie('tmsso');
+        console.log('[PaywallDataProvider] emailValidity', tmssoData);
+        const isValidEmail = tmssoData && tmssoData.emailValidity === 'valid';
+        let userType = (data.user && data.user.type) || 'anonymous';
+        if (userType === 'registered' && isValidEmail === false) {
+          userType = 'rnv';
+        }
+        return (
+          <Query
+            query={paywallDataQuery}
+            variables={{
+              referrer: isNewsletterRef(document.referrer)
+                ? 'newsletter'
+                : 'direct',
+              isSuperContent: data.isSuperContent || false,
+              userType,
+              useragent: data.platform === 'web'
+                ? 'desktop'
+                : data.platform,
+              articleCount: ReadArticleService.getArticleCount() || 1,
+            }}
+          >
+            {({ data, loading, error, }) => {
+              if (error) {
+                console.log('[PaywallDataProvider] error %o', error);
               }
-              }
-            </Query>
-          );
+              return loading || error
+                ? null
+                : children(data.paywall);
+            }
+            }
+          </Query>
+        );
       }}
     </Query>
 
