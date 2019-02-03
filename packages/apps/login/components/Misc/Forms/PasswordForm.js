@@ -4,12 +4,13 @@ import { Form, TextInput, Button, CheckBox, } from '@haaretz/htz-components';
 import isEmail from 'validator/lib/isEmail';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { LoginMiscLayoutStylesThemed, } from '../../StyleComponents/LoginStyleComponentsByTheme';
-import { getUserData, getEmail, } from '../../../pages/queryutil/userDetailsOperations';
+import { getUserData, getEmail, getUserProducts, } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { isPassword, } from './fieldsValidators';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
+import { getDebtReferrer, checkUserDebt, } from '../../../util/debtCheckUtil';
 
 // Styling Components -----------------
 const { FormWrapper, ItemCenterer, } = LoginContentStyles;
@@ -22,6 +23,11 @@ const getTermsText = () => (
       אני מאשר/ת קבלת המלצות קריאה, הצעות לרכישת מינוי ודיוור מאתרי הארץ-TheMarker
   </div>
 );
+
+
+const getProducts = (client, ssoId) => {
+  return getUserProducts(client)({ id: ssoId, });
+}
 
 const generateError = (name, order) => message => [ { name, order, errorText: message, }, ];
 const generateEmailError = message => generateError('email', 1)(message);
@@ -70,10 +76,25 @@ const onSubmit = ({ login, host, user, flow, client, showError, hideError, setPr
   login(email, password, trmsChk)
     .then(
       () => {
+        const hasDebt = checkUserDebt(client);
+        const referrerUrl = getReferrerUrl(client);
         sendTrackingEvents(eventsTrackers, { page: 'How to login?', flowNumber: flow, label: 'connectPassword', })(() => {
-          const referrerUrl = getReferrerUrl(client);
-          // eslint-disable-next-line no-undef
-          window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
+          if(hasDebt) {
+            getProducts(client, user.ssoId)
+              .then(
+                (res) => {
+                  window.location.href = getDebtReferrer(res) || `https://www.${host}`;
+                },
+                (res) => {
+                  console.log("debt - err");
+                  window.location.href = `https://www.${host}`;
+                },
+              );
+          } else {
+            // eslint-disable-next-line no-undef
+            window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
+          }
+
         }
         );
       },

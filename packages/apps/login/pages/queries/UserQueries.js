@@ -34,7 +34,12 @@ const USER = gql`
   query getUser {
     userData @client {
       ssoId
-      userCrmStatus
+      userCrmStatus {
+        id
+        isActiveTm
+        isActiveHeb
+        isActiveEng
+      }
       facebook {
         token
         redirect
@@ -49,6 +54,7 @@ const USER_DATA = gql`
       ssoId
       firstName
       phoneNum
+      hasDebt
       userStatus {
         isEmailValidated
         isMobileValidated
@@ -67,14 +73,24 @@ const USER_DATA = gql`
   }
 `;
 
-const RETRIEVE_HASH = gql`
- query retrieveHash($email: String!, $ssoId: String!) {
-  retrieveOtpHash(email: $email, ssoId: $ssoId) {
-    success
-    msg
-    hash
+const USER_PRODUCTS = gql`
+  query getUserProducts($id: String!) {
+    user(id: $id) {
+      products {
+        prodNum
+      }
+    }
   }
- }
+`;
+
+const RETRIEVE_HASH = gql`
+  query retrieveHash($email: String!, $ssoId: String!) {
+    retrieveOtpHash(email: $email, ssoId: $ssoId) {
+      success
+      msg
+      hash
+    }
+  }
 `;
 
 const OTP_HASH = gql`
@@ -133,6 +149,7 @@ export {
   HOSTNAME,
   REFERRER,
   PHONE_EMAIL_CONFIRMATION,
+  USER_PRODUCTS,
   RETRIEVE_HASH,
   IS_SMS_ENTER,
 };
