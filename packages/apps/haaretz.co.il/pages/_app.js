@@ -25,6 +25,7 @@ const initialState = () => ({
   osakaCanRender: false,
   pageType: null,
   platform: null,
+  pageType: null,
   readingListArray: [],
   zenMode: false,
   pageDateTimeString: null,

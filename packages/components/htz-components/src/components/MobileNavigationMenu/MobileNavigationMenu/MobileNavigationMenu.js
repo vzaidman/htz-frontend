@@ -14,24 +14,19 @@ import NoSSR from '../../NoSSR/NoSSR';
 import disablePageScroll from './disablePageScroll';
 
 const menuButtonStyle = ({ theme, menuIsOpen, }) => ({
-  height: '100%',
   display: 'block',
+  flexGrow: 1,
   color: theme.color('neutral', '-3'),
-  paddingLeft: '2rem',
-  paddingRight: '2rem',
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
   fontWeight: '700',
+  marginBlockStart: '1.5rem',
+  marginBlockEnd: '1.5rem',
   ...(menuIsOpen
     ? {
       backgroundColor: theme.color('secondary'),
       color: theme.color('neutral', '-10'),
     }
     : {}),
-  extend: [
-    theme.type(-1),
-    borderEnd('1px', 'solid', theme.color('secondary', '+1')),
-  ],
+  extend: [ theme.type(-1), borderEnd('1px', 'solid', theme.color('neutral', '-4')), ],
 });
 
 const baseProp = {
@@ -217,10 +212,7 @@ class MobileNavigationMenu extends React.Component {
                       searchIsOpen={searchIsOpen}
                       onClick={this.toggleSearchState}
                     />
-                    <MenuList
-                      menuSections={menuSections}
-                      searchIsOpen={searchIsOpen}
-                    />
+                    <MenuList menuSections={menuSections} searchIsOpen={searchIsOpen} />
                   </Fragment>
                 );
               }}
