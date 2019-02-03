@@ -38,13 +38,14 @@ const getFacebookLogin = user => {
     : false);
 };
 
-const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
+const login = ({ client, host, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, otpHash)
     .then(
       // eslint-disable-next-line no-undef
       () => {
+        setIsLoginSuccess(true);
         sendTrackingEvents(eventsTrackers, { page: eventCategory, flowNumber: flow, label: 'connectSMS', })(() => {
           const referrerUrl = getReferrerUrl(client);
           window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
@@ -58,7 +59,7 @@ const login = ({ client, host, showError, hideError, setPreloader, eventsTracker
     );
 };
 
-const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, eventCategory, }) => ({ smsCode, termsChk, }) => {
+const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, eventCategory, }) => ({ smsCode, termsChk, }) => {
   let otpHash = getOtpHash(client);
   if (typeof otpHash === 'undefined' || otpHash === null) {
     const { ssoId, } = getUser(client);
@@ -68,7 +69,7 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
         success => {
           otpHash = success.data.retrieveOtpHash.hash;
           saveOtpHash(client)({ otpHash, });
-          login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, eventCategory, })({ smsCode, termsChk, otpHash, user, flow, });
+          login({ client, host, loginWithMobile, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, eventCategory, })({ smsCode, termsChk, otpHash, user, flow, });
         },
         () => showError('אירעה שגיאה, אנא נסה שנית מאוחר יותר.')
       );
@@ -140,6 +141,7 @@ class OtpForm extends Component {
     errorMessage: '',
     isLoading: false,
     smsBlocked: false,
+    isLoginSuccess: false,
   };
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
@@ -159,7 +161,7 @@ class OtpForm extends Component {
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
     this.onLoadError();
-    if (!this.props.dontGenerateOtp && !this.state.isLoading) {
+    if (!this.props.dontGenerateOtp && !this.state.isLoading && !this.state.isLoginSuccess) {
       generateOtpIO({
         showError: this.showError,
         hideError: this.hideError,
@@ -182,7 +184,7 @@ class OtpForm extends Component {
     catch (e) {
 
     }
-  }
+  };
 
   showError = errorMsg => {
     this.setState({ showError: true, errorMessage: errorMsg, });
@@ -194,6 +196,10 @@ class OtpForm extends Component {
 
   setPreloader = isLoadingStatus => {
     this.setState({ isLoading: !!isLoadingStatus, });
+  };
+
+  setIsLoginSuccess = isLoginSuccess => {
+    this.setState({ isLoginSuccess: !!isLoginSuccess, });
   };
 
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
@@ -214,7 +220,19 @@ class OtpForm extends Component {
             <Form
               clearFormAfterSubmit={false}
               validate={validateSmsCodeInput}
-              onSubmit={onSubmit({ host, client, user, flow, loginWithMobile, showError: this.showError, hideError: this.hideError, setPreloader: this.setPreloader, eventsTrackers, eventCategory, })}
+              onSubmit={onSubmit({
+                host,
+                client,
+                user,
+                flow,
+                loginWithMobile,
+                showError: this.showError,
+                hideError: this.hideError,
+                setPreloader: this.setPreloader,
+                setIsLoginSuccess: this.setIsLoginSuccess,
+                eventsTrackers,
+                eventCategory,
+              })}
               render={({ getInputProps, handleSubmit, clearForm, }) => (
                 <Fragment>
                   <div>
