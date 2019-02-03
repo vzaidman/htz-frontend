@@ -68,9 +68,7 @@ const getUrlParams = () => {
   };
 };
 
-const getProducts = (client, ssoId) => {
-  return getUserProducts(client)({ id: ssoId, });
-}
+const getProducts = (client, ssoId) => getUserProducts(client)({ id: ssoId, });
 
 const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
   if (isLoggedIn) {
@@ -82,18 +80,19 @@ const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
       ssoId: user.id,
     };
 
-    if(getAndSaveDebtParams(client)) {
+    if (getAndSaveDebtParams(client)) {
       getProducts(client, user.id)
-      .then(
-        (res) => {
-          window.location.href = getDebtReferrer(res) || `https://www.${host}`;
-        },
-        (res) => {
-          console.log("debt - err");
-          window.location.href = `https://www.${host}`;
-        },
-      );
-    } else {
+        .then(
+          res => {
+            window.location.href = getDebtReferrer(res) || `https://www.${host}`;
+          },
+          res => {
+            console.log('debt - err');
+            window.location.href = `https://www.${host}`;
+          },
+        );
+    }
+    else {
       // eslint-disable-next-line no-undef
       window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
     }
