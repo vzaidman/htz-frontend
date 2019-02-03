@@ -162,7 +162,7 @@ class LiveBlogItem extends React.Component {
                     elementUrl={`${canonicalUrl}#${item.cardId}`}
                     tabIndex={0}
                     buttons={[ 'facebook', 'whatsapp', 'mail', ]}
-                    size={[ { until: 'l', value: 4, }, { from: 'l', value: 3, }, ]}
+                    size={4}
                     isFlat
                     vertical
                     globalButtonsStyles={{
