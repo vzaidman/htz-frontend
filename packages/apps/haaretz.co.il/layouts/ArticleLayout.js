@@ -189,7 +189,7 @@ class ArticleLayout extends React.Component {
                     </FelaComponent>
                     <WelcomePage />
                     <PaywallDebugController />
-                    <Paywall layouts={[ 'bot-persist', 'popup', ]} />
+                    <Paywall layouts={[ 'bot-persist', 'popup', 'email-activation', ]} />
                   </Fragment>
                 </StyleProvider>
                 <div id="welcomePageModal" />

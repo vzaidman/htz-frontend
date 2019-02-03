@@ -83,11 +83,13 @@ class PapiAPI extends RESTDataSource {
           popup: 'popup',
           mid: 'mid-page',
           'mid-page': 'mid-page',
+          'email-activation': 'email-activation',
         }, null);
         const linkMapper = createMapper({ // maps as following, pass original value if no match is found
           freetrial: 'https://www.haaretz.co.il/misc/onboarding-offer',
           'freetrial-direct': 'https://www.haaretz.co.il/misc/onboarding-offer',
           linkToLogin: 'https://promotions.haaretz.co.il/promotions-page/product',
+          custom_case: '',
           none: '',
           '': '',
         });

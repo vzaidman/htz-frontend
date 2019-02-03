@@ -9,6 +9,7 @@ import PaywallBottom from './Layout/PaywallBottom/PaywallBottom';
 import PaywallTop from './Layout/PaywallTop/PaywallTop';
 import PaywallPopup from './Layout/PaywallPopup/PaywallPopup';
 import PaywallMidpage from './Layout/PaywallMidpage/PaywallMidpage';
+import PaywallEmailActivation from './Layout/PaywallEmailActivation/PaywallEmailActivation';
 import type { SlotLocation, PaywallData, } from './PaywallDataProvider';
 
 type PaywallLayout = React.ComponentType<PaywallData>;
@@ -19,6 +20,7 @@ const slotMapper = createMapper({
   top: PaywallTop,
   popup: PaywallPopup,
   'mid-page': PaywallMidpage,
+  'email-activation': PaywallEmailActivation,
 }, null); // default
 
 function selectLayout(slotLocation: ?SlotLocation): ?PaywallLayout {
