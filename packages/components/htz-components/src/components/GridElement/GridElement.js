@@ -13,12 +13,7 @@ import Debug from '../Debug/Debug';
 import ClickTracker from '../ClickTracker/ClickTrackerWrapper';
 import GeneralAdSlot from '../Ads/GeneralAdSlot';
 import TabElement from '../TabElement/TabElement';
-import {
-  isClickTrackerWrapper,
-  isDfp,
-  isList,
-  isTabElement,
-} from '../../utils/validateType';
+import { isClickTrackerWrapper, isDfp, isList, isTabElement, } from '../../utils/validateType';
 
 type GridElementProps = GridElementType & {
   showTitle?: boolean,
@@ -48,9 +43,7 @@ function GridElement({
     <WrapperElement
       gutter={gutter}
       padding={
-        withoutWrapper
-          ? null
-          : [ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]
+        withoutWrapper ? null : [ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]
       }
     >
       {showTitle && title ? (
@@ -63,32 +56,33 @@ function GridElement({
           title={title}
         />
       ) : null}
-      {items.map(({ content, width, miscStyles, }) => (
-        <GridItem
-          key={content.contentId}
-          width={width}
-          miscStyles={{
-            display: 'flex',
-            ...(miscStyles || {}),
-          }}
-        >
-          {isClickTrackerWrapper(content) ? (
-            <ClickTracker {...content} />
-          ) : isDfp(content) ? (
-            <GeneralAdSlot {...content} />
-          ) : isList(content) ? (
-            <List {...content} />
-          ) : isTabElement(content) ? (
-            <TabElement List={SsrList} {...content} withoutWrapper />
-          ) : (
-            <Debug key={content.contentId}>
-              {`Element of type '${
-                content.inputTemplate
-              }' is not supported in GridElementGroup`}
-            </Debug>
-          )}
-        </GridItem>
-      ))}
+      {items.map(({ content, width, miscStyles, }) => {
+        if (!content) return null;
+        return (
+          <GridItem
+            key={content.contentId}
+            width={width}
+            miscStyles={{
+              display: 'flex',
+              ...(miscStyles || {}),
+            }}
+          >
+            {isClickTrackerWrapper(content) ? (
+              <ClickTracker {...content} />
+            ) : isDfp(content) ? (
+              <GeneralAdSlot {...content} />
+            ) : isList(content) ? (
+              <List {...content} />
+            ) : isTabElement(content) ? (
+              <TabElement List={SsrList} {...content} withoutWrapper />
+            ) : (
+              <Debug key={content.contentId}>
+                {`Element of type '${content.inputTemplate}' is not supported in GridElementGroup`}
+              </Debug>
+            )}
+          </GridItem>
+        );
+      })}
     </WrapperElement>
   );
 }
