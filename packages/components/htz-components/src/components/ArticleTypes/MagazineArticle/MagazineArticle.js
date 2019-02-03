@@ -232,7 +232,7 @@ function MagazineArticle({ articleId, slots, }) {
                       || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                     ) {
                       return (
-                        <LayoutContainer>
+                        <LayoutContainer miscStyles={{ paddingInlineEnd: '30rem', paddingInlineStart: '30rem', }}>
                           <WideArticleLayoutRow
                             key={element.contentId}
                             hideDivider
