@@ -130,7 +130,6 @@ class ArticleLayout extends React.Component {
             }`;
             client.writeData({
               data: {
-                pageType,
                 articleId,
                 title: titleSEO,
                 pageDateTimeString,
