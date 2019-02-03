@@ -1,7 +1,7 @@
 export function wrapper(theme) {
   return {
     backgroundImage: 'radial-gradient(circle at 50% 50%, #169fd1, #0b7eb5)',
-    color: theme.color('white'),
+    color: theme.color('white'),    
     extend: [
       theme.type(-1),
       theme.mq(
@@ -11,6 +11,7 @@ export function wrapper(theme) {
         {
           minHeight: '8rem',
           width: '100%',
+          display: 'none',
           padding: '1rem 2rem',
           lignHeight: '130%',
         }
