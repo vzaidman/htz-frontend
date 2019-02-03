@@ -17,6 +17,9 @@ const Butthead = dynamic(() => import('./views/Butthead/Butthead'), {
 const Calculon = dynamic(() => import('./views/Calculon/Calculon'), {
   loading: () => null,
 });
+const Clampazzo = dynamic(() => import('./views/Clampazzo/Clampazzo'), {
+  loading: () => null,
+});
 const Conrad = dynamic(() => import('./views/Conrad/Conrad'), {
   loading: () => null,
 });
@@ -104,6 +107,9 @@ export default function DynamicListView(props) {
     }
     case 'Calculon': {
       return <Calculon {...props} />;
+    }
+    case 'Clampazzo': {
+      return <Clampazzo {...props} />;
     }
     case 'Conrad': {
       return <Conrad {...props} />;
