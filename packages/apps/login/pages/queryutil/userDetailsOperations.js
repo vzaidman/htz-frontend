@@ -10,6 +10,7 @@ import INSPECT_EMAIL, {
   PHONE_EMAIL_CONFIRMATION,
   RETRIEVE_HASH,
   IS_SMS_ENTER,
+  IS_LOGIN_SUCCESS,
 } from '../queries/UserQueries';
 import {
   GENERATE_HASH,
@@ -62,6 +63,7 @@ const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.p
 const getErrors = client => client.readQuery({ query: USER_ERRORS, }).userData.errors;
 const getHostname = client => client.readQuery({ query: HOSTNAME, }).hostname;
 const getReferrer = client => client.readQuery({ query: REFERRER, }).loginReferrer;
+const isLoginSuccess = client => client.readQuery({ query: IS_LOGIN_SUCCESS, }).isLoginSuccess;
 const getPhoneEmailConfirmation = client => client.readQuery({
   query: PHONE_EMAIL_CONFIRMATION,
 }).phoneEmailConfirmation;
@@ -126,6 +128,10 @@ const savePhoneNum = client => phoneNumObj => {
   return phoneNumObj;
 };
 
+const saveLoginSuccess = client => {
+  client.writeData({ data: { loginSuccess: true, }, });
+};
+
 export {
   getPhoneNum,
   savePhoneNum,
@@ -150,4 +156,6 @@ export {
   retrieveHash,
   isEnterWithSms,
   saveIsEnterWithSms,
+  saveLoginSuccess,
+  isLoginSuccess,
 };

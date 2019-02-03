@@ -13,6 +13,8 @@ import {
   getEmail,
   getUser,
   retrieveHash,
+  isLoginSuccess,
+  saveLoginSuccess,
 } from '../../../pages/queryutil/userDetailsOperations';
 import { getHost, handleGenerateOtpIO, } from '../../../util/requestUtil';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
@@ -38,19 +40,18 @@ const getFacebookLogin = user => {
     : false);
 };
 
-const login = ({ client, host, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
+const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
   setPreloader(true);
   hideError();
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, otpHash)
     .then(
       // eslint-disable-next-line no-undef
       () => {
-        setIsLoginSuccess(true);
+        saveLoginSuccess(client);
         sendTrackingEvents(eventsTrackers, { page: eventCategory, flowNumber: flow, label: 'connectSMS', })(() => {
           const referrerUrl = getReferrerUrl(client);
           window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
-        }
-        );
+        });
       },
       reason => {
         setPreloader(false);
@@ -59,7 +60,7 @@ const login = ({ client, host, showError, hideError, setPreloader, setIsLoginSuc
     );
 };
 
-const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, eventCategory, }) => ({ smsCode, termsChk, }) => {
+const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, eventCategory, }) => ({ smsCode, termsChk, }) => {
   let otpHash = getOtpHash(client);
   if (typeof otpHash === 'undefined' || otpHash === null) {
     const { ssoId, } = getUser(client);
@@ -69,13 +70,13 @@ const onSubmit = ({ client, host, user, flow, loginWithMobile, showError, hideEr
         success => {
           otpHash = success.data.retrieveOtpHash.hash;
           saveOtpHash(client)({ otpHash, });
-          login({ client, host, loginWithMobile, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, eventCategory, })({ smsCode, termsChk, otpHash, user, flow, });
+          login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, eventCategory, })({ smsCode, termsChk, otpHash, user, flow, });
         },
         () => showError('אירעה שגיאה, אנא נסה שנית מאוחר יותר.')
       );
   }
   else {
-    login({ client, host, loginWithMobile, showError, hideError, setPreloader, setIsLoginSuccess, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
+    login({ client, host, loginWithMobile, showError, hideError, setPreloader, eventsTrackers, })({ smsCode, termsChk, otpHash, user, flow, });
   }
 };
 
@@ -141,7 +142,6 @@ class OtpForm extends Component {
     errorMessage: '',
     isLoading: false,
     smsBlocked: false,
-    isLoginSuccess: false,
   };
 
   /* :::::::::::::::::::::::::::::::::::: { PROPS :::::::::::::::::::::::::::::::::::: */
@@ -161,7 +161,7 @@ class OtpForm extends Component {
   /* ::::::::::::::::::::::::::::::::::: { METHODS ::::::::::::::::::::::::::::::::::: */
   componentDidMount() {
     this.onLoadError();
-    if (!this.props.dontGenerateOtp && !this.state.isLoading && !this.state.isLoginSuccess) {
+    if (!this.props.dontGenerateOtp && !this.state.isLoading && !isLoginSuccess(this.props.client)) {
       generateOtpIO({
         showError: this.showError,
         hideError: this.hideError,
@@ -198,10 +198,6 @@ class OtpForm extends Component {
     this.setState({ isLoading: !!isLoadingStatus, });
   };
 
-  setIsLoginSuccess = isLoginSuccess => {
-    this.setState({ isLoginSuccess: !!isLoginSuccess, });
-  };
-
   /* ::::::::::::::::::::::::::::::::::: METHODS } ::::::::::::::::::::::::::::::::::: */
 
   render() {
@@ -229,7 +225,6 @@ class OtpForm extends Component {
                 showError: this.showError,
                 hideError: this.hideError,
                 setPreloader: this.setPreloader,
-                setIsLoginSuccess: this.setIsLoginSuccess,
                 eventsTrackers,
                 eventCategory,
               })}
