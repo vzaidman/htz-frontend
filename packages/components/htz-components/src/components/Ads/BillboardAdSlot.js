@@ -19,7 +19,7 @@ function BillboardAdSlot(props: DfpBannerType): Node {
           ),
           theme.mq(
             { from: 'l', },
-            { '&>:first-child :not(:empty)': { paddingTop: '5rem', paddingBottom: '5rem', }, },
+            { '&:not(:empty)': { paddingTop: '5rem', paddingBottom: '5rem', }, },
           ),
         ],
       })}
