@@ -16,7 +16,6 @@ export default (section, author) => (
         `,
       }}
     />
-    <script async src="//static.chartbeat.com/js/chartbeat_mab.js" />
     <script async src="//static.chartbeat.com/js/chartbeat.js" />
     <script
       type="text/javascript"
@@ -71,5 +70,6 @@ export default (section, author) => (
         `,
       }}
     />
+    {/* <script async src="//static.chartbeat.com/js/chartbeat_mab.js" /> */}
   </React.Fragment>
 );
