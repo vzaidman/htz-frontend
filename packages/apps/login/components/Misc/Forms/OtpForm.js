@@ -43,17 +43,18 @@ const getFacebookLogin = user => {
 const login = ({ client, host, showError, hideError, setPreloader, eventsTrackers, eventCategory = 'How to login? SMS', loginWithMobile, }) => ({ smsCode, termsChk, otpHash, user, flow, }) => {
   setPreloader(true);
   hideError();
+  saveLoginSuccess(client)(true);
   loginWithMobile(getPhoneNum(client), getEmail(client), smsCode, termsChk, otpHash)
     .then(
       // eslint-disable-next-line no-undef
       () => {
-        saveLoginSuccess(client);
         sendTrackingEvents(eventsTrackers, { page: eventCategory, flowNumber: flow, label: 'connectSMS', })(() => {
           const referrerUrl = getReferrerUrl(client);
           window.location.href = getFacebookLogin(user) || (referrerUrl || `https://www.${host}`);
         });
       },
       reason => {
+        saveLoginSuccess(client)(false);
         setPreloader(false);
         showError((reason.message || 'אירעה שגיאה, אנא נסה שנית מאוחר יותר.'));
       }

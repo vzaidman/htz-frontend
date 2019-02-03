@@ -113,7 +113,7 @@ const REFERRER = gql`
 
 const IS_LOGIN_SUCCESS = gql`
   query isLoginSuccess {
-    isLoginSuccess @client
+    loginSuccess @client
   }
 `;
 

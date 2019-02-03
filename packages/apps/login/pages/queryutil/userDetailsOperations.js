@@ -63,7 +63,7 @@ const getPhoneNum = client => client.readQuery({ query: PHONE_NUM, }).userData.p
 const getErrors = client => client.readQuery({ query: USER_ERRORS, }).userData.errors;
 const getHostname = client => client.readQuery({ query: HOSTNAME, }).hostname;
 const getReferrer = client => client.readQuery({ query: REFERRER, }).loginReferrer;
-const isLoginSuccess = client => client.readQuery({ query: IS_LOGIN_SUCCESS, }).isLoginSuccess;
+const isLoginSuccess = client => client.readQuery({ query: IS_LOGIN_SUCCESS, }).loginSuccess;
 const getPhoneEmailConfirmation = client => client.readQuery({
   query: PHONE_EMAIL_CONFIRMATION,
 }).phoneEmailConfirmation;
@@ -128,8 +128,8 @@ const savePhoneNum = client => phoneNumObj => {
   return phoneNumObj;
 };
 
-const saveLoginSuccess = client => {
-  client.writeData({ data: { loginSuccess: true, }, });
+const saveLoginSuccess = client => isSuccess => {
+  client.writeData({ data: { loginSuccess: isSuccess, }, });
 };
 
 export {
