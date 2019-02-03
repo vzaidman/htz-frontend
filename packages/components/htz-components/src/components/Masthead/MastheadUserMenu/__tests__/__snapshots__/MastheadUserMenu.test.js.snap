@@ -2,14 +2,16 @@
 
 exports[`<MastheadUserMenu DOM element renders correctly with no props 1`] = `
 <div>
-  <div
-    className="htz-a"
+  <a
+    className={null}
+    href="https://www.haaretz.co.il/misc/login-page"
+    onClick={null}
   >
     <button
       aria-expanded={false}
-      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
       onBlur={[Function]}
-      onClick={[Function]}
+      onClick={null}
       onFocus={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -17,23 +19,16 @@ exports[`<MastheadUserMenu DOM element renders correctly with no props 1`] = `
       type="button"
     >
       <span
-        className="htz-p htz-q htz-j htz-k"
+        className="htz-o htz-p htz-i htz-j"
       >
         <span
-          className="htz-r"
+          className="htz-q"
         >
-          שלום
-          ,
-           
-        </span>
-        <span
-          className="htz-s"
-        >
-          FIRSTNAME
+          התחברות
         </span>
       </span>
       <svg
-        className="htz-t htz-u htz-v htz-w htz-x"
+        className="htz-r htz-s htz-t htz-u htz-v"
         height="1em"
         viewBox="0 0 256 256"
         width="1em"
@@ -45,22 +40,24 @@ exports[`<MastheadUserMenu DOM element renders correctly with no props 1`] = `
         />
       </svg>
     </button>
-  </div>
+  </a>
 </div>
 `;
 
-exports[`<MastheadUserMenu DOM element renders correctly with no props 2`] = `".htz-a{position:relative}.htz-b{height:100%}.htz-c{color:#0B7EB5}.htz-d{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-e{border:none}.htz-f{padding-top:1rem}.htz-g{padding-bottom:1rem}.htz-h{padding-right:2rem}.htz-i{padding-left:1rem}.htz-j{transition-duration:.3s}.htz-k{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-p{padding-block-start:0.4rem}.htz-q{color:#787878}.htz-r{font-weight:400}.htz-s{font-weight:700}.htz-t{vertical-align:-0.15em}.htz-u{color:inherit}.htz-v{fill:#FFF}.htz-w{font-size:3.5rem}.htz-x{margin-right:2rem}@media (max-width: 79.9375em){.htz-l{font-size:2.3333333333333335rem}.htz-m{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-n{font-size:2.2857142857142856rem}.htz-o{line-height:1.3125em}}"`;
+exports[`<MastheadUserMenu DOM element renders correctly with no props 2`] = `".htz-a{height:100%}.htz-b{color:#0B7EB5}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{border:none}.htz-e{padding-top:1rem}.htz-f{padding-bottom:1rem}.htz-g{padding-right:2rem}.htz-h{padding-left:1rem}.htz-i{transition-duration:.3s}.htz-j{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-o{padding-block-start:0.4rem}.htz-p{color:#787878}.htz-q{font-weight:700}.htz-r{vertical-align:-0.15em}.htz-s{color:inherit}.htz-t{fill:#FFF}.htz-u{font-size:3.5rem}.htz-v{margin-right:2rem}@media (max-width: 79.9375em){.htz-k{font-size:2.3333333333333335rem}.htz-l{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-m{font-size:2.2857142857142856rem}.htz-n{line-height:1.3125em}}"`;
 
 exports[`<MastheadUserMenu DOM element renders correctly with props 1`] = `
 <div>
-  <div
-    className="htz-a"
+  <a
+    className={null}
+    href="https://www.haaretz.co.il/misc/login-page"
+    onClick={null}
   >
     <button
       aria-expanded={false}
-      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n htz-o"
+      className="htz-a htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
       onBlur={[Function]}
-      onClick={[Function]}
+      onClick={null}
       onFocus={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -68,23 +65,16 @@ exports[`<MastheadUserMenu DOM element renders correctly with props 1`] = `
       type="button"
     >
       <span
-        className="htz-p htz-q htz-j htz-k"
+        className="htz-o htz-p htz-i htz-j"
       >
         <span
-          className="htz-r"
+          className="htz-q"
         >
-          שלום
-          ,
-           
-        </span>
-        <span
-          className="htz-s"
-        >
-          FIRSTNAME
+          התחברות
         </span>
       </span>
       <svg
-        className="htz-t htz-u htz-v htz-w htz-x"
+        className="htz-r htz-s htz-t htz-u htz-v"
         height="1em"
         viewBox="0 0 256 256"
         width="1em"
@@ -96,8 +86,8 @@ exports[`<MastheadUserMenu DOM element renders correctly with props 1`] = `
         />
       </svg>
     </button>
-  </div>
+  </a>
 </div>
 `;
 
-exports[`<MastheadUserMenu DOM element renders correctly with props 2`] = `".htz-a{position:relative}.htz-b{height:100%}.htz-c{color:#0B7EB5}.htz-d{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-e{border:none}.htz-f{padding-top:1rem}.htz-g{padding-bottom:1rem}.htz-h{padding-right:2rem}.htz-i{padding-left:1rem}.htz-j{transition-duration:.3s}.htz-k{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-p{padding-block-start:0.4rem}.htz-q{color:#787878}.htz-r{font-weight:400}.htz-s{font-weight:700}.htz-t{vertical-align:-0.15em}.htz-u{color:inherit}.htz-v{fill:#FFF}.htz-w{font-size:3.5rem}.htz-x{margin-right:2rem}@media (max-width: 79.9375em){.htz-l{font-size:2.3333333333333335rem}.htz-m{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-n{font-size:2.2857142857142856rem}.htz-o{line-height:1.3125em}}"`;
+exports[`<MastheadUserMenu DOM element renders correctly with props 2`] = `".htz-a{height:100%}.htz-b{color:#0B7EB5}.htz-c{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-d{border:none}.htz-e{padding-top:1rem}.htz-f{padding-bottom:1rem}.htz-g{padding-right:2rem}.htz-h{padding-left:1rem}.htz-i{transition-duration:.3s}.htz-j{transition-timing-function:cubic-bezier(.55, 0, .1, 1)}.htz-o{padding-block-start:0.4rem}.htz-p{color:#787878}.htz-q{font-weight:700}.htz-r{vertical-align:-0.15em}.htz-s{color:inherit}.htz-t{fill:#FFF}.htz-u{font-size:3.5rem}.htz-v{margin-right:2rem}@media (max-width: 79.9375em){.htz-k{font-size:2.3333333333333335rem}.htz-l{line-height:1.2857142857142858em}}@media (min-width: 80em){.htz-m{font-size:2.2857142857142856rem}.htz-n{line-height:1.3125em}}"`;
