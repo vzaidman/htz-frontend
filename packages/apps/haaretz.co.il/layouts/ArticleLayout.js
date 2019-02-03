@@ -134,7 +134,6 @@ class ArticleLayout extends React.Component {
                 articleId,
                 title: titleSEO,
                 pageDateTimeString,
-                pageType,
                 // place properties to reset in the client store when a new article is loaded
                 isOsakaDisplayed: false,
               },

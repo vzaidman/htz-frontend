@@ -13,20 +13,36 @@ import A11yDialog from '../../A11yDialog/A11yDialog';
 import NoSSR from '../../NoSSR/NoSSR';
 import disablePageScroll from './disablePageScroll';
 
-const menuButtonStyle = ({ theme, menuIsOpen, }) => ({
+const menuButtonStyle = ({ theme, menuIsOpen, isHomepage, }) => ({
   display: 'block',
-  flexGrow: 1,
   color: theme.color('neutral', '-3'),
   fontWeight: '700',
-  marginBlockStart: '1.5rem',
-  marginBlockEnd: '1.5rem',
-  ...(menuIsOpen
-    ? {
-      backgroundColor: theme.color('secondary'),
-      color: theme.color('neutral', '-10'),
-    }
-    : {}),
-  extend: [ theme.type(-1), borderEnd('1px', 'solid', theme.color('neutral', '-4')), ],
+  extend: [
+    theme.type(-1),
+    {
+      ...(isHomepage
+        ? {
+          marginBlockStart: '1.5rem',
+          marginBlockEnd: '1.5rem',
+          flexGrow: 1,
+          ...borderEnd('1px', 'solid', theme.color('neutral', '-4')),
+        }
+        : {
+          height: '100%',
+          paddingLeft: '2rem',
+          paddingRight: '2rem',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+          ...borderEnd('1px', 'solid', theme.color('secondary', '+1')),
+        }),
+      ...(menuIsOpen
+        ? {
+          backgroundColor: theme.color('secondary'),
+          color: theme.color('neutral', '-10'),
+        }
+        : {}),
+    },
+  ],
 });
 
 const baseProp = {
@@ -90,6 +106,11 @@ class MobileNavigationMenu extends React.Component {
     wrapperSetState: PropTypes.func.isRequired,
 
     menuIsOpen: PropTypes.bool,
+    /**
+     * A boolean which indicate path location to render
+     * the correct view on homepage or article page.
+     */
+    isHomepage: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -116,15 +137,17 @@ class MobileNavigationMenu extends React.Component {
 
   render() {
     const { searchIsOpen, modalOpen, } = this.state;
-    const { menuSections, menuIsOpen, wrapperSetState, } = this.props;
+    const { menuSections, menuIsOpen, wrapperSetState, isHomepage, } = this.props;
+
     this.menuIsOpen = menuIsOpen;
     return (
       <FelaTheme
         render={theme => (
           <Fragment>
             <FelaComponent
-              rule={menuButtonStyle}
+              isHomepage={isHomepage}
               menuIsOpen={menuIsOpen}
+              rule={menuButtonStyle}
               render={({ theme, className, }) => (
                 <button
                   type="button"
@@ -225,7 +248,7 @@ class MobileNavigationMenu extends React.Component {
 }
 
 // eslint-disable-next-line react/prop-types
-export default ({ contentId, menuIsOpen, onClick, wrapperSetState, }) => (
+export default ({ contentId, menuIsOpen, onClick, wrapperSetState, isHomepage, }) => (
   <Query query={NavigationQuery} variables={{ listId: contentId, }}>
     {({ data, loading, error, }) => {
       if (error) return null;
@@ -237,6 +260,7 @@ export default ({ contentId, menuIsOpen, onClick, wrapperSetState, }) => (
         <Fragment>
           <NoSSR>{disablePageScroll(menuIsOpen)}</NoSSR>
           <MobileNavigationMenu
+            isHomepage={isHomepage}
             menuSections={menu}
             onClick={onClick}
             menuIsOpen={menuIsOpen}
