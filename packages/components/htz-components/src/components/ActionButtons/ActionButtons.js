@@ -82,7 +82,8 @@ const propTypes = {
    * Should the icon's bar be vertical or horizontal (default).
    */
   vertical: PropTypes.bool,
-  shouldMainNavBarDisplay: PropTypes.bool,
+  // to use with tooltip (currently not in use)
+  // shouldMainNavBarDisplay: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -94,7 +95,8 @@ const defaultProps = {
   tabIndex: null,
   vertical: false,
   size: 2,
-  shouldMainNavBarDisplay: true,
+  // to use with tooltip (currently not in use)
+  // shouldMainNavBarDisplay: true,
 };
 
 const wrapperStyle = ({ vertical, miscStyles, theme, }) => ({
