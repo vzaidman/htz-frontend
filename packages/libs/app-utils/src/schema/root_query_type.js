@@ -98,6 +98,7 @@ const RootQuery = new GraphQLObjectType({
     paywall: {
       type: Paywall,
       args: {
+        referrer: { type: new GraphQLNonNull(GraphQLString), },
         articleCount: { type: new GraphQLNonNull(GraphQLInt), },
         userType: { type: new GraphQLNonNull(GraphQLString), },
         useragent: { type: new GraphQLNonNull(GraphQLString), },

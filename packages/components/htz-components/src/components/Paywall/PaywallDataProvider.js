@@ -1,4 +1,5 @@
 // @flow
+/* global document */
 import * as React from 'react';
 import gql from 'graphql-tag';
 import { ReadArticleService, } from '@haaretz/htz-user-utils';
@@ -7,12 +8,14 @@ import NoSSR from '../NoSSR/NoSSR';
 
 const paywallDataQuery = gql`
   query getPaywallData(
+    $referrer: String!
     $isSuperContent: Boolean!
     $userType: String!
     $useragent: String!
     $articleCount: Int!
   ) {
     paywall(
+      referrer: $referrer
       isSuperContent: $isSuperContent
       userType: $userType
       useragent: $useragent
@@ -65,6 +68,11 @@ export type PaywallData = {
   deny: PaywallLink,
 };
 
+function isNewsletterRef(referrer) {
+  const query = /[?&]utm_source=newsletter/;
+  return query.test(referrer);
+}
+
 type Props = {
   children: PaywallData => React.Node,
 };
@@ -82,6 +90,9 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
             <Query
               query={paywallDataQuery}
               variables={{
+                referrer: isNewsletterRef(document.referrer)
+                  ? 'newsletter'
+                  : 'direct',
                 isSuperContent: data.isSuperContent || false,
                 userType: (data.user && data.user.type) || 'anonymous',
                 useragent: data.platform === 'web'
