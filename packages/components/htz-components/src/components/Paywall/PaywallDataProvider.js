@@ -89,11 +89,20 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
           return null;
         }
         const tmssoData = CookieUtils.getCookie('tmsso');
-        console.log('[PaywallDataProvider] emailValidity', tmssoData);
+        const userProductsData = JSON.parse(CookieUtils.getCookie('userProducts') || 'null');
+        console.log('[PaywallDataProvider] userProductsData', userProductsData);
         const isValidEmail = tmssoData && tmssoData.emailValidity === 'valid';
+        const isFreeTrial = (userProductsData && userProductsData.products instanceof Array)
+          ? userProductsData.products.some(prod => prod.trial)
+          : false;
         let userType = (data.user && data.user.type) || 'anonymous';
-        if (userType === 'registered' && isValidEmail === false) {
-          userType = 'rnv';
+        if (isValidEmail === false) {
+          if (isFreeTrial) {
+            userType = 'fswvm';
+          }
+          else if (userType === 'registered') {
+            userType = 'rnv';
+          }
         }
         return (
           <Query
