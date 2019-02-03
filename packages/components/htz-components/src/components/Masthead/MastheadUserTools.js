@@ -3,6 +3,7 @@ import { FelaComponent, } from 'react-fela';
 import MastheadA11yMenu from './MastheadA11yMenu/MastheadA11yMenu';
 import MastheadReadingList from './MastheadReadingList';
 import MastheadUserMenu from './MastheadUserMenu/MastheadUserMenu';
+import UserDispenser from '../User/UserDispenser';
 
 export default function MastheadUserTools() {
   return (
@@ -14,7 +15,11 @@ export default function MastheadUserTools() {
       })}
       render={({ className, }) => (
         <div className={className}>
-          <MastheadUserMenu />
+          <UserDispenser
+            render={({ user, }) => (
+              <MastheadUserMenu userName={user.firstName} />
+            )}
+          />
           <MastheadReadingList />
           <MastheadA11yMenu />
         </div>
