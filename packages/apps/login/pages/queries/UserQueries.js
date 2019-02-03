@@ -111,6 +111,12 @@ const REFERRER = gql`
   }
 `;
 
+const IS_LOGIN_SUCCESS = gql`
+  query isLoginSuccess {
+    isLoginSuccess @client
+  }
+`;
+
 const USER_EMAIL = gql`
   query getUserEmail {
     userEmail @client
@@ -135,4 +141,5 @@ export {
   PHONE_EMAIL_CONFIRMATION,
   RETRIEVE_HASH,
   IS_SMS_ENTER,
+  IS_LOGIN_SUCCESS,
 };

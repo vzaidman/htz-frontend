@@ -5,6 +5,7 @@ const initialState = () => ({
   currentState: null,
   historyPointer: null,
   isEnterWithSms: false,
+  isLoginSuccess: false,
   stateHistory: {
     pastState: null,
     pastTransition: null,
