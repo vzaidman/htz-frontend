@@ -43,9 +43,9 @@ export default class ArticlePageMasthead extends React.PureComponent<ArticlePage
               { from: 's', value: [ 'bg', ], },
             ]}
             miscStyles={{
-              position: [ { until: 's', value: 'sticky', }, ],
+              position: [ { until: 's', value: 'sticky', }, { from: 's', value: 'relative', }, ],
               top: [ { until: 's', value: 0, }, ],
-              zIndex: [ { until: 's', value: theme.getZIndex('masthead'), }, ],
+              zIndex: theme.getZIndex('masthead'),
             }}
           >
             <LayoutContainer miscStyles={mastheadWrapperMiscStyles({ theme, shouldDisplay, })}>

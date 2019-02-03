@@ -60,11 +60,11 @@ export default class HomePageMasthead extends React.PureComponent<HomePageMasthe
         render={theme => (
           <LayoutRow
             miscStyles={{
-              position: [ { until: 's', value: 'fixed', }, ],
+              position: [ { until: 's', value: 'fixed', }, { from: 's', value: 'relative', }, ],
               top: [ { until: 's', value: 0, }, ],
               left: [ { until: 's', value: 0, }, ],
               width: [ { until: 's', value: '100%', }, ],
-              zIndex: [ { until: 's', value: theme.getZIndex('masthead'), }, ],
+              zIndex: theme.getZIndex('masthead'),
             }}
             namedBgc={[
               { until: 's', value: 'transparent', },
