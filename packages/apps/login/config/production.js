@@ -35,6 +35,7 @@ module.exports = {
   graphQLuseSSL: true,
   graphQLexposedPort: false,
   graphQLSubDomain: process.env.GRAPHQL_SUB_DOMAIN || 'graphql',
+  msServiceDomain: 'ms-apps',
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   appPort: process.env.APP_PORT || '2004',

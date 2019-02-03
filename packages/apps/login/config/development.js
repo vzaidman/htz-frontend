@@ -41,4 +41,5 @@ module.exports = {
   logLevel: 'debug',
   assetPrefix: '',
   enableHttpLogging: false,
+  msServiceDomain: 'ms-apps-dev',
 };
