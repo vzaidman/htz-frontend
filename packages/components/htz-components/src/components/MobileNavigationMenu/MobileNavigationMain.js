@@ -56,6 +56,7 @@ export default class MobileNavigationMain extends React.Component {
                 <Fragment>
                   <div className={className}>
                     <MobileNavigationMenu
+                      isHomepage={isHomepage}
                       contentId={contentId}
                       menuIsOpen={menuIsOpen && shouldDisplay}
                       onClick={this.toggleMenu}
