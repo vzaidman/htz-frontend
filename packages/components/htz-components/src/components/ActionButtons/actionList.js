@@ -36,6 +36,7 @@ import IconMail from '../Icon/icons/IconMail';
 import IconMailAlert from '../Icon/icons/IconMailAlert';
 import IconMessenger from '../Icon/icons/IconMessenger';
 import IconPrint from '../Icon/icons/IconPrint';
+import IconReading from '../Icon/icons/IconReading';
 import IconTwitter from '../Icon/icons/IconTwitter';
 import IconWhatsapp from '../Icon/icons/IconWhatsapp';
 import IconZen from '../Icon/icons/IconZen';
@@ -514,6 +515,40 @@ const Print: StatelessFunctionalComponent<PrintButtonProps> = ({
   />
 );
 
+const ReadingList: StatelessFunctionalComponent<CommentButtonProps> = ({
+  buttonStyles,
+  size,
+  iconStyles,
+  ...props
+}): Node => (
+  <ActionButton
+    render={({ platform, biAction, hostname, }) => (
+      <Button
+        {...props}
+        miscStyles={buttonStyles}
+        title="רשימת קריאה"
+        href={`http://${hostname}/personal-area/my-account#readingList`}
+        onClick={() => {
+          biAction({
+            actionCode: 240,
+            additionalInfo: {
+              platform,
+            },
+          });
+        }}
+      >
+        <IconReading size={size} miscStyles={iconStyles} />
+        <FelaComponent
+          style={theme => ({
+            color: theme.color('neutral', '-2'),
+            extend: [ theme.type(-2), ],
+          })}
+          render={({ className, }) => <span className={className}>רשימת קריאה</span>}
+        />
+      </Button>
+    )}
+  />
+);
 // Save component is set from ActionSave.js
 
 const Twitter: StatelessFunctionalComponent<TwitterButtonProps> = ({
@@ -672,6 +707,7 @@ const getAction = (iconName: string) => {
     [ 'mailalert', MailAlert, ],
     [ 'messenger', Messenger, ],
     [ 'print', Print, ],
+    [ 'readinglist', ReadingList, ],
     [ 'save', Save, ],
     [ 'twitter', Twitter, ],
     [ 'whatsapp', Whatsapp, ],
