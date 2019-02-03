@@ -5,8 +5,6 @@ import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import type { Node, } from 'react';
 
 import ActionButtons from '../../../ActionButtons/ActionButtons';
-import PlusClose from '../../../Animations/PlusClose';
-import { Button, } from '../../../ActionButtons/actionList';
 import { stylesPropType, } from '../../../../propTypes/stylesPropType';
 
 type Props = {
@@ -17,9 +15,7 @@ type Props = {
 
 type State = {
   isOpen: boolean,
-  // focused: boolean,
   hover: boolean,
-  hiddenButtonsBarWidth: number,
 };
 
 class ShareBar extends React.Component<Props, State> {
@@ -29,9 +25,7 @@ class ShareBar extends React.Component<Props, State> {
 
   state = {
     isOpen: false,
-    // focused: false,
     hover: false,
-    hiddenButtonsBarWidth: -1,
   };
 
   toggleOpen: boolean => void = () => this.setState((prevState: State) => ({
@@ -51,7 +45,6 @@ class ShareBar extends React.Component<Props, State> {
     const {
       isOpen,
       //  focused,
-      hover,
     } = this.state;
     return (
       <FelaComponent
@@ -60,7 +53,7 @@ class ShareBar extends React.Component<Props, State> {
           overflow: 'hidden',
           display: 'flex',
           justifyContent: 'space-between',
-          width: isOpen ? '61rem' : '43rem',
+          width: '61rem',
           marginRight: 'auto',
           marginLeft: 'auto',
           transitionProperty: 'width',
@@ -99,80 +92,29 @@ class ShareBar extends React.Component<Props, State> {
                 },
                 'mail',
                 'comments',
+                'print',
+                {
+                  name: 'save',
+                  buttonStyles: isArticleSaved => ({
+                    minWidth: '12rem',
+                    ...(isArticleSaved
+                      ? {
+                        color: theme.color('neutral', '-10'),
+                        backgroundColor: theme.color('primary'),
+                        ':hover': {
+                          color: theme.color('neutral', '-10'),
+                          backgroundColor: theme.color('secondary'),
+                        },
+                      }
+                      : {}),
+                  }),
+                },
               ]}
               globalButtonsStyles={{
                 minWidth: '8rem',
               }}
               size={4.5}
             />
-            <FelaComponent style={{ display: 'flex', }}>
-              <React.Fragment>
-                <div
-                  ref={el => {
-                    if (el && this.state.hiddenButtonsBarWidth === -1) {
-                      console.warn('el.offsetWidth', el.offsetWidth);
-                      this.setState({ hiddenButtonsBarWidth: el.offsetWidth, });
-                    }
-                  }}
-                >
-                  <ActionButtons
-                    elementName={title}
-                    elementUrl={canonicalUrl}
-                    miscStyles={{
-                      width:
-                        this.state.hiddenButtonsBarWidth !== -1
-                          ? isOpen
-                            ? `${this.state.hiddenButtonsBarWidth}px`
-                            : '0'
-                          : 'auto',
-                      transitionProperty: 'width',
-                      ...theme.getDelay('transition', -1),
-                      ...theme.getDuration('transition', -1),
-                      ...theme.getTimingFunction('transition', 'linear'),
-                    }}
-                    buttons={[
-                      'print',
-                      {
-                        name: 'save',
-                        buttonStyles: isArticleSaved => ({
-                          minWidth: '12rem',
-                          ...(isArticleSaved
-                            ? {
-                              color: theme.color('neutral', '-10'),
-                              backgroundColor: theme.color('primary'),
-                              ':hover': {
-                                color: theme.color('neutral', '-10'),
-                                backgroundColor: theme.color('secondary'),
-                              },
-                            }
-                            : {}),
-                        }),
-                      },
-                    ]}
-                    globalButtonsStyles={{
-                      minWidth: '8rem',
-                    }}
-                    size={4}
-                  />
-                </div>
-
-                <Button
-                  onClick={this.toggleOpen}
-                  // onFocus={() => this.changeFocus(true)}
-                  // onBlur={() => this.changeFocus(false)}
-                  onMouseEnter={() => this.toggleHover(true)}
-                  onMouseLeave={() => this.toggleHover(false)}
-                  title={!isOpen ? 'אפשרויות נוספות' : null}
-                  miscStyles={{
-                    paddingStart: '3rem',
-                    paddingEnd: '3rem',
-                    backgroundColor: 'white',
-                  }}
-                >
-                  <PlusClose isOpen={isOpen} size={3} color={hover ? [ 'secondary', ] : [ 'primary', ]} />
-                </Button>
-              </React.Fragment>
-            </FelaComponent>
           </div>
         )}
       />
