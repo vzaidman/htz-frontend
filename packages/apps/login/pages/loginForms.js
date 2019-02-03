@@ -91,8 +91,8 @@ class LoginForms extends Component {
                 {client => {
                   const host = getHost(client);
                   const flow = getFlowNumber(client);
-                  const activeTab = '2345'.includes(flow) ? 0 : 1;
                   const user = getUserFromApollo(client);
+                  const activeTab = '2345'.includes(flow) ? 0 : 1;
                   return (
                     <FelaTheme
                       render={theme => (

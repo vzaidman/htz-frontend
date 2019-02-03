@@ -14,12 +14,14 @@ import {
   validateMailConfirmation,
   sendMailConfirmation,
   saveIsEnterWithSms,
+  getUserProducts,
 } from '../../../pages/queryutil/userDetailsOperations';
 import { writeMetaDataToApollo, parseRouteInfo, } from '../../../pages/queryutil/flowUtil';
 import { LoginContentStyles, LoginMiscLayoutStyles, } from '../../StyleComponents/LoginStyleComponents';
 import { getFacebookLoginUrl, getFacebookParams, } from '../../../util/facebookLoginUtil';
 import { sendTrackingEvents, } from '../../../util/trackingEventsUtil';
 import { getReferrerUrl, } from '../../../util/referrerUtil';
+import { getAndSaveDebtParams, getDebtReferrer, } from '../../../util/debtCheckUtil';
 import { getHost, } from '../../../util/requestUtil';
 
 // Styling Components -----------------
@@ -66,6 +68,10 @@ const getUrlParams = () => {
   };
 };
 
+const getProducts = (client, ssoId) => {
+  return getUserProducts(client)({ id: ssoId, });
+}
+
 const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
   if (isLoggedIn) {
     const host = getHost(client);
@@ -75,8 +81,22 @@ const checkIfLoggedin = (client, { isLoggedIn, user, }) => {
       subscription: user.type,
       ssoId: user.id,
     };
-    // eslint-disable-next-line no-undef
-    window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
+
+    if(getAndSaveDebtParams(client)) {
+      getProducts(client, user.id)
+      .then(
+        (res) => {
+          window.location.href = getDebtReferrer(res) || `https://www.${host}`;
+        },
+        (res) => {
+          console.log("debt - err");
+          window.location.href = `https://www.${host}`;
+        },
+      );
+    } else {
+      // eslint-disable-next-line no-undef
+      window.location = (getFacebookLogin(facebookUser) || (getReferrerUrl(client) || `https://www.${host}`)) || false;
+    }
   }
 };
 
@@ -110,6 +130,7 @@ const handleResponseFromGraphql = ({
   setPreloader,
   eventsTrackers,
 }) => {
+  getAndSaveDebtParams(client);
   const dataSaved = saveUserData(client)({ userData: res.userByMail, });
   const transformedObj = objTransform(res);
   const flow = getFlowByData(transformedObj.user);
