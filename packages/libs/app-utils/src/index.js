@@ -49,6 +49,7 @@ import tags from './fragments/tags/tags';
 import teaser, {
   teaserForLeftElement,
   teaserForBender,
+  teaserForClampazzo,
   teaserForGamal,
   teaserForMom,
   teaserForPanucci,
@@ -104,6 +105,7 @@ export {
   tags,
   teaser,
   teaserForBender,
+  teaserForClampazzo,
   teaserForGamal,
   teaserForMom,
   teaserForPanucci,
