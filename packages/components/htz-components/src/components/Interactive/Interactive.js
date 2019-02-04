@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BeforeAndAfter from './components/BeforeAndAfter';
+import Survey from '../Survey/Survey';
 import Debug from '../Debug/Debug';
 
 const propTypes = {
@@ -15,10 +16,20 @@ const defaultProps = {
   properties: null,
 };
 
-const template = new Map([ [ 'com.interactive.beforeafter', BeforeAndAfter, ], ]);
+const template = new Map([
+  [ 'com.interactive.beforeafter', BeforeAndAfter, ],
+  [ 'com.tm.ArticleInteractiveHtmlElement', Survey, ],
+]);
 
 function InteractiveElement(props) {
-  const Element = template.get(props.inputTemplate);
+  let Element;
+  if (props.contentName === 'surveys2019') {
+    Element = Survey;
+  }
+  else {
+    Element = template.get(props.inputTemplate);
+  }
+
   return Element ? (
     <Element {...props} />
   ) : (
