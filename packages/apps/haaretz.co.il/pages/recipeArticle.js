@@ -20,7 +20,7 @@ function RecipeArticlePage({ url, }) {
   return (
     <ArticleLayout
       url={url}
-      render={({ articleId, slots, }) => <RecipeArticle articleId={articleId} slots={slots} />}
+      render={({ articleId, slots, path, }) => <RecipeArticle articleId={articleId} slots={slots} path={path} />}
     />
   );
 }

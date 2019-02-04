@@ -40,7 +40,7 @@ const ArticleGalleryQuery: DocumentNode = gql`
 `;
 
 type Props = {
-  articleId: string,
+  path: string,
 };
 
 const filterData: Array<any> => Array<ImageDataType> = article => (
@@ -74,11 +74,11 @@ const closeGallery: Object => void = client => {
 const getImageIndex: (Array<ImageDataType>, string) => number =
   (images, contentId) => images.findIndex(imageObj => imageObj.contentId === contentId);
 
-function ArticleGallery({ articleId, }: Props): Node {
+function ArticleGallery({ path, }: Props): Node {
   return (
     <Query
       query={ArticleGalleryQuery}
-      variables={{ path: articleId, }}
+      variables={{ path, }}
     >
       {({ loading, error, data, client, }) => {
         if (loading) return null;

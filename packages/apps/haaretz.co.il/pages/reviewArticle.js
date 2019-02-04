@@ -20,7 +20,7 @@ function ReviewArticlePage({ url, }) {
   return (
     <ArticleLayout
       url={url}
-      render={({ articleId, slots, }) => <ReviewArticle articleId={articleId} slots={slots} />}
+      render={({ articleId, slots, path, }) => <ReviewArticle articleId={articleId} slots={slots} path={path} />}
     />
   );
 }

@@ -47,7 +47,7 @@ const magazineLayout = {
   },
 };
 
-function MagazineArticle({ articleId, slots, }) {
+function MagazineArticle({ articleId, slots, path }) {
   return (
     <ArticleLayout
       articleId={articleId}
@@ -56,7 +56,7 @@ function MagazineArticle({ articleId, slots, }) {
       mastheadFullWidthBorder
       renderPostHeader={false}
     >
-      <Query query={MAGAZINE_ARTICLE_QUERY} partialRefetch variables={{ path: articleId, }}>
+      <Query query={MAGAZINE_ARTICLE_QUERY} partialRefetch variables={{ path, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -270,7 +270,7 @@ function MagazineArticle({ articleId, slots, }) {
                             {...properties}
                           />
                         </ArticleLayoutRow>
-                        <ArticleGallery articleId={articleId} />
+                        <ArticleGallery path={path} />
                       </LayoutContainer>
                     );
                   })}
@@ -291,5 +291,6 @@ MagazineArticle.propTypes = {
   articleId: PropTypes.string.isRequired,
 
   slots: PropTypes.shape({}).isRequired,
+  path: PropTypes.string.isRequired,
 };
 export default MagazineArticle;

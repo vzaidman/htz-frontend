@@ -21,10 +21,10 @@ import BloggerInfo from '../../BloggerInfo/BloggerInfo';
 import StandardArticleQuery from './queries/standard_article';
 import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
-function StandardArticle({ articleId, slots, }) {
+function StandardArticle({ articleId, slots, path, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={StandardArticleQuery} partialRefetch variables={{ path: articleId, }}>
+      <Query query={StandardArticleQuery} partialRefetch variables={{ path, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -287,7 +287,7 @@ function StandardArticle({ articleId, slots, }) {
                       </aside>
                     )}
                   />
-                  <ArticleGallery articleId={articleId} />
+                  <ArticleGallery path={path} />
                 </LayoutContainer>
               )}
             />
@@ -305,6 +305,8 @@ StandardArticle.propTypes = {
   articleId: PropTypes.string.isRequired,
 
   slots: PropTypes.shape({}).isRequired,
+
+  path: PropTypes.string.isRequired,
 };
 
 export default StandardArticle;

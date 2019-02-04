@@ -22,10 +22,10 @@ import { buildUrl, } from '../../../utils/buildImgURLs';
 import RecipeArticleQuery from './queries/recipe_article';
 import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
-function RecipeArticle({ articleId, slots, }) {
+function RecipeArticle({ articleId, slots, path, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={RecipeArticleQuery} partialRefetch variables={{ path: articleId, }}>
+      <Query query={RecipeArticleQuery} partialRefetch variables={{ path, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -264,7 +264,7 @@ function RecipeArticle({ articleId, slots, }) {
                       )}
                     />
                   </FelaComponent>
-                  <ArticleGallery articleId={articleId} />
+                  <ArticleGallery path={path} />
                 </LayoutContainer>
               )}
             />
@@ -282,6 +282,7 @@ RecipeArticle.propTypes = {
   articleId: PropTypes.string.isRequired,
 
   slots: PropTypes.shape({}).isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default RecipeArticle;

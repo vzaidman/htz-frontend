@@ -41,7 +41,7 @@ class ArticleLayout extends React.Component {
   static propTypes = {
     /**
      * The render function of the Layout, should return react elements,
-     * The render prop function is passed a Object with articleId and slots properties
+     * The render prop function is passed a Object with articleId, slots and path properties
      */
     render: PropTypes.func.isRequired,
     /**
@@ -176,7 +176,12 @@ class ArticleLayout extends React.Component {
                         minHeight: '100vh',
                       }}
                     >
-                      {render({ articleId: this.props.url.query.path, slots, pageType, })}
+                      {render({
+                        articleId: this.props.url.query.path,
+                        slots,
+                        pageType,
+                        path: lineage[0].url || this.props.url.query.path,
+                      })}
                     </FelaComponent>
                     <WelcomePage />
                   </Fragment>

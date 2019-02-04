@@ -21,10 +21,10 @@ function StandardArticlePage({ url, }) {
   return (
     <ArticleLayout
       url={url}
-      render={({ articleId, slots, pageType, }) => (pageType !== 'regularArticle' ? (
+      render={({ articleId, slots, pageType, path, }) => (pageType !== 'regularArticle' ? (
         <LegacyPrefixRedirect pageType={pageType} />
       ) : (
-        <StandardArticle articleId={articleId} slots={slots} />
+        <StandardArticle articleId={articleId} slots={slots} path={path} />
       ))
       }
     />

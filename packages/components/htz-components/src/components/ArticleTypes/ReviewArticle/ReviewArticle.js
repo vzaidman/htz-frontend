@@ -21,10 +21,10 @@ import { buildUrl, } from '../../../utils/buildImgURLs';
 import ReviewArticleQuery from './queries/review_article';
 import ArticleGallery from '../../ArticleGallery/ArticleGallery';
 
-function ReviewArticle({ articleId, slots, }) {
+function ReviewArticle({ articleId, slots, path, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={ReviewArticleQuery} partialRefetch variables={{ path: articleId, }}>
+      <Query query={ReviewArticleQuery} partialRefetch variables={{ path, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -260,7 +260,7 @@ function ReviewArticle({ articleId, slots, }) {
                       )}
                     />
                   </FelaComponent>
-                  <ArticleGallery articleId={articleId} />
+                  <ArticleGallery path={path} />
                 </LayoutContainer>
               )}
             />
@@ -278,6 +278,7 @@ ReviewArticle.propTypes = {
   articleId: PropTypes.string.isRequired,
 
   slots: PropTypes.shape({}).isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default ReviewArticle;

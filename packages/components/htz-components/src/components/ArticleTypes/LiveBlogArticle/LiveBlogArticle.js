@@ -33,10 +33,10 @@ const IS_OSAKA_DISPLAYED = gql`
   }
 `;
 
-function LiveBlog({ articleId, slots, }) {
+function LiveBlog({ articleId, slots, path, }) {
   return (
     <ArticleLayout articleId={articleId} slots={slots}>
-      <Query query={LiveBlogQuery} partialRefetch variables={{ path: articleId, }}>
+      <Query query={LiveBlogQuery} partialRefetch variables={{ path, }}>
         {({ loading, error, data, }) => {
           if (loading) return null;
           if (error) return null;
@@ -380,7 +380,7 @@ function LiveBlog({ articleId, slots, }) {
                       </aside>
                     )}
                   />
-                  <ArticleGallery articleId={articleId} />
+                  <ArticleGallery path={path} />
                 </LayoutContainer>
               )}
             />
@@ -398,6 +398,7 @@ LiveBlog.propTypes = {
   articleId: PropTypes.string.isRequired,
 
   slots: PropTypes.shape({}).isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default LiveBlog;
