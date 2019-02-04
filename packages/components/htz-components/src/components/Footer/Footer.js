@@ -225,7 +225,7 @@ class Footer extends React.Component {
           }}
         />
         <AccessListByIp />
-        {/*<ChartBeat shouldRender={shouldRenderScripts} />*/}
+        <ChartBeat shouldRender={shouldRenderScripts} />
         <UniversitiesPush />
         <FirstImpression />
         <GStat />
