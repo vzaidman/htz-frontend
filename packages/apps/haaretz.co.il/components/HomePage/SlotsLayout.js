@@ -1,19 +1,30 @@
 // @flow
 import * as React from 'react';
+import gql from 'graphql-tag';
 
 import {
   LayoutRow,
   LayoutContainer,
   componentFromInputTemplate,
+  GoogleAnalytics,
+  GaDimensions,
   HeaderSlot,
   MarketingNotificationProvider,
   BIRequest,
   UserDispenser,
-  GaDimensions,
   IconHaaretzHomepageMasthead,
+  Query,
 } from '@haaretz/htz-components';
 
 import MainSlot from './MainSlot';
+
+const GET_USER_TYPE = gql`
+  query GetUserId {
+    user @client {
+      type
+    }
+  }
+`;
 
 type Props = {
   slots: {
@@ -69,14 +80,18 @@ function HomePageSlotsLayout({
       ) : null}
       {footer ? <LayoutRow>{getElements(footer)}</LayoutRow> : null}
       <LayoutRow idName="modalsRoot" />
-      <UserDispenser
-        render={({ user, }) => {
-          if (user) {
-            return <GaDimensions pageType="HomePage" userType={user.type} />;
-          }
-          return null;
+      <Query query={GET_USER_TYPE} ssr={false}>
+        {({ loading, error, data, client, }) => {
+          if (loading) return null;
+          if (error) return null;
+          return (
+            <React.Fragment>
+              <GoogleAnalytics withEC />
+              <GaDimensions pageType="HomePage" userType={data.user.type} />
+            </React.Fragment>
+          );
         }}
-      />
+      </Query>
     </React.Fragment>
   );
 }

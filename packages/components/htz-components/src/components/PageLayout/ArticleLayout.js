@@ -20,6 +20,10 @@ const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
   ssr: false,
   loading: () => null,
 });
+const GoogleAnalytics = dynamic(import('../GoogleAnalytics/GoogleAnalytics'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const propTypes = {
   // should article layout render the postHeader slot
@@ -121,6 +125,7 @@ const ArticlePageLayout = ({
           return (
             <Fragment>
               <BIRequest articleId={articleId} authors={extractAuthorsFromArticle(article)} />
+              <GoogleAnalytics withEC />
               <UserDispenser
                 render={({ user, isLoggedIn, }) => {
                   if (isLoggedIn) {

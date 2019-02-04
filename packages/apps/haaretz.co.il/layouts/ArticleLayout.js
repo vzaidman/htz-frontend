@@ -10,7 +10,6 @@ import Head from 'next/head';
 import {
   AriaLive,
   DeviceTypeInjector,
-  GoogleAnalytics,
   PageSchema,
   ScrollListener,
   RouteChangeListener,
@@ -164,7 +163,6 @@ class ArticleLayout extends React.Component {
                 <RouteChangeListener />
                 <UserInjector />
                 <DfpInjector path={url.query.path} pageType="htz_article" />
-                <GoogleAnalytics withEC />
                 <StyleProvider renderer={styleRenderer} theme={htzTheme}>
                   <Fragment>
                     <AriaLive />
