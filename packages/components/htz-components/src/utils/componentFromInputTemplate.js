@@ -17,6 +17,7 @@ import HtmlElement from '../components/Interactive/components/HtmlElement';
 import Image from '../components/Image/Image';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
 import Interactive from '../components/Interactive/Interactive';
+
 import LinksBlock from '../components/RelatedArticles/LinksBlock';
 import List from '../components/List/List';
 // import Masthead from '../components/Masthead/Masthead';
@@ -54,6 +55,7 @@ const inputTemplateToComponent = new Map([
   /* ArticleBody components */
   [ 'embed', Embed, ],
   [ 'interactiveElement', Interactive, ],
+  [ 'com.tm.ArticleInteractiveHtmlElement', Interactive, ],
   [ 'p', Paragraph, ],
   [ 'h3', Paragraph, ],
   [ 'a', Paragraph, ],
