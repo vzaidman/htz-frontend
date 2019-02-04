@@ -5,12 +5,19 @@ import { parseStyleProps, } from '@haaretz/htz-css-tools';
 import { FelaComponent, } from 'react-fela';
 import { stylesPropType, } from '../../propTypes/stylesPropType';
 import Query from '../ApolloBoundary/Query';
+import Time from '../Time/Time';
 
 const getPageDateTimeQuery = gql`
   query PageDateTime {
     pageDateTimeString @client
   }
 `;
+
+const stylePart = isStrong => ({
+  fontWeight: isStrong ? 700 : 400,
+  marginInlineEnd: '.5rem',
+  unicodeBidi: 'isolate',
+});
 
 /**
  * Internal component for page date-time
@@ -19,6 +26,11 @@ const getPageDateTimeQuery = gql`
  * @param {object} param.miscStyles - object of CSS styles.
  */
 function PageDateTime({ dateParts, miscStyles, }) {
+  const ilLocaleString = new Date().toLocaleString('he-il', { timeZone: 'Asia/Jerusalem', });
+  console.log('ilLocaleString', ilLocaleString);
+  const now = new Date(ilLocaleString).getTime();
+  console.log('now', now);
+
   return dateParts.length === 4 ? (
     <FelaComponent
       style={theme => ({
@@ -29,20 +41,26 @@ function PageDateTime({ dateParts, miscStyles, }) {
         ],
       })}
       render={({ className, }) => (
-        <time className={className} dateTime={`${dateParts[2]} ${dateParts[3]}`}>
-          {dateParts.map((part, index) => (
-            <FelaComponent
-              render="span"
-              style={theme => ({
-                fontWeight: index % 2 === 0 ? 700 : 400,
-                marginInlineEnd: '.5rem',
-                unicodeBidi: 'isolate',
-              })}
-            >
-              {part}
-            </FelaComponent>
-          ))}
-        </time>
+        <Time className={className} time={now}>
+          <FelaComponent render="span" style={stylePart(true)}>
+            {dateParts[0]}
+          </FelaComponent>
+          <FelaComponent render="span" style={stylePart(false)}>
+            {dateParts[1]}
+          </FelaComponent>
+          <FelaComponent
+            style={stylePart(true)}
+            render={({ className, }) => (
+              <Time tagName="span" format="DD.MM.YYYY" time={now} className={className} />
+            )}
+          />
+          <FelaComponent
+            style={stylePart(false)}
+            render={({ className, }) => (
+              <Time tagName="span" format="HH:mm" time={now} className={className} />
+            )}
+          />
+        </Time>
       )}
     />
   ) : null;

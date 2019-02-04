@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import { format as formatFn, parse, isValid, } from 'date-fns';
 
 const timePropTypes = {
+  tagName: PropTypes.string,
   /**
    * The Date to format. Can be Date object or String in ISO 8601 formats.
    * For more information about ISO_8601, [read here](http://en.wikipedia.org/wiki/ISO_8601)
    */
-  time: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.instanceOf(Date),
-  ]).isRequired,
+  time: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date), ])
+    .isRequired,
   /**
    * The output format for the time prop.<br/>
    * Can be a __string__ or an array of __DateFormatRule__ objects({ from, until, format }).
@@ -31,11 +29,18 @@ const timePropTypes = {
    * CSS class names provided by Fela
    */
   className: PropTypes.string,
+
+  /**
+   * Children to be rendered inside the time element.
+   * if absent the component will render time string using the format prop.
+   */
+  children: PropTypes.element,
 };
 
 const timeDefaultProps = {
   format: 'DD.MM.YYYY HH:mm',
   className: null,
+  tagName: 'time',
 };
 
 /**
@@ -83,9 +88,7 @@ function getTimeOffset(time, offsetExpr) {
   let dateOffset;
   if (match) {
     const [ offset, offsetUnit, ] = [ parseInt(match[1], 10), match[2], ];
-    dateOffset = new Date(
-      time.getTime() + offsetUnitConverters[offsetUnit](offset)
-    );
+    dateOffset = new Date(time.getTime() + offsetUnitConverters[offsetUnit](offset));
   }
   return dateOffset;
 }
@@ -163,7 +166,7 @@ function getFormatting(time, format) {
   return selectedFormat;
 }
 
-function Time({ time, format, className, }) {
+function Time({ children, tagName, time, format, className, }) {
   const parsedTime = parse(time);
   if (isValid(parsedTime)) {
     let userFormat = getFormatting(parsedTime, format);
@@ -172,11 +175,15 @@ function Time({ time, format, className, }) {
     }
     const machineFormattedTime = formatFn(parsedTime, MACHINE_READABLE_FORMAT);
     const formattedTime = formatFn(parsedTime, userFormat);
+    const Tag = tagName;
 
     return (
-      <time dateTime={machineFormattedTime} className={className}>
-        {formattedTime}
-      </time>
+      <Tag
+        {...(tagName === 'time' ? { dateTime: machineFormattedTime, } : {})}
+        className={className}
+      >
+        {children || formattedTime}
+      </Tag>
     );
   }
   return '';
