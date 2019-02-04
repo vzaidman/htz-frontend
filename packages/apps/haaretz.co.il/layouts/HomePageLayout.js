@@ -9,7 +9,6 @@ import Head from 'next/head';
 import {
   AriaLive,
   DeviceTypeInjector,
-  // GoogleAnalytics,
   ScrollListener,
   RouteChangeListener,
   UserInjector,
