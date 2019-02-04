@@ -11,16 +11,17 @@ import LayoutContainer from './LayoutContainer'; // eslint-disable-line import/n
 import getComponent from '../../utils/componentFromInputTemplate';
 import HeaderSlot from './slots/Header';
 import ArticleBIQuery from './queries/article_bi';
+import GET_USER_TYPE from './queries/user_type';
 import UserDispenser from '../User/UserDispenser';
 import BIRequest from '../BI/BIRequest';
 import NoSSR from '../NoSSR/NoSSR';
 import IconHaaretzLogo from '../Icon/icons/IconHaaretzLogo';
 
-const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
+const GoogleAnalytics = dynamic(import('../GoogleAnalytics/GoogleAnalytics'), {
   ssr: false,
   loading: () => null,
 });
-const GoogleAnalytics = dynamic(import('../GoogleAnalytics/GoogleAnalytics'), {
+const GaDimensions = dynamic(import('../GoogleAnalytics/GaDimensions'), {
   ssr: false,
   loading: () => null,
 });
@@ -122,23 +123,15 @@ const ArticlePageLayout = ({
               canonicalUrl,
             },
           });
+          const userType = client.readQuery({ query: GET_USER_TYPE, }).user;
           return (
             <Fragment>
               <BIRequest articleId={articleId} authors={extractAuthorsFromArticle(article)} />
               <GoogleAnalytics withEC />
-              <UserDispenser
-                render={({ user, isLoggedIn, }) => {
-                  if (isLoggedIn) {
-                    return (
-                      <GaDimensions
-                        pageType={data.page.pageType}
-                        authors={extractAuthorsFromArticle(article)}
-                        userType={user.type}
-                      />
-                    );
-                  }
-                  return null;
-                }}
+              <GaDimensions
+                pageType={data.page.pageType}
+                authors={extractAuthorsFromArticle(article)}
+                userType={userType.type}
               />
             </Fragment>
           );

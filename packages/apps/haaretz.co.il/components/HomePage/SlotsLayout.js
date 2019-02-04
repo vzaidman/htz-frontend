@@ -11,7 +11,6 @@ import {
   HeaderSlot,
   MarketingNotificationProvider,
   BIRequest,
-  UserDispenser,
   IconHaaretzHomepageMasthead,
   Query,
 } from '@haaretz/htz-components';
