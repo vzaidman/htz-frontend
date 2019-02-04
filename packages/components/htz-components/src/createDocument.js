@@ -173,7 +173,7 @@ const createDocument = ({
             {criticalFont.script}
 
             {/* ChartBeat scripts should only render on homepage */}
-            {/*{path !== '/' ? null : this.chartbeatConfig()}*/}
+            {path !== '/' ? null : this.chartbeatConfig()}
 
             <SEO host={this.props.host} polyFillSrc={polyfillSrc} />
             {this.renderData()}
