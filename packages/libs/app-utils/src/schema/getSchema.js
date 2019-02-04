@@ -23,6 +23,7 @@ import TabViewElement from './types/tab_view_element_type';
 import HeaderNewsGroup from './types/header_news_group_type';
 import nullFallback from './types/null_fallback_type';
 import MiddleRuller from './types/middle_ruller_type';
+import StyleWrapper from './types/style_wrapper_type';
 
 const types = new Map([
   [ 'com.polobase.ClickTrackerBannersWrapper', clickTrackerBannersWrapper, ],
@@ -41,7 +42,7 @@ const types = new Map([
   [ 'gallery', imageGallery, ],
   [ 'interactiveElement', interactive, ],
   [ 'com.tm.Link', link, ],
-  [ 'com.tm.element.List', list, ],
+  // [ 'com.tm.element.List', list, ],
   [ 'com.polobase.quickNewsletterRegistration', mobileQuickRegistrationType, ],
   [ 'com.polobase.whtzMobileSiteListsWrapper', mobileListWrapper, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', newsLetter, ],
@@ -50,6 +51,7 @@ const types = new Map([
   [ 'relatedArticles', relatedArticles, ],
   [ 'relatedArticleSeries', seriesOrBlockArticles, ],
   [ 'linksBlock', seriesOrBlockArticles, ],
+  [ 'com.tm.styleWrapper', StyleWrapper, ],
   [ 'com.htz.MagazineArticleQuote', quote, ],
   [ 'tagsElement', tags, ],
   [ 'com.tm.Video', video, ],
@@ -57,6 +59,10 @@ const types = new Map([
   [ 'com.htz.PageMainBlockElement', MainBlock, ],
   [ 'com.tm.TabViewElement', TabViewElement, ],
 ]);
+
+export const allTypes = [ ...types.values(), ].filter((type, index, types) => (
+  types.indexOf(type) === index
+));
 
 // What the fucking fuck?!
 // types.get('com.tm.element.List') doesn't get the map item

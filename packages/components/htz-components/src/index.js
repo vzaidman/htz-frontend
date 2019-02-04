@@ -87,6 +87,7 @@ import ScrollListener from './components/EventListeners/ScrollListener';
 import Section from './components/AutoLevels/Section';
 import Select from './components/Select/Select';
 import SeriesArticles from './components/RelatedArticles/SeriesArticles';
+import StyleWrapper from './components/StyleWrapper/StyleWrapper';
 import TabElement from './components/TabElement/TabElement';
 import Tags from './components/Tags/Tags';
 import Teaser from './components/Teaser/Teaser';
@@ -324,6 +325,7 @@ export {
   Section,
   Select,
   SeriesArticles,
+  StyleWrapper,
   TabElement,
   Tags,
   Teaser,

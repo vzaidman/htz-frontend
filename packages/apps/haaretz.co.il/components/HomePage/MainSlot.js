@@ -13,6 +13,7 @@ import {
   Debug,
   MarketingNotification,
   MobileListWrapper,
+  StyleWrapper,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -31,6 +32,7 @@ const {
   isClickTrackerWrapper,
   isMobileListWrapper,
   isMiddleRuller,
+  isStyleWrapper,
 } = validateType;
 
 const componentType: Object = new Map([
@@ -72,6 +74,11 @@ const componentType: Object = new Map([
   [ 'com.polobase.whtzMobileSiteListsWrapper', (element: MainSlotElement) => (
     isMobileListWrapper(element)
       ? <MobileListWrapper key={element.contentId} {...element} />
+      : null
+  ), ],
+  [ 'com.tm.styleWrapper', (element: MainSlotElement) => (
+    isStyleWrapper(element)
+      ? <StyleWrapper key={element.contentId} {...element} />
       : null
   ), ],
   [ 'com.tm.promotion.banner.MiddleRuler', (element: MainSlotElement) => (

@@ -113,6 +113,56 @@ export default gql`
           ... on Content {
             ...Content
           }
+          ... on StyleWrapper {
+            inputTemplate
+            contentId
+            miscStyles
+            items: contentLists {
+              ... on Content {
+                ...Content
+              }
+              ... on DfpBanner {
+                ...DfpBanner
+              }
+              ... on ElementGroup {
+                ...ElementGroup
+              }
+              ... on ClickTrackerBannersWrapper {
+                ...ClickTrackerBannersWrapper
+              }
+              ... on GridElementGroup {
+                ...GridElementGroup
+              }
+              ... on TabViewElements {
+                ...TabViewElements
+              }
+              ... on MobileListWrapper {
+                contentName
+                contentId
+                inputTemplate
+                lists {
+                  ... on Content {
+                    ...Content
+                  }
+                  ... on List {
+                    ...HomePageList
+                  }
+                }
+              }
+              ... on MiddleRuler {
+                 inputTemplate
+                 text
+                 actionUrl
+                 contentId
+                 contentName
+              }
+              ... on NullFallback {
+                message
+                errorCode
+                kind
+              }
+            }
+          }
         }
       }
     }
