@@ -49,6 +49,7 @@ class GoogleAnalyticsInit extends React.Component {
       gaOptions: {
         userId: visitor,
         allowLinker: true,
+        // siteSpeedSampleRate: 100,
         // todo: remove this if the autolinker works correctly in production.
         // ...(clientTrackerId ? { clientId: clientTrackerId, } : null),
         cookieDomain: host,
