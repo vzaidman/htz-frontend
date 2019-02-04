@@ -86,7 +86,7 @@ function HomePageSlotsLayout({
           return (
             <React.Fragment>
               <GoogleAnalytics withEC />
-              <GaDimensions pageType="HomePage" userType={data.user.type} />
+              <GaDimensions pageType="HomePage" authors="HomePage" articlePaywallMode="HomePage" userType={data.user.type} withPageView />
             </React.Fragment>
           );
         }}

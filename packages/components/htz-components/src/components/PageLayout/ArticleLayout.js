@@ -132,6 +132,7 @@ const ArticlePageLayout = ({
                 pageType={data.page.pageType}
                 authors={extractAuthorsFromArticle(article)}
                 userType={userType.type}
+                withPageView
               />
             </Fragment>
           );
