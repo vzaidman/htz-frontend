@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MastheadA11yMenu DOM element renders correctly with no props 1`] = `<div />`;
+exports[`<MastheadA11yMenu DOM element renders correctly with no props 1`] = `
+<div>
+  <div
+    className="htz-a"
+  >
+    <button
+      className="htz-b htz-c htz-d htz-e htz-f htz-g htz-h htz-i htz-j htz-k htz-l htz-m"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="htz-n htz-o htz-p htz-a htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x htz-y htz-z htz-i htz-ab htz-ac htz-ae htz-af"
+        id={null}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
+      >
+        <svg
+          className="htz-ag htz-ah htz-ai htz-aj"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+        >
+            
+          <path
+            d="M161.5 166.8c6.4 19.3 17.2 38.5 23.8 61.2H163c-6.8-21-16.5-33.1-21.8-48.9-2.3-6.8-4.7-12.8-6.5-19.7-1.1-4.1-2.8-4.7-5.6-4.7-3.1 0-4.8 2.1-5.5 4.4-6.9 23-16.2 42.4-24.2 68.9H75.2c7.5-28.4 18.1-54.5 25.1-81.5.5-2 .8-3.6.8-5.6 1-18.3.9-27.2.9-45.8-13.7-1.8-44.6-3.3-65-5.1V70c21.2 1.5 58 3.2 73.8 3.7 17.5.6 35-.3 52.5-1.1 12.1-.6 38.6-1.3 56.6-2.4V89c-18.2 1.7-44.6 3.6-56.9 5.2-2.5.3-5.1.3-8.2.8 0 1.5-.1 18.6 0 26.6.2 17.9 1.1 28.2 6.7 45.2zm-33.4-99.6c13.1 0 23.6-10.5 23.6-23.7S141.3 19.9 128 20c-13.3 0-23.6 10.3-23.6 23.6.1 13.2 10.6 23.6 23.7 23.6z"
+            fill="currentColor"
+          />
+        </svg>
+        <span
+          className="htz-ak"
+        >
+          <div
+            className="htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw"
+          />
+        </span>
+      </span>
+    </button>
+  </div>
+</div>
+`;
 
-exports[`<MastheadA11yMenu DOM element renders correctly with no props 2`] = `""`;
+exports[`<MastheadA11yMenu DOM element renders correctly with no props 2`] = `".htz-a{position:relative}.htz-b{color:#0B7EB5}.htz-c{background-color:transparent}.htz-d{transition-property:all}.htz-j{transition-duration:.3s}.htz-k{transition-timing-function:cubic-bezier(0, 0, .2, 0)}.htz-l{-webkit-transition-property:all}.htz-m{-moz-transition-property:all}.htz-n{align-items:center}.htz-o{display:-webkit-inline-box;display:-moz-inline-box;display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex}.htz-p{justify-content:center}.htz-q{text-align:center}.htz-r{white-space:nowrap}.htz-s{text-decoration:none}.htz-t{cursor:pointer}.htz-u::moz-focus-inner{border:0}.htz-v::moz-focus-inner{padding:0}.htz-ab{min-height:6rem}.htz-ac{min-width:6rem}.htz-ae{-webkit-box-align:center}.htz-af{-webkit-box-pack:center}.htz-ag{vertical-align:-0.15em}.htz-ah{color:inherit}.htz-ai{fill:#FFF}.htz-aj{font-size:3.5rem}.htz-ak{font-size:3rem}.htz-al{position:absolute}.htz-am{height:3.5em}.htz-an{width:3.5em}.htz-ao{left:50%}.htz-ap{top:50%}.htz-aq{border-radius:50%}.htz-ar{background-color:#0B7EB5}.htz-as{display:block}.htz-at{opacity:0}.htz-au{pointer-events:none}.htz-av{animation-direction:alternate}.htz-aw{animation-duration:.3s}.htz-e:hover{color:#FFF}.htz-f:hover{background-color:#0B7EB5}.htz-w:hover{text-decoration:none}.htz-g:focus{color:#FFF}.htz-h:focus{background-color:#0B7EB5}.htz-i:focus{outline:none}.htz-z:focus{text-decoration:none}.htz-x:active{text-decoration:none}.htz-y:active{outline:none}"`;

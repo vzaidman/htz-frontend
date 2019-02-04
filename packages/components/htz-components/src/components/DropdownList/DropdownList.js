@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // import FocusLock from 'react-focus-lock';
 import { FelaComponent, FelaTheme, } from 'react-fela';
 import ListWrapper from './ListWrapper';
-import WrappedScroll from '../Scroll/Scroll';
 
 ThemedDropdownList.propTypes = {
   /**
@@ -45,10 +44,6 @@ ThemedDropdownList.defaultProps = {
 class DropdownList extends React.Component {
   state = { isOpen: false, };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.y === 0 || (nextProps.y > 0 && this.state.isOpen);
-  }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.isOpen) {
       document.addEventListener('click', this.handleOutsideClick);
@@ -62,10 +57,6 @@ class DropdownList extends React.Component {
       if (prevState.isOpen !== this.state.isOpen) {
         this.props.onClose();
       }
-    }
-
-    if (prevProps.y > 0 && this.state.isOpen) {
-      this.toggleState();
     }
   }
 
@@ -152,12 +143,8 @@ class DropdownList extends React.Component {
 
 function ThemedDropdownList(props) {
   return (
-    <WrappedScroll
-      render={({ y, }) => (
-        <FelaTheme
-          render={({ direction, }) => <DropdownList direction={direction} y={y} {...props} />}
-        />
-      )}
+    <FelaTheme
+      render={({ direction, }) => <DropdownList direction={direction} {...props} />}
     />
   );
 }
