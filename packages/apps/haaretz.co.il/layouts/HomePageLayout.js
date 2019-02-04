@@ -9,7 +9,7 @@ import Head from 'next/head';
 import {
   AriaLive,
   DeviceTypeInjector,
-  GoogleAnalytics,
+  // GoogleAnalytics,
   ScrollListener,
   RouteChangeListener,
   UserInjector,
@@ -82,7 +82,6 @@ if (window) {
             <RouteChangeListener />
             <UserInjector />
             <DfpInjector path="/" pageType="htz_hp" />
-            <GoogleAnalytics withEC />
             <StyleProvider renderer={styleRenderer} theme={htzTheme}>
               <React.Fragment>
                 <AriaLive />
