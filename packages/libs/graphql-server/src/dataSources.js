@@ -60,70 +60,6 @@ class PapiAPI extends RESTDataSource {
     return this.get(fetchPath, {}, { cacheOptions: { ttl, }, });
   }
 
-  async getPaywallData({ referrer, isSuperContent, userType, useragent, articleCount, }) {
-    const path = 'json/cmlink/Haaretz.Paywall.Super.Container';
-    const params = {
-      referrer,
-      showArticleMode: true, // article opened/closed: true = open | false = closed
-      isSuperContent,
-      userType,
-      useragent, // desktop | mobile
-      articleCount,
-      json: true,
-    };
-    console.log('paywall params: ', params);
-
-    return this.get(path, params)
-      .then(res => {
-        console.log('paywall response: ', res);
-        const slotMapper = createMapper({ // maps as following with null as default
-          'bot-persist': 'bot-persist',
-          top: 'top',
-          'pop-small': 'popup',
-          popup: 'popup',
-          mid: 'mid-page',
-          'mid-page': 'mid-page',
-          'email-activation': 'email-activation',
-        }, null);
-        const linkMapper = createMapper({ // maps as following, pass original value if no match is found
-          freetrial: 'https://www.haaretz.co.il/misc/onboarding-offer',
-          'freetrial-direct': 'https://www.haaretz.co.il/misc/onboarding-offer',
-          linkToLogin: 'https://promotions.haaretz.co.il/promotions-page/product',
-          custom_case: '',
-          none: '',
-          '': '',
-        });
-        const responsiveFields = params.useragent === 'mobile'
-          ? {
-            title: res.visualInfo.boldTextMobile,
-            text: res.visualInfo.plainTextMobile,
-            confirm: {
-              text: res.visualInfo.yesTextMobile,
-              url: linkMapper(res.visualInfo.yesLinkMobile),
-            },
-          }
-          : {
-            title: res.visualInfo.boldText,
-            text: res.visualInfo.plainText,
-            confirm: {
-              text: res.visualInfo.yesText,
-              url: linkMapper(res.visualInfo.yesLink),
-            },
-          };
-        return {
-          slotLocation: slotMapper(res.basicInfo.slotLocation),
-          colorScheme: res.visualInfo.bgColor.includes('secondary')
-            ? 'secondary'
-            : 'primary',
-          ...responsiveFields,
-          deny: {
-            text: res.visualInfo.noText,
-            url: linkMapper(res.visualInfo.noLink),
-          },
-        };
-      });
-  }
-
   // mutations
 
   async createComment(newComment) {
@@ -239,6 +175,96 @@ class PapiAPI extends RESTDataSource {
   }
 }
 
+
+class PaywallAPI extends RESTDataSource {
+  constructor(ssoApi) {
+    super();
+    this.ssoApi = ssoApi;
+  }
+
+  get baseURL() {
+    return this.context.serviceBase;
+  }
+
+  async getData({ referrer, isSuperContent, userType, userId, useragent, articleCount, }) {
+    let paywallUserType = userType;
+    if (userType === 'registered') {
+      try {
+        const res = await this.ssoApi.isAlreadyRealizedOffer(userId);
+        console.log(`[paywall] isAlreadyRealizedOffer(${userId})`, res);
+        const data = JSON.parse(res);
+        const isAlreadyRealizedOffer = data.success === '0';
+        if (isAlreadyRealizedOffer) {
+          paywallUserType = 'agoff';
+        }
+      }
+      catch (error) {
+        console.error(`Unable to get isAlreadyRealizedOffer for userId ${userId}!\n`, error.toString());
+      }
+    }
+    const path = 'json/cmlink/Haaretz.Paywall.Super.Container';
+    const params = {
+      referrer,
+      showArticleMode: true, // article opened/closed: true = open | false = closed
+      isSuperContent,
+      userType: paywallUserType,
+      useragent, // desktop | mobile
+      articleCount,
+      json: true,
+    };
+    console.log('[paywall] params: ', params);
+    const res = await this.get(path, params);
+
+    console.log('[paywall] response: ', res);
+    const slotMapper = createMapper({ // maps as following with null as default
+      'bot-persist': 'bot-persist',
+      top: 'top',
+      'pop-small': 'popup',
+      popup: 'popup',
+      mid: 'mid-page',
+      'mid-page': 'mid-page',
+      'email-activation': 'email-activation',
+    }, null);
+    const linkMapper = createMapper({ // maps as following, pass original value if no match is found
+      freetrial: 'https://www.haaretz.co.il/misc/onboarding-offer',
+      'freetrial-direct': 'https://www.haaretz.co.il/misc/onboarding-offer',
+      linkToLogin: 'https://promotions.haaretz.co.il/promotions-page/product',
+      custom_case: '',
+      none: '',
+      '': '',
+    });
+    const responsiveFields = params.useragent === 'mobile'
+      ? {
+        title: res.visualInfo.boldTextMobile,
+        text: res.visualInfo.plainTextMobile,
+        confirm: {
+          text: res.visualInfo.yesTextMobile,
+          url: linkMapper(res.visualInfo.yesLinkMobile),
+        },
+      }
+      : {
+        title: res.visualInfo.boldText,
+        text: res.visualInfo.plainText,
+        confirm: {
+          text: res.visualInfo.yesText,
+          url: linkMapper(res.visualInfo.yesLink),
+        },
+      };
+    return {
+      slotLocation: slotMapper(res.basicInfo.slotLocation),
+      colorScheme: res.visualInfo.bgColor.includes('secondary')
+        ? 'secondary'
+        : 'primary',
+      ...responsiveFields,
+      deny: {
+        text: res.visualInfo.noText,
+        url: linkMapper(res.visualInfo.noLink),
+      },
+    };
+  }
+}
+
+
 class PageAPI extends RESTDataSource {
   get baseURL() {
     return this.context.preview ? null : this.context.serviceBase;
@@ -275,6 +301,12 @@ class SsoAPI extends RESTDataSource {
 
   async getUserExpiredDate(userData) {
     return this.get('sso/r/getSubscriptionDetails', userData);
+  }
+
+  async isAlreadyRealizedOffer(userId) {
+    return this.get('/sso/r/isSsoRealizedCouponOffer', {
+      ssoId: userId,
+    });
   }
 
   // TODO: check that this function works well
@@ -577,7 +609,7 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
   }
 }
 
-const dataSources = () => ({
+const dataSources = {
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
   SsoAPI: new SsoAPI(),
@@ -586,5 +618,9 @@ const dataSources = () => ({
   OtpAPI: new OtpAPI(),
   NewSsoOperationsAPI: new NewSsoOperationsAPI(),
   HtzFunctionOperationsAPI: new HtzFunctionOperationsAPI(),
+};
+
+export default () => ({
+  ...dataSources,
+  PaywallAPI: new PaywallAPI(dataSources.SsoAPI),
 });
-export default dataSources;

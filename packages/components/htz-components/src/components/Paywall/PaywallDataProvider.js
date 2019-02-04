@@ -11,6 +11,7 @@ const paywallDataQuery = gql`
     $referrer: String!
     $isSuperContent: Boolean!
     $userType: String!
+    $userId: String!
     $useragent: String!
     $articleCount: Int!
   ) {
@@ -18,6 +19,7 @@ const paywallDataQuery = gql`
       referrer: $referrer
       isSuperContent: $isSuperContent
       userType: $userType
+      userId: $userId
       useragent: $useragent
       articleCount: $articleCount
       ) {
@@ -42,6 +44,7 @@ const getPaywallArgs = gql`
       isSuperContent @client
       user @client {
         type
+        id
       }
       platform @client
   }
@@ -88,6 +91,7 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
         if (loading) {
           return null;
         }
+        console.log('[PaywallDataProvider] userId', data.user.id);
         const tmssoData = CookieUtils.getCookie('tmsso');
         const userProductsData = JSON.parse(CookieUtils.getCookie('userProducts') || 'null');
         console.log('[PaywallDataProvider] userProductsData', userProductsData);
@@ -113,6 +117,7 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
                 : 'direct',
               isSuperContent: data.isSuperContent || false,
               userType,
+              userId: data.user.id,
               useragent: data.platform === 'web'
                 ? 'desktop'
                 : data.platform,
