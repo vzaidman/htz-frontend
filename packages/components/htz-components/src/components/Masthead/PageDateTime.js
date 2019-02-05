@@ -26,10 +26,8 @@ const stylePart = isStrong => ({
  * @param {object} param.miscStyles - object of CSS styles.
  */
 function PageDateTime({ dateParts, miscStyles, }) {
-  const ilLocaleString = new Date().toLocaleString('he-il', { timeZone: 'Asia/Jerusalem', });
-  console.log('ilLocaleString', ilLocaleString);
+  const ilLocaleString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jerusalem', });
   const now = new Date(ilLocaleString).getTime();
-  console.log('now', now);
 
   return dateParts.length === 4 ? (
     <FelaComponent
