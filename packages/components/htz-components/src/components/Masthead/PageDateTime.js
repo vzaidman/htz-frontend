@@ -41,26 +41,32 @@ function PageDateTime({ dateParts, miscStyles, }) {
         ],
       })}
       render={({ className, }) => (
-        <Time className={className} time={now}>
-          <FelaComponent render="span" style={stylePart(true)}>
-            {dateParts[0]}
-          </FelaComponent>
-          <FelaComponent render="span" style={stylePart(false)}>
-            {dateParts[1]}
-          </FelaComponent>
-          <FelaComponent
-            style={stylePart(true)}
-            render={({ className, }) => (
-              <Time tagName="span" format="DD.MM.YYYY" time={now} className={className} />
-            )}
-          />
-          <FelaComponent
-            style={stylePart(false)}
-            render={({ className, }) => (
-              <Time tagName="span" format="HH:mm" time={now} className={className} />
-            )}
-          />
-        </Time>
+        <Time
+          className={className}
+          time={now}
+          render={formattedTime => (
+            <React.Fragment>
+              <FelaComponent render="span" style={stylePart(true)}>
+                {dateParts[0]}
+              </FelaComponent>
+              <FelaComponent render="span" style={stylePart(false)}>
+                {dateParts[1]}
+              </FelaComponent>
+              <FelaComponent
+                style={stylePart(true)}
+                render={({ className, }) => (
+                  <Time tagName="span" format="DD.MM.YYYY" time={now} className={className} />
+                )}
+              />
+              <FelaComponent
+                style={stylePart(false)}
+                render={({ className, }) => (
+                  <Time tagName="span" format="HH:mm" time={now} className={className} />
+                )}
+              />
+            </React.Fragment>
+          )}
+        />
       )}
     />
   ) : null;
