@@ -206,9 +206,10 @@ function Zoidberg({ list, lazyLoadImages, biAction, }: Props): Node {
               {isDfp(item) ? (
                 <GeneralAdSlot
                   {...item}
-                  styleRule={{
+                  miscStyles={{
                     ...listItemStyle,
                     marginTop: '1rem',
+                    ...(item.miscStyles || {}),
                   }}
                 />
               ) : null}

@@ -16,7 +16,7 @@ const wrapperStyle = theme => ({
   backgroundColor: theme.color('white'),
 });
 
-const adSlotIdFromIndex = idx => `haaretz.co.il.web.fullbanner.talkback.${idx}`;
+const adSlotIdFromIndex = idx => `haaretz.co.il.fullbanner.talkback.${idx}.desktop`;
 
 // const renderAdSlot = idx => (
 //   <AdSlot
