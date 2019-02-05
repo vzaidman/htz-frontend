@@ -31,16 +31,17 @@ const timePropTypes = {
   className: PropTypes.string,
 
   /**
-   * Children to be rendered inside the time element.
+   * render function to be rendered inside the time element, which excepts the formated time string .
    * if absent the component will render time string using the format prop.
    */
-  children: PropTypes.element,
+  render: PropTypes.func,
 };
 
 const timeDefaultProps = {
   format: 'DD.MM.YYYY HH:mm',
   className: null,
   tagName: 'time',
+  render: null,
 };
 
 /**
@@ -166,7 +167,7 @@ function getFormatting(time, format) {
   return selectedFormat;
 }
 
-function Time({ children, tagName, time, format, className, }) {
+function Time({ render, tagName, time, format, className, }) {
   const parsedTime = parse(time);
   if (isValid(parsedTime)) {
     let userFormat = getFormatting(parsedTime, format);
@@ -182,7 +183,7 @@ function Time({ children, tagName, time, format, className, }) {
         {...(tagName === 'time' ? { dateTime: machineFormattedTime, } : {})}
         className={className}
       >
-        {children || formattedTime}
+        {render ? render(formattedTime) : formattedTime}
       </Tag>
     );
   }
