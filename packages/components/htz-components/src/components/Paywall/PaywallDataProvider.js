@@ -100,6 +100,11 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
           ? userProductsData.products.some(prod => prod.trial)
           : false;
         let userType = (data.user && data.user.type) || 'anonymous';
+        const articleCount = userType === 'anonymous'
+          ? (ReadArticleService.getArticleCount() || 1)
+          : (userType === 'paying')
+            ? Number.parseInt(CookieUtils.getCookie('HtzPusr'), 10)
+            : Number.parseInt(CookieUtils.getCookie('HtzRusr'), 10);
         if (isValidEmail === false) {
           if (isFreeTrial) {
             userType = 'fswvm';
@@ -121,7 +126,7 @@ const PaywallDataProvider = ({ children, }: Props): React.Node => (
               useragent: data.platform === 'web'
                 ? 'desktop'
                 : data.platform,
-              articleCount: ReadArticleService.getArticleCount() || 1,
+              articleCount,
             }}
           >
             {({ data, loading, error, }) => {
