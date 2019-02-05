@@ -13,6 +13,7 @@ const iconSize = 4;
 
 const propTypes = {
   shouldMainNavBarDisplay: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 const LoginButton = ({ buttonStyles, size, iconStyles, isLoggedIn, hrefLogin, ...props }) => (
@@ -44,18 +45,18 @@ const LoginButton = ({ buttonStyles, size, iconStyles, isLoggedIn, hrefLogin, ..
   />
 );
 
-function MobileBarActionButtons({ shouldMainNavBarDisplay, }) {
+function MobileBarActionButtons({ shouldMainNavBarDisplay, isLoggedIn, }) {
   return (
-    <UserDispenser
-      render={({ isLoggedIn, }) => (
-        <FelaComponent
-          style={theme => ({
-            display: 'flex',
-            flexGrow: '1',
-          })}
-          render={({ theme, className, }) => (
-            <div className={className}>
-              {!isLoggedIn ? null : (
+    // <UserDispenser
+    //   render={({ isLoggedIn, }) => (
+    <FelaComponent
+      style={theme => ({
+        display: 'flex',
+        flexGrow: '1',
+      })}
+      render={({ theme, className, }) => (
+        <div className={className}>
+          {/* {!isLoggedIn ? null : (
                 <ActionButtons
                   isFlat
                   size={iconSize}
@@ -74,41 +75,41 @@ function MobileBarActionButtons({ shouldMainNavBarDisplay, }) {
                     },
                   }}
                 />
-              )}
+              )} */}
 
-              <FelaComponent
-                style={{
-                  display: 'flex',
-                  marginBlockStart: '1.5rem',
-                  marginBlockEnd: '1.5rem',
-                  flexGrow: 1,
-                  justifyContent: 'center',
-                  ...(isLoggedIn
-                    ? { ...borderRight('1px', 'solid', theme.color('neutral', '-4')), }
-                    : {}),
-                }}
-                render={({ className, }) => (
-                  <span className={className}>
-                    <LoginButton
-                      isLoggedIn={isLoggedIn}
-                      size={iconSize}
-                      hrefLogin={theme.userMenuI18n.loginUrl}
-                      buttonStyles={{
-                        color: theme.color('neutral', '-10'),
-                        display: 'flex',
-                      }}
-                      iconStyles={{
-                        color: theme.color('primary'),
-                      }}
-                    />
-                  </span>
-                )}
-              />
-            </div>
-          )}
-        />
+          <FelaComponent
+            style={{
+              display: 'flex',
+              marginBlockStart: '1.5rem',
+              marginBlockEnd: '1.5rem',
+              flexGrow: 1,
+              justifyContent: 'center',
+              // ...(isLoggedIn
+              //   ? { ...borderRight('1px', 'solid', theme.color('neutral', '-4')), }
+              //   : {}),
+            }}
+            render={({ className, }) => (
+              <span className={className}>
+                <LoginButton
+                  isLoggedIn={isLoggedIn}
+                  size={iconSize}
+                  hrefLogin={theme.userMenuI18n.loginUrl}
+                  buttonStyles={{
+                    color: theme.color('neutral', '-10'),
+                    display: 'flex',
+                  }}
+                  iconStyles={{
+                    color: theme.color('primary'),
+                  }}
+                />
+              </span>
+            )}
+          />
+        </div>
       )}
     />
+    // )}
+    // />
   );
 }
 
