@@ -8,7 +8,7 @@ import CreditCardIframe from './CreditCardIframe';
 const paymentService = config.get('service.payment');
 
 function buildCreditGuardSrc(productId) {
-  return `${paymentService}/creditGuard/CreditGuardBridgeServlet?cgtype=payment_change_heb&productID=${productId}`;
+  return `${paymentService}/cgPayment?cgtype=payment_change_heb&productID=${productId}`;
 }
 
 const iframeWrapperStyle = {
