@@ -8,7 +8,7 @@ export default {
         : {
           display: 'flex',
           flexWrap: 'nowrap',
-          height: '50rem',
+          height: '40rem',
         },
     ],
   }),
@@ -19,7 +19,7 @@ export default {
     extend: [
       theme.mq(
         { until: 'm', },
-        { width: '100%', textAlign: 'start', paddingInlineStart: '30%', margin: '0.3rem', }
+        { width: '100%', textAlign: 'start', paddingInlineStart: '5%', margin: '0.3rem', }
       ),
     ],
   }),
@@ -132,7 +132,7 @@ export default {
           transitionProperty: 'width',
         }
         : {
-          width: '2rem',
+          width: '3rem',
           transitionProperty: 'height',
           height: mode === 'hide' ? '0' : `${(Math.max(value, 1) / 40) * 100}% `,
         },
