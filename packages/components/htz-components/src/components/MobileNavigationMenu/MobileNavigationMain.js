@@ -9,6 +9,9 @@ import HomePageActionButtons from './MobileMenuFooter/MobileBarActionButtons/Hom
 
 const GET_PAGE_TYPE = gql`
   query GetPageType {
+    user @client {
+      type
+    }
     pageType @client
   }
 `;
@@ -34,11 +37,12 @@ export default class MobileNavigationMain extends React.Component {
     return (
       <ApolloConsumer>
         {client => {
-          const { pageType, } = client.readQuery({
+          const { pageType, user, } = client.readQuery({
             query: GET_PAGE_TYPE,
           });
 
           const isHomepage = pageType === 'homepage';
+          const isLoggedIn = user && user.type !== 'anonymous';
 
           return (
             <FelaComponent
@@ -63,7 +67,7 @@ export default class MobileNavigationMain extends React.Component {
                       wrapperSetState={newState => this.setState(newState)}
                     />
                     {menuIsOpen ? null : isHomepage ? (
-                      <HomePageActionButtons />
+                      <HomePageActionButtons isLoggedIn={isLoggedIn} />
                     ) : (
                       <ArticleActionButtons shouldMainNavBarDisplay={shouldDisplay} />
                     )}
