@@ -11,7 +11,7 @@ const paywallDataQuery = gql`
     $referrer: String!
     $isSuperContent: Boolean!
     $userType: String!
-    $userId: String!
+    $userId: String
     $useragent: String!
     $articleCount: Int!
   ) {

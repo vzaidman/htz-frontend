@@ -101,7 +101,7 @@ const RootQuery = new GraphQLObjectType({
         referrer: { type: new GraphQLNonNull(GraphQLString), },
         articleCount: { type: new GraphQLNonNull(GraphQLInt), },
         userType: { type: new GraphQLNonNull(GraphQLString), },
-        userId: { type: new GraphQLNonNull(GraphQLString), },
+        userId: { type: GraphQLString, },
         useragent: { type: new GraphQLNonNull(GraphQLString), },
         isSuperContent: { type: new GraphQLNonNull(GraphQLBoolean), },
       },
