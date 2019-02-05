@@ -63,7 +63,7 @@ class Masthead extends React.Component<MastheadProps, State> {
     return (
       <React.Fragment>
         <MastheadComponent {...this.props} isScrolled={isScrolled} shouldDisplay={shouldDisplay} />
-        {/* <FelaComponent
+        <FelaComponent
           style={theme => ({
             backgroundColor: 'transparent',
             transform: `translate(50%, ${shouldDisplay ? '0' : '110'}%)`,
@@ -84,7 +84,7 @@ class Masthead extends React.Component<MastheadProps, State> {
           })}
         >
           <MobileNavigation contentId={contentId} shouldDisplay={shouldDisplay} />
-        </FelaComponent> */}
+        </FelaComponent>
       </React.Fragment>
     );
   }
