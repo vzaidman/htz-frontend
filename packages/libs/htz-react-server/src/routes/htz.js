@@ -69,6 +69,7 @@ export default function htz(app, server, DEV) {
     }
 
     console.log('rendering standardArticle');
+
     return app.render(req, res, '/standardArticle', query);
   });
 }

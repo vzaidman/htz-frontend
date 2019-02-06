@@ -9017,6 +9017,11 @@ jjv@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/jjv/-/jjv-1.0.2.tgz#0719f2cbcfd7df34f8d57c1b03b332a0f8f66e7f"
 
+js-cookie@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.0.tgz#1b2c279a6eece380a12168b92485265b35b1effb"
+  integrity sha1-Gywnmm7s44ChIWi5JIUmWzWx7/s=
+
 js-git@^0.7.8:
   version "0.7.8"
   resolved "https://registry.yarnpkg.com/js-git/-/js-git-0.7.8.tgz#52fa655ab61877d6f1079efc6534b554f31e5444"
