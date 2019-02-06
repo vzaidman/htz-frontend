@@ -119,10 +119,10 @@ export default {
         },
     ],
   }),
-  bar: ({ theme, value, barColor, mode, }) => ({
+  bar: ({ theme, value, barColor, mode, load, }) => ({
     background: theme.color(...barColor),
-    width: mode === 'hide' ? '0' : `${(Math.max(value, 1) / 40) * 100}% `,
-    marginTop: '0rem',
+    width: !load ? '0' : `${(Math.max(value, 1) / 40) * 100}% `,
+    marginTop: '0rem',    
     ...theme.getDelay('transition', 1),
     ...theme.getDuration('transition', 1),
     ...theme.getTimingFunction('transition', 'linear'),
@@ -134,7 +134,7 @@ export default {
         : {
           width: '3rem',
           transitionProperty: 'height',
-          height: mode === 'hide' ? '0' : `${(Math.max(value, 1) / 40) * 100}% `,
+          height: !load ? '0' : `${(Math.max(value, 1) / 40) * 100}% `,
         },
     ],
   }),
@@ -142,9 +142,14 @@ export default {
     ...theme.type(-1),
     marginTop: '3rem',
   }),
-  buttonWrapper: {
+  buttonWrapper: ({ theme, mode, }) => ({
     textAlign: 'center',
     marginTop: '15rem',
-  },
+    ...(mode === 'horizental'
+      ? {
+        marginTop: '5rem',
+      }
+      : {}),
+  }),
   button: theme => ({}),
 };
