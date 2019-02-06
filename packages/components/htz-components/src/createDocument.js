@@ -125,9 +125,7 @@ const createDocument = ({
               }`,
           }}
         /> */}
-        {
-          !isMobile ? <script async src="//static.chartbeat.com/js/chartbeat_mab.js" /> : null
-        }
+        {!isMobile ? <script async src="//static.chartbeat.com/js/chartbeat_mab.js" /> : null}
       </React.Fragment>
     );
 
@@ -144,6 +142,7 @@ const createDocument = ({
     render() {
       const criticalFont = this.props.criticalFontElements;
       const { path, } = breakUrl(this.props.url);
+
       return (
         <html lang={this.props.lang} dir={this.props.isRtl ? 'rtl' : 'ltr'}>
           <Head>
@@ -151,9 +150,7 @@ const createDocument = ({
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
             {/* dont add link to manifest on purchase-page app  */}
-            {hasToggleableTheme ? null : (
-              <link rel="manifest" href="/manifest.json" />
-            )}
+            {hasToggleableTheme ? null : <link rel="manifest" href="/manifest.json" />}
             {criticalFont.preload}
             {/* ************************* *
              *       STYLE ELEMENTS      *

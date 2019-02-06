@@ -5,6 +5,7 @@ import { onError, } from 'apollo-link-error';
 import { HttpLink, } from 'apollo-link-http';
 import { withClientState, } from 'apollo-link-state';
 import { UserFactory, } from '@haaretz/htz-user-utils';
+
 import fetch from 'isomorphic-unfetch';
 import config from 'config';
 // import chalk from 'chalk';
@@ -98,6 +99,13 @@ function create(initialState, appDefaultState, req) {
       isMobile: req.useragent.isMobile,
       isTablet: req.useragent.isTablet,
       isDesktop: req.useragent.isDesktop,
+      deviceType: req.useragent.isMobile
+        ? 'mobile'
+        : req.useragent.isTablet
+          ? 'tablet'
+          : req.useragent.isDesktop
+            ? 'desktop'
+            : 'other',
     }
     : {};
 
