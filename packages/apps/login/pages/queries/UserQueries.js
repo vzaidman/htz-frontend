@@ -17,6 +17,7 @@ export default gql`
         isActiveHeb
         isActiveEng
       }
+
       userLegalBySite {
         termsAgreedSite
       }
@@ -78,6 +79,7 @@ const USER_PRODUCTS = gql`
     user(id: $id) {
       products {
         prodNum
+        debtActive
       }
     }
   }
