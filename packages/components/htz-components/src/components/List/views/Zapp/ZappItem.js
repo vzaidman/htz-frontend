@@ -3,6 +3,7 @@ import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 
 import CommentsCount from '../../../CommentsCount/CommentsCount';
+import LiveUpdateView from '../../../LiveUpdateView/LiveUpdateView';
 import GridItem from '../../../Grid/GridItem';
 import Picture from '../../../Image/Picture';
 import Teaser from '../../../Teaser/Teaser';
@@ -45,16 +46,11 @@ export default function ZappItem({
       isStacked={[ { from: 'l', value: true, }, ]}
     >
       <TeaserMedia
-        width={[
-          { until: 's', value: 18, },
-          { from: 's', until: 'l', value: 6 / 12, },
-        ]}
+        width={[ { until: 's', value: 18, }, { from: 's', until: 'l', value: 6 / 12, }, ]}
         data={data}
         isStacked={[ { from: 'l', value: true, }, ]}
         miscStyles={{
-          ...(hideImageOnMobile
-            ? { display: [ { until: 's', value: 'none', }, ], }
-            : {}),
+          ...(hideImageOnMobile ? { display: [ { until: 's', value: 'none', }, ], } : {}),
         }}
         onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
       >
@@ -120,23 +116,18 @@ export default function ZappItem({
               { from: 's', until: 'l', value: 1, },
               { from: 'l', value: 0, },
             ]}
-            onClick={
-              biAction ? () => biAction({ index, articleId: itemId, }) : null
-            }
+            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
           />
         )}
         renderFooter={() => (
           <GridItem>
             {data.authors ? (
               <span style={{ marginInlineEnd: '1rem', }}>
-                <TeaserAuthors
-                  authors={data.authors}
-                  miscStyles={{ fontWeight: 'bold', }}
-                />
-                {(data.commentsCounts && data.commentsCounts > 4)
-                || data.rank ? (
+                {data.representedContentType === 'liveBlogArticle' ? <LiveUpdateView /> : null}
+                <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
+                {(data.commentsCounts && data.commentsCounts > 4) || data.rank ? (
                   <span> | </span>
-                  ) : null}
+                ) : null}
               </span>
             ) : null}
             <CommentsCount commentsCount={data.commentsCounts} />

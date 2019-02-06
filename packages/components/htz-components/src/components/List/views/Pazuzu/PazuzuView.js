@@ -9,6 +9,7 @@ import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import CommentsCount from '../../../CommentsCount/CommentsCount';
+import LiveUpdateView from '../../../LiveUpdateView/LiveUpdateView';
 import Debug from '../../../Debug/Debug';
 import GridItem from '../../../Grid/GridItem';
 import Image from '../../../Image/Image';
@@ -222,10 +223,7 @@ function PazuzuTeaser({
                 ...(isStackedOnXl
                   ? {}
                   : {
-                    marginTop: [
-                      { until: 'xl', value: 'auto', },
-                      { from: 'xl', value: '0', },
-                    ],
+                    marginTop: [ { until: 'xl', value: 'auto', }, { from: 'xl', value: '0', }, ],
                   }),
                 type: [
                   { until: 's', value: -3, },
@@ -258,10 +256,8 @@ function PazuzuTeaser({
               )}
               renderFooter={() => (
                 <React.Fragment>
-                  <TeaserAuthors
-                    authors={item.authors}
-                    miscStyles={{ fontWeight: 'bold', }}
-                  />
+                  {item.representedContentType === 'liveBlogArticle' ? <LiveUpdateView /> : null}
+                  <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                   {' | '}
                   <TeaserTime {...item} />
                   {' '}

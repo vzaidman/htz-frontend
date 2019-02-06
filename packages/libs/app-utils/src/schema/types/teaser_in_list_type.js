@@ -31,6 +31,7 @@ const TeaserInListType = new GraphQLObjectType({
     publishDate: { type: GraphQLDate, },
     contentId: { type: GraphQLID, },
     representedContent: { type: GraphQLID, },
+    representedContentType: { type: GraphQLString, },
     exclusiveMobile: { type: GraphQLString, },
     title: { type: GraphQLString, },
     commentsCounts: { type: GraphQLInt, },

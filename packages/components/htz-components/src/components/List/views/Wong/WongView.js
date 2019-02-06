@@ -10,6 +10,7 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
 import { isImage, isEmbed, isGallery, } from '../../../../utils/validateType.js';
+import LiveUpdateView from '../../../LiveUpdateView/LiveUpdateView';
 import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import GridItem from '../../../Grid/GridItem';
@@ -77,10 +78,7 @@ export default function Wong({
 }: Props): React.Node {
   const item = items[0];
   const media = item.media || null;
-  const MediaComponent = getMediaComponent(
-    media && media.kind,
-    isConrad ? Image : Picture
-  );
+  const MediaComponent = getMediaComponent(media && media.kind, isConrad ? Image : Picture);
   const relatedPadding = '2rem';
   return (
     <FelaTheme
@@ -109,15 +107,10 @@ export default function Wong({
                 justifyContent: [ { from: 'xl', value: 'flex-end', }, ],
               }}
               onClick={
-                biAction
-                  ? () => biAction({ index: 0, articleId: item.representedContent, })
-                  : null
+                biAction ? () => biAction({ index: 0, articleId: item.representedContent, }) : null
               }
               miscStyles={{
-                margin: [
-                  { until: 's', value: '0 -2rem', },
-                  { fom: 's', value: '0', },
-                ],
+                margin: [ { until: 's', value: '0 -2rem', }, { fom: 's', value: '0', }, ],
               }}
             >
               <TeaserMedia
@@ -128,9 +121,7 @@ export default function Wong({
                   { from: 'xl', value: isConrad ? 1 / 2 : 4 / 7, },
                 ]}
                 miscStyles={{
-                  paddingInlineEnd: [
-                    { from: 'xl', value: isConrad ? 0 : '2rem', },
-                  ],
+                  paddingInlineEnd: [ { from: 'xl', value: isConrad ? 0 : '2rem', }, ],
                 }}
                 onClick={
                   biAction
@@ -174,10 +165,7 @@ export default function Wong({
                         { from: 'l', until: 'xl', value: 5, },
                         { from: 'xl', value: isConrad ? 5 : 4, },
                       ]}
-                      kickerTypeScale={[
-                        { until: 's', value: 0, },
-                        { from: 's', value: -1, },
-                      ]}
+                      kickerTypeScale={[ { until: 's', value: 0, }, { from: 's', value: -1, }, ]}
                       kickerMiscStyles={{
                         marginBottom: '1rem',
                         marginInlineStart: [ { until: 's', value: '-2rem', }, ],
@@ -230,10 +218,8 @@ export default function Wong({
                 }}
                 renderFooter={() => (
                   <React.Fragment>
-                    <TeaserAuthors
-                      authors={item.authors}
-                      miscStyles={{ fontWeight: 'bold', }}
-                    />
+                    {item.representedContentType === 'liveBlogArticle' ? <LiveUpdateView /> : null}
+                    <TeaserAuthors authors={item.authors} miscStyles={{ fontWeight: 'bold', }} />
                     {' | '}
                     <TeaserTime {...item} />
                     {' '}
@@ -246,9 +232,7 @@ export default function Wong({
                         style={{
                           marginTop: '1rem',
                           fontWeight: '700',
-                          extend: [
-                            theme.mq({ until: 's', }, { display: 'none', }),
-                          ],
+                          extend: [ theme.mq({ until: 's', }, { display: 'none', }), ],
                         }}
                         render="ul"
                       >
@@ -286,9 +270,7 @@ export default function Wong({
                                         theme.type(-2, { fromBp: 'xl', }),
                                       ],
                                     }}
-                                    render={({
-                                      className: linkClassName,
-                                    }) => (
+                                    render={({ className: linkClassName, }) => (
                                       <HtzLink
                                         href={article.path}
                                         className={linkClassName}
@@ -303,13 +285,13 @@ export default function Wong({
                                       >
                                         <IconBack
                                           size={[
-                                            { until: 'xl', value: 2, },
-                                            { from: 'xl', value: 1.5, },
-                                          ]}
+                                              { until: 'xl', value: 2, },
+                                              { from: 'xl', value: 1.5, },
+                                            ]}
                                           miscStyles={{
-                                            marginInlineStart: `-${relatedPadding}`,
-                                            marginInlineEnd: '0.5rem',
-                                          }}
+                                              marginInlineStart: `-${relatedPadding}`,
+                                              marginInlineEnd: '0.5rem',
+                                            }}
                                         />
                                         {article.title}
                                       </HtzLink>
@@ -337,11 +319,7 @@ export default function Wong({
 //                               UTILS                                //
 // /////////////////////////////////////////////////////////////////////
 
-function getImageProps(
-  media: ImageDataType,
-  isConrad: boolean,
-  theme: Object
-): Object {
+function getImageProps(media: ImageDataType, isConrad: boolean, theme: Object): Object {
   return isConrad
     ? {
       data: media,
@@ -371,11 +349,7 @@ function getImageProps(
           from: 's',
           until: 'xl',
           aspect: 'headline',
-          sizes: [
-            { from: 'l', size: '570px', },
-            { from: 'm', size: '720px', },
-            { size: '552px', },
-          ],
+          sizes: [ { from: 'l', size: '570px', }, { from: 'm', size: '720px', }, { size: '552px', }, ],
           widths: [ 570, 772, 1000, ],
         },
       ],
