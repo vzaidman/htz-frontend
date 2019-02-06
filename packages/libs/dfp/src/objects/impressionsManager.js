@@ -140,6 +140,7 @@ export default class ImpressionsManager {
    * configuration.
    */
   initImpressionMap() {
+    this.removeFromImpressionMapIfNotInConfig();
     Object.keys(this.config).map((key, index) => {
       const adSlotId = key;
       const slot = this.impressions[adSlotId];
@@ -170,6 +171,22 @@ export default class ImpressionsManager {
       return this;
     });
   }
+
+  removeFromImpressionMapIfNotInConfig() {
+    const nonExistingInConfig = [];
+    for (const key of Object.keys(this.impressions)) {
+      if (typeof this.config[key] === 'undefined') {
+        nonExistingInConfig.push(key);
+      }
+    }
+    if (nonExistingInConfig.length > 0) {
+      for (const key of nonExistingInConfig) {
+        delete this.impressions[key];
+      }
+      this.saveImpressionsToLocalStorage();
+    }
+  }
+
 
   /**
    * Updates the expiry date of a slotName based on the configured slot frequency
