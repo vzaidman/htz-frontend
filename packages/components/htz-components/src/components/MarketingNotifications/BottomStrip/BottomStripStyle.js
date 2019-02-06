@@ -31,7 +31,7 @@ export function text1({ theme, isSmall, color, }) {
   return {
     fontWeight: 'bold',
     color: color(theme).textColor,
-    extend: [ theme.type(6), theme.mq({ until: 'l', }, theme.type(5)), ],
+    extend: [ theme.type(4), ],
   };
 }
 
@@ -39,7 +39,7 @@ export function text2({ theme, isSmall, color, }) {
   return {
     marginTop: '1rem',
     color: color(theme).textColor,
-    extend: [ theme.type(4), theme.mq({ until: 'l', }, { ...theme.type(3), marginTop: '0.5rem', }), ],
+    extend: [ theme.type(2), theme.mq({ until: 'l', }, { marginTop: '0.5rem', }), ],
   };
 }
 
@@ -63,7 +63,7 @@ export function button(theme, isSmall) {
         paddingBottom: '1rem',
       }
     ),
-    marginStart: isSmall ? '3rem' : '0',
+    marginStart: isSmall ? '2rem' : '0',
     marginTop: '1rem',
   };
 }
@@ -71,7 +71,7 @@ export function button(theme, isSmall) {
 export function icon(theme, isSmall) {
   return {
     color: theme.color('primary'),
-    fontSize: isSmall ? 6 : 12,
+    fontSize: isSmall ? 6 : 10,
     extend: [ theme.mq({ until: 'l', }, { fontSize: isSmall ? 6 : 8, }), ],
   };
 }
@@ -81,7 +81,7 @@ export function textWrapper({ theme, isSmall, }) {
     display: 'flex',
     flexDirection: isSmall ? 'row' : 'column',
     alignItems: 'start',
-    paddingInlineStart: isSmall ? '3rem' : '4rem',
+    paddingInlineStart: isSmall ? '1rem' : '4rem',
   };
 }
 
