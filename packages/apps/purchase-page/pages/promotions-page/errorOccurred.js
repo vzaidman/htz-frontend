@@ -73,7 +73,13 @@ const ErrorOccurredElement = ({ messageType, fbFullRedirectUri, }) => (
                       : (messageType === 'userHasProduct') ? userHasProduct : [ '', ];
 
                 return (
-                  <ArrayLinesToString className={className} data={message} />
+                  <FelaComponent
+                    style={{
+                      ':first-line': { fontWeight: '700', },
+                    }}
+                  >
+                    <ArrayLinesToString className={className} data={message} />
+                  </FelaComponent>
                 );
               }
               }
