@@ -78,6 +78,7 @@ const USER_PRODUCTS = gql`
     user(id: $id) {
       products {
         prodNum
+        debtActive
       }
     }
   }
