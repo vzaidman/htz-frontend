@@ -42,6 +42,7 @@ const createDocument = ({
   fontStacks,
 }) => class HaaretzDocument extends Document {
   static getInitialProps({ renderPage, req, }) {
+    const isMobile = req.useragent.isMobile;
     const host = req.hostname.match(/^(?:.*?\.)?(.*)/i)[1];
     const validatedTheme = hasToggleableTheme ? theme(host) : theme;
     const varifiedStaticRules = hasToggleableTheme ? staticRules(host) : staticRules;
@@ -71,6 +72,7 @@ const createDocument = ({
       isRtl,
       lang,
       host,
+      isMobile,
       url: req.url,
       criticalFontElements,
     };
@@ -89,7 +91,7 @@ const createDocument = ({
     ));
   }
 
-    chartbeatConfig = () => (
+    chartbeatConfig = isMobile => (
       <React.Fragment>
         <script
           type="text/javascript"
@@ -123,7 +125,9 @@ const createDocument = ({
               }`,
           }}
         /> */}
-        <script async src="//static.chartbeat.com/js/chartbeat_mab.js" />
+        {
+          !isMobile ? <script async src="//static.chartbeat.com/js/chartbeat_mab.js" /> : null
+        }
       </React.Fragment>
     );
 
@@ -173,7 +177,7 @@ const createDocument = ({
             {criticalFont.script}
 
             {/* ChartBeat scripts should only render on homepage */}
-            {path !== '/' ? null : this.chartbeatConfig()}
+            {path !== '/' ? null : this.chartbeatConfig(this.props.isMobile)}
 
             <SEO host={this.props.host} polyFillSrc={polyfillSrc} />
             {this.renderData()}
