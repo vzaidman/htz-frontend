@@ -1,8 +1,19 @@
 import React, { Component, Fragment, } from 'react';
 import PropTypes from 'prop-types';
 import { FelaComponent, } from 'react-fela';
+import { visuallyHidden, } from '@haaretz/htz-css-tools';
 import IconStar from '../IconStar/IconStar';
 import AriaDescription from '../AriaDescription/AriaDescription';
+
+const AriaHidden = ({ children, }) => (
+  <FelaComponent
+    style={visuallyHidden()}
+    render={({ className, }) => (
+      <span className={className}>{children}</span>
+    )}
+  />
+);
+AriaHidden.propTypes = { children: PropTypes.node.isRequired, };
 
 class Rating extends Component {
   static propTypes = {
@@ -38,7 +49,7 @@ class Rating extends Component {
   };
 
   render() {
-    const { disabled, numberOfStars, newRating, } = this.props;
+    const { disabled, numberOfStars, newRating, rating, } = this.props;
     const starArr = [];
     // eslint-disable-next-line no-plusplus
     for (let starNumber = 1; starNumber < numberOfStars + 1; starNumber++) {
@@ -50,6 +61,7 @@ class Rating extends Component {
           }}
           render={({ className, }) => (
             <button
+              aria-describedby={`star${starNumber}rating`}
               key={`star${starNumber}`}
               type="button"
               className={className}
@@ -74,7 +86,7 @@ class Rating extends Component {
                 rightColor={this.starColor(true, starNumber)}
                 leftColor={this.starColor(false, starNumber)}
               />
-              <AriaDescription id={`star${starNumber}`}>
+              <AriaDescription id={`star${starNumber}rating`}>
                 לחץ כדי לדרג ב
                 {starNumber}
                 כוכבים
@@ -84,7 +96,16 @@ class Rating extends Component {
         />
       );
     }
-    return <Fragment>{starArr}</Fragment>;
+    return (
+      <Fragment>
+        <AriaHidden>
+          {rating}
+          {' '}
+          כוכבים
+        </AriaHidden>
+        {starArr}
+      </Fragment>
+    );
   }
 }
 
