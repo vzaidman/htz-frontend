@@ -142,7 +142,7 @@ const tdFootInnerContStyle = ({
   isHighlighted = false,
   theme,
 }) => ({
-  color: theme.color('offerPage', 'tableFooterText'),
+  color: theme.color('offerPage', isHighlighted ? 'tableFooterTextHighlighted' : 'tableFooterText'),
   cursor: 'pointer',
   fontWeight: 'bold',
   paddingTop: '4rem',
@@ -233,8 +233,8 @@ const tdInnerContStyle = ({
 });
 const StyledTdInnerCont = createComponent(tdInnerContStyle, 'div', [ 'onClick', ]);
 
-const pricingHeadStyle = theme => ({
-  color: theme.color('offerPage', 'pricingHeadText'),
+const pricingHeadStyle = (isHighlighted = false) => theme => ({
+  color: theme.color('offerPage', isHighlighted ? 'pricingHeadTextHighlighted' : 'pricingHeadText'),
   marginTop: '1rem',
   extend: [ theme.type(-1), ],
 });
@@ -383,7 +383,7 @@ function DesktopView({
                           />
                           <StyledColHead>{item.heading}</StyledColHead>
 
-                          <FelaComponent style={pricingHeadStyle} render="p">
+                          <FelaComponent style={pricingHeadStyle(idx === highlightedIndex)} render="p">
                             {item.pricingHead}
                           </FelaComponent>
 

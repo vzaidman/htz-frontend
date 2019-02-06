@@ -8,7 +8,9 @@ const htz = Object.freeze({
     bgHighlighted: [ 'primary', '-6', ],
     buttonText: [ 'primary', 'base', ],
     pricingHeadText: [ 'primary', 'base', ],
+    pricingHeadTextHighlighted: [ 'primary', 'base', ],
     paymentSummaryBorder: [ 'primary', '-3', ],
+    tableFooterTextHighlighted: [ 'positive', 'base', ],
   },
   misc: {
     link: {
@@ -39,7 +41,9 @@ const tm = Object.freeze({
     bgHighlighted: [ 'primary', '-5', ],
     buttonText: [ 'secondary', '+1', ],
     pricingHeadText: [ 'secondary', 'base', ],
+    pricingHeadTextHighlighted: [ 'secondary', '+1', ],
     paymentSummaryBorder: [ 'primary', '-2', ],
+    tableFooterTextHighlighted: [ 'positive', '+1', ],
   },
   variants: {
     button: {
