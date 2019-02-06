@@ -30,6 +30,7 @@ export type TeaserDataType = {
   relatedArticles?: ?({ contentId: string, path: string, title: string, }[]),
   reportingFrom?: ?string,
   representedContent: string,
+  representedContentType: ?string,
   subtitle?: ?string,
   subtitleMobile?: ?string,
   title: string,

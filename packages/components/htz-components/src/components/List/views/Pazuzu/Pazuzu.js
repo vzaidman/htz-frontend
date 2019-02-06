@@ -13,6 +13,7 @@ const PazuzuQuery = gql`
         inputTemplate
         rank
         commentsCounts
+        representedContentType
         contentId
         title
         titleMobile

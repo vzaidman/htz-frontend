@@ -122,6 +122,7 @@ export default gql`
     commentsCounts
     contentId
     representedContent
+    representedContentType
     exclusive
     exclusiveMobile
     firstParagraph
