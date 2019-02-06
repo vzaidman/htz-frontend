@@ -46,6 +46,9 @@ export default function Morbo({
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, ], }, ]}
       gutter={4}
       innerBackgroundColor="transparent"
+      miscStyles={{
+        display: [ { until: 's', value: 'none', }, ],
+      }}
     >
       {/* Header */}
       <StickyListViewHeader isHorizontal {...list} width={1} />
