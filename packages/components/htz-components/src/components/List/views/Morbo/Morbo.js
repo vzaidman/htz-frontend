@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { image, link, } from '@haaretz/app-utils';
+import { image, link, dfpBanner, } from '@haaretz/app-utils';
 import MorboView from './MorboView.js';
 import ListDataGetter from '../../ListDataGetter';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
@@ -35,10 +35,14 @@ const MorboQuery = gql`
           ...Image
         }
       }
+      dfp {
+        ...DfpBanner
+      }
     }
   }
   ${image}
   ${link}
+  ${dfpBanner}
 `;
 
 type Props = {

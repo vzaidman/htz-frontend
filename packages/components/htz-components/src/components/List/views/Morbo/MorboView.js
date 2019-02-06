@@ -6,6 +6,7 @@ import { FelaTheme, } from 'react-fela';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
+
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import Grid from '../../../Grid/Grid';
 import GridItem from '../../../Grid/GridItem';
@@ -19,6 +20,7 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getPictureAssets from '../../../../utils/getPictureAssets';
 import UserAgent from '../../../UserAgent/UserAgent';
+import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
 
 type MorboPropsType = {
   list: ListDataType,
@@ -61,7 +63,6 @@ export default function Morbo({
             rowSpacing={[
               { until: 's', value: { amount: 2, }, },
               { from: 's', until: 'l', value: { amount: 4, }, },
-              { from: 'l', until: 'xl', value: { amount: 4, nUp: 2, }, },
             ]}
           >
             {/* Item 1 */}
@@ -69,7 +70,7 @@ export default function Morbo({
               stretchContent
               width={[
                 { until: 'l', value: 1, },
-                { from: 'l', until: 'xl', value: 7 / 12, },
+                { from: 'l', until: 'xl', value: 6 / 12, },
                 { from: 'xl', value: 4 / 12, },
               ]}
             >
@@ -82,8 +83,8 @@ export default function Morbo({
               width={[
                 { until: 's', value: 1, },
                 { from: 's', until: 'l', value: 1 / 2, },
-                { from: 'l', until: 'xl', value: 5 / 12, },
-                { from: 'xl', value: 3 / 12, },
+                { from: 'l', until: 'xl', value: 3 / 12, },
+                { from: 'xl', value: 2 / 12, },
               ]}
             >
               <Teaser234 data={teaser2Data} biAction={biAction} />
@@ -95,7 +96,7 @@ export default function Morbo({
               width={[
                 { until: 's', value: 1, },
                 { from: 's', until: 'l', value: 1 / 2, },
-                { from: 'l', until: 'xl', value: 6 / 12, },
+                { from: 'l', until: 'xl', value: 3 / 12, },
                 { from: 'xl', value: 2 / 12, },
               ]}
             >
@@ -103,16 +104,21 @@ export default function Morbo({
             </GridItem>
 
             {/* Item 4 */}
-            <GridItem
-              stretchContent
-              width={[
-                { until: 'l', value: 1, },
-                { from: 'l', until: 'xl', value: 6 / 12, },
-                { from: 'xl', value: 3 / 12, },
-              ]}
-            >
-              <Teaser234 data={teaser4Data} biAction={biAction} />
-            </GridItem>
+            {
+              (list.dfp instanceof Array && list.dfp.length > 0)
+                ? (
+                  <GridItem
+                    stretchContent
+                    miscStyles={{
+                      display: [ { until: 'xl', value: 'none', }, ],
+                    }}
+                    width={4 / 12}
+                  >
+                    <GeneralAdSlot {...list.dfp[0]} />
+                  </GridItem>
+                )
+                : null
+            }
           </Grid>
         </Section>
       </GridItem>
