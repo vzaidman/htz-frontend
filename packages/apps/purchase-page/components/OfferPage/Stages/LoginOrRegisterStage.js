@@ -61,7 +61,7 @@ class LoginOrRegisterStage extends React.Component {
     loading: false,
     email: null,
     userExists: true,
-    passwordLoaded: false,
+    initialFocusSet: false,
     resetPasswordModalOpen: false,
   };
 
@@ -71,9 +71,13 @@ class LoginOrRegisterStage extends React.Component {
 
   render() {
     // focus the password input when it first loads, form focus will override if there is an error in the form
-    if (this.passwordInputEl && !this.state.passwordLoaded) {
+    if (this.passwordInputEl && !this.state.initialFocusSet && this.state.userExists) {
       this.passwordInputEl.focus();
-      this.setState({ passwordLoaded: true, });
+      this.setState({ initialFocusSet: true, });
+    }
+    else if (this.signUpButton && !this.state.initialFocusSet) {
+      this.signUpButton.focus();
+      this.setState({ initialFocusSet: true, });
     }
     const {
       router,
@@ -337,18 +341,24 @@ class LoginOrRegisterStage extends React.Component {
                                                             }
                                                             {' '}
                                                             <FelaComponent
-                                                              style={theme => ({
-                                                                color: theme.color(
+                                                              style={theme => {
+                                                                const color = theme.color(
                                                                   'loginOrRegister',
                                                                   'inFormText'
-                                                                ),
-                                                                ':visited': {
-                                                                  color: theme.color(
-                                                                    'loginOrRegister',
-                                                                    'inFormText'
-                                                                  ),
-                                                                },
-                                                              })}
+                                                                );
+                                                                return {
+                                                                  color,
+                                                                  ':visited': { color, },
+                                                                  ':focus': {
+                                                                    color,
+                                                                    textDecoration: 'underline',
+                                                                  },
+                                                                  ':hover': {
+                                                                    color,
+                                                                    textDecoration: 'underline',
+                                                                  },
+                                                                };
+                                                              }}
                                                               render={({ className, }) => (
                                                                 <a
                                                                   className={className}

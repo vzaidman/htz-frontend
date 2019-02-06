@@ -35,7 +35,7 @@ const checkBoxStyle = ({ checked, isDisabled, isFocused, variant, theme, }) => (
   extend: [ theme.getTransition(1, 'swiftIn'), ],
 });
 
-const StyledCheckBox = createComponent(checkBoxStyle);
+const StyledCheckBox = createComponent(checkBoxStyle, 'div', [ 'aria-hidden', ]);
 
 const checkStyle = ({ checked, variant, theme, }) => ({
   height: '100%',
@@ -257,6 +257,7 @@ export class CheckBox extends Component {
             }}
           />
           <StyledCheckBox
+            aria-hidden="true"
             checked={controllingChecked}
             isDisabled={isDisabled}
             isFocused={this.state.isFocused}

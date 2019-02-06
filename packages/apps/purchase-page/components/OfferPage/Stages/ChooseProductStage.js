@@ -11,6 +11,7 @@ import {
   ApolloConsumer,
 } from '@haaretz/htz-components';
 import gql from 'graphql-tag';
+import { visuallyHidden, } from '@haaretz/htz-css-tools';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
 import UserMessage from './Elements/UserMessage';
@@ -65,6 +66,27 @@ const couponButtonsMiscStyles = {
   marginInlineStart: '0.5rem',
   // width: '11rem',
 };
+
+const AriaHidden = ({ children, }) => (
+  <FelaComponent
+    style={visuallyHidden()}
+    render={({ className, }) => (
+      <span className={className}>{children}</span>
+    )}
+  />
+);
+AriaHidden.propTypes = { children: PropTypes.node.isRequired, };
+
+const AltPricingOption = ({ productTitle, }) => {
+  const specialOffer = productTitle.indexOf('מיוחד') !== -1;
+  return (
+    <Fragment>
+      {specialOffer && <AriaHidden>החלף ל</AriaHidden>}
+      {specialOffer ? productTitle : 'חזרה למחיר הרגיל'}
+    </Fragment>
+  );
+};
+AltPricingOption.propTypes = { productTitle: PropTypes.string.isRequired, };
 
 class ChooseProductStage extends Component {
   static propTypes = {
@@ -255,7 +277,7 @@ class ChooseProductStage extends Component {
                                   });
                                 }}
                               >
-                                {product.productTitle}
+                                <AltPricingOption productTitle={product.productTitle} />
                               </Button>
                             </Fragment>
                           ) : null)
