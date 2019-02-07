@@ -91,6 +91,9 @@ export const commentI18n = Object.freeze({
     replyBtnTxt: 'הגיבו',
     reportAbuseBtnTxt: 'דווחו כפוגעני',
   }),
+  ariaTexts: Object.freeze({
+    subCommentTxt: 'תגובה לתגובה',
+  }),
 });
 
 export const commentFormI18n = Object.freeze({

@@ -9,7 +9,9 @@ exports[`<CommentSent> DOM element renders correctly with minimal required props
       onKeyDown={[Function]}
     >
       <div>
-        <p>
+        <p
+          tabIndex={-1}
+        >
           <span
             className="htz-i"
           >
@@ -105,6 +107,7 @@ exports[`<CommentSent> DOM element renders correctly with minimal required props
     <div>
       <span
         className="htz-j"
+        tabIndex={-1}
       >
         תודה!
       </span>

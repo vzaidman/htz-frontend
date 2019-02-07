@@ -369,10 +369,10 @@ const colors = {
     bg: 'white',
     border: [ 'neutral', '-4', ],
     divider: [ 'primary', '+1', ],
-    date: [ 'neutral', '-3', ],
+    date: [ 'neutral', '-2', ],
     highlightedCommentBg: [ 'bg', 'base', ],
     highlightStatus: [ 'primary', '-2', ],
-    number: [ 'neutral', '-3', ],
+    number: [ 'neutral', '-2', ],
     report: [ 'negative', 'a11yOnDark', ],
     replyIcon: [ 'neutral', '-4', ],
     subcommentAuthor: [ 'neutral', '-4', ],
@@ -477,7 +477,7 @@ const colors = {
     primaryOpaqueText: [ 'bodyText', 'base', ],
     primaryOpaqueTextLabel: [ 'primary', '+1', ],
     primaryOpaqueTextLabelDisabled: [ 'neutral', '-4', ],
-    primaryOpaqueTextNote: [ 'neutral', '-3', ],
+    primaryOpaqueTextNote: [ 'neutral', '-2', ],
     primaryOpaqueAbbr: [ 'tertiary', 'base', ],
 
     // Primary Opaque Focus

@@ -58,8 +58,10 @@ class CommentSent extends React.Component {
     userEmail: null,
   };
 
-  componentDidMount() {
-    // this.focusEl.focus();
+  manageFocus = el => {
+    if (!el || el === this.focusEl) return;
+    this.focusEl = el;
+    this.focusEl.focus();
   }
 
   render() {
@@ -71,10 +73,6 @@ class CommentSent extends React.Component {
       userEmail,
     } = this.props;
 
-    if (this.focusEl && !this.focusElSetActive) {
-      this.focusEl.focus();
-      this.focusElSetActive = true;
-    }
     return (
       <FelaComponent
         displayThankYou={displayThankYou}
@@ -108,10 +106,9 @@ class CommentSent extends React.Component {
                   }}
                   render={({ className, }) => (
                     <span
+                      tabIndex={-1}
                       className={className}
-                      ref={el => {
-                        this.focusEl = el;
-                      }}
+                      ref={this.manageFocus}
                     >
                       {commentRecievedBoldTextThankYouPage}
                     </span>
@@ -155,7 +152,10 @@ class CommentSent extends React.Component {
                 }}
                 render={({ getInputProps, handleSubmit, }) => (
                   <div>
-                    <p>
+                    <p
+                      tabIndex={-1}
+                      ref={this.manageFocus}
+                    >
                       <FelaComponent
                         style={{
                           fontWeight: 'bold',
