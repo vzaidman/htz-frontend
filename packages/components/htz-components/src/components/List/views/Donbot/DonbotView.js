@@ -226,7 +226,7 @@ function DonbotMainTeaser({
                 defaultImgOptions: {
                   sizes: 'calc(100vw - 4rem)',
                   aspect: 'square',
-                  widths: [ 360, ],
+                  widths: [ 360, 420, 580, ],
                 },
                 sources: [
                   {
@@ -343,11 +343,11 @@ function DonbotTeaser({
                 sizes: [
                   { from: 'xl', size: '178px', },
                   { from: 'l', size: '143px', },
-                  { from: 'm', size: '343px', },
+                  { from: 'm', size: '348px', },
                   { from: 's', size: '264px', },
                   { size: 'calc(50vw - 6rem)', },
                 ],
-                widths: [ 500, 350, 270, 200, 180, 150, ],
+                widths: [ 150, 180, 200, 285, 350, 380, 565, ],
               })}
               data={item.image}
             />
