@@ -9,7 +9,7 @@ import type { ImageDataType, } from '../../../../flowTypes/ImageDataType';
 import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 import type { ListBiActionType, } from '../../../../flowTypes/ListBiActionType';
 
-import { isImage, isEmbed, } from '../../../../utils/validateType.js';
+import { isImage, isEmbed, isGallery, } from '../../../../utils/validateType.js';
 import AboveBlockLink from '../../../BlockLink/AboveBlockLink';
 import CommentsCount from '../../../CommentsCount/CommentsCount';
 import GridItem from '../../../Grid/GridItem';
@@ -419,9 +419,10 @@ function getMediaProps(
   theme: Object
 ): ?Object {
   if (media) {
+    console.log(media);
     if (isImage(media)) return getImageProps(media, isConrad, theme);
     if (isEmbed(media)) return getEmbedProps(media);
-    // if (isGallery(media)) return getGalleryProps(media);
+    if (isGallery(media)) return media;
   }
   return null;
 }
