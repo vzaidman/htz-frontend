@@ -62,6 +62,10 @@ import {
   zoomoutText,
   selectAriaLabel,
   marketingTools,
+  footballHeaders,
+  nbaHeaders,
+  groupBarTabs,
+  btnOptions,
 } from './consts/i18n';
 
 // methods
@@ -158,6 +162,10 @@ const htzTheme = Object.freeze({
   mq,
   pxToRem,
   shareBar,
+  footballHeaders,
+  nbaHeaders,
+  groupBarTabs,
+  btnOptions,
   type: typesetter,
 });
 

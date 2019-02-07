@@ -18,6 +18,11 @@ const mockContext = () => {
           console.log('got to mock context getAssetsList data source', data);
         },
       },
+      TableScoreAPI: {
+        retrieveTableScore: data => {
+          console.log('got to mock context retrieveTableScore data source', data);
+        },
+      },
     },
     listsLoader: {
       load: data => {

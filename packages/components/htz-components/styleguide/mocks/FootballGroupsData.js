@@ -1,0 +1,46 @@
+export default () => ({
+  data: {
+    tableScore: [
+      {
+        lost: '0',
+        won: '4',
+        playedGames: '6',
+        name: 'באיירן מינכן',
+        difference: '5-15',
+        position: '1',
+        draw: '2',
+        points: '14',
+      },
+      {
+        lost: '0',
+        won: '3',
+        playedGames: '6',
+        name: 'אייאקס',
+        difference: '5-11',
+        position: '2',
+        draw: '3',
+        points: '12',
+      },
+      {
+        lost: '3',
+        won: '2',
+        playedGames: '6',
+        name: 'בנפיקה',
+        difference: '11-6',
+        position: '3',
+        draw: '1',
+        points: '7',
+      },
+      {
+        lost: '6',
+        won: '0',
+        playedGames: '6',
+        name: 'א.א.ק אתונה',
+        difference: '13-2',
+        position: '4',
+        draw: '0',
+        points: '0',
+      },
+    ],
+  },
+});

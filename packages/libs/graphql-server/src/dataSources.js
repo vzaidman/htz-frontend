@@ -513,6 +513,19 @@ class HtzFunctionOperationsAPI extends RESTDataSource {
   }
 }
 
+class TableScoreAPI extends RESTDataSource {
+  get baseURL() {
+    return this.context.msSportResults;
+  }
+
+  async retrieveTableScore(tableType, subType, identifier) {
+    const path = `${tableType}/${subType}/${identifier}`;
+    const res = await this.get(path);
+    console.log(`[tableScore] url (${path}) response:`, res);
+    return res;
+  }
+}
+
 const dataSources = () => ({
   PageAPI: new PageAPI(),
   PapiAPI: new PapiAPI(),
@@ -522,5 +535,6 @@ const dataSources = () => ({
   OtpAPI: new OtpAPI(),
   NewSsoOperationsAPI: new NewSsoOperationsAPI(),
   HtzFunctionOperationsAPI: new HtzFunctionOperationsAPI(),
+  TableScoreAPI: new TableScoreAPI(),
 });
 export default dataSources;

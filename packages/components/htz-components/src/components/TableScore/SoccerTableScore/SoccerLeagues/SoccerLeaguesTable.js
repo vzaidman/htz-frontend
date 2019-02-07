@@ -1,28 +1,51 @@
-/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/no-unused-prop-types,quote-props */
 // @flow
 import * as React from 'react';
-import type { ChildrenArray, Node, } from 'react';
-import { FelaComponent, } from 'react-fela';
-import TableHeader from '../Header/TableHeader';
-import TableBody from './Body/LeaguesTableBody';
+import type { Node, } from 'react';
+import type { DocumentNode, } from 'graphql/language/ast';
+import { FelaTheme, } from 'react-fela';
+import gql from 'graphql-tag';
 import ToggleButton from '../../ToggleButton/ToggleButton';
-import { fetchLeagues, } from '../../SoccerData/fetchUtils';
+import Query from '../../../ApolloBoundary/Query';
+import Table from '../../Table/Table';
 
+
+const GET_LEAGUES_DATA: DocumentNode = gql`
+   query TableScore($identifier: String!){ 
+    tableScore(tableType: football, subType: leagues, identifier: $identifier) {
+    ... on TableScoreError {
+      type
+      errorMessage: data
+    }
+    ... on TableScoreData {
+      type
+      data {
+         ... on Football {
+         position
+          name
+          playedGames
+          won
+          lost
+          draw
+          difference
+          points
+          teamId
+        }
+      }
+    }
+}
+}
+`;
 
 // Flow validation
 type Props = {
-  isOpen: boolean,
+  isOpen: ?boolean,
   league: string,
 }
 
 type State = {
   isOpen: ?boolean,
   league: string,
-  leagueData: ?Array<Object>,
-}
-
-type Options = {
-  children: ChildrenArray<Node> | Node,
 }
 
 
@@ -37,25 +60,11 @@ const CenteredElement: Object = {
 };
 
 
-function Table({ children, }: Options): Node {
-  return (
-    <FelaComponent render="table" dir="rtl">{children}</FelaComponent>
-  );
-}
-
-const fetchFromLeagues: string => Object = league => new Promise((resolve, reject) => (
-  fetchLeagues(league)
-    .then(data => resolve(data))
-    .catch(err => reject(err))
-));
-
-
 export default class SoccerLeaguesTable extends React.Component<Props, State> {
   // Is all score board open
   state = {
     isOpen: null,
     league: '',
-    leagueData: null,
   };
 
 
@@ -74,50 +83,71 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
   handleToggle: () => void = () => this.setState(prev => ({ isOpen: !prev.isOpen, }));
 
   render(): Node {
-    const { isOpen, league, leagueData, } = this.state;
-
-
-    // Validate data existence
-    if (!leagueData) {
-      fetchFromLeagues(league)
-        .then(data => {
-          if (typeof data === 'string') {
-            console.log(data);
-          }
-          else {
-            this.setState({
-              leagueData: data.standings[0].table,
-            });
-          }
-        })
-        .catch(error => console.log(error));
-
-      return null;
-    }
-
-
-    // Title for toggle button
-    const btnTitle: string = isOpen ? 'הסתר' : 'טען עוד';
-    // Rotate degree for toggle button
-    const btnArrowDir: number = isOpen ? 90 : 270;
+    const { isOpen, league, } = this.state;
 
     return (
-      <div style={Container}>
 
-        <Table>
-          <TableHeader />
-          <TableBody isOpen={isOpen} leagueData={leagueData} />
-        </Table>
-        <div style={CenteredElement}>
-          <ToggleButton
-            rotateDeg={btnArrowDir}
-            handleClick={this.handleToggle}
-          >
-            {btnTitle}
-          </ToggleButton>
-        </div>
+      <Query
+        query={GET_LEAGUES_DATA}
+        variables={{ identifier: league, }}
+      >
+        {({ loading, error, data, }) => {
+          if (loading) return null;
+          if (error) return null;
 
-      </div>
+          if (data.tableScore.type === 'ERROR') {
+            console.error(data.tableScore.errorMessage);
+            return null;
+          }
+
+          const borders: Object = (league === '2002' || league === '2015') ? {
+            '15': [ 'gplus', '', ],
+          }
+            : (league !== '2125')
+              ? {
+                '16': [ 'gplus', '', ],
+              }
+              : {
+                '5': [ 'button', 'positiveBorder', ],
+                '11': [ 'gplus', '', ],
+              };
+
+          const tableData = isOpen ? [ ...data.tableScore.data, ]
+            : [ ...data.tableScore.data, ].splice(0, 6);
+
+          return (
+
+            <div style={Container}>
+              <div style={CenteredElement}>
+
+                <FelaTheme render={theme => (
+                  <Table
+                    tableData={tableData}
+                    tableType="soccer-leagues"
+                    headers={theme.footballHeaders.headers}
+                    isOpen={isOpen}
+                    borders={borders}
+                  />)}
+                />
+
+                <FelaTheme render={theme => (
+                  <ToggleButton
+                    handleClick={this.handleToggle}
+                    rotateDeg={
+                      isOpen ? theme.btnOptions.degree.open
+                        : theme.btnOptions.degree.close}
+                    isOpen={isOpen}
+                  >
+                    {isOpen ? theme.btnOptions.title.open : theme.btnOptions.title.close}
+                  </ToggleButton>
+                )}
+                />
+
+              </div>
+            </div>
+          );
+        }}
+      </Query>
     );
   }
 }

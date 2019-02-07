@@ -387,3 +387,26 @@ export const marketingTools = Object.freeze({
       'https://promotions.haaretz.co.il/promotions-page/product?offer=sale-htz&_ga=2.36776032.1903070321.1547973707-1620996918.1546958670',
   },
 });
+
+export const footballHeaders = Object.freeze({
+  headers: [ 'קבוצה', 'מש\'', 'נצ\'', 'הפ\'', 'תי\'', 'הפרש', 'נק\'', ],
+});
+
+export const groupBarTabs = Object.freeze({
+  headers: [ 'בית 1', 'בית 2', 'בית 3', 'בית 4', 'בית 5', 'בית 6', 'בית 7', 'בית 8', ],
+});
+
+export const nbaHeaders = Object.freeze({
+  headers: [ 'קבוצה', 'ניצחונות', 'הפסדים', 'אחוז', ],
+});
+
+export const btnOptions = Object.freeze({
+  title: {
+    open: 'טען עוד',
+    close: 'הסתר',
+  },
+  degree: {
+    open: 90,
+    close: 270,
+  },
+});

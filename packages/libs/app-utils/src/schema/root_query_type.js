@@ -6,7 +6,7 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLInt,
-  GraphQLID,
+  GraphQLID, GraphQLEnumType,
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 import CommentsElement from './types/comments_element_type';
@@ -20,6 +20,7 @@ import ResetPassword from './types/reset_password_type';
 import Page from './types/page_type';
 import HomePage from './types/home_page_type';
 import { GenerateOtp, } from './types/otp_operations_type';
+import TableScoreGraph from './types/tableScore/table_score_type';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -252,6 +253,32 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parentValue, { email, ssoId, }, { dataSources, }) {
         return dataSources.OtpAPI.retrieveOtpHash(email, ssoId);
+      },
+    },
+
+    tableScore: {
+      type: TableScoreGraph,
+      args: {
+        tableType: { type: new GraphQLNonNull(new GraphQLEnumType({
+          name: 'TableType',
+          values: {
+            football: { value: 'football', },
+            nba: { value: 'nba', },
+
+          },
+        })), },
+        subType: { type: new GraphQLNonNull(new GraphQLEnumType({
+          name: 'TableSubType',
+          values: {
+            coast: { value: 'coast', },
+            leagues: { value: 'leagues', },
+            groups: { value: 'groups', },
+          },
+        })), },
+        identifier: { type: new GraphQLNonNull(GraphQLString), },
+      },
+      resolve(parentValue, { tableType, subType, identifier, }, { dataSources, }) {
+        return dataSources.TableScoreAPI.retrieveTableScore(tableType, subType, identifier);
       },
     },
   }),

@@ -9,13 +9,17 @@ type Options = {
   children: ChildrenArray<Node> | Node,
   handleClick: () => void,
   rotateDeg: number,
+  isOpen: ?boolean,
 }
 
 
-function LoadButton({ children, handleClick, rotateDeg, }: Options): Node {
+function LoadButton({ children, handleClick, rotateDeg, isOpen, }: Options): Node {
   return (
     <FelaTheme render={theme => (
       <ClickArea
+        attrs={{
+          'aria-expanded': isOpen ? 'true' : 'false',
+        }}
         size={1}
         onClick={handleClick}
         miscStyles={{

@@ -1,17 +1,20 @@
 // @flow
 import * as React from 'react';
+import type { ChildrenArray, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderLeft, } from '@haaretz/htz-css-tools';
-import type { ChildrenArray, Node, } from 'react';
 
-
-type Options = {
+type HeaderProps = {
+  headers: Array<string>,
+}
+type HeaderTabProps = {
   children: ChildrenArray<Node> | Node,
   index: number,
 }
 
-
-const SingleTabStyle: Object => Object = ({ theme, minWidth, borderWidth, textAlign, mediaPaddingRight, mediaMinWidth, }) => ({
+const SingleTabStyle: Object => Object = (
+  { theme, minWidth, borderWidth, textAlign, mediaPaddingRight, mediaMinWidth, }
+) => ({
   minWidth,
   minHeight: '36px',
   backgroundColor: theme.color('primary', -6),
@@ -28,17 +31,20 @@ const SingleTabStyle: Object => Object = ({ theme, minWidth, borderWidth, textAl
       style: 'solid',
       color: theme.color('neutral', -5),
     }),
-    theme.mq({ from: '0px', until: 'm', },
+    theme.mq({ from: 'm', until: 'l', },
       {
-        padding: '0.9rem',
+        padding: '1rem',
         paddingRight: mediaPaddingRight,
         minWidth: mediaMinWidth || '30px',
-        fontSize: '10px',
-
+        ...theme.type(-1),
+      }),
+    theme.mq({ until: 's', },
+      {
+        ...theme.type(-2),
+        minWidth: '3rem',
       }),
   ],
 });
-
 
 const HeadersStyle: Object = {
   minWidth: '559px',
@@ -46,19 +52,16 @@ const HeadersStyle: Object = {
   boxShadow: '0 1px 1px 0 rgba(162, 162, 162, 0.5)',
 };
 
-// Headers data
-const headers: Array<string> = [ 'קבוצה', 'מש\'', 'נצ\'', 'הפ\'', 'תי\'', 'הפרש', 'נק\'', ];
 
-
-function TableHeaderTab({ children, index, }: Options): Node {
+function TableHeaderTab({ children, index, }: HeaderTabProps): Node {
   return index === 0 ? (
     <FelaComponent
       rule={SingleTabStyle}
       borderWidth="0"
-      minWidth="170px"
+      minWidth="40px"
       textAlign="right"
       mediaPaddingRight="1.5rem"
-      mediaMinWidth="25rem"
+      mediaMinWidth="18rem"
       render={({ className, }) => <th className={className}>{children}</th>}
     />) : (
       <FelaComponent
@@ -72,21 +75,20 @@ function TableHeaderTab({ children, index, }: Options): Node {
 }
 
 
-export default function TableHeader(): Node {
-  return (
+function Header(props: HeaderProps): Node {
+  const { headers, } = props;
 
-    <FelaComponent style={HeadersStyle} render="thead">
-      <tr>
-        {
-          headers.map((header, index) => (
-            <TableHeaderTab
-              index={index}
-              key={header}
-            >
-              {header}
-            </TableHeaderTab>))
-        }
-      </tr>
-    </FelaComponent>
+  return (
+    <thead style={HeadersStyle}>
+      {
+      headers.map((title, index) => (
+        <TableHeaderTab index={index} key={title}>
+          {title}
+        </TableHeaderTab>
+      ))
+    }
+    </thead>
   );
 }
+
+export default Header;

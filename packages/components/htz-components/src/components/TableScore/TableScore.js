@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import SoccerLeaguesTable from './SoccerTableScore/SoccerLeagues/SoccerLeaguesTable';
 import SoccerGroupsTable from './SoccerTableScore/SoccerGroups/SoccerGroupsTable';
-import NBATableScore from './NBATableScore/NBATableScore';
+import NBATable from './NBATableScore/NBATable';
 
 type League = "2125" | "2021" | "2019" | "2015" | "2014" | "2002";
 export type CoastType = "east" | "west";
@@ -25,10 +25,10 @@ type NbaProps = {
 
 type Props = NbaProps | ChampionsProps | SoccerLeagueProps;
 
-export default function Table(props: Props): React.Node {
-  if (isNba(props)) return <NBATableScore coastType={props.coastType} isOpen={props.isOpen} />;
+function TableScore(props: Props): React.Node {
+  if (isNba(props)) return <NBATable coastType={props.coastType} isOpen={props.isOpen} />;
   if (isChampions(props)) return <SoccerGroupsTable number={props.number} />;
-  if (isLegue(props)) return <SoccerLeaguesTable league={props.league} isOpen={props.isOpen} />;
+  if (isLeague(props)) return <SoccerLeaguesTable league={props.league} isOpen={props.isOpen} />;
   return null;
 }
 
@@ -39,6 +39,8 @@ function isChampions(props: Props): boolean %checks {
   return props.tableType === 'soccer-champions';
 }
 
-function isLegue(props: Props): boolean %checks {
+function isLeague(props: Props): boolean %checks {
   return props.tableType === 'soccer-leagues';
 }
+
+export default TableScore;

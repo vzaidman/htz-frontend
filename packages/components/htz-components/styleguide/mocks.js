@@ -5,6 +5,10 @@ import CommentsElement from './mocks/CommentsElement';
 import Footer from './mocks/Footer';
 import Asset from './mocks/Asset';
 import BreakingNewsBox from './mocks/BreakingNewsBoxMock';
+import NbaData from './mocks/NbaData';
+import FootballGroupssData from './mocks/FootballGroupsData';
+import FootballLeaguesData from './mocks/FootballLeaguesData';
+import TableScoreError from './mocks/TableScoreError';
 
 const mocks = {
   String: () => null,
@@ -48,6 +52,10 @@ const mocks = {
   NavMenu,
   Asset,
   BreakingNewsBox,
+  NbaData,
+  FootballLeaguesData,
+  FootballGroupssData,
+  TableScoreError,
 };
 
 export default mocks;

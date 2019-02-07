@@ -4,13 +4,14 @@ import React from 'react';
 import type { Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
 import { borderTop, } from '@haaretz/htz-css-tools';
-import ClickArea from '../../../ClickArea/ClickArea';
-import type { CoastType, } from '../../TableScore';
+import ClickArea from '../../ClickArea/ClickArea';
+import type { CoastType, } from '../TableScore';
 
 // / Flow types
 type Props = {
-  coastType: CoastType,
-  toggleCoast: CoastType => void,
+  coastType: ?CoastType,
+  toggleCoast: (CoastType, Object) => void,
+  client: Object,
 };
 type State = {
   east: boolean,
@@ -44,6 +45,9 @@ const singleTabRule: Object => Object = ({ theme, active, }) => ({
     : theme.color('neutral', -10),
   fontWeight: active ? 700 : 500,
   color: theme.color('button', 'primaryOpaqueHoverBg'),
+  extend: [
+    theme.mq({ until: 's', }, { ...theme.type(-1), }),
+  ],
 });
 
 function SingleTab({ text, active, }: SingleTabOptions): Node {
@@ -83,7 +87,7 @@ class CoastBar extends React.Component<Props, State> {
       east: true,
       west: false,
     });
-    this.props.toggleCoast('east');
+    this.props.toggleCoast('east', this.props.client);
   };
 
   handleWest: () => void = () => {
@@ -91,7 +95,7 @@ class CoastBar extends React.Component<Props, State> {
       west: true,
       east: false,
     });
-    this.props.toggleCoast('west');
+    this.props.toggleCoast('west', this.props.client);
   };
 
   render(): Node {
