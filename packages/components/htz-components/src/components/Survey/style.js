@@ -129,14 +129,17 @@ export default {
     extend: [
       mode === 'horizental'
         ? {
-          transitionProperty: 'width',
+          transitionProperty: 'width, opacity',
         }
         : {
           width: '3rem',
-          transitionProperty: 'height',
+          transitionProperty: 'height, opacity',
           height: !load ? '0' : `${(Math.max(value, 1) / 40) * 100}% `,
         },
     ],
+    ':HOVER': {
+      opacity: '0.5',
+    }
   }),
   comment: theme => ({
     ...theme.type(-1),
