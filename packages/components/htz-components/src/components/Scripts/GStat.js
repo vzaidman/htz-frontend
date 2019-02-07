@@ -2,7 +2,17 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import config from 'config';
-import UserDispenser from '../User/UserDispenser';
+import gql from 'graphql-tag';
+import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
+
+const GET_USER = gql`
+  query GetUser {
+    user @client {
+      id
+      anonymousId
+    }
+  }
+`;
 
 function GstatFunc(user) {
   const paywallStatDomain = config.get('msServiceDomain');
@@ -22,9 +32,7 @@ function GstatFunc(user) {
       const yy = d.getFullYear();
       // schedule one request per a day begin on six o'clock
       const schedulerDate = new Date(yy, mm, dd, 6, 0, 0);
-      const date = hh < 6
-        ? new Date(schedulerDate.getTime() - (1000 * 60 * 60 * 24))
-        : schedulerDate;
+      const date = hh < 6 ? new Date(schedulerDate.getTime() - 1000 * 60 * 60 * 24) : schedulerDate;
 
       if (typeof ssoId !== 'undefined' && typeof Storage !== 'undefined') {
         if (localStorage.GstatCampaign) {
@@ -34,6 +42,7 @@ function GstatFunc(user) {
             : null;
         }
 
+
         if (!lastModifiedDateTime || lastModifiedDateTime < date) {
           const domain = /^[\w-]+(\.[\w.]+)/.exec(window.location.hostname);
           if (domain.length < 2) return;
@@ -41,6 +50,7 @@ function GstatFunc(user) {
             + domain[1]
             + APP_NAME
             + GSTAT_SERVLET}?ssoId=${ssoId}`;
+
           fetch(url, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', },
@@ -77,5 +87,12 @@ class GStat extends Component {
   }
 }
 
-const WrappedGStat = () => <UserDispenser render={({ user, }) => <GStat user={user} />} />;
+const WrappedGStat = () => (
+  <ApolloConsumer>
+    {client => {
+      const ApolloUser = client.readQuery({ query: GET_USER, });
+      return <GStat user={ApolloUser.user} />;
+    }}
+  </ApolloConsumer>
+);
 export default WrappedGStat;
