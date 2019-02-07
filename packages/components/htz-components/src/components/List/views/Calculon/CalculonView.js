@@ -444,8 +444,8 @@ function Teaser3({
                     from: 's',
                     until: 'l',
                     sizes: [
-                      { from: 's', until: 'm', size: '180px', },
                       { from: 'm', until: 'l', size: '236px', },
+                      { from: 's', until: 'm', size: '180px', },
                     ],
                     widths: [ 180, 376, 236, 512, ],
                   },

@@ -204,7 +204,7 @@ function PazuzuTeaser({
                       { from: 's', size: '264px', },
                       { size: 'calc(50vw - 4.5rem)', },
                     ],
-                    widths: [ 200, 265, 315, 350, 600, ],
+                    widths: [ 200, 240, 265, 280, 315, 350, 600, ],
                   })}
                 />
               )}
