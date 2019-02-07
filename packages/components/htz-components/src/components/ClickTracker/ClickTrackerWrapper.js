@@ -15,6 +15,7 @@ const propTypes = {
   banners: PropTypes.arrayOf(
     PropTypes.shape({
       percentage: PropTypes.number,
+      chance: PropTypes.number,
       title: PropTypes.string,
       link: PropTypes.string,
       linkTarget: PropTypes.string,
@@ -23,7 +24,6 @@ const propTypes = {
       advertiserCamp: PropTypes.string,
     })
   ).isRequired,
-  totalPercentage: PropTypes.number.isRequired,
   /** A render prop that by default is set to be:
    *
    * ```
@@ -40,22 +40,6 @@ const defaultProps = {
 };
 
 const isValidViewMode = viewMode => true;
-
-/**
- * This returns a random integer between the specified values.
- * The value is no lower than min (or the next integer greater than min if min isn't an integer),
- * and is less than (but not equal to) max.The maximum is inclusive and the minimum is inclusive.
- * @param {*} min the minimum integer of the range
- * @param {*} max the maximum integer of the range
- * @returns an integer between min and max [min, max]
- */
-function getRandomIntInclusive(min, max) {
-  const minCeil = Math.ceil(min);
-  const maxFloor = Math.floor(max);
-  // Adding minCeil moves range from [0, max-min] to [min, max-min+min]
-  // eslint-disable-next-line no-mixed-operators
-  return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
-}
 
 /**
  * A wrapper container for a ClickTracker ad-slot.
@@ -87,14 +71,7 @@ class ClickTrackerWrapper extends Component {
       const DEBUG = typeof window !== 'undefined'
         && window.location.search.includes('debug');
       if (Array.isArray(this.banners) && this.banners.length > 0) {
-        const randomSelection = getRandomIntInclusive(
-          0,
-          this.props.totalPercentage
-        );
-        let selectedBanner = this.banners.find(
-          banner => randomSelection > banner.minRange
-            && randomSelection < banner.maxRange
-        );
+        let selectedBanner = this.getSelectedBanner();
         if (!selectedBanner) {
           selectedBanner = this.banners[0];
           DEBUG
@@ -119,6 +96,16 @@ class ClickTrackerWrapper extends Component {
       }
     }
   }
+
+  getSelectedBanner = () => {
+    if (this.banners.length === 1) { return this.banners[0]; }
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let incrementChance = 0;
+    return this.banners.find(banner => {
+      incrementChance += banner.chance;
+      return randomNumber <= incrementChance;
+    });
+  };
 
   render() {
     if (this.state.shouldRender) {
