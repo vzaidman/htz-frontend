@@ -22,10 +22,12 @@ export default class MastheadUserMenu extends React.Component {
      * A `string` of the user name to display.
      */
     userName: PropTypes.string,
+    biAction: PropTypes.func,
   };
 
   static defaultProps = {
     userName: null,
+    biAction: null,
   };
 
   render() {
@@ -35,7 +37,19 @@ export default class MastheadUserMenu extends React.Component {
           render={theme => (
             <HtzLink
               href={theme.userMenuI18n.loginUrl}
-              content={<UserButton isOpen={false} userName={this.props.userName} role="button" />}
+              content={(
+                <UserButton
+                  isOpen={false}
+                  role="button"
+                  onClick={
+                    this.props.biAction
+                      ? () => this.props.biAction({
+                        actionCode: 51,
+                      })
+                      : null
+                  }
+                />
+)}
             />
           )}
         />
@@ -46,7 +60,20 @@ export default class MastheadUserMenu extends React.Component {
       <FelaTheme
         render={theme => {
           const items = theme.userMenuI18n.menuItems;
-          const initialCombinedItems = items.map(item => <Item key={item.name} {...item} />);
+          const initialCombinedItems = items.map(item => (
+            <Item
+              key={item.name}
+              {...item}
+              onClick={
+                this.props.biAction
+                  ? () => this.props.biAction({
+                    actionCode: item.biActionCode ? item.biActionCode : 133,
+                    additionalInfo: { url: item.url, name: item.name, },
+                  })
+                  : null
+              }
+            />
+          ));
           const combinedItems = [
             ...initialCombinedItems,
             <Logout
@@ -64,7 +91,10 @@ export default class MastheadUserMenu extends React.Component {
                     justifyContent: 'flex-start',
                   }}
                   // eslint-disable-next-line react/prop-types
-                  onClick={() => logout().then(() => this.props.onLogout())}
+                  onClick={() => {
+                    this.props.biAction && this.props.biAction({ actionCode: 53, });
+                    logout().then(() => this.props.onLogout());
+                  }}
                 >
                   <FelaComponent
                     render="span"
@@ -89,7 +119,14 @@ export default class MastheadUserMenu extends React.Component {
                   {renderButton(({ toggleState, }) => (
                     <UserButton
                       isOpen={isOpen}
-                      onClick={toggleState}
+                      onClick={
+                        !isOpen && this.props.biAction
+                          ? () => {
+                            toggleState();
+                            this.props.biAction({ actionCode: 52, });
+                          }
+                          : toggleState
+                      }
                       userName={this.props.userName}
                       role="button"
                     />

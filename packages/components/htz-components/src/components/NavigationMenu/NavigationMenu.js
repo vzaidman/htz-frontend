@@ -9,6 +9,7 @@ import Hamburger from '../Animations/Hamburger';
 import Item from '../DropdownList/DropdownItem';
 import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
 import UserDispenser from '../User/UserDispenser';
+import EventTracker from '../../utils/EventTracker';
 
 const menuButtonStyle = ({ theme, isOpen, isHovered, }) => ({
   border: 'none',
@@ -120,110 +121,160 @@ class NavigationMenu extends React.Component {
 
   render() {
     return (
-      <FelaTheme
-        render={theme => {
-          const { isHovered, } = this.state;
-          const { items, sites, promotions, } = this.props.menuSections;
+      <EventTracker>
+        {({ biAction, }) => (
+          <FelaTheme
+            render={theme => {
+              const { isHovered, } = this.state;
+              const { items, sites, promotions, } = this.props.menuSections;
 
-          const combinedItems = items && items.map(item => <Item key={`item ${item.name}`} {...item} />);
+              const combinedItems = items
+                && items.map(item => (
+                  <Item
+                    key={`item ${item.name}`}
+                    {...item}
+                    onClick={
+                      biAction && item.url
+                        ? () => biAction({
+                          actionCode: 133,
+                          additionalInfo: {
+                            name: item.name,
+                            url: item.url,
+                          },
+                        })
+                        : null
+                    }
+                  />
+                ));
 
-          const combinedSites = sites
-            && sites.map(site => (
-              <Item
-                key={`site ${site.name}`}
-                miscStyles={{
-                  textDecoration: 'underline',
-                  fontWeight: 'normal',
-                  backgroundColor: theme.color('primary', '+1'),
-                }}
-                {...site}
-              />
-            ));
+              const combinedSites = sites
+                && sites.map(site => (
+                  <Item
+                    key={`site ${site.name}`}
+                    onClick={
+                      biAction && site.url
+                        ? () => biAction({
+                          actionCode: 133,
+                          additionalInfo: {
+                            name: site.name,
+                            url: site.url,
+                          },
+                        })
+                        : null
+                    }
+                    miscStyles={{
+                      textDecoration: 'underline',
+                      fontWeight: 'normal',
+                      backgroundColor: theme.color('primary', '+1'),
+                    }}
+                    {...site}
+                  />
+                ));
 
-          const combinedPromotions = !(this.props.userType === 'paying')
-            && promotions
-            && promotions.map(promotion => (
-              <Item
-                key={`promotion ${promotion.name}`}
-                variant="salesOpaque"
-                miscStyles={{ justifyContent: 'center', }}
-                {...promotion}
-              />
-            ));
+              const combinedPromotions = !(this.props.userType === 'paying')
+                && promotions
+                && promotions.map(promotion => (
+                  <Item
+                    key={`promotion ${promotion.name}`}
+                    onClick={
+                      biAction && promotion.url
+                        ? () => biAction({
+                          actionCode: 133,
+                          additionalInfo: {
+                            name: promotion.name,
+                            url: promotion.url ? promotion.url : 'no promotion url',
+                          },
+                        })
+                        : null
+                    }
+                    variant="salesOpaque"
+                    miscStyles={{ justifyContent: 'center', }}
+                    {...promotion}
+                  />
+                ));
 
-          const combinedMenu = [
-            ...(combinedItems || []),
-            ...(combinedSites || []),
-            ...(combinedPromotions || []),
-          ];
+              const combinedMenu = [
+                ...(combinedItems || []),
+                ...(combinedSites || []),
+                ...(combinedPromotions || []),
+              ];
 
-          return (
-            <DropdownList
-              mainMenuStyle={{ position: 'relative', }}
-              onClose={() => this.hamburgerEl.focus()}
-              render={({ renderButton, ListWrapper, isOpen, focusButton, }) => (
-                <Fragment>
-                  {renderButton(({ toggleState, }) => (
-                    <FelaComponent
-                      rule={menuButtonStyle}
-                      isOpen={isOpen}
-                      isHovered={isHovered}
-                      render={({ className, }) => (
-                        <button
-                          className={className}
-                          onClick={toggleState}
-                          aria-expanded={isOpen}
-                          ref={el => {
-                            if (!this.hamburgerEl) {
-                              this.hamburgerEl = el;
-                            }
-                          }}
-                          onMouseEnter={this.handleMouseEnter}
-                          onMouseLeave={this.handleMouseLeave}
-                          onFocus={this.handleMouseEnter}
-                          onBlur={this.handleMouseLeave}
-                          type="button"
-                        >
-                          <FelaComponent
-                            style={{
-                              marginStart: '2rem',
-                              marginEnd: '3rem',
-                              position: 'relative',
-                            }}
-                            render="span"
-                          >
-                            <Hamburger
-                              isOpen={isOpen}
-                              color={{
-                                close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
-                                open: [ 'neutral', '-10', ],
+              return (
+                <DropdownList
+                  mainMenuStyle={{ position: 'relative', }}
+                  onClose={() => this.hamburgerEl.focus()}
+                  render={({ renderButton, ListWrapper, isOpen, focusButton, }) => (
+                    <Fragment>
+                      {renderButton(({ toggleState, }) => (
+                        <FelaComponent
+                          rule={menuButtonStyle}
+                          isOpen={isOpen}
+                          isHovered={isHovered}
+                          render={({ className, }) => (
+                            <button
+                              className={className}
+                              onClick={
+                                !isOpen && biAction
+                                  ? () => {
+                                    toggleState();
+                                    biAction({ actionCode: 132, });
+                                  }
+                                  : toggleState
+                              }
+                              aria-expanded={isOpen}
+                              ref={el => {
+                                if (!this.hamburgerEl) {
+                                  this.hamburgerEl = el;
+                                }
                               }}
-                              size={2.5}
-                              isTransition
-                            />
-                          </FelaComponent>
-                          <span>{theme.navigationMenuI18n.buttonText}</span>
-                        </button>
-                      )}
-                    />
-                  ))}
-                  {isOpen ? (
-                    <ListWrapper
-                      listStyle={{
-                        ...dropdownListStyle(theme),
-                        minWidth: '29rem',
-                      }}
-                      itemStyle={dropdownItemStyle(theme)}
-                    >
-                      {combinedMenu}
-                    </ListWrapper>
-                  ) : null}
-                </Fragment>
-              )}
-            />
-          );
-        }}
-      />
+                              onMouseEnter={this.handleMouseEnter}
+                              onMouseLeave={this.handleMouseLeave}
+                              onFocus={this.handleMouseEnter}
+                              onBlur={this.handleMouseLeave}
+                              type="button"
+                            >
+                              <FelaComponent
+                                style={{
+                                  marginStart: '2rem',
+                                  marginEnd: '3rem',
+                                  position: 'relative',
+                                }}
+                                render="span"
+                              >
+                                <Hamburger
+                                  isOpen={isOpen}
+                                  color={{
+                                    close: isHovered ? [ 'neutral', '-10', ] : [ 'neutral', '-3', ],
+                                    open: [ 'neutral', '-10', ],
+                                  }}
+                                  size={2.5}
+                                  isTransition
+                                />
+                              </FelaComponent>
+                              <span>{theme.navigationMenuI18n.buttonText}</span>
+                            </button>
+                          )}
+                        />
+                      ))}
+                      {isOpen ? (
+                        <ListWrapper
+                          listStyle={{
+                            ...dropdownListStyle(theme),
+                            minWidth: '29rem',
+                          }}
+                          itemStyle={dropdownItemStyle(theme)}
+                        >
+                          {combinedMenu}
+                        </ListWrapper>
+                      ) : null}
+                    </Fragment>
+                  )}
+                />
+              );
+            }}
+          />
+        )}
+      </EventTracker>
     );
   }
 }

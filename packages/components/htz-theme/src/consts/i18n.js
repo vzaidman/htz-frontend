@@ -253,14 +253,17 @@ export const userMenuI18n = Object.freeze({
   menuItems: Object.freeze([
     Object.freeze({
       name: 'הגדרות',
+      biActionCode: 129,
       url: 'https://www.haaretz.co.il/personal-area/my-account',
     }),
     Object.freeze({
       name: 'שירות למנויים',
+      biActionCode: 130,
       url: 'https://www.haaretz.co.il/personal-area/my-account',
     }),
     Object.freeze({
       name: 'ניוזלטרים',
+      biActionCode: 131,
       url: 'https://www.haaretz.co.il/personal-area/newsletter',
     }),
   ]),
