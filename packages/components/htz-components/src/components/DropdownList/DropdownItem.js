@@ -5,10 +5,8 @@ import { FelaTheme, } from 'react-fela';
 import Button from '../Button/Button';
 import FlippingArrow from '../Animations/FlippingArrow';
 import DropdownList from './DropdownList';
-import {
-  dropdownItemStyle,
-  dropdownListStyle,
-} from '../Masthead/mastheadDropdownListStyle';
+import EventTracker from '../../utils/EventTracker';
+import { dropdownItemStyle, dropdownListStyle, } from '../Masthead/mastheadDropdownListStyle';
 
 Item.propTypes = {
   /**
@@ -56,148 +54,152 @@ Item.defaultProps = {
   miscStyles: {},
 };
 
-export default function Item({
-  name,
-  url,
-  pages,
-  variant,
-  miscStyles,
-  onClick,
-}) {
+export default function Item({ name, url, pages, variant, miscStyles, onClick, }) {
   return (
-    <FelaTheme
-      render={theme => (
-        <Fragment>
-          {pages && pages.length > 0 ? (
-            <DropdownList
-              isLast
-              mainMenuStyle={{ width: '100%', display: 'flex', }}
-              render={({ renderButton, ListWrapper, isOpen, }) => {
-                const combinedItems = pages.map(item => (
-                  <Item
-                    key={item.name}
-                    miscStyles={{
-                      backgroundColor: theme.color('secondary', '+1'),
-                      ':hover': {
-                        backgroundColor: theme.color('secondary', '+2'),
+    <EventTracker>
+      {({ biAction, }) => (
+        <FelaTheme
+          render={theme => (
+            <Fragment>
+              {pages && pages.length > 0 ? (
+                <DropdownList
+                  isLast
+                  mainMenuStyle={{ width: '100%', display: 'flex', }}
+                  render={({ renderButton, ListWrapper, isOpen, }) => {
+                    const combinedItems = pages.map(item => (
+                      <Item
+                        key={item.name}
+                        onClick={
+                          biAction
+                            ? () => {
+                              biAction({
+                                actionCode: 133,
+                                additionalInfo: { name: item.name, url: item.url, },
+                              });
+                            }
+                            : null
+                        }
+                        miscStyles={{
+                          backgroundColor: theme.color('secondary', '+1'),
+                          ':hover': {
+                            backgroundColor: theme.color('secondary', '+2'),
+                          },
+                          ':focus': {
+                            backgroundColor: theme.color('secondary', '+2'),
+                          },
+                        }}
+                        {...item}
+                      />
+                    ));
+                    const list = {};
+                    const eventsAttrs = (openList, closeList) => ({
+                      onMouseOver: () => {
+                        if (typeof list.closeSubList !== 'undefined') {
+                          window.clearTimeout(list.closeSubList);
+                        }
+                        list.openSubList = window.setTimeout(openList, 250);
                       },
-                      ':focus': {
-                        backgroundColor: theme.color('secondary', '+2'),
+                      onMouseOut: () => {
+                        if (typeof list.openSubList !== 'undefined') {
+                          window.clearTimeout(list.openSubList);
+                        }
+                        list.closeSubList = window.setTimeout(closeList, 250);
                       },
-                    }}
-                    {...item}
-                  />
-                ));
-                const list = {};
-                const eventsAttrs = (openList, closeList) => ({
-                  onMouseOver: () => {
-                    if (typeof list.closeSubList !== 'undefined') {
-                      window.clearTimeout(list.closeSubList);
-                    }
-                    list.openSubList = window.setTimeout(openList, 250);
-                  },
-                  onMouseOut: () => {
-                    if (typeof list.openSubList !== 'undefined') {
-                      window.clearTimeout(list.openSubList);
-                    }
-                    list.closeSubList = window.setTimeout(closeList, 250);
-                  },
-                });
+                    });
 
-                return (
-                  <Fragment>
-                    {renderButton(({ toggleState, openList, closeList, }) => (
+                    return (
                       <Fragment>
-                        <Button
-                          boxModel={{ vp: 1, hp: 2, }}
-                          isFull
-                          fontSize={-2}
-                          variant={variant}
-                          onClick={onClick}
-                          attrs={eventsAttrs(openList, closeList, list)}
-                          href={url}
-                          miscStyles={{
-                            display: 'flex',
-                            justifyContent: 'flex-start',
-                            ...miscStyles,
-                          }}
-                        >
-                          <span>{name}</span>
-                        </Button>
-                        <Button
-                          boxModel={{ vp: 1, hp: 2, }}
-                          variant={variant}
-                          isHard
-                          onClick={toggleState}
-                          attrs={eventsAttrs(openList, closeList, list)}
-                          aria-expanded={isOpen}
-                          aria-label={`more ${name}`}
-                          miscStyles={{
-                            position: 'static',
-                            ...(isOpen
-                              ? {
-                                backgroundColor: theme.color(
-                                  'secondary',
-                                  '+1'
-                                ),
-                              }
-                              : {}),
-                          }}
-                        >
-                          <FlippingArrow
-                            isOpen={isOpen}
-                            color={[ 'neutral', '-10', ]}
-                            size={1.5}
-                            direction={theme.direction}
-                          />
-                        </Button>
+                        {renderButton(({ toggleState, openList, closeList, }) => (
+                          <Fragment>
+                            <Button
+                              boxModel={{ vp: 1, hp: 2, }}
+                              isFull
+                              fontSize={-2}
+                              variant={variant}
+                              onClick={onClick}
+                              attrs={eventsAttrs(openList, closeList, list)}
+                              href={url}
+                              miscStyles={{
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                                ...miscStyles,
+                              }}
+                            >
+                              <span>{name}</span>
+                            </Button>
+                            <Button
+                              boxModel={{ vp: 1, hp: 2, }}
+                              variant={variant}
+                              isHard
+                              onClick={toggleState}
+                              attrs={eventsAttrs(openList, closeList, list)}
+                              aria-expanded={isOpen}
+                              aria-label={`more ${name}`}
+                              miscStyles={{
+                                position: 'static',
+                                ...(isOpen
+                                  ? {
+                                    backgroundColor: theme.color('secondary', '+1'),
+                                  }
+                                  : {}),
+                              }}
+                            >
+                              <FlippingArrow
+                                isOpen={isOpen}
+                                color={[ 'neutral', '-10', ]}
+                                size={1.5}
+                                direction={theme.direction}
+                              />
+                            </Button>
 
-                        {isOpen && (
-                          <ListWrapper
-                            attrs={eventsAttrs(openList, closeList, list)}
-                            listStyle={{
-                              ...dropdownListStyle(theme),
-                              top: '0',
-                              start: '100%',
-                              position: 'absolute',
-                            }}
-                            itemStyle={{
-                              ...dropdownItemStyle(theme),
-                              ':last-child': {
-                                borderBottomColor: theme.color('primary', '+1'),
-                                borderBottomStyle: 'solid',
-                                borderBottomWidth: '1px',
-                              },
-                            }}
-                          >
-                            {combinedItems}
-                          </ListWrapper>
-                        )}
+                            {isOpen && (
+                              <ListWrapper
+                                attrs={eventsAttrs(openList, closeList, list)}
+                                listStyle={{
+                                  ...dropdownListStyle(theme),
+                                  top: '0',
+                                  start: '100%',
+                                  position: 'absolute',
+                                }}
+                                itemStyle={{
+                                  ...dropdownItemStyle(theme),
+                                  ':last-child': {
+                                    borderBottomColor: theme.color('primary', '+1'),
+                                    borderBottomStyle: 'solid',
+                                    borderBottomWidth: '1px',
+                                  },
+                                }}
+                              >
+                                {combinedItems}
+                              </ListWrapper>
+                            )}
+                          </Fragment>
+                        ))}
                       </Fragment>
-                    ))}
-                  </Fragment>
-                );
-              }}
-            />
-          ) : (
-            <Button
-              boxModel={{ vp: 1, hp: 2, }}
-              isFull
-              fontSize={-2}
-              variant={variant}
-              onClick={onClick}
-              href={url}
-              miscStyles={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                ...miscStyles,
-              }}
-            >
-              <span>{name}</span>
-            </Button>
+                    );
+                  }}
+                />
+              ) : (
+                <Button
+                  boxModel={{ vp: 1, hp: 2, }}
+                  isFull
+                  fontSize={-2}
+                  variant={variant}
+                  onClick={onClick}
+                  href={url}
+                  miscStyles={{
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                    ...miscStyles,
+                  }}
+                >
+                  <span>{name}</span>
+                </Button>
+              )}
+            </Fragment>
           )}
-        </Fragment>
+        />
       )}
-    />
+    </EventTracker>
   );
 }
