@@ -57,6 +57,7 @@ const tm = Object.freeze({
       opaque: {
         primaryOpaqueBg: [ 'secondary', 'base', ],
         primaryOpaqueHoverBg: [ 'secondary', '+1', ],
+        primaryOpaqueFocusBg: [ 'secondary', '+1', ],
       },
     },
     input: {
@@ -565,6 +566,7 @@ const colors = host => {
       base: '#FFA500',
       '+1': '#FA9E00',
       '+2': '#F59300',
+      // '+3': '#ED8600',
       a11yOnLight: '#A7610C',
     },
 

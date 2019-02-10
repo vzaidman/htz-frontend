@@ -15,6 +15,7 @@ import { visuallyHidden, } from '@haaretz/htz-css-tools';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
 import UserMessage from './Elements/UserMessage';
+import FelaTheme from 'react-fela/lib/FelaTheme';
 
 const gaMapper = {
   productId: {
@@ -67,7 +68,7 @@ const couponButtonsMiscStyles = {
   // width: '11rem',
 };
 
-const AriaHidden = ({ children, }) => (
+const A11yText = ({ children, }) => (
   <FelaComponent
     style={visuallyHidden()}
     render={({ className, }) => (
@@ -75,18 +76,23 @@ const AriaHidden = ({ children, }) => (
     )}
   />
 );
-AriaHidden.propTypes = { children: PropTypes.node.isRequired, };
+A11yText.propTypes = { children: PropTypes.node.isRequired, };
 
-const AltPricingOption = ({ productTitle, }) => {
-  const specialOffer = productTitle.indexOf('מיוחד') !== -1;
+const regularProductsContentIds = { 7.7504259: 1, 7.7602297: 1, };
+const AltPricingOption = ({ productContentId, productTitle, optionButtons, }) => {
+  const specialOffer = !(productContentId in regularProductsContentIds);
   return (
     <Fragment>
-      {specialOffer && <AriaHidden>החלף ל</AriaHidden>}
-      {specialOffer ? productTitle : 'חזרה למחיר הרגיל'}
+      {specialOffer && <A11yText>{optionButtons.a11yTexts.prefix}</A11yText>}
+      {specialOffer ? productTitle : optionButtons.regular}
     </Fragment>
   );
 };
-AltPricingOption.propTypes = { productTitle: PropTypes.string.isRequired, };
+AltPricingOption.propTypes = {
+  productContentId: PropTypes.string.isRequired,
+  productTitle: PropTypes.string.isRequired,
+  optionButtons: PropTypes.shape(PropTypes.object).isRequired,
+};
 
 class ChooseProductStage extends Component {
   static propTypes = {
@@ -203,7 +209,7 @@ class ChooseProductStage extends Component {
           theme: {
             stage2: {
               offerList: { termsButtonText, },
-              optionButtons: { coupon, },
+              optionButtons,
               form: {
                 couponError,
                 validation,
@@ -277,7 +283,11 @@ class ChooseProductStage extends Component {
                                   });
                                 }}
                               >
-                                <AltPricingOption productTitle={product.productTitle} />
+                                <AltPricingOption
+                                  productContentId={product.contentId}
+                                  productTitle={product.productTitle}
+                                  optionButtons={optionButtons}
+                                />
                               </Button>
                             </Fragment>
                           ) : null)
@@ -415,7 +425,7 @@ class ChooseProductStage extends Component {
                                 });
                               }}
                             >
-                              {coupon}
+                              {optionButtons.coupon}
                             </Button>
                           ))}
                         <FelaComponent

@@ -210,6 +210,10 @@ export const stage2 = Object.freeze({
   optionButtons: Object.freeze({
     students: 'מחיר מיוחד לסטודנטים ולחיילים',
     coupon: 'יש לי קופון הנחה',
+    regular: 'חזרה למחיר הרגיל',
+    a11yTexts: Object.freeze({
+      prefix: 'החלף ל',
+    }),
   }),
   disclaimer: Object.freeze({
     title: 'תנאי רכישה',
