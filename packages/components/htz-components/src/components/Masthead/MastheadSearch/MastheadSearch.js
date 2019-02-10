@@ -22,6 +22,8 @@ class HeaderSearch extends React.Component {
     isHovered: false,
   };
 
+  searchFormRef = React.createRef();
+
   componentDidUpdate(prevProps, prevState) {
     this.state.isSearchOpen
       ? document.addEventListener('keydown', this.handleGlobalKeydown)
@@ -41,7 +43,12 @@ class HeaderSearch extends React.Component {
       this.searchButton.focus();
     }
     else if (key === 13) {
-      this.toggleSearch();
+      if (this.state.isSearchOpen) {
+        this.searchFormRef.current.submit();
+      }
+      else {
+        this.toggleSearch();
+      }
     }
   };
 
@@ -85,6 +92,7 @@ class HeaderSearch extends React.Component {
           <form
             className={className}
             onSubmit={event => this.submitHandler(event, queryUrl(this.state.query))}
+            ref={this.searchFormRef}
           >
             <FelaComponent
               style={{
