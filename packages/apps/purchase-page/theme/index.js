@@ -36,6 +36,7 @@ import {
   userHasProduct,
   paypalError,
   changePayment,
+  creditPrefixI18n,
 } from './consts/i18n';
 
 // methods
@@ -157,6 +158,7 @@ const purchasePageTheme = host => Object.freeze({
   userHasProduct,
   paypalError,
   changePayment,
+  creditPrefixI18n,
 
   // Methods
   color: getColor(host),

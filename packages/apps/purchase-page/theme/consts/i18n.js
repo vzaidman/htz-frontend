@@ -13,6 +13,10 @@ export const seo = Object.freeze({
   }),
 });
 
+export const creditPrefixI18n = Object.freeze({
+  imageCreditPrefix: 'צילום',
+});
+
 export const linkToHomePage = Object.freeze({
   href: Object.freeze({
     'haaretz.co.il': 'https://www.haaretz.co.il/',
