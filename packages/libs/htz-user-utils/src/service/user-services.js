@@ -181,7 +181,7 @@ export default function UserService(config = {}) {
    * Logout a user from it's current session
    * @param {any} user the currently logged in user
    */
-  function logout(user) {
+  function logout({ user, }) {
     const factory = new UserFactory();
     const siteConfig = createSiteConfig();
     const serviceUrl = `${siteConfig.ssoDomain}/sso/logout`;
