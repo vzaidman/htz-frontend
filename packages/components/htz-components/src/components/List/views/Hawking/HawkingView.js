@@ -22,6 +22,7 @@ import CommentsCount from '../../../CommentsCount/CommentsCount';
 import getImageAssets from '../../../../utils/getImageAssets';
 import Raphael from '../Raphael/Raphael';
 import GeneralAdSlot from '../../../Ads/GeneralAdSlot';
+import UserAgent from '../../../UserAgent/UserAgent';
 
 type Props = {
   list: ListDataType,
@@ -318,51 +319,62 @@ HawkingTeaser.defaultProps = {
 
 function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
   return (
-    <FelaTheme
-      render={theme => (
-        <Teaser
-          data={item}
-          onClick={
-            biAction
-              ? () => biAction({ index, articleId: item.representedContent, })
-              : null
-          }
-          miscStyles={{ flexGrow: '1', }}
-          gridMiscStyles={{ alignContent: 'stretch', }}
-        >
-          <TeaserContent
-            data={item}
-            width={1}
-            padding={[
-              { until: 'l', value: [ 1, 2, 0, ], },
-              { from: 'l', value: [ 1, 1, 0, ], },
-            ]}
-            footerPadding={[
-              { until: 'l', value: [ 1, 2, ], },
-              { from: 'l', value: [ 1, 1, ], },
-            ]}
-            footerMiscStyles={{
-              fontWeight: '700',
-              type: -3,
-              color: theme.color('neutral', '-3'),
-            }}
-            renderContent={data => (
-              <TeaserHeader
-                {...data}
-                typeScale={[ { until: 's', value: 0, }, ]}
-                onClick={
-                  biAction
-                    ? () => biAction({ index, articleId: item.representedContent, })
-                    : null
-                }
+    <UserAgent
+      rules={{
+        untilIos11: { os: 'OS X', untilVer: 11, },
+      }}
+    >
+      {({ untilIos11, }) => (
+        <FelaTheme
+          render={theme => (
+            <Teaser
+              data={item}
+              onClick={
+                biAction
+                  ? () => biAction({ index, articleId: item.representedContent, })
+                  : null
+              }
+              miscStyles={{
+                flexGrow: '1',
+                ...(untilIos11 ? { height: 'initial', } : {}),
+              }}
+              gridMiscStyles={{ alignContent: 'stretch', }}
+            >
+              <TeaserContent
+                data={item}
+                width={1}
+                padding={[
+                  { until: 'l', value: [ 1, 2, 0, ], },
+                  { from: 'l', value: [ 1, 1, 0, ], },
+                ]}
+                footerPadding={[
+                  { until: 'l', value: [ 1, 2, ], },
+                  { from: 'l', value: [ 1, 1, ], },
+                ]}
+                footerMiscStyles={{
+                  fontWeight: '700',
+                  type: -3,
+                  color: theme.color('neutral', '-3'),
+                }}
+                renderContent={data => (
+                  <TeaserHeader
+                    {...data}
+                    typeScale={[ { until: 's', value: 0, }, ]}
+                    onClick={
+                      biAction
+                        ? () => biAction({ index, articleId: item.representedContent, })
+                        : null
+                    }
+                  />
+                )}
+                renderFooter={() => (
+                  <CommentsCount commentsCount={item.commentsCounts} />
+                )}
               />
-            )}
-            renderFooter={() => (
-              <CommentsCount commentsCount={item.commentsCounts} />
-            )}
-          />
-        </Teaser>
+            </Teaser>
+          )}
+        />
       )}
-    />
+    </UserAgent>
   );
 }

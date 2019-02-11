@@ -25,6 +25,7 @@ import TeaserContent from '../../../TeaserContent/TeaserContent';
 import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import pictureAssetProps from '../../../../utils/getPictureAssets';
+import UserAgent from '../../../UserAgent/UserAgent';
 
 type StockType = {
   name: string,
@@ -357,36 +358,47 @@ function TextualTeaser({ biAction, data, index, }: TeaserProps): Node {
 
   return (
     <GridItem width={1} miscStyles={{ flexGrow: '1', }} stretchContent>
-      <Teaser
-        data={data}
-        onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-        miscStyles={{ flexGrow: '1', }}
-        gridMiscStyles={{ alignContent: 'stretch', }}
+      <UserAgent
+        rules={{
+          untilIos11: { os: 'OS X', untilVer: 11, },
+        }}
       >
-        <TeaserContent
-          data={data}
-          padding={[
-            { until: 's', value: [ 1, 2, 0, ], },
-            { from: 's', until: 'l', value: [ 2, 2, 0, ], },
-            { from: 'l', value: [ 1, 1, 0, ], },
-          ]}
-          footerPadding={[
-            { until: 'l', value: [ 1, 2, ], },
-            { from: 'l', value: [ 1, 1, ], },
-          ]}
-          footerMiscStyles={{ type: -3, }}
-          renderContent={() => (
-            <TeaserHeader
-              {...data}
-              typeScale={headerTypo}
-              onClick={
-                biAction ? () => biAction({ index, articleId: itemId, }) : null
-              }
+        {({ untilIos11, }) => (
+          <Teaser
+            data={data}
+            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+            miscStyles={{
+              flexGrow: '1',
+              ...(untilIos11 ? { height: 'initial', } : {}),
+            }}
+            gridMiscStyles={{ alignContent: 'stretch', }}
+          >
+            <TeaserContent
+              data={data}
+              padding={[
+                { until: 's', value: [ 1, 2, 0, ], },
+                { from: 's', until: 'l', value: [ 2, 2, 0, ], },
+                { from: 'l', value: [ 1, 1, 0, ], },
+              ]}
+              footerPadding={[
+                { until: 'l', value: [ 1, 2, ], },
+                { from: 'l', value: [ 1, 1, ], },
+              ]}
+              footerMiscStyles={{ type: -3, }}
+              renderContent={() => (
+                <TeaserHeader
+                  {...data}
+                  typeScale={headerTypo}
+                  onClick={
+                    biAction ? () => biAction({ index, articleId: itemId, }) : null
+                  }
+                />
+              )}
+              renderFooter={() => <Footer data={data} />}
             />
-          )}
-          renderFooter={() => <Footer data={data} />}
-        />
-      </Teaser>
+          </Teaser>
+        )}
+      </UserAgent>
     </GridItem>
   );
 }
