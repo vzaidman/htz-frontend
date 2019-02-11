@@ -34,7 +34,6 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
         const {
           homePage: { slots, seoData, pageDateTimeString, pageType, },
         } = data;
-        console.warn('!!! slots.main: ', slots.main);
 
         client.writeData({
           data: {

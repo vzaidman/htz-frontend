@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import config from 'config';
 import gql from 'graphql-tag';
 import ApolloConsumer from '../ApolloBoundary/ApolloConsumer';
+import NoSSR from '../NoSSR/NoSSR';
 
 const GET_USER = gql`
   query GetUser {
@@ -41,7 +42,6 @@ function GstatFunc(user) {
             ? new Date(GstatCampaign.lastModifiedDateTime)
             : null;
         }
-
 
         if (!lastModifiedDateTime || lastModifiedDateTime < date) {
           const domain = /^[\w-]+(\.[\w.]+)/.exec(window.location.hostname);
@@ -88,11 +88,13 @@ class GStat extends Component {
 }
 
 const WrappedGStat = () => (
-  <ApolloConsumer>
-    {client => {
-      const ApolloUser = client.readQuery({ query: GET_USER, });
-      return <GStat user={ApolloUser.user} />;
-    }}
-  </ApolloConsumer>
+  <NoSSR>
+    <ApolloConsumer>
+      {client => {
+        const ApolloUser = client.readQuery({ query: GET_USER, });
+        return <GStat user={ApolloUser.user} />;
+      }}
+    </ApolloConsumer>
+  </NoSSR>
 );
 export default WrappedGStat;
