@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@haaretz/htz-user-utils": "^0.1.0",
+    "htz-dispatch-event": "^1.1.2",
     "lodash": "^4.17.5"
   },
   "devDependencies": {

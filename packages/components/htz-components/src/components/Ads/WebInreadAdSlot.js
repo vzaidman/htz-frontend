@@ -1,16 +1,10 @@
 import React from 'react';
 import { FelaComponent, } from 'react-fela';
 import AdSlotBase from './AdSlotBase';
+import WebInreadAdSlotCaption from './WebInreadAdSlotCaption';
 
 const style = ({ theme, }) => ({
   '&:not(:empty)': {
-    '&::before': {
-      display: 'block',
-      content: '"-פרסומת-"',
-      paddingTop: '0rem',
-      paddingBottom: '0rem',
-      ...theme.type(-3),
-    },
     '&::after': {
       display: 'block',
       content: '" "',
@@ -21,6 +15,7 @@ const style = ({ theme, }) => ({
 
 const WebInreadAdSlot = props => (
   <FelaComponent style={{ textAlign: 'center', }}>
+    <WebInreadAdSlotCaption />
     <AdSlotBase styleRule={style} {...props} />
   </FelaComponent>
 );
