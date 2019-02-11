@@ -15,7 +15,6 @@ import { visuallyHidden, } from '@haaretz/htz-css-tools';
 import OfferList from './ChooseProductStageElements/OfferList';
 import Modal from './ChooseProductStageElements/Modal';
 import UserMessage from './Elements/UserMessage';
-import FelaTheme from 'react-fela/lib/FelaTheme';
 
 const gaMapper = {
   productId: {
