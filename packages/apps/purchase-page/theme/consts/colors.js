@@ -383,7 +383,7 @@ const colors = host => {
       salesOpaqueActiveBg: [ 'sales', '+1', ],
       salesOpaqueActiveBorder: 'transparent',
       salesOpaqueActiveText: [ 'button', 'salesOpaqueText', ],
-      salesOpaqueFocusBg: [ 'sales', '+2', ],
+      salesOpaqueFocusBg: [ 'sales', '+3', ],
       salesOpaqueFocusBorder: 'transparent',
       salesOpaqueFocusText: [ 'button', 'salesOpaqueText', ],
       salesOpaqueHoverBg: [ 'sales', '+2', ],
@@ -566,7 +566,7 @@ const colors = host => {
       base: '#FFA500',
       '+1': '#FA9E00',
       '+2': '#F59300',
-      // '+3': '#ED8600',
+      '+3': '#ED8600',
       a11yOnLight: '#A7610C',
     },
 
