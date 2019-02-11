@@ -11,7 +11,7 @@ import type { attrFlowType, } from '../../flowTypes/attrTypes';
 import { isClickTracker, } from '../../utils/validateType';
 import Card from '../Card/Card';
 import Debug from '../Debug/Debug';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import UserAgent from '../UserAgent/UserAgent';
 import Grid from '../Grid/Grid';
 import HtzLink from '../HtzLink/HtzLink';
 
@@ -124,51 +124,57 @@ export default function Teaser({
     return <Debug>No data was provided for this teaser</Debug>;
   }
   return (
-    <ErrorBoundary>
-      <Card
-        tagName="article"
-        fillHeight={fillHeight}
-        miscStyles={{ position: 'relative', ...(miscStyles || {}), }}
-        {...{ backgroundColor, isElevated, attrs, }}
-      >
-        <Grid
-          gutter={gutter}
-          miscStyles={{
-            alignContent: 'flex-start',
-            flexGrow: '1',
-            height: '100%',
-            ...setStacking(isStacked),
-            ...(gridMiscStyles || {}),
-          }}
-          {...(isRev ? { isRev, } : {})}
+    <UserAgent
+      rules={{
+        untilIos11: { os: 'OS X', untilVer: 11, },
+      }}
+    >
+      {({ untilIos11, }) => (
+        <Card
+          tagName="article"
+          fillHeight={fillHeight}
+          miscStyles={{ position: 'relative', ...(miscStyles || {}), }}
+          {...{ backgroundColor, isElevated, attrs, }}
         >
-          {children}
-        </Grid>
-        <FelaComponent
-          style={{
-            backgroundColor: 'transparent',
-            bottom: '0',
-            left: '0',
-            position: 'absolute',
-            right: '0',
-            top: '0',
-            zIndex: '0',
-          }}
-          render={({ className: linkClassName, }) => (
-            <HtzLink
-              className={linkClassName}
-              href={isClickTracker(data) ? data.link : data.path}
-              target={isClickTracker(data) ? data.linkTarget : null}
-              onClick={onClick}
-              attrs={{
-                tabIndex: '-1',
-                'aria-hidden': true,
-              }}
-            />
-          )}
-        />
-      </Card>
-    </ErrorBoundary>
+          <Grid
+            gutter={gutter}
+            miscStyles={{
+              alignContent: 'flex-start',
+              flexGrow: '1',
+              height: untilIos11 ? 'initial' : '100%',
+              ...setStacking(isStacked),
+              ...(gridMiscStyles || {}),
+            }}
+            {...(isRev ? { isRev, } : {})}
+          >
+            {children}
+          </Grid>
+          <FelaComponent
+            style={{
+              backgroundColor: 'transparent',
+              bottom: '0',
+              left: '0',
+              position: 'absolute',
+              right: '0',
+              top: '0',
+              zIndex: '0',
+            }}
+            render={({ className: linkClassName, }) => (
+              <HtzLink
+                className={linkClassName}
+                href={isClickTracker(data) ? data.link : data.path}
+                target={isClickTracker(data) ? data.linkTarget : null}
+                onClick={onClick}
+                attrs={{
+                  tabIndex: '-1',
+                  'aria-hidden': true,
+                }}
+              />
+            )}
+          />
+        </Card>
+      )}
+    </UserAgent>
   );
 }
 
