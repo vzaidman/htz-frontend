@@ -122,32 +122,23 @@ export default class Facebook extends React.Component<Props> {
             ) : (
               <FelaComponent
                 style={{
-                  paddingBottom: `${(height * 100) / width}%`,
-                  display: 'block',
-                  height: '0',
-                  position: 'relative',
+                  width: '100%',
+                  // In mobile devices - Facebook currently applies a fixed width in pixels,
+                  // according to the parent container. Without this next rule that results
+                  // in too large a width. (a Facebook given class makes the display inline)
+                  display: 'inline-block !important',
                 }}
-              >
-                <FelaComponent
-                  style={{
-                    height: '100%',
-                    left: '0',
-                    top: '0',
-                    position: 'absolute',
-                    width: '100%',
-                  }}
-                  render={({ className, }) => (
-                    <div
-                      className={`fb-video ${className}`}
-                      data-width="auto"
-                      data-href={this.props.source}
-                      data-allowfullscreen="true"
-                      data-autoplay="false"
-                      data-show-text={showText}
-                    />
-                  )}
-                />
-              </FelaComponent>
+                render={({ className, }) => (
+                  <div
+                    className={`fb-video ${className}`}
+                    data-width="auto"
+                    data-href={this.props.source}
+                    data-allowfullscreen="true"
+                    data-autoplay="false"
+                    data-show-text={showText}
+                  />
+                )}
+              />
             );
           }
           return null;
