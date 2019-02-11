@@ -2,9 +2,8 @@
 // @flow
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { FelaTheme, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import type { DocumentNode, } from 'graphql/language/ast';
-import FelaComponent from 'react-fela/es/fe';
 import Query from '../../ApolloBoundary/Query';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import Table from '../Table/Table';

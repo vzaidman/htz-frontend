@@ -3,12 +3,11 @@
 import * as React from 'react';
 import type { Node, } from 'react';
 import type { DocumentNode, } from 'graphql/language/ast';
-import { FelaTheme, } from 'react-fela';
+import { FelaComponent, FelaTheme, } from 'react-fela';
 import gql from 'graphql-tag';
 import ToggleButton from '../../ToggleButton/ToggleButton';
 import Query from '../../../ApolloBoundary/Query';
 import Table from '../../Table/Table';
-import FelaComponent from 'react-fela/es/fe';
 
 
 const GET_LEAGUES_DATA: DocumentNode = gql`
