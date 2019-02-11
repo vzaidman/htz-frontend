@@ -4,11 +4,12 @@ import * as React from 'react';
 import { FelaTheme, } from 'react-fela';
 import type { Node, } from 'react';
 import gql from 'graphql-tag';
+import type { DocumentNode, } from 'graphql/language/ast';
 import Query from '../../../ApolloBoundary/Query';
 import Table from '../../Table/Table';
 import GroupBar from './GroupBar';
-import type { DocumentNode, } from 'graphql/language/ast';
 import ApolloConsumer from '../../../ApolloBoundary/ApolloConsumer';
+import FelaComponent from 'react-fela/es/fe';
 
 
 const GET_GROUP_DATA: DocumentNode = gql`
@@ -53,6 +54,10 @@ const CenteredElement: Object = {
   position: 'relative',
   textAlign: 'center',
 };
+
+const Container: Object = {
+  display: 'inline-block',
+}
 
 
 export default class SoccerLeaguesTable extends React.Component<Props, State> {
@@ -101,10 +106,14 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
 
           return (
 
-            <div style={{ display: 'inline-block', }}>
+            <FelaComponent style={Container}>
 
-              <div style={CenteredElement}>
-                <GroupBar client={client} setGroup={this.setGroup} groupNumber={Number(group) || 1} />
+              <FelaComponent style={CenteredElement}>
+                <GroupBar
+                  client={client}
+                  setGroup={this.setGroup}
+                  groupNumber={Number(group) || 1}
+                />
 
                 <FelaTheme render={theme => (
                   <Table
@@ -114,8 +123,8 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
                   />
                 )}
                 />
-              </div>
-            </div>
+              </FelaComponent>
+            </FelaComponent>
           );
         }}
       </Query>
@@ -123,10 +132,14 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
       : (
         <ApolloConsumer>
           {client => (
-            <div style={{ display: 'inline-block', }}>
+            <FelaComponent style={Container}>
 
-              <div style={CenteredElement}>
-                <GroupBar client={client} setGroup={this.setGroup} groupNumber={Number(group) || 1} />
+              <FelaComponent style={CenteredElement}>
+                <GroupBar
+                  client={client}
+                  setGroup={this.setGroup}
+                  groupNumber={Number(group) || 1}
+                />
 
                 <FelaTheme render={theme => (
                   <Table
@@ -136,8 +149,8 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
                   />
                 )}
                 />
-              </div>
-            </div>
+              </FelaComponent>
+            </FelaComponent>
           )}
         </ApolloConsumer>
       );

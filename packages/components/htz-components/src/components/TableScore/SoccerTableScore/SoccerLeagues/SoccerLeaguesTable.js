@@ -8,6 +8,7 @@ import gql from 'graphql-tag';
 import ToggleButton from '../../ToggleButton/ToggleButton';
 import Query from '../../../ApolloBoundary/Query';
 import Table from '../../Table/Table';
+import FelaComponent from 'react-fela/es/fe';
 
 
 const GET_LEAGUES_DATA: DocumentNode = gql`
@@ -48,6 +49,7 @@ type State = {
   league: string,
 }
 
+const halfTableData: number = 6;
 
 const Container: Object = {
   display: 'inline-block',
@@ -112,13 +114,16 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
                 '11': [ 'gplus', '', ],
               };
 
-          const tableData = isOpen ? [ ...data.tableScore.data, ]
-            : [ ...data.tableScore.data, ].splice(0, 6);
+          const tableData = !isOpen
+            ? [ ...data.tableScore.data, ].splice(
+              0, Math.min(data.tableScore.data.length, halfTableData)
+            )
+            : [ ...data.tableScore.data, ];
 
           return (
 
-            <div style={Container}>
-              <div style={CenteredElement}>
+            <FelaComponent style={Container}>
+              <FelaComponent style={CenteredElement}>
 
                 <FelaTheme render={theme => (
                   <Table
@@ -143,8 +148,8 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
                 )}
                 />
 
-              </div>
-            </div>
+              </FelaComponent>
+            </FelaComponent>
           );
         }}
       </Query>

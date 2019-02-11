@@ -4,6 +4,7 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { FelaTheme, } from 'react-fela';
 import type { DocumentNode, } from 'graphql/language/ast';
+import FelaComponent from 'react-fela/es/fe';
 import Query from '../../ApolloBoundary/Query';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import Table from '../Table/Table';
@@ -45,6 +46,8 @@ type State = {
   tableData: ?Array<Object>,
 };
 
+const halfTableData: number = 8;
+
 const borders: Object = {
   '7': [ 'gplus', '', ],
 };
@@ -80,7 +83,7 @@ export default class NBATable extends React.Component<Props, State> {
       query: GET_NBA_DATA,
       variables: ({ identifier: coast, }),
     }).then(() => this.setState({ coastType: coast, }));
-  }
+  };
 
   // Render
   render(): React.Node {
@@ -102,13 +105,16 @@ export default class NBATable extends React.Component<Props, State> {
             return null;
           }
 
-          const tableData = isOpen ? [ ...data.tableScore.data, ]
-            : [ ...data.tableScore.data, ].splice(0, 8);
+          const tableData = !isOpen
+            ? [ ...data.tableScore.data, ].splice(
+              0, Math.min(data.tableScore.data.length, halfTableData)
+            )
+            : [ ...data.tableScore.data, ];
 
           return (
 
-            <div style={Container}>
-              <div style={CenteredElement}>
+            <FelaComponent style={Container}>
+              <FelaComponent style={CenteredElement}>
                 <CoastBar client={client} coastType={coastType} toggleCoast={this.toggleCoast} />
 
                 <FelaTheme render={theme => (
@@ -135,16 +141,16 @@ export default class NBATable extends React.Component<Props, State> {
                 )}
                 />
 
-              </div>
-            </div>
+              </FelaComponent>
+            </FelaComponent>
           );
         }}
       </Query>
     ) : (
       <ApolloConsumer>
         {client => (
-          <div style={Container}>
-            <div style={CenteredElement}>
+          <FelaComponent style={Container}>
+            <FelaComponent style={CenteredElement}>
               <CoastBar client={client} coastType={coastType} toggleCoast={this.toggleCoast} />
 
               <FelaTheme render={theme => (
@@ -168,8 +174,8 @@ export default class NBATable extends React.Component<Props, State> {
               )}
               />
 
-            </div>
-          </div>
+            </FelaComponent>
+          </FelaComponent>
         )}
       </ApolloConsumer>
     );
