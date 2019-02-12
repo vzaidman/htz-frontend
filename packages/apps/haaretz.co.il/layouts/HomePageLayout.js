@@ -24,6 +24,10 @@ const DfpInjector = dynamic(import('../components/Dfp/DfpInjector'), {
   loading: () => null,
   ssr: false,
 });
+const GaHomePage = dynamic(import('../components/GoogleAnalyticsHomePage/GoogleAnalyticsHomePage'), {
+  loading: () => null,
+  ssr: false,
+});
 
 function HomePageLayout({ render, }: { render: Function, }): React.Node {
   return (
@@ -34,7 +38,6 @@ function HomePageLayout({ render, }: { render: Function, }): React.Node {
         const {
           homePage: { slots, seoData, pageDateTimeString, pageType, },
         } = data;
-        console.warn('!!! slots.main: ', slots.main);
 
         client.writeData({
           data: {
@@ -100,6 +103,7 @@ if (window) {
                 {/* <WelcomePage /> */}
               </React.Fragment>
             </StyleProvider>
+            <GaHomePage />
             {/* <div id="welcomePageModal" /> */}
           </React.Fragment>
         );

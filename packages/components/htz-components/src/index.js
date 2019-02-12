@@ -43,6 +43,7 @@ import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import GaDimensions from './components/GoogleAnalytics/GaDimensions';
 import GoogleAnalytics from './components/GoogleAnalytics/GoogleAnalytics';
+import GaHomePage from './components/GoogleAnalytics/GaHomePage';
 import Grid from './components/Grid/Grid';
 import GridElement from './components/GridElement/GridElement';
 import GridItem from './components/Grid/GridItem';
@@ -283,6 +284,7 @@ export {
   Form,
   GaDimensions,
   GoogleAnalytics,
+  GaHomePage,
   Grid,
   GridElement,
   GridItem,
