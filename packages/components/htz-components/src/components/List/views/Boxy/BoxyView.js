@@ -226,6 +226,7 @@ function innerTextStyle(theme) {
     boxDecorationBreak: 'clone',
     paddingRight: '1rem',
     paddingLeft: '1rem',
+    opacity: '0.92',
     extend: [
       theme.mq(
         { until: 'l', },

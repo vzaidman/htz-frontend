@@ -96,11 +96,7 @@ export default function Slugs({
               { from: 'xl', value: 6 / 12, },
             ]}
           >
-            <TwoUp
-              data1={items[1]}
-              data2={items[2]}
-              {...{ lazyLoadImages, biAction, }}
-            />
+            <TwoUp data1={items[1]} data2={items[2]} {...{ lazyLoadImages, biAction, }} />
 
             {/* Textual Teaser */}
             <TextualTeaser data={items[3]} {...{ lazyLoadImages, biAction, }} />
@@ -148,10 +144,7 @@ function bannerStyle({ theme, }) {
           },
         }
       ),
-      theme.mq(
-        { from: 's', until: 'xl', },
-        { ':not(:empty)': { marginTop: '4rem', }, }
-      ),
+      theme.mq({ from: 's', until: 'xl', }, { ':not(:empty)': { marginTop: '4rem', }, }),
     ],
   };
 }
@@ -169,11 +162,7 @@ type TeaserProps = {
 
 MainTeaser.defaultProps = { lazyLoadImages: true, index: 0, };
 
-function MainTeaser({
-  data,
-  lazyLoadImages,
-  biAction,
-}: TeaserProps): React.Node {
+function MainTeaser({ data, lazyLoadImages, biAction, }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return (
@@ -227,9 +216,7 @@ function MainTeaser({
                 {...data}
                 isCentered
                 typeScale={[ { until: 'l', value: 1, }, { from: 'l', value: 2, }, ]}
-                onClick={
-                  biAction ? () => biAction({ index: 0, articleId, }) : null
-                }
+                onClick={biAction ? () => biAction({ index: 0, articleId, }) : null}
               />
             )}
             renderFooter={() => <Footer data={data} hasCommentsOnMobile />}
@@ -241,12 +228,7 @@ function MainTeaser({
 }
 
 TwoUpTeaser.defaultProps = { lazyLoadImages: true, };
-function TwoUpTeaser({
-  data,
-  lazyLoadImages,
-  biAction,
-  index,
-}: TeaserProps): React.Node {
+function TwoUpTeaser({ data, lazyLoadImages, biAction, index, }: TeaserProps): React.Node {
   const articleId = data.contentId;
 
   return (
@@ -288,15 +270,9 @@ function TwoUpTeaser({
           </TeaserMedia>
           <TeaserContent
             data={data}
-            padding={[
-              { until: 's', value: [ 1, 1, 0, ], },
-              { from: 's', value: [ 1, 2, 0, ], },
-            ]}
+            padding={[ { until: 's', value: [ 1, 1, 0, ], }, { from: 's', value: [ 1, 2, 0, ], }, ]}
             isStacked={[ { until: 's', value: true, }, ]}
-            footerPadding={[
-              { until: 's', value: [ 1, 1, 1, ], },
-              { from: 's', value: [ 1, 2, 1, ], },
-            ]}
+            footerPadding={[ { until: 's', value: [ 1, 1, 1, ], }, { from: 's', value: [ 1, 2, 1, ], }, ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
@@ -304,10 +280,7 @@ function TwoUpTeaser({
             renderContent={() => (
               <TeaserHeader
                 {...data}
-                typeScale={[
-                  { until: 's', value: 0, },
-                  { from: 's', until: 'l', value: 1, },
-                ]}
+                typeScale={[ { until: 's', value: 0, }, { from: 's', until: 'xl', value: 1, }, ]}
                 onClick={biAction ? () => biAction({ index, articleId, }) : null}
               />
             )}
@@ -337,25 +310,18 @@ function TextualTeaser({ data, biAction, }: TeaserProps): React.Node {
     >
       <TeaserContent
         data={data}
-        padding={[
-          { until: 's', value: [ 1, 2, 0, ], },
-          { from: 's', value: [ 2, 2, 0, ], },
-        ]}
-        footerPadding={[
-          { until: 's', value: [ 1, 2, ], },
-          { from: 's', value: [ 1, 2, ], },
-        ]}
+        padding={[ { until: 's', value: [ 1, 2, 0, ], }, { from: 's', value: [ 2, 2, 0, ], }, ]}
+        footerPadding={[ { until: 's', value: [ 1, 2, ], }, { from: 's', value: [ 1, 2, ], }, ]}
         footerColor={[ 'neutral', '-3', ]}
+        gridItemMiscStyles={{ height: '100%', }}
         footerMiscStyles={{
+          marginTop: 'auto',
           type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
         }}
         renderContent={() => (
           <TeaserHeader
             {...data}
-            typeScale={[
-              { until: 's', value: 0, },
-              { from: 's', until: 'l', value: 1, },
-            ]}
+            typeScale={[ { until: 's', value: 0, }, { from: 's', until: 'xl', value: 1, }, ]}
             onClick={biAction ? () => biAction({ index: 3, articleId, }) : null}
           />
         )}
@@ -373,16 +339,11 @@ type TwoUpProps = {
 };
 
 TwoUp.defaultProps = { lazyLoadImages: true, };
-function TwoUp({
-  data1,
-  data2,
-  lazyLoadImages,
-  biAction,
-}: TwoUpProps): React.Node {
+function TwoUp({ data1, data2, lazyLoadImages, biAction, }: TwoUpProps): React.Node {
   return (
     <Grid
       rowSpacing={[ { from: 's', value: { amount: 4, }, }, ]}
-      gutter={1}
+      gutter={2}
       miscStyles={{
         flexGrow: '0',
         marginTop: [ { from: 's', until: 'l', value: '4rem', }, ],
@@ -409,31 +370,20 @@ Footer.defaultProps = {
   hasRankOnMobile: false,
 };
 
-function Footer({
-  data,
-  hasCommentsOnMobile,
-  hasRankOnMobile,
-}: FooterProps): React.Node {
+function Footer({ data, hasCommentsOnMobile, hasRankOnMobile, }: FooterProps): React.Node {
   return (
     <React.Fragment>
       {data.authors ? (
         <React.Fragment>
-          <TeaserAuthors
-            authors={data.authors}
-            miscStyles={{ fontWeight: 'bold', }}
-          />
-          {(data.commentsCounts && data.commentsCounts > 4) || data.rank ? (
-            <span> | </span>
-          ) : null}
+          <TeaserAuthors authors={data.authors} miscStyles={{ fontWeight: 'bold', }} />
+          {(data.commentsCounts && data.commentsCounts > 4) || data.rank ? <span> | </span> : null}
         </React.Fragment>
       ) : null}
       <CommentsCount
         commentsCount={data.commentsCounts}
         miscStyles={{
           marginInlineStart: '1rem',
-          display: hasCommentsOnMobile
-            ? [ { until: 's', value: 'none', }, ]
-            : undefined,
+          display: hasCommentsOnMobile ? [ { until: 's', value: 'none', }, ] : undefined,
         }}
       />
       {data.rank ? (
@@ -441,9 +391,7 @@ function Footer({
           rank={data.rank}
           miscStyles={{
             marginInlinestart: '1rem',
-            display: hasRankOnMobile
-              ? [ { until: 's', value: 'none', }, ]
-              : undefined,
+            display: hasRankOnMobile ? [ { until: 's', value: 'none', }, ] : undefined,
           }}
         />
       ) : null}

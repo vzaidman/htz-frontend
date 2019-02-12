@@ -74,7 +74,7 @@ export default function DonbotList({
           gutter={4}
           rowSpacing={[
             { until: 's', value: { amount: 2, }, },
-            { from: 's', until: 'xl', value: { amount: 4, }, },
+            { from: 's', until: 'l', value: { amount: 4, }, },
           ]}
         >
           {/* MAIN TEASER */}
@@ -391,7 +391,6 @@ function DonbotTeaser({
                 renderFooter={() => (
                   <CommentsCount
                     commentsCount={item.commentsCounts}
-                    miscStyles={{ paddingRight: '1rem', }}
                   />
                 )}
               />

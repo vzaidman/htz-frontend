@@ -181,16 +181,18 @@ export default function Spawn({
               }}
             >
               <Grid
-                gutter={4}
+                // gutter={4}
+                rowSpacing={[
+                  { until: 's', value: { amount: 2, }, },
+                  { from: 's', until: 'l', value: { amount: 4, }, },
+                  // { from: 'l', value: { amount: 4, nUp: 4, }, },
+                ]}
                 miscStyles={{
                   flexDirection: [ { until: 'l', value: 'column', }, ],
                   flexGrow: '1',
                 }}
               >
-                <GridItem
-                  width={[ { from: 'l', value: 1 / 2, }, ]}
-                  miscStyles={{ display: 'flex', }}
-                >
+                <GridItem width={[ { from: 'l', value: 1 / 2, }, ]} miscStyles={{ display: 'flex', }}>
                   {teaser4Data ? (
                     <OpEdTeaser
                       biAction={biAction}
@@ -202,15 +204,12 @@ export default function Spawn({
                     <Debug>There is no data for this teaser</Debug>
                   )}
                 </GridItem>
-                <GridItem
-                  width={[ { from: 'l', value: 1 / 2, }, ]}
-                  miscStyles={{ display: 'flex', }}
-                >
+                <GridItem width={[ { from: 'l', value: 1 / 2, }, ]} miscStyles={{ display: 'flex', }}>
                   {teaser5Data ? (
                     <OpEdTeaser
                       biAction={biAction}
                       data={teaser5Data}
-                      hasMarginTop
+                      // hasMarginTop
                       index={6}
                       lazyLoadImages={lazyLoadImages}
                     />
@@ -295,10 +294,7 @@ function Comic({ data, lazyLoadImages, }: ComicPropTypes): React.Node {
             }}
             render={({ className, }) => (
               <H className={className}>
-                <TeaserResponsiveText
-                  text={data.title}
-                  mobileText={data.titleMobile}
-                />
+                <TeaserResponsiveText text={data.title} mobileText={data.titleMobile} />
               </H>
             )}
           />
@@ -316,42 +312,27 @@ type TeaserPropTypes = {
 };
 
 Editorial.defaultProps = { lazyLoadImages: true, index: 1, };
-function Editorial({
-  data,
-  lazyLoadImages,
-  index,
-  biAction,
-}: TeaserPropTypes): React.Node {
+function Editorial({ data, lazyLoadImages, index, biAction, }: TeaserPropTypes): React.Node {
   return (
     <FelaTheme
       render={theme => (
         <Teaser
           data={data}
           gutter={2}
-          onClick={() => (biAction
-            ? biAction({ index, articleId: data.representedContent, })
-            : undefined)
+          onClick={() => (biAction ? biAction({ index, articleId: data.representedContent, }) : undefined)
           }
           miscStyles={{
             flexBasis: '100%',
-            paddingBottom: [
-              { until: 's', value: '2rem', },
-              { from: 's', value: '1rem', },
-            ],
+            paddingBottom: [ { until: 's', value: '2rem', }, { from: 's', value: '1rem', }, ],
             paddingInlineEnd: '2rem',
             paddingInlineStart: '2rem',
-            paddingTop: [
-              { until: 'l', value: '2rem', },
-              { from: 'l', value: '1rem', },
-            ],
+            paddingTop: [ { until: 'l', value: '2rem', }, { from: 'l', value: '1rem', }, ],
           }}
         >
           <TeaserMedia
             data={data}
             width={[ { until: 's', value: 17, }, { from: 's', value: 19, }, ]}
-            onClick={() => (biAction
-              ? biAction({ index, articleId: data.representedContent, })
-              : undefined)
+            onClick={() => (biAction ? biAction({ index, articleId: data.representedContent, }) : undefined)
             }
             miscStyles={{ display: [ { from: 's', value: 'none', }, ], }}
           >
@@ -372,8 +353,11 @@ function Editorial({
           <TeaserContent
             data={data}
             padding={[ { from: 's', value: [ 1, 0, 4, ], }, ]}
-            miscStyles={{ flexGrow: [ { from: 'l', value: '1', }, ], }}
+            miscStyles={{
+              flexGrow: [ { from: 'l', value: '1', }, ],
+            }}
             gridItemMiscStyles={{
+              height: [ { from: 'm', until: 'xl', value: '100%', }, ],
               display: 'flex',
               justifyContent: 'center',
             }}
@@ -385,10 +369,7 @@ function Editorial({
                     miscStyles={{
                       fontWeight: 'bold',
                       color: theme.color('primary'),
-                      type: [
-                        { until: 's', value: -2, },
-                        { from: 'xl', value: -1, },
-                      ],
+                      type: [ { until: 's', value: -2, }, { from: 'xl', value: -1, }, ],
                     }}
                   />
                 ) : null}
@@ -400,9 +381,7 @@ function Editorial({
                     { from: 'xl', value: 2, },
                   ]}
                   miscStyles={{ marginTop: [ { from: 's', value: '1rem', }, ], }}
-                  onClick={() => (biAction
-                    ? biAction({ index, articleId: data.representedContent, })
-                    : undefined)
+                  onClick={() => (biAction ? biAction({ index, articleId: data.representedContent, }) : undefined)
                   }
                 />
                 <FelaComponent
@@ -414,9 +393,10 @@ function Editorial({
                     overflow: 'hidden',
 
                     '&:after': {
-                      backgroundImage: `linear-gradient(to top, ${theme.color(
-                        'white'
-                      )} 40%, ${rgba(theme.color('white'), 0) || ''} 100%)`,
+                      backgroundImage: `linear-gradient(to top, ${theme.color('white')} 40%, ${rgba(
+                        theme.color('white'),
+                        0
+                      ) || ''} 100%)`,
                       bottom: '0',
                       content: '""',
                       height: '13rem',
@@ -475,27 +455,20 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
   return (
     <Teaser
       data={data}
-      onClick={() => (biAction ? biAction({ index, articleId: data.contentId, }) : undefined)
-      }
+      onClick={() => (biAction ? biAction({ index, articleId: data.contentId, }) : undefined)}
       gutter={2}
       backgroundColor={[ 'neutral', '-2', ]}
       isStacked={[ { from: 's', value: true, }, ]}
       miscStyles={{
-        paddingBottom: [
-          { until: 's', value: '2rem', },
-          { from: 's', value: '1rem', },
-        ],
+        paddingBottom: [ { until: 's', value: '2rem', }, { from: 's', value: '1rem', }, ],
         paddingInlineEnd: '2rem',
         paddingInlineStart: '2rem',
-        paddingTop: [
-          { until: 'l', value: '2rem', },
-          { from: 'l', value: '1rem', },
-        ],
+        paddingTop: [ { until: 'l', value: '2rem', }, { from: 'l', value: '1rem', }, ],
         width: '100%',
       }}
     >
       <GridItem
-        width={[ { until: 's', value: 19, }, ]}
+        width={[ { until: 's', value: 17, }, ]}
         miscStyles={{
           alignItems: [ { until: 's', value: 'center', }, ],
           display: 'flex',
@@ -508,7 +481,8 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
         <IconQuote
           size={[
             { until: 's', value: 9, },
-            { from: 's', until: 'xl', value: 8, },
+            { from: 's', until: 'l', value: 8, },
+            { from: 'l', until: 'xl', value: 5, },
             { from: 'xl', value: 7, },
           ]}
           color={[ 'quaternary', 'base', ]}
@@ -530,9 +504,7 @@ function QuoteTeaser({ data, biAction, index, }: TeaserPropTypes): React.Node {
             {...data}
             typeScale={[ { from: 'xl', value: -1, }, ]}
             showKicker={false}
-            onClick={() => (biAction
-              ? biAction({ index, articleId: data.representedContent, })
-              : undefined)
+            onClick={() => (biAction ? biAction({ index, articleId: data.representedContent, }) : undefined)
             }
           />
         )}
@@ -585,9 +557,7 @@ function OpEdTeaser({
         <Teaser
           data={data}
           gutter={2}
-          onClick={() => (biAction
-            ? biAction({ index, articleId: data.representedContent, })
-            : undefined)
+          onClick={() => (biAction ? biAction({ index, articleId: data.representedContent, }) : undefined)
           }
           isStacked={isStackedFromS ? [ { from: 's', value: true, }, ] : false}
           miscStyles={{
@@ -617,11 +587,7 @@ function OpEdTeaser({
           }}
         >
           <GridItem
-            width={
-              isStackedFromS
-                ? [ { until: 's', value: 17, }, { from: 's', value: 19, }, ]
-                : 19
-            }
+            width={isStackedFromS ? [ { until: 's', value: 17, }, { from: 's', value: 19, }, ] : 19}
             miscStyles={{
               alignItems: 'center',
               display: 'flex',
@@ -653,7 +619,7 @@ function OpEdTeaser({
                     }
                   ),
                   theme.mq(
-                    { from: 's', until: 'l', },
+                    { from: 's', until: 'xl', },
                     {
                       height: '16rem',
                       width: '16rem',
@@ -694,14 +660,12 @@ function OpEdTeaser({
               ...(isStackedFromS
                 ? {
                   textAlign: [
-                    { from: 's', until: 'l', value: 'start', },
-                    { from: 'l', value: 'center', },
+                    // { from: 's', until: 'l', value: 'start', },
+                    { from: 's', value: 'center', },
                   ],
                 }
                 : {}),
-              justifyContent: isStackedFromS
-                ? [ { until: 's', value: 'center', }, ]
-                : 'center',
+              justifyContent: isStackedFromS ? [ { until: 's', value: 'center', }, ] : 'center',
             }}
             footerPadding={[ 1, 0, 0, ]}
             footerColor={[ 'neutral', '-3', ]}
@@ -710,10 +674,10 @@ function OpEdTeaser({
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
               ...(isFooterBottom
                 ? {
-                  position: [ { from: 'xl', value: 'absolute', }, ],
-                  bottom: [ { from: 'xl', value: '1rem', }, ],
-                  left: [ { from: 'xl', value: 0, }, ],
-                  right: [ { from: 'xl', value: 0, }, ],
+                  marginBlockStart: 'auto',
+                  bottom: [ { from: 's', value: '1rem', }, ],
+                  left: [ { from: 's', value: 0, }, ],
+                  right: [ { from: 's', value: 0, }, ],
                 }
                 : {}),
             }}
@@ -735,13 +699,8 @@ function OpEdTeaser({
                 ) : null}
                 <TeaserHeader
                   {...data}
-                  typeScale={[
-                    { until: 's', value: 0, },
-                    { from: 'xl', value: -1, },
-                  ]}
-                  onClick={() => (biAction
-                    ? biAction({ index, articleId: data.representedContent, })
-                    : undefined)
+                  typeScale={[ { until: 's', value: 0, }, { from: 'xl', value: -1, }, ]}
+                  onClick={() => (biAction ? biAction({ index, articleId: data.representedContent, }) : undefined)
                   }
                 />
               </React.Fragment>

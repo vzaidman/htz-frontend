@@ -382,6 +382,7 @@ function Teaser2({
                   <TeaserHeader
                     typeScale={[
                       { until: 's', value: 0, },
+                      { form: 's', until: 'xl', value: 1, },
                       { from: 'xl', value: -1, },
                     ]}
                     {...data}
@@ -507,6 +508,7 @@ function Teaser3({
                   <TeaserHeader
                     typeScale={[
                       { until: 's', value: 0, },
+                      { from: 's', until: 'xl', value: 1, },
                       { from: 'xl', value: -1, },
                     ]}
                     {...data}
@@ -576,20 +578,20 @@ function Teaser4({
           <TeaserContent
             data={data}
             width={[
-              { from: 's', until: 'l', value: 1, },
-              { from: 'l', until: 'xl', value: 3 / 5, },
+              { from: 's', until: 'xl', value: 1, },
+              // { from: 'l', until: 'xl', value: 3 / 5, },
               { from: 'xl', value: 2 / 4, },
             ]}
             padding={[
               { until: 's', value: [ 1, 2, 0, ], },
-              { from: 's', until: 'l', value: [ 4, 4, 0, ], },
-              { from: 'l', until: 'xl', value: [ 1, 1, 0, ], },
+              { from: 's', until: 'xl', value: [ 2, 2, 0, ], },
+              // { from: 'l', until: 'xl', value: [ 1, 1, 0, 3, ], },
               { from: 'xl', value: [ 1, 0, 0, 1, ], },
             ]}
             footerPadding={[
               { until: 's', value: [ 1, 2, ], },
-              { from: 's', until: 'l', value: [ 2, 4, ], },
-              { from: 'l', until: 'xl', value: 1, },
+              { from: 's', until: 'xl', value: [ 2, 2, ], },
+              // { from: 'l', until: 'xl', value: 1, },
               { from: 'xl', value: [ 1, 0, 1, 1, ], },
             ]}
             footerColor={[ 'neutral', '-3', ]}
@@ -601,7 +603,11 @@ function Teaser4({
             }}
             renderContent={() => (
               <TeaserHeader
-                typeScale={[ { until: 's', value: 0, }, { from: 'xl', value: -1, }, ]}
+                typeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', until: 'xl', value: 1, },
+                  { from: 'xl', value: -1, },
+                ]}
                 {...data}
                 onClick={
                   biAction
@@ -646,13 +652,13 @@ function Teaser5({
             data={data}
             padding={[
               { until: 's', value: [ 1, 2, 0, ], },
-              { from: 's', until: 'l', value: [ 4, 4, 0, ], },
-              { from: 'l', value: [ 1, 1, 0, ], },
+              { from: 's', until: 'xl', value: [ 2, 2, 0, ], },
+              { from: 'xl', value: [ 1, 1, 0, ], },
             ]}
             footerPadding={[
               { until: 's', value: [ 1, 2, ], },
-              { from: 's', until: 'l', value: [ 2, 4, ], },
-              { from: 'l', value: 1, },
+              { from: 's', until: 'xl', value: [ 2, 2, ], },
+              { from: 'xl', value: 1, },
             ]}
             footerColor={[ 'neutral', '-3', ]}
             footerMiscStyles={{
@@ -663,7 +669,11 @@ function Teaser5({
             }}
             renderContent={() => (
               <TeaserHeader
-                typeScale={[ { until: 's', value: 0, }, { from: 'xl', value: -1, }, ]}
+                typeScale={[
+                  { until: 's', value: 0, },
+                  { from: 's', until: 'xl', value: 1, },
+                  { from: 'xl', value: -1, },
+                ]}
                 {...data}
                 onClick={
                   biAction
