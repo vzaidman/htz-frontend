@@ -79,18 +79,6 @@ function HomePageSlotsLayout({
       ) : null}
       {footer ? <LayoutRow>{getElements(footer)}</LayoutRow> : null}
       <LayoutRow idName="modalsRoot" />
-      <Query query={GET_USER_TYPE} ssr={false}>
-        {({ loading, error, data, client, }) => {
-          if (loading) return null;
-          if (error) return null;
-          return (
-            <React.Fragment>
-              <GoogleAnalytics withEC />
-              <GaDimensions pageType="HomePage" authors="HomePage" articlePaywallMode="HomePage" userType={data.user.type} withPageView />
-            </React.Fragment>
-          );
-        }}
-      </Query>
     </React.Fragment>
   );
 }

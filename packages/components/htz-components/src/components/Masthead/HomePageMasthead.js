@@ -8,6 +8,9 @@ import NavigationMenu from '../NavigationMenu/NavigationMenu';
 import HeaderSearch from './MastheadSearch/MastheadSearch';
 import MastheadUserTools from './MastheadUserTools';
 import MadorimNavigation from './MadorimNavigation';
+import UserDispenser from '../User/UserDispenser';
+import GaDimensions from '../GoogleAnalytics/GaDimensions';
+import GoogleAnalytics from '../GoogleAnalytics/GoogleAnalytics';
 
 type HomePageMastheadProps = {
   contentId: string,
@@ -22,20 +25,12 @@ const mastheadWrapperMiscStyles = ({ theme, isScrolled, shouldDisplay, }) => ({
   ...theme.getDuration('transition', -1),
   ...theme.getTimingFunction('transition', 'linear'),
   willChange: 'transform',
-  padding: [
-    { until: 's', value: '2rem  0 1rem 0', },
-    { from: 's', value: '2rem 0 0 0', },
-  ],
-  transform: [
-    { until: 's', value: shouldDisplay ? 'translateY(0)' : 'translateY(-115%)', },
-  ],
+  padding: [ { until: 's', value: '2rem  0 1rem 0', }, { from: 's', value: '2rem 0 0 0', }, ],
+  transform: [ { until: 's', value: shouldDisplay ? 'translateY(0)' : 'translateY(-115%)', }, ],
   backgroundColor: [
     {
       until: 's',
-      value:
-        isScrolled && shouldDisplay
-          ? theme.color('white')
-          : theme.color('transparent'),
+      value: isScrolled && shouldDisplay ? theme.color('white') : theme.color('transparent'),
     },
   ],
   backgroundImage: [
@@ -46,9 +41,7 @@ const mastheadWrapperMiscStyles = ({ theme, isScrolled, shouldDisplay, }) => ({
         : 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8) 15%, rgba(0, 0, 0, 0))',
     },
   ],
-  borderBottom: [
-    { from: 's', value: [ '1px', 1, 'solid', theme.color('primary'), ], },
-  ],
+  borderBottom: [ { from: 's', value: [ '1px', 1, 'solid', theme.color('primary'), ], }, ],
 });
 
 export default class HomePageMasthead extends React.PureComponent<HomePageMastheadProps> {
@@ -66,10 +59,7 @@ export default class HomePageMasthead extends React.PureComponent<HomePageMasthe
               width: [ { until: 's', value: '100%', }, ],
               zIndex: theme.getZIndex('masthead'),
             }}
-            namedBgc={[
-              { until: 's', value: 'transparent', },
-              { from: 's', value: 'bg', },
-            ]}
+            namedBgc={[ { until: 's', value: 'transparent', }, { from: 's', value: 'bg', }, ]}
           >
             <LayoutContainer
               namedBgc={[
@@ -123,8 +113,20 @@ export default class HomePageMasthead extends React.PureComponent<HomePageMasthe
                       <MastheadUserTools />
                     </React.Fragment>
                   )}
-                  renderBottomPanel={() => (
-                    <MadorimNavigation contentId={contentId} />
+                  renderBottomPanel={() => <MadorimNavigation contentId={contentId} />}
+                />
+                <UserDispenser
+                  render={({ user, }) => (
+                    <React.Fragment>
+                      <GoogleAnalytics withEC />
+                      <GaDimensions
+                        pageType="HomePage"
+                        authors="HomePage"
+                        articlePaywallMode="HomePage"
+                        userType={user.type}
+                        withPageView
+                      />
+                    </React.Fragment>
                   )}
                 />
               </React.Fragment>

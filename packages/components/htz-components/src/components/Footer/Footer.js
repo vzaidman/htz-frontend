@@ -228,7 +228,8 @@ class Footer extends React.Component {
         <ChartBeat shouldRender={shouldRenderScripts} />
         <UniversitiesPush />
         <FirstImpression />
-        <GStat />
+        {/* GStat Script has been moved to MastheadUserTools component */}
+        {/* <GStat /> */}
         <FirstImpressionPlaceHolder />
         <IdxNielsen shouldRender={shouldRenderScripts} />
         <CrazyEgg shouldRender={shouldRenderScripts} />

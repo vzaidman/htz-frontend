@@ -5,6 +5,7 @@ import MastheadReadingList from './MastheadReadingList';
 import MastheadUserMenu from './MastheadUserMenu/MastheadUserMenu';
 import UserDispenser from '../User/UserDispenser';
 import EventTracker from '../../utils/EventTracker';
+import GStat from '../Scripts/GStat';
 
 export default function MastheadUserTools() {
   return (
@@ -19,12 +20,16 @@ export default function MastheadUserTools() {
           <EventTracker>
             {({ biAction, gaMapper, }) => (
               <UserDispenser
-                render={({ user, }) => <MastheadUserMenu userName={user.firstName} biAction={biAction} />}
+                render={({ user, }) => (
+                  <MastheadUserMenu userName={user.firstName} biAction={biAction} />
+                )}
               />
             )}
           </EventTracker>
           <MastheadReadingList />
           <MastheadA11yMenu />
+          {/* Script for HomePage and ArticlePage */}
+          <GStat />
         </div>
       )}
     />

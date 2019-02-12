@@ -32,7 +32,7 @@ GoogleAnalytics.defaultProps = {
 
 function GoogleAnalytics({ withEC, withPageView, }) {
   return (
-    <Query query={GET_HOST_USER}>
+    <Query query={GET_HOST_USER} ssr={false}>
       {({
         data: {
           hostname,
