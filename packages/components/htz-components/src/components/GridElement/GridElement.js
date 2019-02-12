@@ -51,9 +51,6 @@ function GridElement({
           width={1}
           miscStyles={{
             marginBottom: '1rem',
-            // marginBottom: [
-            //   { until: 'l', value: '1rem', },
-            // ],
           }}
           isHorizontal
           title={title}

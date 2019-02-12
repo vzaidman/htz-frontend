@@ -36,8 +36,6 @@ export default function HorizontalTeaser({
 }: Props): React.Node {
   const headerType = [
     { until: 'xl', value: 0, },
-    // { from: 's', until: 'l', value: -1, },
-    // { from: 'l', value: 0, },
     { from: 'xl', value: -1, },
   ];
 

@@ -64,12 +64,10 @@ export default function MainTeaser({ itemData, lazyLoadImages, biAction, }: Prop
             padding={[
               { until: 's', value: [ 1, 1, 0, ], },
               { from: 's', value: [ 1, 2, 0, ], },
-              // { from: 'xl', value: [ 1, 1, 0, ], },
             ]}
             footerPadding={[
               { until: 's', value: 1, },
               { from: 's', value: [ 1, 2, ], },
-              // { from: 'xl', value: 1, },
             ]}
             isStacked
             renderContent={() => (
