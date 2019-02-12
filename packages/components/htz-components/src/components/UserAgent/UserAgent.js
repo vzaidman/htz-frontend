@@ -44,6 +44,16 @@ function checkRuleCondition(
   const { os, platform, version, } = agent;
   const { fromVer, untilVer, } = condition;
 
+  console.log(`
+    CHECK USER AGENT !!
+    ${global.window ? `At: ${global.window.location.href}` : ''}
+    --------------------
+    Got from server:
+    OS: ${os}
+    Platform: ${platform}
+    Version: ${version}
+  `);
+
   if (condition.os) {
     if (os !== condition.os) return false;
     if (!fromVer && !untilVer && !condition.platform) return true;
