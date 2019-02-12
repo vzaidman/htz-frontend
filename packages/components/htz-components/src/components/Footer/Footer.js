@@ -24,6 +24,7 @@ import IdxNielsen from '../Scripts/IdxNielsen';
 import CrazyEgg from '../Scripts/CrazyEgg';
 import OutbrainTVR from '../Scripts/OutbrainTVR';
 import ChartBeat from '../Scripts/ChartBeat';
+import NoSSR from '../NoSSR/NoSSR';
 
 const GET_FOOTER_ITEMS = gql`
   query FooterQuery($listId: String!) {
@@ -228,7 +229,9 @@ class Footer extends React.Component {
         <ChartBeat shouldRender={shouldRenderScripts} />
         <UniversitiesPush />
         <FirstImpression />
-        <GStat />
+        <NoSSR>
+          <GStat />
+        </NoSSR>
         <FirstImpressionPlaceHolder />
         <IdxNielsen shouldRender={shouldRenderScripts} />
         <CrazyEgg shouldRender={shouldRenderScripts} />
