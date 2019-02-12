@@ -13,13 +13,13 @@ exports[`<Boxy> DOM element renders YouTube correctly 1`] = `
         className="htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
       >
         <h2
-          className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak"
+          className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al"
         >
           עמוד באדמה
         </h2>
       </div>
       <div
-        className="htz-al htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax"
+        className="htz-am htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay"
         id={null}
       >
         <article
@@ -28,7 +28,7 @@ exports[`<Boxy> DOM element renders YouTube correctly 1`] = `
         >
           <a
             aria-hidden={true}
-            className="htz-ay htz-az htz-ba htz-m htz-n htz-bb htz-bc"
+            className="htz-az htz-ba htz-bb htz-m htz-n htz-bc htz-bd"
             href="/1.6437284"
             onClick={null}
             tabIndex="-1"
@@ -40,7 +40,7 @@ exports[`<Boxy> DOM element renders YouTube correctly 1`] = `
 </div>
 `;
 
-exports[`<Boxy> DOM element renders YouTube correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-d{background-color:#FFF}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-k{overflow:hidden}.htz-l{position:relative}.htz-m{position:absolute}.htz-n{right:0}.htz-o{z-index:2}.htz-p{max-width:90%}.htz-y{padding:1rem}.htz-z{background-color:#FFE70C}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-al{box-sizing:border-box}.htz-am{flex-basis:100%}.htz-an{flex-grow:0}.htz-ao{flex-shrink:0}.htz-ap{list-style:none}.htz-aq{padding-left:0rem}.htz-ar{padding-right:0rem}.htz-as{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-at{flex-direction:column}.htz-au{max-width:100%}.htz-av{-webkit-box-flex:0}.htz-aw{-webkit-box-orient:vertical}.htz-ax{-webkit-box-direction:normal}.htz-ay{background-color:transparent}.htz-az{bottom:0}.htz-ba{left:0}.htz-bb{top:0}.htz-bc{z-index:0}@media (max-width: 37.4375em){.htz-c{margin-top:6rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-g{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{max-width:170.66666666666666rem}.htz-t{font-size:4.666666666666667rem}.htz-u{line-height:7rem}}@media (min-width: 80em){.htz-j{max-width:180.42857142857142rem}.htz-v{font-size:3.857142857142857rem}.htz-w{line-height:6rem}}@media (max-width: 63.9375em){.htz-q{font-size:4rem}.htz-r{line-height:6rem}.htz-s{bottom:-1px}.htz-ah{padding-bottom:3px}.htz-ai{padding-top:3px}}@media (min-width: 64em){.htz-x{bottom:0}.htz-aj{padding-bottom:4px}.htz-ak{padding-top:4px}}"`;
+exports[`<Boxy> DOM element renders YouTube correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-d{background-color:#FFF}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-k{overflow:hidden}.htz-l{position:relative}.htz-m{position:absolute}.htz-n{right:0}.htz-o{z-index:2}.htz-p{max-width:90%}.htz-y{padding:1rem}.htz-z{background-color:#FFE70C}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-ah{opacity:0.92}.htz-am{box-sizing:border-box}.htz-an{flex-basis:100%}.htz-ao{flex-grow:0}.htz-ap{flex-shrink:0}.htz-aq{list-style:none}.htz-ar{padding-left:0rem}.htz-as{padding-right:0rem}.htz-at{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-au{flex-direction:column}.htz-av{max-width:100%}.htz-aw{-webkit-box-flex:0}.htz-ax{-webkit-box-orient:vertical}.htz-ay{-webkit-box-direction:normal}.htz-az{background-color:transparent}.htz-ba{bottom:0}.htz-bb{left:0}.htz-bc{top:0}.htz-bd{z-index:0}@media (max-width: 37.4375em){.htz-c{margin-top:6rem}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-g{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{max-width:170.66666666666666rem}.htz-t{font-size:4.666666666666667rem}.htz-u{line-height:7rem}}@media (min-width: 80em){.htz-j{max-width:180.42857142857142rem}.htz-v{font-size:3.857142857142857rem}.htz-w{line-height:6rem}}@media (max-width: 63.9375em){.htz-q{font-size:4rem}.htz-r{line-height:6rem}.htz-s{bottom:-1px}.htz-ai{padding-bottom:3px}.htz-aj{padding-top:3px}}@media (min-width: 64em){.htz-x{bottom:0}.htz-ak{padding-bottom:4px}.htz-al{padding-top:4px}}"`;
 
 exports[`<Boxy> DOM element renders facebook correctly 1`] = `
 <div>
@@ -55,22 +55,22 @@ exports[`<Boxy> DOM element renders facebook correctly 1`] = `
         className="htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
       >
         <h2
-          className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak"
+          className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al"
         >
           <span
-            className="htz-al"
+            className="htz-am"
           >
             test facebook
           </span>
           <span
-            className="htz-am"
+            className="htz-an"
           >
             test facebook embed
           </span>
         </h2>
       </div>
       <div
-        className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az"
+        className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av htz-aw htz-ax htz-ay htz-az htz-ba"
         id={null}
       >
         <article
@@ -79,7 +79,7 @@ exports[`<Boxy> DOM element renders facebook correctly 1`] = `
         >
           <a
             aria-hidden={true}
-            className="htz-ba htz-bb htz-bc htz-m htz-n htz-bd htz-be"
+            className="htz-bb htz-bc htz-bd htz-m htz-n htz-be htz-bf"
             href="http://pre.haaretz.co.il/news/local/1.6611159"
             onClick={null}
             tabIndex="-1"
@@ -91,7 +91,7 @@ exports[`<Boxy> DOM element renders facebook correctly 1`] = `
 </div>
 `;
 
-exports[`<Boxy> DOM element renders facebook correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-d{background-color:#FFF}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-k{overflow:hidden}.htz-l{position:relative}.htz-m{position:absolute}.htz-n{right:0}.htz-o{z-index:2}.htz-p{max-width:90%}.htz-y{padding:1rem}.htz-z{background-color:#FFE70C}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-an{box-sizing:border-box}.htz-ao{flex-basis:100%}.htz-ap{flex-grow:0}.htz-aq{flex-shrink:0}.htz-ar{list-style:none}.htz-as{padding-left:0rem}.htz-at{padding-right:0rem}.htz-au{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-av{flex-direction:column}.htz-aw{max-width:100%}.htz-ax{-webkit-box-flex:0}.htz-ay{-webkit-box-orient:vertical}.htz-az{-webkit-box-direction:normal}.htz-ba{background-color:transparent}.htz-bb{bottom:0}.htz-bc{left:0}.htz-bd{top:0}.htz-be{z-index:0}@media (max-width: 37.4375em){.htz-c{margin-top:6rem}.htz-am{display:none}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-g{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{max-width:170.66666666666666rem}.htz-t{font-size:4.666666666666667rem}.htz-u{line-height:7rem}}@media (min-width: 80em){.htz-j{max-width:180.42857142857142rem}.htz-v{font-size:3.857142857142857rem}.htz-w{line-height:6rem}}@media (max-width: 63.9375em){.htz-q{font-size:4rem}.htz-r{line-height:6rem}.htz-s{bottom:-1px}.htz-ah{padding-bottom:3px}.htz-ai{padding-top:3px}}@media (min-width: 64em){.htz-x{bottom:0}.htz-aj{padding-bottom:4px}.htz-ak{padding-top:4px}}@media (min-width: 37.5em){.htz-al{display:none}}"`;
+exports[`<Boxy> DOM element renders facebook correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-d{background-color:#FFF}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-k{overflow:hidden}.htz-l{position:relative}.htz-m{position:absolute}.htz-n{right:0}.htz-o{z-index:2}.htz-p{max-width:90%}.htz-y{padding:1rem}.htz-z{background-color:#FFE70C}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-ah{opacity:0.92}.htz-ao{box-sizing:border-box}.htz-ap{flex-basis:100%}.htz-aq{flex-grow:0}.htz-ar{flex-shrink:0}.htz-as{list-style:none}.htz-at{padding-left:0rem}.htz-au{padding-right:0rem}.htz-av{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}.htz-aw{flex-direction:column}.htz-ax{max-width:100%}.htz-ay{-webkit-box-flex:0}.htz-az{-webkit-box-orient:vertical}.htz-ba{-webkit-box-direction:normal}.htz-bb{background-color:transparent}.htz-bc{bottom:0}.htz-bd{left:0}.htz-be{top:0}.htz-bf{z-index:0}@media (max-width: 37.4375em){.htz-c{margin-top:6rem}.htz-an{display:none}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-g{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{max-width:170.66666666666666rem}.htz-t{font-size:4.666666666666667rem}.htz-u{line-height:7rem}}@media (min-width: 80em){.htz-j{max-width:180.42857142857142rem}.htz-v{font-size:3.857142857142857rem}.htz-w{line-height:6rem}}@media (max-width: 63.9375em){.htz-q{font-size:4rem}.htz-r{line-height:6rem}.htz-s{bottom:-1px}.htz-ai{padding-bottom:3px}.htz-aj{padding-top:3px}}@media (min-width: 64em){.htz-x{bottom:0}.htz-ak{padding-bottom:4px}.htz-al{padding-top:4px}}@media (min-width: 37.5em){.htz-am{display:none}}"`;
 
 exports[`<Boxy> DOM element renders image correctly 1`] = `
 <div>
@@ -106,26 +106,26 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
         className="htz-m htz-n htz-o htz-p htz-q htz-r htz-s htz-t htz-u htz-v htz-w htz-x"
       >
         <h2
-          className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak"
+          className="htz-y htz-z htz-ab htz-ac htz-ae htz-af htz-ag htz-ah htz-ai htz-aj htz-ak htz-al"
         >
           <span
-            className="htz-al"
+            className="htz-am"
           >
             יונה יהב הודה בהפסד בבחירות לקליש-רותם: "מכבד את רצון הבוחרים"
           </span>
           <span
-            className="htz-am"
+            className="htz-an"
           >
             תוצאות הבחירות המקומיות בחיפה | יונה יהב הודה בהפסד לקליש-רותם: "מכבד את רצון הבוחרים"
           </span>
         </h2>
       </div>
       <div
-        className="htz-an htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au"
+        className="htz-ao htz-ap htz-aq htz-ar htz-as htz-at htz-au htz-av"
         id={null}
       >
         <div
-          className="htz-l htz-av"
+          className="htz-l htz-aw"
         >
           <a
             className={null}
@@ -134,7 +134,7 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
             tabIndex={-1}
           >
             <div
-              className="htz-aw htz-b htz-l htz-ax htz-ay htz-az htz-ba"
+              className="htz-ax htz-b htz-l htz-ay htz-az htz-ba htz-bb"
             >
               <picture>
                 <source
@@ -169,7 +169,7 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
                 />
                 <img
                   alt="יונה יהב, היום"
-                  className="htz-bb htz-bc htz-m htz-bd htz-b"
+                  className="htz-bc htz-bd htz-m htz-be htz-b"
                   sizes="(min-width:1280px) 1280px, 100vw"
                   src="https://images.haarets.co.il/image/upload/x_0,y_12,w_2200,h_950,c_crop/q_auto,h_162,w_375,c_fill,f_auto/fl_lossy.any_format.preserve_transparency.progressive:none/v1540944424/1.6611169.2254305445.jpg"
                   srcSet={
@@ -195,4 +195,4 @@ exports[`<Boxy> DOM element renders image correctly 1`] = `
 </div>
 `;
 
-exports[`<Boxy> DOM element renders image correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-d{background-color:#FFF}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-k{overflow:hidden}.htz-l{position:relative}.htz-m{position:absolute}.htz-n{right:0}.htz-o{z-index:2}.htz-p{max-width:90%}.htz-y{padding:1rem}.htz-z{background-color:#FFE70C}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-an{box-sizing:border-box}.htz-ao{flex-basis:0}.htz-ap{flex-grow:1}.htz-aq{flex-shrink:1}.htz-ar{list-style:none}.htz-as{padding-left:0rem}.htz-at{padding-right:0rem}.htz-au{-webkit-box-flex:1}.htz-av{z-index:1}.htz-aw{height:0}.htz-ax{padding-bottom:43.18181818181818%}.htz-ba{background-color:#EBEBEB}.htz-bb{height:100%}.htz-bc{left:0}.htz-bd{top:0}@media (max-width: 37.4375em){.htz-c{margin-top:6rem}.htz-am{display:none}.htz-ay{padding-bottom:117.31078904991949%}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-g{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{max-width:170.66666666666666rem}.htz-t{font-size:4.666666666666667rem}.htz-u{line-height:7rem}}@media (min-width: 80em){.htz-j{max-width:180.42857142857142rem}.htz-v{font-size:3.857142857142857rem}.htz-w{line-height:6rem}}@media (max-width: 63.9375em){.htz-q{font-size:4rem}.htz-r{line-height:6rem}.htz-s{bottom:-1px}.htz-ah{padding-bottom:3px}.htz-ai{padding-top:3px}}@media (min-width: 64em){.htz-x{bottom:0}.htz-aj{padding-bottom:4px}.htz-ak{padding-top:4px}}@media (min-width: 37.5em){.htz-al{display:none}.htz-az{padding-bottom:43.18181818181818%}}"`;
+exports[`<Boxy> DOM element renders image correctly 2`] = `".htz-a{background-color:#505050}.htz-b{width:100%}.htz-d{background-color:#FFF}.htz-e{margin-right:auto}.htz-f{margin-left:auto}.htz-k{overflow:hidden}.htz-l{position:relative}.htz-m{position:absolute}.htz-n{right:0}.htz-o{z-index:2}.htz-p{max-width:90%}.htz-y{padding:1rem}.htz-z{background-color:#FFE70C}.htz-ab{display:inline}.htz-ac{-webkit-box-decoration-break:clone}.htz-ae{box-decoration-break:clone}.htz-af{padding-right:1rem}.htz-ag{padding-left:1rem}.htz-ah{opacity:0.92}.htz-ao{box-sizing:border-box}.htz-ap{flex-basis:0}.htz-aq{flex-grow:1}.htz-ar{flex-shrink:1}.htz-as{list-style:none}.htz-at{padding-left:0rem}.htz-au{padding-right:0rem}.htz-av{-webkit-box-flex:1}.htz-aw{z-index:1}.htz-ax{height:0}.htz-ay{padding-bottom:43.18181818181818%}.htz-bb{background-color:#EBEBEB}.htz-bc{height:100%}.htz-bd{left:0}.htz-be{top:0}@media (max-width: 37.4375em){.htz-c{margin-top:6rem}.htz-an{display:none}.htz-az{padding-bottom:117.31078904991949%}}@media (min-width: 37.5em) and (max-width: 47.9375em){.htz-g{max-width:100rem}}@media (min-width: 48em) and (max-width: 63.9375em){.htz-h{max-width:128rem}}@media (min-width: 64em) and (max-width: 79.9375em){.htz-i{max-width:170.66666666666666rem}.htz-t{font-size:4.666666666666667rem}.htz-u{line-height:7rem}}@media (min-width: 80em){.htz-j{max-width:180.42857142857142rem}.htz-v{font-size:3.857142857142857rem}.htz-w{line-height:6rem}}@media (max-width: 63.9375em){.htz-q{font-size:4rem}.htz-r{line-height:6rem}.htz-s{bottom:-1px}.htz-ai{padding-bottom:3px}.htz-aj{padding-top:3px}}@media (min-width: 64em){.htz-x{bottom:0}.htz-ak{padding-bottom:4px}.htz-al{padding-top:4px}}@media (min-width: 37.5em){.htz-am{display:none}.htz-ba{padding-bottom:43.18181818181818%}}"`;

@@ -500,15 +500,17 @@ function TextualTeaser({ data, index, biAction, isLargeText, }: TextualTeaserPro
           <TeaserContent
             data={data}
             padding={[ { until: 's', value: [ 1, 2, 0, ], }, { from: 's', value: [ 2, 2, 0, ], }, ]}
+            gridItemMiscStyles={{ height: '100%', }}
             footerPadding={[ 1, 2, ]}
             footerMiscStyles={{
+              marginTop: 'auto',
               type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
             }}
             renderContent={() => (
               <TeaserHeader
                 {...data}
                 typeScale={
-                  isLargeText ? headerTypeScale : [ { until: 'l', value: 0, }, { from: 'l', value: -1, }, ]
+                  isLargeText ? headerTypeScale : [ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ]
                 }
                 onClick={
                   biAction ? () => biAction({ index, articleId: data.representedContent, }) : null

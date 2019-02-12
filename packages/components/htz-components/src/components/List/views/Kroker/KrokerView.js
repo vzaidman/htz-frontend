@@ -38,10 +38,7 @@ export default function KrokerView({
       padding={[ { until: 's', value: [ 0, 2, ], }, { from: 's', value: [ 0, 4, 4, ], }, ]}
       marginTop={[ { until: 's', value: 1, }, { from: 's', value: 0, }, ]}
       rowSpacing={[ { until: 's', value: { amount: 1, nUp: 1, }, }, ]}
-      innerBackgroundColor={[
-        { until: 's', value: 'transparent', },
-        { from: 's', value: 'white', },
-      ]}
+      innerBackgroundColor={[ { until: 's', value: 'transparent', }, { from: 's', value: 'white', }, ]}
     >
       {/* list header */}
       <StickyListViewHeader
@@ -49,16 +46,15 @@ export default function KrokerView({
         {...restOfList}
         extraLinks={extraLinks ? extraLinks.slice(0, 5) : null}
         backgroundColor="white"
+        miscStyles={{ marginBottom: [ { from: 's', until: 'l', value: 1, }, ], }}
       />
 
       {/* breaking news +  items */}
-      <GridItem
-        width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}
-      >
+      <GridItem width={[ { until: 'l', value: 1, }, { from: 'l', value: 10 / 12, }, ]}>
         <Grid
           rowSpacing={[
             { until: 's', value: { amount: 0, }, },
-            { from: 's', until: 'l', value: { amount: 2, }, },
+            { from: 's', until: 'l', value: { amount: 3, }, },
             { from: 'l', until: 'xl', value: { amount: 4, }, },
             { from: 'xl', value: { amount: 2, }, },
           ]}
@@ -99,18 +95,12 @@ type ListItemsProps = {
   gaAction: ?() => void,
   biAction: ?ListBiActionType,
 };
-function ListItems({
-  items,
-  dfp,
-  lazyLoadImages,
-  gaAction,
-  biAction,
-}: ListItemsProps): React.Node {
+function ListItems({ items, dfp, lazyLoadImages, gaAction, biAction, }: ListItemsProps): React.Node {
   return (
     <Grid
       rowSpacing={[
         { until: 's', value: { amount: 2, }, },
-        { from: 's', until: 'l', value: { amount: 4, }, },
+        { from: 's', until: 'l', value: { amount: 2, }, },
       ]}
     >
       <GridItem
@@ -118,19 +108,11 @@ function ListItems({
         miscStyles={{ display: 'flex', }}
       >
         <Grid gutter={4} rowSpacing={[ { until: 's', value: { amount: 2, }, }, ]}>
-          <GridItem
-            width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
-          >
+          <GridItem width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}>
             {/* item 1 */}
-            <MainTeaser
-              itemData={items[0]}
-              lazyLoadImages={lazyLoadImages}
-              biAction={biAction}
-            />
+            <MainTeaser itemData={items[0]} lazyLoadImages={lazyLoadImages} biAction={biAction} />
           </GridItem>
-          <GridItem
-            width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}
-          >
+          <GridItem width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}>
             {/* item 2 */}
             <VerticalImageTeaser
               itemData={items[1]}
@@ -144,16 +126,14 @@ function ListItems({
       <GridItem
         width={[ { until: 'l', value: 1, }, { from: 'l', value: 3 / 10, }, ]}
         miscStyles={{
+          marginBottom: [ { from: 's', until: 'l', value: 4, }, ],
           display: [ { from: 'l', value: 'flex', }, ],
         }}
       >
         {/* items 3 - 5 */}
         <Grid
           gutter={4}
-          rowSpacing={[
-            { until: 's', value: { amount: 2, }, },
-            { from: 'l', value: { amount: 1, }, },
-          ]}
+          rowSpacing={[ { until: 's', value: { amount: 2, }, }, { from: 'l', value: { amount: 1, }, }, ]}
         >
           {items.slice(2, 5).map(item => (
             <GridItem
@@ -182,10 +162,7 @@ function ListItems({
             miscStyles={{ display: 'flex', marginTop: '0 !important', }}
           >
             {/* banner content */}
-            <GeneralAdSlot
-              {...banner}
-              wrapperMiscStyles={{ width: '100%', }}
-            />
+            <GeneralAdSlot {...banner} wrapperMiscStyles={{ width: '100%', }} />
           </GridItem>
         ))
         : null}

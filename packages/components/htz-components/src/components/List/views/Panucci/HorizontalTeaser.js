@@ -35,9 +35,9 @@ export default function HorizontalTeaser({
   index,
 }: Props): React.Node {
   const headerType = [
-    { until: 's', value: 0, },
-    { from: 's', until: 'l', value: -1, },
-    { from: 'l', value: 0, },
+    { until: 'xl', value: 0, },
+    // { from: 's', until: 'l', value: -1, },
+    // { from: 'l', value: 0, },
     { from: 'xl', value: -1, },
   ];
 
@@ -62,7 +62,7 @@ export default function HorizontalTeaser({
               biAction ? () => biAction({ index, articleId: itemData.representedContent, }) : null
             }
             miscStyles={{
-              paddingInlineEnd: [ { until: 'l', value: '1rem', }, { from: 'l', value: '2rem', }, ],
+              paddingInlineEnd: [ { until: 's', value: '1rem', }, { from: 's', value: '2rem', }, ],
             }}
           >
             <Picture

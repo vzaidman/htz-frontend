@@ -252,11 +252,11 @@ function HawkingMainTeaser({
               { from: 'l', until: 'xl', value: 2 / 7, },
             ]}
             padding={[
-              { until: 'xl', value: [ 1, 1, 0, ], },
+              { until: 'xl', value: [ 1, 2, 0, 1, ], },
               { from: 'xl', value: [ 1, 2, 0, ], },
             ]}
             footerPadding={[
-              { until: 'xl', value: 1, },
+              { until: 'xl', value: [ 1, 2, 0, 1, ], },
               { from: 'xl', value: [ 1, 2, ], },
             ]}
             isStacked
@@ -289,19 +289,17 @@ function HawkingMainTeaser({
                   style={{
                     color: theme.color('neutral', -3),
                     fontWeight: 400,
+                    paddingInlineEnd: '1rem',
                     extend: [ theme.type(-3), ],
                   }}
                   render="span"
                 >
                   {' | '}
-                  <TeaserTime
-                    publishDate={item.publishDate && new Date(item.publishDate)}
-                  />
+                  <TeaserTime publishDate={item.publishDate && new Date(item.publishDate)} />
                 </FelaComponent>
                 <CommentsCount
                   commentsCount={item.commentsCounts}
                   minCount={1}
-                  miscStyles={{ paddingRight: '1rem', }}
                 />
               </FelaComponent>
             )}
@@ -360,7 +358,10 @@ function HawkingTeaser({ item, index, biAction, }: TeaserProps): Node {
                 renderContent={data => (
                   <TeaserHeader
                     {...data}
-                    typeScale={[ { until: 's', value: 0, }, ]}
+                    typeScale={[
+                      { until: 'xl', value: 0, },
+                      { from: 'xl', value: -1, },
+                    ]}
                     onClick={
                       biAction
                         ? () => biAction({ index, articleId: item.representedContent, })
