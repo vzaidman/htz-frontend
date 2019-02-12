@@ -77,6 +77,7 @@ if (window) {
 
               <meta name="description" content={seoData.metaDescription} />
               <link rel="canonical" href={seoData.canonicalUrl} />
+              <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.haaretz.co.il/whtzMobileSite" />
             </Head>
             <ScrollListener />
             <RouteChangeListener />
