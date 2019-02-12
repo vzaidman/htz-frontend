@@ -285,13 +285,13 @@ export default function Wong({
                                       >
                                         <IconBack
                                           size={[
-                                              { until: 'xl', value: 2, },
-                                              { from: 'xl', value: 1.5, },
-                                            ]}
+                                            { until: 'xl', value: 2, },
+                                            { from: 'xl', value: 1.5, },
+                                          ]}
                                           miscStyles={{
-                                              marginInlineStart: `-${relatedPadding}`,
-                                              marginInlineEnd: '0.5rem',
-                                            }}
+                                            marginInlineStart: `-${relatedPadding}`,
+                                            marginInlineEnd: '0.5rem',
+                                          }}
                                         />
                                         {article.title}
                                       </HtzLink>
@@ -396,7 +396,7 @@ function getMediaProps(
     console.log(media);
     if (isImage(media)) return getImageProps(media, isConrad, theme);
     if (isEmbed(media)) return getEmbedProps(media);
-    if (isGallery(media)) return media;
+    if (isGallery(media)) return { ...media, disableFullScreen: true, };
   }
   return null;
 }

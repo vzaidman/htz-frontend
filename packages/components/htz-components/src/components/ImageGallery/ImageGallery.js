@@ -21,9 +21,9 @@ const propTypes = {
    */
   animationDuration: PropTypes.number,
   /**
-   * Enable the button that allows you to see the gallery in full-screen.
+   * Disables you to see the gallery in full-screen.
    */
-  enableEnlarge: PropTypes.bool,
+  disableFullScreen: PropTypes.bool,
   /**
    * Force the images in the gallery to render in a specific aspect,
    * regardless of the gallery's default.
@@ -69,7 +69,7 @@ const galleryProps = {
 
 const defaultProps = {
   animationDuration: 3,
-  enableEnlarge: true,
+  disableFullScreen: false,
   forceAspect: null,
   fullScreenOnly: false,
   isFullScreen: false,
@@ -262,8 +262,7 @@ const Gallery = ({
   renderCaption,
   fullScreenOnly,
   exitFullScreenAction,
-  name,
-  showTitle,
+  disableFullScreen,
 }) => {
   // const renderCaption = false;
   const CarouselElement = () => (
@@ -297,6 +296,7 @@ const Gallery = ({
               <FullScreenMedia
                 itemName={image.contentName}
                 fullScreenOnly={fullScreenOnly}
+                disableFullScreen={disableFullScreen}
                 exitAction={exitFullScreenAction}
                 itemUrl={buildUrl(
                   image.contentId,
@@ -324,7 +324,6 @@ const Gallery = ({
                       forceAspect="full"
                       isFullScreen
                       showCaption={false}
-                      enableEnlarge={false}
                       ignoreSchema
                       shouldOpenGallery={false}
                       imgOptions={aspect => buildImgOptions(aspect, true)}
@@ -336,12 +335,11 @@ const Gallery = ({
                     />
                   ) : (
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-                    <div onClick={toggleFullScreen}>
+                    <div onClick={!disableFullScreen ? toggleFullScreen : null}>
                       <ArticleImage
                         forceAspect={forceAspect || 'regular'}
                         isFullScreen={false}
                         showCaption={false}
-                        enableEnlarge={false}
                         ignoreSchema
                         shouldOpenGallery={false}
                         imgOptions={aspect => buildImgOptions(aspect, false)}
@@ -417,6 +415,7 @@ const Gallery = ({
                                   type="button"
                                   className={className}
                                   onClick={event => {
+                                    event.preventDefault();
                                     event.stopPropagation();
                                     changeItem('previous');
                                   }}
@@ -450,6 +449,7 @@ const Gallery = ({
                                   type="button"
                                   className={className}
                                   onClick={event => {
+                                    event.preventDefault();
                                     event.stopPropagation();
                                     changeItem('next');
                                   }}

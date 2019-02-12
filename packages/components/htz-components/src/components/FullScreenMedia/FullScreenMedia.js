@@ -7,7 +7,6 @@ import { rgba, } from 'polished';
 
 import ToolBar from './elements/ToolBar';
 import IconArrow from '../Icon/icons/IconArrow';
-import IconZoomIn from '../Icon/icons/IconZoomIn';
 
 const propTypes = {
   captionElement: PropTypes.node,
@@ -27,16 +26,21 @@ const propTypes = {
    * Should the media be displayed as full-screen only.
    */
   fullScreenOnly: PropTypes.bool,
+  /**
+   * Should the full-screen option be disabled.
+   */
+  disableFullScreen: PropTypes.bool,
   exitAction: PropTypes.func,
 };
 
 const defaultProps = {
   captionElement: null,
   fullScreenOnly: false,
+  disableFullScreen: false,
   exitAction: null,
 };
 
-const containerStyle = ({ isFullScreen, theme, }) => ({
+const containerStyle = ({ isFullScreen, disableFullScreen, theme, }) => ({
   overflow: 'hidden',
   position: 'relative',
   ...(isFullScreen
@@ -65,55 +69,38 @@ const containerStyle = ({ isFullScreen, theme, }) => ({
         ),
       ],
     }
-    : { cursor: 'zoom-in', }),
+    : !disableFullScreen
+      ? { cursor: 'zoom-in', }
+      : {}
+  ),
 });
 
-const iconStyle = ({ theme, isFullScreen, hide, }) => ({
+const iconStyle = ({ theme, }) => ({
   backgroundColor: rgba(theme.color('neutral'), 0.8),
   height: '5rem',
   marginBottom: '3rem',
   padding: '1rem',
-  opacity: hide ? '0' : '1',
+  opacity: '1',
   width: '100%',
   zIndex: '6',
-  extend: [
-    { transitionProperty: 'opacity', },
-    theme.getDuration('transition', 0),
-    theme.getTimingFunction('transition', 'linear'),
-  ],
-  ...(!isFullScreen
-    ? {
-      borderRadius: '50%',
-      end: '1rem',
-      position: 'absolute',
-      top: '1rem',
-      width: '5rem',
-    }
-    : {}),
 });
 
 // eslint-disable-next-line react/prop-types
-const Icon = ({ isFullScreen, hide, ...props }) => (
+const Icon = props => (
   <FelaComponent
     rule={iconStyle}
-    hide={hide}
-    isFullScreen={isFullScreen}
-    render={({ theme, className, }) => {
-      const ToggleIcon = isFullScreen ? IconArrow : IconZoomIn;
-      const label = isFullScreen ? theme.zoomoutText : theme.zoominText;
-      return (
-        <button type="button" className={className} {...props} aria-label={label} tabIndex="-1">
-          <ToggleIcon
-            color={[ 'neutral', '-10', ]}
-            size={isFullScreen ? 3 : 2.5}
-            miscStyles={{
-              display: 'block',
-              margin: '0 auto',
-            }}
-          />
-        </button>
-      );
-    }}
+    render={({ theme, className, }) => (
+      <button type="button" className={className} {...props} aria-label={theme.zoomoutText} tabIndex="-1">
+        <IconArrow
+          color={[ 'neutral', '-10', ]}
+          size={3}
+          miscStyles={{
+            display: 'block',
+            margin: '0 auto',
+          }}
+        />
+      </button>
+    )}
   />
 );
 
@@ -144,7 +131,6 @@ class FullScreenMedia extends React.Component {
   state = {
     mediaWidth: null,
     isFullScreen: this.props.fullScreenOnly,
-    hide: true,
   };
 
   componentDidMount() {
@@ -158,7 +144,6 @@ class FullScreenMedia extends React.Component {
     return (
       this.state.mediaWidth !== nextState.mediaWidth
       || this.state.isFullScreen !== nextState.isFullScreen
-      || this.state.hide !== nextState.hide
       || this.props.captionElement !== nextProps.captionElement
     );
   }
@@ -195,27 +180,17 @@ class FullScreenMedia extends React.Component {
     }
   };
 
-  toggleHide = hide => this.setState({
-    hide,
-  });
-
   render() {
-    const { render, captionElement, itemName, itemUrl, } = this.props;
+    const { render, captionElement, itemName, itemUrl, disableFullScreen, } = this.props;
     const { isFullScreen, } = this.state;
 
     return (
       <FelaComponent
         rule={containerStyle}
         isFullScreen={isFullScreen}
+        disableFullScreen={disableFullScreen}
         render={({ className, }) => (
-          <div
-            className={className}
-            onMouseEnter={!isFullScreen ? () => this.toggleHide(false) : null}
-            onMouseLeave={!isFullScreen ? () => this.toggleHide(true) : null}
-          >
-            {!isFullScreen ? (
-              <Icon isFullScreen={false} hide={this.state.hide} />
-            ) : null}
+          <div className={className}>
             <div />
             <FelaComponent
               rule={mediaWrapperStyle}
@@ -238,18 +213,14 @@ class FullScreenMedia extends React.Component {
                     end: '2rem',
                   }}
                 >
-                  <Icon isFullScreen onClick={this.toggleFullScreen} hide={false} />
+                  <Icon onClick={this.toggleFullScreen} />
                 </FelaComponent>
                 <ToolBar
                   itemName={itemName}
                   itemUrl={itemUrl}
                   closeButton={(
-                    <Icon
-                      isFullScreen
-                      onClick={this.toggleFullScreen}
-                      hide={false}
-                    />
-)}
+                    <Icon onClick={this.toggleFullScreen} />
+                  )}
                   captionElement={captionElement}
                 />
               </Fragment>
