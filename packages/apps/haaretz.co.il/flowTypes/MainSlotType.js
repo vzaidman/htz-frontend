@@ -6,6 +6,7 @@ import type {
   ListDataType,
   MiddleRulerType,
   TabsElementType,
+  RssFeedType,
   ErrorType,
 } from '@haaretz/htz-components';
 
@@ -15,6 +16,7 @@ export type MainSlotElement =
   | GridElementType
   | ListDataType
   | MiddleRulerType
+  | RssFeedType
   | TabsElementType
   | ErrorType
 

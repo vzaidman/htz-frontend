@@ -63,6 +63,10 @@ export function isGallery(media: KindObject): %checks {
   return media.kind === 'gallery';
 }
 
+export function isRssFeed(item: TestObject): %checks {
+  return item.inputTemplate === 'com.tm.ExternalRssElement';
+}
+
 export default {
   isClickTracker,
   isClickTrackerWrapper,
@@ -79,4 +83,5 @@ export default {
   isEmbed,
   isGallery,
   isMiddleRuller,
+  isRssFeed,
 };

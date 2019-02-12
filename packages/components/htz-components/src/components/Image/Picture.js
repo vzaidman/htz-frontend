@@ -349,7 +349,7 @@ export default withTheme(Picture);
 
 function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
   const { data, sourceOptions, } = sources[imgPosition];
-  const { contentId, imgArray, } = data;
+  const { contentId, imgArray, isExternal, } = data;
   const imgCore = imgArray[0];
   const { transforms, } = sourceOptions;
   const transformsArray = Array.isArray(transforms) ? transforms : [ transforms, ];
@@ -362,12 +362,12 @@ function getSources({ sources, }, imgPosition = 0, isAnimatedGif) {
 
   const imgData = { imgName, version: imgVersion, aspects: imgCore.aspects, };
 
-  return buildURLs(contentId, imgData, transformsArray);
+  return !isExternal ? buildURLs(contentId, imgData, transformsArray) : [ imgData.imgName, ];
 }
 
 function getImgSources({
   defaultImg: {
-    data: { contentId, imgArray, },
+    data: { contentId, imgArray, isExternal, },
     sourceOptions: { transforms, },
   },
 }) {
@@ -381,8 +381,8 @@ function getImgSources({
     aspects,
   };
 
-  const src = buildUrl(contentId, imgData, transformsArray[0]);
-  const srcSet = buildURLs(contentId, imgData, transformsArray, false);
+  const src = !isExternal ? buildUrl(contentId, imgData, transformsArray[0]) : imgData.imgName;
+  const srcSet = !isExternal ? buildURLs(contentId, imgData, transformsArray, false) : [];
 
   return [ src, ...srcSet, ];
 }

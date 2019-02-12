@@ -37,6 +37,7 @@ import Video from '../components/Video/Video';
 import logger from '../componentsLogger';
 import withDfpSideEffect from '../components/Dfp/withDfpSideEffect';
 import TableScore from '../components/TableScore/TableScore';
+import RssFeed from '../components/RssFeed/RssFeed';
 
 const tagsFromTagElement = ({ tagsList, }) => tagsList.map(x => x.contentName);
 
@@ -100,6 +101,7 @@ const inputTemplateToComponent = new Map([
   [ 'com.htz.magazineArticleDfpBannerElement', GeneralAdSlot, ],
   [ 'com.polobase.ClickTrackerBannersWrapper', ClickTrackerWrapper, ],
   [ 'com.tm.TableScore', TableScore, ],
+  [ 'com.tm.ExternalRssElement', RssFeed, ],
   [ 'error', Error, ],
   [ null, null, ],
 ]);

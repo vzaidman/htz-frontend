@@ -14,6 +14,7 @@ import Content from './content_type';
 import HeaderNewsGroup from './header_news_group_type';
 import mobileListWrapper from './mobile_list_wrapper_type';
 import nullFallback from './null_fallback_type';
+import RssFeedType from './rss_feed_type';
 
 const Article = new GraphQLList(
   new GraphQLUnionType({
@@ -29,6 +30,7 @@ const Article = new GraphQLList(
       dfpBanner,
       clickTrackerBannersWrapper,
       mobileListWrapper,
+      RssFeedType,
       Content,
       nullFallback,
     ],

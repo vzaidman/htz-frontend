@@ -98,6 +98,19 @@ export default gql`
               }
             }
           }
+          ... on RssFeed {
+            inputTemplate
+            title
+            items {
+              title
+              creator
+              author
+              imageUrl
+              link
+              description
+              publishedDate               
+            }
+          }
           ... on MiddleRuler {
              inputTemplate
              text
