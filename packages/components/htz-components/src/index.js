@@ -82,6 +82,7 @@ import RadioButton from './components/RadioButton/RadioButton';
 import RadioGroup from './components/RadioButton/RadioGroup';
 import RelatedArticles from './components/RelatedArticles/RelatedArticles';
 import RouteChangeListener from './components/EventListeners/RouteChangeListener';
+import RssFeed from './components/RssFeed/RssFeed';
 import Scroll from './components/Scroll/Scroll';
 import ScrollListener from './components/EventListeners/ScrollListener';
 import Section from './components/AutoLevels/Section';
@@ -243,6 +244,7 @@ import type { GridElementType, } from './flowTypes/GridElementType';
 import type { ListDataType, } from './flowTypes/ListDataType';
 import type { TabsElementType, } from './flowTypes/TabsElementType';
 import type { MiddleRulerType, } from './flowTypes/MiddleRulerType';
+import type { RssFeedType, } from './flowTypes/RssFeedType';
 
 export {
   // ArticleTypes
@@ -319,6 +321,7 @@ export {
   RadioGroup,
   RelatedArticles,
   RouteChangeListener,
+  RssFeed,
   Scroll,
   ScrollListener,
   Section,
@@ -468,4 +471,5 @@ export type {
   ListDataType,
   MiddleRulerType,
   TabsElementType,
+  RssFeedType,
 };

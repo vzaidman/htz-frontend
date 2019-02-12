@@ -24,6 +24,7 @@ import seriesOrBlockArticles from './types/series_or_block_articles_type';
 import tableScore from './types/table_score_type';
 import tags from './types/tags_type';
 import video from './types/video_type';
+import rssFeed from './types/rss_feed_type';
 
 const types = new Map([
   [ 'com.htz.MagazineArticleQuote', quote, ],
@@ -47,6 +48,7 @@ const types = new Map([
   [ 'com.tm.element.List', list, ],
   [ 'com.tm.newsLetterQuickRegistrationRespAuto', newsLetter, ],
   [ 'com.tm.promotion.banner.MiddleRuler', MiddleRuller, ],
+  [ 'com.tm.ExternalRssElement', rssFeed, ],
   [ 'embed', embed, ],
   [ 'error', nullFallback, ],
   [ 'gallery', imageGallery, ],

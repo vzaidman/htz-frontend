@@ -13,6 +13,7 @@ import {
   Debug,
   MarketingNotification,
   MobileListWrapper,
+  RssFeed,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
@@ -31,6 +32,7 @@ const {
   isClickTrackerWrapper,
   isMobileListWrapper,
   isMiddleRuller,
+  isRssFeed,
 } = validateType;
 
 const componentType: Object = new Map([
@@ -83,6 +85,13 @@ const componentType: Object = new Map([
           text1={element.text}
           buttonUrl={element.actionUrl}
         />
+      )
+      : null
+  ), ],
+  [ 'com.tm.ExternalRssElement', (element: MainSlotElement) => (
+    isRssFeed(element)
+      ? (
+        <RssFeed key={element.contentId} {...element} />
       )
       : null
   ), ],

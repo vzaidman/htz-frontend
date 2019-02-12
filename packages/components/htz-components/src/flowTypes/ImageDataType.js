@@ -1,7 +1,7 @@
 // @flow
 
 export type ImageDataType = {
-  contentName: "com.tm.Image" | "com.tm.Image",
+  contentName: string,
   contentId: string,
   inputTemplate: string,
   photographer?: string,
