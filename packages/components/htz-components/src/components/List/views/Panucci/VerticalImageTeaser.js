@@ -27,8 +27,6 @@ VerticalImageTeaser.defaultProps = {
   biAction: null,
 };
 const headerType = [
-  // { until: 's', value: 0, },
-  // { from: 's', until: 'l', value: -1, },
   { until: 'xl', value: 0, },
   { from: 'xl', value: -1, },
 ];

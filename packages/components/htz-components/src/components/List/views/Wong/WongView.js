@@ -88,6 +88,7 @@ export default function Wong({
           <GridItem
             gutter={gutter}
             width={width}
+            // Wong left border
             // rule={
             //   isConrad
             //     ? null
