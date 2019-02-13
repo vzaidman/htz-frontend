@@ -285,7 +285,7 @@ class PurchasePageAPI extends RESTDataSource {
     );
   }
 
-  async getPage(path, userIdArg) {
+  async getPage(path, userIdArg, hasFacebookToken) {
     console.log('getting page from data source!!');
     const baseUri = `${this.context.serviceBase}/papi`;
     const polopolyPromotionsPage = this.context.polopolyPromotionsPage;
@@ -305,7 +305,7 @@ class PurchasePageAPI extends RESTDataSource {
       polopolyPromotionsPage.startsWith('/') ? '' : '/'
     }${polopolyPromotionsPage}${(path || '/').replace(`${polopolyPromotionsPage}`, '')}${
       path.includes('?') ? '&' : '?'
-    }userId=${userId}`;
+    }userId=${userId}${hasFacebookToken ? '&account_linking_token=true' : ''}`;
 
     return fetch(normalizedPath)
       .then(response => {

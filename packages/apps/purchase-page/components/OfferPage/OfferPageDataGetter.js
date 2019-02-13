@@ -5,8 +5,8 @@ import { withRouter, } from 'next/router';
 import { extractParamFromUrl, Query, UserDispenser, } from '@haaretz/htz-components';
 
 const GET_PURCHASE_PAGE_DATA = gql`
-  query PageData($path: String!, $userId: ID) {
-    purchasePage(path: $path, userId: $userId)
+  query PageData($path: String!, $userId: ID, $hasFacebookToken: Boolean) {
+    purchasePage(path: $path, userId: $userId, hasFacebookToken: $hasFacebookToken)
   }
 `;
 
@@ -16,8 +16,11 @@ const propTypes = {
 };
 
 export function getCampaignFromPath(path) {
-  const offer = `/${extractParamFromUrl('offer', path) || ''}`;
-  return offer;
+  return `/${extractParamFromUrl('offer', path) || ''}`;
+}
+
+function hasFacebookToken(query) {
+  return !!query.account_linking_token;
 }
 
 // todo: maybe use refetch with new variables after login
@@ -30,7 +33,11 @@ function OfferPageDataGetter({ render, router, }) {
         render={({ user: { id, }, }) => (
           <Query
             query={GET_PURCHASE_PAGE_DATA}
-            variables={{ path: getCampaignFromPath(router.asPath), userId: id, }}
+            variables={{
+              path: getCampaignFromPath(router.asPath),
+              userId: id,
+              hasFacebookToken: hasFacebookToken(router.query),
+            }}
           >
             {({ loading, error, data, refetch, client, }) => render({
               data,
