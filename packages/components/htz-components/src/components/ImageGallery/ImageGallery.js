@@ -10,6 +10,7 @@ import Caption from '../Caption/Caption';
 import Carousel from '../Carousel/Carousel';
 import FullScreenMedia from '../FullScreenMedia/FullScreenMedia';
 import IconBack from '../Icon/icons/IconBack';
+import UserAgent from '../UserAgent/UserAgent';
 
 const propTypes = {
   /**
@@ -363,105 +364,113 @@ const Gallery = ({
                         flexDirection: 'column',
                       }}
                     >
-                      <FelaComponent
-                        style={{
-                          height: '100%',
-                          display: 'flex',
-                          flexWrap: 'nowrap',
-                          position: 'relative',
-                          ...(isFullScreen ? { paddingBottom: '8rem', } : {}),
-                          extend: [
-                            theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
-                            theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
-                          ],
+                      <UserAgent
+                        rules={{
+                          untilIos11: { os: 'OS X', untilVer: 11, },
                         }}
                       >
-                        {renderPreviousItems(({ itemIndex, }) => (
-                          <Image {...images[itemIndex]} />
-                        ))}
-                        {renderCurrentItems(image.alt || image.title, ({ itemIndex, }) => (
-                          <Image {...images[itemIndex]} />
-                        ))}
-                        {renderNextItems(({ itemIndex, }) => (
-                          <Image {...images[itemIndex]} />
-                        ))}
-                        <FelaComponent
-                          style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            position: 'absolute',
-                            top: '50%',
-                            start: '0',
-                            transform: 'translateY(-50%)',
-                            width: '100%',
-                            zIndex: 2,
-                            extend: [ isFullScreen ? { display: 'none', } : {}, ],
-                          }}
-                        >
-                          {renderButton(({ changeItem, }) => (
+                        {({ untilIos11, }) => (
+                          <FelaComponent
+                            style={{
+                              height: untilIos11 ? 'initial' : '100%',
+                              display: 'flex',
+                              flexWrap: 'nowrap',
+                              position: 'relative',
+                              ...(isFullScreen ? { paddingBottom: '8rem', } : {}),
+                              extend: [
+                                theme.mq({ from: 's', misc: 'portrait', }, { flexShrink: '1', }),
+                                theme.mq({ from: 'm', misc: 'landscape', }, { flexShrink: '1', }),
+                              ],
+                            }}
+                          >
+                            {renderPreviousItems(({ itemIndex, }) => (
+                              <Image {...images[itemIndex]} />
+                            ))}
+                            {renderCurrentItems(image.alt || image.title, ({ itemIndex, }) => (
+                              <Image {...images[itemIndex]} />
+                            ))}
+                            {renderNextItems(({ itemIndex, }) => (
+                              <Image {...images[itemIndex]} />
+                            ))}
                             <FelaComponent
                               style={{
-                                width: '4rem',
-                                height: '9rem',
-                                zIndex: '3',
-                                color: theme.color('neutral', '-1'),
-                                backgroundColor: rgba(theme.color('quaternary'), 0.8),
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                position: 'absolute',
+                                top: '50%',
                                 start: '0',
-                                ':focus': {
-                                  outline: 'none',
-                                },
+                                transform: 'translateY(-50%)',
+                                width: '100%',
+                                zIndex: 2,
+                                extend: [ isFullScreen ? { display: 'none', } : {}, ],
                               }}
-                              render={({ className, }) => (
-                                <button
-                                  type="button"
-                                  className={className}
-                                  onClick={event => {
-                                    event.stopPropagation();
-                                    changeItem('previous');
+                            >
+                              {renderButton(({ changeItem, }) => (
+                                <FelaComponent
+                                  style={{
+                                    width: '4rem',
+                                    height: '9rem',
+                                    zIndex: '3',
+                                    color: theme.color('neutral', '-1'),
+                                    backgroundColor: rgba(theme.color('quaternary'), 0.8),
+                                    start: '0',
+                                    ':focus': {
+                                      outline: 'none',
+                                    },
                                   }}
-                                  aria-label={theme.previousText}
-                                >
-                                  <IconBack
-                                    size={2.5}
-                                    miscStyles={{
-                                      transform: 'rotateY(180deg)',
-                                    }}
-                                  />
-                                </button>
-                              )}
-                            />
-                          ))}
-                          {renderButton(({ changeItem, }) => (
-                            <FelaComponent
-                              style={{
-                                width: '4rem',
-                                height: '9rem',
-                                zIndex: '3',
-                                end: '0',
-                                color: theme.color('neutral', '-1'),
-                                backgroundColor: rgba(theme.color('quaternary'), 0.8),
-                                ':focus': {
-                                  outline: 'none',
-                                },
-                              }}
-                              render={({ className, }) => (
-                                <button
-                                  type="button"
-                                  className={className}
-                                  onClick={event => {
-                                    event.stopPropagation();
-                                    changeItem('next');
+                                  render={({ className, }) => (
+                                    <button
+                                      type="button"
+                                      className={className}
+                                      onClick={event => {
+                                        event.stopPropagation();
+                                        changeItem('previous');
+                                      }}
+                                      aria-label={theme.previousText}
+                                    >
+                                      <IconBack
+                                        size={2.5}
+                                        miscStyles={{
+                                          transform: 'rotateY(180deg)',
+                                        }}
+                                      />
+                                    </button>
+                                  )}
+                                />
+                              ))}
+                              {renderButton(({ changeItem, }) => (
+                                <FelaComponent
+                                  style={{
+                                    width: '4rem',
+                                    height: '9rem',
+                                    zIndex: '3',
+                                    end: '0',
+                                    color: theme.color('neutral', '-1'),
+                                    backgroundColor: rgba(theme.color('quaternary'), 0.8),
+                                    ':focus': {
+                                      outline: 'none',
+                                    },
                                   }}
-                                  aria-label={theme.nextText}
-                                >
-                                  <IconBack size={2.5} />
-                                </button>
-                              )}
-                            />
-                          ))}
-                        </FelaComponent>
-                      </FelaComponent>
+                                  render={({ className, }) => (
+                                    <button
+                                      type="button"
+                                      className={className}
+                                      onClick={event => {
+                                        event.stopPropagation();
+                                        changeItem('next');
+                                      }}
+                                      aria-label={theme.nextText}
+                                    >
+                                      <IconBack size={2.5} />
+                                    </button>
+                                  )}
+                                />
+                              ))}
+                            </FelaComponent>
+                          </FelaComponent>
+                        )}
+                      </UserAgent>
                       {renderIndicator(() => (
                         <FelaComponent
                           style={{
