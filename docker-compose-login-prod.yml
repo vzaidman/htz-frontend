@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile-login
       args:
         NEXT_BUILD_ID: ${version:-latest}
-    image: 'nexus-ng.themarker.com/htz-login-app:${version:-latest}'
+    image: "nexus-ng.themarker.com/htz-login-app:${version:-latest}"
     ports:
       - 9004:9004
     environment:
@@ -21,6 +21,8 @@ services:
       - GRAPHQL_USE_SSL=true
       - GRAPHQL_EXPOSE_PORT=false
       - GRAPHQL_SUB_DOMAIN=graphql
+      - HTZ_GOOGLE_ANALYTICS_ID=UA-589309-3
+      - TM_GOOGLE_ANALYTICS_ID=UA-3574867-1
     networks:
       - production
     deploy:
