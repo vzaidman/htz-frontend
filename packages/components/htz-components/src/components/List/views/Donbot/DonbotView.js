@@ -23,7 +23,6 @@ import CommentsCount from '../../../CommentsCount/CommentsCount';
 import getImageAssets from '../../../../utils/getImageAssets';
 import TeaserRank from '../../../TeaserRank/TeaserRank';
 import getPictureAssets from '../../../../utils/getPictureAssets';
-import UserAgent from '../../../UserAgent/UserAgent';
 
 type Props = {
   list: ListDataType,
@@ -80,6 +79,7 @@ export default function DonbotList({
           {/* MAIN TEASER */}
           <GridItem
             width={[ { until: 'l', value: 1, }, { from: 'l', value: 6 / 10, }, ]}
+            miscStyles={{ display: 'flex', }}
           >
             {mainTeaser && (
               <DonbotMainTeaser
@@ -310,29 +310,67 @@ function DonbotTeaser({
   lazyLoadImages,
 }: TeaserProps): Node {
   return (
-    <UserAgent
-      rules={{
-        untilIos11: { os: 'OS X', untilVer: 11, },
-      }}
-    >
-      {({ untilIos11, }) => (
-        <FelaTheme
-          render={theme => (
-            <Teaser
-              data={item}
-              onClick={
-                biAction
-                  ? () => biAction({
-                    index,
-                    articleId: item.representedContent || item.contentId,
-                  })
-                  : null
-              }
-              isStacked
-              miscStyles={untilIos11 ? { height: 'initial', } : {}}
-            >
-              <TeaserMedia
-                data={item}
+    <FelaTheme
+      render={theme => (
+        <Teaser
+          data={item}
+          onClick={
+            biAction
+              ? () => biAction({
+                index,
+                articleId: item.representedContent || item.contentId,
+              })
+              : null
+          }
+          isStacked
+        >
+          <TeaserMedia
+            data={item}
+            onClick={
+              biAction
+                ? () => biAction({
+                  index,
+                  articleId: item.representedContent || item.contentId,
+                })
+                : null
+            }
+            isStacked
+          >
+            <Image
+              lazyLoad={lazyLoadImages}
+              imgOptions={getImageAssets({
+                bps: theme.bps,
+                aspect: 'headline',
+                sizes: [
+                  { from: 'xl', size: '178px', },
+                  { from: 'l', size: '143px', },
+                  { from: 'm', size: '348px', },
+                  { from: 's', size: '264px', },
+                  { size: 'calc(50vw - 6rem)', },
+                ],
+                widths: [ 150, 180, 200, 285, 350, 380, 565, ],
+              })}
+              data={item.image}
+            />
+          </TeaserMedia>
+
+          <TeaserContent
+            data={item}
+            padding={[ 1, 1, 0, ]}
+            footerPadding={1}
+            footerMiscStyles={{
+              fontWeight: '700',
+              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+              color: theme.color('neutral', '-3'),
+            }}
+            isStacked
+            renderContent={data => (
+              <TeaserHeader
+                {...data}
+                typeScale={[
+                  { until: 's', value: 0, },
+                  { from: 'xl', value: -1, },
+                ]}
                 onClick={
                   biAction
                     ? () => biAction({
@@ -341,64 +379,17 @@ function DonbotTeaser({
                     })
                     : null
                 }
-                isStacked
-              >
-                <Image
-                  lazyLoad={lazyLoadImages}
-                  imgOptions={getImageAssets({
-                    bps: theme.bps,
-                    aspect: 'headline',
-                    sizes: [
-                      { from: 'xl', size: '178px', },
-                      { from: 'l', size: '143px', },
-                      { from: 'm', size: '348px', },
-                      { from: 's', size: '264px', },
-                      { size: 'calc(50vw - 6rem)', },
-                    ],
-                    widths: [ 150, 180, 200, 285, 350, 380, 565, ],
-                  })}
-                  data={item.image}
-                />
-              </TeaserMedia>
-
-              <TeaserContent
-                data={item}
-                padding={[ 1, 1, 0, ]}
-                footerPadding={1}
-                footerMiscStyles={{
-                  fontWeight: '700',
-                  type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
-                  color: theme.color('neutral', '-3'),
-                }}
-                isStacked
-                renderContent={data => (
-                  <TeaserHeader
-                    {...data}
-                    typeScale={[
-                      { until: 's', value: 0, },
-                      { from: 'xl', value: -1, },
-                    ]}
-                    onClick={
-                      biAction
-                        ? () => biAction({
-                          index,
-                          articleId: item.representedContent || item.contentId,
-                        })
-                        : null
-                    }
-                  />
-                )}
-                renderFooter={() => (
-                  <CommentsCount
-                    commentsCount={item.commentsCounts}
-                  />
-                )}
               />
-            </Teaser>
-          )}
-        />
+            )}
+            renderFooter={() => (
+              <CommentsCount
+                commentsCount={item.commentsCounts}
+              />
+            )}
+          />
+        </Teaser>
       )}
-    </UserAgent>
+    />
   );
 }
 

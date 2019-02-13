@@ -82,7 +82,10 @@ export default function Slugs({
               { from: 'l', until: 'xl', value: 5 / 12, },
               { from: 'xl', value: 6 / 12, },
             ]}
-            miscStyles={{ order: [ { from: 'l', value: 1, }, ], }}
+            miscStyles={{
+              order: [ { from: 'l', value: 1, }, ],
+              display: 'flex',
+            }}
           >
             <MainTeaser data={items[0]} {...{ lazyLoadImages, biAction, }} />
           </GridItem>

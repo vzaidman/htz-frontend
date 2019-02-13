@@ -100,6 +100,7 @@ export default function Panucci({
                   { from: 'l', until: 'xl', value: 3 / 8, },
                   { from: 'xl', value: 2 / 6, },
                 ]}
+                miscStyles={{ display: 'flex', }}
               >
                 <VerticalImageTeaser
                   itemData={items[1]}
@@ -129,6 +130,7 @@ export default function Panucci({
                   { from: 'l', until: 'xl', value: 3 / 8, },
                   { from: 'xl', value: 2 / 6, },
                 ]}
+                miscStyles={{ display: 'flex', }}
               >
                 <VerticalTeaser
                   itemData={items[2]}

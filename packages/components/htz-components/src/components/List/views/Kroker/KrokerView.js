@@ -108,11 +108,17 @@ function ListItems({ items, dfp, lazyLoadImages, gaAction, biAction, }: ListItem
         miscStyles={{ display: 'flex', }}
       >
         <Grid gutter={4} rowSpacing={[ { until: 's', value: { amount: 2, }, }, ]}>
-          <GridItem width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}>
+          <GridItem
+            width={[ { until: 's', value: 1, }, { from: 's', value: 3 / 5, }, ]}
+            miscStyles={{ display: 'flex', }}
+          >
             {/* item 1 */}
             <MainTeaser itemData={items[0]} lazyLoadImages={lazyLoadImages} biAction={biAction} />
           </GridItem>
-          <GridItem width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}>
+          <GridItem
+            width={[ { until: 's', value: 1, }, { from: 's', value: 2 / 5, }, ]}
+            miscStyles={{ display: 'flex', }}
+          >
             {/* item 2 */}
             <VerticalImageTeaser
               itemData={items[1]}
@@ -142,6 +148,7 @@ function ListItems({ items, dfp, lazyLoadImages, gaAction, biAction, }: ListItem
                 { from: 's', until: 'l', value: 1 / 3, },
                 { from: 'l', value: 1, },
               ]}
+              miscStyles={{ display: 'flex', }}
               key={item.contentId}
             >
               <VerticalTeaser

@@ -23,7 +23,6 @@ import TeaserHeader from '../../../TeaserHeader/TeaserHeader';
 import TeaserMedia from '../../../TeaserMedia/TeaserMedia';
 import getImageAssets from '../../../../utils/getImageAssets';
 import getPictureAssets from '../../../../utils/getPictureAssets';
-import UserAgent from '../../../UserAgent/UserAgent';
 
 type Props = {
   list: ListDataType,
@@ -288,103 +287,94 @@ TeaserWithImg1.defaultProps = { lazyLoadImages: true, };
 function TeaserWithImg1({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
   const itemId = data.representedContent == null ? data.contentId : data.representedContent;
   return (
-    <UserAgent
-      rules={{
-        untilIos11: { os: 'OS X', untilVer: 11, },
-      }}
+    <Teaser
+      data={data}
+      gutter={2}
+      onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+      isStacked={[ { from: 'xl', value: true, }, ]}
     >
-      {({ untilIos11, }) => (
-        <Teaser
-          data={data}
-          gutter={2}
-          onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-          miscStyles={untilIos11 ? { height: 'initial', } : {}}
-          isStacked={[ { from: 'xl', value: true, }, ]}
-        >
-          <TeaserMedia
-            data={data}
-            width={[
-              { until: 's', value: 20, },
-              { from: 's', until: 'l', value: 8 / 12, },
-              { from: 'l', until: 'xl', value: 4 / 6, },
-            ]}
-            isStacked={[ { from: 'xl', value: true, }, ]}
-            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-            miscStyles={{
-              order: [ { from: 's', until: 'xl', value: '1', }, ],
-            }}
-          >
-            <FelaTheme
-              render={theme => (
-                <Picture
-                  lazyLoad={lazyLoadImages}
-                  {...getPictureAssets({
-                    bps: theme.bps,
-                    imgData: data.image,
-                    defaultImgOptions: {
-                      sizes: '108px',
-                      aspect: 'square',
-                      widths: [ 108, ],
-                    },
-                    sources: [
-                      {
-                        aspect: 'headline',
-                        from: 's',
-                        sizes: [
-                          { from: 'xl', size: '281px', },
-                          { from: 'l', size: '314px', },
-                          { from: 'm', size: '476px', },
-                          { from: 's', size: '364px', },
-                        ],
-                        widths: [ 473, 364, 314, 281, ],
-                      },
+      <TeaserMedia
+        data={data}
+        width={[
+          { until: 's', value: 20, },
+          { from: 's', until: 'l', value: 8 / 12, },
+          { from: 'l', until: 'xl', value: 4 / 6, },
+        ]}
+        isStacked={[ { from: 'xl', value: true, }, ]}
+        onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+        miscStyles={{
+          order: [ { from: 's', until: 'xl', value: '1', }, ],
+        }}
+      >
+        <FelaTheme
+          render={theme => (
+            <Picture
+              lazyLoad={lazyLoadImages}
+              {...getPictureAssets({
+                bps: theme.bps,
+                imgData: data.image,
+                defaultImgOptions: {
+                  sizes: '108px',
+                  aspect: 'square',
+                  widths: [ 108, ],
+                },
+                sources: [
+                  {
+                    aspect: 'headline',
+                    from: 's',
+                    sizes: [
+                      { from: 'xl', size: '281px', },
+                      { from: 'l', size: '314px', },
+                      { from: 'm', size: '476px', },
+                      { from: 's', size: '364px', },
                     ],
-                  })}
-                />
-              )}
+                    widths: [ 473, 364, 314, 281, ],
+                  },
+                ],
+              })}
             />
-          </TeaserMedia>
-          <TeaserContent
-            data={data}
-            padding={[
-              { until: 's', value: [ 1, 0, 0, 1, ], },
-              { from: 's', until: 'l', value: [ 2, 2, 0, 0, ], },
-              { from: 'l', until: 'xl', value: [ 1, 1, 0, 0, ], },
-              { from: 'xl', value: [ 1, 1, 0, ], },
-            ]}
-            footerPadding={[
-              { until: 's', value: [ 1, 0, 1, 1, ], },
-              { from: 's', until: 'l', value: [ 1, 2, 1, 0, ], },
-              { from: 'l', value: [ 1, 1, 1, 0, ], },
-              { from: 'xl', value: 1, },
-            ]}
-            isStacked={[ { from: 'xl', value: true, }, ]}
-            footerMiscStyles={{
-              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
-            }}
-            renderContent={() => (
-              <TeaserHeader
-                typeScale={headerTypeScale}
-                {...data}
-                onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-              />
-            )}
-            renderFooter={() => (
-              <FelaComponent
-                style={theme => ({
-                  color: theme.color('primary'),
-                  fontWeight: '700',
-                })}
-                render="span"
-              >
-                {data.commentsCounts}
-                <IconComment size={2} />
-              </FelaComponent>
-            )}
+          )}
+        />
+      </TeaserMedia>
+      <TeaserContent
+        data={data}
+        padding={[
+          { until: 's', value: [ 1, 0, 0, 1, ], },
+          { from: 's', until: 'l', value: [ 2, 2, 0, 0, ], },
+          { from: 'l', until: 'xl', value: [ 1, 1, 0, 0, ], },
+          { from: 'xl', value: [ 1, 1, 0, ], },
+        ]}
+        footerPadding={[
+          { until: 's', value: [ 1, 0, 1, 1, ], },
+          { from: 's', until: 'l', value: [ 1, 2, 1, 0, ], },
+          { from: 'l', value: [ 1, 1, 1, 0, ], },
+          { from: 'xl', value: 1, },
+        ]}
+        isStacked={[ { from: 'xl', value: true, }, ]}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
+        renderContent={() => (
+          <TeaserHeader
+            typeScale={headerTypeScale}
+            {...data}
+            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
           />
-        </Teaser>
-      )}
-    </UserAgent>
+        )}
+        renderFooter={() => (
+          <FelaComponent
+            style={theme => ({
+              color: theme.color('primary'),
+              fontWeight: '700',
+            })}
+            render="span"
+          >
+            {data.commentsCounts}
+            <IconComment size={2} />
+          </FelaComponent>
+        )}
+      />
+    </Teaser>
   );
 }
 
@@ -392,86 +382,77 @@ TeaserWithImg2.defaultProps = { lazyLoadImages: true, };
 function TeaserWithImg2({ data, index, lazyLoadImages, biAction, }: TeaserProps): React.Node {
   const itemId = data.representedContent == null ? data.contentId : data.representedContent;
   return (
-    <UserAgent
-      rules={{
-        untilIos11: { os: 'OS X', untilVer: 11, },
-      }}
+    <Teaser
+      data={data}
+      gutter={2}
+      onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+      isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
     >
-      {({ untilIos11, }) => (
-        <Teaser
-          data={data}
-          gutter={2}
-          onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-          miscStyles={untilIos11 ? { height: 'initial', } : {}}
-          isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
-        >
-          <TeaserMedia
-            data={data}
-            width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
-            isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
-            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-          >
-            <FelaTheme
-              render={theme => (
-                <Image
-                  lazyLoad={lazyLoadImages}
-                  data={data.image}
-                  imgOptions={getImageAssets({
-                    bps: theme.bps,
-                    aspect: 'headline',
-                    widths: [ 472, 364, 314, 281, ],
-                    sizes: [
-                      { from: 'xl', size: '281px', },
-                      { from: 'l', size: '314px', },
-                      { from: 'm', size: '472px', },
-                      { from: 's', size: '430px', },
-                      { size: '364px', },
-                    ],
-                  })}
-                />
-              )}
+      <TeaserMedia
+        data={data}
+        width={[ { from: 'l', until: 'xl', value: 4 / 6, }, ]}
+        isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
+        onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
+      >
+        <FelaTheme
+          render={theme => (
+            <Image
+              lazyLoad={lazyLoadImages}
+              data={data.image}
+              imgOptions={getImageAssets({
+                bps: theme.bps,
+                aspect: 'headline',
+                widths: [ 472, 364, 314, 281, ],
+                sizes: [
+                  { from: 'xl', size: '281px', },
+                  { from: 'l', size: '314px', },
+                  { from: 'm', size: '472px', },
+                  { from: 's', size: '430px', },
+                  { size: '364px', },
+                ],
+              })}
             />
-          </TeaserMedia>
+          )}
+        />
+      </TeaserMedia>
 
-          <TeaserContent
-            data={data}
-            padding={[
-              { from: 's', until: 'l', value: [ 2, 2, 0, ], },
-              { from: 'l', until: 'xl', value: [ 1, 0, 0, 1, ], },
-              { from: 'xl', value: [ 1, 1, 0, ], },
-            ]}
-            footerPadding={[
-              { from: 's', until: 'l', value: [ 1, 2, 1, ], },
-              { from: 'l', until: 'xl', value: [ 1, 0, 1, 1, ], },
-              { from: 'xl', value: [ 1, 1, 1, ], },
-            ]}
-            isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
-            footerMiscStyles={{
-              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
-            }}
-            renderContent={() => (
-              <TeaserHeader
-                typeScale={headerTypeScale}
-                {...data}
-                onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
-              />
-            )}
-            renderFooter={() => (
-              <FelaComponent
-                style={theme => ({
-                  color: theme.color('primary'),
-                  fontWeight: '700',
-                })}
-                render="span"
-              >
-                {data.commentsCounts}
-                <IconComment size={2} />
-              </FelaComponent>
-            )}
+      <TeaserContent
+        data={data}
+        padding={[
+          { from: 's', until: 'l', value: [ 2, 2, 0, ], },
+          { from: 'l', until: 'xl', value: [ 1, 0, 0, 1, ], },
+          { from: 'xl', value: [ 1, 1, 0, ], },
+        ]}
+        footerPadding={[
+          { from: 's', until: 'l', value: [ 1, 2, 1, ], },
+          { from: 'l', until: 'xl', value: [ 1, 0, 1, 1, ], },
+          { from: 'xl', value: [ 1, 1, 1, ], },
+        ]}
+        isStacked={[ { from: 's', until: 'l', value: true, }, { from: 'xl', value: true, }, ]}
+        footerMiscStyles={{
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
+        renderContent={() => (
+          <TeaserHeader
+            typeScale={headerTypeScale}
+            {...data}
+            onClick={biAction ? () => biAction({ index, articleId: itemId, }) : null}
           />
-        </Teaser>
-      )}
-    </UserAgent>
+        )}
+        renderFooter={() => (
+          <FelaComponent
+            style={theme => ({
+              color: theme.color('primary'),
+              fontWeight: '700',
+            })}
+            render="span"
+          >
+            {data.commentsCounts}
+            <IconComment size={2} />
+          </FelaComponent>
+        )}
+      />
+    </Teaser>
   );
 }
 
@@ -481,57 +462,48 @@ type TextualTeaserPropTypes = TeaserProps & { isLargeText: boolean, };
 TextualTeaser.defaultProps = { lazyLoadImages: undefined, isLargeText: false, };
 function TextualTeaser({ data, index, biAction, isLargeText, }: TextualTeaserPropTypes): React.Node {
   return (
-    <UserAgent
-      rules={{
-        untilIos11: { os: 'OS X', untilVer: 11, },
+    <Teaser
+      data={data}
+      gutter={2}
+      onClick={biAction ? () => biAction({ index, articleId: data.representedContent, }) : null}
+      miscStyles={{
+        flexGrow: '1',
       }}
+      gridItemMiscStyles={{ alignContent: 'stretch', }}
     >
-      {({ untilIos11, }) => (
-        <Teaser
-          data={data}
-          gutter={2}
-          onClick={biAction ? () => biAction({ index, articleId: data.representedContent, }) : null}
-          miscStyles={{
-            flexGrow: '1',
-            ...(untilIos11 ? { height: 'initial', } : {}),
-          }}
-          gridItemMiscStyles={{ alignContent: 'stretch', }}
-        >
-          <TeaserContent
-            data={data}
-            padding={[ { until: 's', value: [ 1, 2, 0, ], }, { from: 's', value: [ 2, 2, 0, ], }, ]}
-            gridItemMiscStyles={{ height: '100%', }}
-            footerPadding={[ 1, 2, ]}
-            footerMiscStyles={{
-              marginTop: 'auto',
-              type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
-            }}
-            renderContent={() => (
-              <TeaserHeader
-                {...data}
-                typeScale={
-                  isLargeText ? headerTypeScale : [ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ]
-                }
-                onClick={
-                  biAction ? () => biAction({ index, articleId: data.representedContent, }) : null
-                }
-              />
-            )}
-            renderFooter={() => (
-              <FelaComponent
-                style={theme => ({
-                  color: theme.color('primary'),
-                  fontWeight: '700',
-                })}
-                render="span"
-              >
-                {data.commentsCounts}
-                <IconComment size={2} />
-              </FelaComponent>
-            )}
+      <TeaserContent
+        data={data}
+        padding={[ { until: 's', value: [ 1, 2, 0, ], }, { from: 's', value: [ 2, 2, 0, ], }, ]}
+        gridItemMiscStyles={{ height: '100%', }}
+        footerPadding={[ 1, 2, ]}
+        footerMiscStyles={{
+          marginTop: 'auto',
+          type: [ { until: 'xl', value: -2, }, { from: 'xl', value: -3, }, ],
+        }}
+        renderContent={() => (
+          <TeaserHeader
+            {...data}
+            typeScale={
+              isLargeText ? headerTypeScale : [ { until: 'xl', value: 0, }, { from: 'xl', value: -1, }, ]
+            }
+            onClick={
+              biAction ? () => biAction({ index, articleId: data.representedContent, }) : null
+            }
           />
-        </Teaser>
-      )}
-    </UserAgent>
+        )}
+        renderFooter={() => (
+          <FelaComponent
+            style={theme => ({
+              color: theme.color('primary'),
+              fontWeight: '700',
+            })}
+            render="span"
+          >
+            {data.commentsCounts}
+            <IconComment size={2} />
+          </FelaComponent>
+        )}
+      />
+    </Teaser>
   );
 }

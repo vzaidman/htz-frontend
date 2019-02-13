@@ -75,8 +75,8 @@ export default function Donatello({ list, biAction, lazyLoadImages = true, }: Pr
                       ]}
                       miscStyles={{
                         display: isLast
-                          ? [ { until: 'l', value: 'none', }, { from: 'l', value: 'block', }, ]
-                          : 'block',
+                          ? [ { until: 'l', value: 'none', }, { from: 'l', value: 'flex', }, ]
+                          : 'flex',
                       }}
                     >
                       <Item
@@ -117,7 +117,8 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
             render={theme => (
               <BlockLink
                 miscStyles={{
-                  height: '100%',
+                  flexGrow: '1',
+                  display: 'flex',
                   // HACK ALERT!!!
                   // "0.1" in the line argument is to force a regular border
                   // instead of an absolutely positioned pseudo element that
@@ -146,9 +147,6 @@ function Item({ item, biAction, index, lazyLoadImages, }: ItemProps): Node {
                       ? () => biAction({ index, articleId: contentId, })
                       : null
                   }
-                  miscStyles={{
-                    height: '100%',
-                  }}
                 >
                   <TeaserMedia data={banner} width={1} isClickTracker>
                     <Image

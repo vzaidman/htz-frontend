@@ -45,7 +45,10 @@ export default function Zapp({
       ]}
     >
       {numOfItems > 0 ? (
-        <GridItem width={width}>
+        <GridItem
+          width={width}
+          miscStyles={{ display: 'flex', }}
+        >
           <ZappItem
             data={list.items[0]}
             lazyLoadImages={lazyLoadImages}
@@ -81,7 +84,10 @@ export default function Zapp({
         {/* end banner */}
       </GridItem>
       {numOfItems > 1 ? (
-        <GridItem width={width}>
+        <GridItem
+          width={width}
+          miscStyles={{ display: 'flex', }}
+        >
           <ZappItem
             data={list.items[1]}
             lazyLoadImages={lazyLoadImages}
@@ -91,7 +97,10 @@ export default function Zapp({
         </GridItem>
       ) : null}
       {numOfItems > 2 ? (
-        <GridItem width={width}>
+        <GridItem
+          width={width}
+          miscStyles={{ display: 'flex', }}
+        >
           <ZappItem
             data={list.items[2]}
             lazyLoadImages={lazyLoadImages}
@@ -101,7 +110,10 @@ export default function Zapp({
         </GridItem>
       ) : null}
       {numOfItems > 3 ? (
-        <GridItem width={width}>
+        <GridItem
+          width={width}
+          miscStyles={{ display: 'flex', }}
+        >
           <ZappItem
             data={list.items[3]}
             lazyLoadImages={lazyLoadImages}
