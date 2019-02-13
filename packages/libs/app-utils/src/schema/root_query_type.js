@@ -184,9 +184,13 @@ const RootQuery = new GraphQLObjectType({
     },
     purchasePage: {
       type: GraphQLJSON,
-      args: { path: { type: GraphQLString, }, userId: { type: GraphQLID, }, },
-      resolve(parentValue, { path, userId, }, { dataSources, }) {
-        return dataSources.PurchasePageAPI.getPage(path, userId);
+      args: {
+        path: { type: GraphQLString, },
+        userId: { type: GraphQLID, },
+        hasFacebookToken: { type: GraphQLBoolean, },
+      },
+      resolve(parentValue, { path, userId, hasFacebookToken, }, { dataSources, }) {
+        return dataSources.PurchasePageAPI.getPage(path, userId, hasFacebookToken);
       },
     },
 

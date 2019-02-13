@@ -12,6 +12,7 @@ import StageCounter from '../../components/OfferPage/Stages/Elements/StageCounte
 import StageHeader from '../../components/OfferPage/Stages/Elements/StageHeader';
 import CampaignHeader from '../../components/OfferPage/Stages/ChooseProductStageElements/CampaignHeader';
 import checkSessionForPurchase from '../../utils/checkSessionForPurchase';
+import Redirect from '../../components/Redirect/Redirect';
 
 const GET_LOCAL_STATE = gql`
   query {
@@ -39,6 +40,9 @@ class Stage2 extends Component {
           if (loading) return <div />;
           if (error) return <div> Error...</div>;
           const isFirstPage = Math.floor(data.purchasePage.pageNumber) === 3;
+          if (data.purchasePage.pageNumber >= 7) {
+            return <Redirect destination="thankYou" replace />;
+          }
           return (
             <MainLayout displayBackButton={!isFirstPage}>
               <Query query={GET_LOCAL_STATE}>
