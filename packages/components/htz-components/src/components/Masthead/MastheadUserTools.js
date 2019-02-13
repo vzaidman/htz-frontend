@@ -5,6 +5,7 @@ import MastheadReadingList from './MastheadReadingList';
 import MastheadUserMenu from './MastheadUserMenu/MastheadUserMenu';
 import UserDispenser from '../User/UserDispenser';
 import EventTracker from '../../utils/EventTracker';
+import GStat from '../Scripts/GStat';
 
 export default function MastheadUserTools() {
   return (
@@ -19,7 +20,13 @@ export default function MastheadUserTools() {
           <EventTracker>
             {({ biAction, gaMapper, }) => (
               <UserDispenser
-                render={({ user, }) => <MastheadUserMenu userName={user.firstName} biAction={biAction} />}
+                render={({ user, }) => (
+                  <React.Fragment>
+                    <MastheadUserMenu userName={user.firstName} biAction={biAction} />
+                    {/* TODO: change gstat script location when user cache problem is fixed */}
+                    <GStat user={user} />
+                  </React.Fragment>
+                )}
               />
             )}
           </EventTracker>
