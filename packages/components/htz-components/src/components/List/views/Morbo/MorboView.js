@@ -41,7 +41,7 @@ export default function Morbo({
   biAction,
   gaAction,
 }: MorboPropsType): React.Node {
-  const [ teaser1Data, teaser2Data, teaser3Data, teaser4Data, ] = (list && list.items) || [];
+  const [ teaser1Data, teaser2Data, teaser3Data, ] = (list && list.items) || [];
 
   return (
     <ListView
@@ -103,14 +103,15 @@ export default function Morbo({
               <Teaser234 data={teaser3Data} biAction={biAction} />
             </GridItem>
 
-            {/* Item 4 */}
+            {/* DFP */}
             {
               (list.dfp instanceof Array && list.dfp.length > 0)
                 ? (
                   <GridItem
                     stretchContent
                     miscStyles={{
-                      display: [ { until: 'xl', value: 'none', }, ],
+                      display: [ { until: 'xl', value: 'none', }, { from: 'xl', value: 'flex', }, ],
+                      justifyContent: [ { from: 'xl', value: 'center', }, ],
                     }}
                     width={4 / 12}
                   >
