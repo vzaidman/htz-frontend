@@ -313,7 +313,7 @@ function Picture(props) {
       >
         <Observer
           triggerOnce
-          rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
+          rootMargin="500px"
         >
           {inView => (inView ? Element : null)}
         </Observer>
@@ -321,7 +321,7 @@ function Picture(props) {
     ) : (
       <Observer
         triggerOnce
-        rootMargin={lazyLoad === true ? '1000px' : lazyLoad}
+        rootMargin="500px"
       >
         {inView => (inView ? Element : null)}
       </Observer>

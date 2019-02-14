@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import Observer from 'react-intersection-observer';
 import { FelaComponent, } from 'react-fela';
 import {
   GeneralAdSlot,
@@ -129,7 +130,13 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
       {main.map(element => {
         const getComponent = componentType.get(element.kind || element.inputTemplate);
         return getComponent
-          ? getComponent(element)
+          ? element.loadPriority && element.loadPriority === 'lazy'
+            ? (
+              <Observer triggerOnce rootMargin="500px">
+                {inView => (inView ? getComponent(element) : null)}
+              </Observer>
+            )
+            : getComponent(element)
           : (
             <Debug key={element.contentId}>
               {`Element of type '${element.kind || element.inputTemplate}' is not supported in HomePage`}
