@@ -232,7 +232,16 @@ function MagazineArticle({ articleId, slots, }) {
                       || element.inputTemplate === 'com.polobase.ClickTrackerBannersWrapper'
                     ) {
                       return (
-                        <LayoutContainer miscStyles={{ paddingInlineEnd: '30rem', paddingInlineStart: '30rem', }}>
+                        <LayoutContainer
+                          miscStyles={{
+                            paddingInlineEnd: [
+                              { from: 's', value: '30rem', },
+                            ],
+                            paddingInlineStart: [
+                              { from: 's', value: '30rem', },
+                            ],
+                          }}
+                        >
                           <WideArticleLayoutRow
                             key={element.contentId}
                             hideDivider
@@ -254,7 +263,16 @@ function MagazineArticle({ articleId, slots, }) {
                       );
                     }
                     return (
-                      <LayoutContainer miscStyles={{ paddingInlineEnd: '30rem', paddingInlineStart: '30rem', }}>
+                      <LayoutContainer
+                        miscStyles={{
+                          paddingInlineEnd: [
+                            { from: 's', value: '30rem', },
+                          ],
+                          paddingInlineStart: [
+                            { from: 's', value: '30rem', },
+                          ],
+                        }}
+                      >
                         <ArticleLayoutRow
                           key={element.contentId}
                           {...(element.inputTemplate === 'com.tm.ArticleCommentsElement'
