@@ -12,6 +12,7 @@ type LogoAndDateProps = {
   disableDatetime: ?boolean,
   logoSize: ?number | ComponentPropResponsiveObject<number>[],
   datetimeMiscStyles: ?StyleProps,
+  tabIndex: ?number,
 };
 
 export default function LogoAndDate({
@@ -20,6 +21,7 @@ export default function LogoAndDate({
   logoSize,
   logoMiscStyles,
   datetimeMiscStyles,
+  tabIndex,
 }: LogoAndDateProps) {
   const Logo = logoComponent;
 
@@ -32,7 +34,7 @@ export default function LogoAndDate({
       }}
     >
       {Logo ? (
-        <HtzLink href="/">
+        <HtzLink href="/" attrs={{ tabIndex, }}>
           <Logo size={logoSize} miscStyles={logoMiscStyles} />
         </HtzLink>
       ) : null}
@@ -47,4 +49,5 @@ LogoAndDate.defaultProps = {
   logoComponent: IconHaaretzLogo,
   disableDatetime: false,
   logoSize: 4,
+  tabIndex: 0,
 };

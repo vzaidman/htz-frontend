@@ -47,6 +47,19 @@ const headerStyle = () => ({
   justifyContent: 'center',
 });
 
+const logoWrapperStyle = ({ theme, showLogo, }) => ({
+  ...theme.getTransition(1),
+  ...(showLogo
+    ? {
+      visibility: 'visible',
+      opacity: 1,
+    }
+    : {
+      visibility: 'hidden',
+      opacity: '0',
+    }),
+});
+
 const panelVisibility = panelName => (prop, hiddenPanels) => (hiddenPanels && isPanelMached(panelName, hiddenPanels)
   ? { display: 'none', }
   : { display: 'flex', });
@@ -246,6 +259,8 @@ export default class MastheadWrapper extends React.Component<
       datetimeMiscStyles,
     } = this.props;
 
+    const showLogo = this.state.isDisplayStartPanel && this.state.isDisplayEndPanel;
+
     return (
       <FelaComponent render="div" miscStyles={miscStyles} rule={wrapperStyle}>
         <FelaComponent render="div" style={headerStyle}>
@@ -253,14 +268,8 @@ export default class MastheadWrapper extends React.Component<
             ? this.internalRenderStartPanel(renderStartPanel)
             : null}
           <FelaComponent
-            style={
-              this.state.isDisplayStartPanel && this.state.isDisplayEndPanel
-                ? {}
-                : {
-                  visibility: 'hidden',
-                  tabIndex: -1,
-                }
-            }
+            showLogo={showLogo}
+            rule={logoWrapperStyle}
           >
             <LogoAndDate
               logoComponent={logo}
@@ -271,6 +280,7 @@ export default class MastheadWrapper extends React.Component<
                 display: [ { until: 'l', value: 'none', }, ],
                 ...datetimeMiscStyles,
               }}
+              tabIndex={showLogo ? 0 : 1}
             />
           </FelaComponent>
           {renderEndPanel && this.state.isDisplayEndPanel

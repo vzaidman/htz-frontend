@@ -92,7 +92,7 @@ export default class HomePageMasthead extends React.PureComponent<HomePageMasthe
                   logoSize={[ { until: 'l', value: 4, }, { from: 'l', value: 5, }, ]}
                   logoMiscStyles={{
                     marginBottom: [ { from: 's', until: 'l', value: '.5rem', }, ],
-                    transitionProperty: 'all',
+                    transitionProperty: 'fill, color,  height, width',
                     ...theme.getDelay('transition', -1),
                     ...theme.getDuration('transition', -1),
                     ...theme.getTimingFunction('transition', 'linear'),
