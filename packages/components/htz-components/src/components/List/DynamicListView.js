@@ -1,186 +1,71 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import Debug from '../Debug/Debug';
 
-const Beavis = dynamic(() => import('./views/Beavis/Beavis'), {
-  loading: () => null,
-});
-const Bender = dynamic(() => import('./views/Bender/Bender'), {
-  loading: () => null,
-});
-const Boxy = dynamic(() => import('./views/Boxy/Boxy'), {
-  loading: () => null,
-});
-const Butthead = dynamic(() => import('./views/Butthead/Butthead'), {
-  loading: () => null,
-});
-const Calculon = dynamic(() => import('./views/Calculon/Calculon'), {
-  loading: () => null,
-});
-const Clampazzo = dynamic(() => import('./views/Clampazzo/Clampazzo'), {
-  loading: () => null,
-});
-const Conrad = dynamic(() => import('./views/Conrad/Conrad'), {
-  loading: () => null,
-});
-const Donatello = dynamic(() => import('./views/Donatello/Donatello'), {
-  loading: () => null,
-});
-const Donbot = dynamic(() => import('./views/Donbot/Donbot'), {
-  loading: () => null,
-});
-const Farnsworth = dynamic(() => import('./views/Farnsworth/Farnsworth'), {
-  loading: () => null,
-});
-const Hawking = dynamic(() => import('./views/Hawking/Hawking'), {
-  loading: () => null,
-});
-const Gamal = dynamic(() => import('./views/Gamal/Gamal'), {
-  loading: () => null,
-});
-const Kroker = dynamic(() => import('./views/Kroker/Kroker'), {
-  loading: () => null,
-});
-const Leela = dynamic(() => import('./views/Leela/Leela'), {
-  loading: () => null,
-});
-const Leonardo = dynamic(() => import('./views/Leonardo/Leonardo'), {
-  loading: () => null,
-});
-const Michelangelo = dynamic(() => import('./views/Michelangelo/Michelangelo'), {
-  loading: () => null,
-});
-const Mom = dynamic(() => import('./views/Mom/Mom'), {
-  loading: () => null,
-});
-const Mousepad = dynamic(() => import('./views/Mousepad/Mousepad'), {
-  loading: () => null,
-});
-const Morbo = dynamic(() => import('./views/Morbo/Morbo'), {
-  loading: () => null,
-});
-const Panucci = dynamic(() => import('./views/Panucci/Panucci'), {
-  loading: () => null,
-});
-const Pazuzu = dynamic(() => import('./views/Pazuzu/Pazuzu'), {
-  loading: () => null,
-});
-const Slim = dynamic(() => import('./views/Slim/Slim'), {
-  loading: () => null,
-});
-const Slugs = dynamic(() => import('./views/Slugs/Slugs'), {
-  loading: () => null,
-});
-const Spawn = dynamic(() => import('./views/Spawn/Spawn'), {
-  loading: () => null,
-});
-const Wong = dynamic(() => import('./views/Wong/Wong'), {
-  loading: () => null,
-});
-const Zapp = dynamic(() => import('./views/Zapp/Zapp'), {
-  loading: () => null,
-});
-const Zoidberg = dynamic(() => import('./views/Zoidberg/Zoidberg'), {
-  loading: () => null,
-});
-const Zombie = dynamic(() => import('./views/Zombie/Zombie'), {
-  loading: () => null,
-});
-const Vogel = dynamic(() => import('./views/Vogel/Vogel'), {
-  loading: () => null,
-});
+import Beavis from './views/Beavis/Beavis';
+import Bender from './views/Bender/Bender';
+import Boxy from './views/Boxy/Boxy';
+import Butthead from './views/Butthead/Butthead';
+import Calculon from './views/Calculon/Calculon';
+import Clampazzo from './views/Clampazzo/Clampazzo';
+import Conrad from './views/Conrad/Conrad';
+import Donatello from './views/Donatello/Donatello';
+import Donbot from './views/Donbot/Donbot';
+import Farnsworth from './views/Farnsworth/Farnsworth';
+import Hawking from './views/Hawking/Hawking';
+import Gamal from './views/Gamal/Gamal';
+import Kroker from './views/Kroker/Kroker';
+import Leela from './views/Leela/Leela';
+import Leonardo from './views/Leonardo/Leonardo';
+import Michelangelo from './views/Michelangelo/Michelangelo';
+import Mom from './views/Mom/Mom';
+import Mousepad from './views/Mousepad/Mousepad';
+import Morbo from './views/Morbo/Morbo';
+import Panucci from './views/Panucci/Panucci';
+import Pazuzu from './views/Pazuzu/Pazuzu';
+import Slim from './views/Slim/Slim';
+import Slugs from './views/Slugs/Slugs';
+import Spawn from './views/Spawn/Spawn';
+import Wong from './views/Wong/Wong';
+import Zapp from './views/Zapp/Zapp';
+import Zoidberg from './views/Zoidberg/Zoidberg';
+import Zombie from './views/Zombie/Zombie';
+import Vogel from './views/Vogel/Vogel';
+
+const views = new Map([
+  [ 'Beavis', Beavis, ],
+  [ 'Bender', Bender, ],
+  [ 'Boxy', Boxy, ],
+  [ 'Butthead', Butthead, ],
+  [ 'Calculon', Calculon, ],
+  [ 'Clampazzo', Clampazzo, ],
+  [ 'Conrad', Conrad, ],
+  [ 'Donatello', Donatello, ],
+  [ 'Donbot', Donbot, ],
+  [ 'Farnsworth', Farnsworth, ],
+  [ 'Hawking', Hawking, ],
+  [ 'Gamal', Gamal, ],
+  [ 'Kroker', Kroker, ],
+  [ 'Leela', Leela, ],
+  [ 'Leonardo', Leonardo, ],
+  [ 'Michelangelo', Michelangelo, ],
+  [ 'Mom', Mom, ],
+  [ 'Mousepad', Mousepad, ],
+  [ 'Morbo', Morbo, ],
+  [ 'Panucci', Panucci, ],
+  [ 'Pazuzu', Pazuzu, ],
+  [ 'Slim', Slim, ],
+  [ 'Slugs', Slugs, ],
+  [ 'Spawn', Spawn, ],
+  [ 'Wong', Wong, ],
+  [ 'Zapp', Zapp, ],
+  [ 'Zoidberg', Zoidberg, ],
+  [ 'Vogel', Vogel, ],
+  [ 'Zombie', Zombie, ],
+]);
 
 export default function DynamicListView(props) {
   const view = props.listData.view;
-  switch (view) {
-    case 'Beavis': {
-      return <Beavis {...props} />;
-    }
-    case 'Bender': {
-      return <Bender {...props} />;
-    }
-    case 'Boxy': {
-      return <Boxy {...props} />;
-    }
-    case 'Butthead': {
-      return <Butthead {...props} />;
-    }
-    case 'Calculon': {
-      return <Calculon {...props} />;
-    }
-    case 'Clampazzo': {
-      return <Clampazzo {...props} />;
-    }
-    case 'Conrad': {
-      return <Conrad {...props} />;
-    }
-    case 'Donatello': {
-      return <Donatello {...props} />;
-    }
-    case 'Donbot': {
-      return <Donbot {...props} />;
-    }
-    case 'Gamal': {
-      return <Gamal {...props} />;
-    }
-    case 'Farnsworth': {
-      return <Farnsworth {...props} />;
-    }
-    case 'Hawking': {
-      return <Hawking {...props} />;
-    }
-    case 'Kroker': {
-      return <Kroker {...props} />;
-    }
-    case 'Leela': {
-      return <Leela {...props} />;
-    }
-    case 'Leonardo': {
-      return <Leonardo {...props} />;
-    }
-    case 'Michelangelo': {
-      return <Michelangelo {...props} />;
-    }
-    case 'Mom': {
-      return <Mom {...props} />;
-    }
-    case 'Mousepad': {
-      return <Mousepad {...props} />;
-    }
-    case 'Morbo': {
-      return <Morbo {...props} />;
-    }
-    case 'Panucci': {
-      return <Panucci {...props} />;
-    }
-    case 'Pazuzu': {
-      return <Pazuzu {...props} />;
-    }
-    case 'Slim': {
-      return <Slim {...props} />;
-    }
-    case 'Slugs': {
-      return <Slugs {...props} />;
-    }
-    case 'Spawn': {
-      return <Spawn {...props} />;
-    }
-    case 'Wong': {
-      return <Wong {...props} />;
-    }
-    case 'Zapp': {
-      return <Zapp {...props} />;
-    }
-    case 'Zoidberg': {
-      return <Zoidberg {...props} />;
-    }
-    case 'Zombie': {
-      return <Zombie {...props} />;
-    }
-    case 'Vogel': {
-      return <Vogel {...props} />;
-    }
-    default:
-      return <Debug>{`${view} is not supported view`}</Debug>;
-  }
+  const View = views.get(view);
+
+  return View ? <View {...props} /> : <Debug>{`${view} is not supported view`}</Debug>;
 }

@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-// import gql from 'graphql-tag';
 
 import {
   LayoutRow,
@@ -36,9 +35,22 @@ function HomePageSlotsLayout({
     const Element = componentFromInputTemplate(element.inputTemplate);
     const { properties, ...elementWithoutProperties } = element;
     if (element.inputTemplate === 'com.tm.FooterElement') {
-      return <Element {...elementWithoutProperties} {...properties} shouldRenderScripts />;
+      return (
+        <Element
+          key={elementWithoutProperties.contentId}
+          {...elementWithoutProperties}
+          {...properties}
+          shouldRenderScripts
+        />
+      );
     }
-    return <Element {...elementWithoutProperties} {...properties} />;
+    return (
+      <Element
+        key={elementWithoutProperties.contentId}
+        {...elementWithoutProperties}
+        {...properties}
+      />
+    );
   });
 
   return (

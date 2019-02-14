@@ -14,12 +14,11 @@ import {
   MarketingNotification,
   MobileListWrapper,
   RssFeed,
+  List,
 } from '@haaretz/htz-components';
 import { parseComponentProp, } from '@haaretz/htz-css-tools';
 
 import type { MainSlotElement, MainSlotType, } from '../../flowTypes/MainSlotType';
-
-import List from './List/List';
 
 const {
   isDfp,
@@ -80,6 +79,7 @@ const componentType: Object = new Map([
     isMiddleRuller(element)
       ? (
         <MarketingNotification
+          key={element.contentId}
           notificationType="MiddleRuller"
           buttonText=""
           text1={element.text}
