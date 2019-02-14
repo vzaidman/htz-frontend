@@ -102,11 +102,7 @@ export default function TeaserMedia({
                     ? data.link
                     : data.path
                 }
-                target={
-                  data.inputTemplate === 'com.polobase.ClickTrackerBannerElement'
-                    ? data.linkTarget
-                    : null
-                }
+                target={data.linkTarget}
                 attrs={{ tabIndex: -1, }}
               >
                 {children}

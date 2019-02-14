@@ -39,6 +39,7 @@ function rssItemsToTeaserData(items, keyPrefix) {
         titleMobile: item.title,
         inputTemplate: 'com.tm.TeaserData',
         path: item.link,
+        linkTarget: '_blank',
         representedContent: `${keyPrefix}_${idx}`,
         representedContentType: 'externalContent',
       };
