@@ -35,7 +35,7 @@ function LoadButton({ children, handleClick, rotateDeg, isOpen, }: Options): Nod
             fontSize: '16px',
             backgroundColor: theme.color('primary'),
             borderRadius: '50%',
-            margin: '1em',
+            margin: '0 1em',
             transition: 'transform .7s ease-in-out',
             padding: '0.2em',
           }}

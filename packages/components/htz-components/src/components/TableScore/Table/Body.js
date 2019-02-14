@@ -30,8 +30,8 @@ const AllRowsStyle: Object => Object = ({ theme, animationCount, borderColor, })
       style: 'solid',
       color: theme.color(borderColor[0], borderColor[1]),
     }),
-    theme.type(-2),
-    theme.mq({ until: 's', }, { ...theme.type(-4), }),
+    theme.type(-1),
+
   ],
 });
 
@@ -42,7 +42,11 @@ const FirstRowStyle: Object => Object = ({ theme, textAlign, }) => ({
   fontWeight: '500',
   minWidth: '20rem',
   extend: [
-    theme.mq({ until: 's', }, { minWidth: '2rem', }),
+    theme.mq({ until: 's', }, {
+      minWidth: '2rem',
+      paddingBlockStart: '2rem',
+      paddingBlockEnd: '2rem',
+    }),
   ],
 });
 
@@ -60,11 +64,11 @@ function Body(props: BodyProps): Node {
             const teamFixed: Object = { ...team, };
 
             if (team.position) {
-              teamFixed.name = `${team.position}  ${team.name}`;
+              teamFixed.name = `${team.position}&${team.name}`;
               delete teamFixed.position;
             }
             else {
-              teamFixed.name = `${index + 1}  ${team.name}`;
+              teamFixed.name = `${index + 1}&${team.name}`;
             }
             return (
               <FelaComponent
@@ -89,13 +93,18 @@ function Body(props: BodyProps): Node {
                           key={team.teamId + key}
                           textAlign="right"
                           rule={FirstRowStyle}
-                          render={({ className: innerClassName, }) => (
-                            <th
-                              className={innerClassName}
-                            >
-                              {String(value)}
-                            </th>
-                          )}
+                          render={({ className: innerClassName, }) => {
+                            const [ teamPosition, teamName, ] = String(value).split('&');
+                            return (
+                              <th
+                                className={innerClassName}
+                              >
+                                <strong>{teamPosition}</strong>
+                                {'  '}
+                                {teamName}
+                              </th>
+                            );
+                          }}
                         />
                       )
                       : (

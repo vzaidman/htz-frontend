@@ -49,14 +49,11 @@ type State = {
   tableData: ?Array<Object>,
 }
 
-const CenteredElement: Object = {
-  position: 'relative',
-  textAlign: 'center',
-};
 
 const Container: Object = {
-  display: 'inline-block',
-}
+  marginBottom: '4rem',
+  textAlign: 'center',
+};
 
 
 export default class SoccerLeaguesTable extends React.Component<Props, State> {
@@ -107,22 +104,20 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
 
             <FelaComponent style={Container}>
 
-              <FelaComponent style={CenteredElement}>
-                <GroupBar
-                  client={client}
-                  setGroup={this.setGroup}
-                  groupNumber={Number(group) || 1}
-                />
+              <GroupBar
+                client={client}
+                setGroup={this.setGroup}
+                groupNumber={Number(group) || 1}
+              />
 
-                <FelaTheme render={theme => (
-                  <Table
-                    tableData={data.tableScore.data}
-                    tableType="soccer-champions"
-                    headers={theme.footballHeaders.headers}
-                  />
-                )}
+              <FelaTheme render={theme => (
+                <Table
+                  tableData={data.tableScore.data}
+                  tableType="soccer-champions"
+                  headers={theme.footballHeaders.headers}
                 />
-              </FelaComponent>
+              )}
+              />
             </FelaComponent>
           );
         }}
@@ -133,23 +128,22 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
           {client => (
             <FelaComponent style={Container}>
 
-              <FelaComponent style={CenteredElement}>
-                <GroupBar
-                  client={client}
-                  setGroup={this.setGroup}
-                  groupNumber={Number(group) || 1}
-                />
+              <GroupBar
+                client={client}
+                setGroup={this.setGroup}
+                groupNumber={Number(group) || 1}
+              />
 
-                <FelaTheme render={theme => (
-                  <Table
-                    tableData={tableData}
-                    tableType="soccer-champions"
-                    headers={theme.footballHeaders.headers}
-                  />
-                )}
+              <FelaTheme render={theme => (
+                <Table
+                  tableData={tableData}
+                  tableType="soccer-champions"
+                  headers={theme.footballHeaders.headers}
                 />
-              </FelaComponent>
+              )}
+              />
             </FelaComponent>
+
           )}
         </ApolloConsumer>
       );

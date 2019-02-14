@@ -2,7 +2,6 @@
 import * as React from 'react';
 import type { ChildrenArray, Node, } from 'react';
 import { FelaComponent, } from 'react-fela';
-import { borderLeft, } from '@haaretz/htz-css-tools';
 
 type HeaderProps = {
   headers: Array<string>,
@@ -13,24 +12,32 @@ type HeaderTabProps = {
 }
 
 const SingleTabStyle: Object => Object = (
-  { theme, minWidth, borderWidth, textAlign, mediaPaddingRight, mediaMinWidth, }
+  { theme, minWidth, borderWidth, textAlign, mediaPaddingRight, mediaMinWidth, smallMediaPadding, }
 ) => ({
   minWidth,
+  height: '100%',
   minHeight: '36px',
   backgroundColor: theme.color('primary', -6),
-  padding: '1rem 1.5rem',
+  padding: '1rem',
   fontFamily: 'inherit',
   fontWeight: 500,
+  position: 'relative',
   textAlign,
   color: theme.color('neutral', -3),
+  ':not(:last-child)': {
+    ':after': {
+      content: '""',
+      width: '1px',
+      height: '80%',
+      background: '#ccc',
+      position: 'absolute',
+      left: '0',
+      top: '50%',
+      transform: 'translateY(-50%)',
+    },
+  },
   extend: [
-    theme.type(0),
-    borderLeft({
-      width: borderWidth,
-      lines: 1,
-      style: 'solid',
-      color: theme.color('neutral', -5),
-    }),
+    theme.type(-1),
     theme.mq({ from: 'm', until: 'l', },
       {
         padding: '1rem',
@@ -41,13 +48,14 @@ const SingleTabStyle: Object => Object = (
     theme.mq({ until: 's', },
       {
         ...theme.type(-2),
-        minWidth: '3rem',
+        minWidth: mediaMinWidth || '30px',
+        padding: smallMediaPadding,
       }),
   ],
 });
 
 const HeadersStyle: Object = {
-  minWidth: '559px',
+  minWidth: '100%',
   minHeight: '37px',
   boxShadow: '0 1px 1px 0 rgba(162, 162, 162, 0.5)',
 };
@@ -57,11 +65,11 @@ function TableHeaderTab({ children, index, }: HeaderTabProps): Node {
   return index === 0 ? (
     <FelaComponent
       rule={SingleTabStyle}
-      borderWidth="0"
-      minWidth="40px"
+      borderWidth="1px"
+      minWidth="26rem"
       textAlign="right"
       mediaPaddingRight="1.5rem"
-      mediaMinWidth="18rem"
+      mediaMinWidth="22rem"
       render={({ className, }) => <th className={className}>{children}</th>}
     />) : (
       <FelaComponent
@@ -69,7 +77,7 @@ function TableHeaderTab({ children, index, }: HeaderTabProps): Node {
         borderWidth="1px"
         minWidth="60px"
         textAlign="center"
-        mediaPaddingRight="0.9"
+        smallMediaPadding="1rem 1rem 1rem 0.5rem"
         render={({ className, }) => <th className={className}>{children}</th>}
       />);
 }
@@ -80,13 +88,15 @@ function Header(props: HeaderProps): Node {
 
   return (
     <thead style={HeadersStyle}>
-      {
+      <tr>
+        {
       headers.map((title, index) => (
         <TableHeaderTab index={index} key={title}>
           {title}
         </TableHeaderTab>
       ))
     }
+      </tr>
     </thead>
   );
 }

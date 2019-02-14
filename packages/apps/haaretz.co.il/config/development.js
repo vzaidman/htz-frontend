@@ -30,7 +30,7 @@ module.exports = {
     return `${this.graphQLSubDomain ? `${this.graphQLSubDomain}.` : ''}${this.domain}`;
   }),
   remoteFQDN: defer(function () {
-    return `${this.subDomain || 'pre'}.${this.domain}`;
+    return `${this.subDomain || 'pre'}.${this.domain}${this.papiPort ? `:${this.papiPort}` : ''}`;
   }),
   useSSL: false,
   graphQLuseSSL: false,
@@ -45,4 +45,5 @@ module.exports = {
   enableHttpLogging: false,
   subDomain: process.env.SUBDOMAIN,
   msServiceDomain: 'ms-apps-dev',
+  papiPort: process.env.PAPI_PORT,
 };

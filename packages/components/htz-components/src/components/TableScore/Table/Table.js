@@ -23,7 +23,7 @@ function Table(props: Props): Node {
   const { tableType, tableData, headers, isOpen, borders, } = props;
 
   return (
-    <table aria-describedby={tableType} style={{ width: '100%', }} dir="rtl">
+    <table aria-describedby={tableType} style={{ width: '100%', position: 'relative', }} dir="rtl">
 
       <AriaDescription id={tableType}>
         <caption>{tableType}</caption>

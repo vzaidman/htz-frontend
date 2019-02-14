@@ -22,6 +22,7 @@ type State = {
 type SingleTabOptions = {
   text: string,
   active: boolean,
+  handleMethod: () => void,
 };
 
 const barRule: Object => Object = ({ theme, }) => ({
@@ -29,6 +30,7 @@ const barRule: Object => Object = ({ theme, }) => ({
   flexWrap: 'wrap',
   boxSizing: 'border-box',
   extend: [
+    theme.mq({ until: 's', }, { display: 'flex', }),
     borderTop({
       width: '2px',
       lines: 0.1,
@@ -43,17 +45,22 @@ const singleTabRule: Object => Object = ({ theme, active, }) => ({
   background: active
     ? theme.color('quaternary', 'base')
     : theme.color('neutral', -10),
-  fontWeight: active ? 700 : 500,
   color: theme.color('button', 'primaryOpaqueHoverBg'),
   extend: [
-    theme.mq({ until: 's', }, { ...theme.type(-1), }),
+    theme.mq({ until: 's', }, { ...theme.type(-1), flexGrow: '1', }),
   ],
 });
 
-function SingleTab({ text, active, }: SingleTabOptions): Node {
+function SingleTab({ text, active, handleMethod, }: SingleTabOptions): Node {
   return (
     <FelaComponent active={active} rule={singleTabRule}>
-      {text}
+      <ClickArea
+        onClick={handleMethod}
+        miscStyles={{ width: '100%',
+          fontWeight: active ? 700 : 500, }}
+      >
+        {text}
+      </ClickArea>
     </FelaComponent>
   );
 }
@@ -104,13 +111,12 @@ class CoastBar extends React.Component<Props, State> {
         rule={barRule}
         render={({ className, }) => (
           <div className={className}>
-            <ClickArea onClick={this.handleEast}>
-              <SingleTab active={this.state.east} text="מזרח" />
-            </ClickArea>
 
-            <ClickArea onClick={this.handleWest}>
-              <SingleTab active={this.state.west} text="מערב" />
-            </ClickArea>
+            <SingleTab active={this.state.east} text="מזרח" handleMethod={this.handleEast} />
+
+
+            <SingleTab active={this.state.west} text="מערב" handleMethod={this.handleWest} />
+
           </div>
         )}
       />

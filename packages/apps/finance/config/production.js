@@ -12,6 +12,7 @@ module.exports = {
     image: 'https://images.haarets.co.il/image',
     userInfoUri: 'https://ms-apps.haaretz.co.il/userInfo',
     polopolyImageBaseHref: 'https://www.haaretz.co.il',
+    msSportResults: 'https://ms-apps-dev.themarker.com/ms-sport-results',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''

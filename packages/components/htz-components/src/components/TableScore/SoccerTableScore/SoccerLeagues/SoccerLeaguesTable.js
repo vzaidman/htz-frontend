@@ -52,6 +52,7 @@ const halfTableData: number = 6;
 
 const Container: Object = {
   display: 'inline-block',
+  minWidth: '100%',
 };
 
 
@@ -101,9 +102,12 @@ export default class SoccerLeaguesTable extends React.Component<Props, State> {
             return null;
           }
 
-          const borders: Object = (league === '2002' || league === '2015') ? {
+          const borders: Object = (league === '2002') ? {
             '15': [ 'gplus', '', ],
-          }
+          } : (league === '2015')
+            ? {
+              '17': [ 'gplus', '', ],
+            }
             : (league !== '2125')
               ? {
                 '16': [ 'gplus', '', ],

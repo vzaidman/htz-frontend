@@ -396,14 +396,18 @@ export const groupBarTabs = Object.freeze({
   headers: [ 'בית 1', 'בית 2', 'בית 3', 'בית 4', 'בית 5', 'בית 6', 'בית 7', 'בית 8', ],
 });
 
+
+
 export const nbaHeaders = Object.freeze({
-  headers: [ 'קבוצה', 'ניצחונות', 'הפסדים', 'אחוז', ],
+  desktop: [ 'קבוצה', 'ניצחונות', 'הפסדים', 'אחוז', ],
+  mobile: [ 'קבוצה', 'נצ\'', 'הפ\'', 'אחוז', ],
 });
+
 
 export const btnOptions = Object.freeze({
   title: {
-    open: 'טען עוד',
-    close: 'הסתר',
+    open: 'הסתר',
+    close: 'טען עוד',
   },
   degree: {
     open: 90,

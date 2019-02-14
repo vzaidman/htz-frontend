@@ -10,6 +10,7 @@ import Table from '../Table/Table';
 import CoastBar from './CoastBar';
 import ApolloConsumer from '../../ApolloBoundary/ApolloConsumer';
 import type { CoastType, } from '../TableScore';
+import Media from '../../Media/Media';
 
 const GET_NBA_DATA: DocumentNode = gql`
    query TableScore($identifier: String!){
@@ -51,7 +52,10 @@ const borders: Object = {
   '7': [ 'gplus', '', ],
 };
 
-const Container = { display: 'inline-block', };
+const Container = {
+  display: 'inline-block',
+  minWidth: '100%',
+};
 
 const CenteredElement = {
   position: 'relative',
@@ -71,7 +75,7 @@ export default class NBATable extends React.Component<Props, State> {
       ? state
       : {
         coastType: props.coastType,
-        isOpen: !!props.isOpen,
+        isOpen: props.isOpen,
       };
   }
 
@@ -104,6 +108,7 @@ export default class NBATable extends React.Component<Props, State> {
             return null;
           }
 
+
           const tableData = !isOpen
             ? [ ...data.tableScore.data, ].splice(
               0, Math.min(data.tableScore.data.length, halfTableData)
@@ -117,13 +122,19 @@ export default class NBATable extends React.Component<Props, State> {
                 <CoastBar client={client} coastType={coastType} toggleCoast={this.toggleCoast} />
 
                 <FelaTheme render={theme => (
-                  <Table
-                    tableData={tableData}
-                    tableType="soccer-leagues"
-                    headers={theme.nbaHeaders.headers}
-                    isOpen={isOpen}
-                    borders={borders}
-                  />)}
+                  <Media query={{ until: 's', }}>
+                    { matches => (
+                      <Table
+                        tableData={tableData}
+                        tableType="soccer-leagues"
+                        headers={matches ? theme.nbaHeaders.mobile : theme.nbaHeaders.desktop}
+                        isOpen={isOpen}
+                        borders={borders}
+                      />
+                    )}
+
+                  </Media>
+                )}
                 />
 
                 <FelaTheme render={theme => (

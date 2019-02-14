@@ -18,6 +18,7 @@ module.exports = {
     image: 'https://images.haarets.co.il/image',
     userInfoUri: 'https://ms-apps-dev.haaretz.co.il/userInfo',
     htzFunction: 'https://ms-apps-dev.haaretz.co.il/htz-function',
+    msSportResults: 'https://ms-apps-dev.themarker.com/ms-sport-results',
     graphql: defer(function () {
       return `http${
         this.graphQLuseSSL ? 's' : ''
