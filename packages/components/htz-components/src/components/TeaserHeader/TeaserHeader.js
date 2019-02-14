@@ -40,6 +40,7 @@ type TeaserHeaderProps = {
   exclusive: ?string,
   exclusiveMobile: ?string,
   path: string,
+  linkTarget: ?string,
 
   /**
    * The font-size and line height of the headline
@@ -159,6 +160,7 @@ TeaserHeader.defaultProps = {
   kickerTypeScale: null,
   isCentered: false,
   onClick: null,
+  linkTarget: null,
 };
 
 export default function TeaserHeader({
@@ -171,6 +173,7 @@ export default function TeaserHeader({
   exclusive,
   exclusiveMobile,
   path,
+  linkTarget,
   // style props
   typeScale,
   color,
@@ -200,7 +203,7 @@ export default function TeaserHeader({
         <AboveBlockLink>
           {({ className: AboveBlockLinkClassName, }) => (
             <div className={`${AboveBlockLinkClassName} ${wrapperClassName}`}>
-              <HtzLink href={path} onClick={onClick}>
+              <HtzLink href={path} onClick={onClick} target={linkTarget}>
                 {showKicker && (exclusive || exclusiveMobile) && (
                   <Kicker
                     {...(kickerIsBlock ? { isBlock: kickerIsBlock, } : {})}

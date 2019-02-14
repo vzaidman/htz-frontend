@@ -163,7 +163,7 @@ export default function Teaser({
               <HtzLink
                 className={linkClassName}
                 href={isClickTracker(data) ? data.link : data.path}
-                target={isClickTracker(data) ? data.linkTarget : null}
+                target={data.linkTarget}
                 onClick={onClick}
                 attrs={{
                   tabIndex: '-1',

@@ -25,6 +25,7 @@ export type TeaserDataType = {
   inputTemplate: 'com.tm.TeaserData',
   mediaFlags?: { video?: boolean, html_embed?: boolean, gallery?: boolean, },
   path: string,
+  linkTarget: ?string,
   publishDate?: ?number,
   rank?: ?number,
   relatedArticles?: ?({ contentId: string, path: string, title: string, }[]),
