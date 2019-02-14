@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { FelaComponent, } from 'react-fela';
 import { VideoWrapper, } from '../sharedStyles/videoWrapper';
 import { VideoElement, } from '../sharedStyles/videoElement';
 
@@ -18,6 +19,7 @@ const defaultSettings = {
   logo: '1',
   mute: false,
   autoplay: false,
+  isVertical: false,
   startAt: 0,
   videoImage: null,
 };
@@ -59,6 +61,10 @@ Youtube.propTypes = {
      */
     autoplay: PropTypes.bool,
     /**
+     * Should it display in a vertical aspect ratio.
+     */
+    isVertical: PropTypes.bool,
+    /**
      * Should it start at a specific time ('0' || '1').
      */
     startAt: PropTypes.number,
@@ -78,27 +84,48 @@ Youtube.defaultProps = {
   onLoadCallback: null,
 };
 
+const verticalWrapperStyle = theme => ({
+  extend: [
+    theme.mq(
+      { until: 's', },
+      { maxWidth: '57rem', }
+    ),
+    theme.mq(
+      { from: 's', until: 'xl', },
+      { maxWidth: '55rem', }
+    ),
+    theme.mq(
+      { from: 'xl', },
+      { maxWidth: '47rem', }
+    ),
+  ],
+});
+
 function Youtube({ embedType, settings, source, onLoadCallback, }) {
   const start = embedType === 'playlist' ? '&start=' : '?start=';
 
   /* eslint-disable no-unused-vars */
-  const { controls, related, loop, logo, mute, autoplay, startAt, videoImage, } = settings || defaultSettings;
+  const { controls, related, loop, logo, mute, autoplay, isVertical, startAt, videoImage, } = settings || defaultSettings;
   /* eslint-enable no-unused-vars */
 
   const playlist = embedType !== 'playlist' && loop === '1' ? `&playlist=${source}` : ''; // must add playlist to enable looping
 
   return (
-    <VideoWrapper aspectRatio="16/9">
-      <VideoElement
-        id={`yt_embed_${source}`}
-        width="560"
-        height="315"
-        src={`//www.youtube.com/embed/${source}${start}${startAt}&controls=${controls}&loop=${loop}&modestbranding=${logo}&rel=${related}&autoplay=${autoplay}&enablejsapi=1&mute=${mute}${playlist}`}
-        frameBorder="0"
-        allowFullScreen=""
-        onLoad={onLoadCallback}
-      />
-    </VideoWrapper>
+    <FelaComponent
+      {...(isVertical ? { style: verticalWrapperStyle, } : {})}
+    >
+      <VideoWrapper aspectRatio={isVertical ? '9/16' : '16/9'}>
+        <VideoElement
+          id={`yt_embed_${source}`}
+          width="100%"
+          height="100%"
+          src={`//www.youtube.com/embed/${source}${start}${startAt}&controls=${controls}&loop=${loop}&modestbranding=${logo}&rel=${related}&autoplay=${autoplay}&enablejsapi=1&mute=${mute}${playlist}`}
+          frameBorder="0"
+          allowFullScreen
+          onLoad={onLoadCallback}
+        />
+      </VideoWrapper>
+    </FelaComponent>
   );
 }
 

@@ -3,20 +3,24 @@
 exports[`Youtube Video  1`] = `
 Object {
   "component": <div>
-    <figure
-      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    <div
+      className=""
     >
-      <iframe
-        allowFullScreen=""
-        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
-        frameBorder="0"
-        height="315"
-        id="yt_embed_3SzXM019pbs"
-        onLoad={null}
-        src="//www.youtube.com/embed/3SzXM019pbs?start=740&controls=1&loop=1&modestbranding=1&rel=0&autoplay=true&enablejsapi=1&mute=true&playlist=3SzXM019pbs"
-        width="560"
-      />
-    </figure>
+      <figure
+        className="htz-a htz-b htz-c htz-d htz-e htz-f"
+      >
+        <iframe
+          allowFullScreen={true}
+          className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+          frameBorder="0"
+          height="100%"
+          id="yt_embed_3SzXM019pbs"
+          onLoad={null}
+          src="//www.youtube.com/embed/3SzXM019pbs?start=740&controls=1&loop=1&modestbranding=1&rel=0&autoplay=true&enablejsapi=1&mute=true&playlist=3SzXM019pbs"
+          width="100%"
+        />
+      </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0}.htz-b{padding-bottom:56.25%}.htz-c{height:0}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0}.htz-k{top:0}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
 }
@@ -25,20 +29,24 @@ Object {
 exports[`Youtube playlist  1`] = `
 Object {
   "component": <div>
-    <figure
-      className="htz-a htz-b htz-c htz-d htz-e htz-f"
+    <div
+      className=""
     >
-      <iframe
-        allowFullScreen=""
-        className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
-        frameBorder="0"
-        height="315"
-        id="yt_embed_rmRouEds_2A?list=RDrmRouEds_2A&t=1"
-        onLoad={null}
-        src="//www.youtube.com/embed/rmRouEds_2A?list=RDrmRouEds_2A&t=1&start=0&controls=1&loop=0&modestbranding=1&rel=1&autoplay=false&enablejsapi=1&mute=false"
-        width="560"
-      />
-    </figure>
+      <figure
+        className="htz-a htz-b htz-c htz-d htz-e htz-f"
+      >
+        <iframe
+          allowFullScreen={true}
+          className="htz-a htz-g htz-h htz-i htz-j htz-k htz-l htz-m htz-n"
+          frameBorder="0"
+          height="100%"
+          id="yt_embed_rmRouEds_2A?list=RDrmRouEds_2A&t=1"
+          onLoad={null}
+          src="//www.youtube.com/embed/rmRouEds_2A?list=RDrmRouEds_2A&t=1&start=0&controls=1&loop=0&modestbranding=1&rel=1&autoplay=false&enablejsapi=1&mute=false"
+          width="100%"
+        />
+      </figure>
+    </div>
   </div>,
   "styles": ".htz-a{margin:0}.htz-b{padding-bottom:56.25%}.htz-c{height:0}.htz-d{overflow:hidden}.htz-e{position:relative}.htz-f{padding-top:}.htz-g{padding:0}.htz-h{height:100% !important}.htz-i{width:100% !important}.htz-j{left:0}.htz-k{top:0}.htz-l{position:absolute}.htz-m{display:block}.htz-n{border:none}",
 }
