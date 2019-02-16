@@ -346,7 +346,7 @@ class MarketingNotificationProvider extends React.Component<Props, State> {
 
                     return (
                       <React.Fragment>
-                        {topStrip}
+                        {/*{topStrip}*/}
                         {/* {popupMarkup} */}
                         {bottomStrip}
                       </React.Fragment>

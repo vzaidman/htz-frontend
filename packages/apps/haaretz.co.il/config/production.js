@@ -41,7 +41,7 @@ module.exports = {
   domain: 'haaretz.co.il',
   hostname: process.env.HOSTNAME,
   appPort: process.env.APP_PORT || '2004',
-  graphQLPort: process.env.GRAPHQL_PORT || '4004',
+  graphQLPort: process.env.GRAPHQL_PORT || '4000',
   logLevel: 'error',
   assetPrefix: '',
   enableHttpLogging: false,

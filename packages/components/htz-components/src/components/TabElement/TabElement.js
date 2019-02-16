@@ -98,6 +98,9 @@ function TabElement({
         >
           {({ setActiveTab, activeTab, }) => {
             const activeElement: TabItemType = elements[activeTab];
+            if (!activeElement) {
+              return null;
+            }
             return (
               <Fragment>
                 <TabList
@@ -121,7 +124,7 @@ function TabElement({
                     ),
                   }}
                 >
-                  {elements.map((element, i: number) => (
+                  {elements.filter(element => element).map((element, i: number) => (
                     <Tab
                       key={element.contentId}
                       index={i}

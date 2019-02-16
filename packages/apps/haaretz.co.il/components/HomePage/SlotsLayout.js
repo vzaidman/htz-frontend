@@ -45,7 +45,7 @@ function HomePageSlotsLayout({
     <React.Fragment>
       <MarketingNotificationProvider />
       <BIRequest />
-      {preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}
+      {/*{preHeader ? <LayoutRow>{getElements(preHeader)}</LayoutRow> : null}*/}
       {/* Layout row is inside HeaderSlot Component because its miscStyles depend on state */}
       <HeaderSlot
         pageType="homepage"
