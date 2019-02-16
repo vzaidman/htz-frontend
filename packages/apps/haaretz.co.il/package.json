@@ -34,7 +34,8 @@
     "start:gql2dev": "cross-env  NODE_ENV=development graphql-server",
     "start:dev2stage": "cross-env concurrently \"cross-env NODE_ENV=development graphql-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server htz | bunyan -L\"",
     "start:dev2prod": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env CONNECTION_PRESET=dev2prod NODE_ENV=production htz-react-server htz | bunyan -L\"",
-    "start:dev": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env CONNECTION_PRESET=dev NODE_ENV=production htz-react-server htz | bunyan -L\""
+    "start:dev": "cross-env concurrently \"cross-env NODE_ENV=production graphql-server\" \"cross-env CONNECTION_PRESET=dev NODE_ENV=production htz-react-server htz | bunyan -L\"",
+    "restart": "yarn build && yarn start:dev2prod"
   },
   "dependencies": {
     "@haaretz/app-utils": "^0.1.0",

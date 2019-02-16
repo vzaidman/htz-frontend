@@ -24,21 +24,21 @@ function SEO({ host, polyFillSrc, }) {
       />
 
       {/* <!-- Domains --> */}
-      <link rel="preconnect dns-prefetch" href="//images.haaretz.co.il" />
-      <link rel="preconnect dns-prefetch" href="//cm.g.doubleclick.net" />
-      <link
-        rel="preconnect dns-prefetch"
-        href="//securepubads.g.doubleclick.net"
-      />
-      <link rel="preconnect dns-prefetch" href="//www.google-analytics.com" />
+      {/*<link rel="preconnect dns-prefetch" href="//images.haaretz.co.il" />*/}
+      {/*<link rel="preconnect dns-prefetch" href="//cm.g.doubleclick.net" />*/}
+      {/*<link*/}
+        {/*rel="preconnect dns-prefetch"*/}
+        {/*href="//securepubads.g.doubleclick.net"*/}
+      {/*/>*/}
+      {/*<link rel="preconnect dns-prefetch" href="//www.google-analytics.com" />*/}
 
       {/* <!-- Assets --> */}
-      <link
-        rel="preload"
-        href="//www.googletagservices.com/tag/js/gpt.js"
-        as="script"
-      />
-      <link rel="preload" crossOrigin="anonymous" href={polyFillSrc} as="script" />
+      {/*<link*/}
+        {/*rel="preload"*/}
+        {/*href="//www.googletagservices.com/tag/js/gpt.js"*/}
+        {/*as="script"*/}
+      {/*/>*/}
+      {/*<link rel="preload" crossOrigin="anonymous" href={polyFillSrc} as="script" />*/}
 
       {/* <!-- FAVICONS --> */}
       <link rel="shortcut icon" href={`/static/${site}/images/favicon.ico`} />

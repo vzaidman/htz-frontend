@@ -34,7 +34,7 @@ class InitPixel extends Component {
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: `  
+            __html: `
                 !function(f,b,e,v,n,t,s){
                   if(f.fbq)return;n=f.fbq=function(){n.callMethod?
                 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -71,7 +71,7 @@ class InitPixel extends Component {
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: `  
+            __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
@@ -97,15 +97,15 @@ class InitPixel extends Component {
       : 'https://yoursite.com/img/logo-medium.png';
     return (
       <React.Fragment>
-        <script
-          async
-          type="text/javascript"
-          src="//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"
-        />
+        {/*<script*/}
+          {/*async*/}
+          {/*type="text/javascript"*/}
+          {/*src="//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"*/}
+        {/*/>*/}
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: `  
+            __html: `
               function getCookie(){
                 var cookieName = arguments[0];
                 var cookieValue = null;
@@ -131,7 +131,7 @@ class InitPixel extends Component {
                 ssoId =  null;
               } else {
                 ssoId =  userCookie["userId"];
-                  if (getCookie("HtzPusr") == undefined){ 
+                  if (getCookie("HtzPusr") == undefined){
                     userType = "registered";
                   } else {
                     userType = "payer";
@@ -162,9 +162,9 @@ class InitPixel extends Component {
       <Query query={GET_HOST_NAME}>
         {({ data: { hostname, }, }) => (
           <Head>
-            {this.facebookPixel(hostname)}
-            {this.googlePixel(hostname)}
-            {this.chromePush(hostname)}
+            {/*{this.facebookPixel(hostname)}*/}
+            {/*{this.googlePixel(hostname)}*/}
+            {/*{this.chromePush(hostname)}*/}
           </Head>
         )}
       </Query>

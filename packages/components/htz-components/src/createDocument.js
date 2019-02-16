@@ -63,7 +63,7 @@ const createDocument = ({
     styleRenderer.clear();
 
     // console.log('[cretaeDocument] fontStacks: ', JSON.stringify(fontStacks));
-    const criticalFontElements = criticalFontLoader(fontStacks.criticalFont, fontStacks.base);
+    // const criticalFontElements = criticalFontLoader(fontStacks.criticalFont, fontStacks.base);
 
     return {
       ...page,
@@ -74,7 +74,7 @@ const createDocument = ({
       host,
       isMobile,
       url: req.url,
-      criticalFontElements,
+      // criticalFontElements,
     };
   }
 
@@ -93,21 +93,21 @@ const createDocument = ({
 
     chartbeatConfig = isMobile => (
       <React.Fragment>
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-          var _sf_async_config = _sf_async_config || {};
-          /** ChartBeat CONFIGURATION START **/
-          _sf_async_config.uid = 5952;
-          _sf_async_config.domain = "haaretz.co.il";
-          _sf_async_config.flickerControl = false;
-          _sf_async_config.useCanonical = true;
-          _sf_async_config.useCanonicalDomain = true;
-          /** ChartBeat CONFIGURATION END **/
-        `,
-          }}
-        />
+        {/*<script*/}
+          {/*type="text/javascript"*/}
+          {/*dangerouslySetInnerHTML={{*/}
+            {/*__html: `*/}
+          {/*var _sf_async_config = _sf_async_config || {};*/}
+          {/*/** ChartBeat CONFIGURATION START **/}
+          {/*_sf_async_config.uid = 5952;*/}
+          {/*_sf_async_config.domain = "haaretz.co.il";*/}
+          {/*_sf_async_config.flickerControl = false;*/}
+          {/*_sf_async_config.useCanonical = true;*/}
+          {/*_sf_async_config.useCanonicalDomain = true;*/}
+          {/*/** ChartBeat CONFIGURATION END **/}
+        {/*`,*/}
+          {/*}}*/}
+        {/*/>*/}
         {/* <style
           dangerouslySetInnerHTML={{ __html: 'body { visibility: hidden !important; }', }}
           id="chartbeatFlickerControlStyle"
@@ -125,7 +125,7 @@ const createDocument = ({
               }`,
           }}
         /> */}
-        {!isMobile ? <script async src="//static.chartbeat.com/js/chartbeat_mab.js" /> : null}
+        {/*{!isMobile ? <script async src="//static.chartbeat.com/js/chartbeat_mab.js" /> : null}*/}
       </React.Fragment>
     );
 
@@ -151,11 +151,11 @@ const createDocument = ({
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
             {/* dont add link to manifest on purchase-page app  */}
             {hasToggleableTheme ? null : <link rel="manifest" href="/manifest.json" />}
-            {criticalFont.preload}
+            {/*{criticalFont.preload}*/}
             {/* ************************* *
              *       STYLE ELEMENTS      *
              * ************************* */}
-            {criticalFont.style}
+            {/*{criticalFont.style}*/}
             {this.renderStyles()}
             {/* TODO: This should be in the theme's static rules */}
             <style
@@ -171,23 +171,23 @@ const createDocument = ({
             {/* ************************* *
              *      SCRIPT ELEMENTS      *
              * ************************* */}
-            {criticalFont.script}
+            {/*{criticalFont.script}*/}
 
             {/* ChartBeat scripts should only render on homepage */}
-            {path !== '/' ? null : this.chartbeatConfig(this.props.isMobile)}
+            {/*{path !== '/' ? null : this.chartbeatConfig(this.props.isMobile)}*/}
 
-            <SEO host={this.props.host} polyFillSrc={polyfillSrc} />
+            {/*<SEO host={this.props.host} polyFillSrc={polyfillSrc} />*/}
             {this.renderData()}
-            {process.env.CONNECTION_PRESET === 'stage' ? (
-              <meta
-                name="google-site-verification"
-                content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"
-              />
-            ) : null}
+            {/*{process.env.CONNECTION_PRESET === 'stage' ? (*/}
+              {/*<meta*/}
+                {/*name="google-site-verification"*/}
+                {/*content="s8ANajgxerP2VtcnQ05TxVZjP0A9EhPp70_PLse_cBY"*/}
+              {/*/>*/}
+            {/*) : null}*/}
           </Head>
           <body>
             <Main />
-            <script crossOrigin="anonymous" src={polyfillSrc} />
+            {/*<script crossOrigin="anonymous" src={polyfillSrc} />*/}
             <NextScript />
           </body>
         </html>
