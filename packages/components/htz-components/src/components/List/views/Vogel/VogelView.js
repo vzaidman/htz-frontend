@@ -13,6 +13,7 @@ type VogelViewPropTypes = {
   lazyLoadImages: boolean,
   gaAction: () => void,
   biAction: ?ListBiActionType,
+  lazyloadDistance: number,
 };
 
 VogelView.defaultProps = {
@@ -58,6 +59,7 @@ export default function VogelView({
                 data={list.items[0]}
                 hideImageOnMobile
                 lazyLoadImages={lazyLoadImages}
+                lazyloadDistance={lazyloadDistance}
                 index={0}
                 biAction={biAction}
               />

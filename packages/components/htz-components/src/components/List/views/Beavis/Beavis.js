@@ -25,6 +25,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Beavis(props: Props): Node {

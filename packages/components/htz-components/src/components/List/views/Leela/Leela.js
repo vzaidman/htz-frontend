@@ -10,6 +10,8 @@ const LeelaQuery = gql`
   query LeelaQuery($listId: String!, $history: [ID], $section: String) {
     list(listId: $listId, history: $history, section: $section) {
       title
+      isLazyloadImages
+      lazyloadDistance
       clickTrackers {
         ...ClickTrackerBannersWrapper
       }
@@ -22,6 +24,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Leela(props: Props): React.Node {

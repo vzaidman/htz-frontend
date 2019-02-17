@@ -9,6 +9,8 @@ import ListDataGetter from '../../ListDataGetter';
 const DonbotQuery = gql`
   query DonbotQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       title
       commercialLinks {
         href
@@ -58,6 +60,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Donbot(props: Props): React.Node {

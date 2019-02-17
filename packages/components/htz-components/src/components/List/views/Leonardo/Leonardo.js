@@ -10,6 +10,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const LeonardoQuery = gql`
   query LeonardoQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       clickTrackers {
         ...ClickTrackerBannersWrapper
       }
@@ -22,6 +24,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Leonardo(props: Props): React.Node {

@@ -6,6 +6,8 @@ import list from '../list/list';
 
 export default gql`
   fragment ListInGroup on List {
+    loadPriority
+    lazyloadDistance
     lists {
       ... on Content {
         ...Content

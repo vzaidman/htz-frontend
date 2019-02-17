@@ -10,6 +10,8 @@ const GamalQuery = gql`
   query GamalQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       url
       urlDescription
       items {
@@ -28,6 +30,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Gamal(props: Props): React.Node {

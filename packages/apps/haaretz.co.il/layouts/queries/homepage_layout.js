@@ -12,6 +12,7 @@ import {
 export default gql`
   query HomePageLayout {
     homePage {
+      globalLazyload
       pageType
       seoData {
         metaTitle
@@ -89,6 +90,8 @@ export default gql`
             contentName
             contentId
             inputTemplate
+            loadPriority
+            lazyloadDistance
             lists {
               ... on Content {
                 ...Content
@@ -100,6 +103,8 @@ export default gql`
           }
           ... on RssFeed {
             inputTemplate
+            loadPriority
+            lazyloadDistance
             title
             items {
               title
@@ -180,6 +185,7 @@ export default gql`
     description
     inputTemplate
     isLazyloadImages
+    lazyloadDistance
     loadPriority
     title
     url
@@ -217,6 +223,8 @@ export default gql`
     contentName
     contentId
     title
+    loadPriority
+    lazyloadDistance
     items {
       width {
         from
@@ -248,6 +256,8 @@ export default gql`
     title
     type
     viewMode
+    loadPriority
+    lazyloadDistance
     elements {
       ... on ClickTrackerBannersWrapper {
         ...ClickTrackerBannersWrapper

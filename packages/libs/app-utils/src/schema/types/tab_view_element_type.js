@@ -1,8 +1,10 @@
 import {
   GraphQLObjectType,
+  GraphQLUnionType,
   GraphQLString,
   GraphQLList,
-  GraphQLID, GraphQLUnionType,
+  GraphQLInt,
+  GraphQLID,
 } from 'graphql';
 
 import list from './list_type';
@@ -34,7 +36,8 @@ const TabViewElements = new GraphQLObjectType({
     inputTemplate: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     contentName: { type: GraphQLString, },
-  }),
+    loadPriority: { type: GraphQLString, },
+    lazyloadDistance: { type: GraphQLInt, }, }),
 });
 
 export default TabViewElements;

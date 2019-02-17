@@ -9,6 +9,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const CalculonQuery = gql`
   query CalculonQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       commercialLinks {
         ...Link
       }
@@ -50,6 +52,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Calculon(props: Props): React.Node {

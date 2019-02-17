@@ -10,6 +10,8 @@ const SlugsQuery = gql`
   query SlugsQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       items {
         commentsCounts
         contentId
@@ -42,6 +44,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Slugs(props: Props): React.Node {

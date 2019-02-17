@@ -10,6 +10,8 @@ const ZoidbergQuery = gql`
   query ZoidbergQuery($listId: String!, $history: [ID], $section: String) {
     list(listId: $listId, history: $history, section: $section) {
       title
+      isLazyloadImages
+      lazyloadDistance
       items {
         ...TeaserForLeftElement
       }
@@ -30,6 +32,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Zoidberg(props: Props): React.Node {

@@ -9,6 +9,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 export const WongQuery = gql`
   query WongQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       items {
         ... on TeaserInList {
           inputTemplate
@@ -58,6 +60,7 @@ type Props = {
   variables: {},
   listData: ListDataType,
   viewProps: Object,
+  lazyloadDistance?: number,
 };
 
 export default function Wong(props: Props): React.Node {

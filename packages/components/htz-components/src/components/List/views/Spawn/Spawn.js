@@ -10,6 +10,8 @@ const SpawnQuery = gql`
   query SpawnQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       url
       extraLinks {
         ...Link
@@ -59,6 +61,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Spawn(props: Props): React.Node {

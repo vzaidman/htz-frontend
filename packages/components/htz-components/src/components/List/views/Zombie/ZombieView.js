@@ -46,6 +46,7 @@ export type Props = {
   gaAction: () => void,
   biAction: ?ListBiActionType,
   lazyLoadImages: boolean,
+  lazyloadDistance: number,
 };
 
 type State = {
@@ -129,7 +130,7 @@ export default class Zombie extends React.Component<Props, State> {
   };
 
   render() {
-    const { list, biAction, lazyLoadImages, } = this.props;
+    const { list, biAction, lazyLoadImages, lazyloadDistance, } = this.props;
     const { stocks, } = this.state;
     const { items, dfp, ...restOfList } = list;
 
@@ -181,6 +182,7 @@ export default class Zombie extends React.Component<Props, State> {
                     data={items[0]}
                     biAction={biAction}
                     lazyLoadImages={lazyLoadImages}
+                    lazyloadDistance={lazyloadDistance}
                   />
                 </GridItem>
                 <GridItem
@@ -268,6 +270,7 @@ function MainTeaser({
   data,
   index,
   lazyLoadImages,
+  lazyloadDistance,
 }: TeaserProps): Node {
   const itemId = data.representedContent == null ? data.contentId : data.representedContent;
 
@@ -290,7 +293,7 @@ function MainTeaser({
             isStacked
           >
             <Picture
-              lazyLoad={lazyLoadImages}
+              lazyLoad={lazyLoadImages && lazyloadDistance}
               {...pictureAssetProps({
                 bps: theme.bps,
                 imgData: data.image,

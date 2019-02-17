@@ -9,13 +9,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const MorboQuery = gql`
   query MorboQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
-      # commercialLinks {
-      #   ...Link
-      # }
-      # extraLinks {
-      #   ...Link
-      # }
-      # marketingTeaser
+      isLazyloadImages
+      lazyloadDistance
       contentName
       title
       url
@@ -45,6 +40,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Morbo(props: Props): React.Node {

@@ -4,6 +4,7 @@ import {
   GraphQLBoolean,
   GraphQLString,
   GraphQLList,
+  GraphQLInt,
   GraphQLID,
 } from 'graphql';
 
@@ -80,6 +81,7 @@ const List = new GraphQLObjectType({
       ),
     },
     loadPriority: { type: GraphQLString, },
+    lazyloadDistance: { type: GraphQLInt, },
     isLazyloadImages: { type: GraphQLBoolean, },
   }),
 });

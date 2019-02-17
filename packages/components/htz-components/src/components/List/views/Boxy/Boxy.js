@@ -11,6 +11,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const BoxyQuery = gql`
   query BoxyQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       title
       items {
         contentId
@@ -40,6 +42,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Boxy(props: Props): React.Node {

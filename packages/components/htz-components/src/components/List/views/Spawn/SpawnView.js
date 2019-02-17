@@ -31,6 +31,7 @@ import getImageAssets from '../../../../utils/getImageAssets';
 type SpawnPropsType = {
   list: ListDataType,
   lazyLoadImages: boolean,
+  lazyloadDistance: number,
   biAction: ?ListBiActionType,
   gaAction: ?() => void,
 };
@@ -44,6 +45,7 @@ Spawn.defaultProps = {
 export default function Spawn({
   list,
   lazyLoadImages,
+  lazyloadDistance,
   biAction,
   gaAction,
 }: SpawnPropsType): React.Node {
@@ -77,7 +79,7 @@ export default function Spawn({
         <Section isFragment>
           {/* COMIC (mobile only) */}
           {comicData ? (
-            <Comic data={comicData} lazyLoadImages={lazyLoadImages} />
+            <Comic data={comicData} lazyLoadImages={lazyLoadImages} lazyloadDistance={lazyloadDistance} />
           ) : (
             <Debug>There is no data for the comic teaser</Debug>
           )}
@@ -118,6 +120,7 @@ export default function Spawn({
                   index={2}
                   isStackedFromS
                   lazyLoadImages={lazyLoadImages}
+                  lazyloadDistance={lazyloadDistance}
                   isFooterBottom
                 />
               ) : (
@@ -139,6 +142,7 @@ export default function Spawn({
                   index={3}
                   isStackedFromS
                   lazyLoadImages={lazyLoadImages}
+                  lazyloadDistance={lazyloadDistance}
                   isFooterBottom
                 />
               ) : (
@@ -160,6 +164,7 @@ export default function Spawn({
                   index={4}
                   isStackedFromS
                   lazyLoadImages={lazyLoadImages}
+                  lazyloadDistance={lazyloadDistance}
                   isFooterBottom
                 />
               ) : (
@@ -199,6 +204,7 @@ export default function Spawn({
                       data={teaser4Data}
                       index={5}
                       lazyLoadImages={lazyLoadImages}
+                      lazyloadDistance={lazyloadDistance}
                     />
                   ) : (
                     <Debug>There is no data for this teaser</Debug>
@@ -212,6 +218,7 @@ export default function Spawn({
                       // hasMarginTop
                       index={6}
                       lazyLoadImages={lazyLoadImages}
+                      lazyloadDistance={lazyloadDistance}
                     />
                   ) : (
                     <Debug>There is no data for this teaser</Debug>
@@ -249,6 +256,7 @@ export default function Spawn({
 type ComicPropTypes = {
   data: TeaserDataType,
   lazyLoadImages: ?boolean,
+  lazyloadDistance: number,
 };
 
 Comic.defaultProps = { lazyLoadImages: true, };
@@ -270,7 +278,7 @@ function Comic({ data, lazyLoadImages, }: ComicPropTypes): React.Node {
           <FelaComponent style={{ padding: '1rem', }}>
             <Image
               data={data.image}
-              lazyLoad={lazyLoadImages}
+              lazyLoad={lazyLoadImages && lazyloadDistance}
               miscStyles={{ width: '100%', }}
               imgOptions={getImageAssets({
                 bps: theme.bps,
@@ -550,6 +558,7 @@ function OpEdTeaser({
   isStackedFromS,
   isFooterBottom,
   lazyLoadImages,
+  lazyloadDistance,
 }: OpEdTeaserPropTypes): React.Node {
   return (
     <FelaTheme
@@ -575,14 +584,6 @@ function OpEdTeaser({
               : '2rem',
             paddingInlineEnd: '2rem',
             paddingInlineStart: '2rem',
-            // paddingInlineEnd: [
-            //   { until: 'l', value: '2rem', },
-            //   { from: 'l', value: '1rem', },
-            // ],
-            // paddingInlineStart: [
-            //   { until: 'l', value: '2rem', },
-            //   { from: 'l', value: '1rem', },
-            // ],
             paddingTop: '2rem',
           }}
         >
@@ -638,7 +639,7 @@ function OpEdTeaser({
                     sizes: [ { size: '17rem', }, ],
                     widths: [ 204, 119, 102, ],
                   })}
-                  lazyLoad={lazyLoadImages}
+                  lazyLoad={lazyLoadImages && lazyloadDistance}
                 />
               ) : (
                 <IconAvatar

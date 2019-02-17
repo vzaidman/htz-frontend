@@ -11,6 +11,8 @@ export default gql`
     contentName
     contentId
     title
+    loadPriority
+    lazyloadDistance
     items {
       width {
         from

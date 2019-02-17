@@ -58,6 +58,7 @@ type Props = {
   width: ?(number | ComponentPropResponsiveObject<number>[]),
   biAction: ?ListBiActionType,
   lazyLoadImages: boolean,
+  lazyloadDistance: lazyloadDistance,
 };
 
 Wong.defaultProps = {
@@ -72,6 +73,7 @@ export default function Wong({
   isConrad,
   gutter,
   lazyLoadImages,
+  lazyloadDistance,
   list: { items, },
   biAction,
   width,
@@ -133,7 +135,7 @@ export default function Wong({
                     : null
                 }
               >
-                <MediaComponent {...mediaProps} lazyLoad={lazyLoadImages} />
+                <MediaComponent {...mediaProps} lazyLoad={lazyLoadImages && lazyloadDistance} />
               </TeaserMedia>
               <TeaserContent
                 width={[

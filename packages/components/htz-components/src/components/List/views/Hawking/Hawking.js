@@ -11,6 +11,8 @@ const HawkingQuery = gql`
   query HawkingQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       extraLinks {
         href
         contentName
@@ -59,6 +61,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Hawking(props: Props): React.Node {

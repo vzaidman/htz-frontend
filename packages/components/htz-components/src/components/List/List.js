@@ -102,6 +102,7 @@ class List extends React.Component<ListProps, State> {
           <DynamicListView
             listData={listData}
             viewProps={viewProps}
+            lazyloadDistance={lazyloadDistance}
             updateListDuplication={this.updateListDuplication}
             variables={{
               listId: listData.contentId,

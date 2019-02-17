@@ -8,6 +8,8 @@ export default gql`
     contentId
     inputTemplate
     hasPagination
+    loadPriority
+    lazyloadDistance
     view
   }
 `;

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { GraphQLObjectType, GraphQLString, GraphQLList, } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLInt, } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 
 import TaxonomyItem from './taxonomy_item_type';
@@ -10,6 +10,7 @@ import seoData from './seo_data_type';
 const HomePage = new GraphQLObjectType({
   name: 'Home',
   fields: () => ({
+    globalLazyload: { type: GraphQLInt, },
     pageType: {
       type: GraphQLString,
     },

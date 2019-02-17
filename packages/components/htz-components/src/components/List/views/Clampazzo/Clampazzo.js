@@ -10,6 +10,8 @@ const ClampazzoQuery = gql`
   query BenderQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       items {
         ... on TeaserInList {
           ...TeaserForClampazzo
@@ -24,6 +26,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Clampazzo(props: Props): React.Node {

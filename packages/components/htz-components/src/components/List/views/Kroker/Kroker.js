@@ -13,6 +13,8 @@ const KrokerQuery = gql`
     list(listId: $listId, history: $history) {
       title
       url
+      isLazyloadImages
+      lazyloadDistance
       commercialLinks {
         ...Link
       }
@@ -46,6 +48,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Kroker(props: Props): React.Node {

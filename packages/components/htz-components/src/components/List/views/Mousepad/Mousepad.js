@@ -12,6 +12,8 @@ import ListDataGetter from '../../ListDataGetter';
 const MousepadQuery = gql`
   query MousepadQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       items {
         ... on TeaserInList {
           commentsCounts
@@ -35,6 +37,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Mousepad(props: Props): Node {

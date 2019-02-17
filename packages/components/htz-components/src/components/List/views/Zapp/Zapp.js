@@ -9,6 +9,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const ZappQuery = gql`
   query ZappQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       items {
         inputTemplate
         commentsCounts
@@ -49,6 +51,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Zapp(props: Props): React.Node {

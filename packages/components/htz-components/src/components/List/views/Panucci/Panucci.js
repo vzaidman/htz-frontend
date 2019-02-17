@@ -10,6 +10,8 @@ const PanucciQuery = gql`
   query PanucciQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       url
       commercialLinks {
         ...Link
@@ -34,6 +36,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Panucci(props: Props): React.Node {

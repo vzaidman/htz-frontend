@@ -9,6 +9,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const PazuzuQuery = gql`
   query PazuzuQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       items {
         inputTemplate
         rank
@@ -36,6 +38,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Pazuzu(props: Props): React.Node {

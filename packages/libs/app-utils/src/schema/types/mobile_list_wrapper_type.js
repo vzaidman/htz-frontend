@@ -4,6 +4,7 @@ import {
   GraphQLUnionType,
   GraphQLString,
   GraphQLList,
+  GraphQLInt,
   GraphQLID,
 } from 'graphql';
 
@@ -17,6 +18,8 @@ const MobileListWrapper = new GraphQLObjectType({
     contentName: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
     inputTemplate: { type: GraphQLString, },
+    loadPriority: { type: GraphQLString, },
+    lazyloadDistance: { type: GraphQLInt, },
     lists: {
       type: new GraphQLList(
         new GraphQLUnionType({

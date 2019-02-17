@@ -248,12 +248,12 @@ Please use the "<Picture />" component`
 
   return hasWrapper ? (
     <StyledImgWrapper width={width} height={height} bgc={bgcolor} miscStyles={miscStyles}>
-      <Observer triggerOnce rootMargin="500px">
+      <Observer triggerOnce rootMargin={`${lazyLoad}px`}>
         {inView => (inView ? Sources : null)}
       </Observer>
     </StyledImgWrapper>
   ) : (
-    <Observer triggerOnce rootMargin="500px">
+    <Observer triggerOnce rootMargin={`${lazyLoad}px`}>
       {inView => (inView ? Sources : null)}
     </Observer>
   );

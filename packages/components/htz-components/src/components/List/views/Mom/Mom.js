@@ -10,6 +10,8 @@ const MomQuery = gql`
   query MomQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       description
       url
       urlDescription
@@ -27,6 +29,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Mom(props: Props): React.Node {

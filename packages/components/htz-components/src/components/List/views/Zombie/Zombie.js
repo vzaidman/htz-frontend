@@ -10,6 +10,8 @@ const ZombieQuery = gql`
   query ZombieQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
+      isLazyloadImages
+      lazyloadDistance
       url
       extraLinks {
         contentId
@@ -58,6 +60,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Zombie(props: Props): React.Node {

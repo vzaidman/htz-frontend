@@ -9,6 +9,8 @@ import type { ListDataType, } from '../../../../flowTypes/ListDataType';
 const SlimQuery = gql`
   query SlimQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
+      isLazyloadImages
+      lazyloadDistance
       items {
         ... on TeaserInList {
           ...ImageInTeaser
@@ -35,6 +37,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Slim(props: Props): React.Node {

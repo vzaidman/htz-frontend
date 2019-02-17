@@ -10,7 +10,8 @@ const VogelQuery = gql`
   query VogelQuery($listId: String!, $history: [ID]) {
     list(listId: $listId, history: $history) {
       title
-
+      isLazyloadImages
+      lazyloadDistance
       items {
         ... on TeaserInList {
           inputTemplate
@@ -34,6 +35,7 @@ type Props = {
   updateListDuplication: Function,
   variables: {},
   listData: ListDataType,
+  lazyloadDistance?: number,
 };
 
 export default function Vogel(props: Props): React.Node {

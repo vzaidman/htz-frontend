@@ -33,6 +33,7 @@ ZappItem.defaultProps = {
 export default function ZappItem({
   data,
   lazyLoadImages,
+  lazyloadDistance,
   hideImageOnMobile,
   index,
   biAction,
@@ -57,7 +58,7 @@ export default function ZappItem({
         <FelaTheme
           render={theme => (
             <Picture
-              lazyLoad={lazyLoadImages}
+              lazyLoad={lazyLoadImages && lazyloadDistance}
               {...getPictureAssets({
                 bps: theme.bps,
                 imgData: data.image,

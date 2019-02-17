@@ -14,6 +14,7 @@ import type { TeaserDataType, } from '../../../../flowTypes/TeaserDataType';
 type VogelItemPropTypes = {
   data: TeaserDataType,
   lazyLoadImages: boolean,
+  lazyloadDistance: number,
   hideImage: boolean,
   hideImageOnMobile: boolean,
   hideSeparator: boolean,
@@ -36,6 +37,7 @@ VogelItem.defaultProps = {
 function VogelItem({
   data,
   lazyLoadImages,
+  lazyloadDistance,
   hideImage,
   hideImageOnMobile,
   hideSeparator,
@@ -78,7 +80,7 @@ function VogelItem({
               isStacked
             >
               <Image
-                lazyLoad={lazyLoadImages}
+                lazyLoad={lazyLoadImages && lazyloadDistance}
                 data={data.image}
                 imgOptions={getImageAssets({
                   aspect: 'headline',

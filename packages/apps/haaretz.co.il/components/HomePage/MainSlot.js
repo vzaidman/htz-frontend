@@ -41,9 +41,9 @@ const componentType: Object = new Map([
       ? <MainBlock key={element.contentId} List={List} data={element} />
       : null
   ), ],
-  [ 'com.tm.element.List', (element: MainSlotElement) => (
+  [ 'com.tm.element.List', (element: MainSlotElement, lazyloadDistance: number) => (
     isList(element)
-      ? <List key={element.contentId} {...element} />
+      ? <List key={element.contentId} {...element} lazyloadDistance={lazyloadDistance}/>
       : null
   ), ],
   [ 'com.polobase.ClickTrackerBannersWrapper', (element: MainSlotElement) => (
@@ -56,14 +56,14 @@ const componentType: Object = new Map([
       ? <GeneralAdSlot key={element.contentId} {...element} />
       : null
   ), ],
-  [ 'com.tm.TabViewElement', (element: MainSlotElement) => (
+  [ 'com.tm.TabViewElement', (element: MainSlotElement, lazyloadDistance: number) => (
     isTabElement(element)
-      ? <TabElement key={element.contentId} List={List} {...element} />
+      ? <TabElement key={element.contentId} List={List} {...element} lazyloadDistance={lazyloadDistance}/>
       : null
   ), ],
-  [ 'com.tm.GridElementGroup', (element: MainSlotElement) => (
+  [ 'com.tm.GridElementGroup', (element: MainSlotElement, lazyloadDistance: number) => (
     isGridElement(element)
-      ? <GridElement key={element.contentId} List={List} {...element} />
+      ? <GridElement key={element.contentId} List={List} {...element} lazyloadDistance={lazyloadDistance}/>
       : null
   ), ],
   [ 'com.tm.HeaderNewsGroup', (element: MainSlotElement) => (
@@ -71,9 +71,9 @@ const componentType: Object = new Map([
       ? <TopNews key={element.contentId} {...element} />
       : null
   ), ],
-  [ 'com.polobase.whtzMobileSiteListsWrapper', (element: MainSlotElement) => (
+  [ 'com.polobase.whtzMobileSiteListsWrapper', (element: MainSlotElement, lazyloadDistance: number) => (
     isMobileListWrapper(element)
-      ? <MobileListWrapper key={element.contentId} {...element} />
+      ? <MobileListWrapper key={element.contentId} {...element} lazyloadDistance={lazyloadDistance}/>
       : null
   ), ],
   [ 'com.tm.promotion.banner.MiddleRuler', (element: MainSlotElement) => (
@@ -89,11 +89,9 @@ const componentType: Object = new Map([
       )
       : null
   ), ],
-  [ 'com.tm.ExternalRssElement', (element: MainSlotElement) => (
+  [ 'com.tm.ExternalRssElement', (element: MainSlotElement, lazyloadDistance: number) => (
     isRssFeed(element)
-      ? (
-        <RssFeed key={element.contentId} {...element} />
-      )
+      ? <RssFeed key={element.contentId} {...element} lazyloadDistance={lazyloadDistance}/>
       : null
   ), ],
   [ 'error', (element: MainSlotElement) => (
@@ -105,9 +103,10 @@ const componentType: Object = new Map([
 
 type Props = {
   main: MainSlotType,
+  globalLazyload: number,
 };
 
-function HomePageSlotsLayout({ main, }: Props): React.Node {
+function HomePageSlotsLayout({ main, globalLazyload, }: Props): React.Node {
   return (
     <FelaComponent
       style={theme => ({
@@ -129,11 +128,12 @@ function HomePageSlotsLayout({ main, }: Props): React.Node {
     >
       {main.map(element => {
         const getComponent = componentType.get(element.kind || element.inputTemplate);
+        const lazyloadDistance = element.lazyloadDistance || globalLazyload;
         return getComponent
           ? element.loadPriority && element.loadPriority === 'lazy'
             ? (
-              <Observer triggerOnce rootMargin="500px">
-                {inView => (inView ? getComponent(element) : null)}
+              <Observer triggerOnce rootMargin={`${lazyloadDistance}px`}>
+                {inView => (inView ? getComponent(element, lazyloadDistance) : null)}
               </Observer>
             )
             : getComponent(element)

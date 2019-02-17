@@ -5,6 +5,7 @@ import {
   GraphQLString,
   GraphQLFloat,
   GraphQLList,
+  GraphQLInt,
   GraphQLID,
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
@@ -23,6 +24,8 @@ const GridElementGroup = new GraphQLObjectType({
     contentName: { type: GraphQLString, },
     title: { type: GraphQLString, },
     contentId: { type: GraphQLID, },
+    loadPriority: { type: GraphQLString, },
+    lazyloadDistance: { type: GraphQLInt, },
     items: {
       type: new GraphQLList(
         new GraphQLObjectType({
